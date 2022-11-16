@@ -1,34 +1,104 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Justice plurielle
 
-## Getting Started
+## Installation
 
-First, run the development server:
+- `yarn`
+- `touch .env.local` et y mettre les variables d'environnements pour développer
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Utilisation
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Vous trouverez toutes ces commandes dans le fichier package.json.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### Lancer l'application pour développer
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+`yarn dev`
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+> Cette application fonctionne avec la dernière version LTS de node.
 
-## Learn More
+### Lancer la construction de l'application
 
-To learn more about Next.js, take a look at the following resources:
+`yarn build`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+#### Puis lancer l'application comme si vous étiez en production
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+`yarn start`
 
-## Deploy on Vercel
+### Lancer les tests
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+`yarn test`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Lancer les tests avec le coverage
+
+`yarn test:coverage`
+
+### Lancer les tests avec mutation en mode incrémental
+
+`yarn test:mutation`
+
+### Lancer la vérification du typing
+
+`yarn typecheck`
+
+### Lancer la vérification du code
+
+`yarn lint:typescript`
+
+### Lancer la vérification du CSS
+
+`yarn lint:css`
+
+### Lancer la vérification de l'accessibilité, de la performance et de bonnes pratiques
+
+`yarn lighthouse`
+
+### Lancer la vérification de code mort
+
+`yarn deadcode`
+
+### Lancer la vérification de dépendances mortes
+
+`yarn depcheck`
+
+## Sécurité
+
+Justice Plurielle a la note de [A](https://securityheaders.com/?q=https%3A%2F%2Fjustice-plurielle.osc-fr1.scalingo.io%2F).
+
+## Architectural Decision Records (ADR)
+
+### Open source (14/10/22)
+
+- Rien n'empêche le contraire
+- On peut utiliser des outils gratuits d'observabilité
+- C'est nul d'être fermé
+
+### Framework : Next.js (14/10/22)
+
+- Facile d'utilisation
+- Connu par une grosse majorité des développeurs
+- Beaucoup de ressource sur Internet
+- Peu être déployé en statique
+
+### Hébergeur : Scalingo (14/10/22)
+
+- Hébergeur Français
+- Facile d'utilisation
+- Payement à la minute utilisée
+- Architecture très simple
+
+### Dépôt de code : GitHub (14/10/22)
+
+- Connu de tous
+- Facile d'utilisation
+- CI gratuite
+
+### Écrire le code en Français (14/10/22)
+
+- Métier en Français
+- N'a pas vocation à s'exporter à l'étranger
+- Diminutation de la charge cognitive
+
+### Construire une Progressive Web App (PWA) (14/10/22)
+
+- Installation comme une application native
+- Avoir du offline
+- Avoir du cache

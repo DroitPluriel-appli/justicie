@@ -1,0 +1,57 @@
+.desktop {
+  display: none;
+}
+
+.header ul {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: var(--base-margin);
+}
+
+.title {
+  font-size: 1.38rem;
+  font-weight: 700;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.6rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+@media (min-width: 36em) {
+  .desktop {
+    display: inherit;
+  }
+
+  .mobile {
+    display: none;
+  }
+
+  .header {
+    box-shadow: 0 2px 2px 2px var(--shadow);
+  }
+
+  .header nav ul {
+    display: flex;
+    gap: var(--base-margin);
+  }
+
+  .header nav a {
+    font-size: 1.12rem;
+  }
+
+  .title {
+    font-size: 1.25rem;
+  }
+
+  .rechercher {
+    background: var(--button-color);
+    border-radius: 2rem;
+    font-weight: 700;
+    padding: var(--base-margin);
+  }
+}

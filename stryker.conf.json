@@ -1,0 +1,20 @@
+{
+  "$schema": "./node_modules/@stryker-mutator/core/schema/stryker-schema.json",
+  "checkers": ["typescript"],
+  "commandRunner": { "command": "yarn test" },
+  "coverageAnalysis": "perTest",
+  "ignorePatterns": [".github", ".lighthouseci", ".next", ".vscode", ".yarn", "coverage", "lighthouse-ci-reports", "out", "pages", "public"],
+  "jest": {
+    "configFile": "jest-for-mutation-testing.json"
+  },
+  "mutate": [
+    "components/**/*.tsx",
+    "!components/**/*.test.tsx"
+  ],
+  "packageManager": "yarn",
+  "reporters": [
+    "html"
+  ],
+  "testRunner": "jest",
+  "tsconfigFile": "tsconfig.json"
+}
