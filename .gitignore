@@ -33,4 +33,24 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
-next-env.d.ts
+
+# yarn
+**/.yarn/*
+!**/.yarn/patches
+!**/.yarn/releases
+!**/.yarn/plugins
+!**/.yarn/sdks
+!**/.yarn/versions
+**/.pnp.*
+
+# project
+.stryker-tmp
+.vscode
+lighthouse-ci-reports
+reports
+public/sw.js
+public/sw.js.map
+public/workbox-*
+.env.local
+.lighthouseci
+jest-for-mutation-testing.json

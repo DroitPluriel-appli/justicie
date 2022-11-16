@@ -1,0 +1,45 @@
+:root {
+  --primary-background-color: linear-gradient(0deg, rgba(10, 20, 106, .2), rgba(10, 20, 106, .2)), linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), #343D83;
+  --primary-color: #343D83;
+  --secondary-color: #cedcff;
+  --button-color: linear-gradient(0deg, #F55454, #F55454), linear-gradient(0deg, #D0054A, #D0054A), linear-gradient(0deg, #FF5F00, #FF5F00), #FFE4D0;
+  --white: #fff;
+  --shadow: rgba(189, 189, 189, .25);
+  --base-font: 1rem;
+  --base-margin: 1rem;
+}
+
+html {
+  font-family: "Courier New", Courier, monospace;
+  font-size: var(--base-font);
+  line-height: 1.15;
+  text-size-adjust: 100%;
+}
+
+body,
+main,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 36em) {
+  main {
+    margin: 0 auto;
+    padding: 0;
+    width: 38rem;
+  }
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

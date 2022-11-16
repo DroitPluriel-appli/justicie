@@ -1,0 +1,22 @@
+{
+  "name": "Justice Plurielle",
+  "description": "Plateforme qui permet de rechercher un point d'accès au droit en fonction de ses besoins en accessibilité et de sa position ou de son adresse",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "id": "/",
+  "icons": [
+    {
+      "sizes": "256x256",
+      "src": "favicon.ico",
+      "type": "image/x-icon"
+    },
+    {
+      "sizes": "144x144",
+      "src": "jp.svg",
+      "type": "image/svg+xml"
+    }
+  ]
+}

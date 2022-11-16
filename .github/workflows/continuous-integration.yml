@@ -1,0 +1,85 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: ['main']
+# on: pull_request
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          cache: yarn
+          node-version-file: package.json
+      - name: Install packages
+        run: yarn --immutable
+      - name: Run the tests
+        run: yarn test
+
+  analyze:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    steps:
+    - uses: actions/checkout@v3
+    - uses: github/codeql-action/init@v2
+      with:
+        languages: typescript
+    - uses: github/codeql-action/analyze@v2
+      with:
+        category: /language:typescript
+
+  package-dedupe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          cache: yarn
+          node-version-file: package.json
+      - name: Check for duplicate dependencies (fix with "yarn dedupe")
+        run: yarn dedupe --check
+
+  type-checker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          cache: yarn
+          node-version-file: package.json
+      - name: Install packages
+        run: yarn --immutable
+      - name: Run the type checker
+        run: yarn typecheck
+
+  typescript-linter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          cache: yarn
+          node-version-file: package.json
+      - name: Install packages
+        run: yarn --immutable
+      - name: Run the TypeScript linter
+        run: yarn lint:typescript
+
+  css-linter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          cache: yarn
+          node-version-file: package.json
+      - name: Install packages
+        run: yarn --immutable
+      - name: Run the CSS linter
+        run: yarn lint:css
