@@ -15,8 +15,22 @@ export default function Accueil(): ReactElement {
         </title>
       </Head>
       <h2 className={styles.title}>
-        {wording.QU_EST_CE_JUSTICE_PLURIELLE}
+        {wording.VOUS_AVEZ_UN_PROBLEME_DE_DROIT}
       </h2>
+      <p>
+        {wording.TROUVEZ_UN_CONSEIL_JURIDIQUE}
+        <br />
+        <br />
+        {wording.VOUS_AVEZ_UNE_QUESTION_SUR_VOS_DROITS}
+        <br />
+        {wording.VOUS_ETES_VICTIME}
+        <br />
+        {wording.VOUS_VOULEZ_FAIRE_UNE_ACTION_EN_JUSTICE}
+        <br />
+        {wording.VOUS_AVEZ_RECU_UNE_DECISION}
+        <br />
+        {wording.JUSTICE_PLURIELLE_VOUS_PERMET}
+      </p>
     </>
   )
 }
