@@ -18,17 +18,15 @@ html {
 
 body,
 main,
-ul {
+ul,
+p,
+h2 {
   margin: 0;
   padding: 0;
 }
 
-@media (min-width: 36em) {
-  main {
-    margin: 0 auto;
-    padding: 0;
-    width: 38rem;
-  }
+main {
+  padding: 0 var(--base-margin);
 }
 
 ul {
@@ -42,4 +40,20 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+
+p {
+  font-size: .875rem;
+}
+
+@media (min-width: 36em) {
+  main {
+    margin: 0 auto;
+    padding: 0;
+    width: 38rem;
+  }
+
+  p {
+    font-size: initial;
+  }
 }
