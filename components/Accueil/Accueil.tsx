@@ -17,7 +17,7 @@ export default function Accueil(): ReactElement {
       <h2 className={styles.title}>
         {wording.VOUS_AVEZ_UN_PROBLEME_DE_DROIT}
       </h2>
-      <p>
+      <p className={styles.description}>
         {wording.TROUVEZ_UN_CONSEIL_JURIDIQUE}
         <br />
         <br />
