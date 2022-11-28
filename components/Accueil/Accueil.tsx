@@ -4,6 +4,7 @@ import { ReactElement } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
 import styles from './Accueil.module.css'
+import ArrowIcon from './arrow_icon.png'
 import MapPinIcon from './map_pin_icon.png'
 
 export default function Accueil(): ReactElement {
