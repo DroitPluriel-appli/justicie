@@ -14,11 +14,24 @@
   display: flex;
   flex-direction: column;
   font-weight: bold;
+  margin-bottom: 1rem;
   padding: 1.5rem;
 }
 
 .recherche img {
   padding-bottom: 1.5rem;
+}
+
+.criteres {
+  align-items: center;
+  display: flex;
+  font-size: 0.875rem;
+  margin-bottom: 1.5rem;
+  text-decoration: underline;
+}
+
+.criteres img {
+  margin-right: 0.5rem;
 }
 
 @media (min-width: 36em) {
@@ -33,5 +46,12 @@
 
   .recherche {
     font-size: 1.125rem;
+    margin-bottom: 2rem;
+  }
+
+  .criteres {
+    font-size: initial;
+    margin-bottom: 2.5rem;
+    margin-left: 1rem;
   }
 }

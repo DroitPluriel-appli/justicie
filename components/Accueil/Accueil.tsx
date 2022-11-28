@@ -4,6 +4,7 @@ import { ReactElement } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
 import styles from './Accueil.module.css'
+import ArrowIcon from './arrow_icon.png'
 import MapPinIcon from './map_pin_icon.png'
 
 export default function Accueil(): ReactElement {
@@ -44,8 +45,20 @@ export default function Accueil(): ReactElement {
           width="31"
         />
         <span>
-          {wording.RECHERCHER_UNE_CONSULTATION_JURIDIQUE}
+          {wording.RECHERCHER_UNE_CONSULTATION_JURIDIQUE_GRATUITE_ET_ACCESSIBLE}
         </span>
+      </a>
+      <a
+        className={styles.criteres}
+        href={paths.NOS_CRITERES_D_ACCESSIBILITE}
+      >
+        <Image
+          alt=""
+          height="25"
+          src={ArrowIcon}
+          width="25"
+        />
+        {wording.DECOUVRIR_NOS_CRITERES}
       </a>
     </>
   )

@@ -33,8 +33,19 @@ describe('page d’accueil', () => {
 
     // THEN
     const main = screen.getByRole('main')
-    const link = within(main).getByRole('link', { name: wording.RECHERCHER_UNE_CONSULTATION_JURIDIQUE })
+    const link = within(main).getByRole('link', { name: wording.RECHERCHER_UNE_CONSULTATION_JURIDIQUE_GRATUITE_ET_ACCESSIBLE })
     expect(link).toHaveAttribute('href', paths.RECHERCHER_UN_LIEU_DE_DROIT)
+    expect(link).toBeInTheDocument()
+  })
+
+  it("affiche le lien vers les critères d'accessibilite", () => {
+    // WHEN
+    renderFakeComponent(<Accueil />)
+
+    // THEN
+    const main = screen.getByRole('main')
+    const link = within(main).getByRole('link', { name: wording.DECOUVRIR_NOS_CRITERES })
+    expect(link).toHaveAttribute('href', paths.NOS_CRITERES_D_ACCESSIBILITE)
     expect(link).toBeInTheDocument()
   })
 })
