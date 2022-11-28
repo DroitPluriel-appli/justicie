@@ -1,7 +1,13 @@
 export interface Wording {
   // Accueil
   readonly TITLE_PAGE_ACCUEIL: string
-  readonly QU_EST_CE_JUSTICE_PLURIELLE: string
+  readonly VOUS_AVEZ_UN_PROBLEME_DE_DROIT: string
+  readonly TROUVEZ_UN_CONSEIL_JURIDIQUE: string
+  readonly VOUS_AVEZ_UNE_QUESTION_SUR_VOS_DROITS: string
+  readonly VOUS_ETES_VICTIME: string
+  readonly VOUS_VOULEZ_FAIRE_UNE_ACTION_EN_JUSTICE: string
+  readonly VOUS_AVEZ_RECU_UNE_DECISION: string
+  readonly JUSTICE_PLURIELLE_VOUS_PERMET: string
 
   // Rechercher un lieu de droit
   readonly TITLE_PAGE_RECHERCHER_UNE_CONSULTATION_JURIDIQUE: string
