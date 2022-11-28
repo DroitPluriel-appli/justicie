@@ -4,6 +4,7 @@ import { ReactElement } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
 import styles from './Accueil.module.css'
+import MapPinIcon from './map_pin_icon.png'
 
 export default function Accueil(): ReactElement {
   const { wording, paths } = useDependencies()

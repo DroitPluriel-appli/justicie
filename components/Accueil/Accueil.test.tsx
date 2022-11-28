@@ -32,4 +32,15 @@ describe('page d’accueil', () => {
     const decouvrirNosCriteres = within(main).getByRole('link', { name: wording.DECOUVRIR_NOS_CRITERES })
     expect(decouvrirNosCriteres).toHaveAttribute('href', paths.NOS_CRITERES_D_ACCESSIBILITE)
   })
+
+  it('affiche le bouton de recherche', () => {
+    // WHEN
+    renderFakeComponent(<Accueil />)
+
+    // THEN
+    const main = screen.getByRole('main')
+    const link = within(main).getByRole('link', { name: wording.RECHERCHER_UNE_CONSULTATION_JURIDIQUE })
+    expect(link).toHaveAttribute('href', paths.RECHERCHER_UN_LIEU_DE_DROIT)
+    expect(link).toBeInTheDocument()
+  })
 })
