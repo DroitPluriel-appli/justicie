@@ -3,6 +3,7 @@
 }
 
 .title {
+  font-size: var(--base-font);
   margin-bottom: 0.5rem;
 }
 
@@ -36,6 +37,9 @@
 
 .apropos {
   background: var(--secondary-color);
+  margin-left: calc(-1 * var(--base-margin));
+  margin-right: calc(-1 * var(--base-margin));
+  margin-bottom: 1.5rem;
   padding: var(--base-margin);
 }
 
@@ -58,5 +62,8 @@
     font-size: initial;
     margin-bottom: 2.5rem;
     margin-left: 1rem;
+  }
+  .apropos {
+    margin-bottom: 2.5rem;
   }
 }
