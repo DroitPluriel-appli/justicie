@@ -4,7 +4,7 @@ import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../con
 import Accueil from './Accueil'
 
 describe('page d’accueil', () => {
-  const { wording } = fakeFrontDependencies
+  const { paths, wording } = fakeFrontDependencies
 
   it('affiche le titre de l’onglet', () => {
     // WHEN
@@ -25,5 +25,11 @@ describe('page d’accueil', () => {
 
     const description = within(main).getByText(textMatch(wording.TROUVEZ_UN_CONSEIL_JURIDIQUE + wording.VOUS_AVEZ_UNE_QUESTION_SUR_VOS_DROITS + wording.VOUS_ETES_VICTIME + wording.VOUS_VOULEZ_FAIRE_UNE_ACTION_EN_JUSTICE + wording.VOUS_AVEZ_RECU_UNE_DECISION + wording.JUSTICE_PLURIELLE_VOUS_PERMET), { selector: 'p' })
     expect(description).toBeInTheDocument()
+
+    const rechercherUneConsultation = within(main).getByRole('link', { name: wording.RECHERCHER_UNE_CONSULTATION_JURIDIQUE_GRATUITE_ET_ACCESSIBLE })
+    expect(rechercherUneConsultation).toHaveAttribute('href', paths.RECHERCHER_UN_LIEU_DE_DROIT)
+
+    const decouvrirNosCriteres = within(main).getByRole('link', { name: wording.DECOUVRIR_NOS_CRITERES })
+    expect(decouvrirNosCriteres).toHaveAttribute('href', paths.NOS_CRITERES_D_ACCESSIBILITE)
   })
 })

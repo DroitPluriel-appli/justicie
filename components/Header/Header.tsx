@@ -21,9 +21,9 @@ export default function Header(): ReactElement {
               <a href={paths.ACCUEIL}>
                 <Image
                   alt={wording.ACCUEIL}
-                  height="50"
+                  height="40"
                   src="/logo.png"
-                  width="50"
+                  width="54"
                 />
               </a>
             </Link>
@@ -60,7 +60,7 @@ export default function Header(): ReactElement {
               <a href={paths.ACCUEIL}>
                 <Image
                   alt={wording.ACCUEIL}
-                  height="54"
+                  height="40"
                   src="/logo.png"
                   width="54"
                 />

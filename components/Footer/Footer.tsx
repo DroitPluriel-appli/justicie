@@ -13,7 +13,7 @@ export default function Footer(): ReactElement {
       <div>
         <Image
           alt={wording.ACCUEIL}
-          height="54"
+          height="40"
           src="/logo.png"
           width="54"
         />

@@ -5,11 +5,12 @@ module.exports = {
         'categories:accessibility': ['error', { minScore: 0.95 }],
         'categories:best-practices': ['error', { minScore: 0.95 }],
         'categories:performance': ['error', { minScore: 0.95 }],
+        'categories:pwa': ['error', { minScore: 0.95 }],
       },
     },
     collect: {
       settings: {
-        onlyCategories: ['accessibility', 'best-practices', 'performance'],
+        onlyCategories: ['accessibility', 'best-practices', 'performance', 'pwa'],
         preset: 'desktop',
       },
       url: [
