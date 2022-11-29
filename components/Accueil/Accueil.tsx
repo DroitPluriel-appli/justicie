@@ -1,11 +1,12 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 import { ReactElement } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
 import styles from './Accueil.module.css'
-import ArrowIcon from './arrow_icon.png'
-import MapPinIcon from './map_pin_icon.png'
+import ArrowIcon from './arrow-right.png'
+import MapPinIcon from './map-pin.png'
 
 export default function Accueil(): ReactElement {
   const { wording, paths } = useDependencies()
@@ -34,32 +35,42 @@ export default function Accueil(): ReactElement {
         <br />
         {wording.JUSTICE_PLURIELLE_VOUS_PERMET}
       </p>
-      <a
-        className={styles.recherche}
+      <Link
         href={paths.RECHERCHER_UN_LIEU_DE_DROIT}
+        legacyBehavior
       >
-        <Image
-          alt=""
-          height="47.77"
-          src={MapPinIcon}
-          width="31"
-        />
-        <span>
-          {wording.RECHERCHER_UNE_CONSULTATION_JURIDIQUE_GRATUITE_ET_ACCESSIBLE}
-        </span>
-      </a>
-      <a
-        className={styles.criteres}
+        <a
+          className={styles.recherche}
+          href={paths.RECHERCHER_UN_LIEU_DE_DROIT}
+        >
+          <Image
+            alt=""
+            height="48"
+            src={MapPinIcon}
+            width="31"
+          />
+          <span>
+            {wording.RECHERCHER_UNE_CONSULTATION_JURIDIQUE_GRATUITE_ET_ACCESSIBLE}
+          </span>
+        </a>
+      </Link>
+      <Link
         href={paths.NOS_CRITERES_D_ACCESSIBILITE}
+        legacyBehavior
       >
-        <Image
-          alt=""
-          height="25"
-          src={ArrowIcon}
-          width="25"
-        />
-        {wording.DECOUVRIR_NOS_CRITERES}
-      </a>
+        <a
+          className={styles.criteres}
+          href={paths.NOS_CRITERES_D_ACCESSIBILITE}
+        >
+          <Image
+            alt=""
+            height="25"
+            src={ArrowIcon}
+            width="25"
+          />
+          {wording.DECOUVRIR_NOS_CRITERES}
+        </a>
+      </Link>
     </>
   )
 }
