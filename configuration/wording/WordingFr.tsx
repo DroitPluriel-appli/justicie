@@ -16,6 +16,11 @@ export class WordingFr implements Wording {
   readonly TITLE_A_PROPOS_DE_DROIT_PLURIEL: string = 'À propos de Droit Pluriel'
   readonly DROIT_PLURIEL_EST_UNE_ASSOCIATION: string = 'Droit Pluriel est une association qui défend une justice accessible à tous et toutes, et notamment aux personnes en situation de handicap.'
   readonly RETROUVEZ_PLUS_D_INFOS: string = 'Retrouvez plus d’information sur notre site internet : '
+  readonly TITLE_NOUS_CONTACTER: string = 'Nous contacter'
+  readonly ADRESSE_DROIT_PLURIEL: string = 'Association Droit Pluriel 47 Av. Pasteur, 93100 Montreuil'
+  readonly PAR_MAIL: string = 'Par mail : '
+  readonly EMAIL_DROIT_PLURIEL: string = 'contact@droitpluriel.fr'
+  readonly TELEPHONE_DROIT_PLURIEL: string = '01 80 89 93 74'
 
   // Rechercher un lieu de droit
   readonly TITLE_PAGE_RECHERCHER_UNE_CONSULTATION_JURIDIQUE: string = 'Rechercher une consultation juridique'

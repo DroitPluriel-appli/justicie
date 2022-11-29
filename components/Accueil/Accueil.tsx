@@ -96,6 +96,19 @@ export default function Accueil(): ReactElement {
           </a>
         </p>
       </div>
+      <h2 className={styles.title}>
+        {wording.TITLE_NOUS_CONTACTER}
+      </h2>
+      <address>
+        {wording.ADRESSE_DROIT_PLURIEL}
+        <br />
+        {wording.PAR_MAIL}
+        <a href={'mailto:' + wording.EMAIL_DROIT_PLURIEL}>
+          {wording.EMAIL_DROIT_PLURIEL}
+        </a>
+        <br />
+        {wording.TELEPHONE_DROIT_PLURIEL}
+      </address>
     </>
   )
 }

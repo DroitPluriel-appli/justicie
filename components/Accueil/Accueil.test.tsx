@@ -38,5 +38,15 @@ describe('page d’accueil', () => {
     const droitPlurielEstUneAssociation = within(main).getByText(textMatch(wording.DROIT_PLURIEL_EST_UNE_ASSOCIATION + wording.RETROUVEZ_PLUS_D_INFOS + paths.SITE_DROIT_PLURIEL), { selector: 'p' })
     const lienSiteDroitPluriel = within(droitPlurielEstUneAssociation).getByRole('link', { name: paths.SITE_DROIT_PLURIEL })
     expect(lienSiteDroitPluriel).toHaveAttribute('href', paths.SITE_DROIT_PLURIEL)
+
+    const titleNousContacter = within(main).getByRole('heading', { level: 2, name: wording.TITLE_NOUS_CONTACTER })
+    expect(titleNousContacter).toBeInTheDocument()
+
+    const coordonneesDroitPluriel = within(main).getByText(textMatch(
+      wording.ADRESSE_DROIT_PLURIEL + wording.PAR_MAIL + wording.EMAIL_DROIT_PLURIEL + wording.TELEPHONE_DROIT_PLURIEL
+    ))
+
+    const lienMail = within(coordonneesDroitPluriel).getByRole('link', { name: wording.EMAIL_DROIT_PLURIEL })
+    expect(lienMail).toHaveAttribute('href', 'mailto:' + wording.EMAIL_DROIT_PLURIEL)
   })
 })
