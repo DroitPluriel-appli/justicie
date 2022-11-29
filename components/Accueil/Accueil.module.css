@@ -18,7 +18,7 @@
   padding: 1.5rem;
 }
 
-.recherche img {
+.recherche svg {
   padding-bottom: 1.5rem;
 }
 
@@ -30,7 +30,7 @@
   text-decoration: underline;
 }
 
-.criteres img {
+.criteres svg {
   margin-right: 0.5rem;
 }
 
