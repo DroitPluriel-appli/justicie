@@ -34,6 +34,11 @@
   margin-right: 0.5rem;
 }
 
+.apropos {
+  background: var(--secondary-color);
+  padding: var(--base-margin);
+}
+
 @media (min-width: 36em) {
   .title {
     font-size: 1.125rem;

@@ -80,6 +80,22 @@ export default function Accueil(): ReactElement {
           {wording.DECOUVRIR_NOS_CRITERES}
         </a>
       </Link>
+      <div className={styles.apropos}>
+        <h2 className={styles.title}>
+          {wording.TITLE_A_PROPOS_DE_DROIT_PLURIEL}
+        </h2>
+        <p>
+          {wording.DROIT_PLURIEL_EST_UNE_ASSOCIATION}
+          <br />
+          <br />
+          <strong>
+            {wording.RETROUVEZ_PLUS_D_INFOS}
+          </strong>
+          <a href={paths.SITE_DROIT_PLURIEL}>
+            {paths.SITE_DROIT_PLURIEL}
+          </a>
+        </p>
+      </div>
     </>
   )
 }

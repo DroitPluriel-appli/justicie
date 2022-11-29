@@ -10,6 +10,9 @@ export interface Wording {
   readonly JUSTICE_PLURIELLE_VOUS_PERMET: string
   readonly RECHERCHER_UNE_CONSULTATION_JURIDIQUE_GRATUITE_ET_ACCESSIBLE: string
   readonly DECOUVRIR_NOS_CRITERES: string
+  readonly TITLE_A_PROPOS_DE_DROIT_PLURIEL: string
+  readonly DROIT_PLURIEL_EST_UNE_ASSOCIATION: string
+  readonly RETROUVEZ_PLUS_D_INFOS: string
 
   // Rechercher un lieu de droit
   readonly TITLE_PAGE_RECHERCHER_UNE_CONSULTATION_JURIDIQUE: string

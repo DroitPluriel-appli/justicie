@@ -13,6 +13,9 @@ export class WordingFr implements Wording {
   readonly JUSTICE_PLURIELLE_VOUS_PERMET: string = 'Justice Plurielle vous permet de trouver une réponse.'
   readonly RECHERCHER_UNE_CONSULTATION_JURIDIQUE_GRATUITE_ET_ACCESSIBLE: string = 'Rechercher une consultation juridique gratuite et accessible'
   readonly DECOUVRIR_NOS_CRITERES: string = 'Découvrir nos critères d’accessiblité'
+  readonly TITLE_A_PROPOS_DE_DROIT_PLURIEL: string = 'À propos de Droit Pluriel'
+  readonly DROIT_PLURIEL_EST_UNE_ASSOCIATION: string = 'Droit Pluriel est une association qui défend une justice accessible à tous et toutes, et notamment aux personnes en situation de handicap.'
+  readonly RETROUVEZ_PLUS_D_INFOS: string = 'Retrouvez plus d’information sur notre site internet : '
 
   // Rechercher un lieu de droit
   readonly TITLE_PAGE_RECHERCHER_UNE_CONSULTATION_JURIDIQUE: string = 'Rechercher une consultation juridique'
