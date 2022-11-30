@@ -38,7 +38,7 @@ describe('page d’accueil', () => {
     expect(droitPlurielEstUneAssociation).toBeInTheDocument()
 
     const retrouvezSurNotreSite = within(main).getByText(textMatch(wording.RETROUVEZ_PLUS_D_INFOS + wording.SITE_DROIT_PLURIEL), { selector: 'p' })
-    const lienSiteDroitPluriel = within(retrouvezSurNotreSite).getByRole('link', { name: wording.SITE_DROIT_PLURIEL })
+    const lienSiteDroitPluriel = within(retrouvezSurNotreSite).getByRole('link', { name: wording.SITE_DROIT_PLURIEL.replace('https://', '').replace('/', '') + ' - Nouvelle fenêtre' })
     expect(lienSiteDroitPluriel).toHaveAttribute('href', wording.SITE_DROIT_PLURIEL)
 
     const titleNousContacter = within(main).getByRole('heading', { level: 2, name: wording.TITLE_NOUS_CONTACTER })
