@@ -42,9 +42,10 @@ describe('page d’accueil', () => {
     const titleNousContacter = within(main).getByRole('heading', { level: 2, name: wording.TITLE_NOUS_CONTACTER })
     expect(titleNousContacter).toBeInTheDocument()
 
-    const coordonneesDroitPluriel = within(main).getByText(textMatch(
-      wording.ADRESSE_NOM_DROIT_PLURIEL + wording.ADRESSE_LIEU_DROIT_PLURIEL + wording.PAR_EMAIL + wording.EMAIL_DROIT_PLURIEL + wording.TELEPHONE_DROIT_PLURIEL
-    ), { selector: 'address' })
+    // eslint-disable-next-line
+    const coordonneesDroitPluriel = within(main).getByText(
+      textMatch(`${wording.ADRESSE_NOM_DROIT_PLURIEL}${wording.ADRESSE_LIEU_DROIT_PLURIEL}${wording.PAR_EMAIL}${wording.EMAIL_DROIT_PLURIEL}${wording.TELEPHONE_DROIT_PLURIEL}`), { selector: 'address' }
+    )
 
     const lienMail = within(coordonneesDroitPluriel).getByRole('link', { name: wording.EMAIL_DROIT_PLURIEL })
     expect(lienMail).toHaveAttribute('href', 'mailto:' + wording.EMAIL_DROIT_PLURIEL)
