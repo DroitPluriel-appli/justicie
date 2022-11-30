@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { ReactElement } from 'react'
-import ExternalLink from '../ExternalLink/ExternalLink'
 
 import { useDependencies } from '../../configuration/useDependencies'
+import ExternalLink from '../ExternalLink/ExternalLink'
 import styles from './Accueil.module.css'
 
 export default function Accueil(): ReactElement {

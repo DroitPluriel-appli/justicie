@@ -4,8 +4,7 @@ import { renderFakeComponent } from '../../configuration/testHelper'
 import ExternalLink from './ExternalLink'
 
 describe('lien externe', () => {
-  it('cree un lien qui s ouvre dans un nouvel onglet/fenêtre', () => {
-    // GIVEN
+  it('cree un lien qui s ouvre dans un nouvel onglet/fenêtre', () => { // GIVEN
     const href = 'htts://fakehref.fr'
     const title = 'Title fake href'
     const rel = 'external noopener noreferrer'
@@ -16,7 +15,9 @@ describe('lien externe', () => {
       <ExternalLink
         href={href}
         title={title}
-      />
+      >
+        {'Contenu du lien'}
+      </ExternalLink>
     )
 
     // THEN
@@ -32,7 +33,11 @@ describe('lien externe', () => {
     const href = 'htts://fakehref.fr'
     const title = 'Title fake href'
     const idTest = 'div-contenu'
-    const contenu = (<div data-testid={idTest}>Contenu du lien</div>)
+    const contenu = (
+      <div data-testid={idTest}>
+        {'Contenu du lien'}
+      </div>
+    )
 
     // WHEN
     renderFakeComponent(
