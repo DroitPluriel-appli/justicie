@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { ReactElement } from 'react'
+import ExternalLink from '../ExternalLink/ExternalLink'
 
 import { useDependencies } from '../../configuration/useDependencies'
 import styles from './Accueil.module.css'
@@ -87,14 +88,12 @@ export default function Accueil(): ReactElement {
         </p>
         <p className={styles.retrouvezinfos}>
           {wording.RETROUVEZ_PLUS_D_INFOS}
-          <a
+          <ExternalLink
             href={wording.SITE_DROIT_PLURIEL}
-            rel="external noopener noreferrer"
-            target="_blank"
             title={wording.TITRE_LIEN_SITE_DROIT_PLURIEL}
           >
             {wording.SITE_DROIT_PLURIEL}
-          </a>
+          </ExternalLink>
         </p>
       </div>
       <h2 className={styles.title}>
