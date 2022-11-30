@@ -18,6 +18,7 @@ export class WordingFr implements Wording {
   readonly RETROUVEZ_PLUS_D_INFOS: string = 'Retrouvez plus d’information sur notre site internet : '
   readonly TITLE_NOUS_CONTACTER: string = 'Nous contacter'
   readonly SITE_DROIT_PLURIEL: string = 'https://droitpluriel.fr/'
+  readonly TITRE_LIEN_SITE_DROIT_PLURIEL: string = 'droitpluriel.fr - Nouvelle fenêtre'
   readonly ADRESSE_NOM_DROIT_PLURIEL: string = 'Association Droit Pluriel'
   readonly ADRESSE_LIEU_DROIT_PLURIEL: string = '47 Avenue Pasteur, 93100 Montreuil'
   readonly PAR_EMAIL: string = 'Par e-mail : '

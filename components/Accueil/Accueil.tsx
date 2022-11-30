@@ -93,7 +93,7 @@ export default function Accueil(): ReactElement {
             href={wording.SITE_DROIT_PLURIEL}
             rel="external noopener noreferrer"
             target="_blank"
-            title={wording.SITE_DROIT_PLURIEL.replace('https://', '').replace('/', '') + ' - Nouvelle fenêtre'}
+            title={wording.TITRE_LIEN_SITE_DROIT_PLURIEL}
           >
             {wording.SITE_DROIT_PLURIEL}
           </a>

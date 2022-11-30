@@ -15,6 +15,7 @@ export interface Wording {
   readonly RETROUVEZ_PLUS_D_INFOS: string
   readonly TITLE_NOUS_CONTACTER: string
   readonly SITE_DROIT_PLURIEL: string
+  readonly TITRE_LIEN_SITE_DROIT_PLURIEL: string
   readonly ADRESSE_NOM_DROIT_PLURIEL: string
   readonly ADRESSE_LIEU_DROIT_PLURIEL: string
   readonly PAR_EMAIL: string
