@@ -86,13 +86,11 @@ export default function Accueil(): ReactElement {
         </h2>
         <p>
           {wording.DROIT_PLURIEL_EST_UNE_ASSOCIATION}
-          <br />
-          <br />
-          <strong>
-            {wording.RETROUVEZ_PLUS_D_INFOS}
-          </strong>
-          <a href={paths.SITE_DROIT_PLURIEL}>
-            {paths.SITE_DROIT_PLURIEL}
+        </p>
+        <p className={styles.retrouvezinfos}>
+          {wording.RETROUVEZ_PLUS_D_INFOS}
+          <a href={wording.SITE_DROIT_PLURIEL}>
+            {wording.SITE_DROIT_PLURIEL}
           </a>
         </p>
       </div>

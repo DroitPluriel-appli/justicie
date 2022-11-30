@@ -43,6 +43,10 @@
   padding: var(--base-margin);
 }
 
+.retrouvezinfos {
+  font-weight: bold;
+}
+
 .addresse {
   font-size: 0.875rem;
   font-style: normal;

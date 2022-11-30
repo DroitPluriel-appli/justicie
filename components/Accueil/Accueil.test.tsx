@@ -34,10 +34,12 @@ describe('page d’accueil', () => {
 
     const aProposTitle = within(main).getByRole('heading', { level: 2, name: wording.TITLE_A_PROPOS_DE_DROIT_PLURIEL })
     expect(aProposTitle).toBeInTheDocument()
+    const droitPlurielEstUneAssociation = within(main).getByText(wording.DROIT_PLURIEL_EST_UNE_ASSOCIATION, { selector: 'p' })
+    expect(droitPlurielEstUneAssociation).toBeInTheDocument()
 
-    const droitPlurielEstUneAssociation = within(main).getByText(textMatch(wording.DROIT_PLURIEL_EST_UNE_ASSOCIATION + wording.RETROUVEZ_PLUS_D_INFOS + paths.SITE_DROIT_PLURIEL), { selector: 'p' })
-    const lienSiteDroitPluriel = within(droitPlurielEstUneAssociation).getByRole('link', { name: paths.SITE_DROIT_PLURIEL })
-    expect(lienSiteDroitPluriel).toHaveAttribute('href', paths.SITE_DROIT_PLURIEL)
+    const retrouvezSurNotreSite = within(main).getByText(textMatch(wording.RETROUVEZ_PLUS_D_INFOS + wording.SITE_DROIT_PLURIEL), { selector: 'p' })
+    const lienSiteDroitPluriel = within(retrouvezSurNotreSite).getByRole('link', { name: wording.SITE_DROIT_PLURIEL })
+    expect(lienSiteDroitPluriel).toHaveAttribute('href', wording.SITE_DROIT_PLURIEL)
 
     const titleNousContacter = within(main).getByRole('heading', { level: 2, name: wording.TITLE_NOUS_CONTACTER })
     expect(titleNousContacter).toBeInTheDocument()
