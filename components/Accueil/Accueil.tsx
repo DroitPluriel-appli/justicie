@@ -80,6 +80,35 @@ export default function Accueil(): ReactElement {
           {wording.DECOUVRIR_NOS_CRITERES}
         </a>
       </Link>
+      <div className={styles.apropos}>
+        <h2 className={styles.title}>
+          {wording.TITLE_A_PROPOS_DE_DROIT_PLURIEL}
+        </h2>
+        <p>
+          {wording.DROIT_PLURIEL_EST_UNE_ASSOCIATION}
+        </p>
+        <p className={styles.retrouvezinfos}>
+          {wording.RETROUVEZ_PLUS_D_INFOS}
+          <a href={wording.SITE_DROIT_PLURIEL}>
+            {wording.SITE_DROIT_PLURIEL}
+          </a>
+        </p>
+      </div>
+      <h2 className={styles.title}>
+        {wording.TITLE_NOUS_CONTACTER}
+      </h2>
+      <address className={styles.addresse}>
+        {wording.ADRESSE_NOM_DROIT_PLURIEL}
+        <br />
+        {wording.ADRESSE_LIEU_DROIT_PLURIEL}
+        <br />
+        {wording.PAR_EMAIL}
+        <a href={'mailto:' + wording.EMAIL_DROIT_PLURIEL}>
+          {wording.EMAIL_DROIT_PLURIEL}
+        </a>
+        <br />
+        {wording.TELEPHONE_DROIT_PLURIEL}
+      </address>
     </>
   )
 }

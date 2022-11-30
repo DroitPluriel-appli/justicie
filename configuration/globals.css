@@ -1,10 +1,10 @@
 :root {
-  --primary-background-color: linear-gradient(0deg, rgba(10, 20, 106, .2), rgba(10, 20, 106, .2)), linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), #343D83;
-  --primary-color: #343D83;
+  --primary-background-color: linear-gradient(0deg, rgb(10 20 106 / 20%), rgb(10 20 106 / 20%)), linear-gradient(0deg, rgb(0 0 0 / 20%), rgb(0 0 0 / 20%)), #343d83;
+  --primary-color: #343d83;
   --secondary-color: #cedcff;
-  --button-color: linear-gradient(0deg, #F55454, #F55454), linear-gradient(0deg, #D0054A, #D0054A), linear-gradient(0deg, #FF5F00, #FF5F00), #FFE4D0;
+  --button-color: linear-gradient(0deg, #f55454, #f55454), linear-gradient(0deg, #d0054a, #d0054a), linear-gradient(0deg, #ff5f00, #ff5f00), #ffe4d0;
   --white: #fff;
-  --shadow: rgba(189, 189, 189, .25);
+  --shadow: rgb(189 189 189 / 25%);
   --base-font: 1rem;
   --base-margin: 1rem;
 }
@@ -43,7 +43,7 @@ a:hover {
 }
 
 p {
-  font-size: .875rem;
+  font-size: 0.875rem;
 }
 
 @media (min-width: 36em) {

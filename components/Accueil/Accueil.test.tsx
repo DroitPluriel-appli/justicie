@@ -31,5 +31,25 @@ describe('page d’accueil', () => {
 
     const decouvrirNosCriteres = within(main).getByRole('link', { name: wording.DECOUVRIR_NOS_CRITERES })
     expect(decouvrirNosCriteres).toHaveAttribute('href', paths.NOS_CRITERES_D_ACCESSIBILITE)
+
+    const aProposTitle = within(main).getByRole('heading', { level: 2, name: wording.TITLE_A_PROPOS_DE_DROIT_PLURIEL })
+    expect(aProposTitle).toBeInTheDocument()
+    const droitPlurielEstUneAssociation = within(main).getByText(wording.DROIT_PLURIEL_EST_UNE_ASSOCIATION, { selector: 'p' })
+    expect(droitPlurielEstUneAssociation).toBeInTheDocument()
+
+    const retrouvezSurNotreSite = within(main).getByText(textMatch(wording.RETROUVEZ_PLUS_D_INFOS + wording.SITE_DROIT_PLURIEL), { selector: 'p' })
+    const lienSiteDroitPluriel = within(retrouvezSurNotreSite).getByRole('link', { name: wording.SITE_DROIT_PLURIEL })
+    expect(lienSiteDroitPluriel).toHaveAttribute('href', wording.SITE_DROIT_PLURIEL)
+
+    const titleNousContacter = within(main).getByRole('heading', { level: 2, name: wording.TITLE_NOUS_CONTACTER })
+    expect(titleNousContacter).toBeInTheDocument()
+
+    // eslint-disable-next-line
+    const coordonneesDroitPluriel = within(main).getByText(
+      textMatch(`${wording.ADRESSE_NOM_DROIT_PLURIEL}${wording.ADRESSE_LIEU_DROIT_PLURIEL}${wording.PAR_EMAIL}${wording.EMAIL_DROIT_PLURIEL}${wording.TELEPHONE_DROIT_PLURIEL}`), { selector: 'address' }
+    )
+
+    const lienMail = within(coordonneesDroitPluriel).getByRole('link', { name: wording.EMAIL_DROIT_PLURIEL })
+    expect(lienMail).toHaveAttribute('href', 'mailto:' + wording.EMAIL_DROIT_PLURIEL)
   })
 })
