@@ -37,10 +37,16 @@
 
 .apropos {
   background: var(--secondary-color);
+  margin-bottom: 1.5rem;
   margin-left: calc(-1 * var(--base-margin));
   margin-right: calc(-1 * var(--base-margin));
-  margin-bottom: 1.5rem;
   padding: var(--base-margin);
+}
+
+.addresse {
+  font-size: 0.875rem;
+  font-style: normal;
+  margin-bottom: 1.5rem;
 }
 
 @media (min-width: 36em) {
@@ -53,7 +59,8 @@
     margin-bottom: 2.5rem;
   }
 
-  .recherche {
+  .recherche,
+  .adresse {
     font-size: 1.125rem;
     margin-bottom: 2rem;
   }
@@ -63,6 +70,7 @@
     margin-bottom: 2.5rem;
     margin-left: 1rem;
   }
+
   .apropos {
     margin-bottom: 2.5rem;
   }

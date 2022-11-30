@@ -14,7 +14,8 @@ export interface Wording {
   readonly DROIT_PLURIEL_EST_UNE_ASSOCIATION: string
   readonly RETROUVEZ_PLUS_D_INFOS: string
   readonly TITLE_NOUS_CONTACTER: string
-  readonly ADRESSE_DROIT_PLURIEL: string
+  readonly ADRESSE_NOM_DROIT_PLURIEL: string
+  readonly ADRESSE_LIEU_DROIT_PLURIEL: string
   readonly PAR_MAIL: string
   readonly EMAIL_DROIT_PLURIEL: string
   readonly TELEPHONE_DROIT_PLURIEL: string

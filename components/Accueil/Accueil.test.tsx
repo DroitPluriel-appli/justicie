@@ -43,7 +43,7 @@ describe('page d’accueil', () => {
     expect(titleNousContacter).toBeInTheDocument()
 
     const coordonneesDroitPluriel = within(main).getByText(textMatch(
-      wording.ADRESSE_DROIT_PLURIEL + wording.PAR_MAIL + wording.EMAIL_DROIT_PLURIEL + wording.TELEPHONE_DROIT_PLURIEL
+      wording.ADRESSE_NOM_DROIT_PLURIEL + wording.ADRESSE_LIEU_DROIT_PLURIEL + wording.PAR_MAIL + wording.EMAIL_DROIT_PLURIEL + wording.TELEPHONE_DROIT_PLURIEL
     ))
 
     const lienMail = within(coordonneesDroitPluriel).getByRole('link', { name: wording.EMAIL_DROIT_PLURIEL })

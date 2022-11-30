@@ -99,10 +99,12 @@ export default function Accueil(): ReactElement {
       <h2 className={styles.title}>
         {wording.TITLE_NOUS_CONTACTER}
       </h2>
-      <address>
-        {wording.ADRESSE_DROIT_PLURIEL}
+      <address className={styles.addresse}>
+        {wording.ADRESSE_NOM_DROIT_PLURIEL}
         <br />
-        {wording.PAR_MAIL}
+        {wording.ADRESSE_LIEU_DROIT_PLURIEL}
+        <br />
+        {wording.PAR_EMAIL}
         <a href={'mailto:' + wording.EMAIL_DROIT_PLURIEL}>
           {wording.EMAIL_DROIT_PLURIEL}
         </a>
