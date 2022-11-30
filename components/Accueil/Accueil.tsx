@@ -89,7 +89,12 @@ export default function Accueil(): ReactElement {
         </p>
         <p className={styles.retrouvezinfos}>
           {wording.RETROUVEZ_PLUS_D_INFOS}
-          <a href={wording.SITE_DROIT_PLURIEL}>
+          <a
+            href={wording.SITE_DROIT_PLURIEL}
+            rel="external noopener noreferrer"
+            target="_blank"
+            title={wording.SITE_DROIT_PLURIEL.replace('https://', '').replace('/', '') + ' - Nouvelle fenêtre'}
+          >
             {wording.SITE_DROIT_PLURIEL}
           </a>
         </p>
