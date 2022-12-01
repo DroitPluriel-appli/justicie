@@ -1,8 +1,15 @@
 :root {
-  --primary-background-color: linear-gradient(0deg, rgb(10 20 106 / 20%), rgb(10 20 106 / 20%)), linear-gradient(0deg, rgb(0 0 0 / 20%), rgb(0 0 0 / 20%)), #343d83;
+  --primary-background-color:
+    linear-gradient(0deg, rgb(10 20 106 / 20%), rgb(10 20 106 / 20%)),
+    linear-gradient(0deg, rgb(0 0 0 / 20%), rgb(0 0 0 / 20%)),
+    #343d83;
   --primary-color: #343d83;
   --secondary-color: #cedcff;
-  --button-color: linear-gradient(0deg, #f55454, #f55454), linear-gradient(0deg, #d0054a, #d0054a), linear-gradient(0deg, #ff5f00, #ff5f00), #ffe4d0;
+  --button-color:
+    linear-gradient(0deg, #f55454, #f55454),
+    linear-gradient(0deg, #d0054a, #d0054a),
+    linear-gradient(0deg, #ff5f00, #ff5f00),
+    #ffe4d0;
   --white: #fff;
   --shadow: rgb(189 189 189 / 25%);
   --base-font: 1rem;
@@ -56,4 +63,13 @@ p {
   p {
     font-size: initial;
   }
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: auto;
 }

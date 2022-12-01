@@ -18,7 +18,7 @@ describe('pied de page', () => {
     expect(justicePlurielle.textContent).toBe(wording.JUSTICE_PLURIELLE)
     const liensJusticePlurielle = within(sections[0]).getAllByRole('listitem')
     const rechercheLieuDeDroit = within(liensJusticePlurielle[0]).getByRole('link', { name: wording.RECHERCHER_UNE_CONSULTATION_JURIDIQUE })
-    expect(rechercheLieuDeDroit).toHaveAttribute('href', paths.RECHERCHER_UN_LIEU_DE_DROIT)
+    expect(rechercheLieuDeDroit).toHaveAttribute('href', paths.RECHERCHER_UNE_CONSULTATION_JURIDIQUE)
     const criteresDAccessibilite = within(liensJusticePlurielle[1]).getByRole('link', { name: wording.NOS_CRITERES_D_ACCESSIBILITE })
     expect(criteresDAccessibilite).toHaveAttribute('href', paths.NOS_CRITERES_D_ACCESSIBILITE)
     const politiqueGestionDesDonnees = within(liensJusticePlurielle[2]).getByRole('link', { name: wording.POLITIQUE_DE_GESTION_DES_DONNEES })

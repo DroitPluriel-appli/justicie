@@ -27,7 +27,7 @@ describe('page d’accueil', () => {
     expect(description).toBeInTheDocument()
 
     const rechercherUneConsultation = within(main).getByRole('link', { name: wording.RECHERCHER_UNE_CONSULTATION_JURIDIQUE_GRATUITE_ET_ACCESSIBLE })
-    expect(rechercherUneConsultation).toHaveAttribute('href', paths.RECHERCHER_UN_LIEU_DE_DROIT)
+    expect(rechercherUneConsultation).toHaveAttribute('href', paths.RECHERCHER_UNE_CONSULTATION_JURIDIQUE)
 
     const decouvrirNosCriteres = within(main).getByRole('link', { name: wording.DECOUVRIR_NOS_CRITERES })
     expect(decouvrirNosCriteres).toHaveAttribute('href', paths.NOS_CRITERES_D_ACCESSIBILITE)

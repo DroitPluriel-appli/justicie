@@ -47,6 +47,9 @@ export interface Wording {
   readonly JUSTICE_PLURIELLE: string
   readonly ACCUEIL: string
   readonly MENU: string
+  readonly NAVIGATION_DESKTOP: string
+  readonly NAVIGATION_MOBILE: string
+  readonly FERMER: string
 
   // Footer
   readonly RECHERCHER_UNE_CONSULTATION_JURIDIQUE: string
