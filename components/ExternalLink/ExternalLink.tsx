@@ -1,9 +1,9 @@
-import { ReactElement } from 'react'
+import { ReactElement, ReactNode } from 'react'
 
 type ExternalLinkProps = Readonly<{
   href: string,
   title: string,
-  children: ReactElement
+  children: ReactNode
 }>
 
 export default function ExternalLink({ children, href, title }: ExternalLinkProps): ReactElement {

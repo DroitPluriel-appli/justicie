@@ -17,6 +17,10 @@
   padding: var(--base-margin);
 }
 
+.burger-menu-open a > svg {
+  margin-right: 1rem;
+}
+
 .mobile li:first-child svg {
   max-width: 4rem;
   width: 100%;
@@ -55,10 +59,6 @@
 .burger-menu-open a {
   align-items: center;
   display: flex;
-}
-
-.burger-menu-open a > svg {
-  margin-right: 1rem;
 }
 
 .burger-menu-title {
