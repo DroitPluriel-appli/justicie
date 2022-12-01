@@ -9,7 +9,7 @@
     "depcheck": "depcheck",
     "dev": "next dev",
     "lighthouse": "lhci autorun",
-    "lint:css": "stylelint 'components/**/*.css'",
+    "lint:css": "stylelint '(components|configuration)/**/*.css'",
     "lint:typescript": "next lint",
     "start": "next start",
     "test": "jest --colors",

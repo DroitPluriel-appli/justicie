@@ -17,7 +17,7 @@ export class WordingFr implements Wording {
   readonly DROIT_PLURIEL_EST_UNE_ASSOCIATION: string = 'Droit Pluriel est une association qui défend une justice accessible à tous et toutes, et notamment aux personnes en situation de handicap.'
   readonly RETROUVEZ_PLUS_D_INFOS: string = 'Retrouvez plus d’information sur notre site internet : '
   readonly TITLE_NOUS_CONTACTER: string = 'Nous contacter'
-  readonly SITE_DROIT_PLURIEL: string = 'https://droitpluriel.fr/'
+  readonly SITE_DROIT_PLURIEL: string = 'https://droitpluriel.fr'
   readonly TITRE_LIEN_SITE_DROIT_PLURIEL: string = 'droitpluriel.fr - Nouvelle fenêtre'
   readonly ADRESSE_NOM_DROIT_PLURIEL: string = 'Association Droit Pluriel'
   readonly ADRESSE_LIEU_DROIT_PLURIEL: string = '47 Avenue Pasteur, 93100 Montreuil'
@@ -50,6 +50,9 @@ export class WordingFr implements Wording {
   readonly JUSTICE_PLURIELLE: string = this.TITLE_PAGE_ACCUEIL
   readonly ACCUEIL: string = 'Accueil'
   readonly MENU: string = 'Menu'
+  readonly NAVIGATION_DESKTOP: string = 'Navigation desktop'
+  readonly NAVIGATION_MOBILE: string = 'Navigation mobile'
+  readonly FERMER: string = 'Fermer'
 
   // Footer
   readonly RECHERCHER_UNE_CONSULTATION_JURIDIQUE: string = this.TITLE_PAGE_RECHERCHER_UNE_CONSULTATION_JURIDIQUE

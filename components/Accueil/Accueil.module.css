@@ -16,7 +16,8 @@
   flex-direction: column;
   font-weight: bold;
   margin-bottom: 1rem;
-  padding: 1.5rem;
+  padding: 1.5rem 5.5rem;
+  text-align: center;
 }
 
 .recherche svg {
@@ -28,7 +29,6 @@
   display: flex;
   font-size: 0.875rem;
   margin-bottom: 1.5rem;
-  text-decoration: underline;
 }
 
 .criteres svg {

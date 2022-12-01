@@ -7,7 +7,7 @@ const createJestConfig = nextJest({ dir: './' })
 const customJestConfig: Config.InitialOptions = {
   clearMocks: true,
   collectCoverageFrom: [
-    'components/**/*.tsx',
+    'components/**/*.ts?(x)',
   ],
   fakeTimers: { now: 1664703388050 }, // 2022-01-01T23:00:00.135Z
   maxWorkers: 4,

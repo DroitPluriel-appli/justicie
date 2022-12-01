@@ -8,7 +8,7 @@
     "configFile": "jest-for-mutation-testing.json"
   },
   "mutate": [
-    "components/**/*.tsx",
+    "components/**/*.ts?(x)",
     "!components/**/*.test.tsx"
   ],
   "packageManager": "yarn",
