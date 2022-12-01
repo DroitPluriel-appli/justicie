@@ -14,9 +14,9 @@
       "type": "image/png"
     },
     {
-      "sizes": "144x144",
-      "src": "logo-pwa.png",
-      "type": "image/png"
+      "sizes": "any",
+      "src": "logo-droit-pluriel.svg",
+      "type": "image/svg+xml"
     }
   ]
 }

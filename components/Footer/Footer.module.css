@@ -6,8 +6,14 @@
   justify-content: center;
 }
 
+.footer svg {
+  max-width: 6rem;
+  min-width: 4rem;
+  width: 100%;
+}
+
 @media (max-width: 36em) {
-  .footer img,
+  .footer svg,
   .footer section:nth-child(1) {
     display: none;
   }
