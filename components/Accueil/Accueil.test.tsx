@@ -58,27 +58,27 @@ describe('page d’accueil', () => {
     expect(titleNosActualites).toBeInTheDocument()
 
     const lienFacebook = within(main).getByRole('link', { name: wording.TITRE_LIEN_FACEBOOK })
-    expect(lienFacebook).toHaveAttribute('href', paths.FACEBOOK_DROIT_PLURIEL)
+    expect(lienFacebook).toHaveAttribute('href', wording.LIEN_FACEBOOK)
     expect(lienFacebook).toHaveAttribute('target', '_blank')
     expect(lienFacebook).toHaveAttribute('rel', 'external noopener noreferrer')
 
     const lienTwitter = within(main).getByRole('link', { name: wording.TITRE_LIEN_TWITTER })
-    expect(lienTwitter).toHaveAttribute('href', paths.TWITTER_DROIT_PLURIEL)
+    expect(lienTwitter).toHaveAttribute('href', wording.LIEN_TWITTER)
     expect(lienTwitter).toHaveAttribute('target', '_blank')
     expect(lienTwitter).toHaveAttribute('rel', 'external noopener noreferrer')
 
     const lienYoutube = within(main).getByRole('link', { name: wording.TITRE_LIEN_YOUTUBE })
-    expect(lienYoutube).toHaveAttribute('href', paths.YOUTUBE_DROIT_PLURIEL)
+    expect(lienYoutube).toHaveAttribute('href', wording.LIEN_YOUTUBE)
     expect(lienYoutube).toHaveAttribute('target', '_blank')
     expect(lienYoutube).toHaveAttribute('rel', 'external noopener noreferrer')
 
     const lienLinkedIn = within(main).getByRole('link', { name: wording.TITRE_LIEN_LINKEDIN })
-    expect(lienLinkedIn).toHaveAttribute('href', paths.LINKEDIN_DROIT_PLURIEL)
+    expect(lienLinkedIn).toHaveAttribute('href', wording.LIEN_LINKEDIN)
     expect(lienLinkedIn).toHaveAttribute('target', '_blank')
     expect(lienLinkedIn).toHaveAttribute('rel', 'external noopener noreferrer')
 
     const lienInstagram = within(main).getByRole('link', { name: wording.TITRE_LIEN_INSTAGRAM })
-    expect(lienInstagram).toHaveAttribute('href', paths.INSTAGRAM_DROIT_PLURIEL)
+    expect(lienInstagram).toHaveAttribute('href', wording.LIEN_INSTAGRAM)
     expect(lienInstagram).toHaveAttribute('target', '_blank')
     expect(lienInstagram).toHaveAttribute('rel', 'external noopener noreferrer')
   })

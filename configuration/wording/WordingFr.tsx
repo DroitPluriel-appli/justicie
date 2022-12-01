@@ -24,11 +24,17 @@ export class WordingFr implements Wording {
   readonly PAR_EMAIL: string = 'Par e-mail : '
   readonly EMAIL_DROIT_PLURIEL: string = 'contact@droitpluriel.fr'
   readonly TELEPHONE_DROIT_PLURIEL: string = 'Par téléphone : 01 84 80 46 14'
+
   readonly TITLE_SUIVEZ_NOS_ACTUALITES: string = 'Suivez nos actualités'
+  readonly LIEN_FACEBOOK: string = 'https://www.facebook.com/droitpluriel/'
   readonly TITRE_LIEN_FACEBOOK: string = 'Page Facebook Droit Pluriel - Nouvelle fenêtre'
+  readonly LIEN_TWITTER: string = 'https://twitter.com/droit_pluriel'
   readonly TITRE_LIEN_TWITTER: string = 'Compte Twitter Droit Pluriel - Nouvelle fenêtre'
+  readonly LIEN_YOUTUBE: string = 'https://www.youtube.com/channel/UC_S7-zSxU7WGXwHq2g-542A'
   readonly TITRE_LIEN_YOUTUBE: string = 'Chaîne Youtube de Droit Pluriel - Nouvelle fenêtre'
+  readonly LIEN_LINKEDIN: string = 'https://www.linkedin.com/company/droit-pluriel/'
   readonly TITRE_LIEN_LINKEDIN: string = 'Page Linkedin de Droit Pluriel - Nouvelle fenêtre'
+  readonly LIEN_INSTAGRAM: string = 'https://www.instagram.com/droitpluriel/'
   readonly TITRE_LIEN_INSTAGRAM: string = 'Page Instagram de Droit Pluriel - Nouvelle fenêtre'
 
   // Rechercher un lieu de droit

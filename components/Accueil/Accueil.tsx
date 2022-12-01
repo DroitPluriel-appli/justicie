@@ -116,7 +116,7 @@ export default function Accueil(): ReactElement {
       </h2>
       <div className={styles.reseauxsociaux}>
         <ExternalLink
-          href={paths.FACEBOOK_DROIT_PLURIEL}
+          href={wording.LIEN_FACEBOOK}
           title={wording.TITRE_LIEN_FACEBOOK}
         >
           <svg
@@ -130,7 +130,7 @@ export default function Accueil(): ReactElement {
           </svg>
         </ExternalLink>
         <ExternalLink
-          href={paths.TWITTER_DROIT_PLURIEL}
+          href={wording.LIEN_TWITTER}
           title={wording.TITRE_LIEN_TWITTER}
         >
           <svg
@@ -144,7 +144,7 @@ export default function Accueil(): ReactElement {
           </svg>
         </ExternalLink>
         <ExternalLink
-          href={paths.YOUTUBE_DROIT_PLURIEL}
+          href={wording.LIEN_YOUTUBE}
           title={wording.TITRE_LIEN_YOUTUBE}
         >
           <svg
@@ -158,7 +158,7 @@ export default function Accueil(): ReactElement {
           </svg>
         </ExternalLink>
         <ExternalLink
-          href={paths.LINKEDIN_DROIT_PLURIEL}
+          href={wording.LIEN_LINKEDIN}
           title={wording.TITRE_LIEN_LINKEDIN}
         >
           <svg
@@ -170,7 +170,7 @@ export default function Accueil(): ReactElement {
           </svg>
         </ExternalLink>
         <ExternalLink
-          href={paths.INSTAGRAM_DROIT_PLURIEL}
+          href={wording.LIEN_INSTAGRAM}
           title={wording.TITRE_LIEN_INSTAGRAM}
         >
           <svg
