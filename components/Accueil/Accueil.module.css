@@ -62,8 +62,8 @@
 
 .reseaux-sociaux svg {
   fill: #343d83;
-  height: 32px;
-  width: 32px;
+  height: 2rem;
+  width: 2rem;
 }
 
 @media (min-width: 36em) {
@@ -93,7 +93,7 @@
   }
 
   .reseaux-sociaux svg {
-    height: 42px;
-    width: 42px;
+    height: 2.5rem;
+    width: 2.5rem;
   }
 }

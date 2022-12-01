@@ -147,7 +147,6 @@ export default function Accueil(): ReactElement {
         >
           <svg
             aria-hidden
-            fillRule="evenodd"
             viewBox="0 0 50 50"
           >
             <path

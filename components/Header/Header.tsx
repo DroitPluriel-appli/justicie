@@ -30,7 +30,10 @@ export default function Header(): ReactElement {
               href={paths.ACCUEIL}
               legacyBehavior
             >
-              <a href={paths.ACCUEIL}>
+              <a
+                href={paths.ACCUEIL}
+                title={wording.ACCUEIL}
+              >
                 <LogoDroitPluriel />
               </a>
             </Link>
@@ -68,7 +71,10 @@ export default function Header(): ReactElement {
               href={paths.ACCUEIL}
               legacyBehavior
             >
-              <a href={paths.ACCUEIL}>
+              <a
+                href={paths.ACCUEIL}
+                title={wording.ACCUEIL}
+              >
                 <LogoDroitPluriel />
               </a>
             </Link>

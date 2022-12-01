@@ -1,10 +1,11 @@
-import { ReactElement, ReactNode } from 'react'
+import { ReactElement } from 'react'
 
-type ExternalLinkProps = {
+type ExternalLinkProps = Readonly<{
   href: string,
   title: string,
-  children: ReactNode
-}
+  children: ReactElement
+}>
+
 export default function ExternalLink({ children, href, title }: ExternalLinkProps): ReactElement {
   return (
     <a
