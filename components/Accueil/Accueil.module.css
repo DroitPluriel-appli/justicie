@@ -35,7 +35,7 @@
   margin-right: 0.5rem;
 }
 
-.apropos {
+.a-propos {
   background: var(--secondary-color);
   margin-bottom: 1.5rem;
   margin-left: calc(-1 * var(--base-margin));
@@ -43,7 +43,7 @@
   padding: var(--base-margin);
 }
 
-.retrouvezinfos {
+.retrouvez-infos {
   font-weight: bold;
 }
 
@@ -53,14 +53,14 @@
   margin-bottom: 1.5rem;
 }
 
-.reseauxsociaux {
+.reseaux-sociaux {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   margin-bottom: 2rem;
 }
 
-.reseauxsociaux svg {
+.reseaux-sociaux svg {
   fill: #343d83;
   height: 32px;
   width: 32px;
@@ -88,11 +88,11 @@
     margin-left: 1rem;
   }
 
-  .apropos {
+  .a-propos {
     margin-bottom: 2.5rem;
   }
 
-  .reseauxsociaux svg {
+  .reseaux-sociaux svg {
     height: 42px;
     width: 42px;
   }
