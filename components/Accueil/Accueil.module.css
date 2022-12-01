@@ -53,6 +53,19 @@
   margin-bottom: 1.5rem;
 }
 
+.reseauxsociaux {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 2rem;
+}
+
+.reseauxsociaux svg {
+  fill: #343d83;
+  height: 32px;
+  width: 32px;
+}
+
 @media (min-width: 36em) {
   .title {
     font-size: 1.125rem;
@@ -77,5 +90,10 @@
 
   .apropos {
     margin-bottom: 2.5rem;
+  }
+
+  .reseauxsociaux svg {
+    height: 42px;
+    width: 42px;
   }
 }
