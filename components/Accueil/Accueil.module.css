@@ -35,7 +35,7 @@
   margin-right: 0.5rem;
 }
 
-.apropos {
+.a-propos {
   background: var(--secondary-color);
   margin-bottom: 1.5rem;
   margin-left: calc(-1 * var(--base-margin));
@@ -43,7 +43,7 @@
   padding: var(--base-margin);
 }
 
-.retrouvezinfos {
+.retrouvez-infos {
   font-weight: bold;
 }
 
@@ -51,6 +51,19 @@
   font-size: 0.875rem;
   font-style: normal;
   margin-bottom: 1.5rem;
+}
+
+.reseaux-sociaux {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 2rem;
+}
+
+.reseaux-sociaux svg {
+  fill: #343d83;
+  height: 2rem;
+  width: 2rem;
 }
 
 @media (min-width: 36em) {
@@ -75,7 +88,12 @@
     margin-left: 1rem;
   }
 
-  .apropos {
+  .a-propos {
     margin-bottom: 2.5rem;
+  }
+
+  .reseaux-sociaux svg {
+    height: 2.5rem;
+    width: 2.5rem;
   }
 }

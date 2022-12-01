@@ -21,6 +21,17 @@ export interface Wording {
   readonly PAR_EMAIL: string
   readonly EMAIL_DROIT_PLURIEL: string
   readonly TELEPHONE_DROIT_PLURIEL: string
+  readonly TITLE_SUIVEZ_NOS_ACTUALITES: string
+  readonly LIEN_FACEBOOK: string
+  readonly TITRE_LIEN_FACEBOOK: string
+  readonly LIEN_TWITTER: string
+  readonly TITRE_LIEN_TWITTER: string
+  readonly LIEN_YOUTUBE: string
+  readonly TITRE_LIEN_YOUTUBE: string
+  readonly LIEN_LINKEDIN: string
+  readonly TITRE_LIEN_LINKEDIN: string
+  readonly LIEN_INSTAGRAM: string
+  readonly TITRE_LIEN_INSTAGRAM: string
 
   // Rechercher un lieu de droit
   readonly TITLE_PAGE_RECHERCHER_UNE_CONSULTATION_JURIDIQUE: string

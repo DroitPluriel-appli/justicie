@@ -101,6 +101,6 @@ if (process.env.NODE_ENV === 'development') {
     silent: true,
   }
 
-  const moduleExportsWithSentry = Object.assign(moduleExports, { sentry: { hideSourceMaps: true }})
+  const moduleExportsWithSentry = Object.assign(moduleExports, { sentry: { hideSourceMaps: true } })
   module.exports = withSentryConfig(withPwa(moduleExportsWithSentry), sentryWebpackPluginOptions)
 }

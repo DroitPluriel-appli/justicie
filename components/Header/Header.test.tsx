@@ -15,10 +15,8 @@ describe('en-tête de page', () => {
     const navigationDesktop = within(header).getByLabelText(wording.NAVIGATION_DESKTOP, { selector: 'nav' })
     const items = within(navigationDesktop).getAllByRole('listitem')
 
-    const accueil = within(items[0]).getByRole('link')
+    const accueil = within(items[0]).getByRole('link', { name: wording.ACCUEIL })
     expect(accueil).toHaveAttribute('href', paths.ACCUEIL)
-    const logo = within(accueil).getByAltText(wording.ACCUEIL)
-    expect(logo).toBeInTheDocument()
 
     const title = within(items[1]).getByRole('heading', { level: 1, name: wording.JUSTICE_PLURIELLE })
     expect(title).toBeInTheDocument()
@@ -42,10 +40,8 @@ describe('en-tête de page', () => {
     const navigationMobile = within(header).getByLabelText(wording.NAVIGATION_MOBILE, { selector: 'nav' })
     const items = within(navigationMobile).getAllByRole('listitem')
 
-    const accueil = within(items[0]).getByRole('link')
+    const accueil = within(items[0]).getByRole('link', { name: wording.ACCUEIL })
     expect(accueil).toHaveAttribute('href', paths.ACCUEIL)
-    const logo = within(accueil).getByAltText(wording.ACCUEIL)
-    expect(logo).toBeInTheDocument()
 
     const title = within(items[1]).getByRole('heading', { level: 1, name: wording.JUSTICE_PLURIELLE })
     expect(title).toBeInTheDocument()

@@ -1,8 +1,8 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { ReactElement } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
+import LogoDroitPluriel from '../../public/logo-droit-pluriel.svg'
 import CriteresAccessibiliteLogo from './criteres-accessibilite.svg'
 import GestionDesDonneesLogo from './gestion-des-donnees.svg'
 import styles from './Header.module.css'
@@ -30,13 +30,11 @@ export default function Header(): ReactElement {
               href={paths.ACCUEIL}
               legacyBehavior
             >
-              <a href={paths.ACCUEIL}>
-                <Image
-                  alt={wording.ACCUEIL}
-                  height="40"
-                  src="/logo.png"
-                  width="54"
-                />
+              <a
+                href={paths.ACCUEIL}
+                title={wording.ACCUEIL}
+              >
+                <LogoDroitPluriel />
               </a>
             </Link>
           </li>
@@ -73,13 +71,11 @@ export default function Header(): ReactElement {
               href={paths.ACCUEIL}
               legacyBehavior
             >
-              <a href={paths.ACCUEIL}>
-                <Image
-                  alt={wording.ACCUEIL}
-                  height="40"
-                  src="/logo.png"
-                  width="54"
-                />
+              <a
+                href={paths.ACCUEIL}
+                title={wording.ACCUEIL}
+              >
+                <LogoDroitPluriel />
               </a>
             </Link>
           </li>
