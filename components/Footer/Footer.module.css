@@ -9,6 +9,10 @@
   width: 6rem;
 }
 
+.footer div svg {
+  fill: var(--logo-color);
+}
+
 @media (max-width: 36em) {
   .footer svg,
   .footer section:nth-child(1) {

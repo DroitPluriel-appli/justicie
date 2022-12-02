@@ -21,6 +21,7 @@
 }
 
 .recherche svg {
+  fill: var(--white);
   padding-bottom: var(--l-margin);
 }
 
@@ -59,7 +60,6 @@
 }
 
 .reseaux-sociaux svg {
-  fill: #343d83;
   width: 2rem;
 }
 
@@ -71,6 +71,10 @@
 
   .description {
     margin-bottom: var(--xxl-margin);
+  }
+
+  .description:nth-child(1) {
+    margin-bottom: var(--m-margin);
   }
 
   .recherche,

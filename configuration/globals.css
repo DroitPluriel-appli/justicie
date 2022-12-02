@@ -3,7 +3,9 @@
   --primary-color: #343d83;
   --secondary-color: #cedcff;
   --button-color: #f55454;
+  --logo-color: #8d0d20;
   --white: #fff;
+  --black: #000;
   --shadow: rgb(189 189 189 / 25%);
   --xl-font: 1.4rem;
   --l-font: 1.125rem;
@@ -71,4 +73,8 @@ button {
 
 button:focus {
   outline: auto;
+}
+
+svg {
+  fill: var(--primary-color);
 }

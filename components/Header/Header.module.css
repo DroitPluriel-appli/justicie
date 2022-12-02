@@ -17,6 +17,14 @@
   padding: var(--m-margin);
 }
 
+:is(.desktop, .mobile) svg {
+  fill: var(--logo-color);
+}
+
+.header button svg {
+  fill: var(--black);
+}
+
 .burger-menu-open a > svg {
   margin-right: var(--m-margin);
 }
@@ -46,7 +54,7 @@
 }
 
 .burger-menu-open {
-  background-color: #fff;
+  background-color: var(--white);
   height: 100vh;
   left: 0;
   position: absolute;
