@@ -1,46 +1,44 @@
 .description {
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--l-margin);
 }
 
 .title {
-  font-size: var(--base-font);
-  margin-bottom: 0.5rem;
+  font-size: var(--m-font);
+  margin-bottom: var(--s-margin);
 }
 
 .recherche {
   align-items: center;
-  background: var(--primary-background-color);
+  background-color: var(--primary-background-color);
   border-radius: 15px;
   color: var(--white);
   display: flex;
   flex-direction: column;
   font-weight: bold;
-  margin-bottom: 1rem;
-  padding: 1.5rem 5.5rem;
+  margin-bottom: var(--m-margin);
+  padding: var(--l-margin) 5.5rem;
   text-align: center;
 }
 
 .recherche svg {
-  padding-bottom: 1.5rem;
+  padding-bottom: var(--l-margin);
 }
 
 .criteres {
   align-items: center;
   display: flex;
-  font-size: 0.875rem;
-  margin-bottom: 1.5rem;
+  font-size: var(--s-font);
+  margin-bottom: var(--l-margin);
 }
 
 .criteres svg {
-  margin-right: 0.5rem;
+  margin-right: var(--s-margin);
 }
 
 .a-propos {
   background: var(--secondary-color);
-  margin-bottom: 1.5rem;
-  margin-left: calc(-1 * var(--base-margin));
-  margin-right: calc(-1 * var(--base-margin));
-  padding: var(--base-margin);
+  margin: 0 calc(-1 * var(--m-margin)) var(--l-margin) calc(-1 * var(--m-margin));
+  padding: var(--m-margin);
 }
 
 .retrouvez-infos {
@@ -48,52 +46,51 @@
 }
 
 .addresse {
-  font-size: 0.875rem;
+  font-size: var(--s-font);
   font-style: normal;
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--l-margin);
 }
 
 .reseaux-sociaux {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  margin-bottom: 2rem;
+  margin-bottom: var(--xl-margin);
 }
 
 .reseaux-sociaux svg {
   fill: #343d83;
-  height: 2rem;
   width: 2rem;
 }
 
 @media (min-width: 36em) {
   .title {
-    font-size: 1.125rem;
-    margin-bottom: 1.75rem;
+    font-size: var(--l-font);
+    margin-bottom: var(--xl-margin);
   }
 
   .description {
-    margin-bottom: 2.5rem;
+    margin-bottom: var(--xxl-margin);
   }
 
   .recherche,
   .adresse {
-    font-size: 1.125rem;
-    margin-bottom: 2rem;
+    font-size: var(--l-font);
+    margin-bottom: var(--xl-margin);
   }
 
   .criteres {
-    font-size: initial;
-    margin-bottom: 2.5rem;
-    margin-left: 1rem;
+    font-size: var(--m-font);
+    margin-bottom: var(--xxl-margin);
+    margin-left: var(--m-margin);
   }
 
   .a-propos {
-    margin-bottom: 2.5rem;
+    margin-bottom: var(--xxl-margin);
   }
 
   .reseaux-sociaux svg {
-    height: 2.5rem;
-    width: 2.5rem;
+    height: var(--xxl-margin);
+    width: var(--xxl-margin);
   }
 }

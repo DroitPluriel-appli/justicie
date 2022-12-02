@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  padding: calc(var(--base-margin) * 2);
+  padding: var(--xl-margin);
 }
 
 .header nav:nth-child(1) > ul,
@@ -14,21 +14,20 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
-  padding: var(--base-margin);
+  padding: var(--m-margin);
 }
 
 .burger-menu-open a > svg {
-  margin-right: 1rem;
+  margin-right: var(--m-margin);
 }
 
 .mobile li:first-child svg {
-  max-width: 4rem;
-  width: 100%;
+  width: 4rem;
 }
 
 .title {
-  font-size: 1.38rem;
-  font-weight: 700;
+  font-size: var(--xl-font);
+  font-weight: bold;
 }
 
 .menu {
@@ -37,7 +36,7 @@
 }
 
 .menu button {
-  font-size: 0.6rem;
+  font-size: var(--s-font);
   text-transform: uppercase;
 }
 
@@ -63,25 +62,23 @@
 
 .burger-menu-title {
   display: flex;
-  margin-bottom: 2rem;
+  margin-bottom: var(--xl-margin);
 }
 
 .burger-menu-title span {
   flex-grow: 3;
-  font-size: 1.4rem;
+  font-size: var(--xl-font);
   font-weight: bold;
   text-align: center;
 }
 
 @media (min-width: 36em) {
   .desktop {
-    display: inherit;
+    display: unset;
   }
 
   .desktop li:first-child svg {
-    max-width: 6rem;
-    min-width: 4rem;
-    width: 100%;
+    width: 4rem;
   }
 
   .mobile {
@@ -90,26 +87,26 @@
 
   .header {
     box-shadow: 0 2px 2px 2px var(--shadow);
-    margin-bottom: 2.5rem;
+    margin-bottom: var(--xxl-margin);
   }
 
   .header nav ul {
     display: flex;
-    gap: var(--base-margin);
+    gap: var(--m-margin);
   }
 
   .header nav a {
-    font-size: 1.12rem;
+    font-size: var(--l-font);
   }
 
   .title {
-    font-size: 1.25rem;
+    font-size: var(--l-font);
   }
 
   .rechercher {
-    background: var(--button-color);
+    background-color: var(--button-color);
     border-radius: 2rem;
-    font-weight: 700;
-    padding: var(--base-margin);
+    font-weight: bold;
+    padding: var(--m-margin);
   }
 }
