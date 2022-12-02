@@ -1,24 +1,34 @@
 :root {
-  --primary-background-color:
-    linear-gradient(0deg, rgb(10 20 106 / 20%), rgb(10 20 106 / 20%)),
-    linear-gradient(0deg, rgb(0 0 0 / 20%), rgb(0 0 0 / 20%)),
-    #343d83;
+  --primary-background-color: #222a68;
   --primary-color: #343d83;
   --secondary-color: #cedcff;
-  --button-color:
-    linear-gradient(0deg, #f55454, #f55454),
-    linear-gradient(0deg, #d0054a, #d0054a),
-    linear-gradient(0deg, #ff5f00, #ff5f00),
-    #ffe4d0;
+  --button-color: #f55454;
+  --logo-color: #8d0d20;
   --white: #fff;
+  --black: #000;
   --shadow: rgb(189 189 189 / 25%);
-  --base-font: 1rem;
-  --base-margin: 1rem;
+  --xl-font: 1.4rem;
+  --l-font: 1.125rem;
+  --m-font: 1rem;
+  --s-font: 0.875rem;
+  --xs-font: 0.75rem;
+  --m-to-l-font: clamp(var(--m-font), 2vw + 0.25rem, var(--l-font));
+  --s-to-m-font: clamp(var(--s-font), 2vw + 0.1rem, var(--m-font));
+  --xs-to-s-font: clamp(var(--xs-font), 2vw, var(--s-font));
+  --xxl-margin: 2.5rem;
+  --xl-margin: 2rem;
+  --l-margin: 1.5rem;
+  --m-margin: 1rem;
+  --s-margin: 0.5rem;
+  --l-to-xxl-margin: clamp(var(--l-margin), 2vw + 1rem, var(--xxl-margin));
+  --m-to-xl-margin: clamp(var(--m-margin), 2vw, var(--xl-margin));
+  --s-to-xl-margin: clamp(var(--s-margin), 2vw, var(--xl-margin));
+  --s-to-m-margin: clamp(var(--s-margin), 2vw, var(--m-margin));
 }
 
 html {
   font-family: arial, sans-serif;
-  font-size: var(--base-font);
+  font-size: var(--m-font);
   line-height: 1.15;
   text-size-adjust: 100%;
 }
@@ -33,7 +43,7 @@ h2 {
 }
 
 main {
-  padding: 0 var(--base-margin);
+  padding-inline: var(--m-margin);
 }
 
 ul {
@@ -50,18 +60,13 @@ a:hover {
 }
 
 p {
-  font-size: 0.875rem;
+  font-size: var(--s-to-m-font);
 }
 
 @media (min-width: 36em) {
   main {
     margin: 0 auto;
-    padding: 0;
     width: 38rem;
-  }
-
-  p {
-    font-size: initial;
   }
 }
 
@@ -72,4 +77,13 @@ button {
 
 button:focus {
   outline: auto;
+}
+
+svg {
+  fill: var(--primary-color);
+}
+
+address {
+  font-size: var(--s-to-m-font);
+  font-style: normal;
 }

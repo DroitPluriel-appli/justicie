@@ -22,8 +22,10 @@ describe('page d’accueil', () => {
     const main = screen.getByRole('main')
     const title = within(main).getByRole('heading', { level: 2, name: wording.VOUS_AVEZ_UN_PROBLEME_DE_DROIT })
     expect(title).toBeInTheDocument()
+    const trouvezUnConseil = within(main).getByText(wording.TROUVEZ_UN_CONSEIL_JURIDIQUE, { selector: 'p' })
+    expect(trouvezUnConseil).toBeInTheDocument()
 
-    const description = within(main).getByText(textMatch(wording.TROUVEZ_UN_CONSEIL_JURIDIQUE + wording.VOUS_AVEZ_UNE_QUESTION_SUR_VOS_DROITS + wording.VOUS_ETES_VICTIME + wording.VOUS_VOULEZ_FAIRE_UNE_ACTION_EN_JUSTICE + wording.VOUS_AVEZ_RECU_UNE_DECISION + wording.JUSTICE_PLURIELLE_VOUS_PERMET), { selector: 'p' })
+    const description = within(main).getByText(textMatch(wording.VOUS_AVEZ_UNE_QUESTION_SUR_VOS_DROITS + wording.VOUS_ETES_VICTIME + wording.VOUS_VOULEZ_FAIRE_UNE_ACTION_EN_JUSTICE + wording.VOUS_AVEZ_RECU_UNE_DECISION + wording.JUSTICE_PLURIELLE_VOUS_PERMET), { selector: 'p' })
     expect(description).toBeInTheDocument()
 
     const rechercherUneConsultation = within(main).getByRole('link', { name: wording.RECHERCHER_UNE_CONSULTATION_JURIDIQUE_GRATUITE_ET_ACCESSIBLE })
@@ -46,14 +48,15 @@ describe('page d’accueil', () => {
     const titleNousContacter = within(main).getByRole('heading', { level: 2, name: wording.TITLE_NOUS_CONTACTER })
     expect(titleNousContacter).toBeInTheDocument()
 
-    // eslint-disable-next-line
     const coordonneesDroitPluriel = within(main).getByText(
-      textMatch(`${wording.ADRESSE_NOM_DROIT_PLURIEL}${wording.ADRESSE_LIEU_DROIT_PLURIEL}${wording.PAR_EMAIL}${wording.EMAIL_DROIT_PLURIEL}${wording.TELEPHONE_DROIT_PLURIEL}`), { selector: 'address' }
+      textMatch(`${wording.ADRESSE_NOM_DROIT_PLURIEL}${wording.ADRESSE_LIEU_DROIT_PLURIEL}${wording.PAR_EMAIL}${wording.EMAIL_DROIT_PLURIEL}${wording.PAR_TELEPHONE}${wording.TELEPHONE_DROIT_PLURIEL}`), { selector: 'address' }
     )
 
     const lienMail = within(coordonneesDroitPluriel).getByRole('link', { name: wording.EMAIL_DROIT_PLURIEL })
     expect(lienMail).toHaveAttribute('href', 'mailto:' + wording.EMAIL_DROIT_PLURIEL)
 
+    const lienTelephone = within(coordonneesDroitPluriel).getByRole('link', { name: wording.TELEPHONE_DROIT_PLURIEL })
+    expect(lienTelephone).toHaveAttribute('href', 'tel:' + wording.TELEPHONE_DROIT_PLURIEL)
     const titleNosActualites = within(main).getByRole('heading', { level: 2, name: wording.TITLE_SUIVEZ_NOS_ACTUALITES })
     expect(titleNosActualites).toBeInTheDocument()
 

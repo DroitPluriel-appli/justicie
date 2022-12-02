@@ -23,7 +23,8 @@ export class WordingFr implements Wording {
   readonly ADRESSE_LIEU_DROIT_PLURIEL: string = '47 Avenue Pasteur, 93100 Montreuil'
   readonly PAR_EMAIL: string = 'Par e-mail : '
   readonly EMAIL_DROIT_PLURIEL: string = 'contact@droitpluriel.fr'
-  readonly TELEPHONE_DROIT_PLURIEL: string = 'Par téléphone : 01 84 80 46 14'
+  readonly PAR_TELEPHONE: string = 'Par téléphone : '
+  readonly TELEPHONE_DROIT_PLURIEL: string = '01 84 80 46 14'
 
   readonly TITLE_SUIVEZ_NOS_ACTUALITES: string = 'Suivez nos actualités'
   readonly LIEN_FACEBOOK: string = 'https://www.facebook.com/droitpluriel/'

@@ -20,6 +20,7 @@ export interface Wording {
   readonly ADRESSE_LIEU_DROIT_PLURIEL: string
   readonly PAR_EMAIL: string
   readonly EMAIL_DROIT_PLURIEL: string
+  readonly PAR_TELEPHONE: string
   readonly TELEPHONE_DROIT_PLURIEL: string
   readonly TITLE_SUIVEZ_NOS_ACTUALITES: string
   readonly LIEN_FACEBOOK: string

@@ -1,99 +1,72 @@
-.description {
-  margin-bottom: 1.5rem;
+.title {
+  font-size: var(--m-to-l-font);
+  margin-bottom: var(--s-to-xl-margin);
 }
 
-.title {
-  font-size: var(--base-font);
-  margin-bottom: 0.5rem;
+.description {
+  margin-bottom: var(--l-to-xxl-margin);
 }
 
 .recherche {
   align-items: center;
-  background: var(--primary-background-color);
+  background-color: var(--primary-background-color);
   border-radius: 15px;
   color: var(--white);
   display: flex;
   flex-direction: column;
+  font-size: var(--m-to-l-font);
   font-weight: bold;
-  margin-bottom: 1rem;
-  padding: 1.5rem 5.5rem;
+  margin-bottom: var(--l-to-xxl-margin);
+  padding: var(--l-margin) 5rem;
   text-align: center;
 }
 
 .recherche svg {
-  padding-bottom: 1.5rem;
+  fill: var(--white);
+  padding-bottom: var(--l-margin);
 }
 
 .criteres {
   align-items: center;
   display: flex;
-  font-size: 0.875rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--l-to-xxl-margin);
 }
 
 .criteres svg {
-  margin-right: 0.5rem;
+  margin-right: var(--s-margin);
 }
 
 .a-propos {
   background: var(--secondary-color);
-  margin-bottom: 1.5rem;
-  margin-left: calc(-1 * var(--base-margin));
-  margin-right: calc(-1 * var(--base-margin));
-  padding: var(--base-margin);
+  margin:
+    0
+    calc(-1 * var(--m-margin))
+    var(--l-to-xxl-margin)
+    calc(-1 * var(--m-margin));
+  padding: var(--m-margin);
 }
 
 .retrouvez-infos {
   font-weight: bold;
 }
 
-.addresse {
-  font-size: 0.875rem;
-  font-style: normal;
-  margin-bottom: 1.5rem;
+.adresse {
+  margin-bottom: var(--l-to-xxl-margin);
 }
 
 .reseaux-sociaux {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  margin-bottom: 2rem;
+  margin-bottom: var(--l-to-xxl-margin);
 }
 
 .reseaux-sociaux svg {
-  fill: #343d83;
-  height: 2rem;
-  width: 2rem;
+  width: clamp(2rem, 2vw + 1rem, 2.5rem);
 }
 
 @media (min-width: 36em) {
-  .title {
-    font-size: 1.125rem;
-    margin-bottom: 1.75rem;
-  }
-
-  .description {
-    margin-bottom: 2.5rem;
-  }
-
-  .recherche,
-  .adresse {
-    font-size: 1.125rem;
-    margin-bottom: 2rem;
-  }
-
   .criteres {
-    font-size: initial;
-    margin-bottom: 2.5rem;
-    margin-left: 1rem;
-  }
-
-  .a-propos {
-    margin-bottom: 2.5rem;
-  }
-
-  .reseaux-sociaux svg {
-    height: 2.5rem;
-    width: 2.5rem;
+    margin-left: var(--m-margin);
   }
 }
