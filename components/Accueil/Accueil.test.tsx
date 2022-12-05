@@ -34,8 +34,8 @@ describe('page d’accueil', () => {
     const decouvrirNosCriteres = within(main).getByRole('link', { name: wording.DECOUVRIR_NOS_CRITERES })
     expect(decouvrirNosCriteres).toHaveAttribute('href', paths.NOS_CRITERES_D_ACCESSIBILITE)
 
-    const aProposTitle = within(main).getByRole('heading', { level: 2, name: wording.TITLE_A_PROPOS_DE_DROIT_PLURIEL })
-    expect(aProposTitle).toBeInTheDocument()
+    const titleAPropos = within(main).getByRole('heading', { level: 2, name: wording.TITLE_A_PROPOS_DE_DROIT_PLURIEL })
+    expect(titleAPropos).toBeInTheDocument()
     const droitPlurielEstUneAssociation = within(main).getByText(wording.DROIT_PLURIEL_EST_UNE_ASSOCIATION, { selector: 'p' })
     expect(droitPlurielEstUneAssociation).toBeInTheDocument()
 
