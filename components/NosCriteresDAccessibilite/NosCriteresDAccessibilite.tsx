@@ -9,19 +9,19 @@ export default function NosCriteresDAccessibilite(): ReactElement {
   const { wording } = useDependencies()
   const listeCriteres = [
     {
-      description: wording.DESCRIPTION_ACCESSIBILITE_HANDICAP_MOTEUR_TOTAL,
+      description: wording.DESCRIPTION_HANDICAP_MOTEUR_TOTAL,
       imgSrc: '/pictos_criteres_accessibilite/handicap_moteur_total.png',
-      title: wording.TITLE_ACCESSIBILITE_HANDICAP_MOTEUR_TOTAL,
+      title: wording.TITLE_HANDICAP_MOTEUR_TOTAL,
     },
     {
       description: wording.DESCRIPTION_HANDICAP_MOTEUR_AVEC_ASSISTANCE,
       imgSrc: '/pictos_criteres_accessibilite/handicap_moteur_avec_assistance.png',
-      title: wording.TITLE_ACCESSIBILITE_HANDICAP_MOTEUR_AVEC_ASSISTANCE,
+      title: wording.TITLE_HANDICAP_MOTEUR_AVEC_ASSISTANCE,
     },
     {
-      description: wording.DESCRIPTION_ACCESSIBILITE_HANDICAP_VISUEL,
+      description: wording.DESCRIPTION_HANDICAP_VISUEL,
       imgSrc: '/pictos_criteres_accessibilite/handicap_visuel.png',
-      title: wording.TITLE_ACCESSIBILITE_HANDICAP_VISUEL,
+      title: wording.TITLE_HANDICAP_VISUEL,
     },
     {
       description: wording.DESCRIPTION_LANGUE_DES_SIGNES_FRANCAISE,

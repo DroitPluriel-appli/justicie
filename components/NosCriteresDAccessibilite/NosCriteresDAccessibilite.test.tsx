@@ -25,21 +25,21 @@ describe("page nos criteres d'accessibilite", () => {
     expect(titlePage).toBeInTheDocument()
 
     const headerHandicapMoteurTotal = within(articles[0]).getByRole('banner')
-    const titleHandicapMoteurTotal = within(headerHandicapMoteurTotal).getByRole('heading', { level: 1, name: wording.TITLE_ACCESSIBILITE_HANDICAP_MOTEUR_TOTAL })
+    const titleHandicapMoteurTotal = within(headerHandicapMoteurTotal).getByRole('heading', { level: 1, name: wording.TITLE_HANDICAP_MOTEUR_TOTAL })
     expect(titleHandicapMoteurTotal).toBeInTheDocument()
-    const descriptionHandicapMoteurTotal = within(articles[0]).getByText(wording.DESCRIPTION_ACCESSIBILITE_HANDICAP_MOTEUR_TOTAL, { selector: 'p' })
+    const descriptionHandicapMoteurTotal = within(articles[0]).getByText(wording.DESCRIPTION_HANDICAP_MOTEUR_TOTAL, { selector: 'p' })
     expect(descriptionHandicapMoteurTotal).toBeInTheDocument()
 
     const headerHandicapMoteurAvecAssistance = within(articles[1]).getByRole('banner')
-    const titleHandicapMoteurAvecAssistance = within(headerHandicapMoteurAvecAssistance).getByRole('heading', { level: 1, name: wording.TITLE_ACCESSIBILITE_HANDICAP_MOTEUR_AVEC_ASSISTANCE })
+    const titleHandicapMoteurAvecAssistance = within(headerHandicapMoteurAvecAssistance).getByRole('heading', { level: 1, name: wording.TITLE_HANDICAP_MOTEUR_AVEC_ASSISTANCE })
     expect(titleHandicapMoteurAvecAssistance).toBeInTheDocument()
     const descriptionHandicapMoteurAvecAssitance = within(articles[1]).getByText(wording.DESCRIPTION_HANDICAP_MOTEUR_AVEC_ASSISTANCE, { selector: 'p' })
     expect(descriptionHandicapMoteurAvecAssitance).toBeInTheDocument()
 
     const headerHandicapeVisuel = within(articles[2]).getByRole('banner')
-    const titleHandicapVisuel = within(headerHandicapeVisuel).getByRole('heading', { level: 1, name: wording.TITLE_ACCESSIBILITE_HANDICAP_VISUEL })
+    const titleHandicapVisuel = within(headerHandicapeVisuel).getByRole('heading', { level: 1, name: wording.TITLE_HANDICAP_VISUEL })
     expect(titleHandicapVisuel).toBeInTheDocument()
-    const descriptionHandicapVisuel = within(articles[2]).getByText(wording.DESCRIPTION_ACCESSIBILITE_HANDICAP_VISUEL, { selector: 'p' })
+    const descriptionHandicapVisuel = within(articles[2]).getByText(wording.DESCRIPTION_HANDICAP_VISUEL, { selector: 'p' })
     expect(descriptionHandicapVisuel).toBeInTheDocument()
 
     const headerLangueDesSignes = within(articles[3]).getByRole('banner')
