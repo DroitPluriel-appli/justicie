@@ -7,7 +7,7 @@ import styles from './NosCriteresDAccessibilite.module.css'
 
 export default function NosCriteresDAccessibilite(): ReactElement {
   const { wording } = useDependencies()
-  const listeCriteres = [
+  const criteres = [
     {
       description: wording.DESCRIPTION_HANDICAP_MOTEUR_TOTAL,
       imgSrc: '/pictos_criteres_accessibilite/handicap_moteur_total.png',
@@ -56,7 +56,7 @@ export default function NosCriteresDAccessibilite(): ReactElement {
         {wording.TITLE_PAGE_NOS_CRITERES_D_ACCESSIBILITE}
       </h2>
       {
-        listeCriteres.map((critere) => (
+        criteres.map((critere) => (
           <CritereDAccessibilite
             description={critere.description}
             imgSrc={critere.imgSrc}
