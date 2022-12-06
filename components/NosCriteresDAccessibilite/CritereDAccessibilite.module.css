@@ -1,0 +1,14 @@
+.article {
+  margin-bottom: var(--xxl-margin);
+}
+
+.article header h1 {
+  font-size: var(--m-to-l-font);
+  text-align: left;
+}
+
+.article div {
+  align-items: center;
+  display: flex;
+  gap: var(--l-to-xxl-margin);
+}

@@ -44,6 +44,27 @@ export class WordingFr implements Wording {
   // Nos critères d’accessibilité
   readonly TITLE_PAGE_NOS_CRITERES_D_ACCESSIBILITE: string = 'Nos critères d’accessibilité'
 
+  readonly TITLE_HANDICAP_MOTEUR_TOTAL: string = 'Accessibilité handicap moteur totale'
+  readonly DESCRIPTION_HANDICAP_MOTEUR_TOTAL: string = 'Le lieu permet un accès total à toute situation de handicap moteur.'
+
+  readonly TITLE_HANDICAP_MOTEUR_AVEC_ASSISTANCE: string = 'Accessibilité handicap moteur'
+  readonly DESCRIPTION_HANDICAP_MOTEUR_AVEC_ASSISTANCE: string = "Le lieu permet un accès à toute situation de handicap moteur à la condition qu'un tiers intervienne (pour ouvrir une porte...)."
+
+  readonly TITLE_HANDICAP_VISUEL: string = 'Accessibilité handicap Visuel'
+  readonly DESCRIPTION_HANDICAP_VISUEL: string = "Le guidage au sein du lieu est simple : bande de guidage, accueil dès l'entrée..."
+
+  readonly TITLE_LANGUE_DES_SIGNES_FRANCAISE: string = 'Langue des Signes Française'
+  readonly DESCRIPTION_LANGUE_DES_SIGNES_FRANCAISE: string = 'Le lieu propose une consultation en langue des signes française (sur place ou en visio).'
+
+  readonly TITLE_BOUCLE_A_INDUCTION: string = 'Boucle à Induction Magnétique'
+  readonly DESCRIPTION_BOUCLE_A_INDUCTION: string = "Le lieu est équipé d'une boucle à induction magnétique en état de fonctionnement."
+
+  readonly TITLE_ENVIRONNEMENT_CALME: string = 'Environnement Calme'
+  readonly DESCRIPTION_ENVIRONNEMENT_CALME: string = 'La consultation se déroule dans un environnement calme.'
+
+  readonly TITLE_PERSONNEL_FORME: string = 'Personnel Formé'
+  readonly DESCRIPTION_PERSONNEL_FORME: string = "Les professionnels (accueil et consultation juridique) sont sensibilisés aux situations de handicap et à l'accessibilité."
+
   // Politique de gestion des données
   readonly TITLE_PAGE_POLITIQUE_DE_GESTION_DES_DONNEES: string = 'Politique de gestion des données'
 

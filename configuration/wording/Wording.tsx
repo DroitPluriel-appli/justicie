@@ -39,6 +39,20 @@ export interface Wording {
 
   // Nos critères d'accessibilité
   readonly TITLE_PAGE_NOS_CRITERES_D_ACCESSIBILITE: string
+  readonly TITLE_HANDICAP_MOTEUR_TOTAL: string
+  readonly DESCRIPTION_HANDICAP_MOTEUR_TOTAL: string
+  readonly TITLE_HANDICAP_MOTEUR_AVEC_ASSISTANCE: string
+  readonly DESCRIPTION_HANDICAP_MOTEUR_AVEC_ASSISTANCE: string
+  readonly TITLE_HANDICAP_VISUEL: string
+  readonly DESCRIPTION_HANDICAP_VISUEL: string
+  readonly TITLE_LANGUE_DES_SIGNES_FRANCAISE: string
+  readonly DESCRIPTION_LANGUE_DES_SIGNES_FRANCAISE: string
+  readonly TITLE_BOUCLE_A_INDUCTION: string
+  readonly DESCRIPTION_BOUCLE_A_INDUCTION: string
+  readonly TITLE_ENVIRONNEMENT_CALME: string
+  readonly DESCRIPTION_ENVIRONNEMENT_CALME: string
+  readonly TITLE_PERSONNEL_FORME: string
+  readonly DESCRIPTION_PERSONNEL_FORME: string
 
   // Politique de gestion des données
   readonly TITLE_PAGE_POLITIQUE_DE_GESTION_DES_DONNEES: string
