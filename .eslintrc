@@ -104,6 +104,7 @@
     "react/jsx-max-depth": "off",
     "react/jsx-newline": "off",
     "react/react-in-jsx-scope": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
     "unused-imports/no-unused-imports": "error"
   },
   "overrides": [

@@ -8077,6 +8077,7 @@ __metadata:
     jest-environment-jsdom: ^29.3.1
     next: 13.0.3
     next-pwa: ^5.6.0
+    next-router-mock: ^0.8.0
     react: 18.2.0
     react-dom: 18.2.0
     stylelint: ^14.15.0
@@ -8904,6 +8905,16 @@ __metadata:
   peerDependencies:
     next: ">=9.0.0"
   checksum: 47f249a819ed4ec98d2c68f47f7789a0e83b82e7c5ef9a3be330162b609ce82c2467de4a75cafac6a0720c4527dea5f251428fda799d64cd11cdba319012cc9b
+  languageName: node
+  linkType: hard
+
+"next-router-mock@npm:^0.8.0":
+  version: 0.8.0
+  resolution: "next-router-mock@npm:0.8.0"
+  peerDependencies:
+    next: ">=10.0.0"
+    react: ">=17.0.0"
+  checksum: b0fe784feafba7f84179dd9d0787f3b0c6f23a959ec995a49b074f163bcc261819c220567f370621fee1f132e6e28e1f514e38ccca0c39d68725f740e654c092
   languageName: node
   linkType: hard
 

@@ -36,6 +36,16 @@ export interface Wording {
 
   // Rechercher un lieu de droit
   readonly TITLE_PAGE_RECHERCHER_UNE_CONSULTATION_JURIDIQUE: string
+  readonly RETOUR_A_L_ACCUEIL: string
+  readonly OU_RECHERCHEZ_VOUS: string
+  readonly OBLIGATOIRE: string
+  readonly UTILISER_MA_POSITION_ACTUELLE: string
+  readonly OU: string
+  readonly RENSEIGNER_UNE_ADRESSE: string
+
+  // Rechercher par handicap
+  readonly TITLE_PAGE_RECHERCHER_PAR_HANDICAP: string
+  readonly MODIFIER_L_ADRESSE: string
 
   // Nos critères d'accessibilité
   readonly TITLE_PAGE_NOS_CRITERES_D_ACCESSIBILITE: string

@@ -1,0 +1,39 @@
+.stepper[data-steps="2"] {
+  --steps: 2;
+  --default-outer: calc((100% + 6px) / var(--steps));
+  --default-inner: calc(var(--default-outer) - 6px);
+  --active-outer: calc((100% + 6px) / var(--current-step));
+  --active-inner: calc(var(--active-outer) - 6px);
+}
+
+.stepper[data-current-step="1"] {
+  --current-step: 1;
+}
+
+.stepper[data-current-step="2"] {
+  --current-step: 2;
+}
+
+.stepper {
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      var(--button-color),
+      var(--button-color) var(--active-inner),
+      transparent var(--active-inner),
+      transparent var(--active-outer)
+    ),
+    repeating-linear-gradient(
+      90deg,
+      var(--gray),
+      var(--gray) var(--default-inner),
+      transparent var(--default-inner),
+      transparent var(--default-outer)
+    );
+  background-repeat: no-repeat;
+  background-size: calc((100% + 6px) * var(--current-step) / var(--steps) - 6px) 100%, 100% 100%;
+  border-radius: 0.3rem;
+  height: 1rem;
+  margin-bottom: var(--l-margin);
+  width: 100%;
+}

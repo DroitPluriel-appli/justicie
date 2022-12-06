@@ -1,0 +1,51 @@
+.main {
+  background-color: var(--primary-background-color);
+  color: var(--white);
+  margin: calc(-1 * var(--m-margin));
+  padding: var(--m-margin);
+}
+
+.main a {
+  color: var(--white);
+  display: block;
+  font-size: var(--s-font);
+  margin-bottom: var(--xxl-margin);
+}
+
+.main a svg {
+  margin-right: var(--s-margin);
+}
+
+.title {
+  font-size: var(--xl-font);
+  font-weight: normal;
+  margin-bottom: var(--xxl-margin);
+}
+
+.title div {
+  font-size: var(--m-font);
+}
+
+.button {
+  border-radius: 5rem;
+  box-sizing: border-box;
+  color: var(--primary-color);
+  font-weight: bold;
+  margin-bottom: var(--xxl-margin);
+  padding: var(--m-margin);
+  text-align: center;
+  width: 100%;
+}
+
+.position-actuelle {
+  background-color: var(--secondary-color);
+}
+
+.ou {
+  margin-bottom: var(--xxl-margin);
+  text-align: center;
+}
+
+.renseigner-adresse {
+  background-color: var(--white);
+}

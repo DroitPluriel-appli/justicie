@@ -39,6 +39,16 @@ export class WordingFr implements Wording {
 
   // Rechercher un lieu de droit
   readonly TITLE_PAGE_RECHERCHER_UNE_CONSULTATION_JURIDIQUE: string = 'Rechercher une consultation juridique'
+  readonly RETOUR_A_L_ACCUEIL: string = 'Retour à l’accueil'
+  readonly OU_RECHERCHEZ_VOUS: string = 'Où recherchez-vous une consultation juridique ?'
+  readonly OBLIGATOIRE: string = '(obligatoire)'
+  readonly UTILISER_MA_POSITION_ACTUELLE: string = 'Utiliser ma position actuelle'
+  readonly OU: string = 'ou'
+  readonly RENSEIGNER_UNE_ADRESSE: string = 'Renseigner une adresse'
+
+  // Rechercher par handicap
+  readonly TITLE_PAGE_RECHERCHER_PAR_HANDICAP: string = 'Rechercher par handicap'
+  readonly MODIFIER_L_ADRESSE: string = 'Modifier l’adresse'
 
   // Nos critères d’accessibilité
   readonly TITLE_PAGE_NOS_CRITERES_D_ACCESSIBILITE: string = 'Nos critères d’accessibilité'

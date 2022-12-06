@@ -1,5 +1,7 @@
 import { KeyboardEvent, useCallback, useState } from 'react'
 
+import { useDependencies } from '../../configuration/useDependencies'
+
 type HeaderState = Readonly<{
   classMenu: 'burger-menu-close' | 'burger-menu-open'
   isMenuClose: boolean
@@ -8,13 +10,14 @@ type HeaderState = Readonly<{
 export function useHeader() {
   const burgerMenuClose = 'burger-menu-close'
   const burgerMenuOpen = 'burger-menu-open'
+  const { isTheGoodKeyCode } = useDependencies()
   const [state, setState] = useState<HeaderState>({
     classMenu: burgerMenuClose,
     isMenuClose: true,
   })
 
   const keyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
-    if (event.code === 'Space' || event.code === 'Enter') {
+    if (isTheGoodKeyCode(event)) {
       setState({
         classMenu: state.classMenu === burgerMenuClose ? burgerMenuOpen : burgerMenuClose,
         isMenuClose: !state.isMenuClose,
@@ -32,7 +35,7 @@ export function useHeader() {
   return {
     classMenu: state.classMenu,
     isMenuClose: state.isMenuClose,
-    keyDown: useCallback(keyDown, [state.isMenuClose, state.classMenu]),
+    keyDown: useCallback(keyDown, [state.isMenuClose, state.classMenu, isTheGoodKeyCode]),
     touchStart: useCallback(touchStart, [state.isMenuClose, state.classMenu]),
   }
 }

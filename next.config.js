@@ -26,7 +26,7 @@ const securityHeaders = [
    **/
   {
     key: 'Permissions-Policy',
-    value: 'accelerometer=(), camera=(), microphone=(), geolocation=(), document-domain=(), gyroscope=(), magnetometer=(), payment=(), usb=(), xr-spatial-tracking=()',
+    value: 'accelerometer=(), camera=(), microphone=(), document-domain=(), gyroscope=(), magnetometer=(), payment=(), usb=(), xr-spatial-tracking=()',
   },
   /**
    * Referrer-Policy, see: https://scotthelme.co.uk/a-new-security-header-referrer-policy/
