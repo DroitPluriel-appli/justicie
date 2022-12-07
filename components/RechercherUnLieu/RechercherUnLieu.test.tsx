@@ -34,9 +34,9 @@ describe('rechercher un lieu', () => {
   it.each([
     ['touchStart'],
     ['click'],
-  ])('va à l’étape 2 quand j’utilise ma position actuelle avec le %', (event) => {
+  ])('va à l’étape 2 quand j’utilise ma position actuelle avec le % et grise le bouton', (event) => {
     // GIVEN
-    mockedGeoloc(43.296482, 5.36978)
+    mockedSuccessedGeolocation(43.296482, 5.36978)
     renderFakeComponent(<RechercherUnLieu />)
     const utiliserMaPostionActuelle = screen.getByRole('button', { name: wording.UTILISER_MA_POSITION_ACTUELLE })
 
@@ -44,15 +44,17 @@ describe('rechercher un lieu', () => {
     fireEvent[event as 'touchStart' | 'click'](utiliserMaPostionActuelle)
 
     // THEN
+    const utiliserMaPostionActuelleGrisee = screen.getByRole('button', { name: wording.CHARGEMENT })
+    expect(utiliserMaPostionActuelleGrisee).toBeDisabled()
     expect(singletonRouter.asPath).toBe(`/${paths.RECHERCHER_PAR_HANDICAP}?lat=43.296482&lon=5.36978`)
   })
 
   it.each([
     ['Space'],
     ['Enter'],
-  ])('va à l’étape 2 quand j’utilise ma position actuelle avec la touche %s', (code) => {
+  ])('va à l’étape 2 quand j’utilise ma position actuelle avec la touche %s et grise le bouton', (code) => {
     // GIVEN
-    mockedGeoloc(43.296482, 5.36978)
+    mockedSuccessedGeolocation(43.296482, 5.36978)
     renderFakeComponent(<RechercherUnLieu />)
     const utiliserMaPostionActuelle = screen.getByRole('button', { name: wording.UTILISER_MA_POSITION_ACTUELLE })
 
@@ -60,14 +62,16 @@ describe('rechercher un lieu', () => {
     fireEvent.keyDown(utiliserMaPostionActuelle, { code })
 
     // THEN
+    const utiliserMaPostionActuelleGrisee = screen.getByRole('button', { name: wording.CHARGEMENT })
+    expect(utiliserMaPostionActuelleGrisee).toBeDisabled()
     expect(singletonRouter.asPath).toBe(`/${paths.RECHERCHER_PAR_HANDICAP}?lat=43.296482&lon=5.36978`)
   })
 })
 
-function mockedGeoloc(latitude: number, longitude: number) {
+function mockedSuccessedGeolocation(latitude: number, longitude: number) {
   const mockGeolocation = {
     getCurrentPosition: jest.fn()
-      .mockImplementationOnce((success: PositionCallback) => Promise.resolve(success({
+      .mockImplementationOnce((success: PositionCallback) => success({
         coords: {
           accuracy: 9075.79126982149,
           altitude: null,
@@ -78,7 +82,7 @@ function mockedGeoloc(latitude: number, longitude: number) {
           speed: null,
         },
         timestamp: 1670251498462,
-      }))),
+      })),
   }
   // @ts-ignore
   global.navigator.geolocation = mockGeolocation

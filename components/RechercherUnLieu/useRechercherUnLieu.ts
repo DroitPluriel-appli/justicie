@@ -8,11 +8,20 @@ type coordonneesGeospatiales = Readonly<{
   longitude: number
 }>
 
+type State = Readonly<{
+  buttonName: string
+  isDisabled: boolean
+}>
+
 export function useRechercherUnLieu() {
-  const { isTheGoodKeyCode, paths } = useDependencies()
+  const { isTheGoodKeyCode, paths, wording } = useDependencies()
   const [geoloc, setGeoloc] = useState<coordonneesGeospatiales>({
     latitude: 0,
     longitude: 0,
+  })
+  const [state, setState] = useState<State>({
+    buttonName: wording.UTILISER_MA_POSITION_ACTUELLE,
+    isDisabled: false,
   })
   const { push } = useRouter()
 
@@ -36,16 +45,28 @@ export function useRechercherUnLieu() {
     }
   }, [geoloc, push, paths.RECHERCHER_PAR_HANDICAP])
 
-  function hasGeoloc() {
+  const hasGeoloc = useCallback(() => {
     if (navigator.geolocation) {
+      setState({
+        buttonName: wording.CHARGEMENT,
+        isDisabled: true,
+      })
       navigator.geolocation.getCurrentPosition((position) => {
         setGeoloc({ latitude: position.coords.latitude, longitude: position.coords.longitude })
+      },
+      () => {
+        setState({
+          buttonName: wording.UTILISER_MA_POSITION_ACTUELLE,
+          isDisabled: false,
+        })
       })
     }
-  }
+  }, [wording.CHARGEMENT, wording.UTILISER_MA_POSITION_ACTUELLE])
 
   return {
-    keyDown: useCallback(keyDown, [isTheGoodKeyCode]),
-    touch: useCallback(touch, []),
+    buttonName: state.buttonName,
+    isDisabled: state.isDisabled,
+    keyDown: useCallback(keyDown, [isTheGoodKeyCode, hasGeoloc]),
+    touch: useCallback(touch, [hasGeoloc]),
   }
 }
