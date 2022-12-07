@@ -13,9 +13,7 @@ export default function LienDEvitement(): ReactElement {
     >
       <li>
         <a href="#contenu">
-          <span>
-            {wording.EVITEMENT_ALLER_AU_CONTENU}
-          </span>
+          {wording.EVITEMENT_ALLER_AU_CONTENU}
         </a>
       </li>
     </ul>

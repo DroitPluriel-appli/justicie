@@ -8,13 +8,10 @@
 }
 
 .evitement a:focus {
-  height: auto;
-  position: static;
-  width: auto;
-}
-
-.evitement a:focus span {
   display: inline-block;
+  height: auto;
   padding: var(--m-to-xl-margin);
+  position: static;
   text-align: center;
+  width: auto;
 }
