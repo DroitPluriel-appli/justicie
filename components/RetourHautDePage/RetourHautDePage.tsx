@@ -1,6 +1,6 @@
 import { ReactElement } from 'react'
 
-import { useDependencies } from '../configuration/useDependencies'
+import { useDependencies } from '../../configuration/useDependencies'
 import styles from './RetourHautDePage.module.css'
 
 export default function RetourHautDePage(): ReactElement {

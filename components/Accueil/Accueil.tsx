@@ -4,7 +4,6 @@ import { ReactElement } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
 import ExternalLink from '../ExternalLink/ExternalLink'
-import RetourHautDePage from '../RetourHautDePage'
 import styles from './Accueil.module.css'
 
 export default function Accueil(): ReactElement {
@@ -180,7 +179,6 @@ export default function Accueil(): ReactElement {
           </svg>
         </ExternalLink>
       </div>
-      <RetourHautDePage />
     </>
   )
 }
