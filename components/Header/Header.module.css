@@ -98,6 +98,10 @@
     gap: var(--m-margin);
   }
 
+  .rechercher a {
+    color: var(--white);
+  }
+
   .header nav a {
     font-size: var(--l-font);
   }

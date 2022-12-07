@@ -1,5 +1,4 @@
 .title {
-  font-size: var(--m-to-l-font);
-  font-weight: normal;
+  font-size: var(--xl-font);
   margin-bottom: var(--l-to-xxl-margin);
 }
