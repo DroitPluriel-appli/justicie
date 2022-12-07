@@ -4,7 +4,6 @@ import { useRouter } from 'next/router'
 import { ReactElement } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
-import Stepper from '../Stepper/Stepper'
 import styles from './RechercherParHandicap.module.css'
 
 export default function RechercherParHandicap(): ReactElement {
@@ -19,7 +18,6 @@ export default function RechercherParHandicap(): ReactElement {
         </title>
       </Head>
       <div className={styles.main}>
-        <Stepper step={2} />
         <Link
           href={paths.RECHERCHER_UNE_CONSULTATION_JURIDIQUE}
           legacyBehavior

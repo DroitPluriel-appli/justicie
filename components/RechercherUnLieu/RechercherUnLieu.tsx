@@ -3,13 +3,12 @@ import Link from 'next/link'
 import { ReactElement } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
-import Stepper from '../Stepper/Stepper'
 import styles from './RechercherUnLieu.module.css'
 import { useRechercherUnLieu } from './useRechercherUnLieu'
 
 export default function RechercherUnLieu(): ReactElement {
   const { paths, wording } = useDependencies()
-  const { keyDown, touch } = useRechercherUnLieu()
+  const { buttonName, isDisabled, keyDown, touch } = useRechercherUnLieu()
 
   return (
     <div className={styles.main}>
@@ -18,7 +17,6 @@ export default function RechercherUnLieu(): ReactElement {
           {wording.TITLE_PAGE_RECHERCHER_UNE_CONSULTATION_JURIDIQUE}
         </title>
       </Head>
-      <Stepper step={1} />
       <Link
         href={paths.ACCUEIL}
         legacyBehavior
@@ -48,12 +46,13 @@ export default function RechercherUnLieu(): ReactElement {
       </h2>
       <button
         className={`${styles.button} ${styles['position-actuelle']}`}
+        disabled={isDisabled}
         onClick={touch}
         onKeyDown={keyDown}
         onTouchStart={touch}
         type="button"
       >
-        {wording.UTILISER_MA_POSITION_ACTUELLE}
+        {buttonName}
       </button>
       <div className={styles.ou}>
         {wording.OU}

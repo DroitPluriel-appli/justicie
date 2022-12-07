@@ -40,6 +40,7 @@ export interface Wording {
   readonly OU_RECHERCHEZ_VOUS: string
   readonly OBLIGATOIRE: string
   readonly UTILISER_MA_POSITION_ACTUELLE: string
+  readonly CHARGEMENT: string
   readonly OU: string
   readonly RENSEIGNER_UNE_ADRESSE: string
 

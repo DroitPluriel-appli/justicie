@@ -80,6 +80,10 @@ button:focus {
   outline: auto;
 }
 
+button:disabled {
+  cursor: not-allowed;
+}
+
 svg {
   fill: var(--primary-color);
 }
