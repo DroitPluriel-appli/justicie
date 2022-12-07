@@ -5,12 +5,14 @@ import { ReactElement } from 'react'
 
 import Footer from '../components/Footer/Footer'
 import Header from '../components/Header/Header'
+import LienDEvitement from '../components/LiensDEvitement'
 import { ContextProvider } from '../configuration/useDependencies'
 import '../configuration/globals.css'
 
 export default function App({ Component, pageProps }: AppProps): ReactElement {
   return (
     <ContextProvider>
+      <LienDEvitement />
       <Head>
         <meta charSet="utf-8" />
         <meta
@@ -40,7 +42,7 @@ export default function App({ Component, pageProps }: AppProps): ReactElement {
         />
       </Head>
       <Header />
-      <main>
+      <main id="contenu">
         <Component {...pageProps} />
       </main>
       <Footer />
