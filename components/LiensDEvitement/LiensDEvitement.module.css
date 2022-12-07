@@ -12,3 +12,9 @@
   position: static;
   width: auto;
 }
+
+.evitement a:focus span {
+  display: inline-block;
+  padding: var(--m-to-xl-margin);
+  text-align: center;
+}

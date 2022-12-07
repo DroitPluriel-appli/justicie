@@ -12,6 +12,7 @@ export default function RetourHautDePage(): ReactElement {
       href="#evitement"
     >
       <svg
+        aria-hidden="true"
         height="16"
         viewBox="0 0 16 16"
         width="16"
