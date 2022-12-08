@@ -1,0 +1,14 @@
+.retour {
+  align-items: center;
+  display: flex;
+  font-size: var(--s-to-m-font);
+  font-weight: bold;
+  justify-content: right;
+  margin: var(--m-to-xl-margin) auto var(--m-to-xl-margin) auto;
+  max-width: 38em;
+  text-align: right;
+}
+
+.retour svg {
+  margin: 0 var(--m-margin) 0 var(--s-margin);
+}

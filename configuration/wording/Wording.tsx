@@ -1,4 +1,8 @@
 export interface Wording {
+  // Navigation pages
+  readonly RETOUR_EN_HAUT_DE_PAGE: string
+  readonly EVITEMENT_ALLER_AU_CONTENU: string
+
   // Accueil
   readonly TITLE_PAGE_ACCUEIL: string
   readonly VOUS_AVEZ_UN_PROBLEME_DE_DROIT: string
