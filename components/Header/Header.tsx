@@ -104,7 +104,7 @@ export default function Header(): ReactElement {
       </nav>
       <div
         aria-labelledby="menu-title"
-        aria-modal="true"
+        aria-modal={!isMenuClose}
         id="menu-mobile-container"
         role="dialog"
       >
@@ -184,6 +184,7 @@ export default function Header(): ReactElement {
             <li>
               <a href={paths.POLITIQUE_DE_GESTION_DES_DONNEES}>
                 <svg
+                  aria-hidden
                   height="21"
                   viewBox="0 0 24 24"
                   width="21"

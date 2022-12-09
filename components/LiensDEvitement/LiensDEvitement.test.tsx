@@ -13,7 +13,7 @@ describe('liens d’évitement', () => {
     // THEN
     const evitementContainer = screen.getByRole('navigation')
     expect(evitementContainer).toHaveAttribute('aria-label', wording.ACCES_RAPIDE)
-    expect(evitementContainer).toHaveAttribute('id', 'evitement')
+    expect(evitementContainer).toHaveAttribute('id', 'evitement-container')
 
     const list = within(evitementContainer).getByRole('list')
     const listItem = within(list).getByRole('listitem')
