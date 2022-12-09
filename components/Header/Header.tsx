@@ -105,6 +105,7 @@ export default function Header(): ReactElement {
       <div
         aria-labelledby="menu-title"
         aria-modal="true"
+        id="menu-mobile-container"
         role="dialog"
       >
         <nav
@@ -117,6 +118,7 @@ export default function Header(): ReactElement {
                 {wording.MENU}
               </span>
               <button
+                aria-controls="menu-mobile-container"
                 onKeyDown={keyDown}
                 onTouchStart={touchStart}
                 title={wording.FERMER}

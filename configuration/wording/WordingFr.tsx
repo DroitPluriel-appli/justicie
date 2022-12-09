@@ -3,6 +3,7 @@ import { Wording } from './Wording'
 export class WordingFr implements Wording {
   // Navigation pages
   readonly RETOUR_EN_HAUT_DE_PAGE: string = 'Retour en haut de page'
+  readonly ACCES_RAPIDE: string = 'Accès rapide'
   readonly EVITEMENT_ALLER_AU_CONTENU: string = 'Aller au contenu'
 
   // Accueil

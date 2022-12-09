@@ -66,7 +66,6 @@ describe('en-tête de page', () => {
     const header = screen.getByRole('banner')
     const navigationContainer = within(header).getByRole('dialog')
     const labelId = within(navigationContainer).getByText(wording.MENU).getAttribute('id')
-    const navigationContainerId = navigationContainer.getAttribute('id')
     expect(navigationContainer).toHaveAttribute('aria-modal', 'true')
     expect(navigationContainer).toHaveAttribute('aria-labelledby', labelId)
 
@@ -75,8 +74,11 @@ describe('en-tête de page', () => {
 
     const title = within(items[0]).getByText(wording.MENU)
     expect(title).toBeInTheDocument()
+
     const fermer = within(items[0]).getByRole('button', { name: wording.FERMER })
+    const navigationContainerId = navigationContainer.getAttribute('id')
     expect(fermer).toBeInTheDocument()
+    expect(fermer).toHaveAttribute('aria-controls', navigationContainerId)
 
     const accueil = within(items[1]).getByRole('link', { name: wording.ACCUEIL })
     expect(accueil).toHaveAttribute('href', paths.ACCUEIL)
