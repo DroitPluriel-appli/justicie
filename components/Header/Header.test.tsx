@@ -38,6 +38,7 @@ describe('en-tête de page', () => {
     // THEN
     const header = screen.getByRole('banner')
     const navigationMobile = within(header).getByLabelText(wording.NAVIGATION_MOBILE, { selector: 'nav' })
+
     const items = within(navigationMobile).getAllByRole('listitem')
 
     const accueil = within(items[0]).getByRole('link', { name: wording.ACCUEIL })
@@ -63,6 +64,11 @@ describe('en-tête de page', () => {
 
     // THEN
     const header = screen.getByRole('banner')
+    const navigationContainer = within(header).getByRole('dialog')
+    const labelId = within(navigationContainer).getByText(wording.MENU).getAttribute('id')
+    expect(navigationContainer).toHaveAttribute('aria-modal', 'true')
+    expect(navigationContainer).toHaveAttribute('aria-labelledby', labelId)
+
     const navigation = within(header).getByRole('navigation')
     const items = within(navigation).getAllByRole('listitem')
 
