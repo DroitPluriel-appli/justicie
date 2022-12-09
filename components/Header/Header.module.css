@@ -9,8 +9,8 @@
   padding: var(--xl-margin);
 }
 
-.header nav:nth-child(1) > ul,
-.header nav:nth-child(2) > ul {
+.header > nav:nth-child(1) > ul,
+.header > nav:nth-child(2) > ul {
   align-items: center;
   display: flex;
   justify-content: space-between;

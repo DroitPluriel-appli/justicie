@@ -66,6 +66,7 @@ describe('en-tête de page', () => {
     const header = screen.getByRole('banner')
     const navigationContainer = within(header).getByRole('dialog')
     const labelId = within(navigationContainer).getByText(wording.MENU).getAttribute('id')
+    const navigationContainerId = navigationContainer.getAttribute('id')
     expect(navigationContainer).toHaveAttribute('aria-modal', 'true')
     expect(navigationContainer).toHaveAttribute('aria-labelledby', labelId)
 
