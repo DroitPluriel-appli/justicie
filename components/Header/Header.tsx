@@ -84,7 +84,7 @@ export default function Header(): ReactElement {
           </li>
           <li className={styles.menu}>
             <button
-              className={styles['burger-open']}
+              className={styles.burgerOpen}
               onKeyDown={keyDown}
               onTouchStart={touchStart}
               type="button"
@@ -113,7 +113,7 @@ export default function Header(): ReactElement {
           className={styles[classMenu]}
         >
           <ul>
-            <li className={styles['burger-menu-title']}>
+            <li className={styles.burgerMenuTitle}>
               <span id="menu-title">
                 {wording.MENU}
               </span>

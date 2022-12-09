@@ -37,7 +37,7 @@
   width: 100%;
 }
 
-.position-actuelle {
+.positionActuelle {
   background-color: var(--secondary-color);
 }
 
@@ -46,6 +46,6 @@
   text-align: center;
 }
 
-.renseigner-adresse {
+.renseignerAdresse {
   background-color: var(--white);
 }

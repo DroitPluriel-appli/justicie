@@ -2,7 +2,7 @@
   display: none;
 }
 
-.burger-menu-open ul {
+.burgerMenuOpen ul {
   display: flex;
   flex-direction: column;
   gap: var(--xl-margin);
@@ -25,7 +25,7 @@
   fill: var(--black);
 }
 
-.burger-menu-open a > svg {
+.burgerMenuOpen a > svg {
   margin-right: var(--m-margin);
 }
 
@@ -47,12 +47,12 @@
   text-transform: uppercase;
 }
 
-.burger-menu-close {
+.burgerMenuClose {
   height: 0;
   visibility: hidden;
 }
 
-.burger-menu-open {
+.burgerMenuOpen {
   background-color: var(--white);
   height: 100vh;
   left: 0;
@@ -62,17 +62,17 @@
   width: 100vw;
 }
 
-.burger-menu-open a {
+.burgerMenuOpen a {
   align-items: center;
   display: flex;
 }
 
-.burger-menu-title {
+.burgerMenuTitle {
   display: flex;
   margin-bottom: var(--xl-margin);
 }
 
-.burger-menu-title span {
+.burgerMenuTitle span {
   flex-grow: 3;
   font-size: var(--xl-font);
   font-weight: bold;
