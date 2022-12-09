@@ -3,13 +3,13 @@ import { KeyboardEvent, useCallback, useState } from 'react'
 import { useDependencies } from '../../configuration/useDependencies'
 
 type HeaderState = Readonly<{
-  classMenu: 'burger-menu-close' | 'burger-menu-open'
+  classMenu: 'burgerMenuClose' | 'burgerMenuOpen'
   isMenuClose: boolean
 }>
 
 export function useHeader() {
-  const burgerMenuClose = 'burger-menu-close'
-  const burgerMenuOpen = 'burger-menu-open'
+  const burgerMenuClose = 'burgerMenuClose'
+  const burgerMenuOpen = 'burgerMenuOpen'
   const { isTheGoodKeyCode } = useDependencies()
   const [state, setState] = useState<HeaderState>({
     classMenu: burgerMenuClose,

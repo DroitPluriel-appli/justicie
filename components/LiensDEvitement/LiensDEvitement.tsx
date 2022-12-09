@@ -7,15 +7,20 @@ export default function LiensDEvitement(): ReactElement {
   const { wording } = useDependencies()
 
   return (
-    <ul
-      className={styles.evitement}
-      id="evitement"
+    <nav
+      aria-label={wording.ACCES_RAPIDE}
+      id="evitement-container"
     >
-      <li>
-        <a href="#contenu">
-          {wording.EVITEMENT_ALLER_AU_CONTENU}
-        </a>
-      </li>
-    </ul>
+      <ul
+        className={styles.evitement}
+        id="evitement"
+      >
+        <li>
+          <a href="#contenu">
+            {wording.EVITEMENT_ALLER_AU_CONTENU}
+          </a>
+        </li>
+      </ul>
+    </nav>
   )
 }

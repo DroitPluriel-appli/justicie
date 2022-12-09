@@ -11,10 +11,12 @@ describe('liens d’évitement', () => {
     renderFakeComponent(<LiensDEvitement />)
 
     // THEN
-    const list = screen.getByRole('list')
-    expect(list).toHaveAttribute('id', 'evitement')
-    const listItem = within(list).getByRole('listitem')
+    const evitementContainer = screen.getByRole('navigation')
+    expect(evitementContainer).toHaveAttribute('aria-label', wording.ACCES_RAPIDE)
+    expect(evitementContainer).toHaveAttribute('id', 'evitement-container')
 
+    const list = within(evitementContainer).getByRole('list')
+    const listItem = within(list).getByRole('listitem')
     const liensDEvitement = within(listItem).getByRole('link', { name: wording.EVITEMENT_ALLER_AU_CONTENU })
     expect(liensDEvitement).toHaveAttribute('href', '#contenu')
   })

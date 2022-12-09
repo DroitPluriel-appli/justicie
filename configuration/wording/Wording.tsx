@@ -1,6 +1,7 @@
 export interface Wording {
   // Navigation pages
   readonly RETOUR_EN_HAUT_DE_PAGE: string
+  readonly ACCES_RAPIDE: string
   readonly EVITEMENT_ALLER_AU_CONTENU: string
 
   // Accueil

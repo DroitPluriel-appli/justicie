@@ -78,14 +78,14 @@ export default function Accueil(): ReactElement {
           {wording.DECOUVRIR_NOS_CRITERES}
         </a>
       </Link>
-      <div className={styles['a-propos']}>
+      <div className={styles.aPropos}>
         <h2 className={styles.title}>
           {wording.TITLE_A_PROPOS_DE_DROIT_PLURIEL}
         </h2>
         <p>
           {wording.DROIT_PLURIEL_EST_UNE_ASSOCIATION}
         </p>
-        <p className={styles['retrouvez-infos']}>
+        <p className={styles.retrouvezInfos}>
           {wording.RETROUVEZ_PLUS_D_INFOS}
           <ExternalLink
             href={wording.SITE_DROIT_PLURIEL}
@@ -116,7 +116,7 @@ export default function Accueil(): ReactElement {
       <h2 className={styles.title}>
         {wording.TITLE_SUIVEZ_NOS_ACTUALITES}
       </h2>
-      <div className={styles['reseaux-sociaux']}>
+      <div className={styles.reseauxSociaux}>
         <ExternalLink
           href={wording.LIEN_FACEBOOK}
           title={wording.TITRE_LIEN_FACEBOOK}

@@ -36,7 +36,7 @@
   margin-right: var(--s-margin);
 }
 
-.a-propos {
+.aPropos {
   background: var(--secondary-color);
   margin:
     0
@@ -46,7 +46,7 @@
   padding: var(--m-margin);
 }
 
-.retrouvez-infos {
+.retrouvezInfos {
   font-weight: bold;
 }
 
@@ -54,14 +54,14 @@
   margin-bottom: var(--l-to-xxl-margin);
 }
 
-.reseaux-sociaux {
+.reseauxSociaux {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   margin-bottom: var(--l-to-xxl-margin);
 }
 
-.reseaux-sociaux svg {
+.reseauxSociaux svg {
   width: clamp(2rem, 2vw + 1rem, 2.5rem);
 }
 

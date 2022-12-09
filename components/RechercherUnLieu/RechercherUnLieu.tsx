@@ -45,7 +45,7 @@ export default function RechercherUnLieu(): ReactElement {
         </div>
       </h2>
       <button
-        className={`${styles.button} ${styles['position-actuelle']}`}
+        className={`${styles.button} ${styles.positionActuelle}`}
         disabled={isDisabled}
         onClick={touch}
         onKeyDown={keyDown}
@@ -58,7 +58,7 @@ export default function RechercherUnLieu(): ReactElement {
         {wording.OU}
       </div>
       <button
-        className={`${styles.button} ${styles['renseigner-adresse']}`}
+        className={`${styles.button} ${styles.renseignerAdresse}`}
         type="button"
       >
         {wording.RENSEIGNER_UNE_ADRESSE}
