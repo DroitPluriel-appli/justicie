@@ -6,7 +6,6 @@ import { ReactElement } from 'react'
 import Footer from '../components/Footer/Footer'
 import Header from '../components/Header/Header'
 import LiensDEvitement from '../components/LiensDEvitement/LiensDEvitement'
-import RetourHautDePage from '../components/RetourHautDePage/RetourHautDePage'
 import { ContextProvider } from '../configuration/useDependencies'
 import '../configuration/globals.css'
 
@@ -46,7 +45,6 @@ export default function App({ Component, pageProps }: AppProps): ReactElement {
       <main id="contenu">
         <Component {...pageProps} />
       </main>
-      <RetourHautDePage />
       <Footer />
     </ContextProvider>
   )
