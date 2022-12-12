@@ -14,7 +14,7 @@ export default function Footer(): ReactElement {
         <LogoDroitPluriel />
         <section aria-label={wording.JUSTICE_PLURIELLE}>
           <header>
-            {wording.JUSTICE_PLURIELLE}
+            {wording.INFORMATIONS}
           </header>
           <ul>
             <li>
@@ -32,26 +32,14 @@ export default function Footer(): ReactElement {
                 {wording.POLITIQUE_DE_GESTION_DES_DONNEES}
               </Link>
             </li>
-          </ul>
-        </section>
-        <section aria-label={wording.INFORMATION}>
-          <header>
-            {wording.INFORMATION}
-          </header>
-          <ul>
             <li>
-              <Link href={paths.AIDE_SUR_LE_SITE}>
-                {wording.AIDE_SUR_LE_SITE}
+              <Link href={paths.FAQ}>
+                {wording.FAQ}
               </Link>
             </li>
             <li>
-              <Link href={paths.CONFIDENTIALITE_INFORMATIONS_PERSONNELLES}>
-                {wording.CONFIDENTIALITE_INFORMATIONS_PERSONNELLES}
-              </Link>
-            </li>
-            <li>
-              <Link href={paths.SECURITE_INFORMATIQUE}>
-                {wording.SECURITE_INFORMATIQUE}
+              <Link href={paths.MENTIONS_LEGALES}>
+                {wording.MENTIONS_LEGALES}
               </Link>
             </li>
           </ul>
@@ -69,9 +57,6 @@ export default function Footer(): ReactElement {
       </div>
       <p>
         {wording.COPYRIGHT}
-        <Link href={paths.MENTIONS_LEGALES}>
-          {wording.MENTIONS_LEGALES}
-        </Link>
       </p>
     </footer>
   )

@@ -74,14 +74,8 @@ export class WordingFr implements Wording {
   // Politique de gestion des données
   readonly TITLE_PAGE_POLITIQUE_DE_GESTION_DES_DONNEES: string = 'Politique de gestion des données'
 
-  // Aide sur le site
-  readonly TITLE_PAGE_AIDE_SUR_LE_SITE: string = 'Aide sur le site'
-
-  // Confidentialité / Informations personnelles
-  readonly TITLE_PAGE_CONFIDENTIALITE_INFORMATIONS_PERSONNELLES: string = 'Confidentialité / Informations personnelles'
-
-  // Sécurité informatique
-  readonly TITLE_PAGE_SECURITE_INFORMATIQUE: string = 'Sécurité informatique'
+  // FAQ
+  readonly TITLE_FAQ: string = 'FAQ'
 
   // Mentions légales
   readonly TITLE_PAGE_MENTIONS_LEGALES: string = 'Mentions légales'
@@ -95,15 +89,13 @@ export class WordingFr implements Wording {
   readonly FERMER: string = 'Fermer'
 
   // Footer
+  readonly INFORMATIONS: string = 'Informations'
   readonly RECHERCHER_UNE_CONSULTATION_JURIDIQUE: string = this.TITLE_PAGE_RECHERCHER_UNE_CONSULTATION_JURIDIQUE
   readonly NOS_CRITERES_D_ACCESSIBILITE: string = this.TITLE_PAGE_NOS_CRITERES_D_ACCESSIBILITE
   readonly POLITIQUE_DE_GESTION_DES_DONNEES: string = this.TITLE_PAGE_POLITIQUE_DE_GESTION_DES_DONNEES
-  readonly INFORMATION: string = 'Information'
-  readonly AIDE_SUR_LE_SITE: string = this.TITLE_PAGE_AIDE_SUR_LE_SITE
-  readonly CONFIDENTIALITE_INFORMATIONS_PERSONNELLES: string = this.TITLE_PAGE_CONFIDENTIALITE_INFORMATIONS_PERSONNELLES
-  readonly SECURITE_INFORMATIQUE: string = this.TITLE_PAGE_SECURITE_INFORMATIQUE
+  readonly FAQ: string = this.TITLE_FAQ
+  readonly MENTIONS_LEGALES: string = this.TITLE_PAGE_MENTIONS_LEGALES
   readonly QUALITE_DE_SERVICE: string = 'Qualité du service'
   readonly ACCESSIBILITE: string = 'Accessibilité : 50 %'
-  readonly COPYRIGHT: string = '© Droit Pluriel 2022 - '
-  readonly MENTIONS_LEGALES: string = this.TITLE_PAGE_MENTIONS_LEGALES
+  readonly COPYRIGHT: string = '© Droit Pluriel 2022'
 }
