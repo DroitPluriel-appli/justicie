@@ -4,6 +4,7 @@ import { ReactElement } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
 import ExternalLink from '../ExternalLink/ExternalLink'
+import RetourHautDePage from '../RetourHautDePage/RetourHautDePage'
 import styles from './Accueil.module.css'
 
 export default function Accueil(): ReactElement {
@@ -31,8 +32,6 @@ export default function Accueil(): ReactElement {
         {wording.VOUS_VOULEZ_FAIRE_UNE_ACTION_EN_JUSTICE}
         <br />
         {wording.VOUS_AVEZ_RECU_UNE_DECISION}
-        <br />
-        {wording.JUSTICE_PLURIELLE_VOUS_PERMET}
       </p>
       <Link
         href={paths.RECHERCHER_UNE_CONSULTATION_JURIDIQUE}
@@ -99,10 +98,6 @@ export default function Accueil(): ReactElement {
         {wording.TITLE_NOUS_CONTACTER}
       </h2>
       <address className={styles.adresse}>
-        {wording.ADRESSE_NOM_DROIT_PLURIEL}
-        <br />
-        {wording.ADRESSE_LIEU_DROIT_PLURIEL}
-        <br />
         {wording.PAR_EMAIL}
         <a href={'mailto:' + wording.EMAIL_DROIT_PLURIEL}>
           {wording.EMAIL_DROIT_PLURIEL}
@@ -179,6 +174,8 @@ export default function Accueil(): ReactElement {
           </svg>
         </ExternalLink>
       </div>
+
+      <RetourHautDePage />
     </>
   )
 }

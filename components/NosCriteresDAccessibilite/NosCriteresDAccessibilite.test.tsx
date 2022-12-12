@@ -66,5 +66,7 @@ describe("page nos criteres d'accessibilite", () => {
     const descriptionPersonnelForme = within(articles[6]).getByText(wording.DESCRIPTION_PERSONNEL_FORME, { selector: 'p' })
     expect(descriptionPersonnelForme).toBeInTheDocument()
 
+    const retourHautDePage = screen.getByRole('link', { name: wording.RETOUR_EN_HAUT_DE_PAGE })
+    expect(retourHautDePage).toHaveAttribute('href', '#evitement')
   })
 })

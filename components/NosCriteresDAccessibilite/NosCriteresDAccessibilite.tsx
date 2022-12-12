@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { ReactElement } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
+import RetourHautDePage from '../RetourHautDePage/RetourHautDePage'
 import CritereDAccessibilite from './CritereDAccessibilite'
 import styles from './NosCriteresDAccessibilite.module.css'
 
@@ -65,6 +66,8 @@ export default function NosCriteresDAccessibilite(): ReactElement {
           />
         ))
       }
+
+      <RetourHautDePage />
     </>
   )
 }
