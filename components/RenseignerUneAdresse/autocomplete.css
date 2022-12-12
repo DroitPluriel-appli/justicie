@@ -1,0 +1,34 @@
+.autocomplete__wrapper {
+  width: 100%;
+}
+
+.autocomplete__input {
+  border: none;
+  border-radius: 2rem;
+  box-sizing: border-box;
+  height: 3rem;
+  margin-top: var(--s-margin);
+  padding: var(--m-margin);
+  width: 100%;
+}
+
+.autocomplete__menu--visible {
+  display: revert;
+}
+
+.autocomplete__menu--hidden {
+  display: none;
+}
+
+.autocomplete__option {
+  border-bottom: 1px solid var(--white);
+  font-weight: normal;
+  padding-block: var(--m-margin);
+}
+
+.autocomplete__option:hover,
+.autocomplete__option--focused {
+  background-color: var(--button-color);
+  cursor: pointer;
+  font-weight: bold;
+}

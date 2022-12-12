@@ -5,7 +5,7 @@
   padding: var(--m-margin);
 }
 
-.main a {
+.main > a:first-child {
   color: var(--white);
   display: block;
   font-size: var(--s-font);
@@ -30,6 +30,7 @@
   border-radius: 5rem;
   box-sizing: border-box;
   color: var(--primary-color);
+  display: block;
   font-weight: bold;
   margin-bottom: var(--xxl-margin);
   padding: var(--m-margin);

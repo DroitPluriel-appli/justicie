@@ -46,6 +46,12 @@ export interface Wording {
   readonly OU: string
   readonly RENSEIGNER_UNE_ADRESSE: string
 
+  // Renseigner une adresse
+  readonly TITLE_PAGE_RENSEIGNER_UNE_ADRESSE: string
+  readonly EFFACER_L_ADRESSE: string
+  readonly NOTICE_DES_RESULTATS: string
+  readonly VALIDER_L_ADRESSE: string
+
   // Rechercher par handicap
   readonly TITLE_PAGE_RECHERCHER_PAR_HANDICAP: string
   readonly MODIFIER_L_ADRESSE: string
