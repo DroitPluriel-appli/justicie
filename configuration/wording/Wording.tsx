@@ -12,7 +12,6 @@ export interface Wording {
   readonly VOUS_ETES_VICTIME: string
   readonly VOUS_VOULEZ_FAIRE_UNE_ACTION_EN_JUSTICE: string
   readonly VOUS_AVEZ_RECU_UNE_DECISION: string
-  readonly JUSTICE_PLURIELLE_VOUS_PERMET: string
   readonly RECHERCHER_UNE_CONSULTATION_JURIDIQUE_GRATUITE_ET_ACCESSIBLE: string
   readonly DECOUVRIR_NOS_CRITERES: string
   readonly TITLE_A_PROPOS_DE_DROIT_PLURIEL: string

@@ -15,7 +15,6 @@ export class WordingFr implements Wording {
   readonly VOUS_ETES_VICTIME: string = 'Vous êtes victime (violence, viol, vol...).'
   readonly VOUS_VOULEZ_FAIRE_UNE_ACTION_EN_JUSTICE: string = 'Vous voulez faire une action en justice (comment trouver un avocat, à qui vous adresser...).'
   readonly VOUS_AVEZ_RECU_UNE_DECISION: string = 'Vous avez reçu une décision de justice et vous voulez savoir comment faire (faire appel, faire respecter cette décision...)'
-  readonly JUSTICE_PLURIELLE_VOUS_PERMET: string = 'Justice Plurielle vous permet de trouver une réponse.'
   readonly RECHERCHER_UNE_CONSULTATION_JURIDIQUE_GRATUITE_ET_ACCESSIBLE: string = 'Rechercher une consultation juridique gratuite et accessible'
   readonly DECOUVRIR_NOS_CRITERES: string = 'Découvrir nos critères d’accessiblité'
   readonly TITLE_A_PROPOS_DE_DROIT_PLURIEL: string = 'À propos de Justice Pluriel'
@@ -75,7 +74,7 @@ export class WordingFr implements Wording {
   readonly TITLE_PAGE_POLITIQUE_DE_GESTION_DES_DONNEES: string = 'Politique de gestion des données'
 
   // FAQ
-  readonly TITLE_FAQ: string = 'FAQ'
+  readonly TITLE_FAQ: string = 'Foire aux questions'
 
   // Mentions légales
   readonly TITLE_PAGE_MENTIONS_LEGALES: string = 'Mentions légales'
@@ -93,9 +92,9 @@ export class WordingFr implements Wording {
   readonly RECHERCHER_UNE_CONSULTATION_JURIDIQUE: string = this.TITLE_PAGE_RECHERCHER_UNE_CONSULTATION_JURIDIQUE
   readonly NOS_CRITERES_D_ACCESSIBILITE: string = this.TITLE_PAGE_NOS_CRITERES_D_ACCESSIBILITE
   readonly POLITIQUE_DE_GESTION_DES_DONNEES: string = this.TITLE_PAGE_POLITIQUE_DE_GESTION_DES_DONNEES
-  readonly FAQ: string = this.TITLE_FAQ
+  readonly FAQ: string = 'FAQ'
   readonly MENTIONS_LEGALES: string = this.TITLE_PAGE_MENTIONS_LEGALES
   readonly QUALITE_DE_SERVICE: string = 'Qualité du service'
-  readonly ACCESSIBILITE: string = 'Accessibilité : 50 %'
+  readonly ACCESSIBILITE: string = 'Accessibilité : partiellement conforme'
   readonly COPYRIGHT: string = '© Droit Pluriel 2022'
 }

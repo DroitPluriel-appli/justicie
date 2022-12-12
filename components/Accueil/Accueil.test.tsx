@@ -84,5 +84,8 @@ describe('page d’accueil', () => {
     expect(lienInstagram).toHaveAttribute('href', wording.LIEN_INSTAGRAM)
     expect(lienInstagram).toHaveAttribute('target', '_blank')
     expect(lienInstagram).toHaveAttribute('rel', 'external noopener noreferrer')
+
+    const retourHautDePage = screen.getByRole('link', { name: wording.RETOUR_EN_HAUT_DE_PAGE })
+    expect(retourHautDePage).toHaveAttribute('href', '#evitement')
   })
 })
