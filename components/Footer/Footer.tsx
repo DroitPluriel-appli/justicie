@@ -12,7 +12,7 @@ export default function Footer(): ReactElement {
     <footer className={styles.footer}>
       <div>
         <LogoDroitPluriel />
-        <section aria-label={wording.JUSTICE_PLURIELLE}>
+        <section aria-label={wording.INFORMATIONS}>
           <header>
             {wording.INFORMATIONS}
           </header>
