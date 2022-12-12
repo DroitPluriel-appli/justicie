@@ -31,8 +31,6 @@ export default function Accueil(): ReactElement {
         {wording.VOUS_VOULEZ_FAIRE_UNE_ACTION_EN_JUSTICE}
         <br />
         {wording.VOUS_AVEZ_RECU_UNE_DECISION}
-        <br />
-        {wording.JUSTICE_PLURIELLE_VOUS_PERMET}
       </p>
       <Link
         href={paths.RECHERCHER_UNE_CONSULTATION_JURIDIQUE}

@@ -25,7 +25,7 @@ describe('page d’accueil', () => {
     const trouvezUnConseil = within(main).getByText(wording.TROUVEZ_UN_CONSEIL_JURIDIQUE, { selector: 'p' })
     expect(trouvezUnConseil).toBeInTheDocument()
 
-    const description = within(main).getByText(textMatch(wording.VOUS_AVEZ_UNE_QUESTION_SUR_VOS_DROITS + wording.VOUS_ETES_VICTIME + wording.VOUS_VOULEZ_FAIRE_UNE_ACTION_EN_JUSTICE + wording.VOUS_AVEZ_RECU_UNE_DECISION + wording.JUSTICE_PLURIELLE_VOUS_PERMET), { selector: 'p' })
+    const description = within(main).getByText(textMatch(wording.VOUS_AVEZ_UNE_QUESTION_SUR_VOS_DROITS + wording.VOUS_ETES_VICTIME + wording.VOUS_VOULEZ_FAIRE_UNE_ACTION_EN_JUSTICE + wording.VOUS_AVEZ_RECU_UNE_DECISION), { selector: 'p' })
     expect(description).toBeInTheDocument()
 
     const rechercherUneConsultation = within(main).getByRole('link', { name: wording.RECHERCHER_UNE_CONSULTATION_JURIDIQUE_GRATUITE_ET_ACCESSIBLE })

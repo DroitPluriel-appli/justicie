@@ -11,10 +11,10 @@ export class WordingFr implements Wording {
 
   readonly VOUS_AVEZ_UN_PROBLEME_DE_DROIT: string = 'Vous avez un problème de droit ?'
   readonly TROUVEZ_UN_CONSEIL_JURIDIQUE: string = 'Trouvez un conseil juridique près de chez vous, gratuit et accessible.'
-  readonly VOUS_AVEZ_UNE_QUESTION_SUR_VOS_DROITS: string = 'Vous avez une question sur vos droits (travail, divorce, logement...).'
+  readonly VOUS_AVEZ_UNE_QUESTION_SUR_VOS_DROITS: string = 'Vous avez une question de droit (travail, divorce, logement...).'
   readonly VOUS_ETES_VICTIME: string = 'Vous êtes victime (violence, viol, vol...).'
   readonly VOUS_VOULEZ_FAIRE_UNE_ACTION_EN_JUSTICE: string = 'Vous voulez faire une action en justice (comment trouver un avocat, à qui vous adresser...).'
-  readonly VOUS_AVEZ_RECU_UNE_DECISION: string = 'Vous avez reçu une décision de justice et vous voulez savoir comment faire (faire appel, faire respecter cette décision...) :'
+  readonly VOUS_AVEZ_RECU_UNE_DECISION: string = 'Vous avez reçu une décision de justice et vous voulez savoir comment faire (faire appel, faire respecter cette décision...)'
   readonly JUSTICE_PLURIELLE_VOUS_PERMET: string = 'Justice Plurielle vous permet de trouver une réponse.'
   readonly RECHERCHER_UNE_CONSULTATION_JURIDIQUE_GRATUITE_ET_ACCESSIBLE: string = 'Rechercher une consultation juridique gratuite et accessible'
   readonly DECOUVRIR_NOS_CRITERES: string = 'Découvrir nos critères d’accessiblité'
