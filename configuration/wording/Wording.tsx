@@ -14,7 +14,6 @@ export interface Wording {
   readonly VOUS_AVEZ_RECU_UNE_DECISION: string
   readonly JUSTICE_PLURIELLE_VOUS_PERMET: string
   readonly RECHERCHER_UNE_CONSULTATION_JURIDIQUE_GRATUITE_ET_ACCESSIBLE: string
-  readonly RECHERCHER_UNE_CONSULTATION_JURIDIQUE_GRATUITE_ET_ACCESSIBLE: string
   readonly DECOUVRIR_NOS_CRITERES: string
   readonly TITLE_A_PROPOS_DE_DROIT_PLURIEL: string
   readonly DROIT_PLURIEL_EST_UNE_ASSOCIATION: string
@@ -22,8 +21,6 @@ export interface Wording {
   readonly TITLE_NOUS_CONTACTER: string
   readonly SITE_DROIT_PLURIEL: string
   readonly TITRE_LIEN_SITE_DROIT_PLURIEL: string
-  readonly ADRESSE_NOM_DROIT_PLURIEL: string
-  readonly ADRESSE_LIEU_DROIT_PLURIEL: string
   readonly PAR_EMAIL: string
   readonly EMAIL_DROIT_PLURIEL: string
   readonly PAR_TELEPHONE: string

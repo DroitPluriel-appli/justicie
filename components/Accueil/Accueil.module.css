@@ -46,10 +46,6 @@
   padding: var(--m-margin);
 }
 
-.retrouvezInfos {
-  font-weight: bold;
-}
-
 .adresse {
   margin-bottom: var(--l-to-xxl-margin);
 }
