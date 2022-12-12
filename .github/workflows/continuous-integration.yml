@@ -3,7 +3,19 @@ name: Continuous Integration
 on: pull_request
 
 jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          cache: yarn
+          node-version-file: package.json
+      - name: Install packages
+        run: yarn --immutable
+
   tests:
+    needs: install
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -17,6 +29,7 @@ jobs:
         run: yarn test
 
   analyze:
+    needs: install
     runs-on: ubuntu-latest
     permissions:
       actions: read
@@ -32,6 +45,7 @@ jobs:
         category: /language:typescript
 
   package-dedupe:
+    needs: install
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -43,6 +57,7 @@ jobs:
         run: yarn dedupe --check
 
   type-checker:
+    needs: install
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -56,6 +71,7 @@ jobs:
         run: yarn typecheck
 
   typescript-linter:
+    needs: install
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -69,6 +85,7 @@ jobs:
         run: yarn lint:typescript
 
   css-linter:
+    needs: install
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
