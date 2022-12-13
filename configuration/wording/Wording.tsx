@@ -77,8 +77,8 @@ export interface Wording {
   // Politique de gestion des données
   readonly TITLE_PAGE_POLITIQUE_DE_GESTION_DES_DONNEES: string
 
-  // FAQ
-  readonly TITLE_FAQ: string
+  // Foire aux questions
+  readonly TITLE_FOIRE_AUX_QUESTIONS: string
 
   // Mentions légales
   readonly TITLE_PAGE_MENTIONS_LEGALES: string
@@ -96,7 +96,7 @@ export interface Wording {
   readonly RECHERCHER_UNE_CONSULTATION_JURIDIQUE: string
   readonly NOS_CRITERES_D_ACCESSIBILITE: string
   readonly POLITIQUE_DE_GESTION_DES_DONNEES: string
-  readonly FAQ: string
+  readonly FOIRE_AUX_QUESTIONS: string
   readonly MENTIONS_LEGALES: string
   readonly QUALITE_DE_SERVICE: string
   readonly ACCESSIBILITE: string

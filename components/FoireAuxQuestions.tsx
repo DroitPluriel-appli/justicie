@@ -3,17 +3,17 @@ import { ReactElement } from 'react'
 
 import { useDependencies } from '../configuration/useDependencies'
 
-export default function Faq(): ReactElement {
+export default function FoireAuxQuestions(): ReactElement {
   const { wording } = useDependencies()
 
   return (
     <>
       <Head>
         <title>
-          {wording.TITLE_FAQ}
+          {wording.TITLE_FOIRE_AUX_QUESTIONS}
         </title>
       </Head>
-      {wording.TITLE_FAQ}
+      {wording.TITLE_FOIRE_AUX_QUESTIONS}
     </>
   )
 }

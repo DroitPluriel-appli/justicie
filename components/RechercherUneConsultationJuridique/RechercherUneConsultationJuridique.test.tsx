@@ -2,7 +2,7 @@ import { fireEvent, screen, waitFor } from '@testing-library/react'
 import singletonRouter from 'next/router'
 
 import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
-import RechercherUnLieu from './RechercherUnLieu'
+import RechercherUneConsultationJuridique from './RechercherUneConsultationJuridique'
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-return
 jest.mock('next/router', () => require('next-router-mock/async'))
@@ -12,7 +12,7 @@ describe('rechercher un lieu', () => {
 
   it('affiche le choix de la géolocalisation ou d’une adresse manuelle', () => {
     // WHEN
-    renderFakeComponent(<RechercherUnLieu />)
+    renderFakeComponent(<RechercherUneConsultationJuridique />)
 
     // THEN
     const retourAlAccueil = screen.getByRole('link', { name: wording.RETOUR_A_L_ACCUEIL })
@@ -37,7 +37,7 @@ describe('rechercher un lieu', () => {
   ])('va à l’étape 2 quand j’utilise ma position actuelle avec le % et grise le bouton', async (event) => {
     // GIVEN
     mockedSuccessedGeolocation(43.296482, 5.36978)
-    renderFakeComponent(<RechercherUnLieu />)
+    renderFakeComponent(<RechercherUneConsultationJuridique />)
     const utiliserMaPostionActuelle = screen.getByRole('button', { name: wording.UTILISER_MA_POSITION_ACTUELLE })
 
     // WHEN
@@ -57,7 +57,7 @@ describe('rechercher un lieu', () => {
   ])('va à l’étape 2 quand j’utilise ma position actuelle avec la touche %s et grise le bouton', async (code) => {
     // GIVEN
     mockedSuccessedGeolocation(43.296482, 5.36978)
-    renderFakeComponent(<RechercherUnLieu />)
+    renderFakeComponent(<RechercherUneConsultationJuridique />)
     const utiliserMaPostionActuelle = screen.getByRole('button', { name: wording.UTILISER_MA_POSITION_ACTUELLE })
 
     // WHEN
@@ -74,7 +74,7 @@ describe('rechercher un lieu', () => {
   it('na va pas à l’étape 2 quand je bloque la localisation de ma position actuelle', () => {
     // GIVEN
     mockedErrorGeolocation()
-    renderFakeComponent(<RechercherUnLieu />)
+    renderFakeComponent(<RechercherUneConsultationJuridique />)
     const utiliserMaPostionActuelle = screen.getByRole('button', { name: wording.UTILISER_MA_POSITION_ACTUELLE })
 
     // WHEN
