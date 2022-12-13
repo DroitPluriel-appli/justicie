@@ -37,11 +37,6 @@ export default function Footer(): ReactElement {
                 {wording.FOIRE_AUX_QUESTIONS}
               </Link>
             </li>
-            <li>
-              <Link href={paths.MENTIONS_LEGALES}>
-                {wording.MENTIONS_LEGALES}
-              </Link>
-            </li>
           </ul>
         </section>
         <section aria-label={wording.QUALITE_DE_SERVICE}>
@@ -57,6 +52,9 @@ export default function Footer(): ReactElement {
       </div>
       <p>
         {wording.COPYRIGHT}
+        <Link href={paths.MENTIONS_LEGALES}>
+          {wording.MENTIONS_LEGALES}
+        </Link>
       </p>
     </footer>
   )

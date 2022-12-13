@@ -103,5 +103,5 @@ export class WordingFr implements Wording {
   readonly MENTIONS_LEGALES: string = this.TITLE_PAGE_MENTIONS_LEGALES
   readonly QUALITE_DE_SERVICE: string = 'Qualité du service'
   readonly ACCESSIBILITE: string = 'Accessibilité : partiellement conforme'
-  readonly COPYRIGHT: string = '© Droit Pluriel 2022'
+  readonly COPYRIGHT: string = '© Droit Pluriel 2022 - '
 }

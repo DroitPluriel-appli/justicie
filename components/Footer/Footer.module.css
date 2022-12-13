@@ -3,7 +3,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: auto;
 }
 
 @media (max-width: 36em) {
@@ -46,6 +45,7 @@
 
 @media (min-width: 36em) {
   .footer {
+    margin-top: var(--xxl-margin);
     padding-top: var(--xl-margin);
   }
 
