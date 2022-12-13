@@ -46,6 +46,7 @@ h2 {
 }
 
 main {
+  flex-grow: 3;
   padding-inline: var(--m-margin);
 }
 
@@ -93,4 +94,10 @@ svg {
 address {
   font-size: var(--s-to-m-font);
   font-style: normal;
+}
+
+#__next {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }

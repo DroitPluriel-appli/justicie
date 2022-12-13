@@ -3,12 +3,12 @@ import Link from 'next/link'
 import { ReactElement } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
-import styles from './RechercherUnLieu.module.css'
-import { useRechercherUnLieu } from './useRechercherUnLieu'
+import styles from './RechercherUneConsultationJuridique.module.css'
+import { useRechercherUneConsultationJuridique } from './useRechercherUneConsultationJuridique'
 
-export default function RechercherUnLieu(): ReactElement {
+export default function RechercherUneConsultationJuridique(): ReactElement {
   const { paths, wording } = useDependencies()
-  const { buttonName, isDisabled, keyDown, touch } = useRechercherUnLieu()
+  const { buttonName, isDisabled, keyDown, touch } = useRechercherUneConsultationJuridique()
 
   return (
     <div className={styles.main}>

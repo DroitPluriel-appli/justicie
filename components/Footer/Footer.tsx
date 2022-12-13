@@ -33,20 +33,8 @@ export default function Footer(): ReactElement {
               </Link>
             </li>
             <li>
-              <Link
-                href={paths.FAQ}
-                legacyBehavior
-              >
-                <a href={paths.FAQ}>
-                  <abbr title={wording.FAQ}>
-                    {wording.FAQ}
-                  </abbr>
-                </a>
-              </Link>
-            </li>
-            <li>
-              <Link href={paths.MENTIONS_LEGALES}>
-                {wording.MENTIONS_LEGALES}
+              <Link href={paths.FOIRE_AUX_QUESTIONS}>
+                {wording.FOIRE_AUX_QUESTIONS}
               </Link>
             </li>
           </ul>
@@ -64,6 +52,9 @@ export default function Footer(): ReactElement {
       </div>
       <p>
         {wording.COPYRIGHT}
+        <Link href={paths.MENTIONS_LEGALES}>
+          {wording.MENTIONS_LEGALES}
+        </Link>
       </p>
     </footer>
   )

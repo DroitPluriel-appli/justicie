@@ -13,7 +13,7 @@ type State = Readonly<{
   isDisabled: boolean
 }>
 
-export function useRechercherUnLieu() {
+export function useRechercherUneConsultationJuridique() {
   const { isTheGoodKeyCode, paths, wording } = useDependencies()
   const [geoloc, setGeoloc] = useState<coordonneesGeospatiales>({
     latitude: 0,

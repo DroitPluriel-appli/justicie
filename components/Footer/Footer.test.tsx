@@ -1,6 +1,6 @@
 import { screen, within } from '@testing-library/react'
 
-import { fakeFrontDependencies, renderFakeComponent } from '../../configuration/testHelper'
+import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
 import Footer from './Footer'
 
 describe('pied de page', () => {
@@ -23,18 +23,15 @@ describe('pied de page', () => {
     expect(criteresDAccessibilite).toHaveAttribute('href', paths.NOS_CRITERES_D_ACCESSIBILITE)
     const politiqueGestionDesDonnees = within(liensJusticePlurielle[2]).getByRole('link', { name: wording.POLITIQUE_DE_GESTION_DES_DONNEES })
     expect(politiqueGestionDesDonnees).toHaveAttribute('href', paths.POLITIQUE_DE_GESTION_DES_DONNEES)
-    const faq = within(liensJusticePlurielle[3]).getByRole('link', { name: wording.FAQ })
-    expect(faq).toHaveAttribute('href', paths.FAQ)
-    const abbrFaq = within(liensJusticePlurielle[3]).getByText(wording.FAQ, { selector: 'abbr' })
-    expect(abbrFaq).toHaveAttribute('title', wording.FAQ)
-    const mentionsLegales = within(liensJusticePlurielle[4]).getByRole('link', { name: wording.MENTIONS_LEGALES })
-    expect(mentionsLegales).toHaveAttribute('href', paths.MENTIONS_LEGALES)
+    const foireAuxQuestions = within(liensJusticePlurielle[3]).getByRole('link', { name: wording.FOIRE_AUX_QUESTIONS })
+    expect(foireAuxQuestions).toHaveAttribute('href', paths.FOIRE_AUX_QUESTIONS)
 
     const qualiteDeService = within(sections[1]).getByRole('banner')
     expect(qualiteDeService.textContent).toBe(wording.QUALITE_DE_SERVICE)
     const liensQualiteDeService = within(sections[1]).getAllByRole('listitem')
     expect(liensQualiteDeService[0].textContent).toBe(wording.ACCESSIBILITE)
-    const copyright = within(footer).getByText(wording.COPYRIGHT, { selector: 'p' })
-    expect(copyright).toBeInTheDocument()
+    const copyright = within(footer).getByText(textMatch(wording.COPYRIGHT + wording.MENTIONS_LEGALES), { selector: 'p' })
+    const mentionsLegales = within(copyright).getByRole('link', { name: wording.MENTIONS_LEGALES })
+    expect(mentionsLegales).toHaveAttribute('href', paths.MENTIONS_LEGALES)
   })
 })

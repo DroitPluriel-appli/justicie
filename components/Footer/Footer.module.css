@@ -45,6 +45,7 @@
 
 @media (min-width: 36em) {
   .footer {
+    margin-top: var(--xxl-margin);
     padding-top: var(--xl-margin);
   }
 

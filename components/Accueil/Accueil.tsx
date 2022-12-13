@@ -104,7 +104,7 @@ export default function Accueil(): ReactElement {
         </a>
         <br />
         {wording.PAR_TELEPHONE}
-        <a href={'tel:' + wording.TELEPHONE_DROIT_PLURIEL}>
+        <a href={'tel:' + wording.TELEPHONE_DROIT_PLURIEL.replaceAll(' ', '')}>
           {wording.TELEPHONE_DROIT_PLURIEL}
         </a>
       </address>
