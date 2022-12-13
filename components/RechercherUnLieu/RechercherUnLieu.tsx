@@ -21,9 +21,7 @@ export default function RechercherUnLieu(): ReactElement {
         href={paths.ACCUEIL}
         legacyBehavior
       >
-        <a
-          href={paths.ACCUEIL}
-        >
+        <a href={paths.ACCUEIL}>
           <svg
             aria-hidden
             height="10"
@@ -57,12 +55,12 @@ export default function RechercherUnLieu(): ReactElement {
       <div className={styles.ou}>
         {wording.OU}
       </div>
-      <button
+      <Link
         className={`${styles.button} ${styles.renseignerAdresse}`}
-        type="button"
+        href={paths.RENSEIGNER_UNE_ADRESSE}
       >
         {wording.RENSEIGNER_UNE_ADRESSE}
-      </button>
+      </Link>
     </div>
   )
 }

@@ -36,7 +36,7 @@ export interface Wording {
   readonly LIEN_INSTAGRAM: string
   readonly TITRE_LIEN_INSTAGRAM: string
 
-  // Rechercher un lieu de droit
+  // Rechercher une consultation juridique
   readonly TITLE_PAGE_RECHERCHER_UNE_CONSULTATION_JURIDIQUE: string
   readonly RETOUR_A_L_ACCUEIL: string
   readonly OU_RECHERCHEZ_VOUS: string
@@ -45,6 +45,13 @@ export interface Wording {
   readonly CHARGEMENT: string
   readonly OU: string
   readonly RENSEIGNER_UNE_ADRESSE: string
+
+  // Renseigner une adresse
+  readonly TITLE_PAGE_RENSEIGNER_UNE_ADRESSE: string
+  readonly EFFACER_L_ADRESSE: string
+  readonly NOTICE_DES_RESULTATS: string
+  readonly VALIDER_L_ADRESSE: string
+  readonly API_ADRESSE_NE_REPOND_PLUS: string
 
   // Rechercher par handicap
   readonly TITLE_PAGE_RECHERCHER_PAR_HANDICAP: string

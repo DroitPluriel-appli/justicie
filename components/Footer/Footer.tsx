@@ -33,11 +33,16 @@ export default function Footer(): ReactElement {
               </Link>
             </li>
             <li>
-              <abbr title="Foire aux questions">
-                <Link href={paths.FAQ}>
-                  {wording.FAQ}
-                </Link>
-              </abbr>
+              <Link
+                href={paths.FAQ}
+                legacyBehavior
+              >
+                <a href={paths.FAQ}>
+                  <abbr title={wording.FAQ}>
+                    {wording.FAQ}
+                  </abbr>
+                </a>
+              </Link>
             </li>
             <li>
               <Link href={paths.MENTIONS_LEGALES}>

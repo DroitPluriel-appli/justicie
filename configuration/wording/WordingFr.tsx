@@ -14,7 +14,7 @@ export class WordingFr implements Wording {
   readonly VOUS_AVEZ_UNE_QUESTION_SUR_VOS_DROITS: string = 'Vous avez une question de droit (travail, divorce, logement...).'
   readonly VOUS_ETES_VICTIME: string = 'Vous êtes victime (violence, viol, vol...).'
   readonly VOUS_VOULEZ_FAIRE_UNE_ACTION_EN_JUSTICE: string = 'Vous voulez faire une action en justice (comment trouver un avocat, à qui vous adresser...).'
-  readonly VOUS_AVEZ_RECU_UNE_DECISION: string = 'Vous avez reçu une décision de justice et vous voulez savoir comment faire (faire appel, faire respecter cette décision...)'
+  readonly VOUS_AVEZ_RECU_UNE_DECISION: string = 'Vous avez reçu une décision de justice et vous voulez savoir comment faire (faire appel, faire respecter cette décision...).'
   readonly RECHERCHER_UNE_CONSULTATION_JURIDIQUE_GRATUITE_ET_ACCESSIBLE: string = 'Rechercher une consultation juridique gratuite et accessible'
   readonly DECOUVRIR_NOS_CRITERES: string = 'Découvrir nos critères d’accessiblité'
   readonly TITLE_A_PROPOS_DE_DROIT_PLURIEL: string = 'À propos de Justice Pluriel'
@@ -39,7 +39,7 @@ export class WordingFr implements Wording {
   readonly LIEN_INSTAGRAM: string = 'https://www.instagram.com/droitpluriel/'
   readonly TITRE_LIEN_INSTAGRAM: string = 'Page Instagram de Droit Pluriel - Nouvelle fenêtre'
 
-  // Rechercher un lieu de droit
+  // Rechercher une consultation juridique
   readonly TITLE_PAGE_RECHERCHER_UNE_CONSULTATION_JURIDIQUE: string = 'Rechercher une consultation juridique'
   readonly RETOUR_A_L_ACCUEIL: string = 'Retour à l’accueil'
   readonly OU_RECHERCHEZ_VOUS: string = 'Où recherchez-vous une consultation juridique ?'
@@ -48,6 +48,13 @@ export class WordingFr implements Wording {
   readonly CHARGEMENT: string = 'Chargement...'
   readonly OU: string = 'ou'
   readonly RENSEIGNER_UNE_ADRESSE: string = 'Renseigner une adresse'
+
+  // Renseigner une adresse
+  readonly TITLE_PAGE_RENSEIGNER_UNE_ADRESSE: string = this.RENSEIGNER_UNE_ADRESSE
+  readonly EFFACER_L_ADRESSE: string = 'Effacer l’adresse'
+  readonly NOTICE_DES_RESULTATS: string = 'Lorsque les résultats de la saisie semi-automatique sont disponibles, utilisez les flèches haut et bas pour les vérifier et la touche Entrée pour les sélectionner. Utilisateurs d’appareils tactiles, explorez par le toucher ou par des gestes de balayage.'
+  readonly VALIDER_L_ADRESSE: string = 'Valider l’adresse'
+  readonly API_ADRESSE_NE_REPOND_PLUS: string = 'L’API ne semble plus répondre'
 
   // Rechercher par handicap
   readonly TITLE_PAGE_RECHERCHER_PAR_HANDICAP: string = 'Rechercher par handicap'

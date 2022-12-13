@@ -3357,6 +3357,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"accessible-autocomplete@npm:^2.0.4":
+  version: 2.0.4
+  resolution: "accessible-autocomplete@npm:2.0.4"
+  dependencies:
+    preact: ^8.3.1
+  checksum: e1eeff2785476bb37be022a1a149e68f3bacd4e29a264b442ddd2d6c94fe900ecaf109a87098791e55774fe7ec9d93e6d55039390c9e82207d3ebb18576f182a
+  languageName: node
+  linkType: hard
+
 "acorn-globals@npm:^7.0.0":
   version: 7.0.1
   resolution: "acorn-globals@npm:7.0.1"
@@ -8066,6 +8075,7 @@ __metadata:
     "@types/react": 18.0.25
     "@typescript-eslint/eslint-plugin": ^5.43.0
     "@typescript-eslint/parser": ^5.43.0
+    accessible-autocomplete: ^2.0.4
     depcheck: ^1.4.3
     eslint: ^8.28.0
     eslint-config-next: ^13.0.3
@@ -9656,6 +9666,13 @@ __metadata:
     picocolors: ^1.0.0
     source-map-js: ^1.0.2
   checksum: 62782723a385f92b7525f66d29614624de7c5643855423db3a5efd9287e677650300192749adddbbb6734cea9b1d5f5fd4f6ea00ca3f9a95dbbb88f835f5ca64
+  languageName: node
+  linkType: hard
+
+"preact@npm:^8.3.1":
+  version: 8.5.3
+  resolution: "preact@npm:8.5.3"
+  checksum: 1a2d90816abdc62673842190b819b7ce2f552b4b412cc0d2118395d8167e79f4e988229993079700277a0cae6b7fd895b3bfe5a43091bbc1f4df43903b04d1e7
   languageName: node
   linkType: hard
 

@@ -1,11 +1,11 @@
-import { fireEvent, screen } from '@testing-library/react'
+import { fireEvent, screen, waitFor } from '@testing-library/react'
 import singletonRouter from 'next/router'
 
 import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
 import RechercherUnLieu from './RechercherUnLieu'
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-jest.mock('next/router', () => require('next-router-mock'))
+jest.mock('next/router', () => require('next-router-mock/async'))
 
 describe('rechercher un lieu', () => {
   const { paths, wording } = fakeFrontDependencies
@@ -27,14 +27,14 @@ describe('rechercher un lieu', () => {
     const ou = screen.getByText(wording.OU)
     expect(ou).toBeInTheDocument()
 
-    const renseignerUneAdresse = screen.getByRole('button', { name: wording.RENSEIGNER_UNE_ADRESSE })
-    expect(renseignerUneAdresse).toBeInTheDocument()
+    const renseignerUneAdresse = screen.getByRole('link', { name: wording.RENSEIGNER_UNE_ADRESSE })
+    expect(renseignerUneAdresse).toHaveAttribute('href', paths.RENSEIGNER_UNE_ADRESSE)
   })
 
   it.each([
     ['touchStart'],
     ['click'],
-  ])('va à l’étape 2 quand j’utilise ma position actuelle avec le % et grise le bouton', (event) => {
+  ])('va à l’étape 2 quand j’utilise ma position actuelle avec le % et grise le bouton', async (event) => {
     // GIVEN
     mockedSuccessedGeolocation(43.296482, 5.36978)
     renderFakeComponent(<RechercherUnLieu />)
@@ -46,13 +46,15 @@ describe('rechercher un lieu', () => {
     // THEN
     const utiliserMaPostionActuelleGrisee = screen.getByRole('button', { name: wording.CHARGEMENT })
     expect(utiliserMaPostionActuelleGrisee).toBeDisabled()
-    expect(singletonRouter.asPath).toBe(`/${paths.RECHERCHER_PAR_HANDICAP}?lat=43.296482&lon=5.36978`)
+    await waitFor(() => {
+      expect(singletonRouter.asPath).toBe(`/${paths.RECHERCHER_PAR_HANDICAP}?lat=43.296482&lon=5.36978`)
+    })
   })
 
   it.each([
     ['Space'],
     ['Enter'],
-  ])('va à l’étape 2 quand j’utilise ma position actuelle avec la touche %s et grise le bouton', (code) => {
+  ])('va à l’étape 2 quand j’utilise ma position actuelle avec la touche %s et grise le bouton', async (code) => {
     // GIVEN
     mockedSuccessedGeolocation(43.296482, 5.36978)
     renderFakeComponent(<RechercherUnLieu />)
@@ -64,26 +66,52 @@ describe('rechercher un lieu', () => {
     // THEN
     const utiliserMaPostionActuelleGrisee = screen.getByRole('button', { name: wording.CHARGEMENT })
     expect(utiliserMaPostionActuelleGrisee).toBeDisabled()
-    expect(singletonRouter.asPath).toBe(`/${paths.RECHERCHER_PAR_HANDICAP}?lat=43.296482&lon=5.36978`)
+    await waitFor(() => {
+      expect(singletonRouter.asPath).toBe(`/${paths.RECHERCHER_PAR_HANDICAP}?lat=43.296482&lon=5.36978`)
+    })
+  })
+
+  it('na va pas à l’étape 2 quand je bloque la localisation de ma position actuelle', () => {
+    // GIVEN
+    mockedErrorGeolocation()
+    renderFakeComponent(<RechercherUnLieu />)
+    const utiliserMaPostionActuelle = screen.getByRole('button', { name: wording.UTILISER_MA_POSITION_ACTUELLE })
+
+    // WHEN
+    fireEvent.keyDown(utiliserMaPostionActuelle, { code: 'Space' })
+
+    // THEN
+    expect(utiliserMaPostionActuelle).toBeEnabled()
   })
 })
 
 function mockedSuccessedGeolocation(latitude: number, longitude: number) {
-  const mockGeolocation = {
-    getCurrentPosition: jest.fn()
-      .mockImplementationOnce((success: PositionCallback) => success({
-        coords: {
-          accuracy: 9075.79126982149,
-          altitude: null,
-          altitudeAccuracy: null,
-          heading: null,
-          latitude,
-          longitude,
-          speed: null,
-        },
-        timestamp: 1670251498462,
-      })),
-  }
   // @ts-ignore
-  global.navigator.geolocation = mockGeolocation
+  global.navigator.geolocation = {
+    getCurrentPosition: (success: PositionCallback) => success({
+      coords: {
+        accuracy: 9075.79126982149,
+        altitude: null,
+        altitudeAccuracy: null,
+        heading: null,
+        latitude,
+        longitude,
+        speed: null,
+      },
+      timestamp: 1670251498462,
+    }),
+  }
+}
+
+function mockedErrorGeolocation() {
+  // @ts-ignore
+  global.navigator.geolocation = {
+    getCurrentPosition: (_: PositionCallback, error: PositionErrorCallback) => error({
+      PERMISSION_DENIED: 0,
+      POSITION_UNAVAILABLE: 0,
+      TIMEOUT: 0,
+      code: 0,
+      message: 'string',
+    }),
+  }
 }

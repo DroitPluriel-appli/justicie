@@ -1,0 +1,49 @@
+.main {
+  background-color: var(--primary-background-color);
+  color: var(--white);
+  margin: calc(-1 * var(--m-margin));
+  padding: var(--m-margin);
+}
+
+.main a {
+  color: var(--white);
+  display: block;
+  font-size: var(--s-font);
+  margin-bottom: var(--xxl-margin);
+}
+
+.main a svg {
+  margin-right: var(--s-margin);
+}
+
+.label {
+  font-weight: bold;
+}
+
+.wrapper {
+  display: flex;
+  position: relative;
+}
+
+.reset {
+  background-color: var(--gray-dark);
+  border-radius: 5rem;
+  font-size: var(--s-font);
+  margin-right: var(--s-margin);
+  margin-top: var(--m-margin);
+  padding: var(--s-margin);
+  position: absolute;
+  right: 0;
+}
+
+.submit {
+  text-align: right;
+}
+
+.submit button {
+  background-color: var(--button-color);
+  border-radius: 2rem;
+  font-weight: bold;
+  margin-block: var(--m-margin);
+  padding: var(--m-margin);
+}
