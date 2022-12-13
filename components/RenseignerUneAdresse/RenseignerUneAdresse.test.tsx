@@ -3,6 +3,7 @@ import singletonRouter from 'next/router'
 
 import { fakeFrontDependencies, FireEventOptions, renderFakeComponent } from '../../configuration/testHelper'
 import RenseignerUneAdresse from './RenseignerUneAdresse'
+import { AdresseJson } from './useRenseignerUneAdresse'
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-return
 jest.mock('next/router', () => require('next-router-mock/async'))
@@ -30,24 +31,79 @@ describe('resneigner une adresse', () => {
     expect(notice).toBeInTheDocument()
     const validerLAdresse = within(formulaire).getByRole('button', { name: wording.VALIDER_L_ADRESSE })
     expect(validerLAdresse).toHaveAttribute('type', 'submit')
-    expect(validerLAdresse).toBeDisabled()
   })
 
-  it('affiche des résultats quand il y a au moins 3 caractères renseignés', () => {
+  it('ne va pas à l’étape 2 si l’adresse est inconnue', async () => {
     // GIVEN
+    const query = 'adresse inconnue'
+    mockedFetch([
+      {
+        geometry: {
+          coordinates: [
+            5.36978,
+            43.296482,
+          ],
+        },
+        properties:{ label: '34 avenue de lopera' },
+      },
+    ])
     renderFakeComponent(<RenseignerUneAdresse />)
     const formulaire = screen.getByRole('search')
     const renseignerUneAdresse = within(formulaire).getByPlaceholderText(wording.RENSEIGNER_UNE_ADRESSE)
-    const event: FireEventOptions = { target: { value: 'france' } }
+    const adresseInconnue: FireEventOptions = { target: { value: query } }
+    fireEvent.change(renseignerUneAdresse, adresseInconnue)
+    const validerLAdresse = within(formulaire).getByRole('button', { name: wording.VALIDER_L_ADRESSE })
 
     // WHEN
-    fireEvent.change(renseignerUneAdresse, event)
+    fireEvent.click(validerLAdresse)
 
     // THEN
-    const list = screen.getByRole('listbox')
-    const resultats = within(list).getAllByRole('option')
-    expect(resultats[0].textContent).toBe('france')
-    expect(resultats[1].textContent).toBe('france')
+    await waitFor(() => {
+      const url = new URL('https://api-adresse.data.gouv.fr/search/')
+      url.searchParams.append('q', query)
+      expect(global.fetch).toHaveBeenNthCalledWith(1, url)
+    })
+    expect(validerLAdresse).toBeDisabled()
+  })
+
+  it('affiche des résultats quand il y a au moins 3 caractères renseignés avec une latence de 500 ms', async () => {
+    // GIVEN
+    mockedFetch([
+      {
+        geometry: {
+          coordinates: [
+            5.36978,
+            43.296482,
+          ],
+        },
+        properties:{ label: '34 avenue de lopera' },
+      },
+      {
+        geometry: {
+          coordinates: [
+            6.36978,
+            44.296482,
+          ],
+        },
+        properties:{ label: '34 bis avenue de lopera' },
+      },
+    ])
+    renderFakeComponent(<RenseignerUneAdresse />)
+    const formulaire = screen.getByRole('search')
+    const renseignerUneAdresse = within(formulaire).getByPlaceholderText(wording.RENSEIGNER_UNE_ADRESSE)
+    const adresse: FireEventOptions = { target: { value: '34 avenue de lopera' } }
+
+    // WHEN
+    fireEvent.change(renseignerUneAdresse, adresse)
+
+    // THEN
+    await waitFor(() => {
+      const list = screen.getByRole('listbox')
+      const resultats = within(list).getAllByRole('option')
+      expect(resultats[0].textContent).toBe('34 avenue de lopera')
+      // eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
+      expect(resultats[1].textContent).toBe('34 bis avenue de lopera')
+    })
   })
 
   it('n’affiche pas de résultats quand il y a moins de 3 caractères renseignés', () => {
@@ -55,10 +111,10 @@ describe('resneigner une adresse', () => {
     renderFakeComponent(<RenseignerUneAdresse />)
     const formulaire = screen.getByRole('search')
     const renseignerUneAdresse = within(formulaire).getByPlaceholderText(wording.RENSEIGNER_UNE_ADRESSE)
-    const value: FireEventOptions = { target: { value: 'fr' } }
+    const adresse: FireEventOptions = { target: { value: '34' } }
 
     // WHEN
-    fireEvent.change(renseignerUneAdresse, value)
+    fireEvent.change(renseignerUneAdresse, adresse)
 
     // THEN
     const list = screen.getByRole('listbox')
@@ -69,61 +125,138 @@ describe('resneigner une adresse', () => {
   it.each([
     ['touchStart'],
     ['click'],
-  ])('efface l’adresse quand on %s sur le bouton', (event) => {
+  ])('efface l’adresse quand on %s sur le bouton et rend le formulaire non validable', async (event) => {
     // GIVEN
+    mockedFetch([
+      {
+        geometry: {
+          coordinates: [
+            5.36978,
+            43.296482,
+          ],
+        },
+        properties:{ label: '34 avenue de lopera' },
+      },
+    ])
     renderFakeComponent(<RenseignerUneAdresse />)
     const formulaire = screen.getByRole('search')
     const renseignerUneAdresse = within(formulaire).getByPlaceholderText(wording.RENSEIGNER_UNE_ADRESSE)
-    const value: FireEventOptions = { target: { value: 'fr' } }
-    fireEvent.change(renseignerUneAdresse, value)
+    const adresse: FireEventOptions = { target: { value: '34 avenue de lopera' } }
+    fireEvent.change(renseignerUneAdresse, adresse)
+    const list = screen.getByRole('listbox')
+    await waitFor(() => {
+      const resultats = within(list).getAllByRole('option')
+      // eslint-disable-next-line testing-library/no-wait-for-side-effects
+      fireEvent.click(resultats[0])
+    })
     const effacerLAdresse = screen.getByRole('button', { name: wording.EFFACER_L_ADRESSE })
 
     // WHEN
     fireEvent[event as 'touchStart' | 'click'](effacerLAdresse)
 
     // THEN
-    const adresseEffacee = within(formulaire).getByPlaceholderText(wording.RENSEIGNER_UNE_ADRESSE)
-    expect(adresseEffacee).toHaveValue('')
+    // const adresseEffacee = within(formulaire).getByPlaceholderText(wording.RENSEIGNER_UNE_ADRESSE)
+    // expect(adresseEffacee).toHaveValue('')
+    const validerLAdresse = within(formulaire).getByRole('button', { name: wording.VALIDER_L_ADRESSE })
+    expect(validerLAdresse).toBeDisabled()
   })
 
   it.each([
     ['Space'],
     ['Enter'],
-  ])('efface l’adresse quand on appuie sur le bouton avec la touche %s', (code) => {
+  ])('efface l’adresse quand on appuie sur le bouton avec la touche %s et rend le formulaire non validable', async (code) => {
     // GIVEN
+    mockedFetch([
+      {
+        geometry: {
+          coordinates: [
+            5.36978,
+            43.296482,
+          ],
+        },
+        properties:{ label: '34 avenue de lopera' },
+      },
+    ])
     renderFakeComponent(<RenseignerUneAdresse />)
     const formulaire = screen.getByRole('search')
     const renseignerUneAdresse = within(formulaire).getByPlaceholderText(wording.RENSEIGNER_UNE_ADRESSE)
-    const value: FireEventOptions = { target: { value: 'fr' } }
-    fireEvent.change(renseignerUneAdresse, value)
+    const adresse: FireEventOptions = { target: { value: '34 avenue de lopera' } }
+    fireEvent.change(renseignerUneAdresse, adresse)
+    const list = screen.getByRole('listbox')
+    await waitFor(() => {
+      const resultats = within(list).getAllByRole('option')
+      // eslint-disable-next-line testing-library/no-wait-for-side-effects
+      fireEvent.click(resultats[0])
+    })
     const effacerLAdresse = screen.getByRole('button', { name: wording.EFFACER_L_ADRESSE })
 
     // WHEN
     fireEvent.keyDown(effacerLAdresse, { code })
 
     // THEN
-    const adresseEffacee = within(formulaire).getByPlaceholderText(wording.RENSEIGNER_UNE_ADRESSE)
-    expect(adresseEffacee).toHaveValue('')
+    // const adresseEffacee = within(formulaire).getByPlaceholderText(wording.RENSEIGNER_UNE_ADRESSE)
+    // expect(adresseEffacee).toHaveValue('')
+    const validerLAdresse = within(formulaire).getByRole('button', { name: wording.VALIDER_L_ADRESSE })
+    expect(validerLAdresse).toBeDisabled()
   })
 
   it('va à l’étape 2 quand je soumets le formulaire avec une adresse valide', async () => {
     // GIVEN
+    mockedFetch([
+      {
+        geometry: {
+          coordinates: [
+            5.36978,
+            43.296482,
+          ],
+        },
+        properties:{ label: '34 avenue de lopera' },
+      },
+    ])
     renderFakeComponent(<RenseignerUneAdresse />)
     const formulaire = screen.getByRole('search')
     const renseignerUneAdresse = within(formulaire).getByPlaceholderText(wording.RENSEIGNER_UNE_ADRESSE)
-    const value: FireEventOptions = { target: { value: 'france' } }
-    fireEvent.change(renseignerUneAdresse, value)
+    const adresse: FireEventOptions = { target: { value: '34 a' } }
+    fireEvent.change(renseignerUneAdresse, adresse)
     const list = screen.getByRole('listbox')
-    const resultats = within(list).getAllByRole('option')
-    fireEvent.click(resultats[0])
+    await waitFor(() => {
+      const resultats = within(list).getAllByRole('option')
+      // eslint-disable-next-line testing-library/no-wait-for-side-effects
+      fireEvent.click(resultats[0])
+    })
     const validerLAdresse = within(formulaire).getByRole('button', { name: wording.VALIDER_L_ADRESSE })
 
     // WHEN
-    fireEvent.submit(validerLAdresse)
+    fireEvent.click(validerLAdresse)
 
     // THEN
     await waitFor(() => {
       expect(singletonRouter.asPath).toBe(`/${paths.RECHERCHER_PAR_HANDICAP}?lat=43.296482&lon=5.36978`)
     })
   })
+
+  it('l’API adresse ne répond pas', async () => {
+    // GIVEN
+    jest.spyOn(global, 'fetch').mockRejectedValueOnce('API is down')
+    renderFakeComponent(<RenseignerUneAdresse />)
+    const formulaire = screen.getByRole('search')
+    const renseignerUneAdresse = within(formulaire).getByPlaceholderText(wording.RENSEIGNER_UNE_ADRESSE)
+    const adresse: FireEventOptions = { target: { value: '34 avenue de lopera' } }
+
+    // WHEN
+    fireEvent.change(renseignerUneAdresse, adresse)
+
+    // THEN
+    const list = screen.getByRole('listbox')
+    await waitFor(() => {
+      const resultats = within(list).getAllByRole('option')
+      // eslint-disable-next-line testing-library/no-wait-for-side-effects
+      expect(resultats[0].textContent).toBe(wording.API_ADRESSE_NE_REPOND_PLUS)
+    })
+  })
 })
+
+function mockedFetch(adresses: AdresseJson[]) {
+  // @ts-ignore
+  jest.spyOn(global, 'fetch').mockResolvedValue({ json: () => Promise.resolve({ features: adresses }) })
+}

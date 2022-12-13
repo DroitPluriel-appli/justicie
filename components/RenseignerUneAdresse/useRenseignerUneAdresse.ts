@@ -17,77 +17,80 @@ type AdressesJson = Readonly<{
 }>
 
 export function useRenseignerUneAdresse() {
-  const { isTheGoodKeyCode, paths } = useDependencies()
+  const { isTheGoodKeyCode, paths, wording } = useDependencies()
   const { push } = useRouter()
   const [isDisabled, setIsDisabled] = useState<boolean>(true)
   const [adresseSelectionnee, setAdresseSelectionnee] = useState<string>('')
-  const [libelleDesadresses, setLibelleDesAdresses] = useState<AdressesJson>({
-    features: [
-      {
-        geometry: {
-          coordinates: [
-            5.36978,
-            43.296482,
-          ],
-        },
-        properties:{ label: 'france' },
-      },
-      {
-        geometry: {
-          coordinates: [
-            5.36978,
-            43.296482,
-          ],
-        },
-        properties:{ label: 'france' },
-      },
-      {
-        geometry: {
-          coordinates: [
-            5.36978,
-            43.296482,
-          ],
-        },
-        properties:{ label: 'germany' },
-      },
-    ],
-  })
+  const [libelleDesAdresses, setLibelleDesAdresses] = useState<AdressesJson>({ features: [] })
 
-  const suggestion = useCallback((query: string, populateResults: (adressesFiltrees: string[]) => void) => {
-    const adressesFiltrees = libelleDesadresses.features
-      .filter((adresse) => adresse.properties.label.indexOf(query) !== -1)
-      .map((adresse) => adresse.properties.label)
-    populateResults(adressesFiltrees)
-  }, [libelleDesadresses])
+  const suggestionDAdresse = async (query: string, populateResults: (labelDesAdresses: string[]) => void): Promise<void> => {
+    try {
+      const apiAdresse = new URL('https://api-adresse.data.gouv.fr/search/')
+      apiAdresse.searchParams.append('q', query)
 
-  const touch = useCallback(() => {
+      const response = await fetch(apiAdresse)
+      const adressesFiltrees = await response.json() as AdressesJson
+      setLibelleDesAdresses(adressesFiltrees)
+
+      const labelDesAdresses = adressesFiltrees.features.map((adresse) => adresse.properties.label)
+      populateResults(labelDesAdresses)
+    } catch (error) {
+      populateResults([wording.API_ADRESSE_NE_REPOND_PLUS])
+    }
+  }
+
+  const effaceLAdresseAuTouch = useCallback(() => {
     // @ts-ignore
     document.querySelector('input').value = ''
+    setIsDisabled(true)
   }, [])
 
-  const keyDown = useCallback((event: KeyboardEvent<HTMLButtonElement>) => {
+  const effaceLAdresseAuKeyDown = useCallback((event: KeyboardEvent<HTMLButtonElement>) => {
     if (isTheGoodKeyCode(event)) {
       // @ts-ignore
       document.querySelector('input').value = ''
+      setIsDisabled(true)
     }
   }, [isTheGoodKeyCode])
 
-  const onConfirm = useCallback((adresse: string) => {
-    setIsDisabled(false)
+  const selectionneUneAdresse = useCallback((adresse: string) => {
     if (adresse !== undefined) {
+      setIsDisabled(false)
       setAdresseSelectionnee(adresse)
     }
   }, [])
 
-  const submit = useCallback((event: FormEvent<HTMLFormElement>) => {
+  const debounce = (func: (query: string, populateResults: (labelDesAdresses: string[]) => void) => Promise<void>, delay: number) => {
+    let timeoutId: NodeJS.Timeout
+
+    return (...args: [query: string, populateResults: (labelDesAdresses: string[]) => void]) => {
+      clearTimeout(timeoutId)
+      timeoutId = setTimeout(() => {
+        // @ts-ignore
+        void func.apply(this, args)
+      }, delay)
+    }
+  }
+
+  const vaAlEtape2 = useCallback((event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     async function goToRechercherParHandicap(coordonneesGeospatiales: AdresseJson) {
       await push(`/${paths.RECHERCHER_PAR_HANDICAP}?lat=${coordonneesGeospatiales.geometry.coordinates[1]}&lon=${coordonneesGeospatiales.geometry.coordinates[0]}`)
     }
 
-    const coordonneesGeospatiales = libelleDesadresses.features.find((adresse): boolean => adresseSelectionnee === adresse.properties.label)
+    const coordonneesGeospatiales = libelleDesAdresses.features.find((adresse): boolean => adresseSelectionnee === adresse.properties.label)
     void goToRechercherParHandicap(coordonneesGeospatiales as AdresseJson)
-  }, [adresseSelectionnee, paths.RECHERCHER_PAR_HANDICAP, push, libelleDesadresses.features])
+  }, [adresseSelectionnee, paths.RECHERCHER_PAR_HANDICAP, push, libelleDesAdresses.features])
 
-  return { isDisabled, keyDown, onConfirm, submit, suggestion, touch }
+  const noticeDesResultats = useCallback(() => wording.NOTICE_DES_RESULTATS, [wording.NOTICE_DES_RESULTATS])
+
+  return {
+    effaceLAdresseAuKeyDown,
+    effaceLAdresseAuTouch,
+    isDisabled,
+    noticeDesResultats,
+    selectionneUneAdresse,
+    suggestionDAdresse: debounce(suggestionDAdresse, 500),
+    vaAlEtape2,
+  }
 }

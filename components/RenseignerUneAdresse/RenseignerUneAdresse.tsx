@@ -1,7 +1,7 @@
 import Autocomplete from 'accessible-autocomplete/react'
 import Head from 'next/head'
 import Link from 'next/link'
-import { ReactElement, useCallback } from 'react'
+import { ReactElement } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
 import styles from './RenseignerUneAdresse.module.css'
@@ -9,7 +9,15 @@ import { useRenseignerUneAdresse } from './useRenseignerUneAdresse'
 
 export default function RenseignerUneAdresse(): ReactElement {
   const { paths, wording } = useDependencies()
-  const { isDisabled, keyDown, onConfirm, suggestion, submit, touch } = useRenseignerUneAdresse()
+  const {
+    effaceLAdresseAuKeyDown,
+    effaceLAdresseAuTouch,
+    isDisabled,
+    noticeDesResultats,
+    selectionneUneAdresse,
+    suggestionDAdresse,
+    vaAlEtape2,
+  } = useRenseignerUneAdresse()
 
   return (
     <div className={styles.main}>
@@ -39,7 +47,7 @@ export default function RenseignerUneAdresse(): ReactElement {
       </Link>
       <form
         action={paths.RECHERCHER_PAR_HANDICAP}
-        onSubmit={submit}
+        onSubmit={vaAlEtape2}
         role="search"
       >
         <label
@@ -53,17 +61,17 @@ export default function RenseignerUneAdresse(): ReactElement {
             className={styles.autocomplete}
             id="autocomplete"
             minLength="3"
-            onConfirm={onConfirm}
+            onConfirm={selectionneUneAdresse}
             placeholder={wording.RENSEIGNER_UNE_ADRESSE}
             showNoOptionsFound={false}
-            source={suggestion}
-            tAssistiveHint={useCallback(() => wording.NOTICE_DES_RESULTATS, [wording.NOTICE_DES_RESULTATS])}
+            source={suggestionDAdresse}
+            tAssistiveHint={noticeDesResultats}
           />
           <button
             className={styles.reset}
-            onClick={touch}
-            onKeyDown={keyDown}
-            onTouchStart={touch}
+            onClick={effaceLAdresseAuTouch}
+            onKeyDown={effaceLAdresseAuKeyDown}
+            onTouchStart={effaceLAdresseAuTouch}
             title={wording.EFFACER_L_ADRESSE}
             type="button"
           >
