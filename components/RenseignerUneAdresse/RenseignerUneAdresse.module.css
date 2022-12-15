@@ -29,6 +29,7 @@
   background-color: var(--gray-dark);
   border-radius: 5rem;
   font-size: var(--s-font);
+  height: 1rem;
   margin-right: var(--s-margin);
   margin-top: var(--m-margin);
   padding: var(--s-margin);

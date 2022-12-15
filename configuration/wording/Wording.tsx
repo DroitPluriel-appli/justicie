@@ -55,7 +55,15 @@ export interface Wording {
 
   // Rechercher par handicap
   readonly TITLE_PAGE_RECHERCHER_PAR_HANDICAP: string
+  readonly RECOMMENCER_PARCOURS: string
   readonly MODIFIER_L_ADRESSE: string
+  readonly PASSER: string
+  readonly BESOIN_EN_ACCESSIBILITE: string
+  readonly FACULTATIF: string
+  readonly SUIVANT: string
+
+  // Résultats de la recherche en vue liste
+  readonly TITLE_PAGE_ADRESSE_LISTE: string
 
   // Nos critères d'accessibilité
   readonly TITLE_PAGE_NOS_CRITERES_D_ACCESSIBILITE: string

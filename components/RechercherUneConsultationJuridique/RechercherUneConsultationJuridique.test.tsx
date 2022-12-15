@@ -1,14 +1,19 @@
 import { fireEvent, screen, waitFor } from '@testing-library/react'
-import singletonRouter from 'next/router'
+import mockRouter from 'next-router-mock'
 
 import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
 import RechercherUneConsultationJuridique from './RechercherUneConsultationJuridique'
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-return
-jest.mock('next/router', () => require('next-router-mock/async'))
-
 describe('rechercher un lieu', () => {
   const { paths, wording } = fakeFrontDependencies
+
+  it('affiche le titre de l’onglet', () => {
+    // WHEN
+    renderFakeComponent(<RechercherUneConsultationJuridique />)
+
+    // THEN
+    expect(document.title).toBe(wording.TITLE_PAGE_RECHERCHER_UNE_CONSULTATION_JURIDIQUE)
+  })
 
   it('affiche le choix de la géolocalisation ou d’une adresse manuelle', () => {
     // WHEN
@@ -47,7 +52,7 @@ describe('rechercher un lieu', () => {
     const utiliserMaPostionActuelleGrisee = screen.getByRole('button', { name: wording.CHARGEMENT })
     expect(utiliserMaPostionActuelleGrisee).toBeDisabled()
     await waitFor(() => {
-      expect(singletonRouter.asPath).toBe(`/${paths.RECHERCHER_PAR_HANDICAP}?lat=43.296482&lon=5.36978`)
+      expect(mockRouter.asPath).toBe(`/${paths.RECHERCHER_PAR_HANDICAP}?lat=43.296482&lon=5.36978`)
     })
   })
 
@@ -67,11 +72,11 @@ describe('rechercher un lieu', () => {
     const utiliserMaPostionActuelleGrisee = screen.getByRole('button', { name: wording.CHARGEMENT })
     expect(utiliserMaPostionActuelleGrisee).toBeDisabled()
     await waitFor(() => {
-      expect(singletonRouter.asPath).toBe(`/${paths.RECHERCHER_PAR_HANDICAP}?lat=43.296482&lon=5.36978`)
+      expect(mockRouter.asPath).toBe(`/${paths.RECHERCHER_PAR_HANDICAP}?lat=43.296482&lon=5.36978`)
     })
   })
 
-  it('na va pas à l’étape 2 quand je bloque la localisation de ma position actuelle', () => {
+  it('ne va pas à l’étape 2 quand je bloque la localisation de ma position actuelle', () => {
     // GIVEN
     mockedErrorGeolocation()
     renderFakeComponent(<RechercherUneConsultationJuridique />)

@@ -60,7 +60,7 @@ export default function RenseignerUneAdresse(): ReactElement {
           <Autocomplete
             className={styles.autocomplete}
             id="autocomplete"
-            minLength="3"
+            minLength="4"
             onConfirm={selectionneUneAdresse}
             placeholder={wording.RENSEIGNER_UNE_ADRESSE}
             showNoOptionsFound={false}

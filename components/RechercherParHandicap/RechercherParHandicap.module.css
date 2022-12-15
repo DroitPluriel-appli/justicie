@@ -5,13 +5,42 @@
   padding: var(--m-margin);
 }
 
-.main a {
-  color: var(--white);
-  display: block;
-  font-size: var(--s-font);
+.main button {
   margin-bottom: var(--xxl-margin);
 }
 
-.main a svg {
+.main button svg {
   margin-right: var(--s-margin);
+}
+
+.main a {
+  color: var(--white);
+  font-size: var(--s-font);
+}
+
+.links {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: var(--xl-font);
+  font-weight: normal;
+  margin-bottom: var(--xxl-margin);
+}
+
+.title div {
+  font-size: var(--m-font);
+}
+
+.submit {
+  text-align: right;
+}
+
+.submit button {
+  background-color: var(--button-color);
+  border-radius: 2rem;
+  font-weight: bold;
+  margin-block: var(--m-margin);
+  padding: var(--m-margin);
 }

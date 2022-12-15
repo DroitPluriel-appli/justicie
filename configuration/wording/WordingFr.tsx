@@ -17,7 +17,7 @@ export class WordingFr implements Wording {
   readonly VOUS_AVEZ_RECU_UNE_DECISION: string = 'Vous avez reçu une décision de justice et vous voulez savoir comment faire (faire appel, faire respecter cette décision...).'
   readonly RECHERCHER_UNE_CONSULTATION_JURIDIQUE_GRATUITE_ET_ACCESSIBLE: string = 'Rechercher une consultation juridique gratuite et accessible'
   readonly DECOUVRIR_NOS_CRITERES: string = 'Découvrir nos critères d’accessiblité'
-  readonly TITLE_A_PROPOS_DE_DROIT_PLURIEL: string = 'À propos de Justice Pluriel'
+  readonly TITLE_A_PROPOS_DE_DROIT_PLURIEL: string = 'À propos de Justice Plurielle'
   readonly DROIT_PLURIEL_EST_UNE_ASSOCIATION: string = "Justice Plurielle est un service gratuit d'orientation vers les lieux d'accès au droit. Droit Pluriel, association qui défend une justice accessible à tous et toutes, et notamment aux personnes en situation de handicap, pilote ce projet."
   readonly RETROUVEZ_PLUS_D_INFOS: string = 'Retrouvez plus d’information sur notre site internet : '
   readonly TITLE_NOUS_CONTACTER: string = 'Nous contacter'
@@ -58,7 +58,15 @@ export class WordingFr implements Wording {
 
   // Rechercher par handicap
   readonly TITLE_PAGE_RECHERCHER_PAR_HANDICAP: string = 'Rechercher par handicap'
+  readonly RECOMMENCER_PARCOURS: string = 'Veuillez recommencer le parcours en entier.'
   readonly MODIFIER_L_ADRESSE: string = 'Modifier l’adresse'
+  readonly PASSER: string = 'Passer'
+  readonly BESOIN_EN_ACCESSIBILITE: string = 'Quels sont vos besoins en accessibilité ?'
+  readonly FACULTATIF: string = '(facultatif)'
+  readonly SUIVANT: string = 'Suivant'
+
+  // Résultats de la recherche en vue liste
+  readonly TITLE_PAGE_ADRESSE_LISTE: string = 'Résultats de recherche en vue liste'
 
   // Nos critères d’accessibilité
   readonly TITLE_PAGE_NOS_CRITERES_D_ACCESSIBILITE: string = 'Nos critères d’accessibilité'
