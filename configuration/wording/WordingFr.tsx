@@ -74,6 +74,10 @@ export class WordingFr implements Wording {
   readonly LANCER_L_ITINERAIRE: string = 'Lancer l’itinéraire'
   readonly PLUS_D_INFORMATIONS: string = 'Plus d’informations'
 
+  // Resultats par plan
+  readonly TITLE_RESULTATS_PAR_PLAN: string = 'Résultats par plan'
+  readonly TITRE_MARKER_POSITION: string = 'Votre position'
+
   // Nos critères d’accessibilité
   readonly TITLE_PAGE_NOS_CRITERES_D_ACCESSIBILITE: string = 'Nos critères d’accessibilité'
   readonly TITLE_HANDICAP_MOTEUR_TOTAL: string = 'Accessibilité handicap moteur total'

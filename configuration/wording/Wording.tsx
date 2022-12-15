@@ -71,6 +71,10 @@ export interface Wording {
   readonly LANCER_L_ITINERAIRE: string
   readonly PLUS_D_INFORMATIONS: string
 
+  // Resultats par plan
+  readonly TITLE_RESULTATS_PAR_PLAN: string
+  readonly TITRE_MARKER_POSITION: string
+
   // Nos critères d'accessibilité
   readonly TITLE_PAGE_NOS_CRITERES_D_ACCESSIBILITE: string
   readonly TITLE_HANDICAP_MOTEUR_TOTAL: string
