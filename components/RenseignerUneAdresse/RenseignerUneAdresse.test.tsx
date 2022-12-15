@@ -1,15 +1,20 @@
 import { fireEvent, screen, waitFor, within } from '@testing-library/react'
-import singletonRouter from 'next/router'
+import mockRouter from 'next-router-mock'
 
-import { fakeFrontDependencies, FireEventOptions, renderFakeComponent } from '../../configuration/testHelper'
+import { fakeFrontDependencies, renderFakeComponent } from '../../configuration/testHelper'
 import RenseignerUneAdresse from './RenseignerUneAdresse'
 import { AdresseJson } from './useRenseignerUneAdresse'
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-return
-jest.mock('next/router', () => require('next-router-mock/async'))
-
 describe('resneigner une adresse', () => {
   const { paths, wording } = fakeFrontDependencies
+
+  it('affiche le titre de l’onglet', () => {
+    // WHEN
+    renderFakeComponent(<RenseignerUneAdresse />)
+
+    // THEN
+    expect(document.title).toBe(wording.TITLE_PAGE_RENSEIGNER_UNE_ADRESSE)
+  })
 
   it('affiche le formulaire', () => {
     // WHEN
@@ -36,21 +41,11 @@ describe('resneigner une adresse', () => {
   it('ne va pas à l’étape 2 si l’adresse est inconnue', async () => {
     // GIVEN
     const query = 'adresse inconnue'
-    mockedFetch([
-      {
-        geometry: {
-          coordinates: [
-            5.36978,
-            43.296482,
-          ],
-        },
-        properties:{ label: '34 avenue de lopera' },
-      },
-    ])
+    mockedFetch([])
     renderFakeComponent(<RenseignerUneAdresse />)
     const formulaire = screen.getByRole('search')
     const renseignerUneAdresse = within(formulaire).getByPlaceholderText(wording.RENSEIGNER_UNE_ADRESSE)
-    const adresseInconnue: FireEventOptions = { target: { value: query } }
+    const adresseInconnue = { target: { value: query } }
     fireEvent.change(renseignerUneAdresse, adresseInconnue)
     const validerLAdresse = within(formulaire).getByRole('button', { name: wording.VALIDER_L_ADRESSE })
 
@@ -66,7 +61,7 @@ describe('resneigner une adresse', () => {
     expect(validerLAdresse).toBeDisabled()
   })
 
-  it('affiche des résultats quand il y a au moins 3 caractères renseignés avec une latence de 500 ms', async () => {
+  it('affiche des résultats quand il y a au moins 4 caractères renseignés avec une latence de 500 ms', async () => {
     // GIVEN
     mockedFetch([
       {
@@ -91,7 +86,7 @@ describe('resneigner une adresse', () => {
     renderFakeComponent(<RenseignerUneAdresse />)
     const formulaire = screen.getByRole('search')
     const renseignerUneAdresse = within(formulaire).getByPlaceholderText(wording.RENSEIGNER_UNE_ADRESSE)
-    const adresse: FireEventOptions = { target: { value: '34 avenue de lopera' } }
+    const adresse = { target: { value: '34 avenue de lopera' } }
 
     // WHEN
     fireEvent.change(renseignerUneAdresse, adresse)
@@ -106,12 +101,12 @@ describe('resneigner une adresse', () => {
     })
   })
 
-  it('n’affiche pas de résultats quand il y a moins de 3 caractères renseignés', () => {
+  it('n’affiche pas de résultats quand il y a moins de 4 caractères renseignés', () => {
     // GIVEN
     renderFakeComponent(<RenseignerUneAdresse />)
     const formulaire = screen.getByRole('search')
     const renseignerUneAdresse = within(formulaire).getByPlaceholderText(wording.RENSEIGNER_UNE_ADRESSE)
-    const adresse: FireEventOptions = { target: { value: '34' } }
+    const adresse = { target: { value: '34' } }
 
     // WHEN
     fireEvent.change(renseignerUneAdresse, adresse)
@@ -141,7 +136,7 @@ describe('resneigner une adresse', () => {
     renderFakeComponent(<RenseignerUneAdresse />)
     const formulaire = screen.getByRole('search')
     const renseignerUneAdresse = within(formulaire).getByPlaceholderText(wording.RENSEIGNER_UNE_ADRESSE)
-    const adresse: FireEventOptions = { target: { value: '34 avenue de lopera' } }
+    const adresse = { target: { value: '34 avenue de lopera' } }
     fireEvent.change(renseignerUneAdresse, adresse)
     const list = screen.getByRole('listbox')
     await waitFor(() => {
@@ -180,7 +175,7 @@ describe('resneigner une adresse', () => {
     renderFakeComponent(<RenseignerUneAdresse />)
     const formulaire = screen.getByRole('search')
     const renseignerUneAdresse = within(formulaire).getByPlaceholderText(wording.RENSEIGNER_UNE_ADRESSE)
-    const adresse: FireEventOptions = { target: { value: '34 avenue de lopera' } }
+    const adresse = { target: { value: '34 avenue de lopera' } }
     fireEvent.change(renseignerUneAdresse, adresse)
     const list = screen.getByRole('listbox')
     await waitFor(() => {
@@ -216,7 +211,7 @@ describe('resneigner une adresse', () => {
     renderFakeComponent(<RenseignerUneAdresse />)
     const formulaire = screen.getByRole('search')
     const renseignerUneAdresse = within(formulaire).getByPlaceholderText(wording.RENSEIGNER_UNE_ADRESSE)
-    const adresse: FireEventOptions = { target: { value: '34 a' } }
+    const adresse = { target: { value: '34 a' } }
     fireEvent.change(renseignerUneAdresse, adresse)
     const list = screen.getByRole('listbox')
     await waitFor(() => {
@@ -231,7 +226,7 @@ describe('resneigner une adresse', () => {
 
     // THEN
     await waitFor(() => {
-      expect(singletonRouter.asPath).toBe(`/${paths.RECHERCHER_PAR_HANDICAP}?lat=43.296482&lon=5.36978`)
+      expect(mockRouter.asPath).toBe(`/${paths.RECHERCHER_PAR_HANDICAP}?lat=43.296482&lon=5.36978`)
     })
   })
 
@@ -241,7 +236,7 @@ describe('resneigner une adresse', () => {
     renderFakeComponent(<RenseignerUneAdresse />)
     const formulaire = screen.getByRole('search')
     const renseignerUneAdresse = within(formulaire).getByPlaceholderText(wording.RENSEIGNER_UNE_ADRESSE)
-    const adresse: FireEventOptions = { target: { value: '34 avenue de lopera' } }
+    const adresse = { target: { value: '34 avenue de lopera' } }
 
     // WHEN
     fireEvent.change(renseignerUneAdresse, adresse)
@@ -250,7 +245,6 @@ describe('resneigner une adresse', () => {
     const list = screen.getByRole('listbox')
     await waitFor(() => {
       const resultats = within(list).getAllByRole('option')
-      // eslint-disable-next-line testing-library/no-wait-for-side-effects
       expect(resultats[0].textContent).toBe(wording.API_ADRESSE_NE_REPOND_PLUS)
     })
   })

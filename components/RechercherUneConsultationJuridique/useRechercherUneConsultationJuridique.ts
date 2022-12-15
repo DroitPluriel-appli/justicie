@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router'
 import { KeyboardEvent, useCallback, useEffect, useState } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
@@ -14,7 +13,7 @@ type State = Readonly<{
 }>
 
 export function useRechercherUneConsultationJuridique() {
-  const { isTheGoodKeyCode, paths, wording } = useDependencies()
+  const { isTheGoodKeyCode, paths, useRouter, wording } = useDependencies()
   const [geoloc, setGeoloc] = useState<coordonneesGeospatiales>({
     latitude: 0,
     longitude: 0,

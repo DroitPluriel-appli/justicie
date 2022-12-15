@@ -4,8 +4,8 @@ import { ReactElement } from 'react'
 import styles from './CritereDAccessibilite.module.css'
 
 type CritereDAccessibiliteProps = Readonly<{
-  title: string,
-  description: string,
+  title: string
+  description: string
   imgSrc: string
 }>
 
