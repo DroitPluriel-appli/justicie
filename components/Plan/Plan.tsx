@@ -10,11 +10,6 @@ type PlanProps = Readonly<{
   viewCenter: L.LatLngExpression
 }>
 
-// TODO:
-// V - gérer undefined viewCenter
-// - gérer changement de taille et couleur au click
-// - popup au click
-
 export default function Plan({ lieux, viewCenter }: PlanProps): ReactElement {
   const { wording } = useDependencies()
   const { setMarkerPosition, setMarkersLieux } = usePlan()

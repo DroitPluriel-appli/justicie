@@ -30,5 +30,5 @@ export default function usePlan() {
     return markersLieux
   }
 
-  return { setMarkerPosition, setMarkersLieux }
+  return { iconSizeDefault, iconSizeSelected, setMarkerPosition, setMarkersLieux }
 }
