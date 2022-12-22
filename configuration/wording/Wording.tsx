@@ -109,6 +109,12 @@ export interface Wording {
   readonly NAVIGATION_MOBILE: string
   readonly FERMER: string
 
+  // CARTE LIEU
+  readonly TITRE_LANCER_ITINERAIRE: string
+  readonly LANCER_ITINERAIRE: string
+  readonly TITRE_PLUS_D_INFORMATIONS: string
+  readonly PLUS_D_INFORMATIONS: string
+
   // Footer
   readonly INFORMATIONS: string
   readonly RECHERCHER_UNE_CONSULTATION_JURIDIQUE: string

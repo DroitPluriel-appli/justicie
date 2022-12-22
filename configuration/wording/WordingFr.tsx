@@ -112,6 +112,12 @@ export class WordingFr implements Wording {
   readonly NAVIGATION_MOBILE: string = 'Navigation mobile'
   readonly FERMER: string = 'Fermer'
 
+  // CARTE LIEU
+  readonly TITRE_LANCER_ITINERAIRE: string = "Nouvelle fenêtre - Lancer l'itinéraire vers "
+  readonly LANCER_ITINERAIRE: string = "Lancer l'itinéraire"
+  readonly TITRE_PLUS_D_INFORMATIONS: string = "Plus d'informations sur ce lieu"
+  readonly PLUS_D_INFORMATIONS: string = "Plus d'informations"
+
   // Footer
   readonly INFORMATIONS: string = 'Informations'
   readonly RECHERCHER_UNE_CONSULTATION_JURIDIQUE: string = this.TITLE_PAGE_RECHERCHER_UNE_CONSULTATION_JURIDIQUE
