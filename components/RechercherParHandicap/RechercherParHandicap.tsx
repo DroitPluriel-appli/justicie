@@ -10,9 +10,9 @@ import { useRechercherParHandicap } from './useRechercherParHandicap'
 export default function RechercherParHandicap(): ReactElement {
   const { criteres, paths, useRouter, wording } = useDependencies()
   const { query } = useRouter()
-  const { retourEnArriere } = useRechercherParHandicap()
+  const { hasLatOrLon, retourEnArriere } = useRechercherParHandicap()
 
-  if (query.lat === undefined || query.lon === undefined) {
+  if (hasLatOrLon) {
     return (
       <p>
         {wording.RECOMMENCER_PARCOURS}
@@ -29,7 +29,6 @@ export default function RechercherParHandicap(): ReactElement {
       </Head>
       <div className={styles.main}>
         <div className={styles.links}>
-
           <button
             onClick={retourEnArriere}
             type="button"
@@ -47,8 +46,7 @@ export default function RechercherParHandicap(): ReactElement {
             </svg>
             {wording.MODIFIER_L_ADRESSE}
           </button>
-
-          <Link href={`${paths.ADRESSES_LISTE}?lat=${query.lat as string}&lon=${query.lon as string}`}>
+          <Link href={`${paths.RESULTATS_LISTE}?lat=${query.lat as string}&lon=${query.lon as string}`}>
             {wording.PASSER}
           </Link>
         </div>
@@ -58,7 +56,7 @@ export default function RechercherParHandicap(): ReactElement {
             {wording.FACULTATIF}
           </div>
         </h2>
-        <form action={paths.ADRESSES_LISTE}>
+        <form action={paths.RESULTATS_LISTE}>
           {
             criteres.map((critere) => (
               <CritereDAccessibilite

@@ -120,7 +120,7 @@ describe('resneigner une adresse', () => {
   it.each([
     ['touchStart'],
     ['click'],
-  ])('efface l’adresse quand on %s sur le bouton et rend le formulaire non validable', async (event) => {
+  ])('efface l’adresse quand on %s sur le bouton et rend le formulaire non validable', async (event: string) => {
     // GIVEN
     mockedFetch([
       {
@@ -159,7 +159,7 @@ describe('resneigner une adresse', () => {
   it.each([
     ['Space'],
     ['Enter'],
-  ])('efface l’adresse quand on appuie sur le bouton avec la touche %s et rend le formulaire non validable', async (code) => {
+  ])('efface l’adresse quand on appuie sur le bouton avec la touche %s et rend le formulaire non validable', async (code: string) => {
     // GIVEN
     mockedFetch([
       {

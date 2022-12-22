@@ -67,6 +67,12 @@ export class WordingFr implements Wording {
 
   // Résultats de la recherche en vue liste
   readonly TITLE_PAGE_ADRESSE_LISTE: string = 'Résultats de recherche en vue liste'
+  readonly LISTE: string = 'Liste'
+  readonly PLAN: string = 'Plan'
+  readonly BESOINS_D_ACCESSIBILITE: (nombre: number) => string = (nombre: number): string => `Besoins d’accessibilité (${nombre})`
+  readonly LIEUX_CORRESPONDENT_A_VOTRE_RECHERCHE: (nombre: number) => string = (nombre: number): string => `${nombre} lieux correspondent à votre recherche`
+  readonly LANCER_L_ITINERAIRE: string = 'Lancer l’itinéraire'
+  readonly PLUS_D_INFORMATIONS: string = 'Plus d’informations'
 
   // Nos critères d’accessibilité
   readonly TITLE_PAGE_NOS_CRITERES_D_ACCESSIBILITE: string = 'Nos critères d’accessibilité'

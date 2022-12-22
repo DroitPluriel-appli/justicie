@@ -64,6 +64,12 @@ export interface Wording {
 
   // Résultats de la recherche en vue liste
   readonly TITLE_PAGE_ADRESSE_LISTE: string
+  readonly LISTE: string
+  readonly PLAN: string
+  readonly BESOINS_D_ACCESSIBILITE: (nombre: number) => string
+  readonly LIEUX_CORRESPONDENT_A_VOTRE_RECHERCHE: (nombre: number) => string
+  readonly LANCER_L_ITINERAIRE: string
+  readonly PLUS_D_INFORMATIONS: string
 
   // Nos critères d'accessibilité
   readonly TITLE_PAGE_NOS_CRITERES_D_ACCESSIBILITE: string

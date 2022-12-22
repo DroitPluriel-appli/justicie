@@ -108,3 +108,9 @@ Justice Plurielle a la note de [A](https://securityheaders.com/?q=https%3A%2F%2F
 - Facile d'utilisation et Droit Pluriel avait déjà une feuille Excel
 - Gratuit
 - Partageable avec n'importe qui donc open data
+
+### Base de données PostgreSQL pour pouvoir filtrer et paginer les données de Google Sheet
+
+- Facile d'utilisation
+- Un grand nombre de développeur la connaisse
+- Scalingo nous l'offre gratuitement avec leur premier plan

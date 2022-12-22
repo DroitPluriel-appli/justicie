@@ -7,6 +7,7 @@ const createJestConfig = nextJest({ dir: './' })
 const customJestConfig: Config.InitialOptions = {
   clearMocks: true,
   collectCoverageFrom: [
+    'backend/**/*.ts',
     'components/**/*.ts?(x)',
     'database/**/*.ts',
     '!database/migrations/*.ts',
@@ -26,6 +27,7 @@ const customJestConfig: Config.InitialOptions = {
   setupFilesAfterEnv: ['./jest.setup.ts'],
   testEnvironment: 'jest-environment-jsdom',
   testMatch: [
+    '<rootDir>/backend/**/*(*.)@(test).ts',
     '<rootDir>/components/**/*(*.)@(test).tsx',
     '<rootDir>/database/**/*(*.)@(test).ts',
   ],
