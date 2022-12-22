@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:13.9-alpine # Conserver la même version avec le fichier de la CI
+    container_name: justice_plurielle_db
+    ports:
+      - target: 5432
+        published: 5432
+    environment:
+      POSTGRES_DB: justice_plurielle
+      POSTGRES_USER: justice_plurielle
+      POSTGRES_PASSWORD: justice_plurielle
+    volumes:
+      - type: volume
+        source: postgres_data
+        target: /var/lib/postgresql/data
+    command: ["postgres", "-c", "log_statement=all", "-c", "max_connections=10"]
+
+  postgres-test:
+    image: postgres:13.9-alpine # Conserver la même version avec le fichier de la CI
+    container_name: justice_plurielle_db_test
+    ports:
+      - target: 5432
+        published: 5433
+    environment:
+      POSTGRES_DB: justice_plurielle
+      POSTGRES_USER: justice_plurielle
+      POSTGRES_PASSWORD: justice_plurielle
+    volumes:
+      - type: volume
+        source: postgres_data_test
+        target: /var/lib/postgresql/data
+    command: ["postgres", "-c", "log_statement=all", "-c", "max_connections=10"]
+
+volumes:
+  postgres_data:
+  postgres_data_test:
