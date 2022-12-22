@@ -1,0 +1,8 @@
+{
+  "jobs": [
+    {
+      "command": "0 1 * * 1-5 /app/maj_lieux.sh",
+      "size": "S"
+    }
+  ]
+}

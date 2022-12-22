@@ -17,6 +17,21 @@ jobs:
   tests:
     needs: install
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:13.9-alpine # Conserver la même version avec le fichier docker-compose.yaml
+        env:
+          POSTGRES_DB: justice_plurielle
+          POSTGRES_PASSWORD: justice_plurielle
+          POSTGRES_PORT: 5432
+          POSTGRES_USER: justice_plurielle
+        ports:
+          - 5433:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -27,22 +42,6 @@ jobs:
         run: yarn --immutable
       - name: Run the tests
         run: yarn test
-
-  # analyze:
-  #   needs: install
-  #   runs-on: ubuntu-latest
-  #   permissions:
-  #     actions: read
-  #     contents: read
-  #     security-events: write
-  #   steps:
-  #   - uses: actions/checkout@v3
-  #   - uses: github/codeql-action/init@v2
-  #     with:
-  #       languages: typescript
-  #   - uses: github/codeql-action/analyze@v2
-  #     with:
-  #       category: /language:typescript
 
   package-dedupe:
     needs: install
