@@ -1,0 +1,62 @@
+.back {
+  display: block;
+  margin-bottom: var(--l-margin);
+}
+
+.back svg {
+  margin-right: var(--s-margin);
+}
+
+.nav {
+  display: flex;
+  margin-bottom: var(--l-margin);
+}
+
+.nav a {
+  background-color: var(--secondary-color);
+  color: var(--dark-gray);
+  display: block;
+  margin-bottom: var(--m-margin);
+  padding-block: var(--s-margin);
+  text-align: center;
+}
+
+.current a {
+  background-color: var(--primary-background-color);
+  color: var(--white);
+  font-weight: bold;
+}
+
+.liste {
+  width: 50%;
+}
+
+.liste a {
+  border-bottom-left-radius: 0.2rem;
+  border-top-left-radius: 0.2rem;
+}
+
+.plan {
+  width: 50%;
+}
+
+.plan a {
+  border-bottom-right-radius: 0.2rem;
+  border-top-right-radius: 0.2rem;
+}
+
+.besoins {
+  margin-bottom: var(--l-margin);
+}
+
+.besoins a {
+  border: 1px solid var(--gray);
+  border-radius: 1rem;
+  color: var(--black);
+  padding: var(--s-margin);
+}
+
+.correspondance {
+  font-weight: bold;
+  margin-bottom: var(--l-margin);
+}

@@ -54,7 +54,7 @@ describe('en-tête de page', () => {
   it.each([
     ['Space'],
     ['Enter'],
-  ])('affiche le menu mobile quand on appuie sur le burger menu avec la touche %s', (code) => {
+  ])('affiche le menu mobile quand on appuie sur le burger menu avec la touche %s', (code: string) => {
     // GIVEN
     renderFakeComponent(<Header />)
     const burgerMenu = screen.getByRole('button', { name: wording.MENU })
@@ -112,7 +112,7 @@ describe('en-tête de page', () => {
   it.each([
     ['Space'],
     ['Enter'],
-  ])('affiche le menu mobile quand on appuie sur le burger menu puis le ferme avec la touche %s', (code) => {
+  ])('affiche le menu mobile quand on appuie sur le burger menu puis le ferme avec la touche %s', (code: string) => {
     // GIVEN
     renderFakeComponent(<Header />)
     const burgerMenu = screen.getByRole('button', { name: wording.MENU })

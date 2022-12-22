@@ -6,12 +6,14 @@ import RechercherParHandicap from './RechercherParHandicap'
 
 describe('rechercher par handicap', () => {
   const { criteres, paths, wording } = fakeFrontDependencies
+  const lat = '48.844928'
+  const lon = '2.31016'
 
   it('affiche le titre de l’onglet', () => {
     // GIVEN
     mockRouter.query = {
-      lat: '48.844928',
-      lon: '2.31016',
+      lat,
+      lon,
     }
 
     // WHEN
@@ -24,8 +26,8 @@ describe('rechercher par handicap', () => {
   it('affiche les liens de navigation, le titre et le formulaire', () => {
     // GIVEN
     mockRouter.query = {
-      lat: '48.844928',
-      lon: '2.31016',
+      lat,
+      lon,
     }
 
     // WHEN
@@ -35,7 +37,7 @@ describe('rechercher par handicap', () => {
     const modifierLAdresse = screen.getByRole('button', { name: wording.MODIFIER_L_ADRESSE })
     expect(modifierLAdresse).toBeInTheDocument()
     const passer = screen.getByRole('link', { name: wording.PASSER })
-    expect(passer).toHaveAttribute('href', `${paths.ADRESSES_LISTE}?lat=${mockRouter.query.lat as string}&lon=${mockRouter.query.lon as string}`)
+    expect(passer).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?lat=${lat}&lon=${lon}`)
 
     const title = screen.getByRole('heading', { level: 2, name: textMatch(wording.BESOIN_EN_ACCESSIBILITE + wording.FACULTATIF) })
     expect(title).toBeInTheDocument()
@@ -45,9 +47,9 @@ describe('rechercher par handicap', () => {
       const description = screen.getByText(critere.description, { selector: 'p' })
       expect(description).toBeInTheDocument()
     })
-    const latitude = screen.getByDisplayValue(mockRouter.query.lat as string)
+    const latitude = screen.getByDisplayValue(lat)
     expect(latitude).toHaveAttribute('name', 'lat')
-    const longitude = screen.getByDisplayValue(mockRouter.query.lon as string)
+    const longitude = screen.getByDisplayValue(lon)
     expect(longitude).toHaveAttribute('name', 'lon')
     const suivant = screen.getByRole('button', { name: wording.SUIVANT })
     expect(suivant).toHaveAttribute('type', 'submit')
@@ -55,7 +57,7 @@ describe('rechercher par handicap', () => {
 
   it('affiche une phrase demandant de recommencer le parcours quand on arrive sans latitude', () => {
     // GIVEN
-    mockRouter.query = { lon: '2.31016' }
+    mockRouter.query = { lon }
 
     // WHEN
     renderFakeComponent(<RechercherParHandicap />)
@@ -67,7 +69,7 @@ describe('rechercher par handicap', () => {
 
   it('affiche une phrase demandant de recommencer le parcours quand on arrive sans longitude', () => {
     // GIVEN
-    mockRouter.query = { lat: '48.844928' }
+    mockRouter.query = { lat }
 
     // WHEN
     renderFakeComponent(<RechercherParHandicap />)

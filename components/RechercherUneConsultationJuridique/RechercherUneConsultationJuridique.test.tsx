@@ -39,7 +39,7 @@ describe('rechercher un lieu', () => {
   it.each([
     ['touchStart'],
     ['click'],
-  ])('va à l’étape 2 quand j’utilise ma position actuelle avec le % et grise le bouton', async (event) => {
+  ])('va à l’étape 2 quand j’utilise ma position actuelle avec le % et grise le bouton', async (event: string) => {
     // GIVEN
     mockedSuccessedGeolocation(43.296482, 5.36978)
     renderFakeComponent(<RechercherUneConsultationJuridique />)
@@ -59,7 +59,7 @@ describe('rechercher un lieu', () => {
   it.each([
     ['Space'],
     ['Enter'],
-  ])('va à l’étape 2 quand j’utilise ma position actuelle avec la touche %s et grise le bouton', async (code) => {
+  ])('va à l’étape 2 quand j’utilise ma position actuelle avec la touche %s et grise le bouton', async (code: string) => {
     // GIVEN
     mockedSuccessedGeolocation(43.296482, 5.36978)
     renderFakeComponent(<RechercherUneConsultationJuridique />)
