@@ -3,10 +3,11 @@ import L from 'leaflet'
 import { ReactElement, useEffect } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
+import { LieuModel } from '../../database/models/EntitéJuridiqueModel'
 import usePlan from './usePlan'
 
 type PlanProps = Readonly<{
-  lieux: { latLon: L.LatLngExpression, title: string }[]
+  lieux: LieuModel[]
   viewCenter: L.LatLngExpression
 }>
 

@@ -1,21 +1,24 @@
 import L from 'leaflet'
 import { createRoot } from 'react-dom/client'
 
+import { LieuModel } from '../../database/models/EntitéJuridiqueModel'
 import CarteLieu from '../CarteLieu'
 
 export default function usePlan() {
 
   const iconSizeDefault = 24
   const iconSizeSelected = 38
-  const iconMarkerLieu = L.icon({
+  const iconMarkerLieuDefault = L.icon({
     iconAnchor: [iconSizeDefault / 2, iconSizeDefault],
     iconSize: [iconSizeDefault, iconSizeDefault],
     iconUrl: 'marker-lieu.svg',
+    popupAnchor: [0, -0.6 * iconSizeDefault],
   })
   const iconMarkerLieuSelected = L.icon({
     iconAnchor: [iconSizeSelected / 2, iconSizeSelected],
     iconSize: [iconSizeSelected, iconSizeSelected],
     iconUrl: 'marker-lieu-selected.svg',
+    popupAnchor: [0, -0.6 * iconSizeSelected],
   })
   const iconMarkerPosition = L.icon({ iconUrl: 'marker_position.svg' })
 
@@ -23,7 +26,7 @@ export default function usePlan() {
     return L.marker(viewCenter, { icon: iconMarkerPosition, title: title })
   }
 
-  const setMarkersLieux = (lieux: { latLon: L.LatLngExpression, title: string }[]): L.Marker[] => {
+  const setMarkersLieux = (lieux: LieuModel[]): L.Marker[] => {
 
     const markersLieux = lieux.map((lieu) => {
       const popupContentContainer = L.DomUtil.create('div')
@@ -33,20 +36,21 @@ export default function usePlan() {
       // on ne peut pas passer du JSX à la popup.
       // Il faut donc faire le rendu au préalable
       createRoot(popupContentContainer).render(
-        <CarteLieu
-          adresse="34 Avenue de l'opéra, 75002 Paris"
-          categories={['Généraliste', 'Famille']}
-          distance="2,1km"
-          telephone="01 02 03 04 05"
-          title={lieu.title}
-        />
+        <CarteLieu lieu={lieu} />
       )
 
-      return L.marker(lieu.latLon, { icon: iconMarkerLieu, title: lieu.title })
+      return L.marker(
+        [lieu.latitude, lieu.longitude] as L.LatLngExpression,
+        { icon: iconMarkerLieuDefault, title: lieu.nom }
+      )
         .on('click', ({ sourceTarget }) => {
-          markersLieux.map((marker) => marker.setIcon(iconMarkerLieu))
-          const target = sourceTarget as L.Marker
+          markersLieux.map((marker) => marker.setIcon(iconMarkerLieuDefault))
+          const target = (sourceTarget as L.Marker)
           target.setIcon(iconMarkerLieuSelected)
+        })
+        .on('popupclose', ({ sourceTarget }) => {
+          const target = (sourceTarget as L.Marker)
+          target.setIcon(iconMarkerLieuDefault)
         })
         .bindPopup(popup)
     })

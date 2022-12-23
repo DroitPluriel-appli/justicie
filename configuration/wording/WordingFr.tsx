@@ -71,7 +71,7 @@ export class WordingFr implements Wording {
   readonly PLAN: string = 'Plan'
   readonly BESOINS_D_ACCESSIBILITE: (nombre: number) => string = (nombre: number): string => `Besoins d’accessibilité (${nombre})`
   readonly LIEUX_CORRESPONDENT_A_VOTRE_RECHERCHE: (nombre: number) => string = (nombre: number): string => `${nombre} lieux correspondent à votre recherche`
-  readonly LANCER_L_ITINERAIRE: string = 'Lancer l’itinéraire'
+  readonly LANCER_L_ITINERAIRE: string = 'Lancer l’itinéraire - Nouvelle fenêtre'
   readonly PLUS_D_INFORMATIONS: string = 'Plus d’informations'
 
   // Resultats par plan
@@ -111,12 +111,6 @@ export class WordingFr implements Wording {
   readonly NAVIGATION_DESKTOP: string = 'Navigation desktop'
   readonly NAVIGATION_MOBILE: string = 'Navigation mobile'
   readonly FERMER: string = 'Fermer'
-
-  // CARTE LIEU
-  readonly TITRE_LANCER_ITINERAIRE: string = "Nouvelle fenêtre - Lancer l'itinéraire vers "
-  readonly LANCER_ITINERAIRE: string = "Lancer l'itinéraire"
-  readonly TITRE_PLUS_D_INFORMATIONS: string = "Plus d'informations sur ce lieu"
-  readonly PLUS_D_INFORMATIONS: string = "Plus d'informations"
 
   // Footer
   readonly INFORMATIONS: string = 'Informations'
