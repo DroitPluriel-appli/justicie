@@ -1,13 +1,13 @@
 import { fireEvent, screen, within } from '@testing-library/react'
 
-import usePlan from '../../components/Plan/usePlan'
+import useResultatsPlan from '../../components/Resultats/useResultatsPlan'
 import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
 import { LieuModel } from '../../database/models/EntitéJuridiqueModel'
-import Plan from './Plan'
+import ResultatsPlan from './ResultatsPlan'
 
 describe('page résultats par plan', () => {
   const { wording } = fakeFrontDependencies
-  const { iconSizeDefault, iconSizeSelected } = usePlan()
+  const { iconSizeDefault, iconSizeSelected } = useResultatsPlan()
 
   const lieuA = new LieuModel()
   lieuA.id = 1234
@@ -89,7 +89,7 @@ describe('page résultats par plan', () => {
   it('affiche un marker bleu à la position choisie', () => {
     // WHEN
     renderFakeComponent(
-      <Plan
+      <ResultatsPlan
         lieux={[]}
         viewCenter={viewCenter}
       />
@@ -109,7 +109,7 @@ describe('page résultats par plan', () => {
 
     // WHEN
     renderFakeComponent(
-      <Plan
+      <ResultatsPlan
         lieux={lieux}
         viewCenter={viewCenter}
       />
@@ -141,7 +141,7 @@ describe('page résultats par plan', () => {
 
     // WHEN
     renderFakeComponent(
-      <Plan
+      <ResultatsPlan
         lieux={lieux}
         viewCenter={viewCenter}
       />
@@ -189,7 +189,7 @@ describe('page résultats par plan', () => {
 
     // WHEN
     renderFakeComponent(
-      <Plan
+      <ResultatsPlan
         lieux={[lieu]}
         viewCenter={viewCenter}
       />

@@ -1,10 +1,12 @@
 import 'leaflet/dist/leaflet.css'
 import L from 'leaflet'
+import Head from 'next/head'
 import { ReactElement, useEffect } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
 import { LieuModel } from '../../database/models/EntitéJuridiqueModel'
-import usePlan from './usePlan'
+import EnTete from './EnTete'
+import useResultatsPlan from './useResultatsPlan'
 
 type PlanProps = Readonly<{
   lieux: LieuModel[]
@@ -13,17 +15,22 @@ type PlanProps = Readonly<{
 
 export default function Plan({ lieux, viewCenter }: PlanProps): ReactElement {
   const { wording } = useDependencies()
-  const { setMarkerPosition, setMarkersLieux } = usePlan()
+  const { setMarkerPosition, setMarkersLieux } = useResultatsPlan()
 
-  const mapLayer = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-    {
-      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-      maxZoom: 19,
-    })
+  const mapSettings = {
+    credits: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    defaultZoom: 15,
+    maxZoom: 19,
+    tileLayerUrl: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+  }
+  const mapLayer = L.tileLayer(mapSettings.tileLayerUrl, {
+    attribution: mapSettings.credits,
+    maxZoom: mapSettings.maxZoom,
+  })
 
   useEffect(() => {
     const map = L.map('map')
-      .setView(viewCenter, 13)
+      .setView(viewCenter, mapSettings.defaultZoom)
       .addLayer(mapLayer)
       .addLayer(setMarkerPosition(viewCenter, wording.TITRE_MARKER_POSITION))
 
@@ -40,9 +47,17 @@ export default function Plan({ lieux, viewCenter }: PlanProps): ReactElement {
   })
 
   return (
-    <div
-      className="leafletMap"
-      id="map"
-    />
+    <>
+      <Head>
+        <title>
+          {wording.TITLE_RESULTATS_PAR_PLAN}
+        </title>
+      </Head>
+      <EnTete nombreDeLieuxTrouves={lieux.length} />
+      <div
+        className="leafletMap"
+        id="map"
+      />
+    </>
   )
 }

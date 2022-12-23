@@ -4,7 +4,7 @@ import { createRoot } from 'react-dom/client'
 import { LieuModel } from '../../database/models/EntitéJuridiqueModel'
 import CarteLieu from '../CarteLieu'
 
-export default function usePlan() {
+export default function useResultatsPlan() {
 
   const iconSizeDefault = 24
   const iconSizeSelected = 38
