@@ -44,7 +44,7 @@ export default function useResultatsPlan() {
         { icon: iconMarkerLieuDefault, title: lieu.nom }
       )
         .on('click', ({ sourceTarget }) => {
-          markersLieux.map((marker) => marker.setIcon(iconMarkerLieuDefault))
+          markersLieux.forEach((marker) => marker.setIcon(iconMarkerLieuDefault))
           const target = (sourceTarget as L.Marker)
           target.setIcon(iconMarkerLieuSelected)
         })

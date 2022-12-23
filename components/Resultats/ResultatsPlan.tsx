@@ -38,7 +38,7 @@ export default function Plan({ lieux }: PlanProps): ReactElement {
       .addLayer(setMarkerPosition(mapSettings.viewCenter, wording.TITRE_MARKER_POSITION))
 
     const markersLieux = setMarkersLieux(lieux)
-    markersLieux.map((lieu) => lieu.addTo(map))
+    markersLieux.forEach((lieu) => lieu.addTo(map))
 
     // Si la carte n'est pas supprimée quand le composant update,
     // cela peut provoquer des bugs liés à leaflet, notamment
