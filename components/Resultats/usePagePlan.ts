@@ -15,5 +15,6 @@ export default function usePagePlan() {
 
     return [lat, lon] as L.LatLngExpression
   }
+
   return { queryToLatLngExpression }
 }
