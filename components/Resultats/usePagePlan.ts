@@ -9,15 +9,11 @@ import { ParsedUrlQuery } from 'querystring'
 // C'est pour ça que qu'il y a fichiers séparés :
 // usePagePlan et useResultatsPlan
 export default function usePagePlan() {
-  const getPosition = (query: ParsedUrlQuery): L.LatLngExpression | undefined => {
+  const queryToLatLngExpression = (query: ParsedUrlQuery): L.LatLngExpression => {
     const lat = parseFloat(query.lat as string)
     const lon = parseFloat(query.lon as string)
 
-    if (isNaN(lat) || isNaN(lon)) {
-      return undefined
-    }
-
     return [lat, lon] as L.LatLngExpression
   }
-  return { getPosition }
+  return { queryToLatLngExpression }
 }

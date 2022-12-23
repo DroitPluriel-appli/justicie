@@ -1,4 +1,5 @@
 import { fireEvent, screen, within } from '@testing-library/react'
+import mockRouter from 'next-router-mock'
 
 import useResultatsPlan from '../../components/Resultats/useResultatsPlan'
 import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
@@ -84,15 +85,33 @@ describe('page résultats par plan', () => {
   lieuC.domaineDeDroit = 'Domaine LieuC domaine'
   lieuC.commentaire = ''
 
-  const viewCenter: L.LatLngExpression = [51.505, -0.09]
+  const lat = '48.844928'
+  const lon = '2.31016'
+
+  it('affiche le titre de l’onglet', () => {
+    // GIVEN
+    mockRouter.query = {
+      lat,
+      lon,
+    }
+
+    // WHEN
+    renderFakeComponent(<ResultatsPlan lieux={[]} />)
+
+    // THEN
+    expect(document.title).toBe(wording.TITLE_PAGE_RESULTATS_PAR_PLAN)
+  })
 
   it('affiche un marker bleu à la position choisie', () => {
+    // GIVEN
+    mockRouter.query = {
+      lat,
+      lon,
+    }
+
     // WHEN
     renderFakeComponent(
-      <ResultatsPlan
-        lieux={[]}
-        viewCenter={viewCenter}
-      />
+      <ResultatsPlan lieux={[]} />
     )
 
     // THEN
@@ -104,15 +123,15 @@ describe('page résultats par plan', () => {
 
   it('affiche plusieurs markers de lieux', () => {
     // GIVEN
+    mockRouter.query = {
+      lat,
+      lon,
+    }
     const lieux = [lieuA, lieuB, lieuC]
-    const viewCenter: L.LatLngExpression = [51.505, -0.09]
 
     // WHEN
     renderFakeComponent(
-      <ResultatsPlan
-        lieux={lieux}
-        viewCenter={viewCenter}
-      />
+      <ResultatsPlan lieux={lieux} />
     )
 
     // THEN
@@ -136,15 +155,15 @@ describe('page résultats par plan', () => {
 
   it('change le marker lieu en rouge et + grand au click et le reset si click ailleur', () => {
     // GIVEN
+    mockRouter.query = {
+      lat,
+      lon,
+    }
     const lieux = [lieuA, lieuB]
-    const viewCenter: L.LatLngExpression = [51.505, -0.09]
 
     // WHEN
     renderFakeComponent(
-      <ResultatsPlan
-        lieux={lieux}
-        viewCenter={viewCenter}
-      />
+      <ResultatsPlan lieux={lieux} />
     )
     const main = screen.getByRole('main')
     const markerLieuA = within(main).getByTitle(lieuA.nom)
@@ -185,14 +204,15 @@ describe('page résultats par plan', () => {
 
   it('affiche la carte du lieu dans la popup au click sur un marker', () => {
     // GIVEN
+    mockRouter.query = {
+      lat,
+      lon,
+    }
     const lieu = lieuA
 
     // WHEN
     renderFakeComponent(
-      <ResultatsPlan
-        lieux={[lieu]}
-        viewCenter={viewCenter}
-      />
+      <ResultatsPlan lieux={[lieu]} />
     )
     const main = screen.getByRole('main')
     const markerLieuA = within(main).getByTitle(lieu.nom)

@@ -72,7 +72,7 @@ export interface Wording {
   readonly PLUS_D_INFORMATIONS: string
 
   // Resultats par plan
-  readonly TITLE_RESULTATS_PAR_PLAN: string
+  readonly TITLE_PAGE_RESULTATS_PAR_PLAN: string
   readonly TITRE_MARKER_POSITION: string
 
   // Nos critères d'accessibilité
