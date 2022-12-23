@@ -5,7 +5,7 @@ import { fakeFrontDependencies, renderFakeComponent } from '../../configuration/
 import RenseignerUneAdresse from './RenseignerUneAdresse'
 import { AdresseJson } from './useRenseignerUneAdresse'
 
-describe('resneigner une adresse', () => {
+describe('renseigner une adresse', () => {
   const { paths, wording } = fakeFrontDependencies
 
   it('affiche le titre de l’onglet', () => {
@@ -71,7 +71,7 @@ describe('resneigner une adresse', () => {
             43.296482,
           ],
         },
-        properties:{ label: '34 avenue de lopera' },
+        properties: { label: '34 avenue de lopera' },
       },
       {
         geometry: {
@@ -80,7 +80,7 @@ describe('resneigner une adresse', () => {
             44.296482,
           ],
         },
-        properties:{ label: '34 bis avenue de lopera' },
+        properties: { label: '34 bis avenue de lopera' },
       },
     ])
     renderFakeComponent(<RenseignerUneAdresse />)
@@ -130,7 +130,7 @@ describe('resneigner une adresse', () => {
             43.296482,
           ],
         },
-        properties:{ label: '34 avenue de lopera' },
+        properties: { label: '34 avenue de lopera' },
       },
     ])
     renderFakeComponent(<RenseignerUneAdresse />)
@@ -169,7 +169,7 @@ describe('resneigner une adresse', () => {
             43.296482,
           ],
         },
-        properties:{ label: '34 avenue de lopera' },
+        properties: { label: '34 avenue de lopera' },
       },
     ])
     renderFakeComponent(<RenseignerUneAdresse />)
@@ -205,7 +205,7 @@ describe('resneigner une adresse', () => {
             43.296482,
           ],
         },
-        properties:{ label: '34 avenue de lopera' },
+        properties: { label: '34 avenue de lopera' },
       },
     ])
     renderFakeComponent(<RenseignerUneAdresse />)

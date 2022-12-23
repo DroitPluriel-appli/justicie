@@ -101,3 +101,8 @@ address {
   flex-direction: column;
   min-height: 100vh;
 }
+
+.leaflet-container {
+  color: red;
+  height: 60vh;
+}

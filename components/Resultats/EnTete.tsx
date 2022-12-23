@@ -46,7 +46,7 @@ export default function EnTete({ nombreDeLieuxTrouves }: EnTeteProps): ReactElem
             </Link>
           </li>
           <li className={styles.plan + ' ' + planStyle}>
-            <Link href={buildUrlWithQueryParams(paths.RESULTATS_LISTE)}>
+            <Link href={buildUrlWithQueryParams(paths.RESULTATS_PLAN)}>
               {wording.PLAN}
             </Link>
           </li>
