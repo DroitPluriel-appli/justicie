@@ -129,30 +129,6 @@ describe('page résultats par plan', () => {
     expect(titre).toBeInTheDocument()
   })
 
-  it.skip('affiche une phrase demandant de recommencer le parcours quand on arrive sans latitude', () => {
-    // GIVEN
-    mockRouter.query = { lon }
-
-    // WHEN
-    renderFakeComponent(<ResultatsPlan lieux={[]} />)
-
-    // THEN
-    const recommencer = screen.getByText(wording.RECOMMENCER_PARCOURS, { selector: 'p' })
-    expect(recommencer).toBeInTheDocument()
-  })
-
-  it.skip('affiche une phrase demandant de recommencer le parcours quand on arrive sans longitude', () => {
-    // GIVEN
-    mockRouter.query = { lat }
-
-    // WHEN
-    renderFakeComponent(<ResultatsPlan lieux={[]} />)
-
-    // THEN
-    const recommencer = screen.getByText(wording.RECOMMENCER_PARCOURS, { selector: 'p' })
-    expect(recommencer).toBeInTheDocument()
-  })
-
   it('affiche un marker bleu à la position choisie', () => {
     // GIVEN
     mockRouter.query = {
