@@ -4,6 +4,7 @@ import mockRouter from 'next-router-mock'
 import useResultatsPlan from '../../components/Resultats/useResultatsPlan'
 import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
 import { LieuModel } from '../../database/models/LieuModel'
+import PageResultatsParPlan from '../../pages/resultats-plan'
 import ResultatsPlan from './ResultatsPlan'
 
 describe('page résultats par plan', () => {
@@ -88,6 +89,7 @@ describe('page résultats par plan', () => {
   const lat = '48.844928'
   const lon = '2.31016'
   const moteurTotal = 'on'
+  const viewCenter: L.LatLngExpression = [50, 50]
 
   it('affiche le titre de l’onglet', () => {
     // GIVEN
@@ -97,7 +99,12 @@ describe('page résultats par plan', () => {
     }
 
     // WHEN
-    renderFakeComponent(<ResultatsPlan lieux={[]} />)
+    renderFakeComponent(
+      <ResultatsPlan
+        lieux={[]}
+        viewCenter={viewCenter}
+      />
+    )
 
     // THEN
     expect(document.title).toBe(wording.TITLE_PAGE_RESULTATS_PAR_PLAN)
@@ -112,7 +119,12 @@ describe('page résultats par plan', () => {
     }
 
     // WHEN
-    renderFakeComponent(<ResultatsPlan lieux={[]} />)
+    renderFakeComponent(
+      <ResultatsPlan
+        lieux={[]}
+        viewCenter={viewCenter}
+      />
+    )
 
     // THEN
     const modifierLAdresse = screen.getByRole('link', { name: wording.MODIFIER_L_ADRESSE })
@@ -138,7 +150,10 @@ describe('page résultats par plan', () => {
 
     // WHEN
     renderFakeComponent(
-      <ResultatsPlan lieux={[]} />
+      <ResultatsPlan
+        lieux={[]}
+        viewCenter={viewCenter}
+      />
     )
 
     // THEN
@@ -158,7 +173,10 @@ describe('page résultats par plan', () => {
 
     // WHEN
     renderFakeComponent(
-      <ResultatsPlan lieux={lieux} />
+      <ResultatsPlan
+        lieux={lieux}
+        viewCenter={viewCenter}
+      />
     )
 
     // THEN
@@ -174,12 +192,6 @@ describe('page résultats par plan', () => {
     })
   })
 
-  // TESTS
-  // [x] compléter tests markers pour vérifier img avec taille
-  // [x] mocker click et tester changement de logo et de taille
-  // [x] retour à la normal au click sur autre marker ?
-  // [ ] tester affichage des infos dans popup au click sur marker
-
   it('change le marker lieu en rouge et + grand au click et le reset si click ailleur', () => {
     // GIVEN
     mockRouter.query = {
@@ -190,8 +202,12 @@ describe('page résultats par plan', () => {
 
     // WHEN
     renderFakeComponent(
-      <ResultatsPlan lieux={lieux} />
+      <ResultatsPlan
+        lieux={lieux}
+        viewCenter={viewCenter}
+      />
     )
+
     const main = screen.getByRole('main')
     const markerLieuA = within(main).getByTitle(lieuA.nom)
     const markerLieuB = within(main).getByTitle(lieuB.nom)
@@ -239,25 +255,60 @@ describe('page résultats par plan', () => {
 
     // WHEN
     renderFakeComponent(
-      <ResultatsPlan lieux={[lieu]} />
+      <ResultatsPlan
+        lieux={[lieu]}
+        viewCenter={viewCenter}
+      />
     )
     const main = screen.getByRole('main')
     const markerLieuA = within(main).getByTitle(lieu.nom)
     fireEvent.click(markerLieuA)
 
     // THEN
-    const popupCarteLieu = [
-      within(main).getByRole('heading', { level: 1, name: lieu.nom }),
-      within(main).getByText(textMatch(lieu.adresse + lieu.codePostal + lieu.ville)),
-      within(main).getByText(textMatch(lieu.telephone)),
+    const champsCarteLieuA = [
+      within(main).getByRole('heading', { level: 1, name: lieuA.nom }),
+      within(main).getByText(textMatch(lieuA.adresse + lieuA.codePostal + ' ' + lieuA.ville)),
+      within(main).getByText(new RegExp(lieuA.telephone)),
+      within(main).getByRole('link', { name: wording.LANCER_L_ITINERAIRE + wording.NOUVELLE_FENETRE }),
+      within(main).getByRole('link', { name: wording.PLUS_D_INFORMATIONS }),
+      within(main).getByTitle(wording.TITLE_HANDICAP_MOTEUR_TOTAL),
+      within(main).getByTitle(wording.TITLE_HANDICAP_MOTEUR_AVEC_ASSISTANCE),
+      within(main).getByTitle(wording.TITLE_HANDICAP_VISUEL),
+      within(main).getByTitle(wording.TITLE_LANGUE_DES_SIGNES_FRANCAISE),
+      within(main).getByTitle(wording.TITLE_BOUCLE_A_INDUCTION),
+      within(main).getByTitle(wording.TITLE_ENVIRONNEMENT_CALME),
+      within(main).getByTitle(wording.TITLE_PERSONNEL_FORME),
     ]
+    champsCarteLieuA.forEach((champ) => expect(champ).toBeVisible())
+    expect(champsCarteLieuA[3]).toHaveAttribute('href', `https://www.google.com/maps/search/?api=1&query=${lieuA.nom.replaceAll(' ', '+')}`)
+  })
 
-    popupCarteLieu.forEach((champ) => expect(champ).toBeVisible())
+  it('affiche une phrase demandant de recommencer le parcours quand on arrive sans latitude', () => {
+    // GIVEN
+    mockRouter.query = { lon }
 
-    const lienLancerItineraire = within(main).getByRole('link', { name: wording.LANCER_L_ITINERAIRE })
-    const lienPlusDInformations = within(main).getByRole('link', { name: wording.PLUS_D_INFORMATIONS })
-    expect(lienLancerItineraire).toBeVisible()
-    expect(lienPlusDInformations).toBeVisible()
+    // WHEN
+    renderFakeComponent(
+      <PageResultatsParPlan lieux={[]} />
+    )
+
+    // THEN
+    const recommencer = screen.getByText(wording.RECOMMENCER_PARCOURS, { selector: 'p' })
+    expect(recommencer).toBeInTheDocument()
+  })
+
+  it('affiche une phrase demandant de recommencer le parcours quand on arrive sans longitude', () => {
+    // GIVEN
+    mockRouter.query = { lat }
+
+    // WHEN
+    renderFakeComponent(
+      <PageResultatsParPlan lieux={[]} />
+    )
+
+    // THEN
+    const recommencer = screen.getByText(wording.RECOMMENCER_PARCOURS, { selector: 'p' })
+    expect(recommencer).toBeInTheDocument()
   })
 
 })

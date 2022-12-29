@@ -4,16 +4,31 @@ import { ReactElement } from 'react'
 
 import { Lieu } from '../backend/entities/Lieu'
 import { recupereDesLieux } from '../backend/infrastructure/gateways/lieuxRepository'
+import usePagePlan from '../components/Resultats/usePagePlan'
+import { useDependencies } from '../configuration/useDependencies'
 import dataSource from '../database/dataSource'
 import { LieuModel } from '../database/models/LieuModel'
 
 export default function PageResultatsParPlan({ lieux }: { lieux: LieuModel[] }): ReactElement {
 
+  const { useRouter, wording } = useDependencies()
+  const { query } = useRouter()
+  const { queryToLatLngExpression } = usePagePlan()
+
   const Plan = dynamic(() => import('../components/Resultats/ResultatsPlan'), { ssr: false })
+
+  if (query.lat === undefined || query.lon === undefined) {
+    return (
+      <p>
+        {wording.RECOMMENCER_PARCOURS}
+      </p>
+    )
+  }
 
   return (
     <Plan
       lieux={lieux}
+      viewCenter={queryToLatLngExpression(query)}
     />
   )
 }

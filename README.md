@@ -114,3 +114,13 @@ Justice Plurielle a la note de [A](https://securityheaders.com/?q=https%3A%2F%2F
 - Facile d'utilisation
 - Un grand nombre de développeur la connaisse
 - Scalingo nous l'offre gratuitement avec leur premier plan
+
+### Leaflet pour l'affichage des la carte (15/12/22)
+
+- L'API de Google map étant payante, il faut une alternative gratuite : Leaflet + Open Street map
+- Pourra être remplacer par Google map si besoin par la suite si Droit Pluriel obtient des réductions auprès de Google
+
+### Leaflet au lieu de React-Leaflet (19/12/22)
+
+- React-leaflet provoque des erreurs étranges et est mal documenté
+- À part la gestion du Client Side Rendering, leaflet n'est pas très compliqué à intégrer

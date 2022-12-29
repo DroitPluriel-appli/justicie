@@ -6,25 +6,23 @@ import { ReactElement, useEffect } from 'react'
 import { useDependencies } from '../../configuration/useDependencies'
 import { LieuModel } from '../../database/models/LieuModel'
 import EnTete from './EnTete'
-import usePagePlan from './usePagePlan'
 import useResultatsPlan from './useResultatsPlan'
 
 type PlanProps = Readonly<{
-  lieux: LieuModel[]
+  lieux: LieuModel[],
+  viewCenter: L.LatLngExpression
 }>
 
-export default function Plan({ lieux }: PlanProps): ReactElement {
-  const { wording, useRouter } = useDependencies()
+export default function Plan({ lieux, viewCenter }: PlanProps): ReactElement {
+  const { wording } = useDependencies()
   const { setMarkerPosition, setMarkersLieux } = useResultatsPlan()
-  const { query } = useRouter()
-  const { queryToLatLngExpression } = usePagePlan()
 
   const mapSettings = {
     credits: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     defaultZoom: 15,
     maxZoom: 19,
     tileLayerUrl: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-    viewCenter: queryToLatLngExpression(query),
+    viewCenter: viewCenter,
   }
   const mapLayer = L.tileLayer(mapSettings.tileLayerUrl, {
     attribution: mapSettings.credits,
@@ -48,14 +46,6 @@ export default function Plan({ lieux }: PlanProps): ReactElement {
       map.remove()
     }
   })
-
-  if (query.lat === undefined || query.lon === undefined) {
-    return (
-      <p>
-        {wording.RECOMMENCER_PARCOURS}
-      </p>
-    )
-  }
 
   return (
     <>

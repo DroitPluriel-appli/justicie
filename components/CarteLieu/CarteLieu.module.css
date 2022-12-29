@@ -1,0 +1,65 @@
+.carteLieu {
+  border: 0;
+  box-shadow: 0 0.4rem 0.4rem var(--shadow);
+  display: grid;
+  grid-gap: var(--m-margin) 0;
+  grid-template:
+    "carteTitle carteTitle" auto
+    "carteAdresse carteAdresse" auto
+    "carteCriteres carteCriteres" auto
+    "lancerItineraire plusDInformations" auto
+    / 1fr 1fr;
+  margin-bottom: var(--l-margin);
+  margin-inline: calc(-1 * var(--l-margin));
+  outline: 1px solid var(--gray);
+}
+
+.carteLieu > h1 {
+  grid-area: carteTitle;
+  margin-bottom: 0;
+}
+
+.carteLieu > address {
+  display: flex;
+  flex-direction: column;
+  grid-area: carteAdresse;
+}
+
+.carteLieu .carteCriteres {
+  display: flex;
+  flex-direction: row;
+  grid-area: carteCriteres;
+  justify-content: right;
+}
+
+.carteLieu .carteCriteres img {
+  margin-left: var(--s-margin);
+}
+
+.carteLieu > address > a {
+  margin-bottom: var(--m-margin);
+}
+
+.carteLieu > *:not(a) {
+  padding-inline: var(--l-margin);
+}
+
+.carteLieu #lancerItineraire {
+  grid-area: lancerItineraire;
+}
+
+.carteLieu #plusDInformations {
+  grid-area: plusDInformations;
+}
+
+.carteButtons {
+  align-items: center;
+  border-right: 1px solid var(--gray);
+  border-top: 1px solid var(--gray);
+  display: flex;
+  font-weight: bold;
+  justify-content: center;
+  margin-right: -1px;
+  padding: var(--l-margin);
+  text-align: center;
+}
