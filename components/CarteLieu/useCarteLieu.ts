@@ -1,19 +1,13 @@
-// fonction qui prend tableau des criteres du lieu
-
 import { useDependencies } from '../../configuration/useDependencies'
 import { LieuModel } from '../../database/models/EntitéJuridiqueModel'
 
-// et renvoie tableau de string ImgSrc
 export function useCarteLieu() {
   const { criteres } = useDependencies()
+
   const getCriteresImgSrcFromLieu = (lieu: LieuModel) => {
     return criteres.map((critere) => {
       const { name } = critere
-      if (lieu[name as keyof LieuModel]) {
-        return critere
-      } else {
-        return null
-      }
+      return lieu[name as keyof LieuModel] ? critere : null
     }).filter((critere) => critere !== null)
   }
 

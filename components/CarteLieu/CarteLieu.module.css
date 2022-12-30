@@ -1,12 +1,11 @@
 .carteLieu {
-  border: 0;
   box-shadow: 0 0.4rem 0.4rem var(--shadow);
   display: grid;
   grid-gap: var(--m-margin) 0;
   grid-template:
     "carteTitle carteTitle" auto
     "carteAdresse carteAdresse" auto
-    "carteCriteres carteCriteres" auto
+    "carteLieu__criteres carteLieu__criteres" auto
     "lancerItineraire plusDInformations" auto
     / 1fr 1fr;
   margin-bottom: var(--l-margin);
@@ -25,14 +24,14 @@
   grid-area: carteAdresse;
 }
 
-.carteLieu .carteCriteres {
+.carteLieu .carteLieu__criteres {
   display: flex;
   flex-direction: row;
-  grid-area: carteCriteres;
+  grid-area: carteLieu__criteres;
   justify-content: right;
 }
 
-.carteLieu .carteCriteres img {
+.carteLieu .carteLieu__criteres img {
   margin-left: var(--s-margin);
 }
 
@@ -44,22 +43,29 @@
   padding-inline: var(--l-margin);
 }
 
-.carteLieu #lancerItineraire {
-  grid-area: lancerItineraire;
-}
-
-.carteLieu #plusDInformations {
-  grid-area: plusDInformations;
-}
-
-.carteButtons {
+/* Obligé de préciser a.class pour override un des styles par défaut de leaflet */
+a.carteLieu__buttons {
   align-items: center;
   border-right: 1px solid var(--gray);
   border-top: 1px solid var(--gray);
+  color: var(--primary-color);
   display: flex;
   font-weight: bold;
   justify-content: center;
   margin-right: -1px;
   padding: var(--l-margin);
   text-align: center;
+}
+
+.carteLieu__buttons__svg {
+  fill: var(--black);
+  margin-right: var(--s-margin);
+}
+
+.carteLieu .carteLieu__buttons:nth-of-type(1) {
+  grid-area: lancerItineraire;
+}
+
+.carteLieu .carteLieu__buttons:nth-of-type(2) {
+  grid-area: plusDInformations;
 }

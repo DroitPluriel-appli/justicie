@@ -4,7 +4,6 @@ import { ReactElement } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
 import { LieuModel } from '../../database/models/EntitéJuridiqueModel'
-import IconTelephone from '../../public/telephone.svg'
 import ExternalLink from '../ExternalLink/ExternalLink'
 import styles from './CarteLieu.module.css'
 import { useCarteLieu } from './useCarteLieu'
@@ -32,8 +31,7 @@ export default function CarteLieu({ lieu }: CarteLieuProps): ReactElement {
       </h1>
       <address>
         <a href={`tel:${telephone}`}>
-          <IconTelephone className={styles.carteLieu__buttons__svg} />
-          {telephone}
+          {'\uD83D\uDCDE ' + telephone}
         </a>
         <p>
           {adresse}
