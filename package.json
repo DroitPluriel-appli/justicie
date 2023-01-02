@@ -11,7 +11,7 @@
     "lighthouse": "lhci autorun",
     "lint:css": "stylelint '(components|configuration)/**/*.css'",
     "lint:typescript": "next lint",
-    "maj_lieux": "ts-node -T database/cron/majDesLieux.ts",
+    "maj_lieux": "ts-node -T backend/infrastructure/controllers/majDesLieuxCron.ts",
     "migrations:up": "npx typeorm-ts-node-commonjs migration:run -d ./database/dataSource.ts",
     "migrations:down": "npx typeorm-ts-node-commonjs migration:revert -d ./database/dataSource.ts",
     "migrations:create": "npx typeorm-ts-node-commonjs migration:create",
@@ -22,8 +22,8 @@
     "start:db": "docker-compose down && docker-compose up -d && bash -c \"while ! docker-compose logs | grep -q 'listening on IPv4 address'; do echo 'Waiting for database'; sleep 0.5; done\"; yarn migrations:up",
     "test": "NODE_ENV=test yarn migrations:up && jest --colors",
     "test:coverage": "yarn test --coverage",
-    "test:mutation": "npx stryker run",
-    "test:mutation:cron": "npx stryker run --mutate database/cron/majDesLieux.ts",
+    "test:mutation:frontend": "npx stryker run stryker-frontend.conf.json",
+    "test:mutation:backend": "npx stryker run stryker-backend.conf.json",
     "typecheck": "tsc"
   },
   "dependencies": {

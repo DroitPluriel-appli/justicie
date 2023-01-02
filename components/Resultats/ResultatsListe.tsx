@@ -1,11 +1,11 @@
 import Head from 'next/head'
 import { ReactElement } from 'react'
 
+import { Lieu } from '../../backend/entities/Lieu'
 import { useDependencies } from '../../configuration/useDependencies'
-import { LieuModel } from '../../database/models/EntitéJuridiqueModel'
 import EnTete from './EnTete'
 
-export default function ResultatsListe({ lieux }: { lieux: LieuModel[] }): ReactElement {
+export default function ResultatsListe({ lieux }: { lieux: Lieu[] }): ReactElement {
   const { useRouter, wording } = useDependencies()
   const { query } = useRouter()
 

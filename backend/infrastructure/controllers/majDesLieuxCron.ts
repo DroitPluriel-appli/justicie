@@ -1,8 +1,8 @@
 import { GoogleApis, sheets_v4 } from 'googleapis'
 import { DataSource, EntityManager } from 'typeorm'
 
-import dataSource from '../dataSource'
-import { LieuModel } from '../models/EntitéJuridiqueModel'
+import dataSource from '../../../database/dataSource'
+import { LieuModel } from '../../../database/models/LieuModel'
 
 type LieuSansId = Omit<LieuModel, 'id'>
 

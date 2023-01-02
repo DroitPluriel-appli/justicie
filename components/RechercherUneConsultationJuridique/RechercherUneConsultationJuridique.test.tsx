@@ -92,7 +92,7 @@ describe('rechercher un lieu', () => {
 
 function mockedSuccessedGeolocation(latitude: number, longitude: number) {
   // @ts-ignore
-  global.navigator.geolocation = {
+  navigator.geolocation = {
     getCurrentPosition: (success: PositionCallback) => success({
       coords: {
         accuracy: 9075.79126982149,
@@ -110,7 +110,7 @@ function mockedSuccessedGeolocation(latitude: number, longitude: number) {
 
 function mockedErrorGeolocation() {
   // @ts-ignore
-  global.navigator.geolocation = {
+  navigator.geolocation = {
     getCurrentPosition: (_: PositionCallback, error: PositionErrorCallback) => error({
       PERMISSION_DENIED: 0,
       POSITION_UNAVAILABLE: 0,
