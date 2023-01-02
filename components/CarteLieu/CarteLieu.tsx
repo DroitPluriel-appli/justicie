@@ -32,10 +32,10 @@ export default function CarteLieu({ lieu }: CarteLieuProps): ReactElement {
       </h1>
       <address>
         <a href={`tel:${telephone}`}>
-          <IconTelephone className={styles.carteLieu__buttons__svg} />
+          <IconTelephone className={styles.carteLieu__telephoneIcon} />
           {telephone}
         </a>
-        <p>
+        <p className={styles.carteLieu__adress__paragraph}>
           {adresse}
           <br />
           {codePostal + ' '}

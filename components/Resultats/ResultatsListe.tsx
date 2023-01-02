@@ -10,7 +10,7 @@ export default function ResultatsListe({ lieux }: { lieux: Lieu[] }): ReactEleme
   const { useRouter, wording } = useDependencies()
   const { query } = useRouter()
 
-  if (query.lat === undefined || query.lon === undefined) {
+  if (!Number(query.lat) || !Number(query.lon)) {
     return (
       <p>
         {wording.RECOMMENCER_PARCOURS}

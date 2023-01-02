@@ -103,6 +103,16 @@ address {
 }
 
 .leaflet-container {
-  color: red;
   height: 60vh;
+  margin-inline: calc(-1 * var(--m-margin));
+  min-height: 400px;
+}
+
+a.leaflet-popup-close-button span {
+  font-size: 2rem;
+}
+
+a.leaflet-popup-close-button {
+  margin: 0.5rem;
+  text-align: center;
 }

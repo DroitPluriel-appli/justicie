@@ -10,7 +10,7 @@ export function useRechercherParHandicap() {
     back()
   }, [back])
 
-  const hasLatOrLon = query.lat === undefined || query.lon === undefined
+  const hasLatOrLon = !Number(query.lat) || !Number(query.lon)
 
   return { hasLatOrLon, retourEnArriere }
 }

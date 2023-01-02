@@ -13,6 +13,22 @@
   outline: 1px solid var(--gray);
 }
 
+:global(.leafletMap) .carteLieu {
+  box-shadow: none;
+  column-gap: 0.5rem;
+  margin: 0;
+  outline: none;
+}
+
+:global(.leafletMap) .carteLieu__adress__paragraph {
+  margin: 0;
+}
+
+:global(.leafletMap) .carteLieu__buttons {
+  border: 1px solid var(--gray);
+  padding: var(--m-margin);
+}
+
 .carteLieu > h1 {
   grid-area: carteTitle;
   margin-bottom: 0;
@@ -57,7 +73,7 @@ a.carteLieu__buttons {
   text-align: center;
 }
 
-.carteLieu__buttons__svg {
+.carteLieu__telephoneIcon {
   fill: var(--black);
   margin-right: var(--s-margin);
 }

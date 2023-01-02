@@ -8,6 +8,12 @@
   "rules": {
     "selector-class-pattern": null,
     "selector-id-pattern": null,
-    "order/properties-alphabetical-order": true
+    "order/properties-alphabetical-order": true,
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": ["global"]
+      }
+    ]
   }
 }
