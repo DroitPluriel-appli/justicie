@@ -72,7 +72,7 @@ export class WordingFr implements Wording {
   readonly PLAN: string = 'Plan'
   readonly BESOINS_D_ACCESSIBILITE: (nombre: number) => string = (nombre: number): string => `Besoins d’accessibilité (${nombre})`
   readonly LIEUX_CORRESPONDENT_A_VOTRE_RECHERCHE: (nombre: number) => string = (nombre: number): string => `${nombre} lieux correspondent à votre recherche`
-  readonly LANCER_L_ITINERAIRE: string = 'Lancer l’itinéraire'
+  readonly LANCER_L_ITINERAIRE: string = "Lancer l'itinéraire"
   readonly PLUS_D_INFORMATIONS: string = 'Plus d’informations'
   readonly CE_LIEU_N_EST_PAS_ACCESSIBLE: string = "Ce lieu n'est pas accessible."
 

@@ -1,6 +1,6 @@
 import { ParsedUrlQuery } from 'querystring'
 
-import usePagePlan from './usePagePlan'
+import usePagePlan from './useResultatsPlan'
 
 describe('queryToLatLngExpression', () => {
   it('renvoie les coordonées sous forme de nombres si elles sont valides', () => {

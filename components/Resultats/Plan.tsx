@@ -3,10 +3,11 @@ import L from 'leaflet'
 import Head from 'next/head'
 import { ReactElement, useEffect } from 'react'
 
-import usePlan from '../../components/Resultats/usePlan'
 import { useDependencies } from '../../configuration/useDependencies'
 import { LieuModel } from '../../database/models/LieuModel'
 import EnTete from './EnTete'
+import styles from './Plan.module.css'
+import usePlan from './usePlan'
 
 type PlanProps = Readonly<{
   lieux: LieuModel[],
@@ -56,7 +57,7 @@ export default function Plan({ lieux, viewCenter }: PlanProps): ReactElement {
       </Head>
       <EnTete nombreDeLieuxTrouves={lieux.length} />
       <div
-        className="leafletMap"
+        className={styles.leafletMap}
         id="map"
       />
     </>

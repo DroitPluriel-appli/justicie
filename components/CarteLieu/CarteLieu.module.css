@@ -13,18 +13,18 @@
   outline: 1px solid var(--gray);
 }
 
-:global(.leafletMap) .carteLieu {
+:global(.leaflet-container) .carteLieu {
   box-shadow: none;
   column-gap: 0.5rem;
   margin: 0;
   outline: none;
 }
 
-:global(.leafletMap) .carteLieu__adress__paragraph {
+:global(.leaflet-container) .carteLieu__adress__paragraph {
   margin: 0;
 }
 
-:global(.leafletMap) .carteLieu__buttons {
+:global(.leaflet-container) .carteLieu__buttons {
   border: 1px solid var(--gray);
   padding: var(--m-margin);
 }

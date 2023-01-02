@@ -3,12 +3,12 @@ import { ReactElement } from 'react'
 
 import { Lieu } from '../backend/entities/Lieu'
 import { recupereDesLieux } from '../backend/infrastructure/gateways/lieuxRepository'
-import PlanContainer from '../components/Resultats/PlanContainer'
+import ResultatsPlan from '../components/Resultats/ResultatsPlan'
 import dataSource from '../database/dataSource'
 import { LieuModel } from '../database/models/LieuModel'
 
 export default function PageResultatsParPlan({ lieux }: { lieux: LieuModel[] }): ReactElement {
-  return <PlanContainer lieux={lieux} />
+  return <ResultatsPlan lieux={lieux} />
 }
 
 type ServerSidePropsResult = Readonly<{

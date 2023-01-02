@@ -11,9 +11,10 @@ export function useCarteLieu() {
     }).filter((critere) => critere !== null)
   }
 
-  const nomToGoogleMapLink = (nom: string): string => {
-    return `https://www.google.com/maps/search/?api=1&query=${nom.replaceAll(' ', '+')}`
+  const lieuToGoogleMapLink = (lieu: LieuModel): string => {
+    const parser = (text: string) => text.replaceAll(' ', '+')
+    return 'https://www.google.com/maps/search/?api=1&query=' + parser(`${lieu.nom}+${lieu.adresse}+${lieu.codePostal}+${lieu.ville}`)
   }
 
-  return { getCriteresImgSrcFromLieu, nomToGoogleMapLink }
+  return { getCriteresImgSrcFromLieu, nomToGoogleMapLink: lieuToGoogleMapLink }
 }

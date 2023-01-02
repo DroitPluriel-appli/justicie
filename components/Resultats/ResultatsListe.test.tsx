@@ -1,8 +1,8 @@
 import { screen, within } from '@testing-library/react'
 import mockRouter from 'next-router-mock'
 
+import { LieuBuilder } from '../../backend/entities/LieuBuilder'
 import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
-import { LieuModel } from '../../database/models/EntitéJuridiqueModel'
 import ResultatsListe from './ResultatsListe'
 
 describe('résultats de recherche affichés en liste', () => {
@@ -82,56 +82,8 @@ describe('résultats de recherche affichés en liste', () => {
       lon,
     }
 
-    const lieuA = new LieuModel()
-    lieuA.id = 1234
-    lieuA.latitude = -0.09
-    lieuA.longitude = 51.500
-    lieuA.nom = 'Lieu A'
-    lieuA.adresse = '12 rue du Lieu'
-    lieuA.e_mail = 'contactLieuA@email.com'
-    lieuA.ville = 'Paris-LieuA'
-    lieuA.region = 'Ile-de-France'
-    lieuA.horaire = 'Du lundi au vendredi de 8h à 20h'
-    lieuA.telephone = '01 02 03 04 05'
-    lieuA.departement = 'Seine-et-Marne'
-    lieuA.priseDeRendezVous = 'Ce lieu est soumis à la prise de rendez-vous'
-    lieuA.codePostal = '75002'
-    lieuA.siteInternet = 'lieu.fr'
-    lieuA.bim = true
-    lieuA.lsf = true
-    lieuA.pmr = true
-    lieuA.calme = true
-    lieuA.forme = true
-    lieuA.visuel = true
-    lieuA.pmr_assiste = true
-    lieuA.domaineDeDroit = 'Tout domaine'
-    lieuA.commentaire = 'En partie formé'
-
-    const lieuB = new LieuModel()
-    lieuB.id = 1235
-    lieuB.latitude = -0.07
-    lieuB.longitude = 51.580
-    lieuB.nom = 'Lieu B'
-    lieuB.adresse = '34 Avenue de Lieu B'
-    lieuB.e_mail = 'contactLieuB@email.com'
-    lieuB.ville = 'StrasbourgB'
-    lieuB.region = 'Alsace'
-    lieuB.horaire = 'Lundi: 8h00 - 18h00\nMardi: 8h00-18h00\nMercredi: 8h00 - 18h00\nFermé les jeudis, vendredis, samedi et dimanche'
-    lieuB.telephone = '11 22 33 44 55'
-    lieuB.departement = 'Bas-Rhin'
-    lieuB.priseDeRendezVous = "Ce lieu n'est pas soumis à la prise de rendez-vous"
-    lieuB.codePostal = '67000'
-    lieuB.siteInternet = 'siteWebDulieuC.fr'
-    lieuB.bim = false
-    lieuB.lsf = true
-    lieuB.pmr = false
-    lieuB.calme = true
-    lieuB.forme = true
-    lieuB.visuel = false
-    lieuB.pmr_assiste = true
-    lieuB.domaineDeDroit = 'Tout domaine'
-    lieuB.commentaire = ''
-
+    const lieuA = LieuBuilder.cree({ adresse: '12 rue du Lieu', id: 1, latitude: -0.09, longitude: 51.50, nom: 'LieuA' })
+    const lieuB = LieuBuilder.cree({ forme: false, id: 2, nom: 'Lieu B', pmr: false, visuel: false })
     const lieux = [lieuA, lieuB]
 
     // WHEN
@@ -155,7 +107,9 @@ describe('résultats de recherche affichés en liste', () => {
       within(cartesLieux[0]).getByTitle(wording.TITLE_PERSONNEL_FORME),
     ]
     champsCarteLieuA.forEach((champ) => expect(champ).toBeInTheDocument())
-    expect(champsCarteLieuA[3]).toHaveAttribute('href', `https://www.google.com/maps/search/?api=1&query=${lieuA.nom.replaceAll(' ', '+')}`)
+
+    const googleMapUrlLieuA = 'https://www.google.com/maps/search/?api=1&query=Lieu+A+12+rue+du+Lieu+75002+Paris-LieuA'
+    expect(champsCarteLieuA[3]).toHaveAttribute('href', googleMapUrlLieuA)
 
     const champsCarteLieuB = [
       within(cartesLieux[1]).getByRole('heading', { level: 1, name: lieuB.nom }),
@@ -169,6 +123,8 @@ describe('résultats de recherche affichés en liste', () => {
       within(cartesLieux[1]).getByTitle(wording.TITLE_HANDICAP_MOTEUR_AVEC_ASSISTANCE),
     ]
     champsCarteLieuB.forEach((champ) => expect(champ).toBeInTheDocument())
-    expect(champsCarteLieuB[3]).toHaveAttribute('href', `https://www.google.com/maps/search/?api=1&query=${lieuB.nom.replaceAll(' ', '+')}`)
+
+    const googleMapUrlLieuB = 'https://www.google.com/maps/search/?api=1&query=Lieu+B+34+Avenue+de+Lieu+B+67000+StrasbourgB'
+    expect(champsCarteLieuB[3]).toHaveAttribute('href', googleMapUrlLieuB)
   })
 })

@@ -23,7 +23,7 @@ export default function CarteLieu({ lieu }: CarteLieuProps): ReactElement {
   } = lieu
 
   const { wording } = useDependencies()
-  const { getCriteresImgSrcFromLieu, nomToGoogleMapLink } = useCarteLieu()
+  const { getCriteresImgSrcFromLieu, nomToGoogleMapLink: lieuToGoogleMapLink } = useCarteLieu()
 
   return (
     <article className={styles.carteLieu}>
@@ -64,7 +64,7 @@ export default function CarteLieu({ lieu }: CarteLieuProps): ReactElement {
       </div>
       <ExternalLink
         className={styles.carteLieu__buttons}
-        href={nomToGoogleMapLink(nom)}
+        href={lieuToGoogleMapLink(lieu)}
         title={wording.LANCER_L_ITINERAIRE}
       >
         {wording.LANCER_L_ITINERAIRE}

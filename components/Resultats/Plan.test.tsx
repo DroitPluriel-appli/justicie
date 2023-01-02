@@ -1,15 +1,15 @@
 import { fireEvent, screen, within } from '@testing-library/react'
 import mockRouter from 'next-router-mock'
 
-import useResultatsPlan from '../../components/Resultats/useResultatsPlan'
+import usePlan from '../../components/Resultats/usePlan'
 import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
 import { LieuModel } from '../../database/models/LieuModel'
 import PageResultatsParPlan from '../../pages/resultats-plan'
-import ResultatsPlan from './ResultatsPlan'
+import Plan from './Plan'
 
 describe('page résultats par plan', () => {
   const { wording, paths } = fakeFrontDependencies
-  const { iconSizeDefault, iconSizeSelected } = useResultatsPlan()
+  const { iconSizeDefault, iconSizeSelected } = usePlan()
 
   const lieuA = new LieuModel()
   lieuA.id = 1234
@@ -100,7 +100,7 @@ describe('page résultats par plan', () => {
 
     // WHEN
     renderFakeComponent(
-      <ResultatsPlan
+      <Plan
         lieux={[]}
         viewCenter={viewCenter}
       />
@@ -120,7 +120,7 @@ describe('page résultats par plan', () => {
 
     // WHEN
     renderFakeComponent(
-      <ResultatsPlan
+      <Plan
         lieux={[]}
         viewCenter={viewCenter}
       />
@@ -150,7 +150,7 @@ describe('page résultats par plan', () => {
 
     // WHEN
     renderFakeComponent(
-      <ResultatsPlan
+      <Plan
         lieux={[]}
         viewCenter={viewCenter}
       />
@@ -173,7 +173,7 @@ describe('page résultats par plan', () => {
 
     // WHEN
     renderFakeComponent(
-      <ResultatsPlan
+      <Plan
         lieux={lieux}
         viewCenter={viewCenter}
       />
@@ -202,7 +202,7 @@ describe('page résultats par plan', () => {
 
     // WHEN
     renderFakeComponent(
-      <ResultatsPlan
+      <Plan
         lieux={lieux}
         viewCenter={viewCenter}
       />
@@ -255,7 +255,7 @@ describe('page résultats par plan', () => {
 
     // WHEN
     renderFakeComponent(
-      <ResultatsPlan
+      <Plan
         lieux={[lieu]}
         viewCenter={viewCenter}
       />
@@ -280,7 +280,9 @@ describe('page résultats par plan', () => {
       within(main).getByTitle(wording.TITLE_PERSONNEL_FORME),
     ]
     champsCarteLieuA.forEach((champ) => expect(champ).toBeVisible())
-    expect(champsCarteLieuA[3]).toHaveAttribute('href', `https://www.google.com/maps/search/?api=1&query=${lieuA.nom.replaceAll(' ', '+')}`)
+
+    const googleMapUrl = 'https://www.google.com/maps/search/?api=1&query=Lieu+A+12+rue+du+Lieu+A+75002+Paris-LieuA'
+    expect(champsCarteLieuA[3]).toHaveAttribute('href', googleMapUrl)
   })
 
   it('affiche une phrase demandant de recommencer le parcours quand on arrive sans latitude', () => {
