@@ -1,8 +1,11 @@
+import { GetServerSidePropsContext, GetServerSidePropsResult } from 'next'
 import dynamic from 'next/dynamic'
 import { ReactElement } from 'react'
 
-import { recupereDesLieux } from '../backend/repository/lieuxRepository'
-import { LieuModel } from '../database/models/EntitéJuridiqueModel'
+import { Lieu } from '../backend/entities/Lieu'
+import { recupereDesLieux } from '../backend/infrastructure/gateways/lieuxRepository'
+import dataSource from '../database/dataSource'
+import { LieuModel } from '../database/models/LieuModel'
 
 export default function PageResultatsParPlan({ lieux }: { lieux: LieuModel[] }): ReactElement {
 
@@ -15,8 +18,18 @@ export default function PageResultatsParPlan({ lieux }: { lieux: LieuModel[] }):
   )
 }
 
-export async function getServerSideProps() {
-  const lieux = await recupereDesLieux()
+type ServerSidePropsResult = Readonly<{
+  lieux: Lieu[]
+}>
+
+export async function getServerSideProps(context: GetServerSidePropsContext): Promise<GetServerSidePropsResult<ServerSidePropsResult>> {
+  const orm = dataSource.initialize()
+  const latitude = Number(context.query.lat)
+  const longitude = Number(context.query.lon)
+  const page = context.query.page === undefined ? 0 : Number(context.query.page)
+
+  const lieux = await recupereDesLieux(orm, latitude, longitude, page)
+  await (await orm).destroy()
 
   return { props: { lieux } }
 }

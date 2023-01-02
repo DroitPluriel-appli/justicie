@@ -1,7 +1,7 @@
 import L from 'leaflet'
 import { createRoot } from 'react-dom/client'
 
-import { LieuModel } from '../../database/models/EntitéJuridiqueModel'
+import { LieuModel } from '../../database/models/LieuModel'
 import CarteLieu from '../CarteLieu'
 
 export default function useResultatsPlan() {

@@ -50,15 +50,17 @@ export function useRechercherUneConsultationJuridique() {
         buttonName: wording.CHARGEMENT,
         isDisabled: true,
       })
-      navigator.geolocation.getCurrentPosition((position) => {
-        setGeoloc({ latitude: position.coords.latitude, longitude: position.coords.longitude })
-      },
-      () => {
-        setState({
-          buttonName: wording.UTILISER_MA_POSITION_ACTUELLE,
-          isDisabled: false,
-        })
-      })
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setGeoloc({ latitude: position.coords.latitude, longitude: position.coords.longitude })
+        },
+        () => {
+          setState({
+            buttonName: wording.UTILISER_MA_POSITION_ACTUELLE,
+            isDisabled: false,
+          })
+        }
+      )
     }
   }, [wording.CHARGEMENT, wording.UTILISER_MA_POSITION_ACTUELLE])
 

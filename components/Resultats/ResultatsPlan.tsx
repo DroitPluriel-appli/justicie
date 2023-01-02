@@ -4,7 +4,7 @@ import Head from 'next/head'
 import { ReactElement, useEffect } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
-import { LieuModel } from '../../database/models/EntitéJuridiqueModel'
+import { LieuModel } from '../../database/models/LieuModel'
 import EnTete from './EnTete'
 import usePagePlan from './usePagePlan'
 import useResultatsPlan from './useResultatsPlan'

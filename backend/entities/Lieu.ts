@@ -1,0 +1,26 @@
+export class Lieu {
+  public readonly adresse!: string
+  public readonly bim!: boolean
+  public readonly calme!: boolean
+  public readonly codePostal!: string
+  public readonly commentaire!: string
+  public readonly departement!: string
+  public readonly distance!: number
+  public readonly domaineDeDroit!: string
+  public readonly e_mail!: string
+  public readonly forme!: boolean
+  public readonly horaire!: string
+  public readonly id!: number
+  public readonly latitude!: number
+  public readonly longitude!: number
+  public readonly lsf!: boolean
+  public readonly nom!: string
+  public readonly pmr!: boolean
+  public readonly pmr_assiste!: boolean
+  public readonly priseDeRendezVous!: string
+  public readonly region!: string
+  public readonly siteInternet!: string
+  public readonly telephone!: string
+  public readonly ville!: string
+  public readonly visuel!: boolean
+}

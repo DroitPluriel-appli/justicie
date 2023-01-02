@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { ReactElement } from 'react'
 
 import { useDependencies } from '../configuration/useDependencies'
-import { LieuModel } from '../database/models/EntitéJuridiqueModel'
+import { LieuModel } from '../database/models/LieuModel'
 import ExternalLink from './ExternalLink/ExternalLink'
 
 type CarteLieuProps = Readonly<{

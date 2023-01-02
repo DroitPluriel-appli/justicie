@@ -70,4 +70,6 @@ export class LieuModel {
 
   @Column({ name: 'commentaire', type: 'text' })
   public commentaire!: string
+
+  public distance?: number
 }

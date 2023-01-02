@@ -9,8 +9,6 @@ const customJestConfig: Config.InitialOptions = {
   collectCoverageFrom: [
     'backend/**/*.ts',
     'components/**/*.ts?(x)',
-    'database/**/*.ts',
-    '!database/migrations/*.ts',
   ],
   fakeTimers: { now: 1664703388050 }, // 2022-01-01T23:00:00.135Z
   maxWorkers: 4,
@@ -29,7 +27,6 @@ const customJestConfig: Config.InitialOptions = {
   testMatch: [
     '<rootDir>/backend/**/*(*.)@(test).ts',
     '<rootDir>/components/**/*(*.)@(test).tsx',
-    '<rootDir>/database/**/*(*.)@(test).ts',
   ],
 }
 

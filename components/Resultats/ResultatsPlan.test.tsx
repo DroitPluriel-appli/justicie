@@ -3,7 +3,7 @@ import mockRouter from 'next-router-mock'
 
 import useResultatsPlan from '../../components/Resultats/useResultatsPlan'
 import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
-import { LieuModel } from '../../database/models/EntitéJuridiqueModel'
+import { LieuModel } from '../../database/models/LieuModel'
 import ResultatsPlan from './ResultatsPlan'
 
 describe('page résultats par plan', () => {
