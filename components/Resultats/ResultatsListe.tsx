@@ -3,14 +3,16 @@ import { ReactElement } from 'react'
 
 import { Lieu } from '../../backend/entities/Lieu'
 import { useDependencies } from '../../configuration/useDependencies'
+import { useQueryUtilities } from '../../configuration/useQueryUtilities'
 import CarteLieu from '../CarteLieu/CarteLieu'
 import EnTete from './EnTete'
 
 export default function ResultatsListe({ lieux }: { lieux: Lieu[] }): ReactElement {
   const { useRouter, wording } = useDependencies()
   const { query } = useRouter()
+  const { isValidLatLonQuery } = useQueryUtilities()
 
-  if (!Number(query.lat) || !Number(query.lon)) {
+  if (isValidLatLonQuery(query)) {
     return (
       <p>
         {wording.RECOMMENCER_PARCOURS}

@@ -234,8 +234,11 @@ describe('page résultats par plan', () => {
     ]
     champsCarteLieuA.forEach((champ) => expect(champ).toBeVisible())
 
-    const googleMapUrl = 'https://www.google.com/maps/search/?api=1&query=LieuA+12+rue+du+Lieu+1000+Bourg+En+Bresse'
-    expect(champsCarteLieuA[3]).toHaveAttribute('href', googleMapUrl)
+    const googleMapUrlLieuA = new URL('https://www.google.com/maps/search/')
+    googleMapUrlLieuA.searchParams.append('api', '1')
+    googleMapUrlLieuA.searchParams.append('query', 'LieuA+12+rue+du+Lieu+1000+Bourg+En+Bresse')
+
+    expect(champsCarteLieuA[3]).toHaveAttribute('href', googleMapUrlLieuA.toString())
   })
 
   it('affiche une phrase demandant de recommencer le parcours quand on arrive sans latitude', () => {

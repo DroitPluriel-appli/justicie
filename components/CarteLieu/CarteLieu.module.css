@@ -3,11 +3,11 @@
   display: grid;
   grid-gap: var(--m-margin) 0;
   grid-template:
-    "carteTitle carteTitle" auto
-    "carteAdresse carteAdresse" auto
-    "carteLieu__criteres carteLieu__criteres" auto
-    "lancerItineraire plusDInformations" auto
-    / 1fr 1fr;
+    "title title title title" auto
+    "coordonnees coordonnees coordonnees distance" auto
+    "criteresAccessibilite criteresAccessibilite criteresAccessibilite criteresAccessibilite" auto
+    "lancerItineraire lancerItineraire plusDInformations plusDInformations" auto
+    / 1fr 1fr 1fr;
   margin-bottom: var(--l-margin);
   margin-inline: calc(-1 * var(--l-margin));
   outline: 1px solid var(--gray);
@@ -29,21 +29,29 @@
   padding: var(--m-margin);
 }
 
+.carteLieu > *:not(a) {
+  padding-inline: var(--l-margin);
+}
+
+:global(.leaflet-container) .carteLieu > *:not(a) {
+  padding-inline: 0;
+}
+
 .carteLieu > h1 {
-  grid-area: carteTitle;
+  grid-area: title;
   margin-bottom: 0;
 }
 
 .carteLieu > address {
   display: flex;
   flex-direction: column;
-  grid-area: carteAdresse;
+  grid-area: coordonnees;
 }
 
 .carteLieu .carteLieu__criteres {
   display: flex;
   flex-direction: row;
-  grid-area: carteLieu__criteres;
+  grid-area: criteresAccessibilite;
   justify-content: right;
 }
 
@@ -55,8 +63,8 @@
   margin-bottom: var(--m-margin);
 }
 
-.carteLieu > *:not(a) {
-  padding-inline: var(--l-margin);
+.carteLieu address .carteLieu__distance {
+  grid-area: distance;
 }
 
 /* Obligé de préciser a.class pour override un des styles par défaut de leaflet */
@@ -73,7 +81,7 @@ a.carteLieu__buttons {
   text-align: center;
 }
 
-.carteLieu__telephoneIcon {
+.carteLieu__icon {
   fill: var(--black);
   margin-right: var(--s-margin);
 }

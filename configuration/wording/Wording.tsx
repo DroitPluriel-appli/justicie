@@ -71,7 +71,6 @@ export interface Wording {
   readonly LIEUX_CORRESPONDENT_A_VOTRE_RECHERCHE: (nombre: number) => string
   readonly LANCER_L_ITINERAIRE: string
   readonly PLUS_D_INFORMATIONS: string
-  readonly CE_LIEU_N_EST_PAS_ACCESSIBLE: string
 
   // Resultats par plan
   readonly TITLE_PAGE_RESULTATS_PAR_PLAN: string

@@ -1,7 +1,7 @@
 .leafletMap {
   height: 60vh;
   margin-inline: calc(-1 * var(--m-margin));
-  min-height: 400px;
+  min-height: 25rem;
 }
 
 .leafletMap:global(a.leaflet-popup-close-button) {

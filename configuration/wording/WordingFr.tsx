@@ -74,7 +74,6 @@ export class WordingFr implements Wording {
   readonly LIEUX_CORRESPONDENT_A_VOTRE_RECHERCHE: (nombre: number) => string = (nombre: number): string => `${nombre} lieux correspondent à votre recherche`
   readonly LANCER_L_ITINERAIRE: string = "Lancer l'itinéraire"
   readonly PLUS_D_INFORMATIONS: string = 'Plus d’informations'
-  readonly CE_LIEU_N_EST_PAS_ACCESSIBLE: string = "Ce lieu n'est pas accessible."
 
   // Resultats par plan
   readonly TITLE_PAGE_RESULTATS_PAR_PLAN: string = 'Résultats par plan'

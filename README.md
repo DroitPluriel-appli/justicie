@@ -118,7 +118,7 @@ Justice Plurielle a la note de [A](https://securityheaders.com/?q=https%3A%2F%2F
 ### Leaflet pour l'affichage des la carte (15/12/22)
 
 - L'API de Google map étant payante, il faut une alternative gratuite : Leaflet + Open Street map
-- Pourra être remplacer par Google map si besoin par la suite si Droit Pluriel obtient des réductions auprès de Google
+- Pourra être remplacé par Google map si besoin par la suite si Droit Pluriel obtient des réductions auprès de Google
 
 ### Leaflet au lieu de React-Leaflet (19/12/22)
 

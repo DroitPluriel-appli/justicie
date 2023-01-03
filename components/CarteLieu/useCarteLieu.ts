@@ -5,15 +5,18 @@ export function useCarteLieu() {
   const { criteres } = useDependencies()
 
   const getCriteresImgSrcFromLieu = (lieu: Lieu) => {
-    return criteres.map((critere) => {
+    return criteres.filter((critere) => {
       const { name } = critere
-      return lieu[name as keyof Lieu] ? critere : null
-    }).filter((critere) => critere !== null)
+      return (lieu[name as keyof Lieu])
+    })
   }
 
   const lieuToGoogleMapLink = (lieu: Lieu): string => {
-    const parser = (text: string) => text.replaceAll(' ', '+')
-    return 'https://www.google.com/maps/search/?api=1&query=' + parser(`${lieu.nom}+${lieu.adresse}+${lieu.codePostal}+${lieu.ville}`)
+    const url = new URL('https://www.google.com/maps/search/')
+    const lieuQueryString = `${lieu.nom}+${lieu.adresse}+${lieu.codePostal}+${lieu.ville}`
+    url.searchParams.append('api', '1')
+    url.searchParams.append('query', lieuQueryString.replaceAll(' ', '+'))
+    return url.toString()
   }
 
   return { getCriteresImgSrcFromLieu, nomToGoogleMapLink: lieuToGoogleMapLink }
