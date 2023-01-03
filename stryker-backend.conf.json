@@ -9,7 +9,7 @@
   },
   "mutate": [
     "backend/infrastructure/**/*.ts",
-    "!backend/infrastructure/**/*.test.ts"
+    "!backend/**/*.test.ts"
   ],
   "packageManager": "yarn",
   "reporters": [
