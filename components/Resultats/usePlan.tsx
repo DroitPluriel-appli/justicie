@@ -1,7 +1,7 @@
 import L from 'leaflet'
 import { createRoot } from 'react-dom/client'
 
-import { LieuModel } from '../../database/models/LieuModel'
+import { Lieu } from '../../backend/entities/Lieu'
 import CarteLieu from '../CarteLieu/CarteLieu'
 
 export default function useResultatsPlan() {
@@ -26,7 +26,7 @@ export default function useResultatsPlan() {
     return L.marker(viewCenter, { icon: iconMarkerPosition, title: title })
   }
 
-  const setMarkersLieux = (lieux: LieuModel[]): L.Marker[] => {
+  const setMarkersLieux = (lieux: Lieu[]): L.Marker[] => {
 
     const markersLieux = lieux.map((lieu) => {
       const popupContentContainer = L.DomUtil.create('div')

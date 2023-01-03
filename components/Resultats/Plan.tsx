@@ -3,14 +3,14 @@ import L from 'leaflet'
 import Head from 'next/head'
 import { ReactElement, useEffect } from 'react'
 
+import { Lieu } from '../../backend/entities/Lieu'
 import { useDependencies } from '../../configuration/useDependencies'
-import { LieuModel } from '../../database/models/LieuModel'
 import EnTete from './EnTete'
 import styles from './Plan.module.css'
 import usePlan from './usePlan'
 
 type PlanProps = Readonly<{
-  lieux: LieuModel[],
+  lieux: Lieu[],
   viewCenter: L.LatLngExpression
 }>
 

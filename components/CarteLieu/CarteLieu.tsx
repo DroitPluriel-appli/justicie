@@ -2,15 +2,15 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ReactElement } from 'react'
 
+import { Lieu } from '../../backend/entities/Lieu'
 import { useDependencies } from '../../configuration/useDependencies'
-import { LieuModel } from '../../database/models/EntitéJuridiqueModel'
 import IconTelephone from '../../public/telephone.svg'
 import ExternalLink from '../ExternalLink/ExternalLink'
 import styles from './CarteLieu.module.css'
 import { useCarteLieu } from './useCarteLieu'
 
 type CarteLieuProps = Readonly<{
-  lieu: LieuModel
+  lieu: Lieu
 }>
 
 export default function CarteLieu({ lieu }: CarteLieuProps): ReactElement {

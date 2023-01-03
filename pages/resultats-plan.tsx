@@ -5,9 +5,8 @@ import { Lieu } from '../backend/entities/Lieu'
 import { recupereDesLieux } from '../backend/infrastructure/gateways/lieuxRepository'
 import ResultatsPlan from '../components/Resultats/ResultatsPlan'
 import dataSource from '../database/dataSource'
-import { LieuModel } from '../database/models/LieuModel'
 
-export default function PageResultatsParPlan({ lieux }: { lieux: LieuModel[] }): ReactElement {
+export default function PageResultatsParPlan({ lieux }: { lieux: Lieu[] }): ReactElement {
   return <ResultatsPlan lieux={lieux} />
 }
 

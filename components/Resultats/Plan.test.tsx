@@ -1,9 +1,9 @@
 import { fireEvent, screen, within } from '@testing-library/react'
 import mockRouter from 'next-router-mock'
 
+import { LieuBuilder } from '../../backend/entities/LieuBuilder'
 import usePlan from '../../components/Resultats/usePlan'
 import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
-import { LieuModel } from '../../database/models/LieuModel'
 import PageResultatsParPlan from '../../pages/resultats-plan'
 import Plan from './Plan'
 
@@ -11,80 +11,33 @@ describe('page résultats par plan', () => {
   const { wording, paths } = fakeFrontDependencies
   const { iconSizeDefault, iconSizeSelected } = usePlan()
 
-  const lieuA = new LieuModel()
-  lieuA.id = 1234
-  lieuA.latitude = -0.09
-  lieuA.longitude = 51.500
-  lieuA.nom = 'Lieu A'
-  lieuA.adresse = '12 rue du Lieu A'
-  lieuA.e_mail = 'contactLieuA@email.com'
-  lieuA.ville = 'Paris-LieuA'
-  lieuA.region = 'Ile-de-France'
-  lieuA.horaire = 'Du lundi au vendredi de 8h à 20h'
-  lieuA.telephone = '01 02 03 04 05'
-  lieuA.departement = 'Seine-et-Marne'
-  lieuA.priseDeRendezVous = 'Ce lieu est soumis à la prise de rendez-vous'
-  lieuA.codePostal = '75002'
-  lieuA.siteInternet = 'lieuA.fr'
-  lieuA.bim = true
-  lieuA.lsf = true
-  lieuA.pmr = true
-  lieuA.calme = true
-  lieuA.forme = true
-  lieuA.visuel = true
-  lieuA.pmr_assiste = true
-  lieuA.domaineDeDroit = 'Tout domaine'
-  lieuA.commentaire = 'En partie formé'
+  const lieuA = LieuBuilder.cree({
+    adresse: '12 rue du Lieu',
+    bim: true,
+    forme: true,
+    id: 1,
+    latitude: -0.09,
+    longitude: 51.50,
+    lsf: true,
+    nom: 'LieuA',
+  })
 
-  const lieuB = new LieuModel()
-  lieuB.id = 1235
-  lieuB.latitude = -0.07
-  lieuB.longitude = 51.580
-  lieuB.nom = 'Lieu B'
-  lieuB.adresse = '34 Avenue de Lieu B'
-  lieuB.e_mail = 'contactLieuB@email.com'
-  lieuB.ville = 'StrasbourgB'
-  lieuB.region = 'Alsace'
-  lieuB.horaire = 'Lundi: 8h00 - 18h00\nMardi: 8h00-18h00\nMercredi: 8h00 - 18h00\nFermé les jeudis, vendredis, samedi et dimanche'
-  lieuB.telephone = '11 22 33 44 55'
-  lieuB.departement = 'Bas-Rhin'
-  lieuB.priseDeRendezVous = "Ce lieu n'est pas soumis à la prise de rendez-vous"
-  lieuB.codePostal = '67000'
-  lieuB.siteInternet = 'siteWebDulieuC.fr'
-  lieuB.bim = false
-  lieuB.lsf = true
-  lieuB.pmr = false
-  lieuB.calme = true
-  lieuB.forme = true
-  lieuB.visuel = false
-  lieuB.pmr_assiste = true
-  lieuB.domaineDeDroit = 'Tout domaine'
-  lieuB.commentaire = ''
+  const lieuB = LieuBuilder.cree({
+    bim: true,
+    forme: true,
+    id: 1,
+    latitude: -0.09,
+    longitude: 51.50,
+    lsf: true,
+    nom: 'LieuB',
+  })
 
-  const lieuC = new LieuModel()
-  lieuC.id = 1236
-  lieuC.latitude = -0.10
-  lieuC.longitude = 51.530
-  lieuC.nom = 'Lieu C'
-  lieuC.adresse = '13 rue du Lieu C'
-  lieuC.e_mail = 'contactLieuB@email.com'
-  lieuC.ville = 'Paris-LieuC'
-  lieuC.region = 'Ile-de-France'
-  lieuC.horaire = 'Du lundi au vendredi de 8h à 20h'
-  lieuC.telephone = '01 02 03 04 05'
-  lieuC.departement = 'Seine-et-Marne'
-  lieuC.priseDeRendezVous = 'Ce lieu est soumis à la prise de rendez-vous'
-  lieuC.codePostal = '75002'
-  lieuC.siteInternet = 'lieuC.fr'
-  lieuC.bim = false
-  lieuC.lsf = false
-  lieuC.pmr = false
-  lieuC.calme = false
-  lieuC.forme = false
-  lieuC.visuel = false
-  lieuC.pmr_assiste = true
-  lieuC.domaineDeDroit = 'Domaine LieuC domaine'
-  lieuC.commentaire = ''
+  const lieuC = LieuBuilder.cree({
+    id: 1,
+    latitude: -0.09,
+    longitude: 51.50,
+    nom: 'LieuC',
+  })
 
   const lat = '48.844928'
   const lon = '2.31016'
@@ -281,7 +234,7 @@ describe('page résultats par plan', () => {
     ]
     champsCarteLieuA.forEach((champ) => expect(champ).toBeVisible())
 
-    const googleMapUrl = 'https://www.google.com/maps/search/?api=1&query=Lieu+A+12+rue+du+Lieu+A+75002+Paris-LieuA'
+    const googleMapUrl = 'https://www.google.com/maps/search/?api=1&query=LieuA+12+rue+du+Lieu+1000+Bourg+En+Bresse'
     expect(champsCarteLieuA[3]).toHaveAttribute('href', googleMapUrl)
   })
 

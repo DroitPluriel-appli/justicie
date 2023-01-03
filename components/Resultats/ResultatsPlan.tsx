@@ -1,15 +1,15 @@
 import dynamic from 'next/dynamic'
 import { ReactElement } from 'react'
 
-import usePagePlan from '../../components/Resultats/useResultatsPlan'
+import { Lieu } from '../../backend/entities/Lieu'
+import useResultatsPlan from '../../components/Resultats/useResultatsPlan'
 import { useDependencies } from '../../configuration/useDependencies'
-import { LieuModel } from '../../database/models/LieuModel'
 
-export default function ResultatsPlan({ lieux }: { lieux: LieuModel[] }): ReactElement {
+export default function ResultatsPlan({ lieux }: { lieux: Lieu[] }): ReactElement {
 
   const { useRouter, wording } = useDependencies()
   const { query } = useRouter()
-  const { queryToLatLngExpression } = usePagePlan()
+  const { queryToLatLngExpression } = useResultatsPlan()
 
   const Plan = dynamic(() => import('../../components/Resultats/Plan'), { ssr: false })
 
