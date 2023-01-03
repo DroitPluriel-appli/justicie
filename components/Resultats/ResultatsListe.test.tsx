@@ -82,8 +82,8 @@ describe('résultats de recherche affichés en liste', () => {
       lon,
     }
 
-    const lieuA = LieuBuilder.cree({ adresse: '12 rue du Lieu', id: 1, latitude: -0.09, longitude: 51.50, nom: 'LieuA' })
-    const lieuB = LieuBuilder.cree({ forme: false, id: 2, nom: 'Lieu B', pmr: false, visuel: false })
+    const lieuA = LieuBuilder.cree({ adresse: '12 rue du Lieu', bim: true, forme: true, id: 1, latitude: -0.09, longitude: 51.50, lsf: true, nom: 'LieuA' })
+    const lieuB = LieuBuilder.cree({ forme: false, id: 2, nom: 'Lieu B' })
     const lieux = [lieuA, lieuB]
 
     // WHEN
@@ -108,7 +108,7 @@ describe('résultats de recherche affichés en liste', () => {
     ]
     champsCarteLieuA.forEach((champ) => expect(champ).toBeInTheDocument())
 
-    const googleMapUrlLieuA = 'https://www.google.com/maps/search/?api=1&query=Lieu+A+12+rue+du+Lieu+75002+Paris-LieuA'
+    const googleMapUrlLieuA = 'https://www.google.com/maps/search/?api=1&query=LieuA+12+rue+du+Lieu+1000+Bourg+En+Bresse'
     expect(champsCarteLieuA[3]).toHaveAttribute('href', googleMapUrlLieuA)
 
     const champsCarteLieuB = [
@@ -117,14 +117,14 @@ describe('résultats de recherche affichés en liste', () => {
       within(cartesLieux[1]).getByText(new RegExp(lieuB.telephone)),
       within(cartesLieux[1]).getByRole('link', { name: wording.LANCER_L_ITINERAIRE + wording.NOUVELLE_FENETRE }),
       within(cartesLieux[1]).getByRole('link', { name: wording.PLUS_D_INFORMATIONS }),
-      within(cartesLieux[1]).getByTitle(wording.TITLE_PERSONNEL_FORME),
-      within(cartesLieux[1]).getByTitle(wording.TITLE_LANGUE_DES_SIGNES_FRANCAISE),
+      within(cartesLieux[1]).getByTitle(wording.TITLE_HANDICAP_VISUEL),
       within(cartesLieux[1]).getByTitle(wording.TITLE_ENVIRONNEMENT_CALME),
       within(cartesLieux[1]).getByTitle(wording.TITLE_HANDICAP_MOTEUR_AVEC_ASSISTANCE),
+      within(cartesLieux[1]).getByTitle(wording.TITLE_HANDICAP_MOTEUR_TOTAL),
     ]
     champsCarteLieuB.forEach((champ) => expect(champ).toBeInTheDocument())
 
-    const googleMapUrlLieuB = 'https://www.google.com/maps/search/?api=1&query=Lieu+B+34+Avenue+de+Lieu+B+67000+StrasbourgB'
+    const googleMapUrlLieuB = 'https://www.google.com/maps/search/?api=1&query=Lieu+B+34+cours+de+Verdun+1000+Bourg+En+Bresse'
     expect(champsCarteLieuB[3]).toHaveAttribute('href', googleMapUrlLieuB)
   })
 })
