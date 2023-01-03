@@ -46,6 +46,18 @@ describe('lieu loader', () => {
       // THEN
       expect(lieu).toStrictEqual([])
     })
+
+    it('récupère un lieu sans latitude ni longitude', async () => {
+      // GIVEN
+      await creeSeptLieux(orm)
+      const idInexistant = 1
+
+      // WHEN
+      const lieu = await postgreSQLLieuLoader.recupereUnLieu(idInexistant)
+
+      // THEN
+      expect(lieu).toStrictEqual([LieuBuilder.cree({ distance: 4220, id: 1, latitude: 40.100000, longitude: 2.100000 })])
+    })
   })
 
   describe('récupérer des lieux', () => {

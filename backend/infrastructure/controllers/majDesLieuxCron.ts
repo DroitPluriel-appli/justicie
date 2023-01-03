@@ -4,8 +4,6 @@ import { DataSource, EntityManager } from 'typeorm'
 import dataSource from '../../../database/dataSource'
 import { LieuModel } from '../../../database/models/LieuModel'
 
-type LieuSansId = Omit<LieuModel, 'id'>
-
 export async function majDesLieux(orm: Promise<DataSource>, googleApis: GoogleApis): Promise<void> {
   const lieuxBruts = await recupereLesLieuxDeSpreadsheet(googleApis)
 
@@ -28,7 +26,7 @@ async function recupereLesLieuxDeSpreadsheet(googleApis: GoogleApis): Promise<st
   return response.data.values as string[][]
 }
 
-async function sauvegardeLesLieux(orm: Promise<DataSource>, lieux: LieuSansId[]): Promise<void> {
+async function sauvegardeLesLieux(orm: Promise<DataSource>, lieux: LieuModel[]): Promise<void> {
   await (await orm).transaction(async (transactionalEntityManager: EntityManager): Promise<void> => {
     await transactionalEntityManager
       .getRepository(LieuModel)
@@ -42,33 +40,35 @@ async function sauvegardeLesLieux(orm: Promise<DataSource>, lieux: LieuSansId[])
   })
 }
 
-function transformeEnLieuxModel(lieuxBruts: string[][]): LieuSansId[] {
+function transformeEnLieuxModel(lieuxBruts: string[][]): LieuModel[] {
   const stringToBoolean = (str: string): boolean => str === 'oui' ? true : false
 
-  return lieuxBruts.map((lieu): LieuSansId => ({
-    adresse: lieu[1],
-    bim: stringToBoolean(lieu[18]),
-    calme: stringToBoolean(lieu[20]),
-    codePostal: lieu[2],
-    commentaire: lieu[22],
-    departement: lieu[13],
-    domaineDeDroit: lieu[7],
-    e_mail: lieu[10],
-    forme: stringToBoolean(lieu[21]),
-    horaire: lieu[11],
-    latitude: Number(lieu[8]),
-    longitude: Number(lieu[9]),
-    lsf: stringToBoolean(lieu[19]),
-    nom: lieu[0],
-    pmr: stringToBoolean(lieu[15]),
-    pmr_assiste: stringToBoolean(lieu[16]),
-    priseDeRendezVous: lieu[6],
-    region: lieu[14],
-    siteInternet: lieu[4],
-    telephone: lieu[5],
-    ville: lieu[3],
-    visuel: stringToBoolean(lieu[17]),
-  }))
+  return lieuxBruts.map((lieu): LieuModel => {
+    const lieuModel = new LieuModel()
+    lieuModel.adresse = lieu[1]
+    lieuModel.bim = stringToBoolean(lieu[18])
+    lieuModel.calme = stringToBoolean(lieu[20])
+    lieuModel.codePostal = lieu[2]
+    lieuModel.commentaire = lieu[22]
+    lieuModel.departement = lieu[13]
+    lieuModel.domaineDeDroit = lieu[7]
+    lieuModel.e_mail = lieu[10]
+    lieuModel.forme = stringToBoolean(lieu[21])
+    lieuModel.horaire = lieu[11]
+    lieuModel.latitude = Number(lieu[8])
+    lieuModel.longitude = Number(lieu[9])
+    lieuModel.lsf = stringToBoolean(lieu[19])
+    lieuModel.nom = lieu[0]
+    lieuModel.pmr = stringToBoolean(lieu[15])
+    lieuModel.pmr_assiste = stringToBoolean(lieu[16])
+    lieuModel.priseDeRendezVous = lieu[6]
+    lieuModel.region = lieu[14]
+    lieuModel.siteInternet = lieu[4]
+    lieuModel.telephone = lieu[5]
+    lieuModel.ville = lieu[3]
+    lieuModel.visuel = stringToBoolean(lieu[17])
+    return lieuModel
+  })
 }
 
 async function main() {
