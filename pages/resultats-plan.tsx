@@ -1,10 +1,9 @@
 import { GetServerSidePropsContext, GetServerSidePropsResult } from 'next'
 import { ReactElement } from 'react'
 
+import { backDependencies } from '../backend/backDependencies'
 import { Lieu } from '../backend/entities/Lieu'
-import { recupereDesLieux } from '../backend/infrastructure/gateways/lieuxRepository'
 import ResultatsPlan from '../components/Resultats/ResultatsPlan'
-import dataSource from '../database/dataSource'
 
 export default function PageResultatsParPlan({ lieux }: { lieux: Lieu[] }): ReactElement {
   return <ResultatsPlan lieux={lieux} />
@@ -15,13 +14,12 @@ type ServerSidePropsResult = Readonly<{
 }>
 
 export async function getServerSideProps(context: GetServerSidePropsContext): Promise<GetServerSidePropsResult<ServerSidePropsResult>> {
-  const orm = dataSource.initialize()
+  const { lieuLoader } = backDependencies()
   const latitude = Number(context.query.lat)
   const longitude = Number(context.query.lon)
   const page = context.query.page === undefined ? 0 : Number(context.query.page)
 
-  const lieux = await recupereDesLieux(orm, latitude, longitude, page)
-  await (await orm).destroy()
+  const lieux = await lieuLoader.recupereDesLieux(latitude, longitude, page)
 
   return { props: { lieux } }
 }
