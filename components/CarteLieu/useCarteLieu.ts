@@ -21,5 +21,5 @@ export function useCarteLieu() {
     return url.toString()
   }
 
-  return { getCriteresImgSrcFromLieu, nomToGoogleMapLink: lieuToGoogleMapLink }
+  return { getCriteresImgSrcFromLieu, lieuToGoogleMapLink }
 }

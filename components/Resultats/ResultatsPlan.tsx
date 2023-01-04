@@ -8,11 +8,11 @@ import { useQueryUtilities } from '../../configuration/useQueryUtilities'
 export default function ResultatsPlan({ lieux }: { lieux: Lieu[] }): ReactElement {
   const { useRouter, wording } = useDependencies()
   const { query } = useRouter()
-  const { isValidLatLonQuery } = useQueryUtilities()
+  const { latLongQueryIsInvalid } = useQueryUtilities()
 
   const Plan = dynamic(() => import('../../components/Resultats/Plan'), { ssr: false })
 
-  if (isValidLatLonQuery(query)) {
+  if (latLongQueryIsInvalid(query)) {
     return (
       <p>
         {wording.RECOMMENCER_PARCOURS}

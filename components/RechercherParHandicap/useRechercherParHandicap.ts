@@ -6,13 +6,13 @@ import { useQueryUtilities } from '../../configuration/useQueryUtilities'
 export function useRechercherParHandicap() {
   const { useRouter } = useDependencies()
   const { back, query } = useRouter()
-  const { isValidLatLonQuery } = useQueryUtilities()
+  const { latLongQueryIsInvalid } = useQueryUtilities()
 
   const retourEnArriere = useCallback(() => {
     back()
   }, [back])
 
-  const hasLatOrLon = isValidLatLonQuery(query)
+  const hasLatOrLon = latLongQueryIsInvalid(query)
 
   return { hasLatOrLon, retourEnArriere }
 }

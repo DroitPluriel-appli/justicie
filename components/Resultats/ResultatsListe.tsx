@@ -10,9 +10,9 @@ import EnTete from './EnTete'
 export default function ResultatsListe({ lieux }: { lieux: Lieu[] }): ReactElement {
   const { useRouter, wording } = useDependencies()
   const { query } = useRouter()
-  const { isValidLatLonQuery } = useQueryUtilities()
+  const { latLongQueryIsInvalid } = useQueryUtilities()
 
-  if (isValidLatLonQuery(query)) {
+  if (latLongQueryIsInvalid(query)) {
     return (
       <p>
         {wording.RECOMMENCER_PARCOURS}
