@@ -219,9 +219,10 @@ describe('page résultats par plan', () => {
 
     // THEN
     const champsCarteLieuA = [
-      within(main).getByRole('heading', { level: 1, name: lieuA.nom }),
+      within(main).getByRole('heading', { level: 2, name: lieuA.nom }),
       within(main).getByText(textMatch(lieuA.adresse + lieuA.codePostal + ' ' + lieuA.ville)),
-      within(main).getByText(new RegExp(lieuA.telephone)),
+      within(main).getByRole('link', { name: lieuA.telephone }),
+      within(main).getByText(textMatch(lieuA.distance.toPrecision(2).toString() + ' km')),
       within(main).getByRole('link', { name: wording.LANCER_L_ITINERAIRE + wording.NOUVELLE_FENETRE }),
       within(main).getByRole('link', { name: wording.PLUS_D_INFORMATIONS }),
       within(main).getByTitle(wording.TITLE_HANDICAP_MOTEUR_TOTAL),
@@ -234,12 +235,15 @@ describe('page résultats par plan', () => {
     ]
     champsCarteLieuA.forEach((champ) => expect(champ).toBeVisible())
 
+    const kilometresA = within(main).getByText(textMatch(' km'), { selector: 'abbr' })
+    expect(kilometresA).toHaveAttribute('title', 'kilomètres')
+
     const googleMapUrlLieuA = new URL('https://www.google.com/maps/dir/')
     googleMapUrlLieuA.searchParams.append('api', '1')
     googleMapUrlLieuA.searchParams.append('origin', `${viewCenter.lat},${viewCenter.lon}`)
     googleMapUrlLieuA.searchParams.append('destination', 'LieuA+12+rue+du+Lieu+1000+Bourg+En+Bresse')
 
-    expect(champsCarteLieuA[3]).toHaveAttribute('href', googleMapUrlLieuA.toString())
+    expect(champsCarteLieuA[4]).toHaveAttribute('href', googleMapUrlLieuA.toString())
   })
 
   it('affiche une phrase demandant de recommencer le parcours quand on arrive sans latitude', () => {

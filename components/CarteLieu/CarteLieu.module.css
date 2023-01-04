@@ -16,7 +16,9 @@
 :global(.leaflet-container) .carteLieu {
   box-shadow: none;
   column-gap: var(--s-margin);
-  grid-template-columns: repeat(4, calc((100%/4) - var(--s-margin)));
+
+  /* width d'1 column : (100% - les gaps) / 4 columns */
+  grid-template-columns: repeat(4, calc((100% - 3 * var(--s-margin))/4));
   margin: 0;
   outline: none;
 }
@@ -38,9 +40,10 @@
   padding-inline: 0;
 }
 
-.carteLieu > h1 {
+.carteLieu > h2 {
   grid-area: title;
   margin-bottom: 0;
+  margin-top: var(--m-margin);
 }
 
 .carteLieu > address {
