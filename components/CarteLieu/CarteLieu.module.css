@@ -16,7 +16,7 @@
 :global(.leaflet-container) .carteLieu {
   box-shadow: none;
   column-gap: var(--s-margin);
-  grid-template-columns: repeat(4, calc(100%/4 - var(--s-margin) / 4));
+  grid-template-columns: repeat(4, calc((100%/4) - var(--s-margin)));
   margin: 0;
   outline: none;
 }
@@ -30,7 +30,7 @@
   padding: var(--m-margin);
 }
 
-.carteLieu > *:not(a) {
+.carteLieu > *:not(a, .carteLieu__distance) {
   padding-inline: var(--l-margin);
 }
 

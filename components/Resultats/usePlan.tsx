@@ -4,7 +4,7 @@ import { createRoot } from 'react-dom/client'
 import { Lieu } from '../../backend/entities/Lieu'
 import CarteLieu from '../CarteLieu/CarteLieu'
 
-export default function useResultatsPlan() {
+export default function usePlan() {
 
   const iconSizeDefault = 24
   const iconSizeSelected = 38
@@ -26,7 +26,7 @@ export default function useResultatsPlan() {
     return L.marker(viewCenter, { icon: iconMarkerPosition, title: title })
   }
 
-  const setMarkersLieux = (lieux: Lieu[]): L.Marker[] => {
+  const setMarkersLieux = (lieux: Lieu[], origin: { lat: number, lon: number }): L.Marker[] => {
 
     const markersLieux = lieux.map((lieu) => {
       const popupContentContainer = L.DomUtil.create('div')
@@ -36,7 +36,10 @@ export default function useResultatsPlan() {
       // on ne peut pas passer du JSX à la popup.
       // Il faut donc faire le rendu au préalable
       createRoot(popupContentContainer).render(
-        <CarteLieu lieu={lieu} />
+        <CarteLieu
+          lieu={lieu}
+          origin={{ lat: origin.lat, lon: origin.lon }}
+        />
       )
 
       return L.marker(

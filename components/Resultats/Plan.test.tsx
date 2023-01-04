@@ -42,7 +42,7 @@ describe('page résultats par plan', () => {
   const lat = '48.844928'
   const lon = '2.31016'
   const moteurTotal = 'on'
-  const viewCenter: L.LatLngExpression = [50, 50]
+  const viewCenter = { lat: 40.0, lon: 50.0 }
 
   it('affiche le titre de l’onglet', () => {
     // GIVEN
@@ -55,7 +55,7 @@ describe('page résultats par plan', () => {
     renderFakeComponent(
       <Plan
         lieux={[]}
-        viewCenter={viewCenter}
+        origin={viewCenter}
       />
     )
 
@@ -75,7 +75,7 @@ describe('page résultats par plan', () => {
     renderFakeComponent(
       <Plan
         lieux={[]}
-        viewCenter={viewCenter}
+        origin={viewCenter}
       />
     )
 
@@ -105,7 +105,7 @@ describe('page résultats par plan', () => {
     renderFakeComponent(
       <Plan
         lieux={[]}
-        viewCenter={viewCenter}
+        origin={viewCenter}
       />
     )
 
@@ -128,7 +128,7 @@ describe('page résultats par plan', () => {
     renderFakeComponent(
       <Plan
         lieux={lieux}
-        viewCenter={viewCenter}
+        origin={viewCenter}
       />
     )
 
@@ -157,7 +157,7 @@ describe('page résultats par plan', () => {
     renderFakeComponent(
       <Plan
         lieux={lieux}
-        viewCenter={viewCenter}
+        origin={viewCenter}
       />
     )
 
@@ -210,7 +210,7 @@ describe('page résultats par plan', () => {
     renderFakeComponent(
       <Plan
         lieux={[lieu]}
-        viewCenter={viewCenter}
+        origin={viewCenter}
       />
     )
     const main = screen.getByRole('main')
@@ -234,9 +234,10 @@ describe('page résultats par plan', () => {
     ]
     champsCarteLieuA.forEach((champ) => expect(champ).toBeVisible())
 
-    const googleMapUrlLieuA = new URL('https://www.google.com/maps/search/')
+    const googleMapUrlLieuA = new URL('https://www.google.com/maps/dir/')
     googleMapUrlLieuA.searchParams.append('api', '1')
-    googleMapUrlLieuA.searchParams.append('query', 'LieuA+12+rue+du+Lieu+1000+Bourg+En+Bresse')
+    googleMapUrlLieuA.searchParams.append('origin', `${viewCenter.lat},${viewCenter.lon}`)
+    googleMapUrlLieuA.searchParams.append('destination', 'LieuA+12+rue+du+Lieu+1000+Bourg+En+Bresse')
 
     expect(champsCarteLieuA[3]).toHaveAttribute('href', googleMapUrlLieuA.toString())
   })

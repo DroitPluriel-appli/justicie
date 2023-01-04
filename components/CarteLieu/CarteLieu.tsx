@@ -34,6 +34,7 @@ export default function CarteLieu({ lieu, origin }: CarteLieuProps): ReactElemen
       <address>
         <a href={`tel:${telephone}`}>
           <svg
+            aria-hidden
             className={styles.carteLieu__icon}
             height="14"
             viewBox="0 0 48 48"
@@ -55,6 +56,7 @@ export default function CarteLieu({ lieu, origin }: CarteLieuProps): ReactElemen
       </address>
       <p className={styles.carteLieu__distance}>
         <svg
+          aria-hidden
           className={styles.carteLieu__icon}
           fill="#000000"
           height="14"
