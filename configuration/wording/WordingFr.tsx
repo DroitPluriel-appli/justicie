@@ -5,6 +5,7 @@ export class WordingFr implements Wording {
   readonly RETOUR_EN_HAUT_DE_PAGE: string = 'Retour en haut de page'
   readonly ACCES_RAPIDE: string = 'Accès rapide'
   readonly EVITEMENT_ALLER_AU_CONTENU: string = 'Aller au contenu'
+  readonly NOUVELLE_FENETRE: string = ' - Nouvelle fenêtre'
 
   // Accueil
   readonly TITLE_PAGE_ACCUEIL: string = 'Justice Plurielle'
@@ -22,22 +23,22 @@ export class WordingFr implements Wording {
   readonly RETROUVEZ_PLUS_D_INFOS: string = 'Retrouvez plus d’information sur notre site internet : '
   readonly TITLE_NOUS_CONTACTER: string = 'Nous contacter'
   readonly SITE_DROIT_PLURIEL: string = 'https://droitpluriel.fr'
-  readonly TITRE_LIEN_SITE_DROIT_PLURIEL: string = 'droitpluriel.fr - Nouvelle fenêtre'
+  readonly TITRE_LIEN_SITE_DROIT_PLURIEL: string = 'droitpluriel.fr'
   readonly PAR_EMAIL: string = 'Par e-mail : '
   readonly EMAIL_DROIT_PLURIEL: string = 'contact@droitpluriel.fr'
   readonly PAR_TELEPHONE: string = 'Par téléphone : '
   readonly TELEPHONE_DROIT_PLURIEL: string = '01 84 80 46 14'
   readonly TITLE_SUIVEZ_NOS_ACTUALITES: string = 'Suivez nos actualités'
   readonly LIEN_FACEBOOK: string = 'https://www.facebook.com/droitpluriel/'
-  readonly TITRE_LIEN_FACEBOOK: string = 'Page Facebook Droit Pluriel - Nouvelle fenêtre'
+  readonly TITRE_LIEN_FACEBOOK: string = 'Page Facebook Droit Pluriel'
   readonly LIEN_TWITTER: string = 'https://twitter.com/droit_pluriel'
-  readonly TITRE_LIEN_TWITTER: string = 'Compte Twitter Droit Pluriel - Nouvelle fenêtre'
+  readonly TITRE_LIEN_TWITTER: string = 'Compte Twitter Droit Pluriel'
   readonly LIEN_YOUTUBE: string = 'https://www.youtube.com/channel/UC_S7-zSxU7WGXwHq2g-542A'
-  readonly TITRE_LIEN_YOUTUBE: string = 'Chaîne Youtube de Droit Pluriel - Nouvelle fenêtre'
+  readonly TITRE_LIEN_YOUTUBE: string = 'Chaîne Youtube de Droit Pluriel'
   readonly LIEN_LINKEDIN: string = 'https://www.linkedin.com/company/droit-pluriel/'
-  readonly TITRE_LIEN_LINKEDIN: string = 'Page Linkedin de Droit Pluriel - Nouvelle fenêtre'
+  readonly TITRE_LIEN_LINKEDIN: string = 'Page Linkedin de Droit Pluriel'
   readonly LIEN_INSTAGRAM: string = 'https://www.instagram.com/droitpluriel/'
-  readonly TITRE_LIEN_INSTAGRAM: string = 'Page Instagram de Droit Pluriel - Nouvelle fenêtre'
+  readonly TITRE_LIEN_INSTAGRAM: string = 'Page Instagram de Droit Pluriel'
 
   // Rechercher une consultation juridique
   readonly TITLE_PAGE_RECHERCHER_UNE_CONSULTATION_JURIDIQUE: string = 'Rechercher une consultation juridique'
@@ -71,7 +72,7 @@ export class WordingFr implements Wording {
   readonly PLAN: string = 'Plan'
   readonly BESOINS_D_ACCESSIBILITE: (nombre: number) => string = (nombre: number): string => `Besoins d’accessibilité (${nombre})`
   readonly LIEUX_CORRESPONDENT_A_VOTRE_RECHERCHE: (nombre: number) => string = (nombre: number): string => `${nombre} lieux correspondent à votre recherche`
-  readonly LANCER_L_ITINERAIRE: string = 'Lancer l’itinéraire - Nouvelle fenêtre'
+  readonly LANCER_L_ITINERAIRE: string = "Lancer l'itinéraire"
   readonly PLUS_D_INFORMATIONS: string = 'Plus d’informations'
 
   // Resultats par plan

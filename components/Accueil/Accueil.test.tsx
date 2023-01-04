@@ -40,7 +40,7 @@ describe('page d’accueil', () => {
     expect(droitPlurielEstUneAssociation).toBeInTheDocument()
 
     const retrouvezSurNotreSite = within(main).getByText(textMatch(wording.RETROUVEZ_PLUS_D_INFOS + wording.SITE_DROIT_PLURIEL), { selector: 'p' })
-    const lienSiteDroitPluriel = within(retrouvezSurNotreSite).getByRole('link', { name: wording.TITRE_LIEN_SITE_DROIT_PLURIEL })
+    const lienSiteDroitPluriel = within(retrouvezSurNotreSite).getByRole('link', { name: wording.TITRE_LIEN_SITE_DROIT_PLURIEL + wording.NOUVELLE_FENETRE })
     expect(lienSiteDroitPluriel).toHaveAttribute('href', wording.SITE_DROIT_PLURIEL)
     expect(lienSiteDroitPluriel).toHaveAttribute('target', '_blank')
     expect(lienSiteDroitPluriel).toHaveAttribute('rel', 'external noopener noreferrer')
@@ -60,27 +60,27 @@ describe('page d’accueil', () => {
     const titleNosActualites = within(main).getByRole('heading', { level: 2, name: wording.TITLE_SUIVEZ_NOS_ACTUALITES })
     expect(titleNosActualites).toBeInTheDocument()
 
-    const lienFacebook = within(main).getByRole('link', { name: wording.TITRE_LIEN_FACEBOOK })
+    const lienFacebook = within(main).getByRole('link', { name: wording.TITRE_LIEN_FACEBOOK + wording.NOUVELLE_FENETRE })
     expect(lienFacebook).toHaveAttribute('href', wording.LIEN_FACEBOOK)
     expect(lienFacebook).toHaveAttribute('target', '_blank')
     expect(lienFacebook).toHaveAttribute('rel', 'external noopener noreferrer')
 
-    const lienTwitter = within(main).getByRole('link', { name: wording.TITRE_LIEN_TWITTER })
+    const lienTwitter = within(main).getByRole('link', { name: wording.TITRE_LIEN_TWITTER + wording.NOUVELLE_FENETRE })
     expect(lienTwitter).toHaveAttribute('href', wording.LIEN_TWITTER)
     expect(lienTwitter).toHaveAttribute('target', '_blank')
     expect(lienTwitter).toHaveAttribute('rel', 'external noopener noreferrer')
 
-    const lienYoutube = within(main).getByRole('link', { name: wording.TITRE_LIEN_YOUTUBE })
+    const lienYoutube = within(main).getByRole('link', { name: wording.TITRE_LIEN_YOUTUBE + wording.NOUVELLE_FENETRE })
     expect(lienYoutube).toHaveAttribute('href', wording.LIEN_YOUTUBE)
     expect(lienYoutube).toHaveAttribute('target', '_blank')
     expect(lienYoutube).toHaveAttribute('rel', 'external noopener noreferrer')
 
-    const lienLinkedIn = within(main).getByRole('link', { name: wording.TITRE_LIEN_LINKEDIN })
+    const lienLinkedIn = within(main).getByRole('link', { name: wording.TITRE_LIEN_LINKEDIN + wording.NOUVELLE_FENETRE })
     expect(lienLinkedIn).toHaveAttribute('href', wording.LIEN_LINKEDIN)
     expect(lienLinkedIn).toHaveAttribute('target', '_blank')
     expect(lienLinkedIn).toHaveAttribute('rel', 'external noopener noreferrer')
 
-    const lienInstagram = within(main).getByRole('link', { name: wording.TITRE_LIEN_INSTAGRAM })
+    const lienInstagram = within(main).getByRole('link', { name: wording.TITRE_LIEN_INSTAGRAM + wording.NOUVELLE_FENETRE })
     expect(lienInstagram).toHaveAttribute('href', wording.LIEN_INSTAGRAM)
     expect(lienInstagram).toHaveAttribute('target', '_blank')
     expect(lienInstagram).toHaveAttribute('rel', 'external noopener noreferrer')

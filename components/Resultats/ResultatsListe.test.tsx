@@ -1,7 +1,8 @@
 import { screen, within } from '@testing-library/react'
 import mockRouter from 'next-router-mock'
 
-import { fakeFrontDependencies, renderFakeComponent } from '../../configuration/testHelper'
+import { LieuBuilder } from '../../backend/entities/LieuBuilder'
+import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
 import ResultatsListe from './ResultatsListe'
 
 describe('résultats de recherche affichés en liste', () => {
@@ -72,5 +73,66 @@ describe('résultats de recherche affichés en liste', () => {
     // THEN
     const recommencer = screen.getByText(wording.RECOMMENCER_PARCOURS, { selector: 'p' })
     expect(recommencer).toBeInTheDocument()
+  })
+
+  it('affiche les cartes des lieux', () => {
+    // GIVEN
+    mockRouter.query = {
+      lat,
+      lon,
+    }
+
+    const lieuA = LieuBuilder.cree({ adresse: '12 rue du Lieu', bim: true, forme: true, id: 1, latitude: -0.09, longitude: 51.50, lsf: true, nom: 'LieuA' })
+    const lieuB = LieuBuilder.cree({ forme: false, id: 2, nom: 'Lieu B' })
+    const lieux = [lieuA, lieuB]
+
+    // WHEN
+    renderFakeComponent(<ResultatsListe lieux={lieux} />)
+    const main = screen.getByRole('main')
+    const cartesLieux = within(main).getAllByRole('article')
+
+    // THEN
+    const champsCarteLieuA = [
+      within(cartesLieux[0]).getByRole('heading', { level: 1, name: lieuA.nom }),
+      within(cartesLieux[0]).getByText(textMatch(lieuA.adresse + lieuA.codePostal + ' ' + lieuA.ville)),
+      within(cartesLieux[0]).getByText(new RegExp(lieuA.telephone)),
+      within(cartesLieux[0]).getByRole('link', { name: wording.LANCER_L_ITINERAIRE + wording.NOUVELLE_FENETRE }),
+      within(cartesLieux[0]).getByRole('link', { name: wording.PLUS_D_INFORMATIONS }),
+      within(cartesLieux[0]).getByTitle(wording.TITLE_HANDICAP_MOTEUR_TOTAL),
+      within(cartesLieux[0]).getByTitle(wording.TITLE_HANDICAP_MOTEUR_AVEC_ASSISTANCE),
+      within(cartesLieux[0]).getByTitle(wording.TITLE_HANDICAP_VISUEL),
+      within(cartesLieux[0]).getByTitle(wording.TITLE_LANGUE_DES_SIGNES_FRANCAISE),
+      within(cartesLieux[0]).getByTitle(wording.TITLE_BOUCLE_A_INDUCTION),
+      within(cartesLieux[0]).getByTitle(wording.TITLE_ENVIRONNEMENT_CALME),
+      within(cartesLieux[0]).getByTitle(wording.TITLE_PERSONNEL_FORME),
+    ]
+    champsCarteLieuA.forEach((champ) => expect(champ).toBeInTheDocument())
+
+    const googleMapUrlLieuA = new URL('https://www.google.com/maps/dir/')
+    googleMapUrlLieuA.searchParams.append('api', '1')
+    googleMapUrlLieuA.searchParams.append('origin', `${lat},${lon}`)
+    googleMapUrlLieuA.searchParams.append('destination', 'LieuA+12+rue+du+Lieu+1000+Bourg+En+Bresse')
+
+    expect(champsCarteLieuA[3]).toHaveAttribute('href', googleMapUrlLieuA.toString())
+
+    const champsCarteLieuB = [
+      within(cartesLieux[1]).getByRole('heading', { level: 1, name: lieuB.nom }),
+      within(cartesLieux[1]).getByText(textMatch(lieuB.adresse + lieuB.codePostal + ' ' + lieuB.ville)),
+      within(cartesLieux[1]).getByText(new RegExp(lieuB.telephone)),
+      within(cartesLieux[1]).getByRole('link', { name: wording.LANCER_L_ITINERAIRE + wording.NOUVELLE_FENETRE }),
+      within(cartesLieux[1]).getByRole('link', { name: wording.PLUS_D_INFORMATIONS }),
+      within(cartesLieux[1]).getByTitle(wording.TITLE_HANDICAP_VISUEL),
+      within(cartesLieux[1]).getByTitle(wording.TITLE_ENVIRONNEMENT_CALME),
+      within(cartesLieux[1]).getByTitle(wording.TITLE_HANDICAP_MOTEUR_AVEC_ASSISTANCE),
+      within(cartesLieux[1]).getByTitle(wording.TITLE_HANDICAP_MOTEUR_TOTAL),
+    ]
+    champsCarteLieuB.forEach((champ) => expect(champ).toBeInTheDocument())
+
+    const googleMapUrlLieuB = new URL('https://www.google.com/maps/dir/')
+    googleMapUrlLieuB.searchParams.append('api', '1')
+    googleMapUrlLieuB.searchParams.append('origin', `${lat},${lon}`)
+    googleMapUrlLieuB.searchParams.append('destination', 'Lieu+B+34+cours+de+Verdun+1000+Bourg+En+Bresse')
+
+    expect(champsCarteLieuB[3]).toHaveAttribute('href', googleMapUrlLieuB.toString())
   })
 })

@@ -1,93 +1,48 @@
 import { fireEvent, screen, within } from '@testing-library/react'
 import mockRouter from 'next-router-mock'
 
-import useResultatsPlan from '../../components/Resultats/useResultatsPlan'
+import { LieuBuilder } from '../../backend/entities/LieuBuilder'
+import usePlan from '../../components/Resultats/usePlan'
 import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
-import { LieuModel } from '../../database/models/LieuModel'
-import ResultatsPlan from './ResultatsPlan'
+import PageResultatsParPlan from '../../pages/resultats-plan'
+import Plan from './Plan'
 
 describe('page résultats par plan', () => {
   const { wording, paths } = fakeFrontDependencies
-  const { iconSizeDefault, iconSizeSelected } = useResultatsPlan()
+  const { iconSizeDefault, iconSizeSelected } = usePlan()
 
-  const lieuA = new LieuModel()
-  lieuA.id = 1234
-  lieuA.latitude = -0.09
-  lieuA.longitude = 51.500
-  lieuA.nom = 'Lieu A'
-  lieuA.adresse = '12 rue du Lieu A'
-  lieuA.e_mail = 'contactLieuA@email.com'
-  lieuA.ville = 'Paris-LieuA'
-  lieuA.region = 'Ile-de-France'
-  lieuA.horaire = 'Du lundi au vendredi de 8h à 20h'
-  lieuA.telephone = '01 02 03 04 05'
-  lieuA.departement = 'Seine-et-Marne'
-  lieuA.priseDeRendezVous = 'Ce lieu est soumis à la prise de rendez-vous'
-  lieuA.codePostal = '75002'
-  lieuA.siteInternet = 'lieuA.fr'
-  lieuA.bim = true
-  lieuA.lsf = true
-  lieuA.pmr = true
-  lieuA.calme = true
-  lieuA.forme = true
-  lieuA.visuel = true
-  lieuA.pmr_assiste = true
-  lieuA.domaineDeDroit = 'Tout domaine'
-  lieuA.commentaire = 'En partie formé'
+  const lieuA = LieuBuilder.cree({
+    adresse: '12 rue du Lieu',
+    bim: true,
+    forme: true,
+    id: 1,
+    latitude: -0.09,
+    longitude: 51.50,
+    lsf: true,
+    nom: 'LieuA',
+  })
 
-  const lieuB = new LieuModel()
-  lieuB.id = 1235
-  lieuB.latitude = -0.07
-  lieuB.longitude = 51.580
-  lieuB.nom = 'Lieu B'
-  lieuB.adresse = '34 Avenue de Lieu B'
-  lieuB.e_mail = 'contactLieuB@email.com'
-  lieuB.ville = 'StrasbourgB'
-  lieuB.region = 'Alsace'
-  lieuB.horaire = 'Lundi: 8h00 - 18h00\nMardi: 8h00-18h00\nMercredi: 8h00 - 18h00\nFermé les jeudis, vendredis, samedi et dimanche'
-  lieuB.telephone = '11 22 33 44 55'
-  lieuB.departement = 'Bas-Rhin'
-  lieuB.priseDeRendezVous = "Ce lieu n'est pas soumis à la prise de rendez-vous"
-  lieuB.codePostal = '67000'
-  lieuB.siteInternet = 'siteWebDulieuC.fr'
-  lieuB.bim = false
-  lieuB.lsf = true
-  lieuB.pmr = false
-  lieuB.calme = true
-  lieuB.forme = true
-  lieuB.visuel = false
-  lieuB.pmr_assiste = true
-  lieuB.domaineDeDroit = 'Tout domaine'
-  lieuB.commentaire = ''
+  const lieuB = LieuBuilder.cree({
+    bim: true,
+    forme: true,
+    id: 1,
+    latitude: -0.09,
+    longitude: 51.50,
+    lsf: true,
+    nom: 'LieuB',
+  })
 
-  const lieuC = new LieuModel()
-  lieuC.id = 1236
-  lieuC.latitude = -0.10
-  lieuC.longitude = 51.530
-  lieuC.nom = 'Lieu C'
-  lieuC.adresse = '13 rue du Lieu C'
-  lieuC.e_mail = 'contactLieuB@email.com'
-  lieuC.ville = 'Paris-LieuC'
-  lieuC.region = 'Ile-de-France'
-  lieuC.horaire = 'Du lundi au vendredi de 8h à 20h'
-  lieuC.telephone = '01 02 03 04 05'
-  lieuC.departement = 'Seine-et-Marne'
-  lieuC.priseDeRendezVous = 'Ce lieu est soumis à la prise de rendez-vous'
-  lieuC.codePostal = '75002'
-  lieuC.siteInternet = 'lieuC.fr'
-  lieuC.bim = false
-  lieuC.lsf = false
-  lieuC.pmr = false
-  lieuC.calme = false
-  lieuC.forme = false
-  lieuC.visuel = false
-  lieuC.pmr_assiste = true
-  lieuC.domaineDeDroit = 'Domaine LieuC domaine'
-  lieuC.commentaire = ''
+  const lieuC = LieuBuilder.cree({
+    id: 1,
+    latitude: -0.09,
+    longitude: 51.50,
+    nom: 'LieuC',
+  })
 
   const lat = '48.844928'
   const lon = '2.31016'
   const moteurTotal = 'on'
+  const viewCenter = { lat: 40.0, lon: 50.0 }
 
   it('affiche le titre de l’onglet', () => {
     // GIVEN
@@ -97,7 +52,12 @@ describe('page résultats par plan', () => {
     }
 
     // WHEN
-    renderFakeComponent(<ResultatsPlan lieux={[]} />)
+    renderFakeComponent(
+      <Plan
+        lieux={[]}
+        origin={viewCenter}
+      />
+    )
 
     // THEN
     expect(document.title).toBe(wording.TITLE_PAGE_RESULTATS_PAR_PLAN)
@@ -112,7 +72,12 @@ describe('page résultats par plan', () => {
     }
 
     // WHEN
-    renderFakeComponent(<ResultatsPlan lieux={[]} />)
+    renderFakeComponent(
+      <Plan
+        lieux={[]}
+        origin={viewCenter}
+      />
+    )
 
     // THEN
     const modifierLAdresse = screen.getByRole('link', { name: wording.MODIFIER_L_ADRESSE })
@@ -138,7 +103,10 @@ describe('page résultats par plan', () => {
 
     // WHEN
     renderFakeComponent(
-      <ResultatsPlan lieux={[]} />
+      <Plan
+        lieux={[]}
+        origin={viewCenter}
+      />
     )
 
     // THEN
@@ -158,7 +126,10 @@ describe('page résultats par plan', () => {
 
     // WHEN
     renderFakeComponent(
-      <ResultatsPlan lieux={lieux} />
+      <Plan
+        lieux={lieux}
+        origin={viewCenter}
+      />
     )
 
     // THEN
@@ -174,12 +145,6 @@ describe('page résultats par plan', () => {
     })
   })
 
-  // TESTS
-  // [x] compléter tests markers pour vérifier img avec taille
-  // [x] mocker click et tester changement de logo et de taille
-  // [x] retour à la normal au click sur autre marker ?
-  // [ ] tester affichage des infos dans popup au click sur marker
-
   it('change le marker lieu en rouge et + grand au click et le reset si click ailleur', () => {
     // GIVEN
     mockRouter.query = {
@@ -190,8 +155,12 @@ describe('page résultats par plan', () => {
 
     // WHEN
     renderFakeComponent(
-      <ResultatsPlan lieux={lieux} />
+      <Plan
+        lieux={lieux}
+        origin={viewCenter}
+      />
     )
+
     const main = screen.getByRole('main')
     const markerLieuA = within(main).getByTitle(lieuA.nom)
     const markerLieuB = within(main).getByTitle(lieuB.nom)
@@ -239,25 +208,66 @@ describe('page résultats par plan', () => {
 
     // WHEN
     renderFakeComponent(
-      <ResultatsPlan lieux={[lieu]} />
+      <Plan
+        lieux={[lieu]}
+        origin={viewCenter}
+      />
     )
     const main = screen.getByRole('main')
     const markerLieuA = within(main).getByTitle(lieu.nom)
     fireEvent.click(markerLieuA)
 
     // THEN
-    const popupCarteLieu = [
-      within(main).getByRole('heading', { level: 1, name: lieu.nom }),
-      within(main).getByText(textMatch(lieu.adresse + lieu.codePostal + lieu.ville)),
-      within(main).getByText(textMatch(lieu.telephone)),
+    const champsCarteLieuA = [
+      within(main).getByRole('heading', { level: 1, name: lieuA.nom }),
+      within(main).getByText(textMatch(lieuA.adresse + lieuA.codePostal + ' ' + lieuA.ville)),
+      within(main).getByText(new RegExp(lieuA.telephone)),
+      within(main).getByRole('link', { name: wording.LANCER_L_ITINERAIRE + wording.NOUVELLE_FENETRE }),
+      within(main).getByRole('link', { name: wording.PLUS_D_INFORMATIONS }),
+      within(main).getByTitle(wording.TITLE_HANDICAP_MOTEUR_TOTAL),
+      within(main).getByTitle(wording.TITLE_HANDICAP_MOTEUR_AVEC_ASSISTANCE),
+      within(main).getByTitle(wording.TITLE_HANDICAP_VISUEL),
+      within(main).getByTitle(wording.TITLE_LANGUE_DES_SIGNES_FRANCAISE),
+      within(main).getByTitle(wording.TITLE_BOUCLE_A_INDUCTION),
+      within(main).getByTitle(wording.TITLE_ENVIRONNEMENT_CALME),
+      within(main).getByTitle(wording.TITLE_PERSONNEL_FORME),
     ]
+    champsCarteLieuA.forEach((champ) => expect(champ).toBeVisible())
 
-    popupCarteLieu.forEach((champ) => expect(champ).toBeVisible())
+    const googleMapUrlLieuA = new URL('https://www.google.com/maps/dir/')
+    googleMapUrlLieuA.searchParams.append('api', '1')
+    googleMapUrlLieuA.searchParams.append('origin', `${viewCenter.lat},${viewCenter.lon}`)
+    googleMapUrlLieuA.searchParams.append('destination', 'LieuA+12+rue+du+Lieu+1000+Bourg+En+Bresse')
 
-    const lienLancerItineraire = within(main).getByRole('link', { name: wording.LANCER_L_ITINERAIRE })
-    const lienPlusDInformations = within(main).getByRole('link', { name: wording.PLUS_D_INFORMATIONS })
-    expect(lienLancerItineraire).toBeVisible()
-    expect(lienPlusDInformations).toBeVisible()
+    expect(champsCarteLieuA[3]).toHaveAttribute('href', googleMapUrlLieuA.toString())
+  })
+
+  it('affiche une phrase demandant de recommencer le parcours quand on arrive sans latitude', () => {
+    // GIVEN
+    mockRouter.query = { lon }
+
+    // WHEN
+    renderFakeComponent(
+      <PageResultatsParPlan lieux={[]} />
+    )
+
+    // THEN
+    const recommencer = screen.getByText(wording.RECOMMENCER_PARCOURS, { selector: 'p' })
+    expect(recommencer).toBeInTheDocument()
+  })
+
+  it('affiche une phrase demandant de recommencer le parcours quand on arrive sans longitude', () => {
+    // GIVEN
+    mockRouter.query = { lat }
+
+    // WHEN
+    renderFakeComponent(
+      <PageResultatsParPlan lieux={[]} />
+    )
+
+    // THEN
+    const recommencer = screen.getByText(wording.RECOMMENCER_PARCOURS, { selector: 'p' })
+    expect(recommencer).toBeInTheDocument()
   })
 
 })

@@ -1,0 +1,14 @@
+.leafletMap {
+  height: 60vh;
+  margin-inline: calc(-1 * var(--m-margin));
+  min-height: 25rem;
+}
+
+.leafletMap :global(a.leaflet-popup-close-button) {
+  margin: 0.5rem;
+  text-align: center;
+}
+
+.leafletMap :global(a.leaflet-popup-close-button span) {
+  font-size: 2rem;
+}

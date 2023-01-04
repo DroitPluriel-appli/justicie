@@ -1,20 +1,12 @@
 import { GetServerSidePropsContext, GetServerSidePropsResult } from 'next'
-import dynamic from 'next/dynamic'
 import { ReactElement } from 'react'
 
 import { backDependencies } from '../backend/backDependencies'
 import { Lieu } from '../backend/entities/Lieu'
-import { LieuModel } from '../database/models/LieuModel'
+import ResultatsPlan from '../components/Resultats/ResultatsPlan'
 
-export default function PageResultatsParPlan({ lieux }: { lieux: LieuModel[] }): ReactElement {
-
-  const Plan = dynamic(() => import('../components/Resultats/ResultatsPlan'), { ssr: false })
-
-  return (
-    <Plan
-      lieux={lieux}
-    />
-  )
+export default function PageResultatsParPlan({ lieux }: { lieux: Lieu[] }): ReactElement {
+  return <ResultatsPlan lieux={lieux} />
 }
 
 type ServerSidePropsResult = Readonly<{

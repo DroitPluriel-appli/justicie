@@ -3,6 +3,7 @@ export interface Wording {
   readonly RETOUR_EN_HAUT_DE_PAGE: string
   readonly ACCES_RAPIDE: string
   readonly EVITEMENT_ALLER_AU_CONTENU: string
+  readonly NOUVELLE_FENETRE: string
 
   // Accueil
   readonly TITLE_PAGE_ACCUEIL: string
