@@ -14,12 +14,12 @@ type ServerSidePropsResult = Readonly<{
 }>
 
 export async function getServerSideProps(context: GetServerSidePropsContext): Promise<GetServerSidePropsResult<ServerSidePropsResult>> {
-  const { lieuLoader } = backDependencies()
+  const { lieuLoader } = backDependencies
   const latitude = Number(context.query.lat)
   const longitude = Number(context.query.lon)
   const page = context.query.page === undefined ? 0 : Number(context.query.page)
 
   const lieux = await lieuLoader.recupereDesLieux(latitude, longitude, page)
 
-  return { props: { lieux } }
+  return { props: { lieux: JSON.parse(JSON.stringify(lieux)) as Lieu[] } }
 }
