@@ -10,9 +10,10 @@ import { useCarteLieu } from './useCarteLieu'
 
 type CarteLieuProps = Readonly<{
   lieu: Lieu
+  origin: { lat: number, lon: number }
 }>
 
-export default function CarteLieu({ lieu }: CarteLieuProps): ReactElement {
+export default function CarteLieu({ lieu, origin }: CarteLieuProps): ReactElement {
   const {
     nom,
     telephone,
@@ -83,7 +84,7 @@ export default function CarteLieu({ lieu }: CarteLieuProps): ReactElement {
       </div>
       <ExternalLink
         className={styles.carteLieu__buttons}
-        href={lieuToGoogleMapLink(lieu)}
+        href={lieuToGoogleMapLink(lieu, origin)}
         title={wording.LANCER_L_ITINERAIRE}
       >
         {wording.LANCER_L_ITINERAIRE}

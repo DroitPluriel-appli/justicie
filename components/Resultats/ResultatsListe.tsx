@@ -34,6 +34,7 @@ export default function ResultatsListe({ lieux }: { lieux: Lieu[] }): ReactEleme
             <CarteLieu
               key={lieu.id}
               lieu={lieu}
+              origin={{ lat: Number(query.lat), lon: Number(query.lon) }}
             />
           )
         })
