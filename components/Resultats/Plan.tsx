@@ -10,11 +10,12 @@ import styles from './Plan.module.css'
 import usePlan from './usePlan'
 
 type PlanProps = Readonly<{
+  latitude: number
   lieux: Lieu[],
-  origin: { lat: number, lon: number }
+  longitude: number
 }>
 
-export default function Plan({ lieux, origin }: PlanProps): ReactElement {
+export default function Plan({ latitude, lieux, longitude }: PlanProps): ReactElement {
   const { wording } = useDependencies()
   const { setMarkerPosition, setMarkersLieux } = usePlan()
 
@@ -23,7 +24,7 @@ export default function Plan({ lieux, origin }: PlanProps): ReactElement {
     defaultZoom: 15,
     maxZoom: 19,
     tileLayerUrl: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-    viewCenter: [origin.lat, origin.lon] as L.LatLngExpression,
+    viewCenter: [latitude, longitude] as L.LatLngExpression,
   }
   const mapLayer = L.tileLayer(mapSettings.tileLayerUrl, {
     attribution: mapSettings.credits,
@@ -36,7 +37,7 @@ export default function Plan({ lieux, origin }: PlanProps): ReactElement {
       .addLayer(mapLayer)
       .addLayer(setMarkerPosition(mapSettings.viewCenter, wording.TITRE_MARKER_POSITION))
 
-    const markersLieux = setMarkersLieux(lieux, origin)
+    const markersLieux = setMarkersLieux(lieux, latitude, longitude)
     markersLieux.forEach((lieu) => lieu.addTo(map))
 
     // Si la carte n'est pas supprimée quand le composant update,

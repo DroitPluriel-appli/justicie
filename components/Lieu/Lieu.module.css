@@ -14,7 +14,7 @@
   vertical-align: sub;
 }
 
-.description svg {
+.adresse svg {
   margin-right: var(--s-margin);
 }
 
@@ -45,13 +45,13 @@ h2.nom {
   font-weight: bold;
 }
 
-.description {
+.adresse {
   align-items: center;
   display: flex;
   justify-content: space-between;
 }
 
-.description a {
+.adresse a {
   background-color: var(--primary-background-color);
   border-radius: 1rem;
   color: var(--white);

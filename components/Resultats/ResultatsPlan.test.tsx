@@ -2,14 +2,12 @@ import { fireEvent, screen, within } from '@testing-library/react'
 import mockRouter from 'next-router-mock'
 
 import { LieuBuilder } from '../../backend/entities/LieuBuilder'
-import usePlan from '../../components/Resultats/usePlan'
 import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
-import PageResultatsParPlan from '../../pages/resultats-plan'
 import Plan from './Plan'
+import ResultatsPlan from './ResultatsPlan'
 
 describe('page résultats par plan', () => {
   const { wording, paths } = fakeFrontDependencies
-  const { iconSizeDefault, iconSizeSelected } = usePlan()
 
   const lieuA = LieuBuilder.cree({
     adresse: '12 rue du Lieu',
@@ -42,20 +40,16 @@ describe('page résultats par plan', () => {
   const lat = '48.844928'
   const lon = '2.31016'
   const moteurTotal = 'on'
-  const viewCenter = { lat: 40.0, lon: 50.0 }
+  const latitude = 40.0
+  const longitude = 50.0
 
   it('affiche le titre de l’onglet', () => {
-    // GIVEN
-    mockRouter.query = {
-      lat,
-      lon,
-    }
-
     // WHEN
     renderFakeComponent(
       <Plan
+        latitude={latitude}
         lieux={[]}
-        origin={viewCenter}
+        longitude={longitude}
       />
     )
 
@@ -74,8 +68,9 @@ describe('page résultats par plan', () => {
     // WHEN
     renderFakeComponent(
       <Plan
+        latitude={latitude}
         lieux={[]}
-        origin={viewCenter}
+        longitude={longitude}
       />
     )
 
@@ -95,17 +90,12 @@ describe('page résultats par plan', () => {
   })
 
   it('affiche un marker bleu à la position choisie', () => {
-    // GIVEN
-    mockRouter.query = {
-      lat,
-      lon,
-    }
-
     // WHEN
     renderFakeComponent(
       <Plan
+        latitude={latitude}
         lieux={[]}
-        origin={viewCenter}
+        longitude={longitude}
       />
     )
 
@@ -118,17 +108,14 @@ describe('page résultats par plan', () => {
 
   it('affiche plusieurs markers de lieux', () => {
     // GIVEN
-    mockRouter.query = {
-      lat,
-      lon,
-    }
     const lieux = [lieuA, lieuB, lieuC]
 
     // WHEN
     renderFakeComponent(
       <Plan
+        latitude={latitude}
         lieux={lieux}
-        origin={viewCenter}
+        longitude={longitude}
       />
     )
 
@@ -139,25 +126,22 @@ describe('page résultats par plan', () => {
       expect(markerLieu.tagName).toBe('IMG')
       expect(markerLieu).toHaveAttribute('src', 'marker-lieu.svg')
       expect(markerLieu).toHaveStyle({
-        height: `${iconSizeDefault}px`,
-        width: `${iconSizeDefault}px`,
+        height: '24px',
+        width: '24px',
       })
     })
   })
 
   it('change le marker lieu en rouge et + grand au click et le reset si click ailleur', () => {
     // GIVEN
-    mockRouter.query = {
-      lat,
-      lon,
-    }
     const lieux = [lieuA, lieuB]
 
     // WHEN
     renderFakeComponent(
       <Plan
+        latitude={latitude}
         lieux={lieux}
-        origin={viewCenter}
+        longitude={longitude}
       />
     )
 
@@ -170,14 +154,14 @@ describe('page résultats par plan', () => {
     expect(markerLieuA.tagName).toBe('IMG')
     expect(markerLieuA).toHaveAttribute('src', 'marker-lieu-selected.svg')
     expect(markerLieuA).toHaveStyle({
-      height: `${iconSizeSelected}px`,
-      width: `${iconSizeSelected}px`,
+      height: '38px',
+      width: '38px',
     })
     expect(markerLieuB.tagName).toBe('IMG')
     expect(markerLieuB).toHaveAttribute('src', 'marker-lieu.svg')
     expect(markerLieuB).toHaveStyle({
-      height: `${iconSizeDefault}px`,
-      width: `${iconSizeDefault}px`,
+      height: '24px',
+      width: '24px',
     })
 
     // WHEN
@@ -187,30 +171,27 @@ describe('page résultats par plan', () => {
     expect(markerLieuA.tagName).toBe('IMG')
     expect(markerLieuA).toHaveAttribute('src', 'marker-lieu.svg')
     expect(markerLieuA).toHaveStyle({
-      height: `${iconSizeDefault}px`,
-      width: `${iconSizeDefault}px`,
+      height: '24px',
+      width: '24px',
     })
     expect(markerLieuB.tagName).toBe('IMG')
     expect(markerLieuB).toHaveAttribute('src', 'marker-lieu-selected.svg')
     expect(markerLieuB).toHaveStyle({
-      height: `${iconSizeSelected}px`,
-      width: `${iconSizeSelected}px`,
+      height: '38px',
+      width: '38px',
     })
   })
 
   it('affiche la carte du lieu dans la popup au click sur un marker', () => {
     // GIVEN
-    mockRouter.query = {
-      lat,
-      lon,
-    }
     const lieu = lieuA
 
     // WHEN
     renderFakeComponent(
       <Plan
+        latitude={latitude}
         lieux={[lieu]}
-        origin={viewCenter}
+        longitude={longitude}
       />
     )
     const main = screen.getByRole('main')
@@ -223,7 +204,7 @@ describe('page résultats par plan', () => {
       within(main).getByText(textMatch(lieuA.adresse + lieuA.codePostal + ' ' + lieuA.ville)),
       within(main).getByRole('link', { name: lieuA.telephone }),
       within(main).getByText(textMatch(lieuA.distance.toPrecision(2).toString() + ' km')),
-      within(main).getByText(textMatch(' km'), { selector: 'abbr' }),
+      within(main).getByText('km', { selector: 'abbr' }),
       within(main).getByRole('link', { name: wording.LANCER_L_ITINERAIRE + wording.NOUVELLE_FENETRE }),
       within(main).getByRole('link', { name: wording.PLUS_D_INFORMATIONS }),
       within(main).getByTitle(wording.TITLE_HANDICAP_MOTEUR_TOTAL),
@@ -242,7 +223,7 @@ describe('page résultats par plan', () => {
 
     const googleMapUrlLieuA = new URL('https://www.google.com/maps/dir/')
     googleMapUrlLieuA.searchParams.append('api', '1')
-    googleMapUrlLieuA.searchParams.append('origin', `${viewCenter.lat},${viewCenter.lon}`)
+    googleMapUrlLieuA.searchParams.append('origin', `${latitude},${longitude}`)
     googleMapUrlLieuA.searchParams.append('destination', 'LieuA+12+rue+du+Lieu+1000+Bourg+En+Bresse')
 
     expect(champsCarteLieuA[5]).toHaveAttribute('href', googleMapUrlLieuA.toString())
@@ -254,7 +235,7 @@ describe('page résultats par plan', () => {
 
     // WHEN
     renderFakeComponent(
-      <PageResultatsParPlan lieux={[]} />
+      <ResultatsPlan lieux={[]} />
     )
 
     // THEN
@@ -268,12 +249,11 @@ describe('page résultats par plan', () => {
 
     // WHEN
     renderFakeComponent(
-      <PageResultatsParPlan lieux={[]} />
+      <ResultatsPlan lieux={[]} />
     )
 
     // THEN
     const recommencer = screen.getByText(wording.RECOMMENCER_PARCOURS, { selector: 'p' })
     expect(recommencer).toBeInTheDocument()
   })
-
 })
