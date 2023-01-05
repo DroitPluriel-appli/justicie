@@ -111,7 +111,8 @@ describe('résultats de recherche affichés en liste', () => {
     champsCarteLieuA.forEach((champ) => expect(champ).toBeInTheDocument())
 
     expect(champsCarteLieuA[2]).toHaveAttribute('href', 'tel:' + lieuA.telephone.replaceAll(' ', ''))
-    expect(champsCarteLieuA[4]).toHaveAttribute('title', 'kilomètres')
+    expect(champsCarteLieuA[4]).toHaveAttribute('title', wording.KILOMETRES)
+    expect(champsCarteLieuA[6]).toHaveAttribute('href', 'lieu/1?lat=48.844928&lon=2.31016')
 
     const googleMapUrlLieuA = new URL('https://www.google.com/maps/dir/')
     googleMapUrlLieuA.searchParams.append('api', '1')
@@ -136,7 +137,8 @@ describe('résultats de recherche affichés en liste', () => {
     champsCarteLieuB.forEach((champ) => expect(champ).toBeInTheDocument())
 
     expect(champsCarteLieuB[2]).toHaveAttribute('href', 'tel:' + lieuB.telephone.replaceAll(' ', ''))
-    expect(champsCarteLieuB[4]).toHaveAttribute('title', 'kilomètres')
+    expect(champsCarteLieuB[4]).toHaveAttribute('title', wording.KILOMETRES)
+    expect(champsCarteLieuB[6]).toHaveAttribute('href', 'lieu/2?lat=48.844928&lon=2.31016')
 
     const googleMapUrlLieuB = new URL('https://www.google.com/maps/dir/')
     googleMapUrlLieuB.searchParams.append('api', '1')

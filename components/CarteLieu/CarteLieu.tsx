@@ -23,7 +23,7 @@ export default function CarteLieu({ lieu, origin }: CarteLieuProps): ReactElemen
     distance,
   } = lieu
 
-  const { wording } = useDependencies()
+  const { paths, wording } = useDependencies()
   const { getCriteresImgSrcFromLieu, lieuToGoogleMapLink } = useCarteLieu()
 
   return (
@@ -96,7 +96,7 @@ export default function CarteLieu({ lieu, origin }: CarteLieuProps): ReactElemen
       </ExternalLink>
       <Link
         className={styles.carteLieu__buttons}
-        href="#"
+        href={`${paths.LIEU}/${lieu.id}?lat=${origin.lat}&lon=${origin.lon}`}
         title={wording.PLUS_D_INFORMATIONS}
       >
         {wording.PLUS_D_INFORMATIONS}

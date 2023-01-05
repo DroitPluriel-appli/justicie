@@ -8,7 +8,7 @@ export class Lieu {
     readonly departement: string,
     readonly distance: number,
     readonly domaineDeDroit: string,
-    readonly e_mail: string,
+    readonly eMail: string,
     readonly forme: boolean,
     readonly horaire: string,
     readonly id: number,

@@ -48,3 +48,38 @@
   margin-block: var(--m-margin);
   padding: var(--m-margin);
 }
+
+.main :global(.autocomplete__wrapper) {
+  width: 100%;
+}
+
+.main :global(.autocomplete__input) {
+  border: none;
+  border-radius: 2rem;
+  box-sizing: border-box;
+  height: 3rem;
+  margin-top: var(--s-margin);
+  padding: var(--m-margin);
+  width: 100%;
+}
+
+.main :global(.autocomplete__menu--visible) {
+  display: revert;
+}
+
+.main :global(.autocomplete__menu--hidden) {
+  display: none;
+}
+
+.main :global(.autocomplete__option) {
+  border-bottom: 1px solid var(--white);
+  font-weight: normal;
+  padding-block: var(--m-margin);
+}
+
+.main :global(.autocomplete__option):hover,
+.main :global(.autocomplete__option--focused) {
+  background-color: var(--button-color);
+  cursor: pointer;
+  font-weight: bold;
+}

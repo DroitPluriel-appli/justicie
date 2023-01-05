@@ -15,7 +15,7 @@ describe('sauvegarde des entités juridiques', () => {
     'Bourg En Bresse',
     'https://www.ain.gouv.fr/',
     '04 74 14 01 40',
-    'OUI',
+    'OUI\nmais pas le dimanche',
     'TOUT DOMAINES',
     '46.2064358',
     '5.2272134',
@@ -31,7 +31,7 @@ describe('sauvegarde des entités juridiques', () => {
     'non',
     'oui',
     'non',
-    'En partie formé',
+    'En partie\nformé',
   ]
 
   beforeEach(async () => {

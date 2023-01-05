@@ -237,7 +237,8 @@ describe('page résultats par plan', () => {
     champsCarteLieuA.forEach((champ) => expect(champ).toBeVisible())
 
     expect(champsCarteLieuA[2]).toHaveAttribute('href', 'tel:' + lieuA.telephone.replaceAll(' ', ''))
-    expect(champsCarteLieuA[4]).toHaveAttribute('title', 'kilomètres')
+    expect(champsCarteLieuA[4]).toHaveAttribute('title', wording.KILOMETRES)
+    expect(champsCarteLieuA[6]).toHaveAttribute('href', 'lieu/1?lat=40&lon=50')
 
     const googleMapUrlLieuA = new URL('https://www.google.com/maps/dir/')
     googleMapUrlLieuA.searchParams.append('api', '1')

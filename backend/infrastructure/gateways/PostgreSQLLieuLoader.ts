@@ -24,7 +24,7 @@ export class PostgreSQLLieuLoader implements LieuLoader {
     const vingtKilometres = 0.2
     const lieuxModel = await (await this.orm)
       .getRepository(LieuModel)
-      .query('SELECT *, code_postal AS "codePostal", domaine_de_droit AS "domaineDeDroit", prise_de_rendez_vous AS "priseDeRendezVous", site_internet AS "siteInternet", ABS(latitude - $1) + ABS(longitude - $2) AS distance FROM lieu WHERE (latitude BETWEEN $3 AND $4 AND longitude BETWEEN $5 AND $6) ORDER BY distance ASC LIMIT $7 OFFSET $8', [
+      .query('SELECT *, code_postal AS "codePostal", domaine_de_droit AS "domaineDeDroit", e_mail AS "eMail", prise_de_rendez_vous AS "priseDeRendezVous", site_internet AS "siteInternet", ABS(latitude - $1) + ABS(longitude - $2) AS distance FROM lieu WHERE (latitude BETWEEN $3 AND $4 AND longitude BETWEEN $5 AND $6) ORDER BY distance ASC LIMIT $7 OFFSET $8', [
         latitude,
         longitude,
         latitude - vingtKilometres,
@@ -49,7 +49,7 @@ export class PostgreSQLLieuLoader implements LieuLoader {
         lieuModel.departement,
         lieuModel.distance as number * 100,
         lieuModel.domaineDeDroit,
-        lieuModel.e_mail,
+        lieuModel.eMail,
         lieuModel.forme,
         lieuModel.horaire,
         lieuModel.id,

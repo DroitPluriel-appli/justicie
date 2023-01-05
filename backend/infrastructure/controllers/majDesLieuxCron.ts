@@ -52,7 +52,7 @@ function transformeEnLieuxModel(lieuxBruts: string[][]): LieuModel[] {
     lieuModel.commentaire = lieu[22]
     lieuModel.departement = lieu[13]
     lieuModel.domaineDeDroit = lieu[7]
-    lieuModel.e_mail = lieu[10]
+    lieuModel.eMail = lieu[10]
     lieuModel.forme = stringToBoolean(lieu[21])
     lieuModel.horaire = lieu[11]
     lieuModel.latitude = Number(lieu[8])

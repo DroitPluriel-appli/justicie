@@ -76,6 +76,16 @@ export interface Wording {
   readonly TITLE_PAGE_RESULTATS_PAR_PLAN: string
   readonly TITRE_MARKER_POSITION: string
 
+  // Lieu
+  readonly TITLE_PAGE_LIEU: (nom: string) => string
+  readonly RETOUR_AUX_RESULTATS: string
+  readonly ACCESSIBILITE_DU_LIEU: string
+  readonly HORAIRES_ET_JOURS_D_OUVERTURE: string
+  readonly PERMANENCE: string
+  readonly CONTACT_ET_SITE_INTERNET: string
+  readonly CONSULTER_LE_SITE_INTERNET: string
+  readonly KILOMETRES: string
+
   // Nos critères d'accessibilité
   readonly TITLE_PAGE_NOS_CRITERES_D_ACCESSIBILITE: string
   readonly TITLE_HANDICAP_MOTEUR_TOTAL: string
