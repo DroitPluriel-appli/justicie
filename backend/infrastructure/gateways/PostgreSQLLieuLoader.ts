@@ -47,7 +47,7 @@ export class PostgreSQLLieuLoader implements LieuLoader {
         lieuModel.codePostal,
         lieuModel.commentaire,
         lieuModel.departement,
-        lieuModel.distance as number * 100,
+        Number((lieuModel.distance as number * 100).toPrecision(2)),
         lieuModel.domaineDeDroit,
         lieuModel.eMail,
         lieuModel.forme,

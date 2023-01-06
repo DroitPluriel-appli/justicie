@@ -1,79 +1,107 @@
 import Head from 'next/head'
 import { ReactElement } from 'react'
 
+import { Lieu as LieuEntity } from '../../backend/entities/Lieu'
 import { useDependencies } from '../../configuration/useDependencies'
+import Accessibilites from '../Accessibilites/Accessibilites'
+import BackButton from '../BackButton/BackButton'
+import Distance from '../Distance/Distance'
+import Email from '../Email/Email'
+import Itineraire from '../Itineraire/Itineraire'
+import Preformate from '../Preformate/Preformate'
 import RetourHautDePage from '../RetourHautDePage/RetourHautDePage'
+import SiteInternet from '../SiteInternet/SiteInternet'
+import Telephone from '../Telephone/Telephone'
 import styles from './Lieu.module.css'
-import { LieuViewModel } from './LieuViewModel'
-import { useLieu } from './useLieu'
 
-export default function Lieu({ lieuViewModel }: { lieuViewModel: LieuViewModel }): ReactElement {
+export default function Lieu({ lieu }: { lieu: LieuEntity }): ReactElement {
   const { useRouter, wording } = useDependencies()
   const { query } = useRouter()
-  const { retourEnArriere } = useLieu()
 
   return (
     <article className={styles.main}>
       <Head>
         <title>
-          {lieuViewModel.title}
+          {wording.TITLE_PAGE_LIEU(lieu.nom)}
         </title>
       </Head>
-      <button
-        onClick={retourEnArriere}
-        type="button"
-      >
-        <svg
-          aria-hidden
-          height="10"
-          viewBox="0 0 6 10"
-          width="6"
-        >
-          <path
-            d="M5.58782 9.41218C5.91221 9.08779 5.9125 8.56193 5.58846 8.23718L3.06313 5.70634C2.67363 5.31599 2.67363 4.68401 3.06313 4.29366L5.58846 1.76282C5.9125 1.43807 5.91221 0.912214 5.58782 0.58782C5.26318 0.263176 4.73682 0.263176 4.41218 0.58782L0.707107 4.29289C0.316583 4.68342 0.316583 5.31658 0.707107 5.70711L4.41218 9.41218C4.73682 9.73682 5.26318 9.73682 5.58782 9.41218Z"
-          />
-        </svg>
+      <BackButton>
         {wording.RETOUR_AUX_RESULTATS}
-      </button>
+      </BackButton>
       <section>
         <h2 className={styles.nom}>
-          {lieuViewModel.nom}
+          {lieu.nom}
         </h2>
         <address className={styles.adresse}>
-          {lieuViewModel.distance}
-          {lieuViewModel.adresse}
-          {lieuViewModel.itineraire(Number(query.lat), Number(query.lon), true)}
+          <Distance>
+            {lieu.distance}
+          </Distance>
+          <p>
+            {lieu.adresse}
+            <br />
+            {lieu.codePostal + ' '}
+            {lieu.ville}
+          </p>
+          <Itineraire
+            adresse={lieu.adresse}
+            codePostal={lieu.codePostal}
+            hasPicto
+            latitude={Number(query.lat)}
+            longitude={Number(query.lon)}
+            nom={lieu.nom}
+            ville={lieu.ville}
+          >
+            {wording.LANCER_L_ITINERAIRE}
+          </Itineraire>
         </address>
       </section>
       <section>
         <h2>
           {wording.ACCESSIBILITE_DU_LIEU}
         </h2>
-        {lieuViewModel.accessibilites}
+        <Accessibilites lieu={lieu} />
       </section>
       <section>
         <h2>
           {wording.HORAIRES_ET_JOURS_D_OUVERTURE}
         </h2>
-        {lieuViewModel.priseDeRendezVous}
-        {lieuViewModel.horaire}
+        <Preformate>
+          {lieu.priseDeRendezVous}
+        </Preformate>
+        <Preformate>
+          {lieu.horaire}
+        </Preformate>
       </section>
       <section>
         <h2>
           {wording.PERMANENCE}
         </h2>
-        {lieuViewModel.commentaire}
+        <Preformate>
+          {lieu.commentaire}
+        </Preformate>
       </section>
       <section>
         <h2>
           {wording.CONTACT_ET_SITE_INTERNET}
         </h2>
         <address className={styles.contact}>
-          {lieuViewModel.eMail}
+          <Email
+            hasPicto
+            url={lieu.eMail}
+          >
+            {lieu.eMail}
+          </Email>
           <br />
-          {lieuViewModel.telephone}
+          <Telephone
+            hasPicto
+            url={lieu.telephone}
+          >
+            {lieu.telephone}
+          </Telephone>
           <br />
-          {lieuViewModel.siteInternet}
+          <SiteInternet url={lieu.siteInternet}>
+            {wording.CONSULTER_LE_SITE_INTERNET}
+          </SiteInternet>
         </address>
       </section>
       <RetourHautDePage />

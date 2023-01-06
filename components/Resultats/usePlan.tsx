@@ -2,12 +2,9 @@ import L from 'leaflet'
 import { createRoot } from 'react-dom/client'
 
 import { Lieu } from '../../backend/entities/Lieu'
-import { useDependencies } from '../../configuration/useDependencies'
 import CarteLieu from '../CarteLieu/CarteLieu'
-import { LieuViewModel } from '../Lieu/LieuViewModel'
 
 export default function usePlan() {
-  const { criteres, paths, wording } = useDependencies()
   const iconSizeDefault = 24
   const iconSizeSelected = 38
   const iconMarkerLieuDefault = L.icon({
@@ -32,7 +29,6 @@ export default function usePlan() {
     const markersLieux = lieux.map((lieu) => {
       const popupContentContainer = L.DomUtil.create('div')
       const popup = L.popup().setContent(popupContentContainer)
-      const lieuViewModel = new LieuViewModel(criteres, lieu, paths, wording)
 
       // Puisqu'on utilise leaflet et pas react-leaflet,
       // on ne peut pas passer du JSX à la popup.
@@ -40,7 +36,7 @@ export default function usePlan() {
       createRoot(popupContentContainer).render(
         <CarteLieu
           latitude={latitude}
-          lieuViewModel={lieuViewModel}
+          lieu={lieu}
           longitude={longitude}
         />
       )

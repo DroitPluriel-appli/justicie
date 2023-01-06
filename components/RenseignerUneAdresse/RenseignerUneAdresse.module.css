@@ -12,10 +12,6 @@
   margin-bottom: var(--xxl-margin);
 }
 
-.main a svg {
-  margin-right: var(--s-margin);
-}
-
 .label {
   font-weight: bold;
 }

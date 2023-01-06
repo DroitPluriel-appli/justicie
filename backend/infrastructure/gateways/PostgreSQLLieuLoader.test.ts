@@ -30,7 +30,7 @@ describe('lieu loader', () => {
       const lieu = await postgreSQLLieuLoader.recupereUnLieu(idExistant, latitude, longitude)
 
       // THEN
-      expect(lieu).toStrictEqual([LieuBuilder.cree({ distance: 20.00000000000015, id: 1, latitude: 40.100000, longitude: 2.100000 })])
+      expect(lieu).toStrictEqual([LieuBuilder.cree({ distance: 20, id: 1, latitude: 40.100000, longitude: 2.100000 })])
     })
 
     it('récupère un lieu inexistant', async () => {
@@ -56,7 +56,7 @@ describe('lieu loader', () => {
       const lieu = await postgreSQLLieuLoader.recupereUnLieu(idInexistant)
 
       // THEN
-      expect(lieu).toStrictEqual([LieuBuilder.cree({ distance: 4220, id: 1, latitude: 40.100000, longitude: 2.100000 })])
+      expect(lieu).toStrictEqual([LieuBuilder.cree({ distance: 4200, id: 1, latitude: 40.100000, longitude: 2.100000 })])
     })
   })
 
@@ -74,10 +74,10 @@ describe('lieu loader', () => {
 
       // THEN
       expect(lieux).toStrictEqual([
-        LieuBuilder.cree({ distance: 20.00000000000015, id: 1, latitude: 40.100000, longitude: 2.100000 }),
-        LieuBuilder.cree({ distance: 21.99999999999993, id: 2, latitude: 40.110000, longitude: 2.110000 }),
-        LieuBuilder.cree({ distance: 26.000000000000245, id: 4, latitude: 40.130000, longitude: 2.130000 }),
-        LieuBuilder.cree({ distance: 28.00000000000007, id: 5, latitude: 40.140000, longitude: 2.140000 }),
+        LieuBuilder.cree({ distance: 20, id: 1, latitude: 40.100000, longitude: 2.100000 }),
+        LieuBuilder.cree({ distance: 22, id: 2, latitude: 40.110000, longitude: 2.110000 }),
+        LieuBuilder.cree({ distance: 26, id: 4, latitude: 40.130000, longitude: 2.130000 }),
+        LieuBuilder.cree({ distance: 28, id: 5, latitude: 40.140000, longitude: 2.140000 }),
       ])
     })
 
@@ -93,7 +93,7 @@ describe('lieu loader', () => {
       const lieux = await postgreSQLLieuLoader.recupereDesLieux(latitude, longitude, page, nombreDeLieuxAffichesParPage)
 
       // THEN
-      expect(lieux).toStrictEqual([LieuBuilder.cree({ distance: 29.99999999999985, id: 6, latitude: 40.150000, longitude: 2.150000 })])
+      expect(lieux).toStrictEqual([LieuBuilder.cree({ distance: 30, id: 6, latitude: 40.150000, longitude: 2.150000 })])
     })
 
     it('affiche les lieux les plus près de l’adresse demandée', async () => {
@@ -107,11 +107,11 @@ describe('lieu loader', () => {
 
       // THEN
       expect(lieux).toStrictEqual([
-        LieuBuilder.cree({ distance: 20.00000000000015, id: 1, latitude: 40.100000, longitude: 2.100000 }),
-        LieuBuilder.cree({ distance: 21.99999999999993, id: 2, latitude: 40.110000, longitude: 2.110000 }),
-        LieuBuilder.cree({ distance: 26.000000000000245, id: 4, latitude: 40.130000, longitude: 2.130000 }),
-        LieuBuilder.cree({ distance: 28.00000000000007, id: 5, latitude: 40.140000, longitude: 2.140000 }),
-        LieuBuilder.cree({ distance: 29.99999999999985, id: 6, latitude: 40.150000, longitude: 2.150000 }),
+        LieuBuilder.cree({ distance: 20, id: 1, latitude: 40.100000, longitude: 2.100000 }),
+        LieuBuilder.cree({ distance: 22, id: 2, latitude: 40.110000, longitude: 2.110000 }),
+        LieuBuilder.cree({ distance: 26, id: 4, latitude: 40.130000, longitude: 2.130000 }),
+        LieuBuilder.cree({ distance: 28, id: 5, latitude: 40.140000, longitude: 2.140000 }),
+        LieuBuilder.cree({ distance: 30, id: 6, latitude: 40.150000, longitude: 2.150000 }),
       ])
     })
 

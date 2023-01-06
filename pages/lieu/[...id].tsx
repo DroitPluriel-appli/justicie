@@ -4,15 +4,10 @@ import { ReactElement } from 'react'
 import { backDependencies } from '../../backend/backDependencies'
 import { Lieu as LieuEntity } from '../../backend/entities/Lieu'
 import Lieu from '../../components/Lieu/Lieu'
-import { LieuViewModel } from '../../components/Lieu/LieuViewModel'
-import { frontDependencies } from '../../configuration/frontDependencies'
 
 export default function PageLieu({ lieu }: { lieu: LieuEntity }): ReactElement {
-  const { criteres, paths, wording } = frontDependencies
-  const lieuViewModel = new LieuViewModel(criteres, lieu, paths, wording)
-
   return (
-    <Lieu lieuViewModel={lieuViewModel} />
+    <Lieu lieu={lieu} />
   )
 }
 

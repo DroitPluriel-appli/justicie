@@ -3,14 +3,15 @@ import { ReactElement, ReactNode } from 'react'
 import { useDependencies } from '../../configuration/useDependencies'
 
 type ExternalLinkProps = Readonly<{
-  href: string,
-  title: string,
   children: ReactNode
   className?: string
+  href: string,
+  title: string,
 }>
 
-export default function ExternalLink({ children, href, title, className = '' }: ExternalLinkProps): ReactElement {
+export default function ExternalLink({ children, className = '', href, title }: ExternalLinkProps): ReactElement {
   const { wording } = useDependencies()
+
   return (
     <a
       className={className}

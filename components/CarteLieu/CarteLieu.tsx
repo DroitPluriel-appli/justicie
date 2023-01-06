@@ -1,30 +1,65 @@
 import { ReactElement } from 'react'
 
-import { LieuViewModel } from '../Lieu/LieuViewModel'
+import { Lieu } from '../../backend/entities/Lieu'
+import { useDependencies } from '../../configuration/useDependencies'
+import Accessibilites from '../Accessibilites/Accessibilites'
+import Distance from '../Distance/Distance'
+import Itineraire from '../Itineraire/Itineraire'
+import PlusDInformations from '../PlusDInformations/PlusDInformations'
+import Telephone from '../Telephone/Telephone'
 import styles from './CarteLieu.module.css'
 
 type CarteLieuProps = Readonly<{
   latitude: number
-  lieuViewModel: LieuViewModel
+  lieu: Lieu
   longitude: number
 }>
 
-export default function CarteLieu({ latitude, lieuViewModel, longitude }: CarteLieuProps): ReactElement {
+export default function CarteLieu({ latitude, lieu, longitude }: CarteLieuProps): ReactElement {
+  const { wording } = useDependencies()
+
   return (
     <article className={styles.main}>
       <h2>
-        {lieuViewModel.nom}
+        {lieu.nom}
       </h2>
       <address className={styles.adresse}>
-        {lieuViewModel.telephone}
-        {lieuViewModel.adresse}
+        <Telephone
+          hasPicto
+          url={lieu.telephone}
+        >
+          {lieu.telephone}
+        </Telephone>
+        <p>
+          {lieu.adresse}
+          <br />
+          {lieu.codePostal + ' '}
+          {lieu.ville}
+        </p>
       </address>
-      {lieuViewModel.distance}
+      <Distance>
+        {lieu.distance}
+      </Distance>
       <div className={styles.carteLieu__criteres}>
-        {lieuViewModel.accessibilites}
+        <Accessibilites lieu={lieu} />
       </div>
-      {lieuViewModel.itineraire(latitude, longitude)}
-      {lieuViewModel.plusDInformations(latitude, longitude)}
+      <Itineraire
+        adresse={lieu.adresse}
+        codePostal={lieu.codePostal}
+        latitude={latitude}
+        longitude={longitude}
+        nom={lieu.nom}
+        ville={lieu.ville}
+      >
+        {wording.LANCER_L_ITINERAIRE}
+      </Itineraire>
+      <PlusDInformations
+        id={lieu.id}
+        latitude={latitude}
+        longitude={longitude}
+      >
+        {wording.PLUS_D_INFORMATIONS}
+      </PlusDInformations>
     </article>
   )
 }

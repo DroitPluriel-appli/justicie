@@ -12,10 +12,6 @@
   margin-bottom: var(--xxl-margin);
 }
 
-.main a svg {
-  margin-right: var(--s-margin);
-}
-
 .title {
   font-size: var(--xl-font);
   font-weight: normal;

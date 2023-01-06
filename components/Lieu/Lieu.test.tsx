@@ -4,20 +4,18 @@ import mockRouter from 'next-router-mock'
 import { LieuBuilder } from '../../backend/entities/LieuBuilder'
 import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
 import Lieu from './Lieu'
-import { LieuViewModel } from './LieuViewModel'
 
 describe('lieu', () => {
-  const { criteres, paths, wording } = fakeFrontDependencies
+  const { wording } = fakeFrontDependencies
   const lat = '48.844928'
   const lon = '2.31016'
 
   it('affiche le titre de l’onglet', () => {
     // GIVEN
     const lieu = LieuBuilder.cree({ nom: 'La maison de justice de Paris' })
-    const lieuViewModel = new LieuViewModel(criteres, lieu, paths, wording)
 
     // WHEN
-    renderFakeComponent(<Lieu lieuViewModel={lieuViewModel} />)
+    renderFakeComponent(<Lieu lieu={lieu} />)
 
     // THEN
     expect(document.title).toBe(wording.TITLE_PAGE_LIEU(lieu.nom))
@@ -36,17 +34,16 @@ describe('lieu', () => {
       nom: 'La maison de justice de Paris',
       ville: 'Bourg En Bresse',
     })
-    const lieuViewModel = new LieuViewModel(criteres, lieu, paths, wording)
 
     // WHEN
-    renderFakeComponent(<Lieu lieuViewModel={lieuViewModel} />)
+    renderFakeComponent(<Lieu lieu={lieu} />)
 
     // THEN
     const retourAuxResultats = screen.getByRole('button', { name: wording.RETOUR_AUX_RESULTATS })
     expect(retourAuxResultats).toBeInTheDocument()
     const nom = screen.getByRole('heading', { level: 2, name: lieu.nom })
     expect(nom).toBeInTheDocument()
-    const distance = screen.getByText(textMatch(lieu.distance.toPrecision(2) + ' km'), { selector: 'p' })
+    const distance = screen.getByText(textMatch(`${lieu.distance} km`), { selector: 'p' })
     expect(distance).toBeInTheDocument()
     const kilometre = screen.getByText('km', { selector: 'abbr' })
     expect(kilometre).toHaveAttribute('title', wording.KILOMETRES)
@@ -69,10 +66,9 @@ describe('lieu', () => {
       pmr_assiste: true,
       visuel: true,
     })
-    const lieuViewModel = new LieuViewModel(criteres, lieu, paths, wording)
 
     // WHEN
-    renderFakeComponent(<Lieu lieuViewModel={lieuViewModel} />)
+    renderFakeComponent(<Lieu lieu={lieu} />)
 
     // THEN
     const titre = screen.getByRole('heading', { level: 2, name: wording.ACCESSIBILITE_DU_LIEU })
@@ -93,10 +89,9 @@ describe('lieu', () => {
       horaire: 'Lundi 9h00 à 12h00 et de 13h30 à 17h00\nMardi 9h00 à 12h00 et de 13h30 à 17h00\nMercredi 9h00 à 12h00 et de 13h30 à 17h00\nJeudi 9h00 à 12h00 et de 13h30 à 17h00\nVendredi 9h00 à 12h00 et de 13h30 à 17h00',
       priseDeRendezVous: 'OUI\nou pas',
     })
-    const lieuViewModel = new LieuViewModel(criteres, lieu, paths, wording)
 
     // WHEN
-    renderFakeComponent(<Lieu lieuViewModel={lieuViewModel} />)
+    renderFakeComponent(<Lieu lieu={lieu} />)
 
     // THEN
     const titre = screen.getByRole('heading', { level: 2, name: wording.HORAIRES_ET_JOURS_D_OUVERTURE })
@@ -110,10 +105,9 @@ describe('lieu', () => {
   it('affiche sa permanence', () => {
     // GIVEN
     const lieu = LieuBuilder.cree({ commentaire: 'En partie\nformé' })
-    const lieuViewModel = new LieuViewModel(criteres, lieu, paths, wording)
 
     // WHEN
-    renderFakeComponent(<Lieu lieuViewModel={lieuViewModel} />)
+    renderFakeComponent(<Lieu lieu={lieu} />)
 
     // THEN
     const titre = screen.getByRole('heading', { level: 2, name: wording.PERMANENCE })
@@ -129,10 +123,9 @@ describe('lieu', () => {
       siteInternet: 'https://www.ain.gouv.fr/',
       telephone: '06 01 02 03 04',
     })
-    const lieuViewModel = new LieuViewModel(criteres, lieu, paths, wording)
 
     // WHEN
-    renderFakeComponent(<Lieu lieuViewModel={lieuViewModel} />)
+    renderFakeComponent(<Lieu lieu={lieu} />)
 
     // THEN
     const titre = screen.getByRole('heading', { level: 2, name: wording.CONTACT_ET_SITE_INTERNET })
@@ -151,10 +144,9 @@ describe('lieu', () => {
   it('affiche l’ancre pour revenir en haut de page', () => {
     // GIVEN
     const lieu = LieuBuilder.cree()
-    const lieuViewModel = new LieuViewModel(criteres, lieu, paths, wording)
 
     // WHEN
-    renderFakeComponent(<Lieu lieuViewModel={lieuViewModel} />)
+    renderFakeComponent(<Lieu lieu={lieu} />)
 
     // THEN
     const retourHautDePage = screen.getByRole('link', { name: wording.RETOUR_EN_HAUT_DE_PAGE })

@@ -1,15 +1,6 @@
-.back {
-  display: block;
-  margin-bottom: var(--l-margin);
-}
-
-.back svg {
-  margin-right: var(--s-margin);
-}
-
 .nav {
   display: flex;
-  margin-bottom: var(--l-margin);
+  margin-block: var(--l-margin);
 }
 
 .nav a {
