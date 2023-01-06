@@ -2,22 +2,22 @@ import { fireEvent, screen, waitFor } from '@testing-library/react'
 import mockRouter from 'next-router-mock'
 
 import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
-import RechercherUneConsultationJuridique from './RechercherUneConsultationJuridique'
+import RechercherUneAideJuridique from './RechercherUneAideJuridique'
 
 describe('rechercher un lieu', () => {
   const { paths, wording } = fakeFrontDependencies
 
   it('affiche le titre de l’onglet', () => {
     // WHEN
-    renderFakeComponent(<RechercherUneConsultationJuridique />)
+    renderFakeComponent(<RechercherUneAideJuridique />)
 
     // THEN
-    expect(document.title).toBe(wording.TITLE_PAGE_RECHERCHER_UNE_CONSULTATION_JURIDIQUE)
+    expect(document.title).toBe(wording.TITLE_PAGE_RECHERCHER_UNE_AIDE_JURIDIQUE)
   })
 
   it('affiche le choix de la géolocalisation ou d’une adresse manuelle', () => {
     // WHEN
-    renderFakeComponent(<RechercherUneConsultationJuridique />)
+    renderFakeComponent(<RechercherUneAideJuridique />)
 
     // THEN
     const retourAlAccueil = screen.getByRole('link', { name: wording.RETOUR_A_L_ACCUEIL })
@@ -42,7 +42,7 @@ describe('rechercher un lieu', () => {
   ])('va à l’étape 2 quand j’utilise ma position actuelle avec le % et grise le bouton', async (event: string) => {
     // GIVEN
     mockedSuccessedGeolocation(43.296482, 5.36978)
-    renderFakeComponent(<RechercherUneConsultationJuridique />)
+    renderFakeComponent(<RechercherUneAideJuridique />)
     const utiliserMaPostionActuelle = screen.getByRole('button', { name: wording.UTILISER_MA_POSITION_ACTUELLE })
 
     // WHEN
@@ -62,7 +62,7 @@ describe('rechercher un lieu', () => {
   ])('va à l’étape 2 quand j’utilise ma position actuelle avec la touche %s et grise le bouton', async (code: string) => {
     // GIVEN
     mockedSuccessedGeolocation(43.296482, 5.36978)
-    renderFakeComponent(<RechercherUneConsultationJuridique />)
+    renderFakeComponent(<RechercherUneAideJuridique />)
     const utiliserMaPostionActuelle = screen.getByRole('button', { name: wording.UTILISER_MA_POSITION_ACTUELLE })
 
     // WHEN
@@ -79,7 +79,7 @@ describe('rechercher un lieu', () => {
   it('ne va pas à l’étape 2 quand je bloque la localisation de ma position actuelle', () => {
     // GIVEN
     mockedErrorGeolocation()
-    renderFakeComponent(<RechercherUneConsultationJuridique />)
+    renderFakeComponent(<RechercherUneAideJuridique />)
     const utiliserMaPostionActuelle = screen.getByRole('button', { name: wording.UTILISER_MA_POSITION_ACTUELLE })
 
     // WHEN

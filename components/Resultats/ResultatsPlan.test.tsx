@@ -76,7 +76,7 @@ describe('page résultats par plan', () => {
 
     // THEN
     const modifierLAdresse = screen.getByRole('link', { name: wording.MODIFIER_L_ADRESSE })
-    expect(modifierLAdresse).toHaveAttribute('href', paths.RECHERCHER_UNE_CONSULTATION_JURIDIQUE)
+    expect(modifierLAdresse).toHaveAttribute('href', paths.RECHERCHER_UNE_AIDE_JURIDIQUE)
     const navigation = screen.getByRole('navigation')
     const itemsDeNavigation = within(navigation).getAllByRole('listitem')
     const vueListe = within(itemsDeNavigation[0]).getByRole('link', { name: wording.LISTE })

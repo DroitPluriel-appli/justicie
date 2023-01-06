@@ -1,6 +1,6 @@
 export class Paths {
   readonly ACCUEIL: string = '/'
-  readonly RECHERCHER_UNE_CONSULTATION_JURIDIQUE: string = 'rechercher-une-consultation-juridique'
+  readonly RECHERCHER_UNE_AIDE_JURIDIQUE: string = 'rechercher-une-aide-juridique'
   readonly RENSEIGNER_UNE_ADRESSE: string = 'renseigner-une-adresse'
   readonly RECHERCHER_PAR_HANDICAP: string = 'rechercher-par-handicap'
   readonly RESULTATS_LISTE: string = 'resultats-liste'

@@ -42,18 +42,18 @@ export default function Header(): ReactElement {
             </h1>
           </li>
           <li>
-            <Link href={paths.NOS_CRITERES_D_ACCESSIBILITE}>
+            <Link href={`/${paths.NOS_CRITERES_D_ACCESSIBILITE}`}>
               {wording.NOS_CRITERES_D_ACCESSIBILITE}
             </Link>
           </li>
           <li>
-            <Link href={paths.POLITIQUE_DE_GESTION_DES_DONNEES}>
+            <Link href={`/${paths.POLITIQUE_DE_GESTION_DES_DONNEES}`}>
               {wording.POLITIQUE_DE_GESTION_DES_DONNEES}
             </Link>
           </li>
           <li className={styles.rechercher}>
-            <Link href={paths.RECHERCHER_UNE_CONSULTATION_JURIDIQUE}>
-              {wording.RECHERCHER_UNE_CONSULTATION_JURIDIQUE}
+            <Link href={`/${paths.RECHERCHER_UNE_AIDE_JURIDIQUE}`}>
+              {wording.RECHERCHER_UNE_AIDE_JURIDIQUE}
             </Link>
           </li>
         </ul>
@@ -152,7 +152,7 @@ export default function Header(): ReactElement {
               </a>
             </li>
             <li>
-              <a href={paths.RECHERCHER_UNE_CONSULTATION_JURIDIQUE}>
+              <a href={`/${paths.RECHERCHER_UNE_AIDE_JURIDIQUE}`}>
                 <svg
                   aria-hidden
                   height="21"
@@ -163,11 +163,11 @@ export default function Header(): ReactElement {
                     d="M5.99142 13.2075H6.93997L7.27616 12.8834C6.09949 11.5146 5.39108 9.73756 5.39108 7.80446C5.39108 3.494 8.88508 0 13.1955 0C17.506 0 21 3.494 21 7.80446C21 12.1149 17.506 15.6089 13.1955 15.6089C11.2624 15.6089 9.48542 14.9005 8.11664 13.7238L7.79245 14.06V15.0086L1.78902 21L0 19.211L5.99142 13.2075ZM13.1955 13.2075C16.1852 13.2075 18.5986 10.7942 18.5986 7.80446C18.5986 4.81475 16.1852 2.40137 13.1955 2.40137C10.2058 2.40137 7.79245 4.81475 7.79245 7.80446C7.79245 10.7942 10.2058 13.2075 13.1955 13.2075Z"
                   />
                 </svg>
-                {wording.RECHERCHER_UNE_CONSULTATION_JURIDIQUE}
+                {wording.RECHERCHER_UNE_AIDE_JURIDIQUE}
               </a>
             </li>
             <li>
-              <a href={paths.NOS_CRITERES_D_ACCESSIBILITE}>
+              <a href={`/${paths.NOS_CRITERES_D_ACCESSIBILITE}`}>
                 <svg
                   aria-hidden
                   height="21"
@@ -182,7 +182,7 @@ export default function Header(): ReactElement {
               </a>
             </li>
             <li>
-              <a href={paths.POLITIQUE_DE_GESTION_DES_DONNEES}>
+              <a href={`/${paths.POLITIQUE_DE_GESTION_DES_DONNEES}`}>
                 <svg
                   aria-hidden
                   height="21"

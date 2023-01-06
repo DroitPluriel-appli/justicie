@@ -13,7 +13,7 @@ export interface Wording {
   readonly VOUS_ETES_VICTIME: string
   readonly VOUS_VOULEZ_FAIRE_UNE_ACTION_EN_JUSTICE: string
   readonly VOUS_AVEZ_RECU_UNE_DECISION: string
-  readonly RECHERCHER_UNE_CONSULTATION_JURIDIQUE_GRATUITE_ET_ACCESSIBLE: string
+  readonly RECHERCHER_UNE_AIDE_JURIDIQUE_GRATUITE_ET_ACCESSIBLE: string
   readonly DECOUVRIR_NOS_CRITERES: string
   readonly TITLE_A_PROPOS_DE_DROIT_PLURIEL: string
   readonly DROIT_PLURIEL_EST_UNE_ASSOCIATION: string
@@ -37,8 +37,8 @@ export interface Wording {
   readonly LIEN_INSTAGRAM: string
   readonly TITRE_LIEN_INSTAGRAM: string
 
-  // Rechercher une consultation juridique
-  readonly TITLE_PAGE_RECHERCHER_UNE_CONSULTATION_JURIDIQUE: string
+  // Rechercher une aide juridique
+  readonly TITLE_PAGE_RECHERCHER_UNE_AIDE_JURIDIQUE: string
   readonly RETOUR_A_L_ACCUEIL: string
   readonly OU_RECHERCHEZ_VOUS: string
   readonly OBLIGATOIRE: string
@@ -122,7 +122,7 @@ export interface Wording {
 
   // Footer
   readonly INFORMATIONS: string
-  readonly RECHERCHER_UNE_CONSULTATION_JURIDIQUE: string
+  readonly RECHERCHER_UNE_AIDE_JURIDIQUE: string
   readonly NOS_CRITERES_D_ACCESSIBILITE: string
   readonly POLITIQUE_DE_GESTION_DES_DONNEES: string
   readonly FOIRE_AUX_QUESTIONS: string

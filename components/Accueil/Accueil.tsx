@@ -36,12 +36,12 @@ export default function Accueil(): ReactElement {
         {wording.VOUS_AVEZ_RECU_UNE_DECISION}
       </p>
       <Link
-        href={paths.RECHERCHER_UNE_CONSULTATION_JURIDIQUE}
+        href={paths.RECHERCHER_UNE_AIDE_JURIDIQUE}
         legacyBehavior
       >
         <a
           className={styles.recherche}
-          href={paths.RECHERCHER_UNE_CONSULTATION_JURIDIQUE}
+          href={paths.RECHERCHER_UNE_AIDE_JURIDIQUE}
         >
           <svg
             aria-hidden
@@ -54,7 +54,7 @@ export default function Accueil(): ReactElement {
             />
           </svg>
           <span>
-            {wording.RECHERCHER_UNE_CONSULTATION_JURIDIQUE_GRATUITE_ET_ACCESSIBLE}
+            {wording.RECHERCHER_UNE_AIDE_JURIDIQUE_GRATUITE_ET_ACCESSIBLE}
           </span>
         </a>
       </Link>

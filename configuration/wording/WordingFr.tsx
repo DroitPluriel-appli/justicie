@@ -11,15 +11,15 @@ export class WordingFr implements Wording {
   readonly TITLE_PAGE_ACCUEIL: string = 'Justice Plurielle'
 
   readonly VOUS_AVEZ_UN_PROBLEME_DE_DROIT: string = 'Vous avez un problème de droit ?'
-  readonly TROUVEZ_UN_CONSEIL_JURIDIQUE: string = 'Trouvez un conseil juridique près de chez vous, gratuit et accessible.'
+  readonly TROUVEZ_UN_CONSEIL_JURIDIQUE: string = 'Trouvez une aide juridique près de chez vous, gratuite et accessible.'
   readonly VOUS_AVEZ_UNE_QUESTION_SUR_VOS_DROITS: string = 'Vous avez une question de droit (travail, divorce, logement...).'
   readonly VOUS_ETES_VICTIME: string = 'Vous êtes victime (violence, viol, vol...).'
   readonly VOUS_VOULEZ_FAIRE_UNE_ACTION_EN_JUSTICE: string = 'Vous voulez faire une action en justice (comment trouver un avocat, à qui vous adresser...).'
   readonly VOUS_AVEZ_RECU_UNE_DECISION: string = 'Vous avez reçu une décision de justice et vous voulez savoir comment faire (faire appel, faire respecter cette décision...).'
-  readonly RECHERCHER_UNE_CONSULTATION_JURIDIQUE_GRATUITE_ET_ACCESSIBLE: string = 'Rechercher une consultation juridique gratuite et accessible'
+  readonly RECHERCHER_UNE_AIDE_JURIDIQUE_GRATUITE_ET_ACCESSIBLE: string = 'Rechercher une aide juridique gratuite et accessible'
   readonly DECOUVRIR_NOS_CRITERES: string = 'Découvrir nos critères d’accessiblité'
   readonly TITLE_A_PROPOS_DE_DROIT_PLURIEL: string = 'À propos de Justice Plurielle'
-  readonly DROIT_PLURIEL_EST_UNE_ASSOCIATION: string = "Justice Plurielle est un service gratuit d'orientation vers les lieux d'accès au droit. Droit Pluriel, association qui défend une justice accessible à tous et toutes, et notamment aux personnes en situation de handicap, pilote ce projet."
+  readonly DROIT_PLURIEL_EST_UNE_ASSOCIATION: string = "Justice Plurielle est un service gratuit d'orientation vers les lieux d'accès au droit, à l'initiative de Droit Pluriel, association qui défend une justice accessible à tous et toutes, et notamment aux personnes en situation de handicap."
   readonly RETROUVEZ_PLUS_D_INFOS: string = 'Retrouvez plus d’information sur notre site internet : '
   readonly TITLE_NOUS_CONTACTER: string = 'Nous contacter'
   readonly SITE_DROIT_PLURIEL: string = 'https://droitpluriel.fr'
@@ -40,10 +40,10 @@ export class WordingFr implements Wording {
   readonly LIEN_INSTAGRAM: string = 'https://www.instagram.com/droitpluriel/'
   readonly TITRE_LIEN_INSTAGRAM: string = 'Page Instagram de Droit Pluriel'
 
-  // Rechercher une consultation juridique
-  readonly TITLE_PAGE_RECHERCHER_UNE_CONSULTATION_JURIDIQUE: string = 'Rechercher une consultation juridique'
+  // Rechercher une aide juridique
+  readonly TITLE_PAGE_RECHERCHER_UNE_AIDE_JURIDIQUE: string = 'Rechercher une aide juridique'
   readonly RETOUR_A_L_ACCUEIL: string = 'Retour à l’accueil'
-  readonly OU_RECHERCHEZ_VOUS: string = 'Où recherchez-vous une consultation juridique ?'
+  readonly OU_RECHERCHEZ_VOUS: string = 'Où recherchez-vous une aide juridique ?'
   readonly OBLIGATOIRE: string = '(obligatoire)'
   readonly UTILISER_MA_POSITION_ACTUELLE: string = 'Utiliser ma position actuelle'
   readonly CHARGEMENT: string = 'Chargement...'
@@ -71,7 +71,7 @@ export class WordingFr implements Wording {
   readonly LISTE: string = 'Liste'
   readonly PLAN: string = 'Plan'
   readonly BESOINS_D_ACCESSIBILITE: (nombre: number) => string = (nombre: number): string => `Besoins d’accessibilité (${nombre})`
-  readonly LIEUX_CORRESPONDENT_A_VOTRE_RECHERCHE: (nombre: number) => string = (nombre: number): string => `${nombre} lieux correspondent à votre recherche`
+  readonly LIEUX_CORRESPONDENT_A_VOTRE_RECHERCHE: (nombre: number) => string = (nombre: number): string => nombre > 1 ? `${nombre} lieux correspondent à votre recherche` : `${nombre} lieu correspond à votre recherche`
   readonly LANCER_L_ITINERAIRE: string = "Lancer l'itinéraire"
   readonly PLUS_D_INFORMATIONS: string = 'Plus d’informations'
 
@@ -93,7 +93,7 @@ export class WordingFr implements Wording {
   readonly TITLE_PAGE_NOS_CRITERES_D_ACCESSIBILITE: string = 'Nos critères d’accessibilité'
   readonly TITLE_HANDICAP_MOTEUR_TOTAL: string = 'Accessibilité handicap moteur total'
   readonly DESCRIPTION_HANDICAP_MOTEUR_TOTAL: string = 'Le lieu permet un accès total à toute situation de handicap moteur.'
-  readonly TITLE_HANDICAP_MOTEUR_AVEC_ASSISTANCE: string = 'Accessibilité handicap moteur'
+  readonly TITLE_HANDICAP_MOTEUR_AVEC_ASSISTANCE: string = 'Accessibilité handicap moteur avec assistance'
   readonly DESCRIPTION_HANDICAP_MOTEUR_AVEC_ASSISTANCE: string = "Le lieu permet un accès à toute situation de handicap moteur à la condition qu'un tiers intervienne (pour ouvrir une porte...)."
   readonly TITLE_HANDICAP_VISUEL: string = 'Accessibilité handicap visuel'
   readonly DESCRIPTION_HANDICAP_VISUEL: string = "Le guidage au sein du lieu est simple : bande de guidage, accueil dès l'entrée..."
@@ -102,9 +102,9 @@ export class WordingFr implements Wording {
   readonly TITLE_BOUCLE_A_INDUCTION: string = 'Boucle à induction magnétique'
   readonly DESCRIPTION_BOUCLE_A_INDUCTION: string = "Le lieu est équipé d'une boucle à induction magnétique en état de fonctionnement."
   readonly TITLE_ENVIRONNEMENT_CALME: string = 'Environnement calme'
-  readonly DESCRIPTION_ENVIRONNEMENT_CALME: string = 'La consultation se déroule dans un environnement calme.'
+  readonly DESCRIPTION_ENVIRONNEMENT_CALME: string = 'La consultation se déroule dans un environnement calme (espace isolé).'
   readonly TITLE_PERSONNEL_FORME: string = 'Personnel formé'
-  readonly DESCRIPTION_PERSONNEL_FORME: string = "Les professionnels (accueil et consultation juridique) sont sensibilisés aux situations de handicap et à l'accessibilité."
+  readonly DESCRIPTION_PERSONNEL_FORME: string = "Les professionnels (accueil et aide juridique) sont sensibilisés aux situations de handicap et à l'accessibilité."
 
   // Politique de gestion des données
   readonly TITLE_PAGE_POLITIQUE_DE_GESTION_DES_DONNEES: string = 'Politique de gestion des données'
@@ -125,7 +125,7 @@ export class WordingFr implements Wording {
 
   // Footer
   readonly INFORMATIONS: string = 'Informations'
-  readonly RECHERCHER_UNE_CONSULTATION_JURIDIQUE: string = this.TITLE_PAGE_RECHERCHER_UNE_CONSULTATION_JURIDIQUE
+  readonly RECHERCHER_UNE_AIDE_JURIDIQUE: string = this.TITLE_PAGE_RECHERCHER_UNE_AIDE_JURIDIQUE
   readonly NOS_CRITERES_D_ACCESSIBILITE: string = this.TITLE_PAGE_NOS_CRITERES_D_ACCESSIBILITE
   readonly POLITIQUE_DE_GESTION_DES_DONNEES: string = this.TITLE_PAGE_POLITIQUE_DE_GESTION_DES_DONNEES
   readonly FOIRE_AUX_QUESTIONS: string = this.TITLE_FOIRE_AUX_QUESTIONS

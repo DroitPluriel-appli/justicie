@@ -24,7 +24,7 @@ export default function EnTete({ nombreDeLieuxTrouves }: EnTeteProps): ReactElem
     <>
       <BackLink
         className="blue"
-        url={paths.RECHERCHER_UNE_CONSULTATION_JURIDIQUE}
+        url={paths.RECHERCHER_UNE_AIDE_JURIDIQUE}
       >
         {wording.MODIFIER_L_ADRESSE}
       </BackLink>

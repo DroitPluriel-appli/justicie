@@ -4,18 +4,18 @@ import { ReactElement } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
 import BackLink from '../BackLink/BackLink'
-import styles from './RechercherUneConsultationJuridique.module.css'
-import { useRechercherUneConsultationJuridique } from './useRechercherUneConsultationJuridique'
+import styles from './RechercherUneAideJuridique.module.css'
+import { useRechercherUneAideJuridique } from './useRechercherUneAideJuridique'
 
-export default function RechercherUneConsultationJuridique(): ReactElement {
+export default function RechercherUneAideJuridique(): ReactElement {
   const { paths, wording } = useDependencies()
-  const { buttonName, isDisabled, keyDown, touch } = useRechercherUneConsultationJuridique()
+  const { buttonName, isDisabled, keyDown, touch } = useRechercherUneAideJuridique()
 
   return (
     <div className={styles.main}>
       <Head>
         <title>
-          {wording.TITLE_PAGE_RECHERCHER_UNE_CONSULTATION_JURIDIQUE}
+          {wording.TITLE_PAGE_RECHERCHER_UNE_AIDE_JURIDIQUE}
         </title>
       </Head>
       <BackLink

@@ -18,8 +18,8 @@ export default function Footer(): ReactElement {
           </header>
           <ul>
             <li>
-              <Link href={paths.RECHERCHER_UNE_CONSULTATION_JURIDIQUE}>
-                {wording.RECHERCHER_UNE_CONSULTATION_JURIDIQUE}
+              <Link href={paths.RECHERCHER_UNE_AIDE_JURIDIQUE}>
+                {wording.RECHERCHER_UNE_AIDE_JURIDIQUE}
               </Link>
             </li>
             <li>
