@@ -11,12 +11,12 @@ export class WordingFr implements Wording {
   readonly TITLE_PAGE_ACCUEIL: string = 'Justice Plurielle'
 
   readonly VOUS_AVEZ_UN_PROBLEME_DE_DROIT: string = 'Vous avez un problème de droit ?'
-  readonly TROUVEZ_UN_CONSEIL_JURIDIQUE: string = 'Trouvez un conseil juridique près de chez vous, gratuit et accessible.'
+  readonly TROUVEZ_UN_CONSEIL_JURIDIQUE: string = 'Trouvez une aide juridique près de chez vous, gratuite et accessible.'
   readonly VOUS_AVEZ_UNE_QUESTION_SUR_VOS_DROITS: string = 'Vous avez une question de droit (travail, divorce, logement...).'
   readonly VOUS_ETES_VICTIME: string = 'Vous êtes victime (violence, viol, vol...).'
   readonly VOUS_VOULEZ_FAIRE_UNE_ACTION_EN_JUSTICE: string = 'Vous voulez faire une action en justice (comment trouver un avocat, à qui vous adresser...).'
   readonly VOUS_AVEZ_RECU_UNE_DECISION: string = 'Vous avez reçu une décision de justice et vous voulez savoir comment faire (faire appel, faire respecter cette décision...).'
-  readonly RECHERCHER_UNE_CONSULTATION_JURIDIQUE_GRATUITE_ET_ACCESSIBLE: string = 'Rechercher une consultation juridique gratuite et accessible'
+  readonly RECHERCHER_UNE_CONSULTATION_JURIDIQUE_GRATUITE_ET_ACCESSIBLE: string = 'Rechercher une aide juridique gratuite et accessible'
   readonly DECOUVRIR_NOS_CRITERES: string = 'Découvrir nos critères d’accessiblité'
   readonly TITLE_A_PROPOS_DE_DROIT_PLURIEL: string = 'À propos de Justice Plurielle'
   readonly DROIT_PLURIEL_EST_UNE_ASSOCIATION: string = "Justice Plurielle est un service gratuit d'orientation vers les lieux d'accès au droit. Droit Pluriel, association qui défend une justice accessible à tous et toutes, et notamment aux personnes en situation de handicap, pilote ce projet."
@@ -40,8 +40,8 @@ export class WordingFr implements Wording {
   readonly LIEN_INSTAGRAM: string = 'https://www.instagram.com/droitpluriel/'
   readonly TITRE_LIEN_INSTAGRAM: string = 'Page Instagram de Droit Pluriel'
 
-  // Rechercher une consultation juridique
-  readonly TITLE_PAGE_RECHERCHER_UNE_CONSULTATION_JURIDIQUE: string = 'Rechercher une consultation juridique'
+  // Rechercher une aide juridique
+  readonly TITLE_PAGE_RECHERCHER_UNE_CONSULTATION_JURIDIQUE: string = 'Rechercher une aide juridique'
   readonly RETOUR_A_L_ACCUEIL: string = 'Retour à l’accueil'
   readonly OU_RECHERCHEZ_VOUS: string = 'Où recherchez-vous une consultation juridique ?'
   readonly OBLIGATOIRE: string = '(obligatoire)'
