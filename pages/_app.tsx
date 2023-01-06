@@ -24,16 +24,16 @@ export default function App({ Component, pageProps }: AppProps): ReactElement {
           name="description"
         />
         <link
-          href="favicon.png"
+          href="/favicon.png"
           rel="icon"
           type="image/png"
         />
         <link
-          href="favicon.png"
+          href="/favicon.png"
           rel="apple-touch-icon"
         />
         <link
-          href="manifest.webmanifest"
+          href="/manifest.webmanifest"
           rel="manifest"
         />
         <meta
