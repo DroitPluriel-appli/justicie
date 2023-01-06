@@ -16,10 +16,15 @@ type ServerSidePropsResult = Readonly<{
 }>
 
 export async function getServerSideProps(context: GetServerSidePropsContext): Promise<GetServerSidePropsResult<ServerSidePropsResult>> {
+  // A cause du fait d'un rafraichissement vidant le cache du navigateur
+  if ((context.query.id as string[])[0] === 'favicon.png') {
+    return { notFound: true }
+  }
+
   const { lieuLoader } = backDependencies
   const latitude = context.query.lat ? Number(context.query.lat) : 0
   const longitude = context.query.lon ? Number(context.query.lon) : 0
-  const id = Number(context.query.id)
+  const id = Number((context.query.id as string[])[0])
 
   const lieux = await lieuLoader.recupereUnLieu(id, latitude, longitude)
 

@@ -1,4 +1,4 @@
-.carteLieu {
+.main {
   box-shadow: 0 0.4rem 0.4rem var(--shadow);
   display: grid;
   grid-gap: var(--m-margin) 0;
@@ -13,7 +13,7 @@
   outline: 1px solid var(--gray);
 }
 
-:global(.leaflet-container) .carteLieu {
+:global(.leaflet-container) .main {
   box-shadow: none;
   column-gap: var(--s-margin);
 
@@ -23,56 +23,56 @@
   outline: none;
 }
 
-:global(.leaflet-container) .carteLieu__adress__paragraph {
+:global(.leaflet-container) .adresse p {
   margin: 0;
 }
 
-:global(.leaflet-container) .carteLieu__buttons {
+:global(.leaflet-container) .main :global(.carteLieu__buttons) {
   border: 1px solid var(--gray);
   padding: var(--m-margin);
 }
 
-.carteLieu > *:not(a, .carteLieu__distance) {
+.main > *:not(a, :global(.distance)) {
   padding-inline: var(--l-margin);
 }
 
-:global(.leaflet-container) .carteLieu > *:not(a) {
+:global(.leaflet-container) .main > *:not(a) {
   padding-inline: 0;
 }
 
-.carteLieu > h2 {
+.main > h2 {
   grid-area: title;
   margin-bottom: 0;
   margin-top: var(--m-margin);
 }
 
-.carteLieu > address {
+.main > address {
   display: flex;
   flex-direction: column;
   grid-area: coordonnees;
 }
 
-.carteLieu .carteLieu__criteres {
+.main .carteLieu__criteres {
   display: flex;
   flex-direction: row;
   grid-area: criteresAccessibilite;
   justify-content: right;
 }
 
-.carteLieu .carteLieu__criteres img {
+.main .carteLieu__criteres img {
   margin-left: var(--s-margin);
 }
 
-.carteLieu > address > a {
+.main > address > a {
   margin-bottom: var(--m-margin);
 }
 
-.carteLieu address .carteLieu__distance {
+.main :global(.distance) {
   grid-area: distance;
 }
 
 /* Obligé de préciser a.class pour override un des styles par défaut de leaflet */
-a.carteLieu__buttons {
+.main :global(.carteLieu__buttons) {
   align-items: center;
   border-right: 1px solid var(--gray);
   border-top: 1px solid var(--gray);
@@ -85,15 +85,15 @@ a.carteLieu__buttons {
   text-align: center;
 }
 
-.carteLieu__icon {
-  fill: var(--black);
+.adresse svg,
+.main :global(.distance) svg {
   margin-right: var(--s-margin);
 }
 
-.carteLieu .carteLieu__buttons:nth-of-type(1) {
+.main :global(.carteLieu__buttons):nth-of-type(1) {
   grid-area: lancerItineraire;
 }
 
-.carteLieu .carteLieu__buttons:nth-of-type(2) {
+.main :global(.carteLieu__buttons):nth-of-type(2) {
   grid-area: plusDInformations;
 }

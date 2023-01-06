@@ -5,7 +5,6 @@ import { Lieu } from '../../backend/entities/Lieu'
 import CarteLieu from '../CarteLieu/CarteLieu'
 
 export default function usePlan() {
-
   const iconSizeDefault = 24
   const iconSizeSelected = 38
   const iconMarkerLieuDefault = L.icon({
@@ -26,8 +25,7 @@ export default function usePlan() {
     return L.marker(viewCenter, { icon: iconMarkerPosition, title: title })
   }
 
-  const setMarkersLieux = (lieux: Lieu[], origin: { lat: number, lon: number }): L.Marker[] => {
-
+  const setMarkersLieux = (lieux: Lieu[], latitude: number, longitude: number): L.Marker[] => {
     const markersLieux = lieux.map((lieu) => {
       const popupContentContainer = L.DomUtil.create('div')
       const popup = L.popup().setContent(popupContentContainer)
@@ -37,8 +35,9 @@ export default function usePlan() {
       // Il faut donc faire le rendu au préalable
       createRoot(popupContentContainer).render(
         <CarteLieu
+          latitude={latitude}
           lieu={lieu}
-          origin={{ lat: origin.lat, lon: origin.lon }}
+          longitude={longitude}
         />
       )
 

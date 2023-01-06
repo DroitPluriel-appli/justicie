@@ -1,0 +1,73 @@
+.main {
+  font-size: var(--s-font);
+  margin-inline: calc(-1 * var(--m-margin));
+}
+
+.main button {
+  color: var(--primary-color);
+  margin-bottom: var(--m-margin);
+  padding-inline: var(--m-margin);
+}
+
+.contact svg {
+  margin-right: var(--s-margin);
+  vertical-align: sub;
+}
+
+.adresse svg {
+  margin-right: var(--s-margin);
+}
+
+.main button svg {
+  margin-right: var(--s-margin);
+}
+
+.main section {
+  border-bottom: 1px solid var(--gray);
+  margin-bottom: var(--m-margin);
+  padding-bottom: var(--m-margin);
+  padding-inline: var(--m-margin);
+}
+
+.main section:nth-child(6) {
+  border-bottom: unset;
+  margin-bottom: unset;
+  padding-bottom: unset;
+}
+
+.main h2 {
+  font-size: var(--l-font);
+  font-weight: normal;
+  margin-bottom: var(--m-margin);
+}
+
+h2.nom {
+  font-weight: bold;
+}
+
+.adresse {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.adresse a {
+  background-color: var(--primary-background-color);
+  border-radius: 1rem;
+  color: var(--white);
+  font-weight: bold;
+  padding: var(--s-margin);
+}
+
+.main img {
+  margin-right: var(--s-margin);
+}
+
+.main pre {
+  font-family: arial, sans-serif;
+  margin: 0;
+}
+
+.contact a {
+  line-height: 2;
+}

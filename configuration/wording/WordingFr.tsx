@@ -79,6 +79,16 @@ export class WordingFr implements Wording {
   readonly TITLE_PAGE_RESULTATS_PAR_PLAN: string = 'Résultats par plan'
   readonly TITRE_MARKER_POSITION: string = 'Votre position'
 
+  // Lieu
+  readonly TITLE_PAGE_LIEU: (nom: string) => string = (nom: string) => nom
+  readonly RETOUR_AUX_RESULTATS: string = 'Retour aux résultats'
+  readonly ACCESSIBILITE_DU_LIEU: string = 'Accessibilité du lieu'
+  readonly HORAIRES_ET_JOURS_D_OUVERTURE: string = 'Horaires et jours d’ouverture'
+  readonly PERMANENCE: string = 'Permanence'
+  readonly CONTACT_ET_SITE_INTERNET: string = 'Contact et site internet'
+  readonly CONSULTER_LE_SITE_INTERNET: string = 'Consulter le site internet'
+  readonly KILOMETRES: string = 'kilomètres'
+
   // Nos critères d’accessibilité
   readonly TITLE_PAGE_NOS_CRITERES_D_ACCESSIBILITE: string = 'Nos critères d’accessibilité'
   readonly TITLE_HANDICAP_MOTEUR_TOTAL: string = 'Accessibilité handicap moteur total'

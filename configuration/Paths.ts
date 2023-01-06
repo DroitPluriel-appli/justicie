@@ -9,4 +9,5 @@ export class Paths {
   readonly POLITIQUE_DE_GESTION_DES_DONNEES: string = 'politique-de-gestion-des-donnees'
   readonly FOIRE_AUX_QUESTIONS: string = 'foire-aux-questions'
   readonly MENTIONS_LEGALES: string = 'mentions-legales'
+  readonly LIEU: string = 'lieu'
 }

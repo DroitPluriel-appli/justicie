@@ -36,7 +36,7 @@ export class LieuModel {
   public longitude!: number
 
   @Column({ length: 255, name: 'e_mail', type: 'varchar' })
-  public e_mail!: string
+  public eMail!: string
 
   @Column({ name: 'horaire', type: 'text' })
   public horaire!: string

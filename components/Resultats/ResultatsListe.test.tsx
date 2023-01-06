@@ -96,8 +96,8 @@ describe('résultats de recherche affichés en liste', () => {
       within(cartesLieux[0]).getByRole('heading', { level: 2, name: lieuA.nom }),
       within(cartesLieux[0]).getByText(textMatch(lieuA.adresse + lieuA.codePostal + ' ' + lieuA.ville)),
       within(cartesLieux[0]).getByRole('link', { name: lieuA.telephone }),
-      within(cartesLieux[0]).getByText(textMatch(lieuA.distance.toPrecision(2).toString() + ' km')),
-      within(cartesLieux[0]).getByText(textMatch(' km'), { selector: 'abbr' }),
+      within(cartesLieux[0]).getByText(textMatch(`${lieuA.distance} km`), { selector: 'p' }),
+      within(cartesLieux[0]).getByText('km', { selector: 'abbr' }),
       within(cartesLieux[0]).getByRole('link', { name: wording.LANCER_L_ITINERAIRE + wording.NOUVELLE_FENETRE }),
       within(cartesLieux[0]).getByRole('link', { name: wording.PLUS_D_INFORMATIONS }),
       within(cartesLieux[0]).getByTitle(wording.TITLE_HANDICAP_MOTEUR_TOTAL),
@@ -111,7 +111,8 @@ describe('résultats de recherche affichés en liste', () => {
     champsCarteLieuA.forEach((champ) => expect(champ).toBeInTheDocument())
 
     expect(champsCarteLieuA[2]).toHaveAttribute('href', 'tel:' + lieuA.telephone.replaceAll(' ', ''))
-    expect(champsCarteLieuA[4]).toHaveAttribute('title', 'kilomètres')
+    expect(champsCarteLieuA[4]).toHaveAttribute('title', wording.KILOMETRES)
+    expect(champsCarteLieuA[6]).toHaveAttribute('href', 'lieu/1?lat=48.844928&lon=2.31016')
 
     const googleMapUrlLieuA = new URL('https://www.google.com/maps/dir/')
     googleMapUrlLieuA.searchParams.append('api', '1')
@@ -124,8 +125,8 @@ describe('résultats de recherche affichés en liste', () => {
       within(cartesLieux[1]).getByRole('heading', { level: 2, name: lieuB.nom }),
       within(cartesLieux[1]).getByText(textMatch(lieuB.adresse + lieuB.codePostal + ' ' + lieuB.ville)),
       within(cartesLieux[1]).getByRole('link', { name: lieuB.telephone }),
-      within(cartesLieux[1]).getByText(textMatch(lieuA.distance.toPrecision(2).toString() + ' km')),
-      within(cartesLieux[1]).getByText(textMatch(' km'), { selector: 'abbr' }),
+      within(cartesLieux[1]).getByText(textMatch(`${lieuA.distance} km`), { selector: 'p' }),
+      within(cartesLieux[1]).getByText('km', { selector: 'abbr' }),
       within(cartesLieux[1]).getByRole('link', { name: wording.LANCER_L_ITINERAIRE + wording.NOUVELLE_FENETRE }),
       within(cartesLieux[1]).getByRole('link', { name: wording.PLUS_D_INFORMATIONS }),
       within(cartesLieux[1]).getByTitle(wording.TITLE_HANDICAP_VISUEL),
@@ -136,7 +137,8 @@ describe('résultats de recherche affichés en liste', () => {
     champsCarteLieuB.forEach((champ) => expect(champ).toBeInTheDocument())
 
     expect(champsCarteLieuB[2]).toHaveAttribute('href', 'tel:' + lieuB.telephone.replaceAll(' ', ''))
-    expect(champsCarteLieuB[4]).toHaveAttribute('title', 'kilomètres')
+    expect(champsCarteLieuB[4]).toHaveAttribute('title', wording.KILOMETRES)
+    expect(champsCarteLieuB[6]).toHaveAttribute('href', 'lieu/2?lat=48.844928&lon=2.31016')
 
     const googleMapUrlLieuB = new URL('https://www.google.com/maps/dir/')
     googleMapUrlLieuB.searchParams.append('api', '1')

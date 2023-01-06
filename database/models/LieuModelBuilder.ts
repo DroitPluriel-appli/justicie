@@ -10,11 +10,11 @@ export class LieuModelBuilder {
     lieu.ville = champsSurchargés?.ville || 'Bourg En Bresse'
     lieu.siteInternet = champsSurchargés?.siteInternet || 'https://www.ain.gouv.fr/'
     lieu.telephone = champsSurchargés?.telephone || '04 74 14 01 40'
-    lieu.priseDeRendezVous = champsSurchargés?.priseDeRendezVous || 'OUI'
+    lieu.priseDeRendezVous = champsSurchargés?.priseDeRendezVous || 'OUI\nmais pas le dimanche'
     lieu.domaineDeDroit = champsSurchargés?.domaineDeDroit || 'TOUT DOMAINES'
     lieu.latitude = champsSurchargés?.latitude || 46.2064358
     lieu.longitude = champsSurchargés?.longitude || 5.2272134
-    lieu.e_mail = champsSurchargés?.e_mail || 'mjd.bourg-en-bresse@example.com'
+    lieu.eMail = champsSurchargés?.eMail || 'mjd.bourg-en-bresse@example.com'
     lieu.horaire = champsSurchargés?.horaire || 'Lundi 9h00 à 12h00 et de 13h30 à 17h00\nMardi 9h00 à 12h00 et de 13h30 à 17h00\nMercredi 9h00 à 12h00 et de 13h30 à 17h00\nJeudi 9h00 à 12h00 et de 13h30 à 17h00\nVendredi 9h00 à 12h00 et de 13h30 à 17h00'
     lieu.departement = champsSurchargés?.departement || 'Ain'
     lieu.region = champsSurchargés?.region || 'Auvergne-Rhône-Alpes'
@@ -25,7 +25,7 @@ export class LieuModelBuilder {
     lieu.lsf = champsSurchargés?.lsf || false
     lieu.calme = champsSurchargés?.calme || true
     lieu.forme = champsSurchargés?.forme || false
-    lieu.commentaire = champsSurchargés?.commentaire || 'En partie formé'
+    lieu.commentaire = champsSurchargés?.commentaire || 'En partie\nformé'
     return lieu
   }
 }

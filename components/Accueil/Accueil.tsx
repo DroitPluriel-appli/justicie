@@ -3,8 +3,10 @@ import Link from 'next/link'
 import { ReactElement } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
+import Email from '../Email/Email'
 import ExternalLink from '../ExternalLink/ExternalLink'
 import RetourHautDePage from '../RetourHautDePage/RetourHautDePage'
+import Telephone from '../Telephone/Telephone'
 import styles from './Accueil.module.css'
 
 export default function Accueil(): ReactElement {
@@ -99,14 +101,14 @@ export default function Accueil(): ReactElement {
       </h2>
       <address className={styles.adresse}>
         {wording.PAR_EMAIL}
-        <a href={'mailto:' + wording.EMAIL_DROIT_PLURIEL}>
+        <Email url={wording.EMAIL_DROIT_PLURIEL}>
           {wording.EMAIL_DROIT_PLURIEL}
-        </a>
+        </Email>
         <br />
         {wording.PAR_TELEPHONE}
-        <a href={'tel:' + wording.TELEPHONE_DROIT_PLURIEL.replaceAll(' ', '')}>
+        <Telephone url={wording.TELEPHONE_DROIT_PLURIEL}>
           {wording.TELEPHONE_DROIT_PLURIEL}
-        </a>
+        </Telephone>
       </address>
       <h2 className={styles.title}>
         {wording.TITLE_SUIVEZ_NOS_ACTUALITES}

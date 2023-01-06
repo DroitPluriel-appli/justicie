@@ -10,7 +10,7 @@
     "dev": "yarn start:db && next dev",
     "lighthouse": "lhci autorun",
     "lint:css": "stylelint '(components|configuration)/**/*.css'",
-    "lint:typescript": "next lint",
+    "lint:typescript": "next lint --max-warnings=0",
     "maj_lieux": "ts-node -T backend/infrastructure/controllers/majDesLieuxCron.ts",
     "migrations:up": "npx typeorm-ts-node-commonjs migration:run -d ./database/dataSource.ts",
     "migrations:down": "npx typeorm-ts-node-commonjs migration:revert -d ./database/dataSource.ts",

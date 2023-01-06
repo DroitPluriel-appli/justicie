@@ -22,8 +22,9 @@ export default function ResultatsPlan({ lieux }: { lieux: Lieu[] }): ReactElemen
 
   return (
     <Plan
+      latitude={Number(query.lat)}
       lieux={lieux}
-      origin={{ lat: Number(query.lat), lon: Number(query.lon) }}
+      longitude={Number(query.lon)}
     />
   )
 }

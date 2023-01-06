@@ -9,6 +9,10 @@
   margin-bottom: var(--xxl-margin);
 }
 
+.links svg {
+  fill: var(--white);
+}
+
 .main button svg {
   margin-right: var(--s-margin);
 }

@@ -1,0 +1,9 @@
+.white {
+  fill: var(--white);
+  margin-right: var(--s-margin);
+}
+
+.blue {
+  fill: var(--primary-background-color);
+  margin-right: var(--s-margin);
+}

@@ -33,8 +33,9 @@ export default function ResultatsListe({ lieux }: { lieux: Lieu[] }): ReactEleme
           return (
             <CarteLieu
               key={lieu.id}
+              latitude={Number(query.lat)}
               lieu={lieu}
-              origin={{ lat: Number(query.lat), lon: Number(query.lon) }}
+              longitude={Number(query.lon)}
             />
           )
         })

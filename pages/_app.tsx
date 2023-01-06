@@ -8,7 +8,6 @@ import Header from '../components/Header/Header'
 import LiensDEvitement from '../components/LiensDEvitement/LiensDEvitement'
 import { ContextProvider } from '../configuration/useDependencies'
 import '../configuration/globals.css'
-import '../components/RenseignerUneAdresse/autocomplete.css'
 
 export default function App({ Component, pageProps }: AppProps): ReactElement {
   return (
