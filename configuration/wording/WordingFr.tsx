@@ -19,7 +19,7 @@ export class WordingFr implements Wording {
   readonly RECHERCHER_UNE_CONSULTATION_JURIDIQUE_GRATUITE_ET_ACCESSIBLE: string = 'Rechercher une aide juridique gratuite et accessible'
   readonly DECOUVRIR_NOS_CRITERES: string = 'Découvrir nos critères d’accessiblité'
   readonly TITLE_A_PROPOS_DE_DROIT_PLURIEL: string = 'À propos de Justice Plurielle'
-  readonly DROIT_PLURIEL_EST_UNE_ASSOCIATION: string = "Justice Plurielle est un service gratuit d'orientation vers les lieux d'accès au droit. Droit Pluriel, association qui défend une justice accessible à tous et toutes, et notamment aux personnes en situation de handicap, pilote ce projet."
+  readonly DROIT_PLURIEL_EST_UNE_ASSOCIATION: string = "Justice Plurielle est un service gratuit d'orientation vers les lieux d'accès au droit, à l'initiative de Droit Pluriel, association qui défend une justice accessible à tous et toutes, et notamment aux personnes en situation de handicap."
   readonly RETROUVEZ_PLUS_D_INFOS: string = 'Retrouvez plus d’information sur notre site internet : '
   readonly TITLE_NOUS_CONTACTER: string = 'Nous contacter'
   readonly SITE_DROIT_PLURIEL: string = 'https://droitpluriel.fr'
@@ -43,7 +43,7 @@ export class WordingFr implements Wording {
   // Rechercher une aide juridique
   readonly TITLE_PAGE_RECHERCHER_UNE_CONSULTATION_JURIDIQUE: string = 'Rechercher une aide juridique'
   readonly RETOUR_A_L_ACCUEIL: string = 'Retour à l’accueil'
-  readonly OU_RECHERCHEZ_VOUS: string = 'Où recherchez-vous une consultation juridique ?'
+  readonly OU_RECHERCHEZ_VOUS: string = 'Où recherchez-vous une aide juridique ?'
   readonly OBLIGATOIRE: string = '(obligatoire)'
   readonly UTILISER_MA_POSITION_ACTUELLE: string = 'Utiliser ma position actuelle'
   readonly CHARGEMENT: string = 'Chargement...'
@@ -83,7 +83,7 @@ export class WordingFr implements Wording {
   readonly TITLE_PAGE_NOS_CRITERES_D_ACCESSIBILITE: string = 'Nos critères d’accessibilité'
   readonly TITLE_HANDICAP_MOTEUR_TOTAL: string = 'Accessibilité handicap moteur total'
   readonly DESCRIPTION_HANDICAP_MOTEUR_TOTAL: string = 'Le lieu permet un accès total à toute situation de handicap moteur.'
-  readonly TITLE_HANDICAP_MOTEUR_AVEC_ASSISTANCE: string = 'Accessibilité handicap moteur'
+  readonly TITLE_HANDICAP_MOTEUR_AVEC_ASSISTANCE: string = 'Accessibilité handicap moteur avec assistance'
   readonly DESCRIPTION_HANDICAP_MOTEUR_AVEC_ASSISTANCE: string = "Le lieu permet un accès à toute situation de handicap moteur à la condition qu'un tiers intervienne (pour ouvrir une porte...)."
   readonly TITLE_HANDICAP_VISUEL: string = 'Accessibilité handicap visuel'
   readonly DESCRIPTION_HANDICAP_VISUEL: string = "Le guidage au sein du lieu est simple : bande de guidage, accueil dès l'entrée..."
@@ -92,7 +92,7 @@ export class WordingFr implements Wording {
   readonly TITLE_BOUCLE_A_INDUCTION: string = 'Boucle à induction magnétique'
   readonly DESCRIPTION_BOUCLE_A_INDUCTION: string = "Le lieu est équipé d'une boucle à induction magnétique en état de fonctionnement."
   readonly TITLE_ENVIRONNEMENT_CALME: string = 'Environnement calme'
-  readonly DESCRIPTION_ENVIRONNEMENT_CALME: string = 'La consultation se déroule dans un environnement calme.'
+  readonly DESCRIPTION_ENVIRONNEMENT_CALME: string = 'La consultation se déroule dans un environnement calme (espace isolé).'
   readonly TITLE_PERSONNEL_FORME: string = 'Personnel formé'
   readonly DESCRIPTION_PERSONNEL_FORME: string = "Les professionnels (accueil et consultation juridique) sont sensibilisés aux situations de handicap et à l'accessibilité."
 
