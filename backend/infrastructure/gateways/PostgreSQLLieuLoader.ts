@@ -19,12 +19,22 @@ export class PostgreSQLLieuLoader implements LieuLoader {
     latitude: number,
     longitude: number,
     page = 0,
+    accessibilites = [],
     nombreDeLieuxAffichesParPage = 10
   ): Promise<Lieu[]> {
     const vingtKilometres = 0.2
+
+    let accessibilitesSQL = ''
+    if (accessibilites.length > 0) {
+      accessibilitesSQL = 'AND ' + accessibilites
+        // @ts-ignore
+        .map((accessibilite) => `${accessibilite.name as string} = ${accessibilite.value as string}`)
+        .join(' AND ')
+    }
+
     const lieuxModel = await (await this.orm)
       .getRepository(LieuModel)
-      .query('SELECT *, code_postal AS "codePostal", domaine_de_droit AS "domaineDeDroit", e_mail AS "eMail", prise_de_rendez_vous AS "priseDeRendezVous", site_internet AS "siteInternet", ABS(latitude - $1) + ABS(longitude - $2) AS distance FROM lieu WHERE (latitude BETWEEN $3 AND $4 AND longitude BETWEEN $5 AND $6) ORDER BY distance ASC LIMIT $7 OFFSET $8', [
+      .query(`SELECT *, code_postal AS "codePostal", domaine_de_droit AS "domaineDeDroit", e_mail AS "eMail", prise_de_rendez_vous AS "priseDeRendezVous", site_internet AS "siteInternet", ABS(latitude - $1) + ABS(longitude - $2) AS distance FROM lieu WHERE (latitude BETWEEN $3 AND $4 AND longitude BETWEEN $5 AND $6) ${accessibilitesSQL} ORDER BY distance ASC LIMIT $7 OFFSET $8`, [
         latitude,
         longitude,
         latitude - vingtKilometres,

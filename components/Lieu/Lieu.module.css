@@ -48,15 +48,18 @@ h2.nom {
 .adresse {
   align-items: center;
   display: flex;
+  gap: var(--s-margin);
   justify-content: space-between;
 }
 
 .adresse a {
   background-color: var(--primary-background-color);
-  border-radius: 1rem;
+  border-radius: 2rem;
   color: var(--white);
   font-weight: bold;
   padding: var(--s-margin);
+  text-align: center;
+  width: 6rem;
 }
 
 .main img {

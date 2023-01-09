@@ -4,6 +4,8 @@ import { ReactElement } from 'react'
 import { backDependencies } from '../backend/backDependencies'
 import { Lieu } from '../backend/entities/Lieu'
 import ResultatsListe from '../components/Resultats/ResultatsListe'
+import { criteres } from '../configuration/criteres'
+import { WordingFr } from '../configuration/wording/WordingFr'
 
 export default function PageAdressesListe({ lieux }: { lieux: Lieu[] }): ReactElement {
   return (
@@ -21,7 +23,11 @@ export async function getServerSideProps(context: GetServerSidePropsContext): Pr
   const longitude = Number(context.query.lon)
   const page = context.query.page === undefined ? 0 : Number(context.query.page)
 
-  const lieux = await lieuLoader.recupereDesLieux(latitude, longitude, page)
+  const accessibilites = criteres(new WordingFr())
+    .filter((critere): string => context.query[critere.name] as string)
+    .map((critere) => ({ name: critere.name, value: true }))
+
+  const lieux = await lieuLoader.recupereDesLieux(latitude, longitude, page, accessibilites)
 
   return { props: { lieux: JSON.parse(JSON.stringify(lieux)) as Lieu[] } }
 }

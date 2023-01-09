@@ -67,17 +67,19 @@ describe('lieu loader', () => {
       const latitude = 40.000000
       const longitude = 2.000000
       const page = 0
+      const accessibilites = {}
       const nombreDeLieuxAffichesParPage = 4
 
       // WHEN
-      const lieux = await postgreSQLLieuLoader.recupereDesLieux(latitude, longitude, page, nombreDeLieuxAffichesParPage)
+      // @ts-ignore
+      const lieux = await postgreSQLLieuLoader.recupereDesLieux(latitude, longitude, page, accessibilites, nombreDeLieuxAffichesParPage)
 
       // THEN
       expect(lieux).toStrictEqual([
         LieuBuilder.cree({ distance: 20, id: 1, latitude: 40.100000, longitude: 2.100000 }),
         LieuBuilder.cree({ distance: 22, id: 2, latitude: 40.110000, longitude: 2.110000 }),
         LieuBuilder.cree({ distance: 26, id: 4, latitude: 40.130000, longitude: 2.130000 }),
-        LieuBuilder.cree({ distance: 28, id: 5, latitude: 40.140000, longitude: 2.140000 }),
+        LieuBuilder.cree({ calme: true, distance: 28, id: 5, latitude: 40.140000, longitude: 2.140000, pmr: true }),
       ])
     })
 
@@ -87,13 +89,15 @@ describe('lieu loader', () => {
       const latitude = 40.000000
       const longitude = 2.000000
       const page = 1
+      const accessibilites = {}
       const nombreDeLieuxAffichesParPage = 4
 
       // WHEN
-      const lieux = await postgreSQLLieuLoader.recupereDesLieux(latitude, longitude, page, nombreDeLieuxAffichesParPage)
+      // @ts-ignore
+      const lieux = await postgreSQLLieuLoader.recupereDesLieux(latitude, longitude, page, accessibilites, nombreDeLieuxAffichesParPage)
 
       // THEN
-      expect(lieux).toStrictEqual([LieuBuilder.cree({ distance: 30, id: 6, latitude: 40.150000, longitude: 2.150000 })])
+      expect(lieux).toStrictEqual([LieuBuilder.cree({ calme: true, distance: 30, id: 6, latitude: 40.150000, longitude: 2.150000, pmr: true })])
     })
 
     it('affiche les lieux les plus près de l’adresse demandée', async () => {
@@ -110,8 +114,36 @@ describe('lieu loader', () => {
         LieuBuilder.cree({ distance: 20, id: 1, latitude: 40.100000, longitude: 2.100000 }),
         LieuBuilder.cree({ distance: 22, id: 2, latitude: 40.110000, longitude: 2.110000 }),
         LieuBuilder.cree({ distance: 26, id: 4, latitude: 40.130000, longitude: 2.130000 }),
-        LieuBuilder.cree({ distance: 28, id: 5, latitude: 40.140000, longitude: 2.140000 }),
-        LieuBuilder.cree({ distance: 30, id: 6, latitude: 40.150000, longitude: 2.150000 }),
+        LieuBuilder.cree({ calme: true, distance: 28, id: 5, latitude: 40.140000, longitude: 2.140000, pmr: true }),
+        LieuBuilder.cree({ calme: true, distance: 30, id: 6, latitude: 40.150000, longitude: 2.150000, pmr: true }),
+      ])
+    })
+
+    it('affiche les lieux selon différentes accessibilités', async () => {
+      // GIVEN
+      await creeSeptLieux(orm)
+      const latitude = 40.000000
+      const longitude = 2.000000
+      const page = 0
+      const accessibilites = [
+        {
+          name: 'calme',
+          value: true,
+        },
+        {
+          name: 'pmr',
+          value: true,
+        },
+      ]
+
+      // WHEN
+      // @ts-ignore
+      const lieux = await postgreSQLLieuLoader.recupereDesLieux(latitude, longitude, page, accessibilites)
+
+      // THEN
+      expect(lieux).toStrictEqual([
+        LieuBuilder.cree({ calme: true, distance: 28, id: 5, latitude: 40.140000, longitude: 2.140000, pmr: true }),
+        LieuBuilder.cree({ calme: true, distance: 30, id: 6, latitude: 40.150000, longitude: 2.150000, pmr: true }),
       ])
     })
 
@@ -134,12 +166,12 @@ async function creeSeptLieux(orm: Promise<DataSource>) {
   await (await orm)
     .getRepository(LieuModel)
     .insert([
-      LieuModelBuilder.cree({ id: 6, latitude: 40.150000, longitude: 2.150000 }),
+      LieuModelBuilder.cree({ calme: true, id: 6, latitude: 40.150000, longitude: 2.150000, pmr: true }),
       LieuModelBuilder.cree({ id: 1, latitude: 40.100000, longitude: 2.100000 }),
       LieuModelBuilder.cree({ id: 2, latitude: 40.110000, longitude: 2.110000 }),
       LieuModelBuilder.cree({ id: 3, latitude: 40.120000, longitude: -2.120000 }),
       LieuModelBuilder.cree({ id: 4, latitude: 40.130000, longitude: 2.130000 }),
-      LieuModelBuilder.cree({ id: 5, latitude: 40.140000, longitude: 2.140000 }),
+      LieuModelBuilder.cree({ calme: true, id: 5, latitude: 40.140000, longitude: 2.140000, pmr: true }),
       LieuModelBuilder.cree({ id: 7, latitude: 40.210000, longitude: 2.210000 }),
     ])
 }

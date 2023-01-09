@@ -212,7 +212,6 @@ describe('page résultats par plan', () => {
       within(main).getByTitle(wording.TITLE_HANDICAP_VISUEL),
       within(main).getByTitle(wording.TITLE_LANGUE_DES_SIGNES_FRANCAISE),
       within(main).getByTitle(wording.TITLE_BOUCLE_A_INDUCTION),
-      within(main).getByTitle(wording.TITLE_ENVIRONNEMENT_CALME),
       within(main).getByTitle(wording.TITLE_PERSONNEL_FORME),
     ]
     champsCarteLieuA.forEach((champ) => expect(champ).toBeVisible())

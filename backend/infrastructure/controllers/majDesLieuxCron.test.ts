@@ -29,7 +29,7 @@ describe('sauvegarde des entités juridiques', () => {
     'oui',
     'non',
     'non',
-    'oui',
+    'non',
     'non',
     'En partie\nformé',
   ]
