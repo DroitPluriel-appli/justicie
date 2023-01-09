@@ -1,3 +1,4 @@
+import { Critere } from '../../configuration/criteres'
 import { Lieu } from './Lieu'
 
 export interface LieuLoader {
@@ -7,6 +8,6 @@ export interface LieuLoader {
     longitude: number,
     page?: number,
     nombreDeLieuxAffichesParPage?: number,
-    accessibilites?: { name: string, value: boolean }[]
+    accessibilites?: keyof Critere['name'][] | []
   ): Promise<Lieu[]>
 }

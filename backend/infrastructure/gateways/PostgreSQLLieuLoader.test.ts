@@ -124,16 +124,7 @@ describe('lieu loader', () => {
       const longitude = 2.000000
       const page = 0
       const nombreDeLieuxAffichesParPage = 10
-      const accessibilites = [
-        {
-          name: 'calme',
-          value: true,
-        },
-        {
-          name: 'pmr',
-          value: true,
-        },
-      ]
+      const accessibilites = ['calme', 'pmr']
 
       // WHEN
       // @ts-ignore

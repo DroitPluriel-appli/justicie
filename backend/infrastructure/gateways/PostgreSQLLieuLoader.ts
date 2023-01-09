@@ -15,6 +15,7 @@ export class PostgreSQLLieuLoader implements LieuLoader {
     return this.transformeEnLieu(this.ajouteLaDistance(lieuxModel, latitude, longitude))
   }
 
+  // @ts-ignore
   async recupereDesLieux(
     latitude: number,
     longitude: number,
@@ -25,8 +26,8 @@ export class PostgreSQLLieuLoader implements LieuLoader {
     const vingtKilometres = 0.2
 
     const accessibilitesSQL = accessibilites
-      // @ts-ignore
-      .map((accessibilite) => ` AND ${accessibilite.name as string} = ${accessibilite.value as string}`)
+      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+      .map((accessibilite) => ` AND ${accessibilite} = true`)
       .join('')
 
     const lieuxModel = await (await this.orm)

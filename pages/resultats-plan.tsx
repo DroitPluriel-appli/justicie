@@ -23,9 +23,10 @@ export async function getServerSideProps(context: GetServerSidePropsContext): Pr
   const nombreDeLieuxAffichesParPage = 10
 
   const accessibilites = criteres(new WordingFr())
-    .filter((critere): string => context.query[critere.name] as string)
-    .map((critere) => ({ name: critere.name, value: true }))
+    .filter((critere) => context.query[critere.name])
+    .map((critere) => critere.name)
 
+  // @ts-ignore
   const lieux = await lieuLoader.recupereDesLieux(latitude, longitude, page, nombreDeLieuxAffichesParPage, accessibilites)
 
   return { props: { lieux: JSON.parse(JSON.stringify(lieux)) as Lieu[] } }
