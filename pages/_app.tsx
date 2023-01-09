@@ -10,6 +10,7 @@ import { ContextProvider } from '../configuration/useDependencies'
 import '../configuration/globals.css'
 
 export default function App({ Component, pageProps }: AppProps): ReactElement {
+
   return (
     <ContextProvider>
       <LiensDEvitement />

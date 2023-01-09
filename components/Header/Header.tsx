@@ -3,6 +3,7 @@ import { ReactElement } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
 import LogoDroitPluriel from '../../public/logo-droit-pluriel.svg'
+import { BoutonModeSombre } from '../BoutonModeSombre/BoutonModeSombre'
 import styles from './Header.module.css'
 import { useHeader } from './useHeader'
 
@@ -195,6 +196,9 @@ export default function Header(): ReactElement {
                 </svg>
                 {wording.POLITIQUE_DE_GESTION_DES_DONNEES}
               </a>
+            </li>
+            <li>
+              <BoutonModeSombre />
             </li>
           </ul>
         </nav>
