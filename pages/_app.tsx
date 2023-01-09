@@ -8,8 +8,13 @@ import Header from '../components/Header/Header'
 import LiensDEvitement from '../components/LiensDEvitement/LiensDEvitement'
 import { ContextProvider } from '../configuration/useDependencies'
 import '../configuration/globals.css'
+import { useTheme } from '../configuration/useTheme'
 
 export default function App({ Component, pageProps }: AppProps): ReactElement {
+
+  const { useThemeFromLocalStorage } = useTheme()
+
+  useThemeFromLocalStorage()
 
   return (
     <ContextProvider>

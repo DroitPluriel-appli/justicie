@@ -1,12 +1,12 @@
+import { useEffect } from 'react'
+
 export function useTheme() {
 
   const localStorageDarkThemeItem = 'modeSombreEnabled'
+  const modeSombreDataAttribute = 'modeSombre'
+  const body = () => document.body
 
   const isDarkThemeDefinedInLocalStorage = () => window.localStorage.getItem(localStorageDarkThemeItem) ? true : false
-
-  const modeSombreDataAttribute = 'modeSombre'
-
-  const body = () => document.body
 
   const setDarkStyle = () => {
     body().dataset[modeSombreDataAttribute] = 'true'
@@ -26,5 +26,16 @@ export function useTheme() {
     }
   }
 
-  return { isDarkThemeDefinedInLocalStorage, toggleDarkTheme }
+  const useThemeFromLocalStorage = () => {
+    useEffect(() => {
+      if (isDarkThemeDefinedInLocalStorage()) {
+        setDarkStyle()
+      }
+    }, [])
+  }
+
+  return {
+    toggleDarkTheme,
+    useThemeFromLocalStorage,
+  }
 }
