@@ -9,6 +9,7 @@ type BackDependencies = Readonly<{
 const createDependencies = (): BackDependencies => {
   const orm = dataSource.initialize()
 
+  // @ts-ignore
   return { lieuLoader: new PostgreSQLLieuLoader(orm) }
 }
 

@@ -23,7 +23,7 @@ export class LieuModelBuilder {
     lieu.visuel = champsSurchargés?.visuel || true
     lieu.bim = champsSurchargés?.bim || false
     lieu.lsf = champsSurchargés?.lsf || false
-    lieu.calme = champsSurchargés?.calme || true
+    lieu.calme = champsSurchargés?.calme || false
     lieu.forme = champsSurchargés?.forme || false
     lieu.commentaire = champsSurchargés?.commentaire || 'En partie\nformé'
     return lieu

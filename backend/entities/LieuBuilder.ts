@@ -5,7 +5,7 @@ export class LieuBuilder {
     return new Lieu(
       champsSurchargés?.adresse || '34 cours de Verdun',
       champsSurchargés?.bim || false,
-      champsSurchargés?.calme || true,
+      champsSurchargés?.calme || false,
       champsSurchargés?.codePostal || '1000',
       champsSurchargés?.commentaire || 'En partie\nformé',
       champsSurchargés?.departement || 'Ain',

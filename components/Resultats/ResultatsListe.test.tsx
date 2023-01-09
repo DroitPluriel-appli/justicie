@@ -105,7 +105,6 @@ describe('résultats de recherche affichés en liste', () => {
       within(cartesLieux[0]).getByTitle(wording.TITLE_HANDICAP_VISUEL),
       within(cartesLieux[0]).getByTitle(wording.TITLE_LANGUE_DES_SIGNES_FRANCAISE),
       within(cartesLieux[0]).getByTitle(wording.TITLE_BOUCLE_A_INDUCTION),
-      within(cartesLieux[0]).getByTitle(wording.TITLE_ENVIRONNEMENT_CALME),
       within(cartesLieux[0]).getByTitle(wording.TITLE_PERSONNEL_FORME),
     ]
     champsCarteLieuA.forEach((champ) => expect(champ).toBeInTheDocument())
@@ -130,7 +129,6 @@ describe('résultats de recherche affichés en liste', () => {
       within(cartesLieux[1]).getByRole('link', { name: wording.LANCER_L_ITINERAIRE + wording.NOUVELLE_FENETRE }),
       within(cartesLieux[1]).getByRole('link', { name: wording.PLUS_D_INFORMATIONS }),
       within(cartesLieux[1]).getByTitle(wording.TITLE_HANDICAP_VISUEL),
-      within(cartesLieux[1]).getByTitle(wording.TITLE_ENVIRONNEMENT_CALME),
       within(cartesLieux[1]).getByTitle(wording.TITLE_HANDICAP_MOTEUR_AVEC_ASSISTANCE),
       within(cartesLieux[1]).getByTitle(wording.TITLE_HANDICAP_MOTEUR_TOTAL),
     ]
