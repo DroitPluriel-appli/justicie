@@ -22,12 +22,13 @@ export async function getServerSideProps(context: GetServerSidePropsContext): Pr
   const latitude = Number(context.query.lat)
   const longitude = Number(context.query.lon)
   const page = context.query.page === undefined ? 0 : Number(context.query.page)
+  const nombreDeLieuxAffichesParPage = 10
 
   const accessibilites = criteres(new WordingFr())
     .filter((critere): string => context.query[critere.name] as string)
     .map((critere) => ({ name: critere.name, value: true }))
 
-  const lieux = await lieuLoader.recupereDesLieux(latitude, longitude, page, accessibilites)
+  const lieux = await lieuLoader.recupereDesLieux(latitude, longitude, page, nombreDeLieuxAffichesParPage, accessibilites)
 
   return { props: { lieux: JSON.parse(JSON.stringify(lieux)) as Lieu[] } }
 }

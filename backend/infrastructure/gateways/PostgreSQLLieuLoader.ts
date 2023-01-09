@@ -19,18 +19,15 @@ export class PostgreSQLLieuLoader implements LieuLoader {
     latitude: number,
     longitude: number,
     page = 0,
-    accessibilites = [],
-    nombreDeLieuxAffichesParPage = 10
+    nombreDeLieuxAffichesParPage = 10,
+    accessibilites = []
   ): Promise<Lieu[]> {
     const vingtKilometres = 0.2
 
-    let accessibilitesSQL = ''
-    if (accessibilites.length > 0) {
-      accessibilitesSQL = 'AND ' + accessibilites
-        // @ts-ignore
-        .map((accessibilite) => `${accessibilite.name as string} = ${accessibilite.value as string}`)
-        .join(' AND ')
-    }
+    const accessibilitesSQL = accessibilites
+      // @ts-ignore
+      .map((accessibilite) => ` AND ${accessibilite.name as string} = ${accessibilite.value as string}`)
+      .join('')
 
     const lieuxModel = await (await this.orm)
       .getRepository(LieuModel)

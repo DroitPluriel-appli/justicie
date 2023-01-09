@@ -6,7 +6,7 @@ export interface LieuLoader {
     latitude: number,
     longitude: number,
     page?: number,
-    accessibilites?: { name: string, value: boolean }[],
-    nombreDeLieuxAffichesParPage?: number
+    nombreDeLieuxAffichesParPage?: number,
+    accessibilites?: { name: string, value: boolean }[]
   ): Promise<Lieu[]>
 }
