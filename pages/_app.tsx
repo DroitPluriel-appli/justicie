@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { AppProps } from 'next/app'
 import Head from 'next/head'
-import { ReactElement } from 'react'
+import { ReactElement, useEffect } from 'react'
 
 import Footer from '../components/Footer/Footer'
 import Header from '../components/Header/Header'
@@ -12,9 +12,11 @@ import { useTheme } from '../configuration/useTheme'
 
 export default function App({ Component, pageProps }: AppProps): ReactElement {
 
-  const { useThemeFromLocalStorage } = useTheme()
+  const { applyThemeFromLocalStorage } = useTheme()
 
-  useThemeFromLocalStorage()
+  useEffect(() => {
+    applyThemeFromLocalStorage()
+  })
 
   return (
     <ContextProvider>

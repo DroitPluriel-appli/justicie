@@ -28,7 +28,7 @@
   --s-to-m-margin: clamp(var(--s-margin), 2vw, var(--m-margin));
 }
 
-body[data-theme="dark"] {
+body.themeDark {
   --primary-background-color: #222a68;
   --primary-color: #343d83;
   --secondary-color: #cedcff;
@@ -75,7 +75,8 @@ h2 {
   padding: 0;
 }
 
-body:not([data-theme]) {
+/* Neeeded to avoid flash on first render with dark mode */
+body:not(.themeDark, .themeLight) {
   display: none;
 }
 
