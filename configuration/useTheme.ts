@@ -2,34 +2,36 @@ import { useEffect } from 'react'
 
 export function useTheme() {
 
-  const localStorageDarkThemeItem = 'modeSombreEnabled'
-  const modeSombreDataAttribute = 'modeSombre'
+  const localStorageDarkThemeItem = 'darkTheme'
+  const themeDataAttribute = 'theme'
   const body = () => document.body
 
-  const isDarkThemeDefinedInLocalStorage = () => window.localStorage.getItem(localStorageDarkThemeItem) ? true : false
+  const isDarkThemeInLocalStorage = () => window.localStorage.getItem(localStorageDarkThemeItem) ? true : false
 
-  const setDarkStyle = () => {
-    body().dataset[modeSombreDataAttribute] = 'true'
-  }
-
-  const removeDarkStyle = () => {
-    delete body().dataset[modeSombreDataAttribute]
+  const setDarkStyle = (setDark: boolean) => {
+    if (setDark) {
+      body().dataset[themeDataAttribute] = 'dark'
+    } else {
+      body().dataset[themeDataAttribute] = 'light'
+    }
   }
 
   const toggleDarkTheme = () => {
-    if (isDarkThemeDefinedInLocalStorage()) {
+    if (isDarkThemeInLocalStorage()) {
       localStorage.removeItem(localStorageDarkThemeItem)
-      removeDarkStyle()
+      setDarkStyle(false)
     } else {
       localStorage.setItem(localStorageDarkThemeItem, 'true')
-      setDarkStyle()
+      setDarkStyle(true)
     }
   }
 
   const useThemeFromLocalStorage = () => {
     useEffect(() => {
-      if (isDarkThemeDefinedInLocalStorage()) {
-        setDarkStyle()
+      if (isDarkThemeInLocalStorage()) {
+        setDarkStyle(true)
+      } else {
+        setDarkStyle(false)
       }
     }, [])
   }

@@ -28,7 +28,7 @@
   --s-to-m-margin: clamp(var(--s-margin), 2vw, var(--m-margin));
 }
 
-body[data-mode-sombre="true"] {
+body[data-theme="dark"] {
   --primary-background-color: #222a68;
   --primary-color: #343d83;
   --secondary-color: #cedcff;
@@ -73,6 +73,10 @@ p,
 h2 {
   margin: 0;
   padding: 0;
+}
+
+body:not([data-theme]) {
+  display: none;
 }
 
 main {

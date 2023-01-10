@@ -16,14 +16,14 @@ describe('bouton mode sombre', () => {
     fireEvent.click(boutonModeSombre)
 
     // THEN
-    expect(document.body.dataset.modeSombre).toBe('true')
-    expect(setItem).toHaveBeenCalledWith('modeSombreEnabled', 'true')
+    expect(document.body.dataset.theme).toBe('dark')
+    expect(setItem).toHaveBeenCalledWith('darkTheme', 'true')
 
     // WHEN
     fireEvent.click(boutonModeSombre)
 
     // THEN
-    expect(document.body.dataset.modeSombre).toBeUndefined()
-    expect(removeItem).toHaveBeenCalledWith('modeSombreEnabled')
+    expect(document.body.dataset.theme).toBe('light')
+    expect(removeItem).toHaveBeenCalledWith('darkTheme')
   })
 })
