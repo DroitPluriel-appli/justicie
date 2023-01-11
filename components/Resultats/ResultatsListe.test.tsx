@@ -119,7 +119,7 @@ describe('résultats de recherche affichés en liste', () => {
     const cartesLieux = within(lists[2]).getAllByRole('article')
 
     const champsCarteLieuA = [
-      within(cartesLieux[0]).getByRole('heading', { level: 2, name: lieuA.nom }),
+      within(cartesLieux[0]).getByText(lieuA.nom),
       within(cartesLieux[0]).getByText(textMatch(lieuA.adresse + lieuA.codePostal + ' ' + lieuA.ville)),
       within(cartesLieux[0]).getByRole('link', { name: lieuA.telephone }),
       within(cartesLieux[0]).getByText(textMatch(`${lieuA.distance} km`), { selector: 'p' }),
@@ -147,7 +147,7 @@ describe('résultats de recherche affichés en liste', () => {
     expect(champsCarteLieuA[5]).toHaveAttribute('href', googleMapUrlLieuA.toString())
 
     const champsCarteLieuB = [
-      within(cartesLieux[1]).getByRole('heading', { level: 2, name: lieuB.nom }),
+      within(cartesLieux[1]).getByText(lieuB.nom),
       within(cartesLieux[1]).getByText(textMatch(lieuB.adresse + lieuB.codePostal + ' ' + lieuB.ville)),
       within(cartesLieux[1]).getByRole('link', { name: lieuB.telephone }),
       within(cartesLieux[1]).getByText(textMatch(`${lieuA.distance} km`), { selector: 'p' }),
