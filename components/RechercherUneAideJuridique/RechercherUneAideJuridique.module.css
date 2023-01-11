@@ -5,11 +5,23 @@
   padding: var(--m-margin);
 }
 
+:global(body.themeDark) .main {
+  color: var(--black);
+}
+
 .main > a:first-child {
   color: var(--white);
   display: block;
   font-size: var(--s-font);
   margin-bottom: var(--xxl-margin);
+}
+
+:global(body.themeDark) .main > a:first-child {
+  color: var(--black);
+}
+
+:global(body.themeDark) .main > a:first-child svg {
+  fill: var(--black);
 }
 
 .title {
@@ -45,4 +57,9 @@
 
 .renseignerAdresse {
   background-color: var(--white);
+}
+
+:global(body.themeDark) .renseignerAdresse {
+  background-color: var(--black);
+  color: var(--white);
 }

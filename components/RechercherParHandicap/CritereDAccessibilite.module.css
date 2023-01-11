@@ -45,3 +45,7 @@
 .checkbox:checked::before {
   transform: scale(1);
 }
+
+:global(body.themeDark) .checkbox::before {
+  box-shadow: inset 1em 1em var(--black);
+}

@@ -3,7 +3,15 @@
   margin-right: var(--s-margin);
 }
 
+:global(body.themeDark) .white {
+  color: var(--black);
+}
+
 .blue {
   fill: var(--primary-background-color);
   margin-right: var(--s-margin);
+}
+
+:global(body.themeDark) .blue {
+  color: var(--black);
 }

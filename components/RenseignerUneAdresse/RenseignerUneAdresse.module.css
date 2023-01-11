@@ -5,11 +5,23 @@
   padding: var(--m-margin);
 }
 
+:global(body.themeDark) .main {
+  color: var(--black);
+}
+
 .main a {
   color: var(--white);
   display: block;
   font-size: var(--s-font);
   margin-bottom: var(--xxl-margin);
+}
+
+:global(body.themeDark) .main a {
+  color: var(--black);
+}
+
+:global(body.themeDark) .main a svg {
+  fill: var(--black);
 }
 
 .label {
@@ -61,6 +73,14 @@
 
 .main :global(.autocomplete__menu--visible) {
   display: revert;
+}
+
+:global(body.themeDark) .main :global(.autocomplete__menu--visible) {
+  color: var(--black);
+}
+
+:global(body.themeDark) .main :global(.autocomplete__option) {
+  border-color: var(--black);
 }
 
 .main :global(.autocomplete__menu--hidden) {

@@ -47,6 +47,10 @@
   padding: var(--s-margin);
 }
 
+:global(body.themeDark) .current a {
+  background-color: var(--primary-color);
+}
+
 .correspondance {
   font-weight: bold;
   margin-bottom: var(--l-margin);

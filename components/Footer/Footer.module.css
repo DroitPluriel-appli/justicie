@@ -5,6 +5,10 @@
   justify-content: center;
 }
 
+:global(body.themeDark) .footer {
+  color: var(--black);
+}
+
 @media (max-width: 36em) {
   .footer svg {
     display: none;
@@ -41,6 +45,10 @@
 
 .footer p a {
   color: var(--white);
+}
+
+:global(body.themeDark) .footer :is(p, a) {
+  color: var(--black);
 }
 
 @media (min-width: 36em) {

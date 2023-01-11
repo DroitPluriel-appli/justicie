@@ -39,6 +39,8 @@ body.themeDark {
   --gray: #ccc;
   --gray-dark: #3d3d3d;
   --shadow: rgb(189 189 189 / 25%);
+
+  background-color: var(--white);
 }
 
 html {

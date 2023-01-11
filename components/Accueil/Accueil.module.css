@@ -21,6 +21,10 @@
   text-align: center;
 }
 
+:global(body.themeDark) .recherche {
+  background-color: var(--black);
+}
+
 .recherche svg {
   fill: var(--white);
   padding-bottom: var(--l-margin);

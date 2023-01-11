@@ -2,6 +2,10 @@
   background-color: var(--white);
 }
 
+:global(body.themeDark) .header {
+  color: var(--black);
+}
+
 .desktop {
   display: none;
 }
@@ -109,6 +113,10 @@
 
   .header nav a {
     font-size: var(--l-font);
+  }
+
+  :global(body.themeDark) .rechercher a {
+    color: var(--black);
   }
 
   .rechercher {
