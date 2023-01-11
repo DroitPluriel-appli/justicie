@@ -58,6 +58,7 @@ export default function Header(): ReactElement {
             </Link>
           </li>
         </ul>
+        <BoutonModeSombre />
       </nav>
       <nav
         aria-hidden={!isMenuClose}

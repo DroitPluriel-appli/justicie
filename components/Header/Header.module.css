@@ -10,6 +10,10 @@
   display: none;
 }
 
+.header div:nth-child(2) {
+  display: none;
+}
+
 .burgerMenuOpen ul {
   display: flex;
   flex-direction: column;
@@ -124,5 +128,18 @@
     border-radius: 2rem;
     font-weight: bold;
     padding: var(--m-margin);
+  }
+
+  .header div:nth-child(2) {
+    display: flex;
+    margin: var(--xxl-margin);
+    position: absolute;
+    right: 0;
+  }
+}
+
+@media (min-width: 36rem) and (max-width: 74rem) {
+  .header {
+    margin-bottom: calc(2 * var(--xxl-margin) + 1.5rem);
   }
 }
