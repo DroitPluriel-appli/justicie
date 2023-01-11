@@ -4,13 +4,17 @@ import { PostgreSQLLieuLoader } from './infrastructure/gateways/PostgreSQLLieuLo
 
 type BackDependencies = Readonly<{
   lieuLoader: LieuLoader
+  nombreDeLieuxAffichesParPage: number
 }>
 
 const createDependencies = (): BackDependencies => {
   const orm = dataSource.initialize()
 
-  // @ts-ignore
-  return { lieuLoader: new PostgreSQLLieuLoader(orm) }
+  return {
+    // @ts-ignore
+    lieuLoader: new PostgreSQLLieuLoader(orm),
+    nombreDeLieuxAffichesParPage: 10,
+  }
 }
 
 export const backDependencies = createDependencies()

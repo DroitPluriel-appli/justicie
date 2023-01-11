@@ -50,6 +50,7 @@ describe('page résultats par plan', () => {
         latitude={latitude}
         lieux={[]}
         longitude={longitude}
+        nombreDeResultat={0}
       />
     )
 
@@ -64,6 +65,7 @@ describe('page résultats par plan', () => {
       lon,
       'moteur-total': moteurTotal,
     }
+    const nombreDeResultat = 0
 
     // WHEN
     renderFakeComponent(
@@ -71,6 +73,7 @@ describe('page résultats par plan', () => {
         latitude={latitude}
         lieux={[]}
         longitude={longitude}
+        nombreDeResultat={nombreDeResultat}
       />
     )
 
@@ -85,7 +88,7 @@ describe('page résultats par plan', () => {
     expect(vuePlan).toHaveAttribute('href', `${paths.RESULTATS_PLAN}?lat=${lat}&lon=${lon}&moteur-total=${moteurTotal}`)
     const modifierAccessibilite = screen.getByRole('link', { name: wording.BESOINS_D_ACCESSIBILITE(1) })
     expect(modifierAccessibilite).toHaveAttribute('href', `${paths.RECHERCHER_PAR_HANDICAP}?lat=${lat}&lon=${lon}&moteur-total=${moteurTotal}`)
-    const titre = screen.getByText(wording.LIEUX_CORRESPONDENT_A_VOTRE_RECHERCHE(0), { selector: 'p' })
+    const titre = screen.getByText(wording.LIEUX_CORRESPONDENT_A_VOTRE_RECHERCHE(nombreDeResultat), { selector: 'p' })
     expect(titre).toBeInTheDocument()
   })
 
@@ -96,6 +99,7 @@ describe('page résultats par plan', () => {
         latitude={latitude}
         lieux={[]}
         longitude={longitude}
+        nombreDeResultat={0}
       />
     )
 
@@ -116,6 +120,7 @@ describe('page résultats par plan', () => {
         latitude={latitude}
         lieux={lieux}
         longitude={longitude}
+        nombreDeResultat={3}
       />
     )
 
@@ -142,6 +147,7 @@ describe('page résultats par plan', () => {
         latitude={latitude}
         lieux={lieux}
         longitude={longitude}
+        nombreDeResultat={2}
       />
     )
 
@@ -183,19 +189,17 @@ describe('page résultats par plan', () => {
   })
 
   it('affiche la carte du lieu dans la popup au click sur un marker', () => {
-    // GIVEN
-    const lieu = lieuA
-
     // WHEN
     renderFakeComponent(
       <Plan
         latitude={latitude}
-        lieux={[lieu]}
+        lieux={[lieuA]}
         longitude={longitude}
+        nombreDeResultat={1}
       />
     )
     const main = screen.getByRole('main')
-    const markerLieuA = within(main).getByTitle(lieu.nom)
+    const markerLieuA = within(main).getByTitle(lieuA.nom)
     fireEvent.click(markerLieuA)
 
     // THEN
@@ -234,7 +238,10 @@ describe('page résultats par plan', () => {
 
     // WHEN
     renderFakeComponent(
-      <ResultatsPlan lieux={[]} />
+      <ResultatsPlan
+        lieux={[]}
+        nombreDeResultat={0}
+      />
     )
 
     // THEN
@@ -248,7 +255,10 @@ describe('page résultats par plan', () => {
 
     // WHEN
     renderFakeComponent(
-      <ResultatsPlan lieux={[]} />
+      <ResultatsPlan
+        lieux={[]}
+        nombreDeResultat={0}
+      />
     )
 
     // THEN

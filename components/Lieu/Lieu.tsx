@@ -74,7 +74,7 @@ export default function Lieu({ lieu }: { lieu: LieuEntity }): ReactElement {
       </section>
       <section>
         <h2>
-          {wording.PERMANENCE}
+          {wording.PLUS_D_INFORMATIONS}
         </h2>
         <Preformate>
           {lieu.commentaire}

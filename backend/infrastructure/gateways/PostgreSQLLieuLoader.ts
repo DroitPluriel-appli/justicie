@@ -1,10 +1,13 @@
 import { DataSource } from 'typeorm'
 
+import { Critere } from '../../../configuration/criteres'
 import { LieuModel } from '../../../database/models/LieuModel'
 import { Lieu } from '../../entities/Lieu'
 import { LieuLoader } from '../../entities/LieuLoader'
 
 export class PostgreSQLLieuLoader implements LieuLoader {
+  private readonly vingtKilometres = 0.2
+
   constructor(private readonly orm: Promise<DataSource>) {}
 
   async recupereUnLieu(id: number, latitude = 0, longitude = 0): Promise<Lieu[]> {
@@ -22,28 +25,66 @@ export class PostgreSQLLieuLoader implements LieuLoader {
     page = 0,
     nombreDeLieuxAffichesParPage = 10,
     accessibilites = []
-  ): Promise<Lieu[]> {
-    const vingtKilometres = 0.2
+  ): Promise<{ lieux: Lieu[], nombreDeResultat: number }> {
+    // @ts-ignore
+    const lieuxModel = await this.getLieux(latitude, longitude, page, nombreDeLieuxAffichesParPage, accessibilites)
 
-    const accessibilitesSQL = accessibilites
-      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-      .map((accessibilite) => ` AND ${accessibilite} = true`)
-      .join('')
+    return {
+      lieux: this.transformeEnLieu(lieuxModel),
+      // @ts-ignore
+      nombreDeResultat: await this.getNombreDeResultat(latitude, longitude, accessibilites),
+    }
+  }
 
-    const lieuxModel = await (await this.orm)
+  private async getNombreDeResultat(
+    latitude: number,
+    longitude: number,
+    accessibilites: keyof Critere['name'][] | []
+  ): Promise<number> {
+    const accessibilitesSQL = this.getAccessibilites(accessibilites)
+
+    const query = await (await this.orm)
+      .getRepository(LieuModel)
+      .query(`SELECT COUNT(*) FROM lieu WHERE (latitude BETWEEN $1 AND $2 AND longitude BETWEEN $3 AND $4) ${accessibilitesSQL}`, [
+        latitude - this.vingtKilometres,
+        latitude + this.vingtKilometres,
+        longitude - this.vingtKilometres,
+        longitude + this.vingtKilometres,
+      ]) as { count: string }[]
+
+    return Number(query[0].count)
+  }
+
+  private async getLieux(
+    latitude: number,
+    longitude: number,
+    page: number,
+    nombreDeLieuxAffichesParPage: number,
+    accessibilites: keyof Critere['name'][] | []
+  ): Promise<LieuModel[]> {
+    const accessibilitesSQL = this.getAccessibilites(accessibilites)
+
+    return await (await this.orm)
       .getRepository(LieuModel)
       .query(`SELECT *, code_postal AS "codePostal", domaine_de_droit AS "domaineDeDroit", e_mail AS "eMail", prise_de_rendez_vous AS "priseDeRendezVous", site_internet AS "siteInternet", ABS(latitude - $1) + ABS(longitude - $2) AS distance FROM lieu WHERE (latitude BETWEEN $3 AND $4 AND longitude BETWEEN $5 AND $6) ${accessibilitesSQL} ORDER BY distance ASC LIMIT $7 OFFSET $8`, [
         latitude,
         longitude,
-        latitude - vingtKilometres,
-        latitude + vingtKilometres,
-        longitude - vingtKilometres,
-        longitude + vingtKilometres,
+        latitude - this.vingtKilometres,
+        latitude + this.vingtKilometres,
+        longitude - this.vingtKilometres,
+        longitude + this.vingtKilometres,
         nombreDeLieuxAffichesParPage,
         page * nombreDeLieuxAffichesParPage,
       ]) as LieuModel[]
+  }
 
-    return this.transformeEnLieu(lieuxModel)
+  private getAccessibilites(accessibilites: keyof Critere['name'][] | []): string {
+    // eslint-disable-next-line
+    return accessibilites
+      // @ts-ignore
+      // eslint-disable-next-line
+      .map((accessibilite) => ` AND ${accessibilite} = true`)
+      .join('')
   }
 
   private transformeEnLieu(lieuxModel: LieuModel[]): Lieu[] {

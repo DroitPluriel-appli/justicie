@@ -27,6 +27,7 @@ export const renderFakeComponent = (component: ReactElement): RenderResult => {
 
 export const fakeFrontDependencies = {
   ...frontDependencies,
+  nombreDeLieuxAffichesParPage: 10,
   useRouter,
 }
 

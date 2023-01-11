@@ -19,7 +19,7 @@ export class WordingFr implements Wording {
   readonly RECHERCHER_UNE_AIDE_JURIDIQUE_GRATUITE_ET_ACCESSIBLE: string = 'Rechercher une aide juridique gratuite et accessible'
   readonly DECOUVRIR_NOS_CRITERES: string = 'Découvrir nos critères d’accessiblité'
   readonly TITLE_A_PROPOS_DE_DROIT_PLURIEL: string = 'À propos de Justice Plurielle'
-  readonly DROIT_PLURIEL_EST_UNE_ASSOCIATION: string = "Justice Plurielle est un service gratuit d'orientation vers les lieux d'accès au droit, à l'initiative de Droit Pluriel, association qui défend une justice accessible à tous et toutes, et notamment aux personnes en situation de handicap."
+  readonly DROIT_PLURIEL_EST_UNE_ASSOCIATION: string = 'Justice Plurielle est un service gratuit d’orientation vers les lieux d’accès au droit, à l’initiative de Droit Pluriel, association qui défend une justice accessible à tous et toutes, et notamment aux personnes en situation de handicap.'
   readonly RETROUVEZ_PLUS_D_INFOS: string = 'Retrouvez plus d’information sur notre site internet : '
   readonly TITLE_NOUS_CONTACTER: string = 'Nous contacter'
   readonly SITE_DROIT_PLURIEL: string = 'https://droitpluriel.fr'
@@ -72,8 +72,12 @@ export class WordingFr implements Wording {
   readonly PLAN: string = 'Plan'
   readonly BESOINS_D_ACCESSIBILITE: (nombre: number) => string = (nombre: number): string => `Besoins d’accessibilité (${nombre})`
   readonly LIEUX_CORRESPONDENT_A_VOTRE_RECHERCHE: (nombre: number) => string = (nombre: number): string => nombre > 1 ? `${nombre} lieux correspondent à votre recherche` : `${nombre} lieu correspond à votre recherche`
-  readonly LANCER_L_ITINERAIRE: string = "Lancer l'itinéraire"
+  readonly LANCER_L_ITINERAIRE: string = 'Lancer l’itinéraire'
   readonly PLUS_D_INFORMATIONS: string = 'Plus d’informations'
+  readonly PAGINATION: string = 'Pagination'
+  readonly PREMIERE_PAGE: string = 'Première page'
+  readonly DERNIERE_PAGE: string = 'Dernière page'
+  readonly PAGE: (numero: number) => string = (numero: number) => `Page ${numero}`
 
   // Resultats par plan
   readonly TITLE_PAGE_RESULTATS_PAR_PLAN: string = 'Résultats par plan'
@@ -84,7 +88,6 @@ export class WordingFr implements Wording {
   readonly RETOUR_AUX_RESULTATS: string = 'Retour aux résultats'
   readonly ACCESSIBILITE_DU_LIEU: string = 'Accessibilité du lieu'
   readonly HORAIRES_ET_JOURS_D_OUVERTURE: string = 'Horaires et jours d’ouverture'
-  readonly PERMANENCE: string = 'Permanence'
   readonly CONTACT_ET_SITE_INTERNET: string = 'Contact et site internet'
   readonly CONSULTER_LE_SITE_INTERNET: string = 'Consulter le site internet'
   readonly KILOMETRES: string = 'kilomètres'
@@ -94,17 +97,17 @@ export class WordingFr implements Wording {
   readonly TITLE_HANDICAP_MOTEUR_TOTAL: string = 'Accessibilité handicap moteur total'
   readonly DESCRIPTION_HANDICAP_MOTEUR_TOTAL: string = 'Le lieu permet un accès total à toute situation de handicap moteur.'
   readonly TITLE_HANDICAP_MOTEUR_AVEC_ASSISTANCE: string = 'Accessibilité handicap moteur avec assistance'
-  readonly DESCRIPTION_HANDICAP_MOTEUR_AVEC_ASSISTANCE: string = "Le lieu permet un accès à toute situation de handicap moteur à la condition qu'un tiers intervienne (pour ouvrir une porte...)."
+  readonly DESCRIPTION_HANDICAP_MOTEUR_AVEC_ASSISTANCE: string = 'Le lieu permet un accès à toute situation de handicap moteur à la condition qu’un tiers intervienne (pour ouvrir une porte...).'
   readonly TITLE_HANDICAP_VISUEL: string = 'Accessibilité handicap visuel'
-  readonly DESCRIPTION_HANDICAP_VISUEL: string = "Le guidage au sein du lieu est simple : bande de guidage, accueil dès l'entrée..."
+  readonly DESCRIPTION_HANDICAP_VISUEL: string = 'Le guidage au sein du lieu est simple : bande de guidage, accueil dès l’entrée...'
   readonly TITLE_LANGUE_DES_SIGNES_FRANCAISE: string = 'Langue des signes française'
   readonly DESCRIPTION_LANGUE_DES_SIGNES_FRANCAISE: string = 'Le lieu propose une consultation en langue des signes française (sur place ou en visio).'
   readonly TITLE_BOUCLE_A_INDUCTION: string = 'Boucle à induction magnétique'
-  readonly DESCRIPTION_BOUCLE_A_INDUCTION: string = "Le lieu est équipé d'une boucle à induction magnétique en état de fonctionnement."
+  readonly DESCRIPTION_BOUCLE_A_INDUCTION: string = 'Le lieu est équipé d’une boucle à induction magnétique en état de fonctionnement.'
   readonly TITLE_ENVIRONNEMENT_CALME: string = 'Environnement calme'
   readonly DESCRIPTION_ENVIRONNEMENT_CALME: string = 'La consultation se déroule dans un environnement calme (espace isolé).'
   readonly TITLE_PERSONNEL_FORME: string = 'Personnel formé'
-  readonly DESCRIPTION_PERSONNEL_FORME: string = "Les professionnels (accueil et aide juridique) sont sensibilisés aux situations de handicap et à l'accessibilité."
+  readonly DESCRIPTION_PERSONNEL_FORME: string = 'Les professionnels (accueil et aide juridique) sont sensibilisés aux situations de handicap et à l’accessibilité.'
 
   // Politique de gestion des données
   readonly TITLE_PAGE_POLITIQUE_DE_GESTION_DES_DONNEES: string = 'Politique de gestion des données'
