@@ -11,11 +11,12 @@ import usePlan from './usePlan'
 
 type PlanProps = Readonly<{
   latitude: number
-  lieux: Lieu[],
+  lieux: Lieu[]
   longitude: number
+  nombreDeResultat: number
 }>
 
-export default function Plan({ latitude, lieux, longitude }: PlanProps): ReactElement {
+export default function Plan({ latitude, lieux, longitude, nombreDeResultat }: PlanProps): ReactElement {
   const { wording } = useDependencies()
   const { setMarkerPosition, setMarkersLieux } = usePlan()
 
@@ -56,7 +57,7 @@ export default function Plan({ latitude, lieux, longitude }: PlanProps): ReactEl
           {wording.TITLE_PAGE_RESULTATS_PAR_PLAN}
         </title>
       </Head>
-      <EnTete nombreDeLieuxTrouves={lieux.length} />
+      <EnTete nombreDeResultat={nombreDeResultat} />
       <div
         className={styles.leafletMap}
         id="map"

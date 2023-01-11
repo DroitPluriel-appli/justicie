@@ -1,0 +1,22 @@
+.pagination {
+  display: flex;
+  gap: var(--s-margin);
+  justify-content: center;
+  list-style: none;
+  margin-bottom: var(--m-margin);
+  margin-inline: calc(-1 * var(--m-margin));
+}
+
+.pagination li {
+  padding: var(--s-margin);
+}
+
+.pagination svg {
+  margin-inline: var(--s-margin);
+}
+
+.pagination [aria-current="page"] {
+  background-color: rgb(91 91 91 / 10%);
+  border: 2px solid var(--primary-color);
+  border-radius: 20%;
+}

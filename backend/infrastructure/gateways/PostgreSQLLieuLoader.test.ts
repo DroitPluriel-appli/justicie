@@ -70,16 +70,18 @@ describe('lieu loader', () => {
       const nombreDeLieuxAffichesParPage = 4
 
       // WHEN
-      // @ts-ignore
       const lieux = await postgreSQLLieuLoader.recupereDesLieux(latitude, longitude, page, nombreDeLieuxAffichesParPage)
 
       // THEN
-      expect(lieux).toStrictEqual([
-        LieuBuilder.cree({ distance: 20, id: 1, latitude: 40.100000, longitude: 2.100000 }),
-        LieuBuilder.cree({ distance: 22, id: 2, latitude: 40.110000, longitude: 2.110000 }),
-        LieuBuilder.cree({ distance: 26, id: 4, latitude: 40.130000, longitude: 2.130000 }),
-        LieuBuilder.cree({ calme: true, distance: 28, id: 5, latitude: 40.140000, longitude: 2.140000, pmr: true }),
-      ])
+      expect(lieux).toStrictEqual({
+        lieux: [
+          LieuBuilder.cree({ distance: 20, id: 1, latitude: 40.100000, longitude: 2.100000 }),
+          LieuBuilder.cree({ distance: 22, id: 2, latitude: 40.110000, longitude: 2.110000 }),
+          LieuBuilder.cree({ distance: 26, id: 4, latitude: 40.130000, longitude: 2.130000 }),
+          LieuBuilder.cree({ calme: true, distance: 28, id: 5, latitude: 40.140000, longitude: 2.140000, pmr: true }),
+        ],
+        nombreDeResultat: 5,
+      })
     })
 
     it('affiche la seconde page', async () => {
@@ -91,11 +93,13 @@ describe('lieu loader', () => {
       const nombreDeLieuxAffichesParPage = 4
 
       // WHEN
-      // @ts-ignore
       const lieux = await postgreSQLLieuLoader.recupereDesLieux(latitude, longitude, page, nombreDeLieuxAffichesParPage)
 
       // THEN
-      expect(lieux).toStrictEqual([LieuBuilder.cree({ calme: true, distance: 30, id: 6, latitude: 40.150000, longitude: 2.150000, pmr: true })])
+      expect(lieux).toStrictEqual({
+        lieux: [LieuBuilder.cree({ calme: true, distance: 30, id: 6, latitude: 40.150000, longitude: 2.150000, pmr: true })],
+        nombreDeResultat: 5,
+      })
     })
 
     it('affiche les lieux les plus près de l’adresse demandée', async () => {
@@ -108,13 +112,16 @@ describe('lieu loader', () => {
       const lieux = await postgreSQLLieuLoader.recupereDesLieux(latitude, longitude)
 
       // THEN
-      expect(lieux).toStrictEqual([
-        LieuBuilder.cree({ distance: 20, id: 1, latitude: 40.100000, longitude: 2.100000 }),
-        LieuBuilder.cree({ distance: 22, id: 2, latitude: 40.110000, longitude: 2.110000 }),
-        LieuBuilder.cree({ distance: 26, id: 4, latitude: 40.130000, longitude: 2.130000 }),
-        LieuBuilder.cree({ calme: true, distance: 28, id: 5, latitude: 40.140000, longitude: 2.140000, pmr: true }),
-        LieuBuilder.cree({ calme: true, distance: 30, id: 6, latitude: 40.150000, longitude: 2.150000, pmr: true }),
-      ])
+      expect(lieux).toStrictEqual({
+        lieux: [
+          LieuBuilder.cree({ distance: 20, id: 1, latitude: 40.100000, longitude: 2.100000 }),
+          LieuBuilder.cree({ distance: 22, id: 2, latitude: 40.110000, longitude: 2.110000 }),
+          LieuBuilder.cree({ distance: 26, id: 4, latitude: 40.130000, longitude: 2.130000 }),
+          LieuBuilder.cree({ calme: true, distance: 28, id: 5, latitude: 40.140000, longitude: 2.140000, pmr: true }),
+          LieuBuilder.cree({ calme: true, distance: 30, id: 6, latitude: 40.150000, longitude: 2.150000, pmr: true }),
+        ],
+        nombreDeResultat: 5,
+      })
     })
 
     it('affiche les lieux selon différentes accessibilités', async () => {
@@ -131,10 +138,13 @@ describe('lieu loader', () => {
       const lieux = await postgreSQLLieuLoader.recupereDesLieux(latitude, longitude, page, nombreDeLieuxAffichesParPage, accessibilites)
 
       // THEN
-      expect(lieux).toStrictEqual([
-        LieuBuilder.cree({ calme: true, distance: 28, id: 5, latitude: 40.140000, longitude: 2.140000, pmr: true }),
-        LieuBuilder.cree({ calme: true, distance: 30, id: 6, latitude: 40.150000, longitude: 2.150000, pmr: true }),
-      ])
+      expect(lieux).toStrictEqual({
+        lieux: [
+          LieuBuilder.cree({ calme: true, distance: 28, id: 5, latitude: 40.140000, longitude: 2.140000, pmr: true }),
+          LieuBuilder.cree({ calme: true, distance: 30, id: 6, latitude: 40.150000, longitude: 2.150000, pmr: true }),
+        ],
+        nombreDeResultat: 2,
+      })
     })
 
     it('ne retourne aucun lieux', async () => {
@@ -147,7 +157,10 @@ describe('lieu loader', () => {
       const lieux = await postgreSQLLieuLoader.recupereDesLieux(latitude, longitude)
 
       // THEN
-      expect(lieux).toStrictEqual([])
+      expect(lieux).toStrictEqual({
+        lieux: [],
+        nombreDeResultat: 0,
+      })
     })
   })
 })

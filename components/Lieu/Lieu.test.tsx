@@ -110,7 +110,7 @@ describe('lieu', () => {
     renderFakeComponent(<Lieu lieu={lieu} />)
 
     // THEN
-    const titre = screen.getByRole('heading', { level: 2, name: wording.PERMANENCE })
+    const titre = screen.getByRole('heading', { level: 2, name: wording.PLUS_D_INFORMATIONS })
     expect(titre).toBeInTheDocument()
     const commentaire = screen.getByText(textMatch(lieu.commentaire), { selector: 'pre' })
     expect(commentaire).toBeInTheDocument()

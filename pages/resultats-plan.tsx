@@ -7,27 +7,32 @@ import ResultatsPlan from '../components/Resultats/ResultatsPlan'
 import { criteres } from '../configuration/criteres'
 import { WordingFr } from '../configuration/wording/WordingFr'
 
-export default function PageResultatsParPlan({ lieux }: { lieux: Lieu[] }): ReactElement {
-  return <ResultatsPlan lieux={lieux} />
+export default function PageResultatsParPlan({ lieux, nombreDeResultat }: { lieux: Lieu[], nombreDeResultat: number }): ReactElement {
+  return (
+    <ResultatsPlan
+      lieux={lieux}
+      nombreDeResultat={nombreDeResultat}
+    />
+  )
 }
 
 type ServerSidePropsResult = Readonly<{
   lieux: Lieu[]
+  nombreDeResultat: number
 }>
 
 export async function getServerSideProps(context: GetServerSidePropsContext): Promise<GetServerSidePropsResult<ServerSidePropsResult>> {
-  const { lieuLoader } = backDependencies
+  const { lieuLoader, nombreDeLieuxAffichesParPage } = backDependencies
   const latitude = Number(context.query.lat)
   const longitude = Number(context.query.lon)
   const page = context.query.page === undefined ? 0 : Number(context.query.page)
-  const nombreDeLieuxAffichesParPage = 10
 
   const accessibilites = criteres(new WordingFr())
     .filter((critere) => context.query[critere.name])
     .map((critere) => critere.name)
 
   // @ts-ignore
-  const lieux = await lieuLoader.recupereDesLieux(latitude, longitude, page, nombreDeLieuxAffichesParPage, accessibilites)
+  const { lieux, nombreDeResultat } = await lieuLoader.recupereDesLieux(latitude, longitude, page, nombreDeLieuxAffichesParPage, accessibilites)
 
-  return { props: { lieux: JSON.parse(JSON.stringify(lieux)) as Lieu[] } }
+  return { props: { lieux: JSON.parse(JSON.stringify(lieux)) as Lieu[], nombreDeResultat } }
 }

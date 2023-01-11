@@ -9,5 +9,5 @@ export interface LieuLoader {
     page?: number,
     nombreDeLieuxAffichesParPage?: number,
     accessibilites?: keyof Critere['name'][] | []
-  ): Promise<Lieu[]>
+  ): Promise<{ lieux: Lieu[], nombreDeResultat: number }>
 }

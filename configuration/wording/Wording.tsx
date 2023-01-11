@@ -71,6 +71,10 @@ export interface Wording {
   readonly LIEUX_CORRESPONDENT_A_VOTRE_RECHERCHE: (nombre: number) => string
   readonly LANCER_L_ITINERAIRE: string
   readonly PLUS_D_INFORMATIONS: string
+  readonly PAGINATION: string
+  readonly PREMIERE_PAGE: string
+  readonly DERNIERE_PAGE: string
+  readonly PAGE: (numero: number) => string
 
   // Resultats par plan
   readonly TITLE_PAGE_RESULTATS_PAR_PLAN: string
@@ -81,7 +85,6 @@ export interface Wording {
   readonly RETOUR_AUX_RESULTATS: string
   readonly ACCESSIBILITE_DU_LIEU: string
   readonly HORAIRES_ET_JOURS_D_OUVERTURE: string
-  readonly PERMANENCE: string
   readonly CONTACT_ET_SITE_INTERNET: string
   readonly CONSULTER_LE_SITE_INTERNET: string
   readonly KILOMETRES: string

@@ -5,7 +5,7 @@ import { Lieu } from '../../backend/entities/Lieu'
 import { useDependencies } from '../../configuration/useDependencies'
 import { useQueryUtilities } from '../../configuration/useQueryUtilities'
 
-export default function ResultatsPlan({ lieux }: { lieux: Lieu[] }): ReactElement {
+export default function ResultatsPlan({ lieux, nombreDeResultat }: { lieux: Lieu[], nombreDeResultat: number }): ReactElement {
   const { useRouter, wording } = useDependencies()
   const { query } = useRouter()
   const { latLongQueryIsInvalid } = useQueryUtilities()
@@ -25,6 +25,7 @@ export default function ResultatsPlan({ lieux }: { lieux: Lieu[] }): ReactElemen
       latitude={Number(query.lat)}
       lieux={lieux}
       longitude={Number(query.lon)}
+      nombreDeResultat={nombreDeResultat}
     />
   )
 }

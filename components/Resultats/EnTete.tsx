@@ -7,10 +7,10 @@ import styles from './EnTete.module.css'
 import { useEnTete } from './useEnTete'
 
 type EnTeteProps = Readonly<{
-  nombreDeLieuxTrouves: number
+  nombreDeResultat: number
 }>
 
-export default function EnTete({ nombreDeLieuxTrouves }: EnTeteProps): ReactElement {
+export default function EnTete({ nombreDeResultat }: EnTeteProps): ReactElement {
   const { paths, wording } = useDependencies()
   const {
     besoinsAccessibilite,
@@ -50,7 +50,7 @@ export default function EnTete({ nombreDeLieuxTrouves }: EnTeteProps): ReactElem
         </li>
       </ul>
       <p className={styles.correspondance}>
-        {wording.LIEUX_CORRESPONDENT_A_VOTRE_RECHERCHE(nombreDeLieuxTrouves)}
+        {wording.LIEUX_CORRESPONDENT_A_VOTRE_RECHERCHE(nombreDeResultat)}
       </p>
     </>
   )
