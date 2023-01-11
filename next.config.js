@@ -78,15 +78,6 @@ const moduleExports = {
   },
   poweredByHeader: false,
   reactStrictMode: true,
-  webpack(config) {
-    config.module.rules.push({
-      issuer: /\.tsx$/,
-      test: /\.svg$/,
-      use: ['@svgr/webpack'],
-    })
-
-    return config
-  },
 }
 
 if (process.env.NODE_ENV === 'development') {

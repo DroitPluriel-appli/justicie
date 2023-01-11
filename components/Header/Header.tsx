@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { ReactElement } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
-import LogoDroitPluriel from '../../public/logo-droit-pluriel.svg'
+import Logo from '../Logo/Logo'
 import styles from './Header.module.css'
 import { useHeader } from './useHeader'
 
@@ -28,11 +28,8 @@ export default function Header(): ReactElement {
               href={paths.ACCUEIL}
               legacyBehavior
             >
-              <a
-                href={paths.ACCUEIL}
-                title={wording.ACCUEIL}
-              >
-                <LogoDroitPluriel />
+              <a href={paths.ACCUEIL}>
+                <Logo />
               </a>
             </Link>
           </li>
@@ -69,11 +66,8 @@ export default function Header(): ReactElement {
               href={paths.ACCUEIL}
               legacyBehavior
             >
-              <a
-                href={paths.ACCUEIL}
-                title={wording.ACCUEIL}
-              >
-                <LogoDroitPluriel />
+              <a href={paths.ACCUEIL}>
+                <Logo />
               </a>
             </Link>
           </li>

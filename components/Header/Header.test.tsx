@@ -15,8 +15,10 @@ describe('en-tête de page', () => {
     const navigationDesktop = within(header).getByLabelText(wording.NAVIGATION_DESKTOP, { selector: 'nav' })
     const items = within(navigationDesktop).getAllByRole('listitem')
 
-    const accueil = within(items[0]).getByRole('link', { name: wording.ACCUEIL })
+    const accueil = within(items[0]).getByRole('link')
     expect(accueil).toHaveAttribute('href', paths.ACCUEIL)
+    const logo = within(accueil).getByLabelText(wording.ACCUEIL)
+    expect(logo).toBeInTheDocument()
 
     const title = within(items[1]).getByRole('heading', { level: 1, name: wording.JUSTICE_PLURIELLE })
     expect(title).toBeInTheDocument()
