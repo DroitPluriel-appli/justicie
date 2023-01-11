@@ -29,18 +29,21 @@ export default function ResultatsListe({ lieux, nombreDeResultat }: { lieux: Lie
         </title>
       </Head>
       <EnTete nombreDeResultat={nombreDeResultat} />
-      {
-        lieux.map((lieu) => {
-          return (
-            <CarteLieu
-              key={lieu.id}
-              latitude={Number(query.lat)}
-              lieu={lieu}
-              longitude={Number(query.lon)}
-            />
-          )
-        })
-      }
+      <ul>
+        {
+          lieux.map((lieu) => {
+            return (
+              <li key={lieu.id}>
+                <CarteLieu
+                  latitude={Number(query.lat)}
+                  lieu={lieu}
+                  longitude={Number(query.lon)}
+                />
+              </li>
+            )
+          })
+        }
+      </ul>
       {
         nombreDeResultat > nombreDeLieuxAffichesParPage && (
           <Pagination

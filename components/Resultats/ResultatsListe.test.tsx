@@ -112,10 +112,12 @@ describe('résultats de recherche affichés en liste', () => {
         nombreDeResultat={2}
       />
     )
-    const main = screen.getByRole('main')
-    const cartesLieux = within(main).getAllByRole('article')
 
     // THEN
+    const main = screen.getByRole('main')
+    const lists = within(main).getAllByRole('list')
+    const cartesLieux = within(lists[2]).getAllByRole('article')
+
     const champsCarteLieuA = [
       within(cartesLieux[0]).getByRole('heading', { level: 2, name: lieuA.nom }),
       within(cartesLieux[0]).getByText(textMatch(lieuA.adresse + lieuA.codePostal + ' ' + lieuA.ville)),
