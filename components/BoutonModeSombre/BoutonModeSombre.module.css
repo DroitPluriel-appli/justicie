@@ -1,5 +1,39 @@
-.main input {
-  height: 0;
-  opacity: 0;
-  width: 0;
+.bouton {
+  background-color: var(--white);
+  border: 3px solid var(--primary-color);
+  border-radius: 2rem;
+  cursor: pointer;
+  height: 1.5rem;
+  width: 3rem;
+}
+
+.bouton::after {
+  background: var(--primary-color);
+  border-radius: 2rem;
+  content: "";
+  height: 1.3rem;
+  margin: 0.1rem;
+  position: absolute;
+  transform: translateY(-0.7rem);
+  transition: 0.15s;
+  width: 1.3rem;
+}
+
+.bouton[data-enabled="true"]::after {
+  transform: translate(1.5rem, -0.7rem);
+}
+
+.bouton:focus {
+  outline: none;
+}
+
+.main {
+  align-items: center;
+  display: flex;
+}
+
+.label {
+  color: var(--primary-color);
+  font-weight: bold;
+  margin-left: var(--l-margin);
 }

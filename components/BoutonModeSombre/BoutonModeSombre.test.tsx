@@ -7,7 +7,7 @@ describe('bouton mode sombre', () => {
   it('toggle le mode sombre au clic sur le bouton mode Sombre', () => {
     // GIVEN
     renderFakeComponent(<BoutonModeSombre />)
-    const boutonModeSombre = screen.getByTitle('modeSombre')
+    const boutonModeSombre = screen.getByTitle('Mode sombre')
     const setItem = jest.spyOn(Storage.prototype, 'setItem')
     const removeItem = jest.spyOn(Storage.prototype, 'removeItem')
 
