@@ -11,7 +11,7 @@ describe('page d’accueil', () => {
     renderFakeComponent(<Accueil />)
 
     // THEN
-    expect(document.title).toBe(wording.JUSTICE_PLURIELLE)
+    expect(document.title).toBe(wording.TITLE_PAGE_ACCUEIL)
   })
 
   it('affiche le contenu', () => {

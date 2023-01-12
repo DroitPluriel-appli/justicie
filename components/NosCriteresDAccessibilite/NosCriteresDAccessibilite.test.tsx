@@ -21,7 +21,7 @@ describe("page nos criteres d'accessibilite", () => {
     const articles = within(main).getAllByRole('article')
 
     // THEN
-    const titlePage = within(main).getByRole('heading', { level: 2, name: wording.TITLE_PAGE_NOS_CRITERES_D_ACCESSIBILITE })
+    const titlePage = within(main).getByRole('heading', { level: 2, name: wording.NOS_CRITERES_D_ACCESSIBILITE })
     expect(titlePage).toBeInTheDocument()
 
     const headerHandicapMoteurTotal = within(articles[0]).getByRole('banner')

@@ -1,9 +1,9 @@
-import Head from 'next/head'
 import Link from 'next/link'
 import { ReactElement } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
 import BackLink from '../BackLink/BackLink'
+import Title from '../Title/Title'
 import styles from './RechercherUneAideJuridique.module.css'
 import { useRechercherUneAideJuridique } from './useRechercherUneAideJuridique'
 
@@ -13,11 +13,9 @@ export default function RechercherUneAideJuridique(): ReactElement {
 
   return (
     <div className={styles.main}>
-      <Head>
-        <title>
-          {wording.TITLE_PAGE_RECHERCHER_UNE_AIDE_JURIDIQUE}
-        </title>
-      </Head>
+      <Title>
+        {wording.TITLE_PAGE_RECHERCHER_UNE_AIDE_JURIDIQUE}
+      </Title>
       <BackLink
         className="white"
         url={paths.ACCUEIL}

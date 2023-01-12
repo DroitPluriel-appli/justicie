@@ -1,10 +1,10 @@
 import 'leaflet/dist/leaflet.css'
 import L from 'leaflet'
-import Head from 'next/head'
 import { ReactElement, useEffect } from 'react'
 
 import { Lieu } from '../../backend/entities/Lieu'
 import { useDependencies } from '../../configuration/useDependencies'
+import Title from '../Title/Title'
 import EnTete from './EnTete'
 import styles from './Plan.module.css'
 import usePlan from './usePlan'
@@ -52,11 +52,9 @@ export default function Plan({ latitude, lieux, longitude, nombreDeResultat }: P
 
   return (
     <>
-      <Head>
-        <title>
-          {wording.TITLE_PAGE_RESULTATS_PAR_PLAN}
-        </title>
-      </Head>
+      <Title>
+        {wording.TITLE_PAGE_RESULTATS_PAR_PLAN}
+      </Title>
       <EnTete nombreDeResultat={nombreDeResultat} />
       <div
         className={styles.leafletMap}

@@ -204,7 +204,7 @@ describe('page résultats par plan', () => {
 
     // THEN
     const champsCarteLieuA = [
-      within(main).getByRole('heading', { level: 2, name: lieuA.nom }),
+      within(main).getByText(lieuA.nom),
       within(main).getByText(textMatch(lieuA.adresse + lieuA.codePostal + ' ' + lieuA.ville)),
       within(main).getByRole('link', { name: lieuA.telephone }),
       within(main).getByText(textMatch(`${lieuA.distance} km`), { selector: 'p' }),

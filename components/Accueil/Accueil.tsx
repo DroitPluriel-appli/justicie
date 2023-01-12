@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import Link from 'next/link'
 import { ReactElement } from 'react'
 
@@ -7,6 +6,7 @@ import Email from '../Email/Email'
 import ExternalLink from '../ExternalLink/ExternalLink'
 import RetourHautDePage from '../RetourHautDePage/RetourHautDePage'
 import Telephone from '../Telephone/Telephone'
+import Title from '../Title/Title'
 import styles from './Accueil.module.css'
 
 export default function Accueil(): ReactElement {
@@ -14,11 +14,9 @@ export default function Accueil(): ReactElement {
 
   return (
     <>
-      <Head>
-        <title>
-          {wording.TITLE_PAGE_ACCUEIL}
-        </title>
-      </Head>
+      <Title>
+        {wording.TITLE_PAGE_ACCUEIL}
+      </Title>
       <h2 className={styles.title}>
         {wording.VOUS_AVEZ_UN_PROBLEME_DE_DROIT}
       </h2>
