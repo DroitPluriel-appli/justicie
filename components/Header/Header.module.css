@@ -70,6 +70,10 @@
   top: 0;
   visibility: visible;
   width: 100vw;
+
+  /* besoin pour éviter que la carte leaflet reste par-dessus le menu-mobile */
+
+  /* dans leaflet certains elements ont des z-index de 1000 */
   z-index: 1001;
 }
 

@@ -109,6 +109,9 @@ svg {
   fill: var(--primary-color);
 }
 
+/* on cible main svg pour éviter d'inclure */
+
+/* le logo de droit pluriel dans header et footer */
 body.themeDark main svg {
   fill: var(--white);
 }
