@@ -12,3 +12,12 @@
 .leafletMap :global(a.leaflet-popup-close-button span) {
   font-size: 2rem;
 }
+
+:global(body.themeDark) .leafletMap :global(.leaflet-popup-content-wrapper) {
+  background-color: var(--default-background-color);
+  color: var(--black);
+}
+
+:global(body.themeDark) .leafletMap :global(.leaflet-popup-tip) {
+  background-color: var(--default-background-color);
+}

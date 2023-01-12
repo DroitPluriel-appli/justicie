@@ -18,6 +18,7 @@ export function BoutonModeSombre(): ReactElement {
       type="button"
     >
       <svg
+        aria-hidden
         height="26"
         viewBox="0 0 49 26"
         width="49"
