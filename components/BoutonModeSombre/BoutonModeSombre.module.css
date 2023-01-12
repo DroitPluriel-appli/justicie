@@ -1,38 +1,25 @@
-.bouton {
-  background-color: var(--white);
-  border: 3px solid var(--primary-color);
-  border-radius: 2rem;
-  height: 1.5rem;
-  width: 3rem;
-}
-
-.bouton::after {
-  background: var(--primary-color);
-  border-radius: 2rem;
-  content: "";
-  height: 1.3rem;
-  margin: 0.1rem;
-  position: absolute;
-  transform: translateY(-0.7rem);
-  transition: 0.15s;
-  width: 1.3rem;
-}
-
-.bouton[data-enabled="true"]::after {
-  transform: translate(1.5rem, -0.7rem);
-}
-
-.bouton:focus {
-  outline: none;
-}
-
 .main {
   align-items: center;
+  color: var(--primary-color);
   display: flex;
+  font-weight: bold;
 }
 
-.label {
-  color: var(--primary-color);
-  font-weight: bold;
-  margin-left: var(--l-margin);
+.main svg {
+  margin-right: var(--m-margin);
+}
+
+.main svg rect {
+  fill: none;
+  stroke: var(--primary-color);
+  stroke-width: 3;
+}
+
+.main svg circle {
+  fill: var(--primary-color);
+  transition: all 0.25s;
+}
+
+.enabled svg circle {
+  transform: translateX(1.3rem);
 }

@@ -1,6 +1,6 @@
 export function useTheme() {
 
-  const localStorageDarkThemeItem = 'darkTheme'
+  const localStorageDarkThemeItem = 'themeDark'
   const darkThemeClass = 'themeDark'
   const lightThemeClass = 'themeLight'
 

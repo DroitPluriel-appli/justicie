@@ -7,7 +7,12 @@
   display: none;
 }
 
-.header div:nth-child(2) {
+.menu button {
+  font-size: var(--s-font);
+  text-transform: uppercase;
+}
+
+.header button:nth-child(2) {
   display: none;
 }
 
@@ -51,18 +56,13 @@
   flex-direction: column;
 }
 
-.menu button {
-  font-size: var(--s-font);
-  text-transform: uppercase;
-}
-
 .burgerMenuClose {
   height: 0;
   visibility: hidden;
 }
 
 .burgerMenuOpen {
-  background-color: var(--white);
+  background-color: var(--default-background-color);
   height: 100vh;
   left: 0;
   position: fixed;
@@ -123,7 +123,7 @@
     padding: var(--m-margin);
   }
 
-  .header div:nth-child(2) {
+  .header button:nth-child(2) {
     display: flex;
     margin: var(--xxl-margin);
     position: absolute;
