@@ -109,6 +109,10 @@ svg {
   fill: var(--primary-color);
 }
 
+body.themeDark main svg {
+  fill: var(--white);
+}
+
 address {
   font-size: var(--s-to-m-font);
   font-style: normal;
