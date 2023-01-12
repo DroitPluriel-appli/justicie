@@ -202,8 +202,8 @@ export default function Header(): ReactElement {
             </li>
           </ul>
         </nav>
-        <BoutonModeSombre />
       </div>
+      <BoutonModeSombre />
     </header >
   )
 }
