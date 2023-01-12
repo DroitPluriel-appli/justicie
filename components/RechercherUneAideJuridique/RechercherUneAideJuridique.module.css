@@ -45,4 +45,5 @@
 
 .renseignerAdresse {
   background-color: var(--white);
+  color: var(--primary-background-color);
 }

@@ -1,5 +1,6 @@
 .header {
   background-color: var(--default-background-color);
+  color: var(--black);
 }
 
 .desktop {
@@ -115,7 +116,7 @@
     font-size: var(--l-font);
   }
 
-    .rechercher {
+  .rechercher {
     background-color: var(--button-color);
     border-radius: 2rem;
     font-weight: bold;
