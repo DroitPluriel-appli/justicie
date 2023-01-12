@@ -112,17 +112,19 @@ describe('résultats de recherche affichés en liste', () => {
         nombreDeResultat={2}
       />
     )
-    const main = screen.getByRole('main')
-    const cartesLieux = within(main).getAllByRole('article')
 
     // THEN
+    const main = screen.getByRole('main')
+    const lists = within(main).getAllByRole('list')
+    const cartesLieux = within(lists[2]).getAllByRole('article')
+
     const champsCarteLieuA = [
-      within(cartesLieux[0]).getByRole('heading', { level: 2, name: lieuA.nom }),
+      within(cartesLieux[0]).getByText(lieuA.nom),
       within(cartesLieux[0]).getByText(textMatch(lieuA.adresse + lieuA.codePostal + ' ' + lieuA.ville)),
-      within(cartesLieux[0]).getByRole('link', { name: lieuA.telephone }),
+      within(cartesLieux[0]).getByRole('link', { name: wording.APPELER_LE_NUMERO + lieuA.telephone }),
       within(cartesLieux[0]).getByText(textMatch(`${lieuA.distance} km`), { selector: 'p' }),
       within(cartesLieux[0]).getByText('km', { selector: 'abbr' }),
-      within(cartesLieux[0]).getByRole('link', { name: wording.LANCER_L_ITINERAIRE + wording.NOUVELLE_FENETRE }),
+      within(cartesLieux[0]).getByRole('link', { name: wording.LANCER_L_ITINERAIRE_SUR_GOOGLE_MAPS + wording.NOUVELLE_FENETRE }),
       within(cartesLieux[0]).getByRole('link', { name: wording.PLUS_D_INFORMATIONS }),
       within(cartesLieux[0]).getByTitle(wording.TITLE_HANDICAP_MOTEUR_TOTAL),
       within(cartesLieux[0]).getByTitle(wording.TITLE_HANDICAP_MOTEUR_AVEC_ASSISTANCE),
@@ -134,6 +136,7 @@ describe('résultats de recherche affichés en liste', () => {
     champsCarteLieuA.forEach((champ) => expect(champ).toBeInTheDocument())
 
     expect(champsCarteLieuA[2]).toHaveAttribute('href', 'tel:' + lieuA.telephone.replaceAll(' ', ''))
+    expect(champsCarteLieuA[2].textContent).toBe(lieuA.telephone)
     expect(champsCarteLieuA[4]).toHaveAttribute('title', wording.KILOMETRES)
     expect(champsCarteLieuA[6]).toHaveAttribute('href', 'lieu/1?lat=48.844928&lon=2.31016')
 
@@ -143,14 +146,15 @@ describe('résultats de recherche affichés en liste', () => {
     googleMapUrlLieuA.searchParams.append('destination', 'LieuA+12+rue+du+Lieu+1000+Bourg+En+Bresse')
 
     expect(champsCarteLieuA[5]).toHaveAttribute('href', googleMapUrlLieuA.toString())
+    expect(champsCarteLieuA[5].textContent).toBe(wording.LANCER_L_ITINERAIRE)
 
     const champsCarteLieuB = [
-      within(cartesLieux[1]).getByRole('heading', { level: 2, name: lieuB.nom }),
+      within(cartesLieux[1]).getByText(lieuB.nom),
       within(cartesLieux[1]).getByText(textMatch(lieuB.adresse + lieuB.codePostal + ' ' + lieuB.ville)),
-      within(cartesLieux[1]).getByRole('link', { name: lieuB.telephone }),
+      within(cartesLieux[1]).getByRole('link', { name: wording.APPELER_LE_NUMERO + lieuB.telephone }),
       within(cartesLieux[1]).getByText(textMatch(`${lieuA.distance} km`), { selector: 'p' }),
       within(cartesLieux[1]).getByText('km', { selector: 'abbr' }),
-      within(cartesLieux[1]).getByRole('link', { name: wording.LANCER_L_ITINERAIRE + wording.NOUVELLE_FENETRE }),
+      within(cartesLieux[1]).getByRole('link', { name: wording.LANCER_L_ITINERAIRE_SUR_GOOGLE_MAPS + wording.NOUVELLE_FENETRE }),
       within(cartesLieux[1]).getByRole('link', { name: wording.PLUS_D_INFORMATIONS }),
       within(cartesLieux[1]).getByTitle(wording.TITLE_HANDICAP_VISUEL),
       within(cartesLieux[1]).getByTitle(wording.TITLE_HANDICAP_MOTEUR_AVEC_ASSISTANCE),
@@ -159,6 +163,7 @@ describe('résultats de recherche affichés en liste', () => {
     champsCarteLieuB.forEach((champ) => expect(champ).toBeInTheDocument())
 
     expect(champsCarteLieuB[2]).toHaveAttribute('href', 'tel:' + lieuB.telephone.replaceAll(' ', ''))
+    expect(champsCarteLieuB[2].textContent).toBe(lieuA.telephone)
     expect(champsCarteLieuB[4]).toHaveAttribute('title', wording.KILOMETRES)
     expect(champsCarteLieuB[6]).toHaveAttribute('href', 'lieu/2?lat=48.844928&lon=2.31016')
 
@@ -168,6 +173,7 @@ describe('résultats de recherche affichés en liste', () => {
     googleMapUrlLieuB.searchParams.append('destination', 'Lieu+B+34+cours+de+Verdun+1000+Bourg+En+Bresse')
 
     expect(champsCarteLieuB[5]).toHaveAttribute('href', googleMapUrlLieuB.toString())
+    expect(champsCarteLieuB[5].textContent).toBe(wording.LANCER_L_ITINERAIRE)
   })
 
   it('n’affiche pas la pagination quand il y a qu’une seule page', () => {

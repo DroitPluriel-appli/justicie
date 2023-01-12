@@ -25,7 +25,7 @@ export function useHeader() {
     }
   }
 
-  const touchStart = () => {
+  const touch = () => {
     setState({
       classMenu: state.classMenu === burgerMenuClose ? burgerMenuOpen : burgerMenuClose,
       isMenuClose: !state.isMenuClose,
@@ -36,6 +36,6 @@ export function useHeader() {
     classMenu: state.classMenu,
     isMenuClose: state.isMenuClose,
     keyDown: useCallback(keyDown, [state.isMenuClose, state.classMenu, isTheGoodKeyCode]),
-    touchStart: useCallback(touchStart, [state.isMenuClose, state.classMenu]),
+    touch: useCallback(touch, [state.isMenuClose, state.classMenu]),
   }
 }

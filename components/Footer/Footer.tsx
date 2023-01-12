@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { ReactElement } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
-import LogoDroitPluriel from '../../public/logo-droit-pluriel.svg'
+import Logo from '../Logo/Logo'
 import styles from './Footer.module.css'
 
 export default function Footer(): ReactElement {
@@ -11,7 +11,7 @@ export default function Footer(): ReactElement {
   return (
     <footer className={styles.footer}>
       <div>
-        <LogoDroitPluriel />
+        <Logo />
         <section aria-label={wording.INFORMATIONS}>
           <header>
             {wording.INFORMATIONS}

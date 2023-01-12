@@ -20,9 +20,6 @@ const customJestConfig: Config.InitialOptions = {
     'tsx',
     'js',
   ],
-  moduleNameMapper: {
-    '^.+\\.(svg)$': '<rootDir>/svgMock.tsx',
-  },
   resetMocks: true,
   restoreMocks: true,
   setupFilesAfterEnv: ['./jest.setup.ts'],

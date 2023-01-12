@@ -1,4 +1,7 @@
 export interface Wording {
+  readonly JUSTICE_PLURIELLE: string
+  readonly SUFFIXE_TITLE: string
+
   // Navigation pages
   readonly RETOUR_EN_HAUT_DE_PAGE: string
   readonly ACCES_RAPIDE: string
@@ -70,6 +73,7 @@ export interface Wording {
   readonly BESOINS_D_ACCESSIBILITE: (nombre: number) => string
   readonly LIEUX_CORRESPONDENT_A_VOTRE_RECHERCHE: (nombre: number) => string
   readonly LANCER_L_ITINERAIRE: string
+  readonly LANCER_L_ITINERAIRE_SUR_GOOGLE_MAPS: string
   readonly PLUS_D_INFORMATIONS: string
   readonly PAGINATION: string
   readonly PREMIERE_PAGE: string
@@ -88,6 +92,8 @@ export interface Wording {
   readonly CONTACT_ET_SITE_INTERNET: string
   readonly CONSULTER_LE_SITE_INTERNET: string
   readonly KILOMETRES: string
+  readonly APPELER_LE_NUMERO: string
+  readonly ENVOYER_UN_EMAIL_A: string
 
   // Nos critères d'accessibilité
   readonly TITLE_PAGE_NOS_CRITERES_D_ACCESSIBILITE: string
@@ -116,7 +122,6 @@ export interface Wording {
   readonly TITLE_PAGE_MENTIONS_LEGALES: string
 
   // Header
-  readonly JUSTICE_PLURIELLE: string
   readonly ACCUEIL: string
   readonly MENU: string
   readonly NAVIGATION_DESKTOP: string

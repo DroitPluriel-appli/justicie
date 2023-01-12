@@ -20,9 +20,9 @@ export default function CarteLieu({ latitude, lieu, longitude }: CarteLieuProps)
 
   return (
     <article className={styles.main}>
-      <h2>
+      <div className={styles.title}>
         {lieu.nom}
-      </h2>
+      </div>
       <address className={styles.adresse}>
         <Telephone
           hasPicto

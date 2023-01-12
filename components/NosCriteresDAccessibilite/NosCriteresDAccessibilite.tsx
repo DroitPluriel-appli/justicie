@@ -1,8 +1,8 @@
-import Head from 'next/head'
 import { ReactElement } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
 import RetourHautDePage from '../RetourHautDePage/RetourHautDePage'
+import Title from '../Title/Title'
 import CritereDAccessibilite from './CritereDAccessibilite'
 import styles from './NosCriteresDAccessibilite.module.css'
 
@@ -11,13 +11,11 @@ export default function NosCriteresDAccessibilite(): ReactElement {
 
   return (
     <>
-      <Head>
-        <title>
-          {wording.TITLE_PAGE_NOS_CRITERES_D_ACCESSIBILITE}
-        </title>
-      </Head>
-      <h2 className={styles.title}>
+      <Title>
         {wording.TITLE_PAGE_NOS_CRITERES_D_ACCESSIBILITE}
+      </Title>
+      <h2 className={styles.title}>
+        {wording.NOS_CRITERES_D_ACCESSIBILITE}
       </h2>
       {
         criteres.map((critere) => (
@@ -29,7 +27,6 @@ export default function NosCriteresDAccessibilite(): ReactElement {
           />
         ))
       }
-
       <RetourHautDePage />
     </>
   )

@@ -40,7 +40,9 @@
   padding-inline: 0;
 }
 
-.main > h2 {
+.main > .title {
+  font-size: var(--xl-font);
+  font-weight: bold;
   grid-area: title;
   margin-bottom: 0;
   margin-top: var(--m-margin);
