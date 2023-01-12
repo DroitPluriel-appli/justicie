@@ -2,8 +2,8 @@ import Link from 'next/link'
 import { ReactElement } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
-import LogoDroitPluriel from '../../public/logo-droit-pluriel.svg'
 import { BoutonModeSombre } from '../BoutonModeSombre/BoutonModeSombre'
+import Logo from '../Logo/Logo'
 import styles from './Header.module.css'
 import { useHeader } from './useHeader'
 
@@ -13,7 +13,7 @@ export default function Header(): ReactElement {
     classMenu,
     isMenuClose,
     keyDown,
-    touchStart,
+    touch,
   } = useHeader()
 
   return (
@@ -29,11 +29,8 @@ export default function Header(): ReactElement {
               href={paths.ACCUEIL}
               legacyBehavior
             >
-              <a
-                href={paths.ACCUEIL}
-                title={wording.ACCUEIL}
-              >
-                <LogoDroitPluriel />
+              <a href={paths.ACCUEIL}>
+                <Logo />
               </a>
             </Link>
           </li>
@@ -70,11 +67,8 @@ export default function Header(): ReactElement {
               href={paths.ACCUEIL}
               legacyBehavior
             >
-              <a
-                href={paths.ACCUEIL}
-                title={wording.ACCUEIL}
-              >
-                <LogoDroitPluriel />
+              <a href={paths.ACCUEIL}>
+                <Logo />
               </a>
             </Link>
           </li>
@@ -86,8 +80,9 @@ export default function Header(): ReactElement {
           <li className={styles.menu}>
             <button
               className={styles.burgerOpen}
+              onClick={touch}
               onKeyDown={keyDown}
-              onTouchStart={touchStart}
+              onTouchStart={touch}
               type="button"
             >
               {wording.MENU}
@@ -95,9 +90,7 @@ export default function Header(): ReactElement {
                 aria-hidden
                 viewBox="0 0 24 16"
               >
-                <path
-                  d="M0.75 15.5H23.25V13H0.75V15.5ZM0.75 9.25H23.25V6.75H0.75V9.25ZM0.75 0.5V3H23.25V0.5H0.75Z"
-                />
+                <path d="M0.75 15.5H23.25V13H0.75V15.5ZM0.75 9.25H23.25V6.75H0.75V9.25ZM0.75 0.5V3H23.25V0.5H0.75Z" />
               </svg>
             </button>
           </li>
@@ -120,8 +113,9 @@ export default function Header(): ReactElement {
               </span>
               <button
                 aria-controls="menu-mobile-container"
+                onClick={touch}
                 onKeyDown={keyDown}
-                onTouchStart={touchStart}
+                onTouchStart={touch}
                 title={wording.FERMER}
                 type="button"
               >

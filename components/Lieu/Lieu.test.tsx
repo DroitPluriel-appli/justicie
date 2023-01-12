@@ -49,7 +49,7 @@ describe('lieu', () => {
     expect(kilometre).toHaveAttribute('title', wording.KILOMETRES)
     const adresse = screen.getByText(textMatch(lieu.adresse + lieu.codePostal + ' ' + lieu.ville), { selector: 'p' })
     expect(adresse).toBeInTheDocument()
-    const itineraire = screen.getByRole('link', { name: `${wording.LANCER_L_ITINERAIRE}${wording.NOUVELLE_FENETRE}` })
+    const itineraire = screen.getByRole('link', { name: `${wording.LANCER_L_ITINERAIRE_SUR_GOOGLE_MAPS}${wording.NOUVELLE_FENETRE}` })
     const googleMapUrlLieu = new URL('https://www.google.com/maps/dir/')
     googleMapUrlLieu.searchParams.append('api', '1')
     googleMapUrlLieu.searchParams.append('origin', `${lat},${lon}`)
@@ -110,7 +110,7 @@ describe('lieu', () => {
     renderFakeComponent(<Lieu lieu={lieu} />)
 
     // THEN
-    const titre = screen.getByRole('heading', { level: 2, name: wording.PERMANENCE })
+    const titre = screen.getByRole('heading', { level: 2, name: wording.PLUS_D_INFORMATIONS })
     expect(titre).toBeInTheDocument()
     const commentaire = screen.getByText(textMatch(lieu.commentaire), { selector: 'pre' })
     expect(commentaire).toBeInTheDocument()
@@ -130,10 +130,12 @@ describe('lieu', () => {
     // THEN
     const titre = screen.getByRole('heading', { level: 2, name: wording.CONTACT_ET_SITE_INTERNET })
     expect(titre).toBeInTheDocument()
-    const eMail = screen.getByRole('link', { name: lieu.eMail })
+    const eMail = screen.getByRole('link', { name: wording.ENVOYER_UN_EMAIL_A + lieu.eMail })
     expect(eMail).toHaveAttribute('href', `mailto:${lieu.eMail}`)
-    const telephone = screen.getByRole('link', { name: lieu.telephone })
+    expect(eMail.textContent).toBe(lieu.eMail)
+    const telephone = screen.getByRole('link', { name: wording.APPELER_LE_NUMERO + lieu.telephone })
     expect(telephone).toHaveAttribute('href', `tel:${lieu.telephone.replaceAll(' ', '')}`)
+    expect(telephone.textContent).toBe(lieu.telephone)
     const siteInternet = screen.getByRole('link', { name: wording.CONSULTER_LE_SITE_INTERNET + wording.NOUVELLE_FENETRE })
     expect(siteInternet).toHaveAttribute('href', lieu.siteInternet)
     expect(siteInternet).toHaveAttribute('target', '_blank')

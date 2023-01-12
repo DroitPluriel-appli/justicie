@@ -50,6 +50,7 @@ describe('page résultats par plan', () => {
         latitude={latitude}
         lieux={[]}
         longitude={longitude}
+        nombreDeResultat={0}
       />
     )
 
@@ -64,6 +65,7 @@ describe('page résultats par plan', () => {
       lon,
       'moteur-total': moteurTotal,
     }
+    const nombreDeResultat = 0
 
     // WHEN
     renderFakeComponent(
@@ -71,6 +73,7 @@ describe('page résultats par plan', () => {
         latitude={latitude}
         lieux={[]}
         longitude={longitude}
+        nombreDeResultat={nombreDeResultat}
       />
     )
 
@@ -85,7 +88,7 @@ describe('page résultats par plan', () => {
     expect(vuePlan).toHaveAttribute('href', `${paths.RESULTATS_PLAN}?lat=${lat}&lon=${lon}&moteur-total=${moteurTotal}`)
     const modifierAccessibilite = screen.getByRole('link', { name: wording.BESOINS_D_ACCESSIBILITE(1) })
     expect(modifierAccessibilite).toHaveAttribute('href', `${paths.RECHERCHER_PAR_HANDICAP}?lat=${lat}&lon=${lon}&moteur-total=${moteurTotal}`)
-    const titre = screen.getByText(wording.LIEUX_CORRESPONDENT_A_VOTRE_RECHERCHE(0), { selector: 'p' })
+    const titre = screen.getByText(wording.LIEUX_CORRESPONDENT_A_VOTRE_RECHERCHE(nombreDeResultat), { selector: 'p' })
     expect(titre).toBeInTheDocument()
   })
 
@@ -96,6 +99,7 @@ describe('page résultats par plan', () => {
         latitude={latitude}
         lieux={[]}
         longitude={longitude}
+        nombreDeResultat={0}
       />
     )
 
@@ -116,6 +120,7 @@ describe('page résultats par plan', () => {
         latitude={latitude}
         lieux={lieux}
         longitude={longitude}
+        nombreDeResultat={3}
       />
     )
 
@@ -142,6 +147,7 @@ describe('page résultats par plan', () => {
         latitude={latitude}
         lieux={lieux}
         longitude={longitude}
+        nombreDeResultat={2}
       />
     )
 
@@ -183,29 +189,27 @@ describe('page résultats par plan', () => {
   })
 
   it('affiche la carte du lieu dans la popup au click sur un marker', () => {
-    // GIVEN
-    const lieu = lieuA
-
     // WHEN
     renderFakeComponent(
       <Plan
         latitude={latitude}
-        lieux={[lieu]}
+        lieux={[lieuA]}
         longitude={longitude}
+        nombreDeResultat={1}
       />
     )
     const main = screen.getByRole('main')
-    const markerLieuA = within(main).getByTitle(lieu.nom)
+    const markerLieuA = within(main).getByTitle(lieuA.nom)
     fireEvent.click(markerLieuA)
 
     // THEN
     const champsCarteLieuA = [
-      within(main).getByRole('heading', { level: 2, name: lieuA.nom }),
+      within(main).getByText(lieuA.nom),
       within(main).getByText(textMatch(lieuA.adresse + lieuA.codePostal + ' ' + lieuA.ville)),
-      within(main).getByRole('link', { name: lieuA.telephone }),
+      within(main).getByRole('link', { name: wording.APPELER_LE_NUMERO + lieuA.telephone }),
       within(main).getByText(textMatch(`${lieuA.distance} km`), { selector: 'p' }),
       within(main).getByText('km', { selector: 'abbr' }),
-      within(main).getByRole('link', { name: wording.LANCER_L_ITINERAIRE + wording.NOUVELLE_FENETRE }),
+      within(main).getByRole('link', { name: wording.LANCER_L_ITINERAIRE_SUR_GOOGLE_MAPS + wording.NOUVELLE_FENETRE }),
       within(main).getByRole('link', { name: wording.PLUS_D_INFORMATIONS }),
       within(main).getByTitle(wording.TITLE_HANDICAP_MOTEUR_TOTAL),
       within(main).getByTitle(wording.TITLE_HANDICAP_MOTEUR_AVEC_ASSISTANCE),
@@ -217,6 +221,7 @@ describe('page résultats par plan', () => {
     champsCarteLieuA.forEach((champ) => expect(champ).toBeVisible())
 
     expect(champsCarteLieuA[2]).toHaveAttribute('href', 'tel:' + lieuA.telephone.replaceAll(' ', ''))
+    expect(champsCarteLieuA[2].textContent).toBe(lieuA.telephone)
     expect(champsCarteLieuA[4]).toHaveAttribute('title', wording.KILOMETRES)
     expect(champsCarteLieuA[6]).toHaveAttribute('href', 'lieu/1?lat=40&lon=50')
 
@@ -226,6 +231,7 @@ describe('page résultats par plan', () => {
     googleMapUrlLieuA.searchParams.append('destination', 'LieuA+12+rue+du+Lieu+1000+Bourg+En+Bresse')
 
     expect(champsCarteLieuA[5]).toHaveAttribute('href', googleMapUrlLieuA.toString())
+    expect(champsCarteLieuA[5].textContent).toBe(wording.LANCER_L_ITINERAIRE)
   })
 
   it('affiche une phrase demandant de recommencer le parcours quand on arrive sans latitude', () => {
@@ -234,7 +240,10 @@ describe('page résultats par plan', () => {
 
     // WHEN
     renderFakeComponent(
-      <ResultatsPlan lieux={[]} />
+      <ResultatsPlan
+        lieux={[]}
+        nombreDeResultat={0}
+      />
     )
 
     // THEN
@@ -248,7 +257,10 @@ describe('page résultats par plan', () => {
 
     // WHEN
     renderFakeComponent(
-      <ResultatsPlan lieux={[]} />
+      <ResultatsPlan
+        lieux={[]}
+        nombreDeResultat={0}
+      />
     )
 
     // THEN

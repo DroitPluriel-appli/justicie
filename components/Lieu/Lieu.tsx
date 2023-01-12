@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import { ReactElement } from 'react'
 
 import { Lieu as LieuEntity } from '../../backend/entities/Lieu'
@@ -12,6 +11,7 @@ import Preformate from '../Preformate/Preformate'
 import RetourHautDePage from '../RetourHautDePage/RetourHautDePage'
 import SiteInternet from '../SiteInternet/SiteInternet'
 import Telephone from '../Telephone/Telephone'
+import Title from '../Title/Title'
 import styles from './Lieu.module.css'
 
 export default function Lieu({ lieu }: { lieu: LieuEntity }): ReactElement {
@@ -20,11 +20,9 @@ export default function Lieu({ lieu }: { lieu: LieuEntity }): ReactElement {
 
   return (
     <article className={styles.main}>
-      <Head>
-        <title>
-          {wording.TITLE_PAGE_LIEU(lieu.nom)}
-        </title>
-      </Head>
+      <Title>
+        {wording.TITLE_PAGE_LIEU(lieu.nom)}
+      </Title>
       <BackButton>
         {wording.RETOUR_AUX_RESULTATS}
       </BackButton>
@@ -74,7 +72,7 @@ export default function Lieu({ lieu }: { lieu: LieuEntity }): ReactElement {
       </section>
       <section>
         <h2>
-          {wording.PERMANENCE}
+          {wording.PLUS_D_INFORMATIONS}
         </h2>
         <Preformate>
           {lieu.commentaire}

@@ -11,7 +11,7 @@ describe('page d’accueil', () => {
     renderFakeComponent(<Accueil />)
 
     // THEN
-    expect(document.title).toBe(wording.JUSTICE_PLURIELLE)
+    expect(document.title).toBe(wording.TITLE_PAGE_ACCUEIL)
   })
 
   it('affiche le contenu', () => {
@@ -52,11 +52,13 @@ describe('page d’accueil', () => {
       textMatch(`${wording.PAR_EMAIL}${wording.EMAIL_DROIT_PLURIEL}${wording.PAR_TELEPHONE}${wording.TELEPHONE_DROIT_PLURIEL}`), { selector: 'address' }
     )
 
-    const lienMail = within(coordonneesDroitPluriel).getByRole('link', { name: wording.EMAIL_DROIT_PLURIEL })
+    const lienMail = within(coordonneesDroitPluriel).getByRole('link', { name: wording.ENVOYER_UN_EMAIL_A + wording.EMAIL_DROIT_PLURIEL })
     expect(lienMail).toHaveAttribute('href', 'mailto:' + wording.EMAIL_DROIT_PLURIEL)
+    expect(lienMail.textContent).toBe(wording.EMAIL_DROIT_PLURIEL)
 
-    const lienTelephone = within(coordonneesDroitPluriel).getByRole('link', { name: wording.TELEPHONE_DROIT_PLURIEL })
+    const lienTelephone = within(coordonneesDroitPluriel).getByRole('link', { name: wording.APPELER_LE_NUMERO + wording.TELEPHONE_DROIT_PLURIEL })
     expect(lienTelephone).toHaveAttribute('href', 'tel:' + wording.TELEPHONE_DROIT_PLURIEL.replaceAll(' ', ''))
+    expect(lienTelephone.textContent).toBe(wording.TELEPHONE_DROIT_PLURIEL)
     const titleNosActualites = within(main).getByRole('heading', { level: 2, name: wording.TITLE_SUIVEZ_NOS_ACTUALITES })
     expect(titleNosActualites).toBeInTheDocument()
 

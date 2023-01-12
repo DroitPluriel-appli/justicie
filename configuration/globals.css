@@ -50,6 +50,7 @@ html {
 body,
 main,
 ul,
+ol,
 p,
 h2 {
   margin: 0;
@@ -111,6 +112,12 @@ svg {
 address {
   font-size: var(--s-to-m-font);
   font-style: normal;
+}
+
+pre {
+  font-family: arial, sans-serif;
+  line-height: 1.5rem;
+  margin: 0;
 }
 
 #__next {

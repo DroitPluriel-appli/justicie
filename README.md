@@ -31,9 +31,13 @@ Vous trouverez toutes ces commandes dans le fichier package.json.
 
 `yarn test:coverage`
 
-### Lancer les tests avec mutation en mode incrémental
+### Lancer les tests de mutation du backend
 
-`yarn test:mutation`
+`yarn test:mutation:backend`
+
+### Lancer les tests de mutation du frontend
+
+`yarn test:mutation:frontend`
 
 ### Lancer la vérification du typing
 
@@ -58,6 +62,47 @@ Vous trouverez toutes ces commandes dans le fichier package.json.
 ### Lancer la vérification de dépendances mortes
 
 `yarn depcheck`
+
+### Se connecter au bash de Scalingo (il faut avoir installé le CLI de Scalingo au préalable)
+
+`yarn bash:production`
+
+### Se connecter à PostgreSQL de Scalingo (il faut avoir installé le CLI de Scalingo au préalable)
+
+`yarn psql:production`
+
+### Se connecter à PostgreSQL en local
+
+`yarn psql:local`
+
+### Mettre à jour la base de données PostgreSQL via la spreadsheet
+
+`yarn maj_lieux`
+
+### Créer une migration
+
+`yarn migration:create`
+
+### Lancer une migration
+
+`yarn migration:up`
+
+### Enlever une migration
+
+`yarn migration:down`
+
+## Variables d'environnement
+
+Pour pouvoir travailler en local correctement, il faut créer un fichier .env.local et y mettre les variables d'environnement vide du fichier .env.
+
+## Limitation
+
+- Utilisation de l'[API Adresse du gouvernement](https://adresse.data.gouv.fr/api-doc/adresse) : 50 requêtes par IP et par seconde ;
+- Utilisation de l'[API Google Sheet](https://console.cloud.google.com/) : 300 requêtes par minute.
+
+### Batch
+
+Un cron tourne à 1 heure du matin du mardi au samedi pour récupérer les données de Google Sheet pour alimenter le PostgreSQL de Scalingo.
 
 ## Sécurité
 

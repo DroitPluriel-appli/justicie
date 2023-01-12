@@ -9,6 +9,7 @@ import { WordingFr } from './wording/WordingFr'
 export type FrontDependencies = Readonly<{
   criteres: Critere[]
   isTheGoodKeyCode: (event: KeyboardEvent<HTMLButtonElement>) => boolean
+  nombreDeLieuxAffichesParPage: number
   paths: Paths
   useRouter: () => NextRouter
   wording: Wording
@@ -17,6 +18,7 @@ export type FrontDependencies = Readonly<{
 export const frontDependencies: FrontDependencies = {
   criteres: criteres(new WordingFr()),
   isTheGoodKeyCode: (event: KeyboardEvent<HTMLButtonElement>) => event.code === 'Space' || event.code === 'Enter',
+  nombreDeLieuxAffichesParPage: 10,
   paths: new Paths(),
   useRouter,
   wording: new WordingFr(),

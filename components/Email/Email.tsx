@@ -1,14 +1,21 @@
-import { ReactElement, ReactNode } from 'react'
+import { ReactElement } from 'react'
+
+import { useDependencies } from '../../configuration/useDependencies'
 
 type EmailProps = Readonly<{
-  children: ReactNode
+  children: string
   hasPicto?: boolean
   url: string
 }>
 
 export default function Email({ children, hasPicto = false, url }: EmailProps): ReactElement {
+  const { wording } = useDependencies()
+
   return (
-    <a href={`mailto:${url}`}>
+    <a
+      href={`mailto:${url}`}
+      title={wording.ENVOYER_UN_EMAIL_A + children}
+    >
       {
         hasPicto ? (
           <svg

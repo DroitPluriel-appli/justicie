@@ -1,21 +1,22 @@
 import 'leaflet/dist/leaflet.css'
 import L from 'leaflet'
-import Head from 'next/head'
 import { ReactElement, useEffect } from 'react'
 
 import { Lieu } from '../../backend/entities/Lieu'
 import { useDependencies } from '../../configuration/useDependencies'
+import Title from '../Title/Title'
 import EnTete from './EnTete'
 import styles from './Plan.module.css'
 import usePlan from './usePlan'
 
 type PlanProps = Readonly<{
   latitude: number
-  lieux: Lieu[],
+  lieux: Lieu[]
   longitude: number
+  nombreDeResultat: number
 }>
 
-export default function Plan({ latitude, lieux, longitude }: PlanProps): ReactElement {
+export default function Plan({ latitude, lieux, longitude, nombreDeResultat }: PlanProps): ReactElement {
   const { wording } = useDependencies()
   const { setMarkerPosition, setMarkersLieux } = usePlan()
 
@@ -51,12 +52,10 @@ export default function Plan({ latitude, lieux, longitude }: PlanProps): ReactEl
 
   return (
     <>
-      <Head>
-        <title>
-          {wording.TITLE_PAGE_RESULTATS_PAR_PLAN}
-        </title>
-      </Head>
-      <EnTete nombreDeLieuxTrouves={lieux.length} />
+      <Title>
+        {wording.TITLE_PAGE_RESULTATS_PAR_PLAN}
+      </Title>
+      <EnTete nombreDeResultat={nombreDeResultat} />
       <div
         className={styles.leafletMap}
         id="map"

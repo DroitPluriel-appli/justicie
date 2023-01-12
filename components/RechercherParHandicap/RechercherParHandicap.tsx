@@ -1,10 +1,10 @@
-import Head from 'next/head'
 import Link from 'next/link'
 import { ReactElement } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
 import { useQueryUtilities } from '../../configuration/useQueryUtilities'
 import BackButton from '../BackButton/BackButton'
+import Title from '../Title/Title'
 import CritereDAccessibilite from './CritereDAccessibilite'
 import styles from './RechercherParHandicap.module.css'
 
@@ -23,11 +23,9 @@ export default function RechercherParHandicap(): ReactElement {
 
   return (
     <div className={styles.main}>
-      <Head>
-        <title>
-          {wording.TITLE_PAGE_RECHERCHER_PAR_HANDICAP}
-        </title>
-      </Head>
+      <Title>
+        {wording.TITLE_PAGE_RECHERCHER_PAR_HANDICAP}
+      </Title>
       <div className={styles.links}>
         <BackButton>
           {wording.MODIFIER_L_ADRESSE}

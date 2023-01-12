@@ -29,6 +29,10 @@
   padding-inline: var(--m-margin);
 }
 
+.main section:nth-child(4) pre:nth-child(2) {
+  margin-bottom: var(--m-margin);
+}
+
 .main section:nth-child(6) {
   border-bottom: unset;
   margin-bottom: unset;
@@ -64,11 +68,6 @@ h2.nom {
 
 .main img {
   margin-right: var(--s-margin);
-}
-
-.main pre {
-  font-family: arial, sans-serif;
-  margin: 0;
 }
 
 .contact a {
