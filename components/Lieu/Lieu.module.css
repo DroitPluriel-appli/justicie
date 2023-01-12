@@ -9,11 +9,6 @@
   padding-inline: var(--m-margin);
 }
 
-:global(body.themeDark) .main :global(.carteLieu__buttons) {
-  background-color: var(--button-color);
-  color: var(--black);
-}
-
 .contact svg {
   margin-right: var(--s-margin);
   vertical-align: sub;

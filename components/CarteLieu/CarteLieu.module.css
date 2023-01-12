@@ -90,10 +90,6 @@
   margin-right: var(--s-margin);
 }
 
-:global(body.themeDark) .adresse :global(.distance) svg {
-  fill: var(--black);
-}
-
 .main :global(.carteLieu__buttons):nth-of-type(1) {
   grid-area: lancerItineraire;
 }

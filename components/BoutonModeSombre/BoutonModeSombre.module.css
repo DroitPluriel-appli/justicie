@@ -2,7 +2,6 @@
   background-color: var(--white);
   border: 3px solid var(--primary-color);
   border-radius: 2rem;
-  cursor: pointer;
   height: 1.5rem;
   width: 3rem;
 }

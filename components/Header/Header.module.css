@@ -1,9 +1,5 @@
 .header {
-  background-color: var(--white);
-}
-
-:global(body.themeDark) .header {
-  color: var(--black);
+  background-color: var(--default-background-color);
 }
 
 .desktop {
@@ -119,11 +115,7 @@
     font-size: var(--l-font);
   }
 
-  :global(body.themeDark) .rechercher a {
-    color: var(--black);
-  }
-
-  .rechercher {
+    .rechercher {
     background-color: var(--button-color);
     border-radius: 2rem;
     font-weight: bold;
