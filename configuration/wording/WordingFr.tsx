@@ -74,7 +74,8 @@ export class WordingFr implements Wording {
   readonly PLAN: string = 'Plan'
   readonly BESOINS_D_ACCESSIBILITE: (nombre: number) => string = (nombre: number): string => `Besoins d’accessibilité (${nombre})`
   readonly LIEUX_CORRESPONDENT_A_VOTRE_RECHERCHE: (nombre: number) => string = (nombre: number): string => nombre > 1 ? `${nombre} lieux correspondent à votre recherche` : `${nombre} lieu correspond à votre recherche`
-  readonly LANCER_L_ITINERAIRE: string = 'Lancer l’itinéraire sur Google Maps'
+  readonly LANCER_L_ITINERAIRE: string = 'Lancer l’itinéraire'
+  readonly LANCER_L_ITINERAIRE_SUR_GOOGLE_MAPS: string = 'Lancer l’itinéraire sur Google Maps'
   readonly PLUS_D_INFORMATIONS: string = 'Plus d’informations'
   readonly PAGINATION: string = 'Pagination'
   readonly PREMIERE_PAGE: string = 'Première page'
@@ -93,6 +94,8 @@ export class WordingFr implements Wording {
   readonly CONTACT_ET_SITE_INTERNET: string = 'Contact et site internet'
   readonly CONSULTER_LE_SITE_INTERNET: string = 'Consulter le site internet'
   readonly KILOMETRES: string = 'kilomètres'
+  readonly APPELER_LE_NUMERO: string = 'Appeler le numéro '
+  readonly ENVOYER_UN_EMAIL_A: string = 'Envoyer un e-mail à '
 
   // Nos critères d’accessibilité
   readonly TITLE_PAGE_NOS_CRITERES_D_ACCESSIBILITE: string = 'Nos critères d’accessibilité' + this.SUFFIXE_TITLE

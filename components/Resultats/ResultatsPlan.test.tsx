@@ -206,10 +206,10 @@ describe('page résultats par plan', () => {
     const champsCarteLieuA = [
       within(main).getByText(lieuA.nom),
       within(main).getByText(textMatch(lieuA.adresse + lieuA.codePostal + ' ' + lieuA.ville)),
-      within(main).getByRole('link', { name: lieuA.telephone }),
+      within(main).getByRole('link', { name: wording.APPELER_LE_NUMERO + lieuA.telephone }),
       within(main).getByText(textMatch(`${lieuA.distance} km`), { selector: 'p' }),
       within(main).getByText('km', { selector: 'abbr' }),
-      within(main).getByRole('link', { name: wording.LANCER_L_ITINERAIRE + wording.NOUVELLE_FENETRE }),
+      within(main).getByRole('link', { name: wording.LANCER_L_ITINERAIRE_SUR_GOOGLE_MAPS + wording.NOUVELLE_FENETRE }),
       within(main).getByRole('link', { name: wording.PLUS_D_INFORMATIONS }),
       within(main).getByTitle(wording.TITLE_HANDICAP_MOTEUR_TOTAL),
       within(main).getByTitle(wording.TITLE_HANDICAP_MOTEUR_AVEC_ASSISTANCE),
@@ -221,6 +221,7 @@ describe('page résultats par plan', () => {
     champsCarteLieuA.forEach((champ) => expect(champ).toBeVisible())
 
     expect(champsCarteLieuA[2]).toHaveAttribute('href', 'tel:' + lieuA.telephone.replaceAll(' ', ''))
+    expect(champsCarteLieuA[2].textContent).toBe(lieuA.telephone)
     expect(champsCarteLieuA[4]).toHaveAttribute('title', wording.KILOMETRES)
     expect(champsCarteLieuA[6]).toHaveAttribute('href', 'lieu/1?lat=40&lon=50')
 
@@ -230,6 +231,7 @@ describe('page résultats par plan', () => {
     googleMapUrlLieuA.searchParams.append('destination', 'LieuA+12+rue+du+Lieu+1000+Bourg+En+Bresse')
 
     expect(champsCarteLieuA[5]).toHaveAttribute('href', googleMapUrlLieuA.toString())
+    expect(champsCarteLieuA[5].textContent).toBe(wording.LANCER_L_ITINERAIRE)
   })
 
   it('affiche une phrase demandant de recommencer le parcours quand on arrive sans latitude', () => {

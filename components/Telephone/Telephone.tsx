@@ -1,14 +1,21 @@
-import { ReactElement, ReactNode } from 'react'
+import { ReactElement } from 'react'
+
+import { useDependencies } from '../../configuration/useDependencies'
 
 type TelephoneProps = Readonly<{
-  children: ReactNode
+  children: string
   hasPicto?: boolean
   url: string
 }>
 
 export default function Telephone({ children, hasPicto = false, url }: TelephoneProps): ReactElement {
+  const { wording } = useDependencies()
+
   return (
-    <a href={`tel:${url.replaceAll(' ', '')}`}>
+    <a
+      href={`tel:${url.replaceAll(' ', '')}`}
+      title={wording.APPELER_LE_NUMERO + children}
+    >
       {
         hasPicto ? (
           <svg
