@@ -45,5 +45,3 @@
 .checkbox:checked::before {
   transform: scale(1);
 }
-
-
