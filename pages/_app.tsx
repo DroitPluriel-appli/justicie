@@ -1,15 +1,23 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { AppProps } from 'next/app'
 import Head from 'next/head'
-import { ReactElement } from 'react'
+import { ReactElement, useEffect } from 'react'
 
 import Footer from '../components/Footer/Footer'
 import Header from '../components/Header/Header'
 import LiensDEvitement from '../components/LiensDEvitement/LiensDEvitement'
 import { ContextProvider } from '../configuration/useDependencies'
 import '../configuration/globals.css'
+import { useTheme } from '../configuration/useTheme'
 
 export default function App({ Component, pageProps }: AppProps): ReactElement {
+
+  const { applyThemeFromLocalStorage } = useTheme()
+
+  useEffect(() => {
+    applyThemeFromLocalStorage()
+  })
+
   return (
     <ContextProvider>
       <LiensDEvitement />

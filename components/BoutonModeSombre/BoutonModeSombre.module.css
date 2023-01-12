@@ -1,0 +1,25 @@
+.main {
+  align-items: center;
+  color: var(--primary-color);
+  display: flex;
+  font-weight: bold;
+}
+
+.main svg {
+  margin-right: var(--m-margin);
+}
+
+.main svg rect {
+  fill: none;
+  stroke: var(--primary-color);
+  stroke-width: 3;
+}
+
+.main svg circle {
+  fill: var(--primary-color);
+  transition: all 0.25s;
+}
+
+.enabled svg circle {
+  transform: translateX(1.3rem);
+}

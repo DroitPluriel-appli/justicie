@@ -73,3 +73,7 @@ h2.nom {
 .contact a {
   line-height: 2;
 }
+
+:global(body.themeDark) .main .adresse a {
+  background-color: var(--button-color);
+}

@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { ReactElement } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
+import { BoutonModeSombre } from '../BoutonModeSombre/BoutonModeSombre'
 import Logo from '../Logo/Logo'
 import styles from './Header.module.css'
 import { useHeader } from './useHeader'
@@ -190,9 +191,13 @@ export default function Header(): ReactElement {
                 {wording.POLITIQUE_DE_GESTION_DES_DONNEES}
               </a>
             </li>
+            <li>
+              <BoutonModeSombre />
+            </li>
           </ul>
         </nav>
       </div>
+      <BoutonModeSombre />
     </header >
   )
 }

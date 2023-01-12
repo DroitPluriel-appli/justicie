@@ -127,6 +127,7 @@ export interface Wording {
   readonly NAVIGATION_DESKTOP: string
   readonly NAVIGATION_MOBILE: string
   readonly FERMER: string
+  readonly MODE_SOMBRE: string
 
   // Footer
   readonly INFORMATIONS: string
