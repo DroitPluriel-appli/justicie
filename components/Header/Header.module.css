@@ -29,6 +29,7 @@
   display: flex;
   justify-content: space-between;
   padding: var(--m-margin);
+  text-align: center;
 }
 
 :is(.desktop, .mobile) svg {
