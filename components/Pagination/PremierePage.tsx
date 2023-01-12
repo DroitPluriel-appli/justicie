@@ -19,7 +19,6 @@ export default function PremierePage(): ReactElement {
     >
       <path
         d="M2.9873 6.07329L7.85293 10.5899L6.47773 11.8637L0.147159 6L6.47773 0.136306L7.85293 1.41008L2.9873 5.92671L2.90834 6L2.9873 6.07329Z"
-        fill="#000"
       />
     </svg>
   ) : (

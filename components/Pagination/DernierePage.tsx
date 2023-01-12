@@ -24,7 +24,6 @@ export default function DernierePage({ nombreDeResultat }: DernierePageProps): R
     >
       <path
         d="M5.0127 6.07329L0.147073 10.5899L1.52227 11.8637L7.85284 6L1.52227 0.136306L0.147073 1.41008L5.0127 5.92671L5.09166 6L5.0127 6.07329Z"
-        fill="#000"
       />
     </svg>
   ) : (
