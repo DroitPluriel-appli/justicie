@@ -29,6 +29,7 @@
   display: flex;
   justify-content: space-between;
   padding: var(--m-margin);
+  text-align: center;
 }
 
 :is(.desktop, .mobile) svg {
@@ -69,7 +70,11 @@
   top: 0;
   visibility: visible;
   width: 100vw;
-  z-index: 1;
+
+  /* besoin pour éviter que la carte leaflet reste par-dessus le menu-mobile */
+
+  /* dans leaflet certains elements ont des z-index de 1000 */
+  z-index: 1001;
 }
 
 .burgerMenuOpen a {

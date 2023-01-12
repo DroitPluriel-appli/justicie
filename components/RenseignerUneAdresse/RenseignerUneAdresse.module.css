@@ -72,3 +72,10 @@
   font-weight: normal;
   padding-block: var(--m-margin);
 }
+
+.main :global(.autocomplete__option):hover,
+.main :global(.autocomplete__option--focused) {
+  background-color: var(--button-color);
+  cursor: pointer;
+  font-weight: bold;
+}
