@@ -129,7 +129,7 @@ export class WordingFr implements Wording {
   readonly NAVIGATION_DESKTOP: string = 'Navigation desktop'
   readonly NAVIGATION_MOBILE: string = 'Navigation mobile'
   readonly FERMER: string = 'Fermer'
-  readonly MODE_SOMBRE: string = 'Mode Sombre'
+  readonly MODE_SOMBRE: string = 'Mode sombre'
 
   // Footer
   readonly INFORMATIONS: string = 'Informations'
