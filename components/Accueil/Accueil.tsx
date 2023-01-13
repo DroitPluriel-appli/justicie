@@ -104,7 +104,10 @@ export default function Accueil(): ReactElement {
         </Email>
         <br />
         {wording.PAR_TELEPHONE}
-        <Telephone url={wording.TELEPHONE_DROIT_PLURIEL}>
+        <Telephone
+          nomDuLieu={wording.JUSTICE_PLURIELLE}
+          url={wording.TELEPHONE_DROIT_PLURIEL}
+        >
           {wording.TELEPHONE_DROIT_PLURIEL}
         </Telephone>
       </address>

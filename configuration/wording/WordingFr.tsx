@@ -74,27 +74,32 @@ export class WordingFr implements Wording {
   readonly PLAN: string = 'Plan'
   readonly BESOINS_D_ACCESSIBILITE: (nombre: number) => string = (nombre: number): string => `Besoins d’accessibilité (${nombre})`
   readonly LIEUX_CORRESPONDENT_A_VOTRE_RECHERCHE: (nombre: number) => string = (nombre: number): string => nombre > 1 ? `${nombre} lieux correspondent à votre recherche` : `${nombre} lieu correspond à votre recherche`
+  readonly AUCUN_LIEU_NE_CORRESPOND_A_VOTRE_RECHERCHE: string = 'Aucun lieu ne correspond à votre recherche. Vous pouvez contacter la permanence juridique de Droit Pluriel :'
+  readonly EMAIL_DROIT_PLURIEL_ZERO_RESULTAT: string = 'agir@droitpluriel.fr'
+  readonly TELEPHONE_DROIT_PLURIEL_ZERO_RESULTAT: string = '09 80 80 01 49'
   readonly LANCER_L_ITINERAIRE: string = 'Lancer l’itinéraire'
-  readonly LANCER_L_ITINERAIRE_SUR_GOOGLE_MAPS: string = 'Lancer l’itinéraire sur Google Maps'
+  readonly LANCER_L_ITINERAIRE_SUR_GOOGLE_MAPS: (nom: string) => string = (lieu: string): string => `Lancer l’itinéraire vers ${lieu} sur Google Maps`
   readonly PLUS_D_INFORMATIONS: string = 'Plus d’informations'
+  readonly PLUS_D_INFORMATIONS_SUR: (nom: string) => string = (lieu: string): string => `Plus d’informations sur ${lieu}`
   readonly PAGINATION: string = 'Pagination'
   readonly PREMIERE_PAGE: string = 'Première page'
   readonly DERNIERE_PAGE: string = 'Dernière page'
-  readonly PAGE: (numero: number) => string = (numero: number) => `Page ${numero}`
+  readonly PAGE: (numero: number) => string = (numero: number): string => `Page ${numero}`
+  readonly PERMANENCE_JURIDIQUE: string = 'la permanence juridique de Droit Pluriel'
 
   // Resultats par plan
   readonly TITLE_PAGE_RESULTATS_PAR_PLAN: string = 'Résultats par plan' + this.SUFFIXE_TITLE
   readonly TITRE_MARKER_POSITION: string = 'Votre position'
 
   // Lieu
-  readonly TITLE_PAGE_LIEU: (nom: string) => string = (nom: string) => nom + this.SUFFIXE_TITLE
+  readonly TITLE_PAGE_LIEU: (nom: string) => string = (nom: string): string => nom + this.SUFFIXE_TITLE
   readonly RETOUR_AUX_RESULTATS: string = 'Retour aux résultats'
   readonly ACCESSIBILITE_DU_LIEU: string = 'Accessibilité du lieu'
   readonly HORAIRES_ET_JOURS_D_OUVERTURE: string = 'Horaires et jours d’ouverture'
   readonly CONTACT_ET_SITE_INTERNET: string = 'Contact et site internet'
   readonly CONSULTER_LE_SITE_INTERNET: string = 'Consulter le site internet'
   readonly KILOMETRES: string = 'kilomètres'
-  readonly APPELER_LE_NUMERO: string = 'Appeler le numéro '
+  readonly APPELER_LE_NUMERO: (nom: string, numero: string) => string = (nom: string, numero: string): string => `Appeler ${nom} au ${numero}`
   readonly ENVOYER_UN_EMAIL_A: string = 'Envoyer un e-mail à '
 
   // Nos critères d’accessibilité

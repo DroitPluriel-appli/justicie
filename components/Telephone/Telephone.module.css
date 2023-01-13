@@ -1,0 +1,4 @@
+.telephone svg {
+  margin-right: var(--s-margin);
+  vertical-align: sub;
+}

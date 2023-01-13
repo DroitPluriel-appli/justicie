@@ -26,6 +26,7 @@ export default function CarteLieu({ latitude, lieu, longitude }: CarteLieuProps)
       <address className={styles.adresse}>
         <Telephone
           hasPicto
+          nomDuLieu={lieu.nom}
           url={lieu.telephone}
         >
           {lieu.telephone}
@@ -57,6 +58,7 @@ export default function CarteLieu({ latitude, lieu, longitude }: CarteLieuProps)
         id={lieu.id}
         latitude={latitude}
         longitude={longitude}
+        nomDuLieu={lieu.nom}
       >
         {wording.PLUS_D_INFORMATIONS}
       </PlusDInformations>

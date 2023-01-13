@@ -92,6 +92,7 @@ export default function Lieu({ lieu }: { lieu: LieuEntity }): ReactElement {
           <br />
           <Telephone
             hasPicto
+            nomDuLieu={lieu.nom}
             url={lieu.telephone}
           >
             {lieu.telephone}

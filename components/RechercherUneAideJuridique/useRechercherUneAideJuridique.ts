@@ -36,7 +36,7 @@ export function useRechercherUneAideJuridique() {
 
   useEffect(() => {
     async function goToRechercherParHandicap() {
-      await push(`/${paths.RECHERCHER_PAR_HANDICAP}?lat=${geoloc.latitude}&lon=${geoloc.longitude}`)
+      await push(`${paths.RECHERCHER_PAR_HANDICAP}?lat=${geoloc.latitude}&lon=${geoloc.longitude}`)
     }
 
     if (geoloc.latitude !== 0 && geoloc.longitude !== 0) {

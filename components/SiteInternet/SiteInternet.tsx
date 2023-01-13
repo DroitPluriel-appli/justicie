@@ -1,6 +1,7 @@
 import { ReactElement } from 'react'
 
 import ExternalLink from '../ExternalLink/ExternalLink'
+import styles from './SiteInternet.module.css'
 
 type SiteInternetProps = Readonly<{
   children: string
@@ -10,6 +11,7 @@ type SiteInternetProps = Readonly<{
 export default function SiteInternet({ children, url }: SiteInternetProps): ReactElement {
   return (
     <ExternalLink
+      className={styles.siteInternet}
       href={url}
       title={children}
     >

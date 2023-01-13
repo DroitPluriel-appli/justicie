@@ -7,7 +7,7 @@ import Plan from './Plan'
 import ResultatsPlan from './ResultatsPlan'
 
 describe('page résultats par plan', () => {
-  const { wording, paths } = fakeFrontDependencies
+  const { paths, wording } = fakeFrontDependencies
 
   const lieuA = LieuBuilder.cree({
     adresse: '12 rue du Lieu',
@@ -65,7 +65,6 @@ describe('page résultats par plan', () => {
       lon,
       'moteur-total': moteurTotal,
     }
-    const nombreDeResultat = 0
 
     // WHEN
     renderFakeComponent(
@@ -73,7 +72,7 @@ describe('page résultats par plan', () => {
         latitude={latitude}
         lieux={[]}
         longitude={longitude}
-        nombreDeResultat={nombreDeResultat}
+        nombreDeResultat={0}
       />
     )
 
@@ -88,11 +87,39 @@ describe('page résultats par plan', () => {
     expect(vuePlan).toHaveAttribute('href', `${paths.RESULTATS_PLAN}?lat=${lat}&lon=${lon}&moteur-total=${moteurTotal}`)
     const modifierAccessibilite = screen.getByRole('link', { name: wording.BESOINS_D_ACCESSIBILITE(1) })
     expect(modifierAccessibilite).toHaveAttribute('href', `${paths.RECHERCHER_PAR_HANDICAP}?lat=${lat}&lon=${lon}&moteur-total=${moteurTotal}`)
+  })
+
+  it('affiche une phrase du nombre de lieu trouvé', () => {
+    // GIVEN
+    mockRouter.query = {
+      lat,
+      lon,
+    }
+    const nombreDeResultat = 1
+    const lieu = LieuBuilder.cree()
+
+    // WHEN
+    renderFakeComponent(
+      <Plan
+        latitude={latitude}
+        lieux={[lieu]}
+        longitude={longitude}
+        nombreDeResultat={nombreDeResultat}
+      />
+    )
+
+    // THEN
     const titre = screen.getByText(wording.LIEUX_CORRESPONDENT_A_VOTRE_RECHERCHE(nombreDeResultat), { selector: 'p' })
     expect(titre).toBeInTheDocument()
   })
 
-  it('affiche un marker bleu à la position choisie', () => {
+  it('affiche une phrase quand aucun lieu n’a été trouvé', () => {
+    // GIVEN
+    mockRouter.query = {
+      lat,
+      lon,
+    }
+
     // WHEN
     renderFakeComponent(
       <Plan
@@ -100,6 +127,37 @@ describe('page résultats par plan', () => {
         lieux={[]}
         longitude={longitude}
         nombreDeResultat={0}
+      />
+    )
+
+    // THEN
+    const titre = screen.getByText(wording.AUCUN_LIEU_NE_CORRESPOND_A_VOTRE_RECHERCHE, { selector: 'p' })
+    expect(titre).toBeInTheDocument()
+
+    const coordonneesDroitPluriel = screen.getByText(
+      textMatch(`${wording.EMAIL_DROIT_PLURIEL_ZERO_RESULTAT}${wording.TELEPHONE_DROIT_PLURIEL_ZERO_RESULTAT}`), { selector: 'address' }
+    )
+
+    const eMail = within(coordonneesDroitPluriel).getByRole('link', { name: wording.ENVOYER_UN_EMAIL_A + wording.EMAIL_DROIT_PLURIEL_ZERO_RESULTAT })
+    expect(eMail).toHaveAttribute('href', 'mailto:' + wording.EMAIL_DROIT_PLURIEL_ZERO_RESULTAT)
+    expect(eMail.textContent).toBe(wording.EMAIL_DROIT_PLURIEL_ZERO_RESULTAT)
+
+    const telephone = within(coordonneesDroitPluriel).getByRole('link', { name: wording.APPELER_LE_NUMERO(wording.PERMANENCE_JURIDIQUE, wording.TELEPHONE_DROIT_PLURIEL_ZERO_RESULTAT) })
+    expect(telephone).toHaveAttribute('href', 'tel:' + wording.TELEPHONE_DROIT_PLURIEL_ZERO_RESULTAT.replaceAll(' ', ''))
+    expect(telephone.textContent).toBe(wording.TELEPHONE_DROIT_PLURIEL_ZERO_RESULTAT)
+  })
+
+  it('affiche un marker bleu à la position choisie', () => {
+    // GIVEN
+    const lieu = LieuBuilder.cree()
+
+    // WHEN
+    renderFakeComponent(
+      <Plan
+        latitude={latitude}
+        lieux={[lieu]}
+        longitude={longitude}
+        nombreDeResultat={1}
       />
     )
 
@@ -206,11 +264,11 @@ describe('page résultats par plan', () => {
     const champsCarteLieuA = [
       within(main).getByText(lieuA.nom),
       within(main).getByText(textMatch(lieuA.adresse + lieuA.codePostal + ' ' + lieuA.ville)),
-      within(main).getByRole('link', { name: wording.APPELER_LE_NUMERO + lieuA.telephone }),
+      within(main).getByRole('link', { name: wording.APPELER_LE_NUMERO(lieuA.nom, lieuA.telephone) }),
       within(main).getByText(textMatch(`${lieuA.distance} km`), { selector: 'p' }),
       within(main).getByText('km', { selector: 'abbr' }),
-      within(main).getByRole('link', { name: wording.LANCER_L_ITINERAIRE_SUR_GOOGLE_MAPS + wording.NOUVELLE_FENETRE }),
-      within(main).getByRole('link', { name: wording.PLUS_D_INFORMATIONS }),
+      within(main).getByRole('link', { name: wording.LANCER_L_ITINERAIRE_SUR_GOOGLE_MAPS(lieuA.nom) + wording.NOUVELLE_FENETRE }),
+      within(main).getByRole('link', { name: wording.PLUS_D_INFORMATIONS_SUR(lieuA.nom) }),
       within(main).getByTitle(wording.TITLE_HANDICAP_MOTEUR_TOTAL),
       within(main).getByTitle(wording.TITLE_HANDICAP_MOTEUR_AVEC_ASSISTANCE),
       within(main).getByTitle(wording.TITLE_HANDICAP_VISUEL),
@@ -223,7 +281,8 @@ describe('page résultats par plan', () => {
     expect(champsCarteLieuA[2]).toHaveAttribute('href', 'tel:' + lieuA.telephone.replaceAll(' ', ''))
     expect(champsCarteLieuA[2].textContent).toBe(lieuA.telephone)
     expect(champsCarteLieuA[4]).toHaveAttribute('title', wording.KILOMETRES)
-    expect(champsCarteLieuA[6]).toHaveAttribute('href', 'lieu/1?lat=40&lon=50')
+    expect(champsCarteLieuA[6]).toHaveAttribute('href', `${paths.LIEU}/1?lat=40&lon=50`)
+    expect(champsCarteLieuA[6].textContent).toBe(wording.PLUS_D_INFORMATIONS)
 
     const googleMapUrlLieuA = new URL('https://www.google.com/maps/dir/')
     googleMapUrlLieuA.searchParams.append('api', '1')

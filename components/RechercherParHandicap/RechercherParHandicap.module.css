@@ -13,10 +13,6 @@
   fill: var(--white);
 }
 
-.main button svg {
-  margin-right: var(--s-margin);
-}
-
 .main a {
   color: var(--white);
   font-size: var(--s-font);

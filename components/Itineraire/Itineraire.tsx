@@ -2,6 +2,7 @@ import { ReactElement } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
 import ExternalLink from '../ExternalLink/ExternalLink'
+import styles from './Itineraire.module.css'
 
 type ItineraireProps = Readonly<{
   adresse: string
@@ -24,9 +25,9 @@ export default function Itineraire({ adresse, children, codePostal, hasPicto = f
 
   return (
     <ExternalLink
-      className="carteLieu__buttons"
+      className={`${styles.itineraire} carteLieu__buttons`}
       href={url.toString()}
-      title={wording.LANCER_L_ITINERAIRE_SUR_GOOGLE_MAPS}
+      title={wording.LANCER_L_ITINERAIRE_SUR_GOOGLE_MAPS(nom)}
     >
       {
         hasPicto ? (

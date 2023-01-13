@@ -52,7 +52,7 @@ describe('rechercher un lieu', () => {
     const utiliserMaPostionActuelleGrisee = screen.getByRole('button', { name: wording.CHARGEMENT })
     expect(utiliserMaPostionActuelleGrisee).toBeDisabled()
     await waitFor(() => {
-      expect(mockRouter.asPath).toBe(`/${paths.RECHERCHER_PAR_HANDICAP}?lat=43.296482&lon=5.36978`)
+      expect(mockRouter.asPath).toBe(`${paths.RECHERCHER_PAR_HANDICAP}?lat=43.296482&lon=5.36978`)
     })
   })
 
@@ -72,7 +72,7 @@ describe('rechercher un lieu', () => {
     const utiliserMaPostionActuelleGrisee = screen.getByRole('button', { name: wording.CHARGEMENT })
     expect(utiliserMaPostionActuelleGrisee).toBeDisabled()
     await waitFor(() => {
-      expect(mockRouter.asPath).toBe(`/${paths.RECHERCHER_PAR_HANDICAP}?lat=43.296482&lon=5.36978`)
+      expect(mockRouter.asPath).toBe(`${paths.RECHERCHER_PAR_HANDICAP}?lat=43.296482&lon=5.36978`)
     })
   })
 

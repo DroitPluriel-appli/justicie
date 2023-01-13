@@ -27,21 +27,25 @@ export default function ResultatsListe({ lieux, nombreDeResultat }: { lieux: Lie
         {wording.TITLE_PAGE_ADRESSE_LISTE}
       </Title>
       <EnTete nombreDeResultat={nombreDeResultat} />
-      <ul>
-        {
-          lieux.map((lieu) => {
-            return (
-              <li key={lieu.id}>
-                <CarteLieu
-                  latitude={Number(query.lat)}
-                  lieu={lieu}
-                  longitude={Number(query.lon)}
-                />
-              </li>
-            )
-          })
-        }
-      </ul>
+      {
+        lieux.length !== 0 && (
+          <ul>
+            {
+              lieux.map((lieu) => {
+                return (
+                  <li key={lieu.id}>
+                    <CarteLieu
+                      latitude={Number(query.lat)}
+                      lieu={lieu}
+                      longitude={Number(query.lon)}
+                    />
+                  </li>
+                )
+              })
+            }
+          </ul>
+        )
+      }
       {
         nombreDeResultat > nombreDeLieuxAffichesParPage && (
           <Pagination

@@ -1,6 +1,7 @@
 import { ReactElement, ReactNode, useCallback } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
+import styles from './BackButton.module.css'
 
 type BackButtonProps = Readonly<{
   children: ReactNode
@@ -16,6 +17,7 @@ export default function BackButton({ children }: BackButtonProps): ReactElement 
 
   return (
     <button
+      className={styles.back}
       onClick={retourEnArriere}
       type="button"
     >

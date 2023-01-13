@@ -33,21 +33,25 @@ export default function Plan({ latitude, lieux, longitude, nombreDeResultat }: P
   })
 
   useEffect(() => {
-    const map = L.map('map')
-      .setView(mapSettings.viewCenter, mapSettings.defaultZoom)
-      .addLayer(mapLayer)
-      .addLayer(setMarkerPosition(mapSettings.viewCenter, wording.TITRE_MARKER_POSITION))
+    if (nombreDeResultat !== 0) {
+      const map = L.map('map')
+        .setView(mapSettings.viewCenter, mapSettings.defaultZoom)
+        .addLayer(mapLayer)
+        .addLayer(setMarkerPosition(mapSettings.viewCenter, wording.TITRE_MARKER_POSITION))
 
-    const markersLieux = setMarkersLieux(lieux, latitude, longitude)
-    markersLieux.forEach((lieu) => lieu.addTo(map))
+      const markersLieux = setMarkersLieux(lieux, latitude, longitude)
+      markersLieux.forEach((lieu) => lieu.addTo(map))
 
-    // Si la carte n'est pas supprimée quand le composant update,
-    // cela peut provoquer des bugs liés à leaflet, notamment
-    // que la carte ne soit plus draggable. Ici on supprime la map
-    // automatiquement avant chaque update du composant.
-    return () => {
-      map.remove()
+      // Si la carte n'est pas supprimée quand le composant update,
+      // cela peut provoquer des bugs liés à leaflet, notamment
+      // que la carte ne soit plus draggable. Ici on supprime la map
+      // automatiquement avant chaque update du composant.
+      return () => {
+        map.remove()
+      }
     }
+
+    return
   })
 
   return (
@@ -56,10 +60,14 @@ export default function Plan({ latitude, lieux, longitude, nombreDeResultat }: P
         {wording.TITLE_PAGE_RESULTATS_PAR_PLAN}
       </Title>
       <EnTete nombreDeResultat={nombreDeResultat} />
-      <div
-        className={styles.leafletMap}
-        id="map"
-      />
+      {
+        nombreDeResultat !== 0 && (
+          <div
+            className={styles.leafletMap}
+            id="map"
+          />
+        )
+      }
     </>
   )
 }

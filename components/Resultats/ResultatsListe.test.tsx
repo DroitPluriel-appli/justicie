@@ -37,13 +37,12 @@ describe('résultats de recherche affichés en liste', () => {
       lon,
       'moteur-total': moteurTotal,
     }
-    const nombreDeResultat = 0
 
     // WHEN
     renderFakeComponent(
       <ResultatsListe
         lieux={[]}
-        nombreDeResultat={nombreDeResultat}
+        nombreDeResultat={0}
       />
     )
 
@@ -58,8 +57,60 @@ describe('résultats de recherche affichés en liste', () => {
     expect(vuePlan).toHaveAttribute('href', `${paths.RESULTATS_PLAN}?lat=${lat}&lon=${lon}&moteur-total=${moteurTotal}`)
     const modifierAccessibilite = screen.getByRole('link', { name: wording.BESOINS_D_ACCESSIBILITE(1) })
     expect(modifierAccessibilite).toHaveAttribute('href', `${paths.RECHERCHER_PAR_HANDICAP}?lat=${lat}&lon=${lon}&moteur-total=${moteurTotal}`)
+  })
+
+  it('affiche une phrase du nombre de lieu trouvé', () => {
+    // GIVEN
+    mockRouter.query = {
+      lat,
+      lon,
+    }
+    const nombreDeResultat = 1
+    const lieu = LieuBuilder.cree()
+
+    // WHEN
+    renderFakeComponent(
+      <ResultatsListe
+        lieux={[lieu]}
+        nombreDeResultat={nombreDeResultat}
+      />
+    )
+
+    // THEN
     const titre = screen.getByText(wording.LIEUX_CORRESPONDENT_A_VOTRE_RECHERCHE(nombreDeResultat), { selector: 'p' })
     expect(titre).toBeInTheDocument()
+  })
+
+  it('affiche une phrase quand aucun lieu n’a été trouvé', () => {
+    // GIVEN
+    mockRouter.query = {
+      lat,
+      lon,
+    }
+
+    // WHEN
+    renderFakeComponent(
+      <ResultatsListe
+        lieux={[]}
+        nombreDeResultat={0}
+      />
+    )
+
+    // THEN
+    const titre = screen.getByText(wording.AUCUN_LIEU_NE_CORRESPOND_A_VOTRE_RECHERCHE, { selector: 'p' })
+    expect(titre).toBeInTheDocument()
+
+    const coordonneesDroitPluriel = screen.getByText(
+      textMatch(`${wording.EMAIL_DROIT_PLURIEL_ZERO_RESULTAT}${wording.TELEPHONE_DROIT_PLURIEL_ZERO_RESULTAT}`), { selector: 'address' }
+    )
+
+    const eMail = within(coordonneesDroitPluriel).getByRole('link', { name: wording.ENVOYER_UN_EMAIL_A + wording.EMAIL_DROIT_PLURIEL_ZERO_RESULTAT })
+    expect(eMail).toHaveAttribute('href', 'mailto:' + wording.EMAIL_DROIT_PLURIEL_ZERO_RESULTAT)
+    expect(eMail.textContent).toBe(wording.EMAIL_DROIT_PLURIEL_ZERO_RESULTAT)
+
+    const telephone = within(coordonneesDroitPluriel).getByRole('link', { name: wording.APPELER_LE_NUMERO(wording.PERMANENCE_JURIDIQUE, wording.TELEPHONE_DROIT_PLURIEL_ZERO_RESULTAT) })
+    expect(telephone).toHaveAttribute('href', 'tel:' + wording.TELEPHONE_DROIT_PLURIEL_ZERO_RESULTAT.replaceAll(' ', ''))
+    expect(telephone.textContent).toBe(wording.TELEPHONE_DROIT_PLURIEL_ZERO_RESULTAT)
   })
 
   it('affiche une phrase demandant de recommencer le parcours quand on arrive sans latitude', () => {
@@ -121,11 +172,11 @@ describe('résultats de recherche affichés en liste', () => {
     const champsCarteLieuA = [
       within(cartesLieux[0]).getByText(lieuA.nom),
       within(cartesLieux[0]).getByText(textMatch(lieuA.adresse + lieuA.codePostal + ' ' + lieuA.ville)),
-      within(cartesLieux[0]).getByRole('link', { name: wording.APPELER_LE_NUMERO + lieuA.telephone }),
+      within(cartesLieux[0]).getByRole('link', { name: wording.APPELER_LE_NUMERO(lieuA.nom, lieuA.telephone) }),
       within(cartesLieux[0]).getByText(textMatch(`${lieuA.distance} km`), { selector: 'p' }),
       within(cartesLieux[0]).getByText('km', { selector: 'abbr' }),
-      within(cartesLieux[0]).getByRole('link', { name: wording.LANCER_L_ITINERAIRE_SUR_GOOGLE_MAPS + wording.NOUVELLE_FENETRE }),
-      within(cartesLieux[0]).getByRole('link', { name: wording.PLUS_D_INFORMATIONS }),
+      within(cartesLieux[0]).getByRole('link', { name: wording.LANCER_L_ITINERAIRE_SUR_GOOGLE_MAPS(lieuA.nom) + wording.NOUVELLE_FENETRE }),
+      within(cartesLieux[0]).getByRole('link', { name: wording.PLUS_D_INFORMATIONS_SUR(lieuA.nom) }),
       within(cartesLieux[0]).getByTitle(wording.TITLE_HANDICAP_MOTEUR_TOTAL),
       within(cartesLieux[0]).getByTitle(wording.TITLE_HANDICAP_MOTEUR_AVEC_ASSISTANCE),
       within(cartesLieux[0]).getByTitle(wording.TITLE_HANDICAP_VISUEL),
@@ -138,7 +189,8 @@ describe('résultats de recherche affichés en liste', () => {
     expect(champsCarteLieuA[2]).toHaveAttribute('href', 'tel:' + lieuA.telephone.replaceAll(' ', ''))
     expect(champsCarteLieuA[2].textContent).toBe(lieuA.telephone)
     expect(champsCarteLieuA[4]).toHaveAttribute('title', wording.KILOMETRES)
-    expect(champsCarteLieuA[6]).toHaveAttribute('href', 'lieu/1?lat=48.844928&lon=2.31016')
+    expect(champsCarteLieuA[6]).toHaveAttribute('href', `${paths.LIEU}/1?lat=48.844928&lon=2.31016`)
+    expect(champsCarteLieuA[6].textContent).toBe(wording.PLUS_D_INFORMATIONS)
 
     const googleMapUrlLieuA = new URL('https://www.google.com/maps/dir/')
     googleMapUrlLieuA.searchParams.append('api', '1')
@@ -151,11 +203,11 @@ describe('résultats de recherche affichés en liste', () => {
     const champsCarteLieuB = [
       within(cartesLieux[1]).getByText(lieuB.nom),
       within(cartesLieux[1]).getByText(textMatch(lieuB.adresse + lieuB.codePostal + ' ' + lieuB.ville)),
-      within(cartesLieux[1]).getByRole('link', { name: wording.APPELER_LE_NUMERO + lieuB.telephone }),
+      within(cartesLieux[1]).getByRole('link', { name: wording.APPELER_LE_NUMERO(lieuB.nom, lieuB.telephone) }),
       within(cartesLieux[1]).getByText(textMatch(`${lieuA.distance} km`), { selector: 'p' }),
       within(cartesLieux[1]).getByText('km', { selector: 'abbr' }),
-      within(cartesLieux[1]).getByRole('link', { name: wording.LANCER_L_ITINERAIRE_SUR_GOOGLE_MAPS + wording.NOUVELLE_FENETRE }),
-      within(cartesLieux[1]).getByRole('link', { name: wording.PLUS_D_INFORMATIONS }),
+      within(cartesLieux[1]).getByRole('link', { name: wording.LANCER_L_ITINERAIRE_SUR_GOOGLE_MAPS(lieuB.nom) + wording.NOUVELLE_FENETRE }),
+      within(cartesLieux[1]).getByRole('link', { name: wording.PLUS_D_INFORMATIONS_SUR(lieuB.nom) }),
       within(cartesLieux[1]).getByTitle(wording.TITLE_HANDICAP_VISUEL),
       within(cartesLieux[1]).getByTitle(wording.TITLE_HANDICAP_MOTEUR_AVEC_ASSISTANCE),
       within(cartesLieux[1]).getByTitle(wording.TITLE_HANDICAP_MOTEUR_TOTAL),
@@ -165,7 +217,8 @@ describe('résultats de recherche affichés en liste', () => {
     expect(champsCarteLieuB[2]).toHaveAttribute('href', 'tel:' + lieuB.telephone.replaceAll(' ', ''))
     expect(champsCarteLieuB[2].textContent).toBe(lieuA.telephone)
     expect(champsCarteLieuB[4]).toHaveAttribute('title', wording.KILOMETRES)
-    expect(champsCarteLieuB[6]).toHaveAttribute('href', 'lieu/2?lat=48.844928&lon=2.31016')
+    expect(champsCarteLieuB[6]).toHaveAttribute('href', `${paths.LIEU}/2?lat=48.844928&lon=2.31016`)
+    expect(champsCarteLieuB[6].textContent).toBe(wording.PLUS_D_INFORMATIONS)
 
     const googleMapUrlLieuB = new URL('https://www.google.com/maps/dir/')
     googleMapUrlLieuB.searchParams.append('api', '1')
