@@ -11,9 +11,7 @@ export function BoutonModeSombre(): ReactElement {
   const { isEnabled, toggleIsEnabled, setIsEnabled } = useBoutonModeSombre(toggleDarkTheme)
 
   useEffect(() => {
-    if (isDarkThemeInLocalStorage()) {
-      setIsEnabled(true)
-    }
+    setIsEnabled(isDarkThemeInLocalStorage())
   })
 
   return (
