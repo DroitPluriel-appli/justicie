@@ -74,7 +74,7 @@ export function useRenseignerUneAdresse() {
   const vaAlEtape2 = useCallback((event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     async function goToRechercherParHandicap(coordonneesGeospatiales: AdresseJson) {
-      await push(`/${paths.RECHERCHER_PAR_HANDICAP}?lat=${coordonneesGeospatiales.geometry.coordinates[1]}&lon=${coordonneesGeospatiales.geometry.coordinates[0]}`)
+      await push(`${paths.RECHERCHER_PAR_HANDICAP}?lat=${coordonneesGeospatiales.geometry.coordinates[1]}&lon=${coordonneesGeospatiales.geometry.coordinates[0]}`)
     }
 
     const coordonneesGeospatiales = libelleDesAdresses.features.find((adresse): boolean => adresseSelectionnee === adresse.properties.label)

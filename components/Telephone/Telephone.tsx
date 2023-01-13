@@ -1,20 +1,23 @@
 import { ReactElement } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
+import styles from './Telephone.module.css'
 
 type TelephoneProps = Readonly<{
   children: string
   hasPicto?: boolean
+  nomDuLieu: string
   url: string
 }>
 
-export default function Telephone({ children, hasPicto = false, url }: TelephoneProps): ReactElement {
+export default function Telephone({ children, hasPicto = false, nomDuLieu, url }: TelephoneProps): ReactElement {
   const { wording } = useDependencies()
 
   return (
     <a
+      className={styles.telephone}
       href={`tel:${url.replaceAll(' ', '')}`}
-      title={wording.APPELER_LE_NUMERO + children}
+      title={wording.APPELER_LE_NUMERO(nomDuLieu, children)}
     >
       {
         hasPicto ? (

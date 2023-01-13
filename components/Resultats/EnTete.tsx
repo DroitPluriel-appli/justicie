@@ -3,6 +3,8 @@ import { ReactElement } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
 import BackLink from '../BackLink/BackLink'
+import Email from '../Email/Email'
+import Telephone from '../Telephone/Telephone'
 import styles from './EnTete.module.css'
 import { useEnTete } from './useEnTete'
 
@@ -49,9 +51,35 @@ export default function EnTete({ nombreDeResultat }: EnTeteProps): ReactElement 
           </Link>
         </li>
       </ul>
-      <p className={styles.correspondance}>
-        {wording.LIEUX_CORRESPONDENT_A_VOTRE_RECHERCHE(nombreDeResultat)}
-      </p>
+      {
+        nombreDeResultat === 0 ? (
+          <>
+            <p className={styles.aucuneCorrespondance}>
+              {wording.AUCUN_LIEU_NE_CORRESPOND_A_VOTRE_RECHERCHE}
+            </p>
+            <address className={styles.adresse}>
+              <Email
+                hasPicto
+                url={wording.EMAIL_DROIT_PLURIEL_ZERO_RESULTAT}
+              >
+                {wording.EMAIL_DROIT_PLURIEL_ZERO_RESULTAT}
+              </Email>
+              <br />
+              <Telephone
+                hasPicto
+                nomDuLieu={wording.PERMANENCE_JURIDIQUE}
+                url={wording.TELEPHONE_DROIT_PLURIEL_ZERO_RESULTAT}
+              >
+                {wording.TELEPHONE_DROIT_PLURIEL_ZERO_RESULTAT}
+              </Telephone>
+            </address>
+          </>
+        ) : (
+          <p className={styles.correspondance}>
+            {wording.LIEUX_CORRESPONDENT_A_VOTRE_RECHERCHE(nombreDeResultat)}
+          </p>
+        )
+      }
     </>
   )
 }

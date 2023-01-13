@@ -72,13 +72,18 @@ export interface Wording {
   readonly PLAN: string
   readonly BESOINS_D_ACCESSIBILITE: (nombre: number) => string
   readonly LIEUX_CORRESPONDENT_A_VOTRE_RECHERCHE: (nombre: number) => string
+  readonly AUCUN_LIEU_NE_CORRESPOND_A_VOTRE_RECHERCHE: string
+  readonly EMAIL_DROIT_PLURIEL_ZERO_RESULTAT: string
+  readonly TELEPHONE_DROIT_PLURIEL_ZERO_RESULTAT: string
   readonly LANCER_L_ITINERAIRE: string
-  readonly LANCER_L_ITINERAIRE_SUR_GOOGLE_MAPS: string
+  readonly LANCER_L_ITINERAIRE_SUR_GOOGLE_MAPS: (nom: string) => string
   readonly PLUS_D_INFORMATIONS: string
+  readonly PLUS_D_INFORMATIONS_SUR: (nom: string) => string
   readonly PAGINATION: string
   readonly PREMIERE_PAGE: string
   readonly DERNIERE_PAGE: string
   readonly PAGE: (numero: number) => string
+  readonly PERMANENCE_JURIDIQUE: string
 
   // Resultats par plan
   readonly TITLE_PAGE_RESULTATS_PAR_PLAN: string
@@ -92,7 +97,7 @@ export interface Wording {
   readonly CONTACT_ET_SITE_INTERNET: string
   readonly CONSULTER_LE_SITE_INTERNET: string
   readonly KILOMETRES: string
-  readonly APPELER_LE_NUMERO: string
+  readonly APPELER_LE_NUMERO: (nom: string, numero: string) => string
   readonly ENVOYER_UN_EMAIL_A: string
 
   // Nos critères d'accessibilité

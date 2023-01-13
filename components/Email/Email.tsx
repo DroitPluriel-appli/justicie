@@ -1,6 +1,7 @@
 import { ReactElement } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
+import styles from './Email.module.css'
 
 type EmailProps = Readonly<{
   children: string
@@ -13,6 +14,7 @@ export default function Email({ children, hasPicto = false, url }: EmailProps): 
 
   return (
     <a
+      className={styles.email}
       href={`mailto:${url}`}
       title={wording.ENVOYER_UN_EMAIL_A + children}
     >

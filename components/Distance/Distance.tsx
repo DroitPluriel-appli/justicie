@@ -1,6 +1,7 @@
 import { ReactElement, ReactNode } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
+import styles from './Distance.module.css'
 
 type DistanceProps = Readonly<{
   children: ReactNode
@@ -10,7 +11,7 @@ export default function Distance({ children }: DistanceProps): ReactElement {
   const { wording } = useDependencies()
 
   return (
-    <p className="distance">
+    <p className={styles.distance}>
       <svg
         aria-hidden
         height="14"

@@ -32,7 +32,7 @@
   padding: var(--m-margin);
 }
 
-.main > *:not(a, :global(.distance)) {
+.main > *:not(a, p) {
   padding-inline: var(--l-margin);
 }
 
@@ -69,10 +69,6 @@
   margin-bottom: var(--m-margin);
 }
 
-.main :global(.distance) {
-  grid-area: distance;
-}
-
 /* Obligé de préciser a.class pour override un des styles par défaut de leaflet */
 .main :global(.carteLieu__buttons) {
   align-items: center;
@@ -85,11 +81,6 @@
   margin-right: -1px;
   padding: var(--l-margin);
   text-align: center;
-}
-
-.adresse svg,
-.main :global(.distance) svg {
-  margin-right: var(--s-margin);
 }
 
 .main :global(.carteLieu__buttons):nth-of-type(1) {

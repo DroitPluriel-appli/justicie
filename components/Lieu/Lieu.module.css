@@ -9,19 +9,6 @@
   padding-inline: var(--m-margin);
 }
 
-.contact svg {
-  margin-right: var(--s-margin);
-  vertical-align: sub;
-}
-
-.adresse svg {
-  margin-right: var(--s-margin);
-}
-
-.main button svg {
-  margin-right: var(--s-margin);
-}
-
 .main section {
   border-bottom: 1px solid var(--gray);
   margin-bottom: var(--m-margin);
@@ -71,7 +58,7 @@ h2.nom {
 }
 
 .contact a {
-  line-height: 2;
+  line-height: 1.5;
 }
 
 :global(body.themeDark) .main .adresse a {

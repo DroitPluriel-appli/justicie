@@ -40,17 +40,17 @@ export default function Header(): ReactElement {
             </h1>
           </li>
           <li>
-            <Link href={`/${paths.NOS_CRITERES_D_ACCESSIBILITE}`}>
+            <Link href={paths.NOS_CRITERES_D_ACCESSIBILITE}>
               {wording.NOS_CRITERES_D_ACCESSIBILITE}
             </Link>
           </li>
           <li>
-            <Link href={`/${paths.POLITIQUE_DE_GESTION_DES_DONNEES}`}>
+            <Link href={paths.POLITIQUE_DE_GESTION_DES_DONNEES}>
               {wording.POLITIQUE_DE_GESTION_DES_DONNEES}
             </Link>
           </li>
           <li className={styles.rechercher}>
-            <Link href={`/${paths.RECHERCHER_UNE_AIDE_JURIDIQUE}`}>
+            <Link href={paths.RECHERCHER_UNE_AIDE_JURIDIQUE}>
               {wording.RECHERCHER_UNE_AIDE_JURIDIQUE}
             </Link>
           </li>
@@ -147,7 +147,7 @@ export default function Header(): ReactElement {
               </a>
             </li>
             <li>
-              <a href={`/${paths.RECHERCHER_UNE_AIDE_JURIDIQUE}`}>
+              <a href={paths.RECHERCHER_UNE_AIDE_JURIDIQUE}>
                 <svg
                   aria-hidden
                   height="21"
@@ -162,7 +162,7 @@ export default function Header(): ReactElement {
               </a>
             </li>
             <li>
-              <a href={`/${paths.NOS_CRITERES_D_ACCESSIBILITE}`}>
+              <a href={paths.NOS_CRITERES_D_ACCESSIBILITE}>
                 <svg
                   aria-hidden
                   height="21"
@@ -177,7 +177,7 @@ export default function Header(): ReactElement {
               </a>
             </li>
             <li>
-              <a href={`/${paths.POLITIQUE_DE_GESTION_DES_DONNEES}`}>
+              <a href={paths.POLITIQUE_DE_GESTION_DES_DONNEES}>
                 <svg
                   aria-hidden
                   height="21"

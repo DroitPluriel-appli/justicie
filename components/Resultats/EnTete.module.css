@@ -56,3 +56,12 @@
   font-weight: bold;
   margin-bottom: var(--l-margin);
 }
+
+.aucuneCorrespondance {
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.adresse {
+  line-height: 1.5;
+}

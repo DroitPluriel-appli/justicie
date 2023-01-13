@@ -24,13 +24,13 @@ describe('en-tête de page', () => {
     expect(title).toBeInTheDocument()
 
     const nosCriteresDAccessibilite = within(items[2]).getByRole('link', { name: wording.NOS_CRITERES_D_ACCESSIBILITE })
-    expect(nosCriteresDAccessibilite).toHaveAttribute('href', `/${paths.NOS_CRITERES_D_ACCESSIBILITE}`)
+    expect(nosCriteresDAccessibilite).toHaveAttribute('href', paths.NOS_CRITERES_D_ACCESSIBILITE)
 
     const politiqueDeGestionDesDonnees = within(items[3]).getByRole('link', { name: wording.POLITIQUE_DE_GESTION_DES_DONNEES })
-    expect(politiqueDeGestionDesDonnees).toHaveAttribute('href', `/${paths.POLITIQUE_DE_GESTION_DES_DONNEES}`)
+    expect(politiqueDeGestionDesDonnees).toHaveAttribute('href', paths.POLITIQUE_DE_GESTION_DES_DONNEES)
 
     const rechercherLieuDeDroit = within(items[4]).getByRole('link', { name: wording.RECHERCHER_UNE_AIDE_JURIDIQUE })
-    expect(rechercherLieuDeDroit).toHaveAttribute('href', `/${paths.RECHERCHER_UNE_AIDE_JURIDIQUE}`)
+    expect(rechercherLieuDeDroit).toHaveAttribute('href', paths.RECHERCHER_UNE_AIDE_JURIDIQUE)
   })
 
   it('affiche les liens du menu en version mobile', () => {
@@ -85,11 +85,11 @@ describe('en-tête de page', () => {
     const accueil = within(items[1]).getByRole('link', { name: wording.ACCUEIL })
     expect(accueil).toHaveAttribute('href', paths.ACCUEIL)
     const rechercherLieuDeDroit = within(items[2]).getByRole('link', { name: wording.RECHERCHER_UNE_AIDE_JURIDIQUE })
-    expect(rechercherLieuDeDroit).toHaveAttribute('href', `/${paths.RECHERCHER_UNE_AIDE_JURIDIQUE}`)
+    expect(rechercherLieuDeDroit).toHaveAttribute('href', paths.RECHERCHER_UNE_AIDE_JURIDIQUE)
     const nosCriteresDAccessibilite = within(items[3]).getByRole('link', { name: wording.NOS_CRITERES_D_ACCESSIBILITE })
-    expect(nosCriteresDAccessibilite).toHaveAttribute('href', `/${paths.NOS_CRITERES_D_ACCESSIBILITE}`)
+    expect(nosCriteresDAccessibilite).toHaveAttribute('href', paths.NOS_CRITERES_D_ACCESSIBILITE)
     const politiqueDeGestionDesDonnees = within(items[4]).getByRole('link', { name: wording.POLITIQUE_DE_GESTION_DES_DONNEES })
-    expect(politiqueDeGestionDesDonnees).toHaveAttribute('href', `/${paths.POLITIQUE_DE_GESTION_DES_DONNEES}`)
+    expect(politiqueDeGestionDesDonnees).toHaveAttribute('href', paths.POLITIQUE_DE_GESTION_DES_DONNEES)
   })
 
   it.each([

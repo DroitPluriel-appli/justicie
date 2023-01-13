@@ -226,7 +226,7 @@ describe('renseigner une adresse', () => {
 
     // THEN
     await waitFor(() => {
-      expect(mockRouter.asPath).toBe(`/${paths.RECHERCHER_PAR_HANDICAP}?lat=43.296482&lon=5.36978`)
+      expect(mockRouter.asPath).toBe(`${paths.RECHERCHER_PAR_HANDICAP}?lat=43.296482&lon=5.36978`)
     })
   })
 
