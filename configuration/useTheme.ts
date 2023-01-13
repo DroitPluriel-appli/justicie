@@ -30,5 +30,5 @@ export function useTheme() {
       setThemeLight()
   }
 
-  return { applyThemeFromLocalStorage, toggleDarkTheme }
+  return { applyThemeFromLocalStorage, isDarkThemeInLocalStorage, toggleDarkTheme }
 }

@@ -1,4 +1,4 @@
-import { ReactElement } from 'react'
+import { ReactElement, useEffect } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
 import { useTheme } from '../../configuration/useTheme'
@@ -7,8 +7,14 @@ import useBoutonModeSombre from './useBoutonModeSombre'
 
 export function BoutonModeSombre(): ReactElement {
   const { wording } = useDependencies()
-  const { toggleDarkTheme } = useTheme()
-  const { isEnabled, toggleIsEnabled } = useBoutonModeSombre(toggleDarkTheme)
+  const { toggleDarkTheme, isDarkThemeInLocalStorage } = useTheme()
+  const { isEnabled, toggleIsEnabled, setIsEnabled } = useBoutonModeSombre(toggleDarkTheme)
+
+  useEffect(() => {
+    if (isDarkThemeInLocalStorage()) {
+      setIsEnabled(true)
+    }
+  })
 
   return (
     <button
