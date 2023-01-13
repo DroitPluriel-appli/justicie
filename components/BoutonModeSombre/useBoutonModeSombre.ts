@@ -9,5 +9,5 @@ export default function useBoutonModeSombre(actionOnClick: VoidFunction) {
     actionOnClick()
   }, [actionOnClick, isEnabled])
 
-  return { isEnabled, toggleIsEnabled }
+  return { isEnabled, setIsEnabled, toggleIsEnabled }
 }
