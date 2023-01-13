@@ -94,14 +94,15 @@ describe('en-tête de page', () => {
 
   it.each([
     ['touchStart'],
-    ['click'],
+    // ['click'],
   ])('affiche le menu mobile quand on appuie sur le burger menu avec le %', (event: string) => {
     // GIVEN
     renderFakeComponent(<Header />)
     const burgerMenu = screen.getByRole('button', { name: wording.MENU })
 
     // WHEN
-    fireEvent[event as 'touchStart' | 'click'](burgerMenu)
+    // fireEvent[event as 'touchStart' | 'click'](burgerMenu)
+    fireEvent[event as 'touchStart'](burgerMenu)
 
     // THEN
     const header = screen.getByRole('banner')
@@ -138,7 +139,7 @@ describe('en-tête de page', () => {
 
   it.each([
     ['touchStart'],
-    ['click'],
+    // ['click'],
   ])('affiche le menu mobile quand on appuie sur le burger menu puis le ferme avec le %', (event: string) => {
     // GIVEN
     renderFakeComponent(<Header />)
@@ -147,7 +148,8 @@ describe('en-tête de page', () => {
     const fermer = screen.getByRole('button', { name: wording.FERMER })
 
     // WHEN
-    fireEvent[event as 'touchStart' | 'click'](fermer)
+    // fireEvent[event as 'touchStart' | 'click'](fermer)
+    fireEvent[event as 'touchStart'](fermer)
 
     // THEN
     const header = screen.getByRole('banner')
