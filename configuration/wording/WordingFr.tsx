@@ -58,7 +58,7 @@ export class WordingFr implements Wording {
   readonly EFFACER_L_ADRESSE: string = 'Effacer l’adresse'
   readonly NOTICE_DES_RESULTATS: string = 'Lorsque les résultats de la saisie semi-automatique sont disponibles, utilisez les flèches haut et bas pour les vérifier et la touche Entrée pour les sélectionner. Utilisateurs d’appareils tactiles, explorez par le toucher ou par des gestes de balayage.'
   readonly VALIDER_L_ADRESSE: string = 'Valider l’adresse'
-  readonly API_ADRESSE_NE_REPOND_PLUS: string = 'L’API ne semble plus répondre'
+  readonly API_ADRESSE_NE_REPOND_PLUS: string = 'Oups, il y a un problème. Vous pouvez réessayer plus tard ou activer la géolocalisation.'
 
   // Rechercher par handicap
   readonly TITLE_PAGE_RECHERCHER_PAR_HANDICAP: string = 'Rechercher par handicap' + this.SUFFIXE_TITLE

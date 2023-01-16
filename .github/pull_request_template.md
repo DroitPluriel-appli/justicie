@@ -6,5 +6,6 @@
 - [ ] As-tu vérifier l'accessibilité avec a11y.css ?
 - [ ] As-tu vérifier l'accessibilité avec WAVE ?
 - [ ] As-tu vérifier l'accessibilité avec Axe ?
+- [ ] Est-ce que le mode sombre est valide ?
 - [ ] As-tu besoin de revoir ton ticket avec le métier ?
 - [ ] Faut-il ajouter des variables d'environnement sur la production ?

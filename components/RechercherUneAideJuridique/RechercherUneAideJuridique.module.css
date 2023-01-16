@@ -38,6 +38,10 @@
   background-color: var(--secondary-color);
 }
 
+.main p {
+  margin-bottom: var(--s-margin);
+}
+
 .ou {
   margin-bottom: var(--xxl-margin);
   text-align: center;

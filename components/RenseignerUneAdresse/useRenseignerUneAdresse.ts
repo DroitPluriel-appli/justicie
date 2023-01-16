@@ -19,6 +19,7 @@ export function useRenseignerUneAdresse() {
   const { isTheGoodKeyCode, paths, useRouter, wording } = useDependencies()
   const { push } = useRouter()
   const [isDisabled, setIsDisabled] = useState<boolean>(true)
+  const [isEmpty, setIsEmpty] = useState<boolean>(false)
   const [adresseSelectionnee, setAdresseSelectionnee] = useState<string>('')
   const [libelleDesAdresses, setLibelleDesAdresses] = useState<AdressesJson>({ features: [] })
 
@@ -34,7 +35,8 @@ export function useRenseignerUneAdresse() {
       const labelDesAdresses = adressesFiltrees.features.map((adresse) => adresse.properties.label)
       populateResults(labelDesAdresses)
     } catch (error) {
-      populateResults([wording.API_ADRESSE_NE_REPOND_PLUS])
+      setIsEmpty(true)
+      populateResults([])
     }
   }
 
@@ -83,10 +85,14 @@ export function useRenseignerUneAdresse() {
 
   const noticeDesResultats = useCallback(() => wording.NOTICE_DES_RESULTATS, [wording.NOTICE_DES_RESULTATS])
 
+  const apiAdresseNeRepondPlus = useCallback(() => wording.API_ADRESSE_NE_REPOND_PLUS, [wording.API_ADRESSE_NE_REPOND_PLUS])
+
   return {
+    apiAdresseNeRepondPlus,
     effaceLAdresseAuKeyDown,
     effaceLAdresseAuTouch,
     isDisabled,
+    isEmpty,
     noticeDesResultats,
     selectionneUneAdresse,
     suggestionDAdresse: debounce(suggestionDAdresse, 500),
