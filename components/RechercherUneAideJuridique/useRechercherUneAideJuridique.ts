@@ -49,14 +49,16 @@ export function useRechercherUneAideJuridique() {
 
   useEffect(() => {
     async function isGPSDenied() {
-      const result = await navigator.permissions.query({ name: 'geolocation' })
+      if (navigator.permissions) {
+        const result = await navigator.permissions.query({ name: 'geolocation' })
 
-      if (result.state === 'denied') {
-        setState((state) => ({
-          ...state,
-          isDisabled: true,
-          isGPSDenied: true,
-        }))
+        if (result.state === 'denied') {
+          setState((state) => ({
+            ...state,
+            isDisabled: true,
+            isGPSDenied: true,
+          }))
+        }
       }
     }
 

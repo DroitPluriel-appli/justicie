@@ -10,9 +10,11 @@ import { useRenseignerUneAdresse } from './useRenseignerUneAdresse'
 export default function RenseignerUneAdresse(): ReactElement {
   const { paths, wording } = useDependencies()
   const {
+    apiAdresseNeRepondPlus,
     effaceLAdresseAuKeyDown,
     effaceLAdresseAuTouch,
     isDisabled,
+    isEmpty,
     noticeDesResultats,
     selectionneUneAdresse,
     suggestionDAdresse,
@@ -48,9 +50,10 @@ export default function RenseignerUneAdresse(): ReactElement {
             minLength="4"
             onConfirm={selectionneUneAdresse}
             placeholder={wording.RENSEIGNER_UNE_ADRESSE}
-            showNoOptionsFound={false}
+            showNoOptionsFound={isEmpty}
             source={suggestionDAdresse}
             tAssistiveHint={noticeDesResultats}
+            tNoResults={apiAdresseNeRepondPlus}
           />
           <button
             className={styles.reset}

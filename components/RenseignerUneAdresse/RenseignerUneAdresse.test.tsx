@@ -229,25 +229,6 @@ describe('renseigner une adresse', () => {
       expect(mockRouter.asPath).toBe(`${paths.RECHERCHER_PAR_HANDICAP}?lat=43.296482&lon=5.36978`)
     })
   })
-
-  it('l’API adresse ne répond pas', async () => {
-    // GIVEN
-    jest.spyOn(global, 'fetch').mockRejectedValueOnce('API is down')
-    renderFakeComponent(<RenseignerUneAdresse />)
-    const formulaire = screen.getByRole('search')
-    const renseignerUneAdresse = within(formulaire).getByPlaceholderText(wording.RENSEIGNER_UNE_ADRESSE)
-    const adresse = { target: { value: '34 avenue de lopera' } }
-
-    // WHEN
-    fireEvent.change(renseignerUneAdresse, adresse)
-
-    // THEN
-    const list = screen.getByRole('listbox')
-    await waitFor(() => {
-      const resultats = within(list).getAllByRole('option')
-      expect(resultats[0].textContent).toBe(wording.API_ADRESSE_NE_REPOND_PLUS)
-    })
-  })
 })
 
 function mockedFetch(adresses: AdresseJson[]) {

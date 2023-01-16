@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react'
 
 export default function useBoutonModeSombre(actionOnClick: VoidFunction) {
-  const [isEnabled, setIsEnabled] = useState(false)
+  const [isEnabled, setIsEnabled] = useState<boolean>(false)
   const toggleIsEnabled = useCallback(() => {
     isEnabled ?
       setIsEnabled(false) :
