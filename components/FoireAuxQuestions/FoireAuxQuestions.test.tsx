@@ -41,24 +41,72 @@ describe('en-tête de page', () => {
     const lienMail = within(main).getByRole('link', { name: wording.ENVOYER_UN_EMAIL_A + wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[6] })
     expect(lienMail).toHaveAttribute('href', 'mailto:' + wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[6].replaceAll(' ', ''))
   })
-})
 
-// const questionsEtReponses = [
-//   within(main).getByRole('heading', { level: 3, name: wording.QUESTION_EST_CE_QUE_AIDE_GRATUITE }),
-//   within(main).getByText(textMatch(wording.REPONSE_EST_CE_QUE_AIDE_GRATUITE), { selector: 'p' }),
-//
-//   within(main).getByRole('heading', { level: 3, name: wording.QUESTION_QUI_VA_ME_RECEVOIR }),
-//   within(main).getByText(textMatch(wording.REPONSE_QUI_VA_ME_RECEVOIR), { selector: 'p' }),
-//
-//   within(main).getByRole('heading', { level: 3, name: wording.QUESTION_EST_CE_QUE_L_AVOCAT }),
-//   within(main).getByText(textMatch(wording.REPONSE_EST_CE_QUE_L_AVOCAT), { selector: 'p' }),
-//
-//   within(main).getByRole('heading', { level: 3, name: wording.QUESTION_JE_SUIS_ALLEE_SUR_PLACE }),
-//   within(main).getByText(textMatch(wording.REPONSE_JE_SUIS_ALLEE_SUR_PLACE.join('')), { selector: 'p' }),
-//
-//   within(main).getByRole('heading', { level: 3, name: wording.QUESTION_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT }),
-//   within(main).getByText(textMatch(wording.REPONSE_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT.join('')), { selector: 'p' }),
-// ]
-//
-// questionsEtReponses.forEach((questionEtReponse) => expect(questionEtReponse).toBeInTheDocument())
-//
+  it('affiche question + reponse "Est-ce que l aide juridique apportée est entièrement gratuite ?"', () => {
+    // WHEN
+    renderFakeComponent(<FoireAuxQuestions />)
+
+    // THEN
+    const main = screen.getByRole('main')
+    const question = within(main).getByRole('heading', { level: 3, name: wording.QUESTION_EST_CE_QUE_AIDE_GRATUITE })
+    expect(question).toBeInTheDocument()
+    const reponse = within(main).getByText(wording.REPONSE_EST_CE_QUE_AIDE_GRATUITE, { selector: 'p' })
+    expect(reponse).toBeInTheDocument()
+  })
+
+  it('affiche question + reponse "Qui va me recevoir dans les lieux référencés ?"', () => {
+    // WHEN
+    renderFakeComponent(<FoireAuxQuestions />)
+
+    // THEN
+    const main = screen.getByRole('main')
+    const question = within(main).getByRole('heading', { level: 3, name: wording.QUESTION_QUI_VA_ME_RECEVOIR })
+    expect(question).toBeInTheDocument()
+    const reponse = within(main).getByText(wording.REPONSE_QUI_VA_ME_RECEVOIR, { selector: 'p' })
+    expect(reponse).toBeInTheDocument()
+  })
+
+  it('affiche question + reponse "Est ce que l avocat qui me recoit pourra me défendre pendant toute la procédure ?"', () => {
+    // WHEN
+    renderFakeComponent(<FoireAuxQuestions />)
+
+    // THEN
+    const main = screen.getByRole('main')
+    const question = within(main).getByRole('heading', { level: 3, name: wording.QUESTION_EST_CE_QUE_L_AVOCAT })
+    expect(question).toBeInTheDocument()
+    const reponse = within(main).getByText(textMatch(wording.REPONSE_EST_CE_QUE_L_AVOCAT), { selector: 'p' })
+    expect(reponse).toBeInTheDocument()
+  })
+
+  it('affiche question + reponse "Je suis allée sur place, et l’accessibilité n’est pas celle annoncée. Que faire ?"', () => {
+    // WHEN
+    renderFakeComponent(<FoireAuxQuestions />)
+
+    // THEN
+    const main = screen.getByRole('main')
+    const question = within(main).getByRole('heading', { level: 3, name: wording.QUESTION_JE_SUIS_ALLEE_SUR_PLACE })
+    expect(question).toBeInTheDocument()
+    const reponse = within(main).getByText(textMatch(wording.REPONSE_JE_SUIS_ALLEE_SUR_PLACE.join('')), { selector: 'p' })
+    expect(reponse).toBeInTheDocument()
+
+    // TODO: factoriser avec wording mail droit pluriel
+    const lienMail = within(reponse).getByRole('link', { name: wording.ENVOYER_UN_EMAIL_A + wording.REPONSE_JE_SUIS_ALLEE_SUR_PLACE[1] })
+    expect(lienMail).toHaveAttribute('href', 'mailto:' + wording.REPONSE_JE_SUIS_ALLEE_SUR_PLACE[1].replaceAll(' ', ''))
+  })
+
+  it('affiche question + reponse "Est-ce que tous les lieux apparaissent ?"', () => {
+    // WHEN
+    renderFakeComponent(<FoireAuxQuestions />)
+
+    // THEN
+    const main = screen.getByRole('main')
+    const question = within(main).getByRole('heading', { level: 3, name: wording.QUESTION_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT })
+    expect(question).toBeInTheDocument()
+    const reponse = within(main).getByText(textMatch(wording.REPONSE_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT.join('')), { selector: 'p' })
+    expect(reponse).toBeInTheDocument()
+
+    // TODO: factoriser avec wording mail droit pluriel
+    const lienMail = within(reponse).getByRole('link', { name: wording.ENVOYER_UN_EMAIL_A + wording.REPONSE_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT[1] })
+    expect(lienMail).toHaveAttribute('href', 'mailto:' + wording.REPONSE_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT[1].replaceAll(' ', ''))
+  })
+})

@@ -64,13 +64,19 @@ export default function FoireAuxQuestions(): ReactElement {
         {wording.QUESTION_JE_SUIS_ALLEE_SUR_PLACE}
       </h3>
       <p>
-        {wording.REPONSE_JE_SUIS_ALLEE_SUR_PLACE}
+        {wording.REPONSE_JE_SUIS_ALLEE_SUR_PLACE[0]}
+        <Email url={wording.REPONSE_JE_SUIS_ALLEE_SUR_PLACE[1]} >
+          {wording.REPONSE_JE_SUIS_ALLEE_SUR_PLACE[1]}
+        </Email>
       </p>
       <h3>
         {wording.QUESTION_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT}
       </h3>
       <p>
-        {wording.REPONSE_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT}
+        {wording.REPONSE_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT[0]}
+        <Email url={wording.REPONSE_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT[1]} >
+          {wording.REPONSE_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT[1]}
+        </Email>
       </p>
     </>
   )
