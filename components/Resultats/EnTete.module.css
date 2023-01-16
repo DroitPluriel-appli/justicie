@@ -59,9 +59,11 @@
 
 .aucuneCorrespondance {
   font-weight: bold;
-  margin-bottom: 0;
+  line-height: 1.5;
+  margin-bottom: var(--s-margin);
 }
 
 .adresse {
   line-height: 1.5;
+  margin-bottom: var(--s-margin);
 }
