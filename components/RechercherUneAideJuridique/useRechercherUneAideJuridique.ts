@@ -77,11 +77,19 @@ export function useRechercherUneAideJuridique() {
           setGeoloc({ latitude: position.coords.latitude, longitude: position.coords.longitude })
         },
         () => {
-          setState((state) => ({
-            ...state,
-            buttonName: wording.UTILISER_MA_POSITION_ACTUELLE,
-            isDisabled: false,
-          }))
+          if (navigator.permissions === undefined) {
+            setState((state) => ({
+              ...state,
+              isDisabled: false,
+              isGPSDenied: true,
+            }))
+          } else {
+            setState((state) => ({
+              ...state,
+              buttonName: wording.UTILISER_MA_POSITION_ACTUELLE,
+              isDisabled: false,
+            }))
+          }
         }
       )
     }

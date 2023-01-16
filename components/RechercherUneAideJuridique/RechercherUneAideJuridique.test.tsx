@@ -42,7 +42,7 @@ describe('rechercher un lieu', () => {
     expect(renseignerUneAdresse).toHaveAttribute('href', paths.RENSEIGNER_UNE_ADRESSE)
   })
 
-  it('affiche un message demandant d’activer sa géolocalisation si elle est désactivée', async () => {
+  it('affiche un message demandant d’activer sa géolocalisation si elle est désactivée de manière permanente', async () => {
     // GIVEN
     mockedDeniedPermissions()
 
@@ -114,6 +114,23 @@ describe('rechercher un lieu', () => {
     // THEN
     expect(utiliserMaPostionActuelle).toBeEnabled()
   })
+
+  it('ne va pas à l’étape 2 quand c’est un vieu navigateur qui ne connait pas l’API navigator.permissions', () => {
+    // GIVEN
+    // @ts-ignore
+    navigator.permissions = undefined
+    mockedErrorGeolocation()
+    renderFakeComponent(<RechercherUneAideJuridique />)
+    const utiliserMaPostionActuelle = screen.getByRole('button', { name: wording.UTILISER_MA_POSITION_ACTUELLE })
+
+    // WHEN
+    fireEvent.keyDown(utiliserMaPostionActuelle, { code: 'Space' })
+
+    // THEN
+    const geolocalisationDesactivée = screen.getByText(wording.GEOLOCALISATION_DESACTIVEE, { selector: 'p' })
+    expect(geolocalisationDesactivée).toBeInTheDocument()
+    expect(utiliserMaPostionActuelle).toBeEnabled()
+  })
 })
 
 function mockedGrantedPermissions() {
@@ -148,10 +165,10 @@ function mockedErrorGeolocation() {
   // @ts-ignore
   navigator.geolocation = {
     getCurrentPosition: (_: PositionCallback, error: PositionErrorCallback) => error({
-      PERMISSION_DENIED: 0,
+      PERMISSION_DENIED: 1,
       POSITION_UNAVAILABLE: 0,
       TIMEOUT: 0,
-      code: 0,
+      code: 1,
       message: 'string',
     }),
   }
