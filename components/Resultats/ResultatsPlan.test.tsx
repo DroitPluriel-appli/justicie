@@ -131,7 +131,7 @@ describe('page résultats par plan', () => {
     )
 
     // THEN
-    const titre = screen.getByText(wording.AUCUN_LIEU_NE_CORRESPOND_A_VOTRE_RECHERCHE, { selector: 'p' })
+    const titre = screen.getByText(textMatch(wording.AUCUN_LIEU_NE_CORRESPOND_A_VOTRE_RECHERCHE), { selector: 'p' })
     expect(titre).toBeInTheDocument()
 
     const coordonneesDroitPluriel = screen.getByText(
@@ -145,6 +145,9 @@ describe('page résultats par plan', () => {
     const telephone = within(coordonneesDroitPluriel).getByRole('link', { name: wording.APPELER_LE_NUMERO(wording.PERMANENCE_JURIDIQUE, wording.TELEPHONE_DROIT_PLURIEL_ZERO_RESULTAT) })
     expect(telephone).toHaveAttribute('href', 'tel:' + wording.TELEPHONE_DROIT_PLURIEL_ZERO_RESULTAT.replaceAll(' ', ''))
     expect(telephone.textContent).toBe(wording.TELEPHONE_DROIT_PLURIEL_ZERO_RESULTAT)
+
+    const contacterCDAD = screen.getByText(wording.CONTACTER_CDAD, { selector: 'p' })
+    expect(contacterCDAD).toBeInTheDocument()
   })
 
   it('affiche un marker bleu à la position choisie', () => {

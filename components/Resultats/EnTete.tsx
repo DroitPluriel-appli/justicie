@@ -73,6 +73,9 @@ export default function EnTete({ nombreDeResultat }: EnTeteProps): ReactElement 
                 {wording.TELEPHONE_DROIT_PLURIEL_ZERO_RESULTAT}
               </Telephone>
             </address>
+            <p>
+              {wording.CONTACTER_CDAD}
+            </p>
           </>
         ) : (
           <p className={styles.correspondance}>
