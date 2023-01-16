@@ -8,8 +8,7 @@
     "criteresAccessibilite criteresAccessibilite criteresAccessibilite criteresAccessibilite" auto
     "lancerItineraire lancerItineraire plusDInformations plusDInformations" auto
     / 1fr 1fr 1fr 1fr;
-  margin-bottom: var(--l-margin);
-  margin-inline: calc(-1 * var(--l-margin));
+  margin: 0 calc(-1 * var(--l-margin)) var(--l-margin) calc(-1 * var(--l-margin));
   outline: 1px solid var(--gray);
 }
 

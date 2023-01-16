@@ -3,8 +3,7 @@
   gap: var(--s-margin);
   justify-content: center;
   list-style: none;
-  margin-bottom: var(--m-margin);
-  margin-inline: calc(-1 * var(--m-margin));
+  margin: 0 calc(-1 * var(--m-margin)) var(--m-margin) calc(-1 * var(--m-margin));
 }
 
 .pagination li {
@@ -12,7 +11,7 @@
 }
 
 .pagination svg {
-  margin-inline: var(--s-margin);
+  margin: 0 var(--s-margin);
 }
 
 .pagination [aria-current="page"] {

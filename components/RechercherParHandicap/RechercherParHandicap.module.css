@@ -1,7 +1,7 @@
 .main {
   background-color: var(--primary-background-color);
   color: var(--white);
-  margin-inline: calc(-1 * var(--m-margin));
+  margin: 0 calc(-1 * var(--m-margin));
   padding: var(--m-margin);
 }
 
@@ -41,6 +41,6 @@
   background-color: var(--button-color);
   border-radius: 2rem;
   font-weight: bold;
-  margin-block: var(--m-margin);
+  margin: var(--m-margin) 0;
   padding: var(--m-margin);
 }
