@@ -1,7 +1,7 @@
 .main {
   background-color: var(--primary-background-color);
   color: var(--white);
-  margin-inline: calc(-1 * var(--m-margin));
+  margin: 0 calc(-1 * var(--m-margin));
   padding: var(--m-margin);
 }
 

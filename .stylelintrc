@@ -6,6 +6,7 @@
     "stylelint-order"
   ],
   "rules": {
+    "property-disallowed-list": ["margin-block", "margin-inline"],
     "selector-class-pattern": null,
     "selector-id-pattern": null,
     "order/properties-alphabetical-order": true,

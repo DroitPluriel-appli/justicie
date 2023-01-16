@@ -1,6 +1,6 @@
 .nav {
   display: flex;
-  margin-block: var(--l-margin);
+  margin: var(--l-margin) 0;
 }
 
 .nav a {

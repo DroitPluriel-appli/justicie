@@ -1,6 +1,6 @@
 .leafletMap {
   height: 60vh;
-  margin-inline: calc(-1 * var(--m-margin));
+  margin: 0 calc(-1 * var(--m-margin));
   min-height: 25rem;
 }
 
