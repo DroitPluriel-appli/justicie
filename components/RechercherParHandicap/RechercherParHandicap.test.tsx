@@ -44,7 +44,7 @@ describe('rechercher par handicap', () => {
     criteres.forEach((critere) => {
       const checkbox = screen.getByRole('checkbox', { name: critere.title })
       expect(checkbox).toHaveAttribute('name', critere.name)
-      const description = screen.getByText(critere.description, { selector: 'p' })
+      const description = screen.getByText(textMatch(critere.description), { selector: 'p' })
       expect(description).toBeInTheDocument()
     })
     const latitude = screen.getByDisplayValue(lat)

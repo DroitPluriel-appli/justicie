@@ -9,7 +9,7 @@ import { useRechercherUneAideJuridique } from './useRechercherUneAideJuridique'
 
 export default function RechercherUneAideJuridique(): ReactElement {
   const { paths, wording } = useDependencies()
-  const { buttonName, isDisabled, keyDown, touch } = useRechercherUneAideJuridique()
+  const { buttonName, isDisabled, isGPSDenied, keyDown, touch } = useRechercherUneAideJuridique()
 
   return (
     <div className={styles.main}>
@@ -28,6 +28,13 @@ export default function RechercherUneAideJuridique(): ReactElement {
           {wording.OBLIGATOIRE}
         </div>
       </h2>
+      {
+        isGPSDenied ? (
+          <p>
+            {wording.GEOLOCALISATION_DESACTIVEE}
+          </p>
+        ) : null
+      }
       <button
         className={`${styles.button} ${styles.positionActuelle}`}
         disabled={isDisabled}

@@ -12,7 +12,7 @@ export class WordingFr implements Wording {
 
   // Accueil
   readonly TITLE_PAGE_ACCUEIL: string = 'Accueil' + this.SUFFIXE_TITLE
-  readonly VOUS_AVEZ_UN_PROBLEME_DE_DROIT: string = 'Vous avez un problème de droit ?'
+  readonly VOUS_AVEZ_UN_PROBLEME_DE_DROIT: string = 'Vous avez un problème de droit ?'
   readonly TROUVEZ_UN_CONSEIL_JURIDIQUE: string = 'Trouvez une aide juridique près de chez vous, gratuite et accessible.'
   readonly VOUS_AVEZ_UNE_QUESTION_SUR_VOS_DROITS: string = 'Vous avez une question de droit (travail, divorce, logement...).'
   readonly VOUS_ETES_VICTIME: string = 'Vous êtes victime (violence, viol, vol...).'
@@ -26,9 +26,9 @@ export class WordingFr implements Wording {
   readonly TITLE_NOUS_CONTACTER: string = 'Nous contacter'
   readonly SITE_DROIT_PLURIEL: string = 'https://droitpluriel.fr'
   readonly TITRE_LIEN_SITE_DROIT_PLURIEL: string = 'droitpluriel.fr'
-  readonly PAR_EMAIL: string = 'Par e-mail : '
+  readonly PAR_EMAIL: string = 'Par e-mail : '
   readonly EMAIL_DROIT_PLURIEL: string = 'contact@droitpluriel.fr'
-  readonly PAR_TELEPHONE: string = 'Par téléphone : '
+  readonly PAR_TELEPHONE: string = 'Par téléphone : '
   readonly TELEPHONE_DROIT_PLURIEL: string = '01 84 80 46 14'
   readonly TITLE_SUIVEZ_NOS_ACTUALITES: string = 'Suivez nos actualités'
   readonly LIEN_FACEBOOK: string = 'https://www.facebook.com/droitpluriel/'
@@ -45,10 +45,11 @@ export class WordingFr implements Wording {
   // Rechercher une aide juridique
   readonly TITLE_PAGE_RECHERCHER_UNE_AIDE_JURIDIQUE: string = 'Rechercher une aide juridique' + this.SUFFIXE_TITLE
   readonly RETOUR_A_L_ACCUEIL: string = 'Retour à l’accueil'
-  readonly OU_RECHERCHEZ_VOUS: string = 'Où recherchez-vous une aide juridique ?'
+  readonly OU_RECHERCHEZ_VOUS: string = 'Où recherchez-vous une aide juridique ?'
   readonly OBLIGATOIRE: string = '(obligatoire)'
   readonly UTILISER_MA_POSITION_ACTUELLE: string = 'Utiliser ma position actuelle'
   readonly CHARGEMENT: string = 'Chargement...'
+  readonly GEOLOCALISATION_DESACTIVEE: string = 'La géolocalisation est désactivée sur votre téléphone. Modifiez vos paramètres pour utiliser la géolocalisation.'
   readonly OU: string = 'ou'
   readonly RENSEIGNER_UNE_ADRESSE: string = 'Renseigner une adresse'
 
@@ -104,7 +105,7 @@ export class WordingFr implements Wording {
   readonly TITLE_HANDICAP_MOTEUR_AVEC_ASSISTANCE: string = 'Accessibilité handicap moteur avec assistance'
   readonly DESCRIPTION_HANDICAP_MOTEUR_AVEC_ASSISTANCE: string = 'Le lieu permet un accès à toute situation de handicap moteur à la condition qu’un tiers intervienne (pour ouvrir une porte...).'
   readonly TITLE_HANDICAP_VISUEL: string = 'Accessibilité handicap visuel'
-  readonly DESCRIPTION_HANDICAP_VISUEL: string = 'Le guidage au sein du lieu est simple : bande de guidage, accueil dès l’entrée...'
+  readonly DESCRIPTION_HANDICAP_VISUEL: string = 'Le guidage au sein du lieu est simple : bande de guidage, accueil dès l’entrée...'
   readonly TITLE_LANGUE_DES_SIGNES_FRANCAISE: string = 'Langue des signes française'
   readonly DESCRIPTION_LANGUE_DES_SIGNES_FRANCAISE: string = 'Le lieu propose une consultation en langue des signes française (sur place ou en visio).'
   readonly TITLE_BOUCLE_A_INDUCTION: string = 'Boucle à induction magnétique'
@@ -139,6 +140,6 @@ export class WordingFr implements Wording {
   readonly FOIRE_AUX_QUESTIONS: string = 'Foire aux questions'
   readonly MENTIONS_LEGALES: string = 'Mentions légales'
   readonly QUALITE_DE_SERVICE: string = 'Qualité du service'
-  readonly ACCESSIBILITE: string = 'Accessibilité : partiellement conforme'
+  readonly ACCESSIBILITE: string = 'Accessibilité : partiellement conforme'
   readonly COPYRIGHT: string = '© Droit Pluriel 2022 - '
 }
