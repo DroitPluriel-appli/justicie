@@ -86,12 +86,11 @@ describe('en-tête de page', () => {
     const main = screen.getByRole('main')
     const question = within(main).getByRole('heading', { level: 3, name: wording.QUESTION_JE_SUIS_ALLEE_SUR_PLACE })
     expect(question).toBeInTheDocument()
-    const reponse = within(main).getByText(textMatch(wording.REPONSE_JE_SUIS_ALLEE_SUR_PLACE.join('')), { selector: 'p' })
+    const reponse = within(main).getByText(textMatch(wording.REPONSE_JE_SUIS_ALLEE_SUR_PLACE + wording.EMAIL_DROIT_PLURIEL), { selector: 'p' })
     expect(reponse).toBeInTheDocument()
 
-    // TODO: factoriser avec wording mail droit pluriel
-    const lienMail = within(reponse).getByRole('link', { name: wording.ENVOYER_UN_EMAIL_A + wording.REPONSE_JE_SUIS_ALLEE_SUR_PLACE[1] })
-    expect(lienMail).toHaveAttribute('href', 'mailto:' + wording.REPONSE_JE_SUIS_ALLEE_SUR_PLACE[1].replaceAll(' ', ''))
+    const lienMail = within(reponse).getByRole('link', { name: wording.ENVOYER_UN_EMAIL_A + wording.EMAIL_DROIT_PLURIEL })
+    expect(lienMail).toHaveAttribute('href', 'mailto:' + wording.EMAIL_DROIT_PLURIEL)
   })
 
   it('affiche question + reponse "Est-ce que tous les lieux apparaissent ?"', () => {
@@ -102,11 +101,10 @@ describe('en-tête de page', () => {
     const main = screen.getByRole('main')
     const question = within(main).getByRole('heading', { level: 3, name: wording.QUESTION_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT })
     expect(question).toBeInTheDocument()
-    const reponse = within(main).getByText(textMatch(wording.REPONSE_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT.join('')), { selector: 'p' })
+    const reponse = within(main).getByText(textMatch(wording.REPONSE_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT + wording.EMAIL_DROIT_PLURIEL), { selector: 'p' })
     expect(reponse).toBeInTheDocument()
 
-    // TODO: factoriser avec wording mail droit pluriel
-    const lienMail = within(reponse).getByRole('link', { name: wording.ENVOYER_UN_EMAIL_A + wording.REPONSE_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT[1] })
-    expect(lienMail).toHaveAttribute('href', 'mailto:' + wording.REPONSE_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT[1].replaceAll(' ', ''))
+    const lienMail = within(reponse).getByRole('link', { name: wording.ENVOYER_UN_EMAIL_A + wording.EMAIL_DROIT_PLURIEL })
+    expect(lienMail).toHaveAttribute('href', 'mailto:' + wording.EMAIL_DROIT_PLURIEL)
   })
 })

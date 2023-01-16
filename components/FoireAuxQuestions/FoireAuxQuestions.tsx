@@ -4,12 +4,13 @@ import { useDependencies } from '../../configuration/useDependencies'
 import Email from '../Email/Email'
 import Telephone from '../Telephone/Telephone'
 import Title from '../Title/Title'
+import styles from './FoireAuxQuestions.module.css'
 
 export default function FoireAuxQuestions(): ReactElement {
   const { wording } = useDependencies()
 
   return (
-    <>
+    <div className={styles.main}>
       <Title>
         {wording.TITLE_FOIRE_AUX_QUESTIONS}
       </Title>
@@ -36,6 +37,7 @@ export default function FoireAuxQuestions(): ReactElement {
         <Email url={wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[6]}>
           {wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[6]}
         </Email>
+        {'.'}
       </p>
       <p>
         {wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[7]}
@@ -64,20 +66,22 @@ export default function FoireAuxQuestions(): ReactElement {
         {wording.QUESTION_JE_SUIS_ALLEE_SUR_PLACE}
       </h3>
       <p>
-        {wording.REPONSE_JE_SUIS_ALLEE_SUR_PLACE[0]}
-        <Email url={wording.REPONSE_JE_SUIS_ALLEE_SUR_PLACE[1]} >
-          {wording.REPONSE_JE_SUIS_ALLEE_SUR_PLACE[1]}
+        {wording.REPONSE_JE_SUIS_ALLEE_SUR_PLACE}
+        <Email url={wording.EMAIL_DROIT_PLURIEL} >
+          {wording.EMAIL_DROIT_PLURIEL}
         </Email>
+        {'.'}
       </p>
       <h3>
         {wording.QUESTION_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT}
       </h3>
       <p>
-        {wording.REPONSE_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT[0]}
-        <Email url={wording.REPONSE_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT[1]} >
-          {wording.REPONSE_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT[1]}
+        {wording.REPONSE_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT}
+        <Email url={wording.EMAIL_DROIT_PLURIEL} >
+          {wording.EMAIL_DROIT_PLURIEL}
         </Email>
+        {'.'}
       </p>
-    </>
+    </div >
   )
 }

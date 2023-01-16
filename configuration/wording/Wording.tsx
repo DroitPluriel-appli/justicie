@@ -131,9 +131,9 @@ export interface Wording {
   readonly QUESTION_EST_CE_QUE_L_AVOCAT: string
   readonly REPONSE_EST_CE_QUE_L_AVOCAT: string
   readonly QUESTION_JE_SUIS_ALLEE_SUR_PLACE: string
-  readonly REPONSE_JE_SUIS_ALLEE_SUR_PLACE: string[]
+  readonly REPONSE_JE_SUIS_ALLEE_SUR_PLACE: string
   readonly QUESTION_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT: string
-  readonly REPONSE_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT: string[]
+  readonly REPONSE_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT: string
 
   // Mentions légales
   readonly TITLE_PAGE_MENTIONS_LEGALES: string

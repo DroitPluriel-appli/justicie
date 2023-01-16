@@ -143,9 +143,9 @@ export class WordingFr implements Wording {
   readonly QUESTION_EST_CE_QUE_L_AVOCAT: string = 'Est-ce que l’avocat qui me reçoit pourra me défendre pendant toute la procédure ?'
   readonly REPONSE_EST_CE_QUE_L_AVOCAT: string = 'Non, les lieux d’accès au droit donnent une première information gratuite. Ils pourront vous conseiller pour la suite si vous avez besoin d’un avocat. '
   readonly QUESTION_JE_SUIS_ALLEE_SUR_PLACE: string = 'Je suis allée sur place, et l’accessibilité n’est pas celle annoncée. Que faire ?'
-  readonly REPONSE_JE_SUIS_ALLEE_SUR_PLACE: string[] = ['La situation a pu changer depuis le référencement. Prévenez-nous à ', 'contact@droitpluriel.fr.']
+  readonly REPONSE_JE_SUIS_ALLEE_SUR_PLACE: string = 'La situation a pu changer depuis le référencement. Prévenez-nous à '
   readonly QUESTION_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT: string = 'Est-ce que tous les lieux apparaissent ?'
-  readonly REPONSE_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT: string[] = ['Cette plateforme est un projet participatif. Vous pouvez nous signaler toute permanence non mentionnée à ', 'contact@droitpluriel.fr.']
+  readonly REPONSE_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT: string = 'Cette plateforme est un projet participatif. Vous pouvez nous signaler toute permanence non mentionnée à '
 
   // Mentions légales
   readonly TITLE_PAGE_MENTIONS_LEGALES: string = 'Mentions légales' + this.SUFFIXE_TITLE
