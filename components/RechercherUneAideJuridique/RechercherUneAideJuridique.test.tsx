@@ -8,6 +8,9 @@ describe('rechercher un lieu', () => {
   const { paths, wording } = fakeFrontDependencies
 
   it('affiche le titre de l’onglet', () => {
+    // GIVEN
+    mockedGrantedPermissions()
+
     // WHEN
     renderFakeComponent(<RechercherUneAideJuridique />)
 
@@ -16,6 +19,9 @@ describe('rechercher un lieu', () => {
   })
 
   it('affiche le choix de la géolocalisation ou d’une adresse manuelle', () => {
+    // GIVEN
+    mockedGrantedPermissions()
+
     // WHEN
     renderFakeComponent(<RechercherUneAideJuridique />)
 
@@ -36,11 +42,29 @@ describe('rechercher un lieu', () => {
     expect(renseignerUneAdresse).toHaveAttribute('href', paths.RENSEIGNER_UNE_ADRESSE)
   })
 
+  it('affiche un message demandant d’activer sa géolocalisation si elle est désactivée', async () => {
+    // GIVEN
+    mockedDeniedPermissions()
+
+    // WHEN
+    renderFakeComponent(<RechercherUneAideJuridique />)
+
+    // THEN
+    await waitFor(() => {
+      const geolocalisationDesactivée = screen.getByText(wording.GEOLOCALISATION_DESACTIVEE, { selector: 'p' })
+      expect(geolocalisationDesactivée).toBeInTheDocument()
+    })
+
+    const utiliserMaPostionActuelleGrisee = screen.getByRole('button', { name: wording.UTILISER_MA_POSITION_ACTUELLE })
+    expect(utiliserMaPostionActuelleGrisee).toBeDisabled()
+  })
+
   it.each([
     ['touchStart'],
     ['click'],
   ])('va à l’étape 2 quand j’utilise ma position actuelle avec le % et grise le bouton', async (event: string) => {
     // GIVEN
+    mockedGrantedPermissions()
     mockedSuccessedGeolocation(43.296482, 5.36978)
     renderFakeComponent(<RechercherUneAideJuridique />)
     const utiliserMaPostionActuelle = screen.getByRole('button', { name: wording.UTILISER_MA_POSITION_ACTUELLE })
@@ -61,6 +85,7 @@ describe('rechercher un lieu', () => {
     ['Enter'],
   ])('va à l’étape 2 quand j’utilise ma position actuelle avec la touche %s et grise le bouton', async (code: string) => {
     // GIVEN
+    mockedGrantedPermissions()
     mockedSuccessedGeolocation(43.296482, 5.36978)
     renderFakeComponent(<RechercherUneAideJuridique />)
     const utiliserMaPostionActuelle = screen.getByRole('button', { name: wording.UTILISER_MA_POSITION_ACTUELLE })
@@ -78,6 +103,7 @@ describe('rechercher un lieu', () => {
 
   it('ne va pas à l’étape 2 quand je bloque la localisation de ma position actuelle', () => {
     // GIVEN
+    mockedGrantedPermissions()
     mockedErrorGeolocation()
     renderFakeComponent(<RechercherUneAideJuridique />)
     const utiliserMaPostionActuelle = screen.getByRole('button', { name: wording.UTILISER_MA_POSITION_ACTUELLE })
@@ -89,6 +115,16 @@ describe('rechercher un lieu', () => {
     expect(utiliserMaPostionActuelle).toBeEnabled()
   })
 })
+
+function mockedGrantedPermissions() {
+  // @ts-ignore
+  navigator.permissions = { query: () => ({ state: 'granted' }) }
+}
+
+function mockedDeniedPermissions() {
+  // @ts-ignore
+  navigator.permissions = { query: () => ({ state: 'denied' }) }
+}
 
 function mockedSuccessedGeolocation(latitude: number, longitude: number) {
   // @ts-ignore

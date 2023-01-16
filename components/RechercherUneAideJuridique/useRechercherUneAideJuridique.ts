@@ -10,6 +10,7 @@ type coordonneesGeospatiales = Readonly<{
 type State = Readonly<{
   buttonName: string
   isDisabled: boolean
+  isGPSDenied: boolean
 }>
 
 export function useRechercherUneAideJuridique() {
@@ -21,6 +22,7 @@ export function useRechercherUneAideJuridique() {
   const [state, setState] = useState<State>({
     buttonName: wording.UTILISER_MA_POSITION_ACTUELLE,
     isDisabled: false,
+    isGPSDenied: false,
   })
   const { push } = useRouter()
 
@@ -42,23 +44,42 @@ export function useRechercherUneAideJuridique() {
     if (geoloc.latitude !== 0 && geoloc.longitude !== 0) {
       void goToRechercherParHandicap()
     }
+
   }, [geoloc, push, paths.RECHERCHER_PAR_HANDICAP])
+
+  useEffect(() => {
+    async function isGPSDenied() {
+      const result = await navigator.permissions.query({ name: 'geolocation' })
+
+      if (result.state === 'denied') {
+        setState((state) => ({
+          ...state,
+          isDisabled: true,
+          isGPSDenied: true,
+        }))
+      }
+    }
+
+    void isGPSDenied()
+  }, [])
 
   const hasGeoloc = useCallback(() => {
     if (navigator.geolocation) {
-      setState({
+      setState((state) => ({
+        ...state,
         buttonName: wording.CHARGEMENT,
         isDisabled: true,
-      })
+      }))
       navigator.geolocation.getCurrentPosition(
         (position) => {
           setGeoloc({ latitude: position.coords.latitude, longitude: position.coords.longitude })
         },
         () => {
-          setState({
+          setState((state) => ({
+            ...state,
             buttonName: wording.UTILISER_MA_POSITION_ACTUELLE,
             isDisabled: false,
-          })
+          }))
         }
       )
     }
@@ -67,6 +88,7 @@ export function useRechercherUneAideJuridique() {
   return {
     buttonName: state.buttonName,
     isDisabled: state.isDisabled,
+    isGPSDenied: state.isGPSDenied,
     keyDown: useCallback(keyDown, [isTheGoodKeyCode, hasGeoloc]),
     touch: useCallback(touch, [hasGeoloc]),
   }

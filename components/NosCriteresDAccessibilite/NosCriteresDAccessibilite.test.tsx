@@ -1,6 +1,6 @@
 import { screen, within } from '@testing-library/react'
 
-import { fakeFrontDependencies, renderFakeComponent } from '../../configuration/testHelper'
+import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
 import NosCriteresDAccessibilite from './NosCriteresDAccessibilite'
 
 describe("page nos criteres d'accessibilite", () => {
@@ -39,7 +39,7 @@ describe("page nos criteres d'accessibilite", () => {
     const headerHandicapeVisuel = within(articles[2]).getByRole('banner')
     const titleHandicapVisuel = within(headerHandicapeVisuel).getByRole('heading', { level: 1, name: wording.TITLE_HANDICAP_VISUEL })
     expect(titleHandicapVisuel).toBeInTheDocument()
-    const descriptionHandicapVisuel = within(articles[2]).getByText(wording.DESCRIPTION_HANDICAP_VISUEL, { selector: 'p' })
+    const descriptionHandicapVisuel = within(articles[2]).getByText(textMatch(wording.DESCRIPTION_HANDICAP_VISUEL), { selector: 'p' })
     expect(descriptionHandicapVisuel).toBeInTheDocument()
 
     const headerLangueDesSignes = within(articles[3]).getByRole('banner')
