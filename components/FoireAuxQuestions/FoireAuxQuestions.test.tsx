@@ -27,7 +27,7 @@ describe('en-tête de page', () => {
       wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[2] +
       wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[4] +
       wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[5] +
-      wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[6]
+      wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[6] + '.'
     const reponse = [
       within(main).getByText(textMatch(wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[0]), { selector: 'p' }),
       within(main).getByText(textMatch(paragraphe2), { selector: 'p' }),
@@ -86,7 +86,7 @@ describe('en-tête de page', () => {
     const main = screen.getByRole('main')
     const question = within(main).getByRole('heading', { level: 3, name: wording.QUESTION_JE_SUIS_ALLEE_SUR_PLACE })
     expect(question).toBeInTheDocument()
-    const reponse = within(main).getByText(textMatch(wording.REPONSE_JE_SUIS_ALLEE_SUR_PLACE + wording.EMAIL_DROIT_PLURIEL), { selector: 'p' })
+    const reponse = within(main).getByText(textMatch(wording.REPONSE_JE_SUIS_ALLEE_SUR_PLACE + wording.EMAIL_DROIT_PLURIEL + '.'), { selector: 'p' })
     expect(reponse).toBeInTheDocument()
 
     const lienMail = within(reponse).getByRole('link', { name: wording.ENVOYER_UN_EMAIL_A + wording.EMAIL_DROIT_PLURIEL })
@@ -101,7 +101,7 @@ describe('en-tête de page', () => {
     const main = screen.getByRole('main')
     const question = within(main).getByRole('heading', { level: 3, name: wording.QUESTION_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT })
     expect(question).toBeInTheDocument()
-    const reponse = within(main).getByText(textMatch(wording.REPONSE_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT + wording.EMAIL_DROIT_PLURIEL), { selector: 'p' })
+    const reponse = within(main).getByText(textMatch(wording.REPONSE_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT + wording.EMAIL_DROIT_PLURIEL + '.'), { selector: 'p' })
     expect(reponse).toBeInTheDocument()
 
     const lienMail = within(reponse).getByRole('link', { name: wording.ENVOYER_UN_EMAIL_A + wording.EMAIL_DROIT_PLURIEL })
