@@ -123,7 +123,7 @@ export interface Wording {
   // Foire aux questions
   readonly TITLE_FOIRE_AUX_QUESTIONS: string
   readonly QUESTION_JE_NE_TROUVE_AUCUN_LIEU: string
-  readonly REPONSE_JE_NE_TROUVE_AUCUN_LIEU: string
+  readonly REPONSE_JE_NE_TROUVE_AUCUN_LIEU: string[]
   readonly QUESTION_EST_CE_QUE_AIDE_GRATUITE: string
   readonly REPONSE_EST_CE_QUE_AIDE_GRATUITE: string
   readonly QUESTION_QUI_VA_ME_RECEVOIR: string
@@ -131,9 +131,9 @@ export interface Wording {
   readonly QUESTION_EST_CE_QUE_L_AVOCAT: string
   readonly REPONSE_EST_CE_QUE_L_AVOCAT: string
   readonly QUESTION_JE_SUIS_ALLEE_SUR_PLACE: string
-  readonly REPONSE_JE_SUIS_ALLEE_SUR_PLACE: string
+  readonly REPONSE_JE_SUIS_ALLEE_SUR_PLACE: string[]
   readonly QUESTION_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT: string
-  readonly REPONSE_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT: string
+  readonly REPONSE_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT: string[]
 
   // Mentions légales
   readonly TITLE_PAGE_MENTIONS_LEGALES: string
