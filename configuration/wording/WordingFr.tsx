@@ -124,6 +124,18 @@ export class WordingFr implements Wording {
 
   // Foire aux questions
   readonly TITLE_FOIRE_AUX_QUESTIONS: string = 'Foire aux questions' + this.SUFFIXE_TITLE
+  readonly QUESTION_JE_NE_TROUVE_AUCUN_LIEU: string = 'Je ne trouve aucun lieu correspondant à ma recherche, comment faire ?'
+  readonly REPONSE_JE_NE_TROUVE_AUCUN_LIEU: string = 'Aucun lien ne correspond à votre recherche. Vous êtes en situation de handicap? Contactez la permanence juridique « Agir Handicap » : 09 80 80 01 49 ou agir@droitpluriel.fr Vous n’êtes pas en situation de handicap?  Contactez le Conseil départemental d’accès au droit de votre département(CDAD).'
+  readonly QUESTION_EST_CE_QUE_AIDE_GRATUITE: string = 'Est-ce que l’aide juridique apportée est entièrement gratuite ?'
+  readonly REPONSE_EST_CE_QUE_AIDE_GRATUITE: string = 'Oui, tous les lieux proposés accueillent gratuitement le public.'
+  readonly QUESTION_QUI_VA_ME_RECEVOIR: string = 'Qui va me recevoir dans les lieux référencés ?'
+  readonly REPONSE_QUI_VA_ME_RECEVOIR: string = 'Des juristes et des avocats travaillent dans les lieux d’accès au droit. Il est conseillé dès la prise de rendez-vous d’indiquer la nature du problème (famille, logement, violences…). Vous pouvez aussi selon les lieux, avoir un rendez-vous avec un conciliateur (solution amiable des litiges).'
+  readonly QUESTION_EST_CE_QUE_L_AVOCAT: string = 'Est-ce que l’avocat qui me reçoit pourra me défendre pendant toute la procédure ?'
+  readonly REPONSE_EST_CE_QUE_L_AVOCAT: string = 'Non, les lieux d’accès au droit donnent une première information gratuite. Ils pourront vous conseiller pour la suite si vous avez besoin d’un avocat. '
+  readonly QUESTION_JE_SUIS_ALLEE_SUR_PLACE: string = 'Je suis allée sur place, et l’accessibilité n’est pas celle annoncée. Que faire ?'
+  readonly REPONSE_JE_SUIS_ALLEE_SUR_PLACE: string = 'La situation a pu changer depuis le référencement. Prévenez-nous à contact@droitpluriel.fr'
+  readonly QUESTION_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT: string = 'Est-ce que tous les lieux apparaissent ?'
+  readonly REPONSE_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT: string = 'Cette plateforme est un projet participatif. Vous pouvez nous signaler toute permanence non mentionnée à contact@droitpluriel.fr"'
 
   // Mentions légales
   readonly TITLE_PAGE_MENTIONS_LEGALES: string = 'Mentions légales' + this.SUFFIXE_TITLE
