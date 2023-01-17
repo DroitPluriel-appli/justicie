@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { ReactElement } from 'react'
 
+import { useDependencies } from '../../configuration/useDependencies'
 import styles from './CritereDAccessibilite.module.css'
 
 type CritereDAccessibiliteProps = Readonly<{
@@ -12,11 +13,15 @@ type CritereDAccessibiliteProps = Readonly<{
 }>
 
 export default function CritereDAccessibilite({ description, id, imgSrc, name, title }: CritereDAccessibiliteProps): ReactElement {
+  const { useRouter } = useDependencies()
+  const { query } = useRouter()
+
   return (
     <div className={styles.article}>
       <div>
         <input
           className={styles.checkbox}
+          defaultChecked={query[name] !== undefined ? true : false}
           id={id}
           name={name}
           type="checkbox"

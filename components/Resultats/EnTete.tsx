@@ -33,12 +33,18 @@ export default function EnTete({ nombreDeResultat }: EnTeteProps): ReactElement 
       <nav>
         <ul className={styles.nav}>
           <li className={styles.liste + ' ' + listeStyle}>
-            <Link href={buildUrlWithQueryParams(paths.RESULTATS_LISTE)}>
+            <Link
+              href={buildUrlWithQueryParams(paths.RESULTATS_LISTE)}
+              title={wording.AFFICHEZ_RESULTATS_EN_LISTE}
+            >
               {wording.LISTE}
             </Link>
           </li>
           <li className={styles.plan + ' ' + planStyle}>
-            <Link href={buildUrlWithQueryParams(paths.RESULTATS_PLAN)}>
+            <Link
+              href={buildUrlWithQueryParams(paths.RESULTATS_PLAN)}
+              title={wording.AFFICHEZ_RESULTATS_EN_PLAN}
+            >
               {wording.PLAN}
             </Link>
           </li>
@@ -46,8 +52,14 @@ export default function EnTete({ nombreDeResultat }: EnTeteProps): ReactElement 
       </nav>
       <ul className={styles.besoins}>
         <li>
-          <Link href={buildUrlWithQueryParams(paths.RECHERCHER_PAR_HANDICAP)}>
-            {wording.BESOINS_D_ACCESSIBILITE(besoinsAccessibilite)}
+          <Link
+            href={buildUrlWithQueryParams(paths.RECHERCHER_PAR_HANDICAP)}
+            title={wording.MODIFIER_VOTRE_BESOIN_D_ACCESSIBILITE}
+          >
+            {wording.BESOINS_D_ACCESSIBILITE}
+            <span>
+              {besoinsAccessibilite}
+            </span>
           </Link>
         </li>
       </ul>

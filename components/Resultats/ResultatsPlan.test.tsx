@@ -58,7 +58,7 @@ describe('page résultats par plan', () => {
     expect(document.title).toBe(wording.TITLE_PAGE_RESULTATS_PAR_PLAN)
   })
 
-  it('affiche les liens de navigation et le titre', () => {
+  it('affiche les liens de navigation et le filtre', () => {
     // GIVEN
     mockRouter.query = {
       lat,
@@ -79,14 +79,19 @@ describe('page résultats par plan', () => {
     // THEN
     const modifierLAdresse = screen.getByRole('link', { name: wording.MODIFIER_L_ADRESSE })
     expect(modifierLAdresse).toHaveAttribute('href', paths.RECHERCHER_UNE_AIDE_JURIDIQUE)
+
     const navigation = screen.getByRole('navigation')
     const itemsDeNavigation = within(navigation).getAllByRole('listitem')
-    const vueListe = within(itemsDeNavigation[0]).getByRole('link', { name: wording.LISTE })
+    const vueListe = within(itemsDeNavigation[0]).getByRole('link', { name: wording.AFFICHEZ_RESULTATS_EN_LISTE })
     expect(vueListe).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?lat=${lat}&lon=${lon}&moteur-total=${moteurTotal}`)
-    const vuePlan = within(itemsDeNavigation[1]).getByRole('link', { name: wording.PLAN })
+    expect(vueListe.textContent).toBe(wording.LISTE)
+    const vuePlan = within(itemsDeNavigation[1]).getByRole('link', { name: wording.AFFICHEZ_RESULTATS_EN_PLAN })
     expect(vuePlan).toHaveAttribute('href', `${paths.RESULTATS_PLAN}?lat=${lat}&lon=${lon}&moteur-total=${moteurTotal}`)
-    const modifierAccessibilite = screen.getByRole('link', { name: wording.BESOINS_D_ACCESSIBILITE(1) })
+    expect(vuePlan.textContent).toBe(wording.PLAN)
+
+    const modifierAccessibilite = screen.getByRole('link', { name: wording.MODIFIER_VOTRE_BESOIN_D_ACCESSIBILITE })
     expect(modifierAccessibilite).toHaveAttribute('href', `${paths.RECHERCHER_PAR_HANDICAP}?lat=${lat}&lon=${lon}&moteur-total=${moteurTotal}`)
+    expect(modifierAccessibilite.textContent).toBe(wording.BESOINS_D_ACCESSIBILITE + '1')
   })
 
   it('affiche une phrase du nombre de lieu trouvé', () => {
