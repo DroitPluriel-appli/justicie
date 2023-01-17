@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { ReactElement } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
@@ -16,9 +17,12 @@ export default function LiensDEvitement(): ReactElement {
         id="evitement"
       >
         <li>
-          <a href="#contenu">
+          <Link
+            href="#contenu"
+            scroll={false}
+          >
             {wording.EVITEMENT_ALLER_AU_CONTENU}
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>
