@@ -59,10 +59,7 @@ describe('rechercher un lieu', () => {
     expect(utiliserMaPostionActuelleGrisee).toBeDisabled()
   })
 
-  it.each([
-    ['touchStart'],
-    ['click'],
-  ])('va à l’étape 2 quand j’utilise ma position actuelle avec le % et grise le bouton', async (event: string) => {
+  it('va à l’étape 2 quand j’utilise ma position actuelle avec le clic et grise le bouton', async () => {
     // GIVEN
     mockedGrantedPermissions()
     mockedSuccessedGeolocation(43.296482, 5.36978)
@@ -70,7 +67,7 @@ describe('rechercher un lieu', () => {
     const utiliserMaPostionActuelle = screen.getByRole('button', { name: wording.UTILISER_MA_POSITION_ACTUELLE })
 
     // WHEN
-    fireEvent[event as 'touchStart' | 'click'](utiliserMaPostionActuelle)
+    fireEvent.click(utiliserMaPostionActuelle)
 
     // THEN
     const utiliserMaPostionActuelleGrisee = screen.getByRole('button', { name: wording.CHARGEMENT })

@@ -70,8 +70,8 @@ export default function Header(): ReactElement {
           <li className={styles.menu}>
             <button
               className={styles.burgerOpen}
+              onClick={touch}
               onKeyDown={keyDown}
-              onTouchStart={touch}
               type="button"
             >
               {wording.MENU}
@@ -102,8 +102,8 @@ export default function Header(): ReactElement {
               </span>
               <button
                 aria-controls="menu-mobile-container"
+                onClick={touch}
                 onKeyDown={keyDown}
-                onTouchStart={touch}
                 title={wording.FERMER}
                 type="button"
               >

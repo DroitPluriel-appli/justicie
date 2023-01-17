@@ -92,13 +92,13 @@ describe('en-tête de page', () => {
     expect(politiqueDeGestionDesDonnees).toHaveAttribute('href', paths.POLITIQUE_DE_GESTION_DES_DONNEES)
   })
 
-  it.each([['touchStart']])('affiche le menu mobile quand on appuie sur le burger menu avec le %', (event: string) => {
+  it('affiche le menu mobile quand on appuie sur le burger menu avec le clic', () => {
     // GIVEN
     renderFakeComponent(<Header />)
     const burgerMenu = screen.getByRole('button', { name: wording.MENU })
 
     // WHEN
-    fireEvent[event as 'touchStart'](burgerMenu)
+    fireEvent.click(burgerMenu)
 
     // THEN
     const header = screen.getByRole('banner')
@@ -133,15 +133,15 @@ describe('en-tête de page', () => {
     expect(title).toBeInTheDocument()
   })
 
-  it.each([['touchStart']])('affiche le menu mobile quand on appuie sur le burger menu puis le ferme avec le %', (event: string) => {
+  it('affiche le menu mobile quand on appuie sur le burger menu puis le ferme avec le clic', () => {
     // GIVEN
     renderFakeComponent(<Header />)
     const burgerMenu = screen.getByRole('button', { name: wording.MENU })
-    fireEvent.touchStart(burgerMenu)
+    fireEvent.click(burgerMenu)
     const fermer = screen.getByRole('button', { name: wording.FERMER })
 
     // WHEN
-    fireEvent[event as 'touchStart'](fermer)
+    fireEvent.click(fermer)
 
     // THEN
     const header = screen.getByRole('banner')
