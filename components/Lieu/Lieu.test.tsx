@@ -154,4 +154,17 @@ describe('lieu', () => {
     const retourHautDePage = screen.getByRole('link', { name: wording.RETOUR_EN_HAUT_DE_PAGE })
     expect(retourHautDePage).toHaveAttribute('href', '#evitement')
   })
+
+  it('affiche le lien pour donner son avis', () => {
+    // GIVEN
+    const lieu = LieuBuilder.cree()
+
+    // WHEN
+    renderFakeComponent(<Lieu lieu={lieu} />)
+
+    // THEN
+    const links = screen.getByRole('link', { name: wording.DONNEZ_NOUS_VOTRE_AVIS + wording.NOUVELLE_FENETRE })
+    expect(links).toHaveAttribute('href', 'https://docs.google.com/forms/d/1sA-EWWn5LNXc2G3WWDIEcFhl5RBZYsMMbGWN2FHnndE/viewform')
+    expect(links.textContent).toBe(wording.VOTRE_AVIS)
+  })
 })

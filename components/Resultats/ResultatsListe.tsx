@@ -6,6 +6,7 @@ import { useQueryUtilities } from '../../configuration/useQueryUtilities'
 import CarteLieu from '../CarteLieu/CarteLieu'
 import Pagination from '../Pagination/Pagination'
 import Title from '../Title/Title'
+import VotreAvis from '../VotreAvis/VotreAvis'
 import EnTete from './EnTete'
 
 export default function ResultatsListe({ lieux, nombreDeResultat }: { lieux: Lieu[], nombreDeResultat: number }): ReactElement {
@@ -53,6 +54,7 @@ export default function ResultatsListe({ lieux, nombreDeResultat }: { lieux: Lie
           />
         )
       }
+      <VotreAvis />
     </>
   )
 }

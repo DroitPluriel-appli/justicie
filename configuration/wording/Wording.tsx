@@ -86,6 +86,8 @@ export interface Wording {
   readonly DERNIERE_PAGE: string
   readonly PAGE: (numero: number) => string
   readonly PERMANENCE_JURIDIQUE: string
+  readonly VOTRE_AVIS: string
+  readonly DONNEZ_NOUS_VOTRE_AVIS: string
 
   // Resultats par plan
   readonly TITLE_PAGE_RESULTATS_PAR_PLAN: string

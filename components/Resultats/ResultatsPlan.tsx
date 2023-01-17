@@ -4,6 +4,7 @@ import { ReactElement } from 'react'
 import { Lieu } from '../../backend/entities/Lieu'
 import { useDependencies } from '../../configuration/useDependencies'
 import { useQueryUtilities } from '../../configuration/useQueryUtilities'
+import VotreAvis from '../VotreAvis/VotreAvis'
 
 export default function ResultatsPlan({ lieux, nombreDeResultat }: { lieux: Lieu[], nombreDeResultat: number }): ReactElement {
   const { useRouter, wording } = useDependencies()
@@ -21,11 +22,14 @@ export default function ResultatsPlan({ lieux, nombreDeResultat }: { lieux: Lieu
   }
 
   return (
-    <Plan
-      latitude={Number(query.lat)}
-      lieux={lieux}
-      longitude={Number(query.lon)}
-      nombreDeResultat={nombreDeResultat}
-    />
+    <>
+      <Plan
+        latitude={Number(query.lat)}
+        lieux={lieux}
+        longitude={Number(query.lon)}
+        nombreDeResultat={nombreDeResultat}
+      />
+      <VotreAvis />
+    </>
   )
 }

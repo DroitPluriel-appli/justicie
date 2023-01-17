@@ -12,6 +12,7 @@ import RetourHautDePage from '../RetourHautDePage/RetourHautDePage'
 import SiteInternet from '../SiteInternet/SiteInternet'
 import Telephone from '../Telephone/Telephone'
 import Title from '../Title/Title'
+import VotreAvis from '../VotreAvis/VotreAvis'
 import styles from './Lieu.module.css'
 
 export default function Lieu({ lieu }: { lieu: LieuEntity }): ReactElement {
@@ -104,6 +105,7 @@ export default function Lieu({ lieu }: { lieu: LieuEntity }): ReactElement {
         </address>
       </section>
       <RetourHautDePage />
+      <VotreAvis />
     </article>
   )
 }

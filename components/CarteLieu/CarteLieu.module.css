@@ -57,11 +57,10 @@
   display: flex;
   flex-direction: row;
   grid-area: criteresAccessibilite;
-  justify-content: right;
 }
 
 .main .carteLieu__criteres img {
-  margin-left: var(--s-margin);
+  margin-right: var(--s-margin);
 }
 
 .main > address > a {

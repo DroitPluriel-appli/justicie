@@ -132,3 +132,11 @@ pre {
   flex-direction: column;
   min-height: 100vh;
 }
+
+.votre-avis {
+  position: fixed;
+  right: calc(-2 * var(--m-margin));
+  top: 50%;
+  transform: rotate(1.75turn);
+  z-index: 9999;
+}

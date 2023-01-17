@@ -447,4 +447,25 @@ describe('résultats de recherche affichés en liste', () => {
     const page6 = within(navigation).getByText(6)
     expect(page6).toHaveAttribute('aria-current', 'page')
   })
+
+  it('affiche le lien pour donner son avis', () => {
+    // GIVEN
+    mockRouter.query = {
+      lat,
+      lon,
+    }
+
+    // WHEN
+    renderFakeComponent(
+      <ResultatsListe
+        lieux={[]}
+        nombreDeResultat={0}
+      />
+    )
+
+    // THEN
+    const links = screen.getByRole('link', { name: wording.DONNEZ_NOUS_VOTRE_AVIS + wording.NOUVELLE_FENETRE })
+    expect(links).toHaveAttribute('href', 'https://docs.google.com/forms/d/1sA-EWWn5LNXc2G3WWDIEcFhl5RBZYsMMbGWN2FHnndE/viewform')
+    expect(links.textContent).toBe(wording.VOTRE_AVIS)
+  })
 })
