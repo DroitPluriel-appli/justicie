@@ -67,7 +67,7 @@ export default function FoireAuxQuestions(): ReactElement {
       </h3>
       <p>
         {wording.REPONSE_JE_SUIS_ALLEE_SUR_PLACE}
-        <Email url={wording.EMAIL_DROIT_PLURIEL} >
+        <Email url={wording.EMAIL_DROIT_PLURIEL}>
           {wording.EMAIL_DROIT_PLURIEL}
         </Email>
         {'.'}
@@ -77,7 +77,7 @@ export default function FoireAuxQuestions(): ReactElement {
       </h3>
       <p>
         {wording.REPONSE_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT}
-        <Email url={wording.EMAIL_DROIT_PLURIEL} >
+        <Email url={wording.EMAIL_DROIT_PLURIEL}>
           {wording.EMAIL_DROIT_PLURIEL}
         </Email>
         {'.'}

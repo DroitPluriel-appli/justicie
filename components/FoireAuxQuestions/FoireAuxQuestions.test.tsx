@@ -3,7 +3,7 @@ import { screen, within } from '@testing-library/react'
 import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
 import FoireAuxQuestions from './FoireAuxQuestions'
 
-describe('en-tête de page', () => {
+describe('page "Foire aux questions"', () => {
   const { wording } = fakeFrontDependencies
 
   it('affiche le titre de l’onglet', () => {
@@ -14,7 +14,7 @@ describe('en-tête de page', () => {
     expect(document.title).toBe(wording.TITLE_FOIRE_AUX_QUESTIONS)
   })
 
-  it('affiche question + reponse "Je ne trouve aucun lieu qui correspond à ma recherche', () => {
+  it('affiche la question et la réponse permettant de savoir quoi faire si aucun lieu ne correspond à ma recherche', () => {
     // WHEN
     renderFakeComponent(<FoireAuxQuestions />)
 
@@ -42,7 +42,7 @@ describe('en-tête de page', () => {
     expect(lienMail).toHaveAttribute('href', 'mailto:' + wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[6].replaceAll(' ', ''))
   })
 
-  it('affiche question + reponse "Est-ce que l aide juridique apportée est entièrement gratuite ?"', () => {
+  it("affiche la question et la réponse permettant de savoir si l'aide juridique est gratuite", () => {
     // WHEN
     renderFakeComponent(<FoireAuxQuestions />)
 
@@ -54,7 +54,7 @@ describe('en-tête de page', () => {
     expect(reponse).toBeInTheDocument()
   })
 
-  it('affiche question + reponse "Qui va me recevoir dans les lieux référencés ?"', () => {
+  it('affiche la question et la réponse permettant de savoir qui va me recevoir dans les lieux référencés', () => {
     // WHEN
     renderFakeComponent(<FoireAuxQuestions />)
 
@@ -66,7 +66,7 @@ describe('en-tête de page', () => {
     expect(reponse).toBeInTheDocument()
   })
 
-  it('affiche question + reponse "Est ce que l avocat qui me recoit pourra me défendre pendant toute la procédure ?"', () => {
+  it("affiche la question et la réponse permettant de savoir si l'avocat qui me reçoit pourra me défendre pendant toute la procédure", () => {
     // WHEN
     renderFakeComponent(<FoireAuxQuestions />)
 
@@ -78,7 +78,7 @@ describe('en-tête de page', () => {
     expect(reponse).toBeInTheDocument()
   })
 
-  it('affiche question + reponse "Je suis allée sur place, et l’accessibilité n’est pas celle annoncée. Que faire ?"', () => {
+  it("affiche la question et la réponse permettant de savoir que faire si je suis allée sur place et que l'accéssibilité n´est pas celle annoncée", () => {
     // WHEN
     renderFakeComponent(<FoireAuxQuestions />)
 
@@ -93,7 +93,7 @@ describe('en-tête de page', () => {
     expect(lienMail).toHaveAttribute('href', 'mailto:' + wording.EMAIL_DROIT_PLURIEL)
   })
 
-  it('affiche question + reponse "Est-ce que tous les lieux apparaissent ?"', () => {
+  it('affiche question et la réponse permettant de savoir si tous les lieux apparaissent', () => {
     // WHEN
     renderFakeComponent(<FoireAuxQuestions />)
 
