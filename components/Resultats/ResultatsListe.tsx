@@ -18,7 +18,9 @@ export default function ResultatsListe({ lieux, nombreDeResultat }: { lieux: Lie
       <Title>
         {wording.TITLE_PAGE_ADRESSE_LISTE}
       </Title>
-      <EnTete nombreDeResultat={nombreDeResultat} />
+      <EnTete
+        nombreDeResultat={nombreDeResultat}
+      />
       {
         lieux.length !== 0 && (
           <ul className={styles.resultats}>

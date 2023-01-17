@@ -76,8 +76,18 @@ export class WordingFr implements Wording {
   readonly AFFICHEZ_RESULTATS_EN_PLAN: string = 'Affichez les résultats sur une carte'
   readonly BESOINS_D_ACCESSIBILITE: string = 'Besoins d’accessibilité '
   readonly MODIFIER_VOTRE_BESOIN_D_ACCESSIBILITE: string = 'Modifier votre besoin d’accessibilité'
-  readonly LIEUX_CORRESPONDENT_A_VOTRE_RECHERCHE: (nombre: number) => string = (nombre: number): string => nombre > 1 ? `${nombre} lieux correspondent à votre recherche` : `${nombre} lieu correspond à votre recherche`
-  readonly AUCUN_LIEU_NE_CORRESPOND_A_VOTRE_RECHERCHE: string = 'Aucun lieu ne correspond à votre recherche.'
+  readonly LIEUX_CORRESPONDENT_A_VOTRE_RECHERCHE: (nombre: number, rayonDeRecherche?: number) => string =
+    (nombre: number, rayonDeRecherche?: number): string => {
+      const insertRayon = rayonDeRecherche ? ` dans un rayon de ${rayonDeRecherche} kilomètres` : ''
+      return nombre > 1 ?
+        `${nombre} lieux correspondent à votre recherche${insertRayon}` :
+        `${nombre} lieu correspond à votre recherche${insertRayon}`
+    }
+  readonly AUCUN_LIEU_NE_CORRESPOND_A_VOTRE_RECHERCHE: (rayonDeRecherche?: number) => string = (rayonDeRecherche?: number): string => {
+    return rayonDeRecherche ?
+      `Aucun lieu ne correspond à votre recherche dans un rayon de ${rayonDeRecherche} kilomètres.` :
+      'Aucun lieu ne correspond à votre recherche.'
+  }
   readonly CONTACTER_LA_PERMANENCE: string = 'Si vous êtes en situation de handicap, vous pouvez contacter la permanence juridique de Droit Pluriel :'
   readonly CONTACTER_CDAD: string = 'Vous n’êtes pas en situation de handicap ? Contactez le conseil départemental d’accès au droit de votre département (CDAD).'
   readonly EMAIL_DROIT_PLURIEL_ZERO_RESULTAT: string = 'agir@droitpluriel.fr'

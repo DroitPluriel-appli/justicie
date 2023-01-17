@@ -5,6 +5,7 @@ import { PostgreSQLLieuLoader } from './infrastructure/gateways/PostgreSQLLieuLo
 type BackDependencies = Readonly<{
   lieuLoader: LieuLoader
   nombreDeLieuxAffichesParPage: number
+  rayonDeRecherche: number
 }>
 
 const createDependencies = (): BackDependencies => {
@@ -13,6 +14,7 @@ const createDependencies = (): BackDependencies => {
   return {
     lieuLoader: new PostgreSQLLieuLoader(orm),
     nombreDeLieuxAffichesParPage: 10,
+    rayonDeRecherche: 2.5,
   }
 }
 

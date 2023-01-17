@@ -1,5 +1,7 @@
 import { fireEvent, screen, within } from '@testing-library/react'
+import L from 'leaflet'
 import mockRouter from 'next-router-mock'
+import { expect } from 'vitest'
 
 import { LieuBuilder } from '../../backend/entities/LieuBuilder'
 import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
@@ -8,6 +10,13 @@ import ResultatsPlan from './ResultatsPlan'
 
 describe('page des résultats de recherche affichés sur une carte', () => {
   const { paths, wording } = fakeFrontDependencies
+
+  beforeAll(() => {
+    // spyOn continue d'appeller la fonction initiale, or ici elle provoque une erreur
+    // car jsdom ne sait pas gérer la création de svg induite par la création du cercle par leaflet
+    // eslint-disable-next-line jest/prefer-spy-on
+    L.Circle.prototype.addTo = jest.fn()
+  })
 
   const lieuA = LieuBuilder.cree({
     adresse: '12 rue du Lieu',
@@ -54,6 +63,7 @@ describe('page des résultats de recherche affichés sur une carte', () => {
   const moteurTotal = 'on'
   const latitude = 40.0
   const longitude = 50.0
+  const rayonDeRecherche = 250
 
   it('affiche le titre de l’onglet', () => {
     // GIVEN
@@ -126,7 +136,7 @@ describe('page des résultats de recherche affichés sur une carte', () => {
     )
 
     // THEN
-    const titre = screen.getByText(wording.LIEUX_CORRESPONDENT_A_VOTRE_RECHERCHE(nombreDeResultat), { selector: 'p' })
+    const titre = screen.getByText(wording.LIEUX_CORRESPONDENT_A_VOTRE_RECHERCHE(nombreDeResultat, rayonDeRecherche), { selector: 'p' })
     expect(titre).toBeInTheDocument()
   })
 
@@ -146,7 +156,7 @@ describe('page des résultats de recherche affichés sur une carte', () => {
     )
 
     // THEN
-    const aucunLieu = screen.getByText(wording.AUCUN_LIEU_NE_CORRESPOND_A_VOTRE_RECHERCHE, { selector: 'p' })
+    const aucunLieu = screen.getByText(wording.AUCUN_LIEU_NE_CORRESPOND_A_VOTRE_RECHERCHE(rayonDeRecherche), { selector: 'p' })
     expect(aucunLieu).toBeInTheDocument()
     const permanence = screen.getByText(textMatch(wording.CONTACTER_LA_PERMANENCE), { selector: 'p' })
     expect(permanence).toBeInTheDocument()

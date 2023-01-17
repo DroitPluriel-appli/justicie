@@ -74,8 +74,8 @@ export interface Wording {
   readonly AFFICHEZ_RESULTATS_EN_PLAN: string
   readonly BESOINS_D_ACCESSIBILITE: string
   readonly MODIFIER_VOTRE_BESOIN_D_ACCESSIBILITE: string
-  readonly LIEUX_CORRESPONDENT_A_VOTRE_RECHERCHE: (nombre: number) => string
-  readonly AUCUN_LIEU_NE_CORRESPOND_A_VOTRE_RECHERCHE: string
+  readonly LIEUX_CORRESPONDENT_A_VOTRE_RECHERCHE: (nombre: number, rayonDeRecherche?: number) => string
+  readonly AUCUN_LIEU_NE_CORRESPOND_A_VOTRE_RECHERCHE: (rayonDeRecherche?: number) => string
   readonly CONTACTER_LA_PERMANENCE: string
   readonly CONTACTER_CDAD: string
   readonly EMAIL_DROIT_PLURIEL_ZERO_RESULTAT: string

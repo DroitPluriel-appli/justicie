@@ -14,8 +14,8 @@ type PlanProps = Readonly<{
 }>
 
 export default function Plan({ latitude, lieux, longitude }: PlanProps): ReactElement {
-  const { wording } = useDependencies()
-  const { setMarkerPosition, setMarkersLieux } = usePlan()
+  const { wording, rayonDeRecherche } = useDependencies()
+  const { setMarkerPosition, setMarkersLieux, setCircleRayonDeRecherche } = usePlan()
 
   const credits = '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
   const defaultZoom = 15
@@ -32,6 +32,7 @@ export default function Plan({ latitude, lieux, longitude }: PlanProps): ReactEl
       .setView(viewCenter, defaultZoom)
       .addLayer(mapLayer)
       .addLayer(setMarkerPosition(viewCenter, wording.TITRE_MARKER_POSITION))
+    setCircleRayonDeRecherche(rayonDeRecherche, viewCenter).addTo(map)
 
     setMarkersLieux(lieux, latitude, longitude)
       .forEach((lieu) => lieu.addTo(map))

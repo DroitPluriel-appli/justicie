@@ -102,7 +102,7 @@ describe('page des résultats de recherche affichés en liste', () => {
     )
 
     // THEN
-    const aucunLieu = screen.getByText(wording.AUCUN_LIEU_NE_CORRESPOND_A_VOTRE_RECHERCHE, { selector: 'p' })
+    const aucunLieu = screen.getByText(wording.AUCUN_LIEU_NE_CORRESPOND_A_VOTRE_RECHERCHE(), { selector: 'p' })
     expect(aucunLieu).toBeInTheDocument()
     const permanence = screen.getByText(textMatch(wording.CONTACTER_LA_PERMANENCE), { selector: 'p' })
     expect(permanence).toBeInTheDocument()

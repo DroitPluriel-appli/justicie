@@ -8,7 +8,7 @@ import VotreAvis from '../VotreAvis/VotreAvis'
 import EnTete from './EnTete'
 
 export default function ResultatsPlan({ lieux, nombreDeResultat }: { lieux: Lieu[], nombreDeResultat: number }): ReactElement {
-  const { useRouter, wording } = useDependencies()
+  const { useRouter, wording, rayonDeRecherche } = useDependencies()
   const { query } = useRouter()
 
   const Plan = dynamic(() => import('../../components/Resultats/Plan'), { ssr: false })
@@ -18,7 +18,10 @@ export default function ResultatsPlan({ lieux, nombreDeResultat }: { lieux: Lieu
       <Title>
         {wording.TITLE_PAGE_RESULTATS_PAR_PLAN}
       </Title>
-      <EnTete nombreDeResultat={nombreDeResultat} />
+      <EnTete
+        nombreDeResultat={nombreDeResultat}
+        rayonDeRecherche={rayonDeRecherche}
+      />
       {
         nombreDeResultat > 0 && (
           <>

@@ -9,6 +9,7 @@ export type FrontDependencies = Readonly<{
   criteres: CritereFront[]
   nombreDeLieuxAffichesParPage: number
   paths: Paths
+  rayonDeRecherche: number
   useRouter: () => NextRouter
   wording: Wording
 }>
@@ -17,6 +18,7 @@ export const frontDependencies: FrontDependencies = {
   criteres: criteres(new WordingFr()),
   nombreDeLieuxAffichesParPage: 10,
   paths: new Paths(),
+  rayonDeRecherche: 250,
   useRouter,
   wording: new WordingFr(),
 }
