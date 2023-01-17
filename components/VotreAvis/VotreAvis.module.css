@@ -1,0 +1,6 @@
+.votreAvis {
+  background-color: var(--button-color);
+  color: var(--white);
+  font-weight: bold;
+  padding: var(--m-margin);
+}

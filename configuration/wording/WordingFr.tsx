@@ -88,6 +88,8 @@ export class WordingFr implements Wording {
   readonly DERNIERE_PAGE: string = 'Dernière page'
   readonly PAGE: (numero: number) => string = (numero: number): string => `Page ${numero}`
   readonly PERMANENCE_JURIDIQUE: string = 'la permanence juridique de Droit Pluriel'
+  readonly VOTRE_AVIS: string = 'Votre avis'
+  readonly DONNEZ_NOUS_VOTRE_AVIS: string = 'Aidez-nous à évaluer la plateforme en répondant à ce court questionnaire'
 
   // Resultats par plan
   readonly TITLE_PAGE_RESULTATS_PAR_PLAN: string = 'Résultats par plan' + this.SUFFIXE_TITLE
