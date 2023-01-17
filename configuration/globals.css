@@ -23,7 +23,6 @@
   --l-margin: 1.5rem;
   --m-margin: 1rem;
   --s-margin: 0.5rem;
-  --xs-margin: 0.25rem;
   --l-to-xxl-margin: clamp(var(--l-margin), 2vw + 1rem, var(--xxl-margin));
   --m-to-xl-margin: clamp(var(--m-margin), 2vw, var(--xl-margin));
   --s-to-xl-margin: clamp(var(--s-margin), 2vw, var(--xl-margin));

@@ -55,6 +55,35 @@ describe('rechercher par handicap', () => {
     expect(suivant).toHaveAttribute('type', 'submit')
   })
 
+  it('coche par défaut des besoins si on vient des résultats', () => {
+    // GIVEN
+    mockRouter.query = {
+      lat,
+      lon,
+      pmr: 'on',
+      visuel: 'on',
+    }
+
+    // WHEN
+    renderFakeComponent(<RechercherParHandicap />)
+
+    // THEN
+    const pmr = screen.getByRole('checkbox', { name: criteres[0].title })
+    expect(pmr).toHaveAttribute('checked', '')
+    const pmrAssiste = screen.getByRole('checkbox', { name: criteres[1].title })
+    expect(pmrAssiste).not.toHaveAttribute('checked')
+    const visuel = screen.getByRole('checkbox', { name: criteres[2].title })
+    expect(visuel).toHaveAttribute('checked', '')
+    const lsf = screen.getByRole('checkbox', { name: criteres[3].title })
+    expect(lsf).not.toHaveAttribute('checked')
+    const bim = screen.getByRole('checkbox', { name: criteres[4].title })
+    expect(bim).not.toHaveAttribute('checked')
+    const calme = screen.getByRole('checkbox', { name: criteres[5].title })
+    expect(calme).not.toHaveAttribute('checked')
+    const forme = screen.getByRole('checkbox', { name: criteres[6].title })
+    expect(forme).not.toHaveAttribute('checked')
+  })
+
   it('affiche une phrase demandant de recommencer le parcours quand on arrive sans latitude', () => {
     // GIVEN
     mockRouter.query = { lon }
