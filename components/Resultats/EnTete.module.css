@@ -47,6 +47,13 @@
   padding: var(--s-margin);
 }
 
+.besoins span {
+  background-color: var(--button-color);
+  border-radius: 1rem;
+  color: var(--white);
+  padding: 0.15rem 0.5rem;
+}
+
 :global(body.themeDark) .current a {
   background-color: var(--black);
   color: var(--primary-background-color);
