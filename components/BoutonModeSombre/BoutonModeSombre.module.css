@@ -17,7 +17,7 @@
 
 .main svg circle {
   fill: var(--primary-color);
-  transition: all 0.25s;
+  transition: transform 0.25s;
 }
 
 .enabled svg circle {

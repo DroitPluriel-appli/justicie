@@ -117,10 +117,7 @@ describe('renseigner une adresse', () => {
     expect(resultats).toHaveLength(0)
   })
 
-  it.each([
-    ['touchStart'],
-    ['click'],
-  ])('efface l’adresse quand on %s sur le bouton et rend le formulaire non validable', async (event: string) => {
+  it('efface l’adresse quand on clic sur le bouton et rend le formulaire non validable', async () => {
     // GIVEN
     mockedFetch([
       {
@@ -147,7 +144,7 @@ describe('renseigner une adresse', () => {
     const effacerLAdresse = screen.getByRole('button', { name: wording.EFFACER_L_ADRESSE })
 
     // WHEN
-    fireEvent[event as 'touchStart' | 'click'](effacerLAdresse)
+    fireEvent.click(effacerLAdresse)
 
     // THEN
     // const adresseEffacee = within(formulaire).getByPlaceholderText(wording.RENSEIGNER_UNE_ADRESSE)

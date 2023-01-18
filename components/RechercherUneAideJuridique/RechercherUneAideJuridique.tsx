@@ -40,7 +40,6 @@ export default function RechercherUneAideJuridique(): ReactElement {
         disabled={isDisabled}
         onClick={touch}
         onKeyDown={keyDown}
-        onTouchStart={touch}
         type="button"
       >
         {buttonName}

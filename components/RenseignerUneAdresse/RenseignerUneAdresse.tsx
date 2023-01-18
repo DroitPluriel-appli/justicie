@@ -59,7 +59,6 @@ export default function RenseignerUneAdresse(): ReactElement {
             className={styles.reset}
             onClick={effaceLAdresseAuTouch}
             onKeyDown={effaceLAdresseAuKeyDown}
-            onTouchStart={effaceLAdresseAuTouch}
             title={wording.EFFACER_L_ADRESSE}
             type="button"
           >
