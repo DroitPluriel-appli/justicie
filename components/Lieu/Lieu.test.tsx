@@ -61,10 +61,15 @@ describe('lieu', () => {
   it('affiche son accessibilité', () => {
     // GIVEN
     const lieu = LieuBuilder.cree({
-      calme: true,
-      pmr: true,
-      pmr_assiste: true,
-      visuel: true,
+      criteres: {
+        bim: false,
+        calme: true,
+        forme: false,
+        lsf: false,
+        pmr: true,
+        pmr_assiste: true,
+        visuel: true,
+      },
     })
 
     // WHEN

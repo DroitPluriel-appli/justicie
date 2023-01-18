@@ -161,8 +161,35 @@ describe('résultats de recherche affichés en liste', () => {
       lat,
       lon,
     }
-    const lieuA = LieuBuilder.cree({ adresse: '12 rue du Lieu', bim: true, forme: true, id: 1, latitude: -0.09, longitude: 51.50, lsf: true, nom: 'LieuA' })
-    const lieuB = LieuBuilder.cree({ forme: false, id: 2, nom: 'Lieu B' })
+    const lieuA = LieuBuilder.cree({
+      adresse: '12 rue du Lieu',
+      criteres: {
+        bim: true,
+        calme: false,
+        forme: true,
+        lsf: true,
+        pmr: true,
+        pmr_assiste: true,
+        visuel: true,
+      },
+      id: 1,
+      latitude: -0.09,
+      longitude: 51.50,
+      nom: 'LieuA',
+    })
+    const lieuB = LieuBuilder.cree({
+      criteres: {
+        bim: true,
+        calme: false,
+        forme: false,
+        lsf: true,
+        pmr: true,
+        pmr_assiste: true,
+        visuel: true,
+      },
+      id: 2,
+      nom: 'Lieu B',
+    })
 
     // WHEN
     renderFakeComponent(

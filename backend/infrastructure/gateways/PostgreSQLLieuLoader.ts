@@ -1,7 +1,7 @@
 import { DataSource } from 'typeorm'
 
-import { Critere } from '../../../configuration/criteres'
 import { LieuModel } from '../../../database/models/LieuModel'
+import { Criteres } from '../../entities/Criteres'
 import { Lieu } from '../../entities/Lieu'
 import { LieuLoader } from '../../entities/LieuLoader'
 
@@ -18,34 +18,31 @@ export class PostgreSQLLieuLoader implements LieuLoader {
     return this.transformeEnLieu(this.ajouteLaDistance(lieuxModel, latitude, longitude))
   }
 
-  // @ts-ignore
   async recupereDesLieux(
     latitude: number,
     longitude: number,
     page = 0,
     nombreDeLieuxAffichesParPage = 10,
-    accessibilites = []
+    criteres = [] as (keyof Criteres)[]
   ): Promise<{ lieux: Lieu[], nombreDeResultat: number }> {
-    // @ts-ignore
-    const lieuxModel = await this.getLieux(latitude, longitude, page, nombreDeLieuxAffichesParPage, accessibilites)
+    const lieuxModel = await this.getLieux(latitude, longitude, page, nombreDeLieuxAffichesParPage, criteres)
 
     return {
       lieux: this.transformeEnLieu(lieuxModel),
-      // @ts-ignore
-      nombreDeResultat: await this.getNombreDeResultat(latitude, longitude, accessibilites),
+      nombreDeResultat: await this.getNombreDeResultat(latitude, longitude, criteres),
     }
   }
 
   private async getNombreDeResultat(
     latitude: number,
     longitude: number,
-    accessibilites: keyof Critere['name'][] | []
+    criteres: (keyof Criteres)[]
   ): Promise<number> {
-    const accessibilitesSQL = this.getAccessibilites(accessibilites)
+    const criteresSQL = this.getCriteres(criteres)
 
     const query = await (await this.orm)
       .getRepository(LieuModel)
-      .query(`SELECT COUNT(*) FROM lieu WHERE (latitude BETWEEN $1 AND $2 AND longitude BETWEEN $3 AND $4) ${accessibilitesSQL}`, [
+      .query(`SELECT COUNT(*) FROM lieu WHERE (latitude BETWEEN $1 AND $2 AND longitude BETWEEN $3 AND $4) ${criteresSQL}`, [
         latitude - this.vingtKilometres,
         latitude + this.vingtKilometres,
         longitude - this.vingtKilometres,
@@ -60,13 +57,13 @@ export class PostgreSQLLieuLoader implements LieuLoader {
     longitude: number,
     page: number,
     nombreDeLieuxAffichesParPage: number,
-    accessibilites: keyof Critere['name'][] | []
+    criteres: (keyof Criteres)[]
   ): Promise<LieuModel[]> {
-    const accessibilitesSQL = this.getAccessibilites(accessibilites)
+    const criteresSQL = this.getCriteres(criteres)
 
     return await (await this.orm)
       .getRepository(LieuModel)
-      .query(`SELECT *, code_postal AS "codePostal", domaine_de_droit AS "domaineDeDroit", e_mail AS "eMail", prise_de_rendez_vous AS "priseDeRendezVous", site_internet AS "siteInternet", ABS(latitude - $1) + ABS(longitude - $2) AS distance FROM lieu WHERE (latitude BETWEEN $3 AND $4 AND longitude BETWEEN $5 AND $6) ${accessibilitesSQL} ORDER BY distance ASC LIMIT $7 OFFSET $8`, [
+      .query(`SELECT *, code_postal AS "codePostal", domaine_de_droit AS "domaineDeDroit", e_mail AS "eMail", prise_de_rendez_vous AS "priseDeRendezVous", site_internet AS "siteInternet", ABS(latitude - $1) + ABS(longitude - $2) AS distance FROM lieu WHERE (latitude BETWEEN $3 AND $4 AND longitude BETWEEN $5 AND $6) ${criteresSQL} ORDER BY distance ASC LIMIT $7 OFFSET $8`, [
         latitude,
         longitude,
         latitude - this.vingtKilometres,
@@ -78,12 +75,9 @@ export class PostgreSQLLieuLoader implements LieuLoader {
       ]) as LieuModel[]
   }
 
-  private getAccessibilites(accessibilites: keyof Critere['name'][] | []): string {
-    // eslint-disable-next-line
-    return accessibilites
-      // @ts-ignore
-      // eslint-disable-next-line
-      .map((accessibilite) => ` AND ${accessibilite} = true`)
+  private getCriteres(criteres: (keyof Criteres)[]): string {
+    return criteres
+      .map((critere: string): string => ` AND ${critere} = true`)
       .join('')
   }
 
@@ -91,29 +85,31 @@ export class PostgreSQLLieuLoader implements LieuLoader {
     return lieuxModel.map((lieuModel): Lieu => {
       return new Lieu(
         lieuModel.adresse,
-        lieuModel.bim,
-        lieuModel.calme,
         lieuModel.codePostal,
         lieuModel.commentaire,
+        {
+          bim: lieuModel.bim,
+          calme: lieuModel.calme,
+          forme: lieuModel.forme,
+          lsf: lieuModel.lsf,
+          pmr: lieuModel.pmr,
+          pmr_assiste: lieuModel.pmr_assiste,
+          visuel: lieuModel.visuel,
+        },
         lieuModel.departement,
         Number((lieuModel.distance as number * 100).toPrecision(2)),
         lieuModel.domaineDeDroit,
         lieuModel.eMail,
-        lieuModel.forme,
         lieuModel.horaire,
         lieuModel.id,
         lieuModel.latitude,
         lieuModel.longitude,
-        lieuModel.lsf,
         lieuModel.nom,
-        lieuModel.pmr,
-        lieuModel.pmr_assiste,
         lieuModel.priseDeRendezVous,
         lieuModel.region,
         lieuModel.siteInternet,
         lieuModel.telephone,
-        lieuModel.ville,
-        lieuModel.visuel
+        lieuModel.ville
       )
     })
   }
