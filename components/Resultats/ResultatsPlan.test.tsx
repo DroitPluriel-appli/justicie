@@ -11,22 +11,34 @@ describe('page résultats par plan', () => {
 
   const lieuA = LieuBuilder.cree({
     adresse: '12 rue du Lieu',
-    bim: true,
-    forme: true,
+    criteres: {
+      bim: true,
+      calme: false,
+      forme: true,
+      lsf: true,
+      pmr: true,
+      pmr_assiste: true,
+      visuel: true,
+    },
     id: 1,
     latitude: -0.09,
     longitude: 51.50,
-    lsf: true,
     nom: 'LieuA',
   })
 
   const lieuB = LieuBuilder.cree({
-    bim: true,
-    forme: true,
+    criteres: {
+      bim: true,
+      calme: false,
+      forme: true,
+      lsf: true,
+      pmr: true,
+      pmr_assiste: true,
+      visuel: true,
+    },
     id: 1,
     latitude: -0.09,
     longitude: 51.50,
-    lsf: true,
     nom: 'LieuB',
   })
 
@@ -203,7 +215,7 @@ describe('page résultats par plan', () => {
     })
   })
 
-  it('change le marker lieu en rouge et + grand au click et le reset si click ailleur', () => {
+  it('change le marker lieu en rouge et + grand au clic et le reset si clic ailleurs', () => {
     // GIVEN
     const lieux = [lieuA, lieuB]
 
@@ -254,7 +266,7 @@ describe('page résultats par plan', () => {
     })
   })
 
-  it('affiche la carte du lieu dans la popup au click sur un marker', () => {
+  it('affiche la carte du lieu dans la popup au clic sur un marker', () => {
     // WHEN
     renderFakeComponent(
       <Plan

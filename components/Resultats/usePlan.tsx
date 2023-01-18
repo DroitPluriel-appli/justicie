@@ -42,17 +42,15 @@ export default function usePlan() {
       )
 
       return L.marker(
-        [lieu.latitude, lieu.longitude] as L.LatLngExpression,
+        [lieu.latitude, lieu.longitude],
         { icon: iconMarkerLieuDefault, title: lieu.nom }
       )
-        .on('click', ({ sourceTarget }) => {
+        .on('click', ({ sourceTarget }: { sourceTarget: L.Marker }) => {
           markersLieux.forEach((marker) => marker.setIcon(iconMarkerLieuDefault))
-          const target = (sourceTarget as L.Marker)
-          target.setIcon(iconMarkerLieuSelected)
+          sourceTarget.setIcon(iconMarkerLieuSelected)
         })
-        .on('popupclose', ({ sourceTarget }) => {
-          const target = (sourceTarget as L.Marker)
-          target.setIcon(iconMarkerLieuDefault)
+        .on('popupclose', ({ sourceTarget }: { sourceTarget: L.Marker }) => {
+          sourceTarget.setIcon(iconMarkerLieuDefault)
         })
         .bindPopup(popup)
     })

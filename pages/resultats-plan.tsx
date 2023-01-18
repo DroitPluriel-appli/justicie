@@ -31,7 +31,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext): Pr
     .filter((critere) => context.query[critere.name])
     .map((critere) => critere.name)
 
-  // @ts-ignore
   const { lieux, nombreDeResultat } = await lieuLoader.recupereDesLieux(latitude, longitude, page, nombreDeLieuxAffichesParPage, accessibilites)
 
   return { props: { lieux: JSON.parse(JSON.stringify(lieux)) as Lieu[], nombreDeResultat } }

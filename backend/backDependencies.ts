@@ -11,7 +11,6 @@ const createDependencies = (): BackDependencies => {
   const orm = dataSource.initialize()
 
   return {
-    // @ts-ignore
     lieuLoader: new PostgreSQLLieuLoader(orm),
     nombreDeLieuxAffichesParPage: 10,
   }

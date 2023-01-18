@@ -15,7 +15,7 @@ export default function Accessibilites({ lieu }: AccessibilitesProps): ReactElem
     <>
       {
         criteres
-          .filter((critere): string => lieu[critere.name] as string)
+          .filter((critere): boolean => lieu.criteres[critere.name])
           .map((critere) => (
             <Image
               alt={critere.title}

@@ -1,10 +1,10 @@
-import { Lieu } from '../backend/entities/Lieu'
+import { Criteres } from '../backend/entities/Criteres'
 import { Wording } from './wording/Wording'
 
 export type Critere = Readonly<{
   description: string
   imgSrc: string
-  name: keyof Lieu
+  name: keyof Criteres
   title: string
 }>
 
