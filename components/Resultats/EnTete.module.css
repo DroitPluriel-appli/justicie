@@ -8,7 +8,7 @@
   color: var(--dark-gray);
   display: block;
   margin-bottom: var(--m-margin);
-  padding-block: var(--s-margin);
+  padding: var(--s-margin) 0;
   text-align: center;
 }
 

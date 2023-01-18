@@ -1,0 +1,4 @@
+.resultats li {
+  box-shadow: 0 0.4rem 0.4rem var(--shadow);
+  margin: 0 calc(-1 * var(--m-margin)) var(--l-margin) calc(-1 * var(--m-margin));
+}
