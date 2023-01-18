@@ -70,7 +70,7 @@
 .main :global(.autocomplete__option) {
   border-bottom: 1px solid var(--white);
   font-weight: normal;
-  padding-block: var(--m-margin);
+  padding: var(--m-margin) 0;
 }
 
 .main :global(.autocomplete__option):hover,

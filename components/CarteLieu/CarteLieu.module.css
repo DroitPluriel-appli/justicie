@@ -1,25 +1,21 @@
 .main {
-  box-shadow: 0 0.4rem 0.4rem var(--shadow);
+  border: 1px solid var(--gray);
   display: grid;
   grid-gap: var(--m-margin) 0;
   grid-template:
-    "title title title title" auto
-    "coordonnees coordonnees coordonnees distance" auto
-    "criteresAccessibilite criteresAccessibilite criteresAccessibilite criteresAccessibilite" auto
-    "lancerItineraire lancerItineraire plusDInformations plusDInformations" auto
+    "title title title title"
+    "coordonnees coordonnees coordonnees distance"
+    "criteresAccessibilite criteresAccessibilite criteresAccessibilite criteresAccessibilite"
+    "lancerItineraire lancerItineraire plusDInformations plusDInformations"
     / 1fr 1fr 1fr 1fr;
-  margin: 0 calc(-1 * var(--l-margin)) var(--l-margin) calc(-1 * var(--l-margin));
-  outline: 1px solid var(--gray);
 }
 
 :global(.leaflet-container) .main {
-  box-shadow: none;
+  border: none;
   column-gap: var(--s-margin);
 
   /* width d'1 column : (100% - les gaps) / 4 columns */
   grid-template-columns: repeat(4, calc((100% - 3 * var(--s-margin))/4));
-  margin: 0;
-  outline: none;
 }
 
 :global(.leaflet-container) .adresse p {
@@ -32,11 +28,11 @@
 }
 
 .main > *:not(a, p) {
-  padding-inline: var(--l-margin);
+  padding: 0 var(--l-margin);
 }
 
 :global(.leaflet-container) .main > *:not(a) {
-  padding-inline: 0;
+  padding: 0;
 }
 
 .main > .title {

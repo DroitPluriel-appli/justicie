@@ -29,7 +29,11 @@ export default function ResultatsPlan({ lieux, nombreDeResultat }: { lieux: Lieu
         longitude={Number(query.lon)}
         nombreDeResultat={nombreDeResultat}
       />
-      <VotreAvis />
+      {
+        nombreDeResultat > 0 && (
+          <VotreAvis />
+        )
+      }
     </>
   )
 }

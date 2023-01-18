@@ -347,7 +347,29 @@ describe('page résultats par plan', () => {
     expect(recommencer).toBeInTheDocument()
   })
 
-  it('affiche le lien pour donner son avis', () => {
+  it('affiche le lien pour donner son avis quand il y a des résultats', () => {
+    // GIVEN
+    mockRouter.query = {
+      lat,
+      lon,
+    }
+    const lieu = LieuBuilder.cree()
+
+    // WHEN
+    renderFakeComponent(
+      <ResultatsPlan
+        lieux={[lieu]}
+        nombreDeResultat={1}
+      />
+    )
+
+    // THEN
+    const links = screen.getByRole('link', { name: wording.DONNEZ_NOUS_VOTRE_AVIS + wording.NOUVELLE_FENETRE })
+    expect(links).toHaveAttribute('href', 'https://docs.google.com/forms/d/1sA-EWWn5LNXc2G3WWDIEcFhl5RBZYsMMbGWN2FHnndE/viewform')
+    expect(links.textContent).toBe(wording.VOTRE_AVIS)
+  })
+
+  it('n’affiche le lien pour donner son avis quand il n’y a pas de résultat', () => {
     // GIVEN
     mockRouter.query = {
       lat,
@@ -363,8 +385,7 @@ describe('page résultats par plan', () => {
     )
 
     // THEN
-    const links = screen.getByRole('link', { name: wording.DONNEZ_NOUS_VOTRE_AVIS + wording.NOUVELLE_FENETRE })
-    expect(links).toHaveAttribute('href', 'https://docs.google.com/forms/d/1sA-EWWn5LNXc2G3WWDIEcFhl5RBZYsMMbGWN2FHnndE/viewform')
-    expect(links.textContent).toBe(wording.VOTRE_AVIS)
+    const links = screen.queryByRole('link', { name: wording.DONNEZ_NOUS_VOTRE_AVIS + wording.NOUVELLE_FENETRE })
+    expect(links).not.toBeInTheDocument()
   })
 })

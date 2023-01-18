@@ -36,7 +36,7 @@
   color: var(--white);
   font-size: var(--xs-to-s-font);
   margin-top: var(--m-to-xl-margin);
-  padding-block: var(--m-margin);
+  padding: var(--m-margin) 0;
   text-align: center;
 }
 

@@ -8,6 +8,7 @@ import Pagination from '../Pagination/Pagination'
 import Title from '../Title/Title'
 import VotreAvis from '../VotreAvis/VotreAvis'
 import EnTete from './EnTete'
+import styles from './ResultatsListe.module.css'
 
 export default function ResultatsListe({ lieux, nombreDeResultat }: { lieux: Lieu[], nombreDeResultat: number }): ReactElement {
   const { nombreDeLieuxAffichesParPage, useRouter, wording } = useDependencies()
@@ -30,7 +31,7 @@ export default function ResultatsListe({ lieux, nombreDeResultat }: { lieux: Lie
       <EnTete nombreDeResultat={nombreDeResultat} />
       {
         lieux.length !== 0 && (
-          <ul>
+          <ul className={styles.resultats}>
             {
               lieux.map((lieu) => {
                 return (
@@ -54,7 +55,11 @@ export default function ResultatsListe({ lieux, nombreDeResultat }: { lieux: Lie
           />
         )
       }
-      <VotreAvis />
+      {
+        nombreDeResultat > 0 && (
+          <VotreAvis />
+        )
+      }
     </>
   )
 }

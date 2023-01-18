@@ -65,7 +65,7 @@ body:not(.themeDark, .themeLight) {
 main {
   color: var(--black);
   flex-grow: 3;
-  padding-inline: var(--m-margin);
+  padding: 0 var(--m-margin);
 }
 
 ul {
