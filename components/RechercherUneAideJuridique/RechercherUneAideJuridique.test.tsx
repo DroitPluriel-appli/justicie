@@ -1,4 +1,4 @@
-import { fireEvent, screen, waitFor } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 import mockRouter from 'next-router-mock'
 
 import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
@@ -50,10 +50,8 @@ describe('rechercher un lieu', () => {
     renderFakeComponent(<RechercherUneAideJuridique />)
 
     // THEN
-    await waitFor(() => {
-      const geolocalisationDesactivée = screen.getByText(wording.GEOLOCALISATION_DESACTIVEE, { selector: 'p' })
-      expect(geolocalisationDesactivée).toBeInTheDocument()
-    })
+    const geolocalisationDesactivée = await screen.findByText(wording.GEOLOCALISATION_DESACTIVEE, { selector: 'p' })
+    expect(geolocalisationDesactivée).toBeInTheDocument()
 
     const utiliserMaPostionActuelleGrisee = screen.getByRole('button', { name: wording.UTILISER_MA_POSITION_ACTUELLE })
     expect(utiliserMaPostionActuelleGrisee).toBeDisabled()
@@ -70,32 +68,9 @@ describe('rechercher un lieu', () => {
     fireEvent.click(utiliserMaPostionActuelle)
 
     // THEN
-    const utiliserMaPostionActuelleGrisee = screen.getByRole('button', { name: wording.CHARGEMENT })
+    const utiliserMaPostionActuelleGrisee = await screen.findByRole('button', { name: wording.CHARGEMENT })
     expect(utiliserMaPostionActuelleGrisee).toBeDisabled()
-    await waitFor(() => {
-      expect(mockRouter.asPath).toBe(`${paths.RECHERCHER_PAR_HANDICAP}?lat=43.296482&lon=5.36978`)
-    })
-  })
-
-  it.each([
-    ['Space'],
-    ['Enter'],
-  ])('va à l’étape 2 quand j’utilise ma position actuelle avec la touche %s et grise le bouton', async (code: string) => {
-    // GIVEN
-    mockedGrantedPermissions()
-    mockedSuccessedGeolocation(43.296482, 5.36978)
-    renderFakeComponent(<RechercherUneAideJuridique />)
-    const utiliserMaPostionActuelle = screen.getByRole('button', { name: wording.UTILISER_MA_POSITION_ACTUELLE })
-
-    // WHEN
-    fireEvent.keyDown(utiliserMaPostionActuelle, { code })
-
-    // THEN
-    const utiliserMaPostionActuelleGrisee = screen.getByRole('button', { name: wording.CHARGEMENT })
-    expect(utiliserMaPostionActuelleGrisee).toBeDisabled()
-    await waitFor(() => {
-      expect(mockRouter.asPath).toBe(`${paths.RECHERCHER_PAR_HANDICAP}?lat=43.296482&lon=5.36978`)
-    })
+    expect(mockRouter.asPath).toBe(`${paths.RECHERCHER_PAR_HANDICAP}?lat=43.296482&lon=5.36978`)
   })
 
   it('ne va pas à l’étape 2 quand je bloque la localisation de ma position actuelle', () => {
@@ -106,7 +81,7 @@ describe('rechercher un lieu', () => {
     const utiliserMaPostionActuelle = screen.getByRole('button', { name: wording.UTILISER_MA_POSITION_ACTUELLE })
 
     // WHEN
-    fireEvent.keyDown(utiliserMaPostionActuelle, { code: 'Space' })
+    fireEvent.click(utiliserMaPostionActuelle)
 
     // THEN
     expect(utiliserMaPostionActuelle).toBeEnabled()
@@ -121,7 +96,7 @@ describe('rechercher un lieu', () => {
     const utiliserMaPostionActuelle = screen.getByRole('button', { name: wording.UTILISER_MA_POSITION_ACTUELLE })
 
     // WHEN
-    fireEvent.keyDown(utiliserMaPostionActuelle, { code: 'Space' })
+    fireEvent.click(utiliserMaPostionActuelle)
 
     // THEN
     const geolocalisationDesactivée = screen.getByText(wording.GEOLOCALISATION_DESACTIVEE, { selector: 'p' })

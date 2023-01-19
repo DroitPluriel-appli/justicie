@@ -11,7 +11,6 @@ import '../configuration/globals.css'
 import { useTheme } from '../configuration/useTheme'
 
 export default function App({ Component, pageProps }: AppProps): ReactElement {
-
   const { applyThemeFromLocalStorage } = useTheme()
 
   useEffect(() => {

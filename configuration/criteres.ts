@@ -1,14 +1,14 @@
-import { Criteres } from '../backend/entities/Criteres'
+import { Critere } from '../backend/entities/Critere'
 import { Wording } from './wording/Wording'
 
-export type Critere = Readonly<{
+export type CritereFront = Readonly<{
   description: string
   imgSrc: string
-  name: keyof Criteres
+  name: Critere
   title: string
 }>
 
-export const criteres = (wording: Wording): Critere[] => [
+export const criteres = (wording: Wording): CritereFront[] => [
   {
     description: wording.DESCRIPTION_HANDICAP_MOTEUR_TOTAL,
     imgSrc: '/pictos_criteres_accessibilite/handicap_moteur_total.png',

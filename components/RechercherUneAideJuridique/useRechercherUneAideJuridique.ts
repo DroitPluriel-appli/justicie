@@ -1,4 +1,4 @@
-import { KeyboardEvent, useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
 
@@ -14,7 +14,7 @@ type State = Readonly<{
 }>
 
 export function useRechercherUneAideJuridique() {
-  const { isTheGoodKeyCode, paths, useRouter, wording } = useDependencies()
+  const { paths, useRouter, wording } = useDependencies()
   const [geoloc, setGeoloc] = useState<coordonneesGeospatiales>({
     latitude: 0,
     longitude: 0,
@@ -28,12 +28,6 @@ export function useRechercherUneAideJuridique() {
 
   const touch = () => {
     hasGeoloc()
-  }
-
-  const keyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
-    if (isTheGoodKeyCode(event)) {
-      hasGeoloc()
-    }
   }
 
   useEffect(() => {
@@ -99,7 +93,6 @@ export function useRechercherUneAideJuridique() {
     buttonName: state.buttonName,
     isDisabled: state.isDisabled,
     isGPSDenied: state.isGPSDenied,
-    keyDown: useCallback(keyDown, [isTheGoodKeyCode, hasGeoloc]),
     touch: useCallback(touch, [hasGeoloc]),
   }
 }

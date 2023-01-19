@@ -1,4 +1,4 @@
-import { Criteres } from './Criteres'
+import { Critere } from './Critere'
 import { Lieu } from './Lieu'
 
 export interface LieuLoader {
@@ -8,6 +8,6 @@ export interface LieuLoader {
     longitude: number,
     page?: number,
     nombreDeLieuxAffichesParPage?: number,
-    criteres?: (keyof Criteres)[]
+    criteres?: Critere[]
   ): Promise<{ lieux: Lieu[], nombreDeResultat: number }>
 }

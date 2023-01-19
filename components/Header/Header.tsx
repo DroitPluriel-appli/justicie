@@ -12,7 +12,6 @@ export default function Header(): ReactElement {
   const {
     classMenu,
     isMenuClose,
-    keyDown,
     touch,
   } = useHeader()
 
@@ -71,7 +70,6 @@ export default function Header(): ReactElement {
             <button
               className={styles.burgerOpen}
               onClick={touch}
-              onKeyDown={keyDown}
               type="button"
             >
               {wording.MENU}
@@ -103,7 +101,6 @@ export default function Header(): ReactElement {
               <button
                 aria-controls="menu-mobile-container"
                 onClick={touch}
-                onKeyDown={keyDown}
                 title={wording.FERMER}
                 type="button"
               >
