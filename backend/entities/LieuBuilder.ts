@@ -16,7 +16,7 @@ export class LieuBuilder {
         visuel: true,
       },
       champsSurchargés?.departement || 'Ain',
-      champsSurchargés?.distance || 26.000000000000245,
+      champsSurchargés?.distance || 0.26000000000000245,
       champsSurchargés?.domaineDeDroit || 'TOUT DOMAINES',
       champsSurchargés?.eMail || 'mjd.bourg-en-bresse@example.com',
       champsSurchargés?.horaire || 'Lundi 9h00 à 12h00 et de 13h30 à 17h00\nMardi 9h00 à 12h00 et de 13h30 à 17h00\nMercredi 9h00 à 12h00 et de 13h30 à 17h00\nJeudi 9h00 à 12h00 et de 13h30 à 17h00\nVendredi 9h00 à 12h00 et de 13h30 à 17h00',

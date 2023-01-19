@@ -3,7 +3,7 @@ import { DataSource } from 'typeorm'
 import dataSource from '../../../database/dataSource'
 import { LieuModel } from '../../../database/models/LieuModel'
 import { LieuModelBuilder } from '../../../database/models/LieuModelBuilder'
-import { Criteres } from '../../entities/Criteres'
+import { Critere } from '../../entities/Critere'
 import { LieuBuilder } from '../../entities/LieuBuilder'
 import { PostgreSQLLieuLoader } from './PostgreSQLLieuLoader'
 
@@ -31,7 +31,7 @@ describe('lieu loader', () => {
       const lieu = await postgreSQLLieuLoader.recupereUnLieu(idExistant, latitude, longitude)
 
       // THEN
-      expect(lieu).toStrictEqual([LieuBuilder.cree({ distance: 20, id: 1, latitude: 40.100000, longitude: 2.100000 })])
+      expect(lieu).toStrictEqual([LieuBuilder.cree({ distance: 0.20, id: 1, latitude: 40.100000, longitude: 2.100000 })])
     })
 
     it('récupère un lieu inexistant', async () => {
@@ -57,7 +57,7 @@ describe('lieu loader', () => {
       const lieu = await postgreSQLLieuLoader.recupereUnLieu(idInexistant)
 
       // THEN
-      expect(lieu).toStrictEqual([LieuBuilder.cree({ distance: 4200, id: 1, latitude: 40.100000, longitude: 2.100000 })])
+      expect(lieu).toStrictEqual([LieuBuilder.cree({ distance: 42, id: 1, latitude: 40.100000, longitude: 2.100000 })])
     })
   })
 
@@ -76,9 +76,9 @@ describe('lieu loader', () => {
       // THEN
       expect(lieux).toStrictEqual({
         lieux: [
-          LieuBuilder.cree({ distance: 20, id: 1, latitude: 40.100000, longitude: 2.100000 }),
-          LieuBuilder.cree({ distance: 22, id: 2, latitude: 40.110000, longitude: 2.110000 }),
-          LieuBuilder.cree({ distance: 26, id: 4, latitude: 40.130000, longitude: 2.130000 }),
+          LieuBuilder.cree({ distance: 0.20, id: 1, latitude: 40.100000, longitude: 2.100000 }),
+          LieuBuilder.cree({ distance: 0.22, id: 2, latitude: 40.110000, longitude: 2.110000 }),
+          LieuBuilder.cree({ distance: 0.26, id: 4, latitude: 40.130000, longitude: 2.130000 }),
           LieuBuilder.cree({
             criteres: {
               bim: false,
@@ -89,7 +89,7 @@ describe('lieu loader', () => {
               pmr_assiste: true,
               visuel: true,
             },
-            distance: 28,
+            distance: 0.28,
             id: 5,
             latitude: 40.140000,
             longitude: 2.140000,
@@ -123,7 +123,7 @@ describe('lieu loader', () => {
               pmr_assiste: true,
               visuel: true,
             },
-            distance: 30,
+            distance: 0.30,
             id: 6,
             latitude: 40.150000,
             longitude: 2.150000,
@@ -145,9 +145,9 @@ describe('lieu loader', () => {
       // THEN
       expect(lieux).toStrictEqual({
         lieux: [
-          LieuBuilder.cree({ distance: 20, id: 1, latitude: 40.100000, longitude: 2.100000 }),
-          LieuBuilder.cree({ distance: 22, id: 2, latitude: 40.110000, longitude: 2.110000 }),
-          LieuBuilder.cree({ distance: 26, id: 4, latitude: 40.130000, longitude: 2.130000 }),
+          LieuBuilder.cree({ distance: 0.20, id: 1, latitude: 40.100000, longitude: 2.100000 }),
+          LieuBuilder.cree({ distance: 0.22, id: 2, latitude: 40.110000, longitude: 2.110000 }),
+          LieuBuilder.cree({ distance: 0.26, id: 4, latitude: 40.130000, longitude: 2.130000 }),
           LieuBuilder.cree({
             criteres: {
               bim: false,
@@ -158,7 +158,7 @@ describe('lieu loader', () => {
               pmr_assiste: true,
               visuel: true,
             },
-            distance: 28,
+            distance: 0.28,
             id: 5,
             latitude: 40.140000,
             longitude: 2.140000,
@@ -173,7 +173,7 @@ describe('lieu loader', () => {
               pmr_assiste: true,
               visuel: true,
             },
-            distance: 30,
+            distance: 0.30,
             id: 6,
             latitude: 40.150000,
             longitude: 2.150000,
@@ -190,7 +190,7 @@ describe('lieu loader', () => {
       const longitude = 2.000000
       const page = 0
       const nombreDeLieuxAffichesParPage = 10
-      const criteres: Criteres[] = ['calme', 'pmr']
+      const criteres: Critere[] = ['calme', 'pmr']
 
       // WHEN
       const lieux = await postgreSQLLieuLoader.recupereDesLieux(latitude, longitude, page, nombreDeLieuxAffichesParPage, criteres)
@@ -208,7 +208,7 @@ describe('lieu loader', () => {
               pmr_assiste: true,
               visuel: true,
             },
-            distance: 28,
+            distance: 0.28,
             id: 5,
             latitude: 40.140000,
             longitude: 2.140000,
@@ -223,7 +223,7 @@ describe('lieu loader', () => {
               pmr_assiste: true,
               visuel: true,
             },
-            distance: 30,
+            distance: 0.30,
             id: 6,
             latitude: 40.150000,
             longitude: 2.150000,

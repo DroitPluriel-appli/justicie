@@ -1,7 +1,7 @@
 import { DataSource } from 'typeorm'
 
 import { LieuModel } from '../../../database/models/LieuModel'
-import { Criteres } from '../../entities/Criteres'
+import { Critere } from '../../entities/Critere'
 import { Lieu } from '../../entities/Lieu'
 import { LieuLoader } from '../../entities/LieuLoader'
 
@@ -23,7 +23,7 @@ export class PostgreSQLLieuLoader implements LieuLoader {
     longitude: number,
     page = 0,
     nombreDeLieuxAffichesParPage = 10,
-    criteres = [] as Criteres[]
+    criteres = [] as Critere[]
   ): Promise<{ lieux: Lieu[], nombreDeResultat: number }> {
     const lieuxModel = await this.getLieux(latitude, longitude, page, nombreDeLieuxAffichesParPage, criteres)
 
@@ -36,7 +36,7 @@ export class PostgreSQLLieuLoader implements LieuLoader {
   private async getNombreDeResultat(
     latitude: number,
     longitude: number,
-    criteres: Criteres[]
+    criteres: Critere[]
   ): Promise<number> {
     const criteresSQL = this.getCriteres(criteres)
 
@@ -57,7 +57,7 @@ export class PostgreSQLLieuLoader implements LieuLoader {
     longitude: number,
     page: number,
     nombreDeLieuxAffichesParPage: number,
-    criteres: Criteres[]
+    criteres: Critere[]
   ): Promise<LieuModel[]> {
     const criteresSQL = this.getCriteres(criteres)
 
@@ -75,7 +75,7 @@ export class PostgreSQLLieuLoader implements LieuLoader {
       ]) as LieuModel[]
   }
 
-  private getCriteres(criteres: Criteres[]): string {
+  private getCriteres(criteres: Critere[]): string {
     return criteres
       .map((critere: string): string => ` AND ${critere} = true`)
       .join('')
@@ -97,7 +97,7 @@ export class PostgreSQLLieuLoader implements LieuLoader {
           visuel: lieuModel.visuel,
         },
         lieuModel.departement,
-        Number((lieuModel.distance as number * 100).toPrecision(2)),
+        Number(lieuModel.distance),
         lieuModel.domaineDeDroit,
         lieuModel.eMail,
         lieuModel.horaire,
