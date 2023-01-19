@@ -32,7 +32,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext): Pr
     .filter((critere): boolean => context.query[critere.name] !== undefined)
     .map((critere): Critere => critere.name)
 
-  const { lieux, nombreDeResultat } = await lieuLoader.recupereDesLieux(latitude, longitude, page, nombreDeLieuxAffichesParPage, accessibilites)
+  const { lieux, nombreDeResultat } = await lieuLoader.recupereDesLieux(latitude, longitude, page, nombreDeLieuxAffichesParPage, new Set(accessibilites))
 
   return { props: { lieux: JSON.parse(JSON.stringify(lieux)) as Lieu[], nombreDeResultat } }
 }
