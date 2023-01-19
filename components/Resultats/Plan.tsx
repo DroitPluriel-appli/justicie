@@ -20,24 +20,22 @@ export default function Plan({ latitude, lieux, longitude, nombreDeResultat }: P
   const { wording } = useDependencies()
   const { setMarkerPosition, setMarkersLieux } = usePlan()
 
-  const mapSettings = {
-    credits: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-    defaultZoom: 15,
-    maxZoom: 19,
-    tileLayerUrl: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-    viewCenter: [latitude, longitude] as L.LatLngExpression,
-  }
-  const mapLayer = L.tileLayer(mapSettings.tileLayerUrl, {
-    attribution: mapSettings.credits,
-    maxZoom: mapSettings.maxZoom,
+  const credits = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  const defaultZoom = 15
+  const maxZoom = 19
+  const tileLayerUrl = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
+  const viewCenter: L.LatLngTuple = [latitude, longitude]
+  const mapLayer = L.tileLayer(tileLayerUrl, {
+    attribution: credits,
+    maxZoom: maxZoom,
   })
 
   useEffect(() => {
     if (nombreDeResultat !== 0) {
       const map = L.map('map')
-        .setView(mapSettings.viewCenter, mapSettings.defaultZoom)
+        .setView(viewCenter, defaultZoom)
         .addLayer(mapLayer)
-        .addLayer(setMarkerPosition(mapSettings.viewCenter, wording.TITRE_MARKER_POSITION))
+        .addLayer(setMarkerPosition(viewCenter, wording.TITRE_MARKER_POSITION))
 
       const markersLieux = setMarkersLieux(lieux, latitude, longitude)
       markersLieux.forEach((lieu) => lieu.addTo(map))

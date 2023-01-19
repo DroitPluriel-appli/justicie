@@ -1,4 +1,3 @@
-/* eslint-disable */
 import dotenv from 'dotenv-defaults'
 
 export const dotEnvConfig = () => {

@@ -4,7 +4,7 @@ import { Wording } from './wording/Wording'
 export type Critere = Readonly<{
   description: string
   imgSrc: string
-  name: keyof Criteres
+  name: Criteres
   title: string
 }>
 

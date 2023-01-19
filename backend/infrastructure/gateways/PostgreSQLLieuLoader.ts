@@ -23,7 +23,7 @@ export class PostgreSQLLieuLoader implements LieuLoader {
     longitude: number,
     page = 0,
     nombreDeLieuxAffichesParPage = 10,
-    criteres = [] as (keyof Criteres)[]
+    criteres = [] as Criteres[]
   ): Promise<{ lieux: Lieu[], nombreDeResultat: number }> {
     const lieuxModel = await this.getLieux(latitude, longitude, page, nombreDeLieuxAffichesParPage, criteres)
 
@@ -36,7 +36,7 @@ export class PostgreSQLLieuLoader implements LieuLoader {
   private async getNombreDeResultat(
     latitude: number,
     longitude: number,
-    criteres: (keyof Criteres)[]
+    criteres: Criteres[]
   ): Promise<number> {
     const criteresSQL = this.getCriteres(criteres)
 
@@ -57,7 +57,7 @@ export class PostgreSQLLieuLoader implements LieuLoader {
     longitude: number,
     page: number,
     nombreDeLieuxAffichesParPage: number,
-    criteres: (keyof Criteres)[]
+    criteres: Criteres[]
   ): Promise<LieuModel[]> {
     const criteresSQL = this.getCriteres(criteres)
 
@@ -75,7 +75,7 @@ export class PostgreSQLLieuLoader implements LieuLoader {
       ]) as LieuModel[]
   }
 
-  private getCriteres(criteres: (keyof Criteres)[]): string {
+  private getCriteres(criteres: Criteres[]): string {
     return criteres
       .map((critere: string): string => ` AND ${critere} = true`)
       .join('')

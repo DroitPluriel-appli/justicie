@@ -5,7 +5,7 @@ export class Lieu {
     readonly adresse: string,
     readonly codePostal: string,
     readonly commentaire: string,
-    readonly criteres: Criteres,
+    readonly criteres: Record<Criteres, boolean>,
     readonly departement: string,
     readonly distance: number,
     readonly domaineDeDroit: string,
