@@ -53,45 +53,6 @@ describe('en-tête de page', () => {
     expect(menu).toBeInTheDocument()
   })
 
-  it.each([
-    ['Space'],
-    ['Enter'],
-  ])('affiche le menu mobile quand on appuie sur le burger menu avec la touche %s', (code: string) => {
-    // GIVEN
-    renderFakeComponent(<Header />)
-    const burgerMenu = screen.getByRole('button', { name: wording.MENU })
-
-    // WHEN
-    fireEvent.keyDown(burgerMenu, { code })
-
-    // THEN
-    const header = screen.getByRole('banner')
-    const navigationContainer = within(header).getByRole('dialog')
-    const labelId = within(navigationContainer).getByText(wording.MENU).getAttribute('id')
-    expect(navigationContainer).toHaveAttribute('aria-modal', 'true')
-    expect(navigationContainer).toHaveAttribute('aria-labelledby', labelId)
-
-    const navigation = within(header).getByRole('navigation')
-    const items = within(navigation).getAllByRole('listitem')
-
-    const title = within(items[0]).getByText(wording.MENU)
-    expect(title).toBeInTheDocument()
-
-    const fermer = within(items[0]).getByRole('button', { name: wording.FERMER })
-    const navigationContainerId = navigationContainer.getAttribute('id')
-    expect(fermer).toBeInTheDocument()
-    expect(fermer).toHaveAttribute('aria-controls', navigationContainerId)
-
-    const accueil = within(items[1]).getByRole('link', { name: wording.ACCUEIL })
-    expect(accueil).toHaveAttribute('href', paths.ACCUEIL)
-    const rechercherLieuDeDroit = within(items[2]).getByRole('link', { name: wording.RECHERCHER_UNE_AIDE_JURIDIQUE })
-    expect(rechercherLieuDeDroit).toHaveAttribute('href', paths.RECHERCHER_UNE_AIDE_JURIDIQUE)
-    const nosCriteresDAccessibilite = within(items[3]).getByRole('link', { name: wording.NOS_CRITERES_D_ACCESSIBILITE })
-    expect(nosCriteresDAccessibilite).toHaveAttribute('href', paths.NOS_CRITERES_D_ACCESSIBILITE)
-    const politiqueDeGestionDesDonnees = within(items[4]).getByRole('link', { name: wording.POLITIQUE_DE_GESTION_DES_DONNEES })
-    expect(politiqueDeGestionDesDonnees).toHaveAttribute('href', paths.POLITIQUE_DE_GESTION_DES_DONNEES)
-  })
-
   it('affiche le menu mobile quand on appuie sur le burger menu avec le clic', () => {
     // GIVEN
     renderFakeComponent(<Header />)
@@ -109,28 +70,6 @@ describe('en-tête de page', () => {
     expect(title).toBeInTheDocument()
     const fermer = within(items[0]).getByRole('button', { name: wording.FERMER })
     expect(fermer).toBeInTheDocument()
-  })
-
-  it.each([
-    ['Space'],
-    ['Enter'],
-  ])('affiche le menu mobile quand on appuie sur le burger menu puis le ferme avec la touche %s', (code: string) => {
-    // GIVEN
-    renderFakeComponent(<Header />)
-    const burgerMenu = screen.getByRole('button', { name: wording.MENU })
-    fireEvent.keyDown(burgerMenu, { code })
-    const fermer = screen.getByRole('button', { name: wording.FERMER })
-
-    // WHEN
-    fireEvent.keyDown(fermer, { code })
-
-    // THEN
-    const header = screen.getByRole('banner')
-    const navigationMobile = within(header).getByLabelText(wording.NAVIGATION_MOBILE, { selector: 'nav' })
-    const items = within(navigationMobile).getAllByRole('listitem')
-
-    const title = within(items[1]).getByRole('heading', { level: 1, name: wording.JUSTICE_PLURIELLE })
-    expect(title).toBeInTheDocument()
   })
 
   it('affiche le menu mobile quand on appuie sur le burger menu puis le ferme avec le clic', () => {

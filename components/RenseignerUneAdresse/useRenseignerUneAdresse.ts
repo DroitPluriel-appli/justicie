@@ -1,4 +1,4 @@
-import { FormEvent, KeyboardEvent, useCallback, useState } from 'react'
+import { FormEvent, useCallback, useState } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
 
@@ -16,7 +16,7 @@ type AdressesJson = Readonly<{
 }>
 
 export function useRenseignerUneAdresse() {
-  const { isTheGoodKeyCode, paths, useRouter, wording } = useDependencies()
+  const { paths, useRouter, wording } = useDependencies()
   const { push } = useRouter()
   const [isDisabled, setIsDisabled] = useState<boolean>(true)
   const [isEmpty, setIsEmpty] = useState<boolean>(false)
@@ -45,14 +45,6 @@ export function useRenseignerUneAdresse() {
     document.querySelector('input').value = ''
     setIsDisabled(true)
   }, [])
-
-  const effaceLAdresseAuKeyDown = useCallback((event: KeyboardEvent<HTMLButtonElement>) => {
-    if (isTheGoodKeyCode(event)) {
-      // @ts-ignore
-      document.querySelector('input').value = ''
-      setIsDisabled(true)
-    }
-  }, [isTheGoodKeyCode])
 
   const selectionneUneAdresse = useCallback((adresse: string) => {
     if (adresse !== undefined) {
@@ -89,7 +81,6 @@ export function useRenseignerUneAdresse() {
 
   return {
     apiAdresseNeRepondPlus,
-    effaceLAdresseAuKeyDown,
     effaceLAdresseAuTouch,
     isDisabled,
     isEmpty,

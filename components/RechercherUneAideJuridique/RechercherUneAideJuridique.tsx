@@ -9,7 +9,7 @@ import { useRechercherUneAideJuridique } from './useRechercherUneAideJuridique'
 
 export default function RechercherUneAideJuridique(): ReactElement {
   const { paths, wording } = useDependencies()
-  const { buttonName, isDisabled, isGPSDenied, keyDown, touch } = useRechercherUneAideJuridique()
+  const { buttonName, isDisabled, isGPSDenied, touch } = useRechercherUneAideJuridique()
 
   return (
     <div className={styles.main}>
@@ -39,7 +39,6 @@ export default function RechercherUneAideJuridique(): ReactElement {
         className={`${styles.button} ${styles.positionActuelle}`}
         disabled={isDisabled}
         onClick={touch}
-        onKeyDown={keyDown}
         type="button"
       >
         {buttonName}

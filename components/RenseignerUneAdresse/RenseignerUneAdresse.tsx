@@ -11,7 +11,6 @@ export default function RenseignerUneAdresse(): ReactElement {
   const { paths, wording } = useDependencies()
   const {
     apiAdresseNeRepondPlus,
-    effaceLAdresseAuKeyDown,
     effaceLAdresseAuTouch,
     isDisabled,
     isEmpty,
@@ -58,7 +57,6 @@ export default function RenseignerUneAdresse(): ReactElement {
           <button
             className={styles.reset}
             onClick={effaceLAdresseAuTouch}
-            onKeyDown={effaceLAdresseAuKeyDown}
             title={wording.EFFACER_L_ADRESSE}
             type="button"
           >
