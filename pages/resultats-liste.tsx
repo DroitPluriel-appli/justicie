@@ -2,6 +2,7 @@ import { GetServerSidePropsContext, GetServerSidePropsResult } from 'next'
 import { ReactElement } from 'react'
 
 import { backDependencies } from '../backend/backDependencies'
+import { Critere } from '../backend/entities/Critere'
 import { Lieu } from '../backend/entities/Lieu'
 import ResultatsListe from '../components/Resultats/ResultatsListe'
 import { criteres } from '../configuration/criteres'
@@ -28,8 +29,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext): Pr
   const page = context.query.page === undefined ? 0 : Number(context.query.page)
 
   const accessibilites = criteres(new WordingFr())
-    .filter((critere) => context.query[critere.name])
-    .map((critere) => critere.name)
+    .filter((critere): boolean => context.query[critere.name] !== undefined)
+    .map((critere): Critere => critere.name)
 
   const { lieux, nombreDeResultat } = await lieuLoader.recupereDesLieux(latitude, longitude, page, nombreDeLieuxAffichesParPage, accessibilites)
 

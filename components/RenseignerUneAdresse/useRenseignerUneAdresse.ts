@@ -15,13 +15,22 @@ type AdressesJson = Readonly<{
   features: AdresseJson[]
 }>
 
+type State = Readonly<{
+  adresseSelectionnee: string
+  isDisabled: boolean
+  isEmpty: boolean
+  libelleDesAdresses: AdressesJson
+}>
+
 export function useRenseignerUneAdresse() {
   const { paths, useRouter, wording } = useDependencies()
   const { push } = useRouter()
-  const [isDisabled, setIsDisabled] = useState<boolean>(true)
-  const [isEmpty, setIsEmpty] = useState<boolean>(false)
-  const [adresseSelectionnee, setAdresseSelectionnee] = useState<string>('')
-  const [libelleDesAdresses, setLibelleDesAdresses] = useState<AdressesJson>({ features: [] })
+  const [state, setState] = useState<State>({
+    adresseSelectionnee: '',
+    isDisabled: true,
+    isEmpty: false,
+    libelleDesAdresses: { features: [] },
+  })
 
   const suggestionDAdresse = async (query: string, populateResults: (labelDesAdresses: string[]) => void): Promise<void> => {
     try {
@@ -29,13 +38,19 @@ export function useRenseignerUneAdresse() {
       apiAdresse.searchParams.append('q', query)
 
       const response = await fetch(apiAdresse)
-      const adressesFiltrees = await response.json() as AdressesJson
-      setLibelleDesAdresses(adressesFiltrees)
+      const libelleDesAdressesFiltrees = await response.json() as AdressesJson
+      setState({
+        ...state,
+        libelleDesAdresses: libelleDesAdressesFiltrees,
+      })
 
-      const labelDesAdresses = adressesFiltrees.features.map((adresse) => adresse.properties.label)
+      const labelDesAdresses = libelleDesAdressesFiltrees.features.map((adresse): string => adresse.properties.label)
       populateResults(labelDesAdresses)
     } catch (error) {
-      setIsEmpty(true)
+      setState({
+        ...state,
+        isEmpty: true,
+      })
       populateResults([])
     }
   }
@@ -43,13 +58,19 @@ export function useRenseignerUneAdresse() {
   const effaceLAdresseAuTouch = useCallback(() => {
     // @ts-ignore
     document.querySelector('input').value = ''
-    setIsDisabled(true)
+    setState((state) => ({
+      ...state,
+      isDisabled: true,
+    }))
   }, [])
 
   const selectionneUneAdresse = useCallback((adresse: string) => {
     if (adresse !== undefined) {
-      setIsDisabled(false)
-      setAdresseSelectionnee(adresse)
+      setState((state) => ({
+        ...state,
+        adresseSelectionnee: adresse,
+        isDisabled: false,
+      }))
     }
   }, [])
 
@@ -71,19 +92,19 @@ export function useRenseignerUneAdresse() {
       await push(`${paths.RECHERCHER_PAR_HANDICAP}?lat=${coordonneesGeospatiales.geometry.coordinates[1]}&lon=${coordonneesGeospatiales.geometry.coordinates[0]}`)
     }
 
-    const coordonneesGeospatiales = libelleDesAdresses.features.find((adresse): boolean => adresseSelectionnee === adresse.properties.label)
+    const coordonneesGeospatiales = state.libelleDesAdresses.features.find((adresse): boolean => state.adresseSelectionnee === adresse.properties.label)
     void goToRechercherParHandicap(coordonneesGeospatiales as AdresseJson)
-  }, [adresseSelectionnee, paths.RECHERCHER_PAR_HANDICAP, push, libelleDesAdresses.features])
+  }, [state.adresseSelectionnee, paths.RECHERCHER_PAR_HANDICAP, push, state.libelleDesAdresses.features])
 
-  const noticeDesResultats = useCallback(() => wording.NOTICE_DES_RESULTATS, [wording.NOTICE_DES_RESULTATS])
+  const noticeDesResultats = useCallback((): string => wording.NOTICE_DES_RESULTATS, [wording.NOTICE_DES_RESULTATS])
 
-  const apiAdresseNeRepondPlus = useCallback(() => wording.API_ADRESSE_NE_REPOND_PLUS, [wording.API_ADRESSE_NE_REPOND_PLUS])
+  const apiAdresseNeRepondPlus = useCallback((): string => wording.API_ADRESSE_NE_REPOND_PLUS, [wording.API_ADRESSE_NE_REPOND_PLUS])
 
   return {
     apiAdresseNeRepondPlus,
     effaceLAdresseAuTouch,
-    isDisabled,
-    isEmpty,
+    isDisabled: state.isDisabled,
+    isEmpty: state.isEmpty,
     noticeDesResultats,
     selectionneUneAdresse,
     suggestionDAdresse: debounce(suggestionDAdresse, 500),

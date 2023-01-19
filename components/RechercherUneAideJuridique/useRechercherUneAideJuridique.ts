@@ -2,27 +2,22 @@ import { useCallback, useEffect, useState } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
 
-type coordonneesGeospatiales = Readonly<{
-  latitude: number
-  longitude: number
-}>
-
 type State = Readonly<{
   buttonName: string
   isDisabled: boolean
   isGPSDenied: boolean
+  latitude: number
+  longitude: number
 }>
 
 export function useRechercherUneAideJuridique() {
   const { paths, useRouter, wording } = useDependencies()
-  const [geoloc, setGeoloc] = useState<coordonneesGeospatiales>({
-    latitude: 0,
-    longitude: 0,
-  })
   const [state, setState] = useState<State>({
     buttonName: wording.UTILISER_MA_POSITION_ACTUELLE,
     isDisabled: false,
     isGPSDenied: false,
+    latitude: 0,
+    longitude: 0,
   })
   const { push } = useRouter()
 
@@ -32,14 +27,14 @@ export function useRechercherUneAideJuridique() {
 
   useEffect(() => {
     async function goToRechercherParHandicap() {
-      await push(`${paths.RECHERCHER_PAR_HANDICAP}?lat=${geoloc.latitude}&lon=${geoloc.longitude}`)
+      await push(`${paths.RECHERCHER_PAR_HANDICAP}?lat=${state.latitude}&lon=${state.longitude}`)
     }
 
-    if (geoloc.latitude !== 0 && geoloc.longitude !== 0) {
+    if (state.latitude !== 0 && state.longitude !== 0) {
       void goToRechercherParHandicap()
     }
 
-  }, [geoloc, push, paths.RECHERCHER_PAR_HANDICAP])
+  }, [push, paths.RECHERCHER_PAR_HANDICAP, state])
 
   useEffect(() => {
     async function isGPSDenied() {
@@ -68,7 +63,11 @@ export function useRechercherUneAideJuridique() {
       }))
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          setGeoloc({ latitude: position.coords.latitude, longitude: position.coords.longitude })
+          setState((state) => ({
+            ...state,
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+          }))
         },
         () => {
           if (navigator.permissions === undefined) {
