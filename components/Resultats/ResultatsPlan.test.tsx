@@ -58,10 +58,8 @@ describe('page résultats par plan', () => {
   it('affiche le titre de l’onglet', () => {
     // WHEN
     renderFakeComponent(
-      <Plan
-        latitude={latitude}
+      <ResultatsPlan
         lieux={[]}
-        longitude={longitude}
         nombreDeResultat={0}
       />
     )
@@ -80,10 +78,8 @@ describe('page résultats par plan', () => {
 
     // WHEN
     renderFakeComponent(
-      <Plan
-        latitude={latitude}
+      <ResultatsPlan
         lieux={[]}
-        longitude={longitude}
         nombreDeResultat={0}
       />
     )
@@ -117,10 +113,8 @@ describe('page résultats par plan', () => {
 
     // WHEN
     renderFakeComponent(
-      <Plan
-        latitude={latitude}
+      <ResultatsPlan
         lieux={[lieu]}
-        longitude={longitude}
         nombreDeResultat={nombreDeResultat}
       />
     )
@@ -139,10 +133,8 @@ describe('page résultats par plan', () => {
 
     // WHEN
     renderFakeComponent(
-      <Plan
-        latitude={latitude}
+      <ResultatsPlan
         lieux={[]}
-        longitude={longitude}
         nombreDeResultat={0}
       />
     )
@@ -177,7 +169,6 @@ describe('page résultats par plan', () => {
         latitude={latitude}
         lieux={[lieu]}
         longitude={longitude}
-        nombreDeResultat={1}
       />
     )
 
@@ -198,7 +189,6 @@ describe('page résultats par plan', () => {
         latitude={latitude}
         lieux={lieux}
         longitude={longitude}
-        nombreDeResultat={3}
       />
     )
 
@@ -225,7 +215,6 @@ describe('page résultats par plan', () => {
         latitude={latitude}
         lieux={lieux}
         longitude={longitude}
-        nombreDeResultat={2}
       />
     )
 
@@ -273,7 +262,6 @@ describe('page résultats par plan', () => {
         latitude={latitude}
         lieux={[lieuA]}
         longitude={longitude}
-        nombreDeResultat={1}
       />
     )
     const main = screen.getByRole('main')
