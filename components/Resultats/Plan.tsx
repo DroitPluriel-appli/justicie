@@ -20,7 +20,7 @@ export default function Plan({ latitude, lieux, longitude, nombreDeResultat }: P
   const { wording } = useDependencies()
   const { setMarkerPosition, setMarkersLieux } = usePlan()
 
-  const credits = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  const credits = '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
   const defaultZoom = 15
   const maxZoom = 19
   const tileLayerUrl = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
@@ -37,8 +37,8 @@ export default function Plan({ latitude, lieux, longitude, nombreDeResultat }: P
         .addLayer(mapLayer)
         .addLayer(setMarkerPosition(viewCenter, wording.TITRE_MARKER_POSITION))
 
-      const markersLieux = setMarkersLieux(lieux, latitude, longitude)
-      markersLieux.forEach((lieu) => lieu.addTo(map))
+      setMarkersLieux(lieux, latitude, longitude)
+        .forEach((lieu) => lieu.addTo(map))
 
       // Si la carte n'est pas supprimée quand le composant update,
       // cela peut provoquer des bugs liés à leaflet, notamment

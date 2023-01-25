@@ -7,6 +7,7 @@ import styles from './Footer.module.css'
 
 export default function Footer(): ReactElement {
   const { paths, wording } = useDependencies()
+  const date = new Date()
 
   return (
     <footer className={styles.footer}>
@@ -51,7 +52,7 @@ export default function Footer(): ReactElement {
         </section>
       </div>
       <p>
-        {wording.COPYRIGHT}
+        {wording.COPYRIGHT(date.getFullYear())}
         <Link href={paths.MENTIONS_LEGALES}>
           {wording.MENTIONS_LEGALES}
         </Link>

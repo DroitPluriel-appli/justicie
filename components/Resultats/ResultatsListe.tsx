@@ -13,9 +13,9 @@ import styles from './ResultatsListe.module.css'
 export default function ResultatsListe({ lieux, nombreDeResultat }: { lieux: Lieu[], nombreDeResultat: number }): ReactElement {
   const { nombreDeLieuxAffichesParPage, useRouter, wording } = useDependencies()
   const { query } = useRouter()
-  const { latLongQueryIsInvalid } = useQueryUtilities()
+  const { isLatLongQueryInvalid } = useQueryUtilities()
 
-  if (latLongQueryIsInvalid(query)) {
+  if (isLatLongQueryInvalid(query)) {
     return (
       <p>
         {wording.RECOMMENCER_PARCOURS}

@@ -11,9 +11,9 @@ import styles from './RechercherParHandicap.module.css'
 export default function RechercherParHandicap(): ReactElement {
   const { criteres, paths, useRouter, wording } = useDependencies()
   const { query } = useRouter()
-  const { latLongQueryIsInvalid } = useQueryUtilities()
+  const { isLatLongQueryInvalid } = useQueryUtilities()
 
-  if (latLongQueryIsInvalid(query)) {
+  if (isLatLongQueryInvalid(query)) {
     return (
       <p>
         {wording.RECOMMENCER_PARCOURS}

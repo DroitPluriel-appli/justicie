@@ -9,11 +9,11 @@ import VotreAvis from '../VotreAvis/VotreAvis'
 export default function ResultatsPlan({ lieux, nombreDeResultat }: { lieux: Lieu[], nombreDeResultat: number }): ReactElement {
   const { useRouter, wording } = useDependencies()
   const { query } = useRouter()
-  const { latLongQueryIsInvalid } = useQueryUtilities()
+  const { isLatLongQueryInvalid } = useQueryUtilities()
 
   const Plan = dynamic(() => import('../../components/Resultats/Plan'), { ssr: false })
 
-  if (latLongQueryIsInvalid(query)) {
+  if (isLatLongQueryInvalid(query)) {
     return (
       <p>
         {wording.RECOMMENCER_PARCOURS}
