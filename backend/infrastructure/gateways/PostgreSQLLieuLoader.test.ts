@@ -190,7 +190,7 @@ describe('lieu loader', () => {
       const longitude = 2.000000
       const page = 0
       const nombreDeLieuxAffichesParPage = 10
-      const criteres: Critere[] = ['calme', 'pmr']
+      const criteres = new Set<Critere>(['calme', 'pmr'])
 
       // WHEN
       const lieux = await postgreSQLLieuLoader.recupereDesLieux(latitude, longitude, page, nombreDeLieuxAffichesParPage, criteres)

@@ -8,6 +8,6 @@ export interface LieuLoader {
     longitude: number,
     page?: number,
     nombreDeLieuxAffichesParPage?: number,
-    criteres?: Critere[]
+    criteres?: Set<Critere>
   ): Promise<{ lieux: Lieu[], nombreDeResultat: number }>
 }

@@ -5,10 +5,10 @@ import { LieuModel } from '../../../database/models/LieuModel'
 import { LieuModelBuilder } from '../../../database/models/LieuModelBuilder'
 import { majDesLieux } from './majDesLieuxCron'
 
-describe('sauvegarde des entités juridiques', () => {
+describe('sauvegarde des lieux', () => {
   let orm: Promise<DataSource>
   let lieuRepository: Repository<LieuModel>
-  const lieu1 = [
+  const lieuSpreadsheets = [
     'Maison de Justice et du Droit de Bourg en Bresse',
     '34 cours de Verdun',
     '1000',
@@ -46,7 +46,7 @@ describe('sauvegarde des entités juridiques', () => {
 
   it('sauvegarde les lieux', async () => {
     // GIVEN
-    const sheets = { spreadsheets: { values: { get: jest.fn(() => ({ data: { values: [lieu1] } })) } } }
+    const sheets = { spreadsheets: { values: { get: jest.fn(() => ({ data: { values: [lieuSpreadsheets] } })) } } }
     const googleApis = { sheets: jest.fn(() => sheets) }
 
     // WHEN
@@ -61,15 +61,15 @@ describe('sauvegarde des entités juridiques', () => {
       spreadsheetId: process.env.SPREADSHEET_ID,
     })
 
-    const lieuxQuery = await lieuRepository.find()
-    expect(lieuxQuery).toStrictEqual([LieuModelBuilder.cree()])
+    const lieuxModel = await lieuRepository.find()
+    expect(lieuxModel).toStrictEqual([LieuModelBuilder.cree()])
   })
 
   it('la table lieu est toujours remise à zéro et sa clé primaire est réinitialisée avant chaque sauvegarde', async () => {
     // GIVEN
     const lieuAvantMaj = LieuModelBuilder.cree({ nom: 'un lieu qui devrait avoir disparu' })
     await lieuRepository.insert([lieuAvantMaj])
-    const sheets = { spreadsheets: { values: { get: jest.fn(() => ({ data: { values: [lieu1] } })) } } }
+    const sheets = { spreadsheets: { values: { get: jest.fn(() => ({ data: { values: [lieuSpreadsheets] } })) } } }
     const googleApis = { sheets: jest.fn(() => sheets) }
 
     // WHEN
@@ -77,7 +77,7 @@ describe('sauvegarde des entités juridiques', () => {
     await majDesLieux(orm, googleApis)
 
     // THEN
-    const lieuxQuery = await lieuRepository.find()
-    expect(lieuxQuery).toStrictEqual([LieuModelBuilder.cree()])
+    const lieuxModel = await lieuRepository.find()
+    expect(lieuxModel).toStrictEqual([LieuModelBuilder.cree({ nom: 'Maison de Justice et du Droit de Bourg en Bresse' })])
   })
 })

@@ -1,7 +1,7 @@
 import { ParsedUrlQuery } from 'querystring'
 
 export function useQueryUtilities() {
-  const latLongQueryIsInvalid = (query: ParsedUrlQuery): boolean => !Number(query.lat) || !Number(query.lon)
+  const isLatLongQueryInvalid = (query: ParsedUrlQuery): boolean => !Number(query.lat) || !Number(query.lon)
 
-  return { latLongQueryIsInvalid: latLongQueryIsInvalid }
+  return { isLatLongQueryInvalid }
 }
