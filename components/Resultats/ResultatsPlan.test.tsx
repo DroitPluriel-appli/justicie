@@ -140,8 +140,10 @@ describe('page résultats par plan', () => {
     )
 
     // THEN
-    const titre = screen.getByText(textMatch(wording.AUCUN_LIEU_NE_CORRESPOND_A_VOTRE_RECHERCHE), { selector: 'p' })
-    expect(titre).toBeInTheDocument()
+    const aucunLieu = screen.getByText(wording.AUCUN_LIEU_NE_CORRESPOND_A_VOTRE_RECHERCHE, { selector: 'p' })
+    expect(aucunLieu).toBeInTheDocument()
+    const permanence = screen.getByText(textMatch(wording.CONTACTER_LA_PERMANENCE), { selector: 'p' })
+    expect(permanence).toBeInTheDocument()
 
     const coordonneesDroitPluriel = screen.getByText(
       textMatch(`${wording.EMAIL_DROIT_PLURIEL_ZERO_RESULTAT}${wording.TELEPHONE_DROIT_PLURIEL_ZERO_RESULTAT}`), { selector: 'address' }

@@ -1,5 +1,25 @@
 # Justice plurielle
 
+## Stack
+
+```txt
+Base de données Google Sheets chez Droit Pluriel
+                        ↓
+Cron qui tourne du mardi au samedi à 1 heure du matin chez Scalingo
+                        ↓
+Base de données PostgreSQL (1 seule table lieu) chez Scalingo
+                        ↓
+                  Backend NextJs
+                        ↓
+                  Frontend React → API Adresse du gouvernement
+
+----------------------------------------------------------
+
+Repository sur GitHub (deploy lors du merge d'une branche)
+                        ↓
+                  PaaS : Scalingo
+```
+
 ## Installation
 
 - `yarn`
@@ -75,7 +95,7 @@ Vous trouverez toutes ces commandes dans le fichier package.json.
 
 `yarn psql:local`
 
-### Mettre à jour la base de données PostgreSQL via la spreadsheet
+### Mettre à jour la base de données PostgreSQL via la Google Sheets
 
 `yarn maj_lieux`
 
@@ -98,11 +118,11 @@ Pour pouvoir travailler en local correctement, il faut créer un fichier .env.lo
 ## Limitation
 
 - Utilisation de l'[API Adresse du gouvernement](https://adresse.data.gouv.fr/api-doc/adresse) : 50 requêtes par IP et par seconde ;
-- Utilisation de l'[API Google Sheet](https://console.cloud.google.com/) : 300 requêtes par minute.
+- Utilisation de l'[API Google Sheets](https://console.cloud.google.com/) : 300 requêtes par minute.
 
 ### Batch
 
-Un cron tourne à 1 heure du matin du mardi au samedi pour récupérer les données de Google Sheet pour alimenter le PostgreSQL de Scalingo.
+Un cron tourne à 1 heure du matin du mardi au samedi pour récupérer les données de Google Sheets pour alimenter le PostgreSQL de Scalingo.
 
 ## Sécurité
 
@@ -148,13 +168,13 @@ Justice Plurielle a la note de [A](https://securityheaders.com/?q=https%3A%2F%2F
 - Avoir du offline
 - Avoir du cache
 
-### Utiliser une Google Sheet pour la base de données (14/12/22)
+### Utiliser une Google Sheets pour la base de données (14/12/22)
 
 - Facile d'utilisation et Droit Pluriel avait déjà une feuille Excel
 - Gratuit
 - Partageable avec n'importe qui donc open data
 
-### Base de données PostgreSQL pour pouvoir filtrer et paginer les données de Google Sheet
+### Base de données PostgreSQL pour pouvoir filtrer et paginer les données de Google Sheets
 
 - Facile d'utilisation
 - Un grand nombre de développeur la connaisse

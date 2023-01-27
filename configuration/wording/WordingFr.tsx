@@ -78,7 +78,8 @@ export class WordingFr implements Wording {
   readonly BESOINS_D_ACCESSIBILITE: string = 'Besoins d’accessibilité '
   readonly MODIFIER_VOTRE_BESOIN_D_ACCESSIBILITE: string = 'Modifier votre besoin d’accessibilité'
   readonly LIEUX_CORRESPONDENT_A_VOTRE_RECHERCHE: (nombre: number) => string = (nombre: number): string => nombre > 1 ? `${nombre} lieux correspondent à votre recherche` : `${nombre} lieu correspond à votre recherche`
-  readonly AUCUN_LIEU_NE_CORRESPOND_A_VOTRE_RECHERCHE: string = 'Aucun lieu ne correspond à votre recherche. Si vous êtes en situation de handicap, vous pouvez contacter la permanence juridique de Droit Pluriel :'
+  readonly AUCUN_LIEU_NE_CORRESPOND_A_VOTRE_RECHERCHE: string = 'Aucun lieu ne correspond à votre recherche.'
+  readonly CONTACTER_LA_PERMANENCE: string = 'Si vous êtes en situation de handicap, vous pouvez contacter la permanence juridique de Droit Pluriel :'
   readonly CONTACTER_CDAD: string = 'Vous n’êtes pas en situation de handicap ? Contactez le conseil départemental d’accès au droit de votre département (CDAD).'
   readonly EMAIL_DROIT_PLURIEL_ZERO_RESULTAT: string = 'agir@droitpluriel.fr'
   readonly TELEPHONE_DROIT_PLURIEL_ZERO_RESULTAT: string = '09 80 80 01 49'
