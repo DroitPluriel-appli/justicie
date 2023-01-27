@@ -69,6 +69,9 @@ export default function EnTete({ nombreDeResultat }: EnTeteProps): ReactElement 
             <p className={styles.aucuneCorrespondance}>
               {wording.AUCUN_LIEU_NE_CORRESPOND_A_VOTRE_RECHERCHE}
             </p>
+            <p>
+              {wording.CONTACTER_LA_PERMANENCE}
+            </p>
             <address className={styles.adresse}>
               <Email
                 hasPicto
