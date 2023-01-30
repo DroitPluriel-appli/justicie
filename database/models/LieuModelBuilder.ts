@@ -25,7 +25,7 @@ export class LieuModelBuilder {
     lieu.lsf = champsSurcharges?.lsf || false
     lieu.calme = champsSurcharges?.calme || false
     lieu.forme = champsSurcharges?.forme || false
-    lieu.commentaire = champsSurcharges?.commentaire || 'En partie\nformé'
+    lieu.commentaire = champsSurcharges?.commentaire !== undefined ? champsSurcharges.commentaire : 'En partie\nformé'
     return lieu
   }
 }

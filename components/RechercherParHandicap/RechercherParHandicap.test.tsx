@@ -4,7 +4,7 @@ import mockRouter from 'next-router-mock'
 import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
 import RechercherParHandicap from './RechercherParHandicap'
 
-describe('rechercher par handicap', () => {
+describe('page de recherche par handicap', () => {
   const { criteres, paths, wording } = fakeFrontDependencies
   const lat = '48.844928'
   const lon = '2.31016'

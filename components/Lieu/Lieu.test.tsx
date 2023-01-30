@@ -5,7 +5,7 @@ import { LieuBuilder } from '../../backend/entities/LieuBuilder'
 import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
 import Lieu from './Lieu'
 
-describe('lieu', () => {
+describe('page d’un lieu', () => {
   const { wording } = fakeFrontDependencies
   const lat = '48.844928'
   const lon = '2.31016'

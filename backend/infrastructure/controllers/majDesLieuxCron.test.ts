@@ -65,6 +65,21 @@ describe('sauvegarde des lieux', () => {
     expect(lieuxModel).toStrictEqual([LieuModelBuilder.cree()])
   })
 
+  it('sauvegarde un lieu qui n’a pas de commentaire', async () => {
+    // GIVEN
+    const lieuSansCommentaire = lieuSpreadsheets.slice(0, -1)
+    const sheets = { spreadsheets: { values: { get: jest.fn(() => ({ data: { values: [lieuSansCommentaire] } })) } } }
+    const googleApis = { sheets: jest.fn(() => sheets) }
+
+    // WHEN
+    // @ts-ignore
+    await majDesLieux(orm, googleApis)
+
+    // THEN
+    const lieuxModel = await lieuRepository.find()
+    expect(lieuxModel).toStrictEqual([LieuModelBuilder.cree({ commentaire: '' })])
+  })
+
   it('la table lieu est toujours remise à zéro et sa clé primaire est réinitialisée avant chaque sauvegarde', async () => {
     // GIVEN
     const lieuAvantMaj = LieuModelBuilder.cree({ nom: 'un lieu qui devrait avoir disparu' })

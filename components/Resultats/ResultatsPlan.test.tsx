@@ -6,7 +6,7 @@ import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../con
 import Plan from './Plan'
 import ResultatsPlan from './ResultatsPlan'
 
-describe('page résultats par plan', () => {
+describe('page des résultats de recherche affichés sur une carte', () => {
   const { paths, wording } = fakeFrontDependencies
 
   const lieuA = LieuBuilder.cree({

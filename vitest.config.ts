@@ -10,6 +10,7 @@ export default defineConfig({
         'backend/**/*.ts',
         'components/**/*.ts?(x)',
       ],
+      provider: 'istanbul',
     },
     environment: 'jsdom',
     globals: true,

@@ -5,7 +5,7 @@ import { LieuBuilder } from '../../backend/entities/LieuBuilder'
 import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
 import ResultatsListe from './ResultatsListe'
 
-describe('résultats de recherche affichés en liste', () => {
+describe('page des résultats de recherche affichés en liste', () => {
   const { paths, wording } = fakeFrontDependencies
   const lat = '48.844928'
   const lon = '2.31016'

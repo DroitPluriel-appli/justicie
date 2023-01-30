@@ -3,7 +3,7 @@ import { screen, within } from '@testing-library/react'
 import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
 import NosCriteresDAccessibilite from './NosCriteresDAccessibilite'
 
-describe("page nos criteres d'accessibilite", () => {
+describe('page des criteres d’accessibilite', () => {
   const { wording } = fakeFrontDependencies
 
   it('affiche le titre de l’onglet', () => {

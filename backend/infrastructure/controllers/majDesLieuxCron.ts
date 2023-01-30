@@ -49,7 +49,9 @@ function transformeEnLieuxModel(lieuxBruts: string[][]): LieuModel[] {
     lieuModel.bim = stringToBoolean(lieu[18])
     lieuModel.calme = stringToBoolean(lieu[20])
     lieuModel.codePostal = lieu[2]
-    lieuModel.commentaire = lieu[22]
+    // Si la colonne commentaire sur la spreadsheets est vide ET que la colonne d'après aussi
+    // alors l'API ne me renvoit pas une chaine vide...
+    lieuModel.commentaire = lieu[22] === undefined ? '' : lieu[22]
     lieuModel.departement = lieu[13]
     lieuModel.domaineDeDroit = lieu[7]
     lieuModel.eMail = lieu[10]

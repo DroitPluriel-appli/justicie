@@ -4,7 +4,7 @@ import mockRouter from 'next-router-mock'
 import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
 import RechercherUneAideJuridique from './RechercherUneAideJuridique'
 
-describe('rechercher un lieu', () => {
+describe('page pour rechercher une aide juridique par géolocalisation ou par adresse', () => {
   const { paths, wording } = fakeFrontDependencies
 
   it('affiche le titre de l’onglet', () => {

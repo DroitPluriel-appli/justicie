@@ -24,6 +24,7 @@
     "test:coverage": "yarn test --coverage",
     "test:mutation:frontend": "npx stryker run stryker-frontend.conf.json",
     "test:mutation:backend": "npx stryker run stryker-backend.conf.json",
+    "test:ui": "NODE_ENV=test yarn migration:up && vitest --ui",
     "typecheck": "tsc"
   },
   "dependencies": {
@@ -55,7 +56,8 @@
     "@typescript-eslint/eslint-plugin": "^5.43.0",
     "@typescript-eslint/parser": "^5.43.0",
     "@vitejs/plugin-react": "^3.0.1",
-    "@vitest/coverage-c8": "^0.28.1",
+    "@vitest/coverage-istanbul": "^0.28.3",
+    "@vitest/ui": "^0.28.3",
     "depcheck": "^1.4.3",
     "eslint": "^8.28.0",
     "eslint-config-next": "^13.0.3",

@@ -5,7 +5,7 @@ import { fakeFrontDependencies, renderFakeComponent } from '../../configuration/
 import RenseignerUneAdresse from './RenseignerUneAdresse'
 import { AdresseJson } from './useRenseignerUneAdresse'
 
-describe('renseigner une adresse', () => {
+describe('page pour renseigner une adresse', () => {
   const { paths, wording } = fakeFrontDependencies
 
   it('affiche le titre de l’onglet', () => {
