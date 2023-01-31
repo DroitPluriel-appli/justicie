@@ -3,9 +3,9 @@ import { DataSource, Repository } from 'typeorm'
 import dataSource from '../../../database/dataSource'
 import { LieuModel } from '../../../database/models/LieuModel'
 import { LieuModelBuilder } from '../../../database/models/LieuModelBuilder'
-import { majDesLieux } from './majDesLieuxCron'
+import { importeDesLieux } from './importerDesLieux'
 
-describe('sauvegarde des lieux', () => {
+describe('importer des lieux', () => {
   let orm: Promise<DataSource>
   let lieuRepository: Repository<LieuModel>
   const lieuSpreadsheets = [
@@ -44,14 +44,14 @@ describe('sauvegarde des lieux', () => {
     await (await orm).destroy()
   })
 
-  it('sauvegarde les lieux', async () => {
+  it('importe les lieux', async () => {
     // GIVEN
     const sheets = { spreadsheets: { values: { get: jest.fn(() => ({ data: { values: [lieuSpreadsheets] } })) } } }
     const googleApis = { sheets: jest.fn(() => sheets) }
 
     // WHEN
     // @ts-ignore
-    await majDesLieux(orm, googleApis)
+    await importeDesLieux(orm, googleApis)
 
     // THEN
     expect(googleApis.sheets).toHaveBeenCalledWith({ auth: process.env.SPREADSHEET_AUTH, version: 'v4' })
@@ -65,7 +65,7 @@ describe('sauvegarde des lieux', () => {
     expect(lieuxModel).toStrictEqual([LieuModelBuilder.cree()])
   })
 
-  it('sauvegarde un lieu qui n’a pas de commentaire', async () => {
+  it('importe un lieu qui n’a pas de commentaire', async () => {
     // GIVEN
     const lieuSansCommentaire = lieuSpreadsheets.slice(0, -1)
     const sheets = { spreadsheets: { values: { get: jest.fn(() => ({ data: { values: [lieuSansCommentaire] } })) } } }
@@ -73,7 +73,7 @@ describe('sauvegarde des lieux', () => {
 
     // WHEN
     // @ts-ignore
-    await majDesLieux(orm, googleApis)
+    await importeDesLieux(orm, googleApis)
 
     // THEN
     const lieuxModel = await lieuRepository.find()
@@ -89,7 +89,7 @@ describe('sauvegarde des lieux', () => {
 
     // WHEN
     // @ts-ignore
-    await majDesLieux(orm, googleApis)
+    await importeDesLieux(orm, googleApis)
 
     // THEN
     const lieuxModel = await lieuRepository.find()

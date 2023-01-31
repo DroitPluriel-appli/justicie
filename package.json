@@ -11,7 +11,7 @@
     "lighthouse": "lhci autorun",
     "lint:css": "stylelint '(components|configuration)/**/*.css'",
     "lint:typescript": "next lint --max-warnings=0",
-    "maj_lieux": "ts-node -T backend/infrastructure/controllers/majDesLieuxCron.ts",
+    "maj_lieux": "ts-node -T backend/infrastructure/controllers/importerDesLieuxCron.ts",
     "migration:up": "npx typeorm-ts-node-commonjs migration:run -d ./database/dataSource.ts",
     "migration:down": "npx typeorm-ts-node-commonjs migration:revert -d ./database/dataSource.ts",
     "migration:create": "npx typeorm-ts-node-commonjs migration:create",

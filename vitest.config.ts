@@ -15,6 +15,8 @@ export default defineConfig({
     environment: 'jsdom',
     globals: true,
     mockReset: true,
+    outputDiffLines: 150,
+    outputDiffMaxLines: 150,
     restoreMocks: true,
     sequence: { shuffle: true },
     setupFiles: ['vitest.setup.ts'],

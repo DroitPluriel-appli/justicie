@@ -1,10 +1,9 @@
 import { GoogleApis, sheets_v4 } from 'googleapis'
 import { DataSource, EntityManager } from 'typeorm'
 
-import dataSource from '../../../database/dataSource'
 import { LieuModel } from '../../../database/models/LieuModel'
 
-export async function majDesLieux(orm: Promise<DataSource>, googleApis: GoogleApis): Promise<void> {
+export async function importeDesLieux(orm: Promise<DataSource>, googleApis: GoogleApis): Promise<void> {
   const lieuxBruts = await recupereLesLieuxDeSpreadsheet(googleApis)
 
   const lieuxModel = transformeEnLieuxModel(lieuxBruts)
@@ -72,11 +71,3 @@ function transformeEnLieuxModel(lieuxBruts: string[][]): LieuModel[] {
     return lieuModel
   })
 }
-
-async function main() {
-  const orm = dataSource.initialize()
-  await majDesLieux(orm, new GoogleApis())
-  await (await orm).destroy()
-}
-
-void main()
