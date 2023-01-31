@@ -1,26 +1,25 @@
-import { GoogleApis, sheets_v4 } from 'googleapis'
+import { sheets_v4 } from '@googleapis/sheets'
 import { DataSource, EntityManager } from 'typeorm'
 
 import { LieuModel } from '../../../database/models/LieuModel'
 
-export async function importeDesLieux(orm: Promise<DataSource>, googleApis: GoogleApis): Promise<void> {
-  const lieuxBruts = await recupereLesLieuxDeSpreadsheet(googleApis)
+export async function importeDesLieux(orm: Promise<DataSource>, sheets: (options: sheets_v4.Options) => sheets_v4.Sheets): Promise<void> {
+  const lieuxBruts = await recupereLesLieuxDeSpreadsheet(sheets)
 
   const lieuxModel = transformeEnLieuxModel(lieuxBruts)
 
   await sauvegardeLesLieux(orm, lieuxModel)
 }
 
-async function recupereLesLieuxDeSpreadsheet(googleApis: GoogleApis): Promise<string[][]> {
+async function recupereLesLieuxDeSpreadsheet(sheets: (options: sheets_v4.Options) => sheets_v4.Sheets): Promise<string[][]> {
   const options: sheets_v4.Options = { auth: process.env.SPREADSHEET_AUTH, version: 'v4' }
-  const sheets = googleApis.sheets(options)
 
   const request: sheets_v4.Params$Resource$Spreadsheets$Values$Get = {
     majorDimension: 'ROWS',
     range: 'Production!A2:ZZ',
     spreadsheetId: process.env.SPREADSHEET_ID,
   }
-  const response = await sheets.spreadsheets.values.get(request)
+  const response = await sheets(options).spreadsheets.values.get(request)
 
   return response.data.values as string[][]
 }

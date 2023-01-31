@@ -46,16 +46,16 @@ describe('importer des lieux', () => {
 
   it('importe les lieux', async () => {
     // GIVEN
-    const sheets = { spreadsheets: { values: { get: jest.fn(() => ({ data: { values: [lieuSpreadsheets] } })) } } }
-    const googleApis = { sheets: jest.fn(() => sheets) }
+    const spreadsheets = { values: { get: jest.fn(() => ({ data: { values: [lieuSpreadsheets] } })) } }
+    const sheets = jest.fn(() => ({ spreadsheets }))
 
     // WHEN
     // @ts-ignore
-    await importeDesLieux(orm, googleApis)
+    await importeDesLieux(orm, sheets)
 
     // THEN
-    expect(googleApis.sheets).toHaveBeenCalledWith({ auth: process.env.SPREADSHEET_AUTH, version: 'v4' })
-    expect(sheets.spreadsheets.values.get).toHaveBeenCalledWith({
+    expect(sheets).toHaveBeenCalledWith({ auth: process.env.SPREADSHEET_AUTH, version: 'v4' })
+    expect(spreadsheets.values.get).toHaveBeenCalledWith({
       majorDimension: 'ROWS',
       range: 'Production!A2:ZZ',
       spreadsheetId: process.env.SPREADSHEET_ID,
@@ -68,12 +68,12 @@ describe('importer des lieux', () => {
   it('importe un lieu qui n’a pas de commentaire', async () => {
     // GIVEN
     const lieuSansCommentaire = lieuSpreadsheets.slice(0, -1)
-    const sheets = { spreadsheets: { values: { get: jest.fn(() => ({ data: { values: [lieuSansCommentaire] } })) } } }
-    const googleApis = { sheets: jest.fn(() => sheets) }
+    const spreadsheets = { values: { get: jest.fn(() => ({ data: { values: [lieuSansCommentaire] } })) } }
+    const sheets = jest.fn(() => ({ spreadsheets }))
 
     // WHEN
     // @ts-ignore
-    await importeDesLieux(orm, googleApis)
+    await importeDesLieux(orm, sheets)
 
     // THEN
     const lieuxModel = await lieuRepository.find()
@@ -84,12 +84,12 @@ describe('importer des lieux', () => {
     // GIVEN
     const lieuAvantMaj = LieuModelBuilder.cree({ nom: 'un lieu qui devrait avoir disparu' })
     await lieuRepository.insert([lieuAvantMaj])
-    const sheets = { spreadsheets: { values: { get: jest.fn(() => ({ data: { values: [lieuSpreadsheets] } })) } } }
-    const googleApis = { sheets: jest.fn(() => sheets) }
+    const spreadsheets = { values: { get: jest.fn(() => ({ data: { values: [lieuSpreadsheets] } })) } }
+    const sheets = jest.fn(() => ({ spreadsheets }))
 
     // WHEN
     // @ts-ignore
-    await importeDesLieux(orm, googleApis)
+    await importeDesLieux(orm, sheets)
 
     // THEN
     const lieuxModel = await lieuRepository.find()

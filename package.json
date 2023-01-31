@@ -28,10 +28,10 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@googleapis/sheets": "^4.0.1",
     "@sentry/nextjs": "^7.21.1",
     "accessible-autocomplete": "^2.0.4",
     "dotenv-defaults": "^5.0.2",
-    "googleapis": "^109.0.1",
     "leaflet": "^1.9.3",
     "next": "13.1.5",
     "next-pwa": "^5.6.0",
