@@ -62,7 +62,6 @@ export class WordingFr implements Wording {
 
   // Rechercher par handicap
   readonly TITLE_PAGE_RECHERCHER_PAR_HANDICAP: string = 'Rechercher par handicap' + this.SUFFIXE_TITLE
-  readonly RECOMMENCER_PARCOURS: string = 'Veuillez recommencer le parcours en entier.'
   readonly MODIFIER_L_ADRESSE: string = 'Modifier l’adresse'
   readonly PASSER: string = 'Passer'
   readonly BESOIN_EN_ACCESSIBILITE: string = 'Quels sont vos besoins en accessibilité ?'
