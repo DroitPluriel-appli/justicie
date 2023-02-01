@@ -123,40 +123,6 @@ describe('page des résultats de recherche affichés en liste', () => {
     expect(contacterCDAD).toBeInTheDocument()
   })
 
-  it('affiche une phrase demandant de recommencer le parcours quand on arrive sans latitude', () => {
-    // GIVEN
-    mockRouter.query = { lon }
-
-    // WHEN
-    renderFakeComponent(
-      <ResultatsListe
-        lieux={[]}
-        nombreDeResultat={0}
-      />
-    )
-
-    // THEN
-    const recommencer = screen.getByText(wording.RECOMMENCER_PARCOURS, { selector: 'p' })
-    expect(recommencer).toBeInTheDocument()
-  })
-
-  it('affiche une phrase demandant de recommencer le parcours quand on arrive sans longitude', () => {
-    // GIVEN
-    mockRouter.query = { lat }
-
-    // WHEN
-    renderFakeComponent(
-      <ResultatsListe
-        lieux={[]}
-        nombreDeResultat={0}
-      />
-    )
-
-    // THEN
-    const recommencer = screen.getByText(wording.RECOMMENCER_PARCOURS, { selector: 'p' })
-    expect(recommencer).toBeInTheDocument()
-  })
-
   it('affiche les cartes des lieux', () => {
     // GIVEN
     mockRouter.query = {

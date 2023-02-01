@@ -83,28 +83,4 @@ describe('page de recherche par handicap', () => {
     const forme = screen.getByRole('checkbox', { name: criteres[6].title })
     expect(forme).not.toHaveAttribute('checked')
   })
-
-  it('affiche une phrase demandant de recommencer le parcours quand on arrive sans latitude', () => {
-    // GIVEN
-    mockRouter.query = { lon }
-
-    // WHEN
-    renderFakeComponent(<RechercherParHandicap />)
-
-    // THEN
-    const recommencer = screen.getByText(wording.RECOMMENCER_PARCOURS, { selector: 'p' })
-    expect(recommencer).toBeInTheDocument()
-  })
-
-  it('affiche une phrase demandant de recommencer le parcours quand on arrive sans longitude', () => {
-    // GIVEN
-    mockRouter.query = { lat }
-
-    // WHEN
-    renderFakeComponent(<RechercherParHandicap />)
-
-    // THEN
-    const recommencer = screen.getByText(wording.RECOMMENCER_PARCOURS, { selector: 'p' })
-    expect(recommencer).toBeInTheDocument()
-  })
 })

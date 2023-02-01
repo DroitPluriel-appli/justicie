@@ -23,6 +23,10 @@ type ServerSidePropsResult = Readonly<{
 }>
 
 export async function getServerSideProps(context: GetServerSidePropsContext): Promise<GetServerSidePropsResult<ServerSidePropsResult>> {
+  if (!Number(context.query.lat) || !Number(context.query.lon)) {
+    return { notFound: true }
+  }
+
   const { lieuLoader, nombreDeLieuxAffichesParPage } = backDependencies
   const latitude = Number(context.query.lat)
   const longitude = Number(context.query.lon)

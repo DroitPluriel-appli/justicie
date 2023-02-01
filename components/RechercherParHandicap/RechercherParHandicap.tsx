@@ -2,7 +2,6 @@ import Link from 'next/link'
 import { ReactElement } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
-import { useQueryUtilities } from '../../configuration/useQueryUtilities'
 import BackButton from '../BackButton/BackButton'
 import Title from '../Title/Title'
 import CritereDAccessibilite from './CritereDAccessibilite'
@@ -11,15 +10,6 @@ import styles from './RechercherParHandicap.module.css'
 export default function RechercherParHandicap(): ReactElement {
   const { criteres, paths, useRouter, wording } = useDependencies()
   const { query } = useRouter()
-  const { isLatLongQueryInvalid } = useQueryUtilities()
-
-  if (isLatLongQueryInvalid(query)) {
-    return (
-      <p>
-        {wording.RECOMMENCER_PARCOURS}
-      </p>
-    )
-  }
 
   return (
     <div className={styles.main}>

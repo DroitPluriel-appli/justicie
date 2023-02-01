@@ -56,6 +56,12 @@ describe('page des résultats de recherche affichés sur une carte', () => {
   const longitude = 50.0
 
   it('affiche le titre de l’onglet', () => {
+    // GIVEN
+    mockRouter.query = {
+      lat,
+      lon,
+    }
+
     // WHEN
     renderFakeComponent(
       <ResultatsPlan
@@ -301,40 +307,6 @@ describe('page des résultats de recherche affichés sur une carte', () => {
 
     expect(champsCarteLieuA[5]).toHaveAttribute('href', googleMapUrlLieuA.toString())
     expect(champsCarteLieuA[5].textContent).toBe(wording.LANCER_L_ITINERAIRE)
-  })
-
-  it('affiche une phrase demandant de recommencer le parcours quand on arrive sans latitude', () => {
-    // GIVEN
-    mockRouter.query = { lon }
-
-    // WHEN
-    renderFakeComponent(
-      <ResultatsPlan
-        lieux={[]}
-        nombreDeResultat={0}
-      />
-    )
-
-    // THEN
-    const recommencer = screen.getByText(wording.RECOMMENCER_PARCOURS, { selector: 'p' })
-    expect(recommencer).toBeInTheDocument()
-  })
-
-  it('affiche une phrase demandant de recommencer le parcours quand on arrive sans longitude', () => {
-    // GIVEN
-    mockRouter.query = { lat }
-
-    // WHEN
-    renderFakeComponent(
-      <ResultatsPlan
-        lieux={[]}
-        nombreDeResultat={0}
-      />
-    )
-
-    // THEN
-    const recommencer = screen.getByText(wording.RECOMMENCER_PARCOURS, { selector: 'p' })
-    expect(recommencer).toBeInTheDocument()
   })
 
   it('affiche le lien pour donner son avis quand il y a des résultats', () => {

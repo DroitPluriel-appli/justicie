@@ -3,9 +3,9 @@ import { DataSource, Repository } from 'typeorm'
 import dataSource from '../../../database/dataSource'
 import { LieuModel } from '../../../database/models/LieuModel'
 import { LieuModelBuilder } from '../../../database/models/LieuModelBuilder'
-import { majDesLieux } from './majDesLieuxCron'
+import { importeDesLieux } from './importerDesLieux'
 
-describe('sauvegarde des lieux', () => {
+describe('importer des lieux', () => {
   let orm: Promise<DataSource>
   let lieuRepository: Repository<LieuModel>
   const lieuSpreadsheets = [
@@ -44,18 +44,18 @@ describe('sauvegarde des lieux', () => {
     await (await orm).destroy()
   })
 
-  it('sauvegarde les lieux', async () => {
+  it('importe les lieux', async () => {
     // GIVEN
-    const sheets = { spreadsheets: { values: { get: jest.fn(() => ({ data: { values: [lieuSpreadsheets] } })) } } }
-    const googleApis = { sheets: jest.fn(() => sheets) }
+    const spreadsheets = { values: { get: jest.fn(() => ({ data: { values: [lieuSpreadsheets] } })) } }
+    const sheets = jest.fn(() => ({ spreadsheets }))
 
     // WHEN
     // @ts-ignore
-    await majDesLieux(orm, googleApis)
+    await importeDesLieux(orm, sheets)
 
     // THEN
-    expect(googleApis.sheets).toHaveBeenCalledWith({ auth: process.env.SPREADSHEET_AUTH, version: 'v4' })
-    expect(sheets.spreadsheets.values.get).toHaveBeenCalledWith({
+    expect(sheets).toHaveBeenCalledWith({ auth: process.env.SPREADSHEET_AUTH, version: 'v4' })
+    expect(spreadsheets.values.get).toHaveBeenCalledWith({
       majorDimension: 'ROWS',
       range: 'Production!A2:ZZ',
       spreadsheetId: process.env.SPREADSHEET_ID,
@@ -65,15 +65,15 @@ describe('sauvegarde des lieux', () => {
     expect(lieuxModel).toStrictEqual([LieuModelBuilder.cree()])
   })
 
-  it('sauvegarde un lieu qui n’a pas de commentaire', async () => {
+  it('importe un lieu qui n’a pas de commentaire', async () => {
     // GIVEN
     const lieuSansCommentaire = lieuSpreadsheets.slice(0, -1)
-    const sheets = { spreadsheets: { values: { get: jest.fn(() => ({ data: { values: [lieuSansCommentaire] } })) } } }
-    const googleApis = { sheets: jest.fn(() => sheets) }
+    const spreadsheets = { values: { get: jest.fn(() => ({ data: { values: [lieuSansCommentaire] } })) } }
+    const sheets = jest.fn(() => ({ spreadsheets }))
 
     // WHEN
     // @ts-ignore
-    await majDesLieux(orm, googleApis)
+    await importeDesLieux(orm, sheets)
 
     // THEN
     const lieuxModel = await lieuRepository.find()
@@ -84,12 +84,12 @@ describe('sauvegarde des lieux', () => {
     // GIVEN
     const lieuAvantMaj = LieuModelBuilder.cree({ nom: 'un lieu qui devrait avoir disparu' })
     await lieuRepository.insert([lieuAvantMaj])
-    const sheets = { spreadsheets: { values: { get: jest.fn(() => ({ data: { values: [lieuSpreadsheets] } })) } } }
-    const googleApis = { sheets: jest.fn(() => sheets) }
+    const spreadsheets = { values: { get: jest.fn(() => ({ data: { values: [lieuSpreadsheets] } })) } }
+    const sheets = jest.fn(() => ({ spreadsheets }))
 
     // WHEN
     // @ts-ignore
-    await majDesLieux(orm, googleApis)
+    await importeDesLieux(orm, sheets)
 
     // THEN
     const lieuxModel = await lieuRepository.find()

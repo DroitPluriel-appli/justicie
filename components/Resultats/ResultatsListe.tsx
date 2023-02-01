@@ -2,7 +2,6 @@ import { ReactElement } from 'react'
 
 import { Lieu } from '../../backend/entities/Lieu'
 import { useDependencies } from '../../configuration/useDependencies'
-import { useQueryUtilities } from '../../configuration/useQueryUtilities'
 import CarteLieu from '../CarteLieu/CarteLieu'
 import Pagination from '../Pagination/Pagination'
 import Title from '../Title/Title'
@@ -13,15 +12,6 @@ import styles from './ResultatsListe.module.css'
 export default function ResultatsListe({ lieux, nombreDeResultat }: { lieux: Lieu[], nombreDeResultat: number }): ReactElement {
   const { nombreDeLieuxAffichesParPage, useRouter, wording } = useDependencies()
   const { query } = useRouter()
-  const { isLatLongQueryInvalid } = useQueryUtilities()
-
-  if (isLatLongQueryInvalid(query)) {
-    return (
-      <p>
-        {wording.RECOMMENCER_PARCOURS}
-      </p>
-    )
-  }
 
   return (
     <>

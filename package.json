@@ -11,7 +11,7 @@
     "lighthouse": "lhci autorun",
     "lint:css": "stylelint '(components|configuration)/**/*.css'",
     "lint:typescript": "next lint --max-warnings=0",
-    "maj_lieux": "ts-node -T backend/infrastructure/controllers/majDesLieuxCron.ts",
+    "maj_lieux": "ts-node -T backend/infrastructure/controllers/importerDesLieuxCron.ts",
     "migration:up": "npx typeorm-ts-node-commonjs migration:run -d ./database/dataSource.ts",
     "migration:down": "npx typeorm-ts-node-commonjs migration:revert -d ./database/dataSource.ts",
     "migration:create": "npx typeorm-ts-node-commonjs migration:create",
@@ -28,10 +28,10 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@googleapis/sheets": "^4.0.1",
     "@sentry/nextjs": "^7.21.1",
     "accessible-autocomplete": "^2.0.4",
     "dotenv-defaults": "^5.0.2",
-    "googleapis": "^109.0.1",
     "leaflet": "^1.9.3",
     "next": "13.1.5",
     "next-pwa": "^5.6.0",
