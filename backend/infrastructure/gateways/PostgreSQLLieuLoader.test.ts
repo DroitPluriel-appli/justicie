@@ -31,7 +31,7 @@ describe('lieu loader', () => {
       const lieu = await postgreSQLLieuLoader.recupereUnLieu(idExistant, latitude, longitude)
 
       // THEN
-      expect(lieu).toStrictEqual([LieuBuilder.cree({ distance: 0.20, id: 1, latitude: 40.100000, longitude: 2.100000 })])
+      expect(lieu).toStrictEqual([LieuBuilder.cree({ distance: 14, id: 1, latitude: 40.100000, longitude: 2.100000 })])
     })
 
     it('récupère un lieu inexistant', async () => {
@@ -57,7 +57,7 @@ describe('lieu loader', () => {
       const lieu = await postgreSQLLieuLoader.recupereUnLieu(idInexistant)
 
       // THEN
-      expect(lieu).toStrictEqual([LieuBuilder.cree({ distance: 42, id: 1, latitude: 40.100000, longitude: 2.100000 })])
+      expect(lieu).toStrictEqual([LieuBuilder.cree({ distance: 4500, id: 1, latitude: 40.100000, longitude: 2.100000 })])
     })
   })
 
@@ -77,9 +77,9 @@ describe('lieu loader', () => {
       // THEN
       expect(lieux).toStrictEqual({
         lieux: [
-          LieuBuilder.cree({ distance: 0.20, id: 1, latitude: 40.100000, longitude: 2.100000 }),
-          LieuBuilder.cree({ distance: 0.22, id: 2, latitude: 40.110000, longitude: 2.110000 }),
-          LieuBuilder.cree({ distance: 0.26, id: 4, latitude: 40.130000, longitude: 2.130000 }),
+          LieuBuilder.cree({ distance: 14, id: 1, latitude: 40.100000, longitude: 2.100000 }),
+          LieuBuilder.cree({ distance: 15, id: 2, latitude: 40.110000, longitude: 2.110000 }),
+          LieuBuilder.cree({ distance: 18, id: 4, latitude: 40.130000, longitude: 2.130000 }),
           LieuBuilder.cree({
             criteres: {
               bim: false,
@@ -90,7 +90,7 @@ describe('lieu loader', () => {
               pmr_assiste: true,
               visuel: true,
             },
-            distance: 0.28,
+            distance: 19,
             id: 5,
             latitude: 40.140000,
             longitude: 2.140000,
@@ -125,13 +125,13 @@ describe('lieu loader', () => {
               pmr_assiste: true,
               visuel: true,
             },
-            distance: 0.30,
+            distance: 21,
             id: 6,
             latitude: 40.150000,
             longitude: 2.150000,
           }),
-          LieuBuilder.cree({ distance: .42, id: 7, latitude: 40.210000, longitude: 2.210000 }),
-          LieuBuilder.cree({ distance: 4.2, id: 3, latitude: 40.120000, longitude: -2.120000 }),
+          LieuBuilder.cree({ distance: 29, id: 7, latitude: 40.210000, longitude: 2.210000 }),
+          LieuBuilder.cree({ distance: 330, id: 3, latitude: 40.120000, longitude: -2.120000 }),
         ],
         nombreDeResultat: 7,
       })
@@ -150,9 +150,9 @@ describe('lieu loader', () => {
       // THEN
       expect(lieux).toStrictEqual({
         lieux: [
-          LieuBuilder.cree({ distance: 0.20, id: 1, latitude: 40.100000, longitude: 2.100000 }),
-          LieuBuilder.cree({ distance: 0.22, id: 2, latitude: 40.110000, longitude: 2.110000 }),
-          LieuBuilder.cree({ distance: 0.26, id: 4, latitude: 40.130000, longitude: 2.130000 }),
+          LieuBuilder.cree({ distance: 14, id: 1, latitude: 40.100000, longitude: 2.100000 }),
+          LieuBuilder.cree({ distance: 15, id: 2, latitude: 40.110000, longitude: 2.110000 }),
+          LieuBuilder.cree({ distance: 18, id: 4, latitude: 40.130000, longitude: 2.130000 }),
           LieuBuilder.cree({
             criteres: {
               bim: false,
@@ -163,7 +163,7 @@ describe('lieu loader', () => {
               pmr_assiste: true,
               visuel: true,
             },
-            distance: 0.28,
+            distance: 19,
             id: 5,
             latitude: 40.140000,
             longitude: 2.140000,
@@ -178,7 +178,7 @@ describe('lieu loader', () => {
               pmr_assiste: true,
               visuel: true,
             },
-            distance: 0.30,
+            distance: 21,
             id: 6,
             latitude: 40.150000,
             longitude: 2.150000,
@@ -200,9 +200,9 @@ describe('lieu loader', () => {
       // THEN
       expect(lieux).toStrictEqual({
         lieux: [
-          LieuBuilder.cree({ distance: 0.20, id: 1, latitude: 40.100000, longitude: 2.100000 }),
-          LieuBuilder.cree({ distance: 0.22, id: 2, latitude: 40.110000, longitude: 2.110000 }),
-          LieuBuilder.cree({ distance: 0.26, id: 4, latitude: 40.130000, longitude: 2.130000 }),
+          LieuBuilder.cree({ distance: 14, id: 1, latitude: 40.100000, longitude: 2.100000 }),
+          LieuBuilder.cree({ distance: 15, id: 2, latitude: 40.110000, longitude: 2.110000 }),
+          LieuBuilder.cree({ distance: 18, id: 4, latitude: 40.130000, longitude: 2.130000 }),
           LieuBuilder.cree({
             criteres: {
               bim: false,
@@ -213,7 +213,7 @@ describe('lieu loader', () => {
               pmr_assiste: true,
               visuel: true,
             },
-            distance: 0.28,
+            distance: 19,
             id: 5,
             latitude: 40.140000,
             longitude: 2.140000,
@@ -228,13 +228,13 @@ describe('lieu loader', () => {
               pmr_assiste: true,
               visuel: true,
             },
-            distance: 0.30,
+            distance: 21,
             id: 6,
             latitude: 40.150000,
             longitude: 2.150000,
           }),
-          LieuBuilder.cree({ distance: .42, id: 7, latitude: 40.210000, longitude: 2.210000 }),
-          LieuBuilder.cree({ distance: 4.2, id: 3, latitude: 40.120000, longitude: -2.120000 }),
+          LieuBuilder.cree({ distance: 29, id: 7, latitude: 40.210000, longitude: 2.210000 }),
+          LieuBuilder.cree({ distance: 330, id: 3, latitude: 40.120000, longitude: -2.120000 }),
         ],
         nombreDeResultat: 7,
       })
@@ -266,7 +266,7 @@ describe('lieu loader', () => {
               pmr_assiste: true,
               visuel: true,
             },
-            distance: 0.28,
+            distance: 19,
             id: 5,
             latitude: 40.140000,
             longitude: 2.140000,
@@ -281,7 +281,7 @@ describe('lieu loader', () => {
               pmr_assiste: true,
               visuel: true,
             },
-            distance: 0.30,
+            distance: 21,
             id: 6,
             latitude: 40.150000,
             longitude: 2.150000,

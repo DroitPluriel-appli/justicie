@@ -6,6 +6,8 @@ import { Lieu } from '../../entities/Lieu'
 import { LieuLoader } from '../../entities/LieuLoader'
 
 export class PostgreSQLLieuLoader implements LieuLoader {
+  readonly multiplicateurLatitude = 111
+  readonly multiplicateurLongitude = 80
 
   constructor(private readonly orm: Promise<DataSource>) { }
 
@@ -65,9 +67,11 @@ export class PostgreSQLLieuLoader implements LieuLoader {
 
     return await (await this.orm)
       .getRepository(LieuModel)
-      .query(`SELECT *, code_postal AS "codePostal", domaine_de_droit AS "domaineDeDroit", e_mail AS "eMail", prise_de_rendez_vous AS "priseDeRendezVous", site_internet AS "siteInternet", ABS(latitude - $1) + ABS(longitude - $2) AS distance FROM lieu WHERE (latitude BETWEEN $3 AND $4 AND longitude BETWEEN $5 AND $6) ${criteresSQL} ORDER BY distance ASC LIMIT $7 OFFSET $8`, [
+      .query(`SELECT *, code_postal AS "codePostal", domaine_de_droit AS "domaineDeDroit", e_mail AS "eMail", prise_de_rendez_vous AS "priseDeRendezVous", site_internet AS "siteInternet", SQRT(POW(ABS(latitude - $1) * $2, 2) + POW(ABS(longitude - $3) * $4, 2)) AS distance FROM lieu WHERE (latitude BETWEEN $5 AND $6 AND longitude BETWEEN $7 AND $8) ${criteresSQL} ORDER BY distance ASC LIMIT $9 OFFSET $10`, [
         latitude,
+        this.multiplicateurLatitude,
         longitude,
+        this.multiplicateurLongitude,
         latitude - rayonDeRecherche,
         latitude + rayonDeRecherche,
         longitude - rayonDeRecherche,
@@ -120,7 +124,10 @@ export class PostgreSQLLieuLoader implements LieuLoader {
     return lieuxModel.map((lieuModel) => {
       return {
         ...lieuModel,
-        distance: Math.abs(lieuModel.latitude - latitude) + Math.abs(lieuModel.longitude - longitude),
+        distance: Math.sqrt(
+          Math.pow(Math.abs(lieuModel.latitude - latitude) * this.multiplicateurLatitude, 2) +
+          Math.pow(Math.abs(lieuModel.longitude - longitude) * this.multiplicateurLongitude, 2)
+        ),
       }
     })
   }

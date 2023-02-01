@@ -21,6 +21,6 @@ export class Lieu {
     readonly telephone: string,
     readonly ville: string
   ) {
-    this.distance = Number((this.distance * 100).toPrecision(2))
+    this.distance = Number(this.distance.toPrecision(2))
   }
 }
