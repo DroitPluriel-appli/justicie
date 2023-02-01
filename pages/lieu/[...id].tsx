@@ -21,9 +21,13 @@ export async function getServerSideProps(context: GetServerSidePropsContext): Pr
     return { notFound: true }
   }
 
+  if (!Number(context.query.lat) || !Number(context.query.lon)) {
+    return { notFound: true }
+  }
+
   const { lieuLoader } = backDependencies
-  const latitude = context.query.lat ? Number(context.query.lat) : 0
-  const longitude = context.query.lon ? Number(context.query.lon) : 0
+  const latitude = Number(context.query.lat)
+  const longitude = Number(context.query.lon)
   const id = Number((context.query.id as string[])[0])
 
   const lieux = await lieuLoader.recupereUnLieu(id, latitude, longitude)
