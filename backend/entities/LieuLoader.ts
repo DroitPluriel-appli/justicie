@@ -6,9 +6,9 @@ export interface LieuLoader {
   recupereDesLieux(
     latitude: number,
     longitude: number,
-    rayonDeRecherche?: number,
+    criteres: Set<Critere>,
     page?: number,
     nombreDeLieuxAffichesParPage?: number,
-    criteres?: Set<Critere>
+    rayonDeRecherche?: number
   ): Promise<{ lieux: Lieu[], nombreDeResultat: number }>
 }

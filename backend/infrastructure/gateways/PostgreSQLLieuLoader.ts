@@ -22,10 +22,10 @@ export class PostgreSQLLieuLoader implements LieuLoader {
   async recupereDesLieux(
     latitude: number,
     longitude: number,
-    rayonDeRecherche = Infinity,
+    criteres: Set<Critere>,
     page = 0,
     nombreDeLieuxAffichesParPage = 10,
-    criteres = new Set<Critere>()
+    rayonDeRecherche = Infinity
   ): Promise<{ lieux: Lieu[], nombreDeResultat: number }> {
     const lieuxModel = await this.getLieux(latitude, longitude, rayonDeRecherche, page, nombreDeLieuxAffichesParPage, criteres)
 

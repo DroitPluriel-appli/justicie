@@ -30,7 +30,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext): Pr
   const { lieuLoader, nombreDeLieuxAffichesParPage } = backDependencies
   const latitude = Number(context.query.lat)
   const longitude = Number(context.query.lon)
-  const rayonDeRechercheIllimite = Infinity
   const page = context.query.page === undefined ? 0 : Number(context.query.page)
 
   const accessibilites = criteres(new WordingFr())
@@ -40,10 +39,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext): Pr
   const { lieux, nombreDeResultat } = await lieuLoader.recupereDesLieux(
     latitude,
     longitude,
-    rayonDeRechercheIllimite,
+    new Set(accessibilites),
     page,
-    nombreDeLieuxAffichesParPage,
-    new Set(accessibilites)
+    nombreDeLieuxAffichesParPage
   )
 
   return { props: { lieux: JSON.parse(JSON.stringify(lieux)) as Lieu[], nombreDeResultat } }
