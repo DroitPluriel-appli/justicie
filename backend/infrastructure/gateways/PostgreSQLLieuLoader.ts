@@ -6,9 +6,8 @@ import { Lieu } from '../../entities/Lieu'
 import { LieuLoader } from '../../entities/LieuLoader'
 
 export class PostgreSQLLieuLoader implements LieuLoader {
-  private readonly vingtKilometres = 0.2
 
-  constructor(private readonly orm: Promise<DataSource>) {}
+  constructor(private readonly orm: Promise<DataSource>) { }
 
   async recupereUnLieu(id: number, latitude = 0, longitude = 0): Promise<Lieu[]> {
     const lieuxModel = await (await this.orm)
@@ -21,21 +20,23 @@ export class PostgreSQLLieuLoader implements LieuLoader {
   async recupereDesLieux(
     latitude: number,
     longitude: number,
+    rayonDeRecherche = Infinity,
     page = 0,
     nombreDeLieuxAffichesParPage = 10,
     criteres = new Set<Critere>()
   ): Promise<{ lieux: Lieu[], nombreDeResultat: number }> {
-    const lieuxModel = await this.getLieux(latitude, longitude, page, nombreDeLieuxAffichesParPage, criteres)
+    const lieuxModel = await this.getLieux(latitude, longitude, rayonDeRecherche, page, nombreDeLieuxAffichesParPage, criteres)
 
     return {
       lieux: this.transformeEnLieu(lieuxModel),
-      nombreDeResultat: await this.getNombreDeResultat(latitude, longitude, criteres),
+      nombreDeResultat: await this.getNombreDeResultat(latitude, longitude, rayonDeRecherche, criteres),
     }
   }
 
   private async getNombreDeResultat(
     latitude: number,
     longitude: number,
+    rayonDeRecherche: number,
     criteres: Set<Critere>
   ): Promise<number> {
     const criteresSQL = this.getCriteres(criteres)
@@ -43,10 +44,10 @@ export class PostgreSQLLieuLoader implements LieuLoader {
     const query = await (await this.orm)
       .getRepository(LieuModel)
       .query(`SELECT COUNT(*) FROM lieu WHERE (latitude BETWEEN $1 AND $2 AND longitude BETWEEN $3 AND $4) ${criteresSQL}`, [
-        latitude - this.vingtKilometres,
-        latitude + this.vingtKilometres,
-        longitude - this.vingtKilometres,
-        longitude + this.vingtKilometres,
+        latitude - rayonDeRecherche,
+        latitude + rayonDeRecherche,
+        longitude - rayonDeRecherche,
+        longitude + rayonDeRecherche,
       ]) as { count: string }[]
 
     return Number(query[0].count)
@@ -55,6 +56,7 @@ export class PostgreSQLLieuLoader implements LieuLoader {
   private async getLieux(
     latitude: number,
     longitude: number,
+    rayonDeRecherche: number,
     page: number,
     nombreDeLieuxAffichesParPage: number,
     criteres: Set<Critere>
@@ -66,10 +68,10 @@ export class PostgreSQLLieuLoader implements LieuLoader {
       .query(`SELECT *, code_postal AS "codePostal", domaine_de_droit AS "domaineDeDroit", e_mail AS "eMail", prise_de_rendez_vous AS "priseDeRendezVous", site_internet AS "siteInternet", ABS(latitude - $1) + ABS(longitude - $2) AS distance FROM lieu WHERE (latitude BETWEEN $3 AND $4 AND longitude BETWEEN $5 AND $6) ${criteresSQL} ORDER BY distance ASC LIMIT $7 OFFSET $8`, [
         latitude,
         longitude,
-        latitude - this.vingtKilometres,
-        latitude + this.vingtKilometres,
-        longitude - this.vingtKilometres,
-        longitude + this.vingtKilometres,
+        latitude - rayonDeRecherche,
+        latitude + rayonDeRecherche,
+        longitude - rayonDeRecherche,
+        longitude + rayonDeRecherche,
         nombreDeLieuxAffichesParPage,
         page * nombreDeLieuxAffichesParPage,
       ]) as LieuModel[]

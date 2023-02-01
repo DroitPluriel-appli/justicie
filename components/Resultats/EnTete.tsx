@@ -10,9 +10,10 @@ import { useEnTete } from './useEnTete'
 
 type EnTeteProps = Readonly<{
   nombreDeResultat: number
+  rayonDeRecherche?: number
 }>
 
-export default function EnTete({ nombreDeResultat }: EnTeteProps): ReactElement {
+export default function EnTete({ nombreDeResultat, rayonDeRecherche }: EnTeteProps): ReactElement {
   const { paths, wording } = useDependencies()
   const {
     besoinsAccessibilite,
@@ -67,7 +68,7 @@ export default function EnTete({ nombreDeResultat }: EnTeteProps): ReactElement 
         nombreDeResultat === 0 ? (
           <>
             <p className={styles.aucuneCorrespondance}>
-              {wording.AUCUN_LIEU_NE_CORRESPOND_A_VOTRE_RECHERCHE}
+              {wording.AUCUN_LIEU_NE_CORRESPOND_A_VOTRE_RECHERCHE(rayonDeRecherche)}
             </p>
             <p>
               {wording.CONTACTER_LA_PERMANENCE}
@@ -94,7 +95,7 @@ export default function EnTete({ nombreDeResultat }: EnTeteProps): ReactElement 
           </>
         ) : (
           <p className={styles.correspondance}>
-            {wording.LIEUX_CORRESPONDENT_A_VOTRE_RECHERCHE(nombreDeResultat)}
+            {wording.LIEUX_CORRESPONDENT_A_VOTRE_RECHERCHE(nombreDeResultat, rayonDeRecherche)}
           </p>
         )
       }

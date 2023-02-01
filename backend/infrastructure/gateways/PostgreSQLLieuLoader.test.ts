@@ -69,9 +69,10 @@ describe('lieu loader', () => {
       const longitude = 2.000000
       const page = 0
       const nombreDeLieuxAffichesParPage = 4
+      const rayonDeRechercheIllimite = Infinity
 
       // WHEN
-      const lieux = await postgreSQLLieuLoader.recupereDesLieux(latitude, longitude, page, nombreDeLieuxAffichesParPage)
+      const lieux = await postgreSQLLieuLoader.recupereDesLieux(latitude, longitude, rayonDeRechercheIllimite, page, nombreDeLieuxAffichesParPage)
 
       // THEN
       expect(lieux).toStrictEqual({
@@ -95,7 +96,7 @@ describe('lieu loader', () => {
             longitude: 2.140000,
           }),
         ],
-        nombreDeResultat: 5,
+        nombreDeResultat: 7,
       })
     })
 
@@ -106,13 +107,67 @@ describe('lieu loader', () => {
       const longitude = 2.000000
       const page = 1
       const nombreDeLieuxAffichesParPage = 4
+      const rayonDeRechercheIllimite = Infinity
 
       // WHEN
-      const lieux = await postgreSQLLieuLoader.recupereDesLieux(latitude, longitude, page, nombreDeLieuxAffichesParPage)
+      const lieux = await postgreSQLLieuLoader.recupereDesLieux(latitude, longitude, rayonDeRechercheIllimite, page, nombreDeLieuxAffichesParPage)
 
       // THEN
       expect(lieux).toStrictEqual({
         lieux: [
+          LieuBuilder.cree({
+            criteres: {
+              bim: false,
+              calme: true,
+              forme: false,
+              lsf: false,
+              pmr: true,
+              pmr_assiste: true,
+              visuel: true,
+            },
+            distance: 0.30,
+            id: 6,
+            latitude: 40.150000,
+            longitude: 2.150000,
+          }),
+          LieuBuilder.cree({ distance: .42, id: 7, latitude: 40.210000, longitude: 2.210000 }),
+          LieuBuilder.cree({ distance: 4.2, id: 3, latitude: 40.120000, longitude: -2.120000 }),
+        ],
+        nombreDeResultat: 7,
+      })
+    })
+
+    it('affiche les lieux dans un rayon de recherche', async () => {
+      // GIVEN
+      await creeSeptLieux(orm)
+      const latitude = 40.000000
+      const longitude = 2.000000
+      const rayonDeRechercheLimite = 0.2
+
+      // WHEN
+      const lieux = await postgreSQLLieuLoader.recupereDesLieux(latitude, longitude, rayonDeRechercheLimite)
+
+      // THEN
+      expect(lieux).toStrictEqual({
+        lieux: [
+          LieuBuilder.cree({ distance: 0.20, id: 1, latitude: 40.100000, longitude: 2.100000 }),
+          LieuBuilder.cree({ distance: 0.22, id: 2, latitude: 40.110000, longitude: 2.110000 }),
+          LieuBuilder.cree({ distance: 0.26, id: 4, latitude: 40.130000, longitude: 2.130000 }),
+          LieuBuilder.cree({
+            criteres: {
+              bim: false,
+              calme: true,
+              forme: false,
+              lsf: false,
+              pmr: true,
+              pmr_assiste: true,
+              visuel: true,
+            },
+            distance: 0.28,
+            id: 5,
+            latitude: 40.140000,
+            longitude: 2.140000,
+          }),
           LieuBuilder.cree({
             criteres: {
               bim: false,
@@ -178,12 +233,14 @@ describe('lieu loader', () => {
             latitude: 40.150000,
             longitude: 2.150000,
           }),
+          LieuBuilder.cree({ distance: .42, id: 7, latitude: 40.210000, longitude: 2.210000 }),
+          LieuBuilder.cree({ distance: 4.2, id: 3, latitude: 40.120000, longitude: -2.120000 }),
         ],
-        nombreDeResultat: 5,
+        nombreDeResultat: 7,
       })
     })
 
-    it('affiche les lieux selon différentes accessibilités', async () => {
+    it('affiche les lieux selon différents besoins d’accessibilités', async () => {
       // GIVEN
       await creeSeptLieux(orm)
       const latitude = 40.000000
@@ -191,9 +248,10 @@ describe('lieu loader', () => {
       const page = 0
       const nombreDeLieuxAffichesParPage = 10
       const criteres = new Set<Critere>(['calme', 'pmr'])
+      const rayonDeRechercheIllimite = 10000
 
       // WHEN
-      const lieux = await postgreSQLLieuLoader.recupereDesLieux(latitude, longitude, page, nombreDeLieuxAffichesParPage, criteres)
+      const lieux = await postgreSQLLieuLoader.recupereDesLieux(latitude, longitude, rayonDeRechercheIllimite, page, nombreDeLieuxAffichesParPage, criteres)
 
       // THEN
       expect(lieux).toStrictEqual({
@@ -233,14 +291,15 @@ describe('lieu loader', () => {
       })
     })
 
-    it('ne retourne aucun lieux', async () => {
+    it('ne retourne aucun lieux si aucun lieu ne correspond à la recherche', async () => {
       // GIVEN
       await creeSeptLieux(orm)
       const latitude = 0.000000
       const longitude = 0.000000
+      const rayonDeRechercheLimite = 0.1
 
       // WHEN
-      const lieux = await postgreSQLLieuLoader.recupereDesLieux(latitude, longitude)
+      const lieux = await postgreSQLLieuLoader.recupereDesLieux(latitude, longitude, rayonDeRechercheLimite)
 
       // THEN
       expect(lieux).toStrictEqual({

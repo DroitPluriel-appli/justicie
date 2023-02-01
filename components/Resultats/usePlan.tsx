@@ -5,21 +5,26 @@ import { Lieu } from '../../backend/entities/Lieu'
 import CarteLieu from '../CarteLieu/CarteLieu'
 
 export default function usePlan() {
-  const iconSizeDefault = 24
-  const iconSizeSelected = 38
+  const markerLieuSizeDefault = 24
+  const markerLieuSizeSelected = 38
   const iconMarkerLieuDefault = L.icon({
-    iconAnchor: [iconSizeDefault / 2, iconSizeDefault],
-    iconSize: [iconSizeDefault, iconSizeDefault],
+    iconAnchor: [markerLieuSizeDefault / 2, markerLieuSizeDefault],
+    iconSize: [markerLieuSizeDefault, markerLieuSizeDefault],
     iconUrl: 'marker-lieu.svg',
-    popupAnchor: [0, -0.6 * iconSizeDefault],
+    popupAnchor: [0, -0.6 * markerLieuSizeDefault],
   })
   const iconMarkerLieuSelected = L.icon({
-    iconAnchor: [iconSizeSelected / 2, iconSizeSelected],
-    iconSize: [iconSizeSelected, iconSizeSelected],
+    iconAnchor: [markerLieuSizeSelected / 2, markerLieuSizeSelected],
+    iconSize: [markerLieuSizeSelected, markerLieuSizeSelected],
     iconUrl: 'marker-lieu-selected.svg',
-    popupAnchor: [0, -0.6 * iconSizeSelected],
+    popupAnchor: [0, -0.6 * markerLieuSizeSelected],
   })
-  const iconMarkerPosition = L.icon({ iconUrl: 'marker_position.svg' })
+  const markerPositionSize = 25
+  const iconMarkerPosition = L.icon({
+    iconAnchor: [markerPositionSize / 2, markerPositionSize / 2],
+    iconSize: [markerPositionSize, markerPositionSize],
+    iconUrl: 'marker_position.svg',
+  })
 
   const setMarkerPosition = (viewCenter: L.LatLngExpression, title: string): L.Marker => {
     return L.marker(viewCenter, { icon: iconMarkerPosition, title: title })
@@ -58,5 +63,18 @@ export default function usePlan() {
     return markersLieux
   }
 
-  return { iconSizeDefault, iconSizeSelected, setMarkerPosition, setMarkersLieux }
+  const setCircleRayonDeRecherche = (rayonDeRecherche: number, viewCenter: L.LatLngTuple) => {
+    const conversionKilometresEnMetres = (kilometres: number) => 1000 * kilometres
+    return L.circle(
+      viewCenter,
+      {
+        color: '#221ed3',
+        fill: false,
+        radius: conversionKilometresEnMetres(rayonDeRecherche),
+      }
+    )
+
+  }
+
+  return { setCircleRayonDeRecherche, setMarkerPosition, setMarkersLieux }
 }

@@ -6,6 +6,7 @@ export interface LieuLoader {
   recupereDesLieux(
     latitude: number,
     longitude: number,
+    rayonDeRecherche?: number,
     page?: number,
     nombreDeLieuxAffichesParPage?: number,
     criteres?: Set<Critere>
