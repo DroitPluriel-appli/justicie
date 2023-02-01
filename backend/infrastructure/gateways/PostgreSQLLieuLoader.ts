@@ -11,7 +11,7 @@ export class PostgreSQLLieuLoader implements LieuLoader {
 
   constructor(private readonly orm: Promise<DataSource>) { }
 
-  async recupereUnLieu(id: number, latitude = 0, longitude = 0): Promise<Lieu[]> {
+  async recupereUnLieu(id: number, latitude: number, longitude: number): Promise<Lieu[]> {
     const lieuxModel = await (await this.orm)
       .getRepository(LieuModel)
       .findBy({ id })
