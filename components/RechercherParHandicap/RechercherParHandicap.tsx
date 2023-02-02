@@ -20,7 +20,7 @@ export default function RechercherParHandicap(): ReactElement {
         <BackButton>
           {wording.MODIFIER_L_ADRESSE}
         </BackButton>
-        <Link href={`${paths.RESULTATS_LISTE}?lat=${query.lat as string}&lon=${query.lon as string}`}>
+        <Link href={`${paths.RESULTATS_LISTE}?lat=${String(query.lat)}&lon=${String(query.lon)}`}>
           {wording.PASSER}
         </Link>
       </div>
