@@ -16,7 +16,7 @@ export default function Telephone({ children, hasPicto = false, nomDuLieu, url }
   return (
     <a
       className={styles.telephone}
-      href={`tel:${url.replaceAll(' ', '')}`}
+      href={`tel:${url.replace(/\s/g, '')}`}
       title={wording.APPELER_LE_NUMERO(nomDuLieu, children)}
     >
       {
