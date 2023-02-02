@@ -4,9 +4,9 @@ export function useEnTete() {
   const { paths, useRouter } = useDependencies()
   const { pathname, query } = useRouter()
 
-  const buildUrlWithQueryParams = (url: string): string => `${url}?${Object.entries(query).join('&').replaceAll(',', '=')}`
+  const buildUrlWithQueryParams = (url: string): string => `${url}?${Object.entries(query).join('&').replaceAll(',', '=')}`.replace(/&page=[0-9]*/, '')
 
-  const besoinsAccessibilite = Object.entries(query).filter((param): boolean => param[0] !== 'lat' && param[0] !== 'lon').length
+  const besoinsAccessibilite = Object.entries(query).filter((param): boolean => param[0] !== 'lat' && param[0] !== 'lon' && param[0] !== 'page').length
 
   const isListe = pathname.includes(paths.RESULTATS_LISTE)
 
