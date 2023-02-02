@@ -6,9 +6,6 @@ import { Lieu } from '../../entities/Lieu'
 import { LieuLoader } from '../../entities/LieuLoader'
 
 export class PostgreSQLLieuLoader implements LieuLoader {
-  readonly multiplicateurLatitude = 111
-  readonly multiplicateurLongitude = 80
-
   constructor(private readonly orm: Promise<DataSource>) { }
 
   async recupereUnLieu(id: number, latitude: number, longitude: number): Promise<Lieu[]> {
@@ -35,6 +32,15 @@ export class PostgreSQLLieuLoader implements LieuLoader {
     }
   }
 
+  // Formule simplifiée pour calculer une distance en km à partir
+  // de coordonnées latidude/longitude :
+  // R * acos(sin(a) * sin(b) + cos(a) * cos(b) * cos(c - d))
+  // avec R = rayon de la Terre
+  // a = latitudeA, B = latitudeB
+  // c = longitudeA, D = longitudeD
+  // les latitudes et longitudes sont en radians, pas en degrés
+  private calculDistanceSQL = '6371 * ACOS(SIN(RADIANS(latitude)) * SIN(RADIANS($1)) + COS(RADIANS(latitude)) * COS(RADIANS($1)) * COS(RADIANS(longitude) - RADIANS($2)))'
+
   private async getNombreDeResultat(
     latitude: number,
     longitude: number,
@@ -45,7 +51,7 @@ export class PostgreSQLLieuLoader implements LieuLoader {
 
     const query = await (await this.orm)
       .getRepository(LieuModel)
-      .query(`SELECT COUNT(*) FROM lieu WHERE 6371 * ACOS(SIN(RADIANS(latitude)) * SIN(RADIANS($1)) + COS(RADIANS(latitude)) * COS(RADIANS($1)) * COS(RADIANS(longitude) - RADIANS($2))) < ${rayonDeRecherche === Infinity ? 100_000 : rayonDeRecherche} ${criteresSQL}`, [
+      .query(`SELECT COUNT(*) FROM lieu WHERE ${this.calculDistanceSQL} < ${rayonDeRecherche === Infinity ? 100_000 : rayonDeRecherche} ${criteresSQL}`, [
         latitude,
         longitude,
       ]) as { count: string }[]
@@ -63,11 +69,9 @@ export class PostgreSQLLieuLoader implements LieuLoader {
   ): Promise<LieuModel[]> {
     const criteresSQL = this.getCriteres(criteres)
 
-    // 6371 * ACOS(SIN(RADIANS(latitude)) * SIN(RADIANS($1)) + COS(RADIANS(latitude)) * COS(RADIANS($1)) * COS(RADIANS(longitude) - RADIANS($2)))
-
     return await (await this.orm)
       .getRepository(LieuModel)
-      .query(`SELECT *, code_postal AS "codePostal", domaine_de_droit AS "domaineDeDroit", e_mail AS "eMail", prise_de_rendez_vous AS "priseDeRendezVous", site_internet AS "siteInternet", 6371 * ACOS(SIN(RADIANS(latitude)) * SIN(RADIANS($1)) + COS(RADIANS(latitude)) * COS(RADIANS($1)) * COS(RADIANS(longitude) - RADIANS($2))) AS distance FROM lieu WHERE 6371 * ACOS(SIN(RADIANS(latitude)) * SIN(RADIANS($1)) + COS(RADIANS(latitude)) * COS(RADIANS($1)) * COS(RADIANS(longitude) - RADIANS($2))) < ${rayonDeRecherche === Infinity ? 100_000 : rayonDeRecherche} ${criteresSQL} ORDER BY distance ASC LIMIT $3 OFFSET $4`, [
+      .query(`SELECT *, code_postal AS "codePostal", domaine_de_droit AS "domaineDeDroit", e_mail AS "eMail", prise_de_rendez_vous AS "priseDeRendezVous", site_internet AS "siteInternet", ${this.calculDistanceSQL} AS distance FROM lieu WHERE ${this.calculDistanceSQL} < ${rayonDeRecherche === Infinity ? 100_000 : rayonDeRecherche} ${criteresSQL} ORDER BY distance ASC LIMIT $3 OFFSET $4`, [
         latitude,
         longitude,
         nombreDeLieuxAffichesParPage,
