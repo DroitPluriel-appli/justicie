@@ -21,7 +21,7 @@ export default function Itineraire({ adresse, children, codePostal, hasPicto = f
   const url = new URL('https://www.google.com/maps/dir/')
   url.searchParams.append('api', '1')
   url.searchParams.append('origin', `${latitude},${longitude}`)
-  url.searchParams.append('destination', `${nom}+${adresse}+${codePostal}+${ville}`.replaceAll(' ', '+'))
+  url.searchParams.append('destination', `${nom}+${adresse}+${codePostal}+${ville}`.replace(/\s/g, '+'))
 
   return (
     <ExternalLink

@@ -36,7 +36,7 @@ export function usePagination(nombreDeResultat = 0) {
     })
 
   const url = (index: number): string => {
-    const url = `${paths.RESULTATS_LISTE}?${Object.entries(query).join('&').replaceAll(',', '=')}`.replace(/&page=[0-9]*/, '')
+    const url = `${paths.RESULTATS_LISTE}?${Object.entries(query).join('&').replace(/,/g, '=')}`.replace(/&page=[0-9]*/, '')
 
     return `${url}&page=${index}`
   }
