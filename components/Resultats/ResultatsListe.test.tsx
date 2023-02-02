@@ -9,7 +9,7 @@ describe('page des résultats de recherche affichés en liste', () => {
   const { paths, wording } = fakeFrontDependencies
   const lat = '48.844928'
   const lon = '2.31016'
-  const moteurTotal = 'on'
+  const bim = 'on'
 
   it('affiche le titre de l’onglet', () => {
     // GIVEN
@@ -33,9 +33,9 @@ describe('page des résultats de recherche affichés en liste', () => {
   it('affiche les liens de navigation et le filtre', () => {
     // GIVEN
     mockRouter.query = {
+      bim,
       lat,
       lon,
-      'moteur-total': moteurTotal,
     }
 
     // WHEN
@@ -53,14 +53,14 @@ describe('page des résultats de recherche affichés en liste', () => {
     const navigation = screen.getByRole('navigation')
     const itemsDeNavigation = within(navigation).getAllByRole('listitem')
     const vueListe = within(itemsDeNavigation[0]).getByRole('link', { name: wording.AFFICHEZ_RESULTATS_EN_LISTE })
-    expect(vueListe).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?lat=${lat}&lon=${lon}&moteur-total=${moteurTotal}`)
+    expect(vueListe).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?bim=${bim}&lat=${lat}&lon=${lon}`)
     expect(vueListe.textContent).toBe(wording.LISTE)
     const vuePlan = within(itemsDeNavigation[1]).getByRole('link', { name: wording.AFFICHEZ_RESULTATS_EN_PLAN })
-    expect(vuePlan).toHaveAttribute('href', `${paths.RESULTATS_PLAN}?lat=${lat}&lon=${lon}&moteur-total=${moteurTotal}`)
+    expect(vuePlan).toHaveAttribute('href', `${paths.RESULTATS_PLAN}?bim=${bim}&lat=${lat}&lon=${lon}`)
     expect(vuePlan.textContent).toBe(wording.PLAN)
 
     const modifierAccessibilite = screen.getByRole('link', { name: wording.MODIFIER_VOTRE_BESOIN_D_ACCESSIBILITE })
-    expect(modifierAccessibilite).toHaveAttribute('href', `${paths.RECHERCHER_PAR_HANDICAP}?lat=${lat}&lon=${lon}&moteur-total=${moteurTotal}`)
+    expect(modifierAccessibilite).toHaveAttribute('href', `${paths.RECHERCHER_PAR_HANDICAP}?bim=${bim}&lat=${lat}&lon=${lon}`)
     expect(modifierAccessibilite.textContent).toBe(wording.BESOINS_D_ACCESSIBILITE + '1')
   })
 
@@ -256,6 +256,7 @@ describe('page des résultats de recherche affichés en liste', () => {
   it('affiche la pagination à la page 1 quand il y a deux pages', () => {
     // GIVEN
     mockRouter.query = {
+      bim,
       lat,
       lon,
     }
@@ -277,17 +278,18 @@ describe('page des résultats de recherche affichés en liste', () => {
 
     const links = within(navigation).getAllByRole('link')
     expect(links).toHaveLength(2)
-    expect(links[0]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?lat=${lat}&lon=${lon}&page=1`)
+    expect(links[0]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?bim=on&lat=${lat}&lon=${lon}&page=1`)
     expect(links[0]).toHaveAttribute('title', wording.PAGE(2))
     expect(links[0].textContent).toBe('2')
 
-    expect(links[1]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?lat=${lat}&lon=${lon}&page=1`)
+    expect(links[1]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?bim=on&lat=${lat}&lon=${lon}&page=1`)
     expect(links[1].textContent).toBe(wording.DERNIERE_PAGE)
   })
 
   it('affiche la pagination à la page 2 quand il y a deux pages', () => {
     // GIVEN
     mockRouter.query = {
+      bim,
       lat,
       lon,
       page: '1',
@@ -307,10 +309,10 @@ describe('page des résultats de recherche affichés en liste', () => {
     const links = within(navigation).getAllByRole('link')
     expect(links).toHaveLength(2)
 
-    expect(links[0]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?lat=${lat}&lon=${lon}&page=0`)
+    expect(links[0]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?bim=on&lat=${lat}&lon=${lon}&page=0`)
     expect(links[0].textContent).toBe(wording.PREMIERE_PAGE)
 
-    expect(links[1]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?lat=${lat}&lon=${lon}&page=0`)
+    expect(links[1]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?bim=on&lat=${lat}&lon=${lon}&page=0`)
     expect(links[1].textContent).toBe('1')
 
     const page2 = within(navigation).getByText(2)
@@ -320,6 +322,7 @@ describe('page des résultats de recherche affichés en liste', () => {
   it('affiche la pagination à la page 1 quand il y a six pages', () => {
     // GIVEN
     mockRouter.query = {
+      bim,
       lat,
       lon,
     }
@@ -341,29 +344,30 @@ describe('page des résultats de recherche affichés en liste', () => {
     const page1 = within(navigation).getByText(1)
     expect(page1).toHaveAttribute('aria-current', 'page')
 
-    expect(links[0]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?lat=${lat}&lon=${lon}&page=1`)
+    expect(links[0]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?bim=on&lat=${lat}&lon=${lon}&page=1`)
     expect(links[0]).toHaveAttribute('title', wording.PAGE(2))
     expect(links[0].textContent).toBe('2')
 
-    expect(links[1]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?lat=${lat}&lon=${lon}&page=2`)
+    expect(links[1]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?bim=on&lat=${lat}&lon=${lon}&page=2`)
     expect(links[1]).toHaveAttribute('title', wording.PAGE(3))
     expect(links[1].textContent).toBe('3')
 
-    expect(links[2]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?lat=${lat}&lon=${lon}&page=3`)
+    expect(links[2]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?bim=on&lat=${lat}&lon=${lon}&page=3`)
     expect(links[2]).toHaveAttribute('title', wording.PAGE(4))
     expect(links[2].textContent).toBe('4')
 
-    expect(links[3]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?lat=${lat}&lon=${lon}&page=4`)
+    expect(links[3]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?bim=on&lat=${lat}&lon=${lon}&page=4`)
     expect(links[3]).toHaveAttribute('title', wording.PAGE(5))
     expect(links[3].textContent).toBe('5')
 
-    expect(links[4]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?lat=${lat}&lon=${lon}&page=5`)
+    expect(links[4]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?bim=on&lat=${lat}&lon=${lon}&page=5`)
     expect(links[4].textContent).toBe(wording.DERNIERE_PAGE)
   })
 
   it('affiche la pagination à la page 4 quand il y a six pages', () => {
     // GIVEN
     mockRouter.query = {
+      bim,
       lat,
       lon,
       page: '3',
@@ -383,32 +387,33 @@ describe('page des résultats de recherche affichés en liste', () => {
     const links = within(navigation).getAllByRole('link')
     expect(links).toHaveLength(6)
 
-    expect(links[1]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?lat=${lat}&lon=${lon}&page=1`)
+    expect(links[1]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?bim=on&lat=${lat}&lon=${lon}&page=1`)
     expect(links[1]).toHaveAttribute('title', wording.PAGE(2))
     expect(links[1].textContent).toBe('2')
 
-    expect(links[2]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?lat=${lat}&lon=${lon}&page=2`)
+    expect(links[2]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?bim=on&lat=${lat}&lon=${lon}&page=2`)
     expect(links[2]).toHaveAttribute('title', wording.PAGE(3))
     expect(links[2].textContent).toBe('3')
 
     const page4 = within(navigation).getByText(4)
     expect(page4).toHaveAttribute('aria-current', 'page')
 
-    expect(links[3]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?lat=${lat}&lon=${lon}&page=4`)
+    expect(links[3]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?bim=on&lat=${lat}&lon=${lon}&page=4`)
     expect(links[3]).toHaveAttribute('title', wording.PAGE(5))
     expect(links[3].textContent).toBe('5')
 
-    expect(links[4]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?lat=${lat}&lon=${lon}&page=5`)
+    expect(links[4]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?bim=on&lat=${lat}&lon=${lon}&page=5`)
     expect(links[4]).toHaveAttribute('title', wording.PAGE(6))
     expect(links[4].textContent).toBe('6')
 
-    expect(links[5]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?lat=${lat}&lon=${lon}&page=5`)
+    expect(links[5]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?bim=on&lat=${lat}&lon=${lon}&page=5`)
     expect(links[5].textContent).toBe(wording.DERNIERE_PAGE)
   })
 
   it('affiche la pagination à la page 6 quand il y a six pages', () => {
     // GIVEN
     mockRouter.query = {
+      bim,
       lat,
       lon,
       page: '5',
@@ -428,19 +433,19 @@ describe('page des résultats de recherche affichés en liste', () => {
     const links = within(navigation).getAllByRole('link')
     expect(links).toHaveLength(5)
 
-    expect(links[1]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?lat=${lat}&lon=${lon}&page=1`)
+    expect(links[1]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?bim=on&lat=${lat}&lon=${lon}&page=1`)
     expect(links[1]).toHaveAttribute('title', wording.PAGE(2))
     expect(links[1].textContent).toBe('2')
 
-    expect(links[2]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?lat=${lat}&lon=${lon}&page=2`)
+    expect(links[2]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?bim=on&lat=${lat}&lon=${lon}&page=2`)
     expect(links[2]).toHaveAttribute('title', wording.PAGE(3))
     expect(links[2].textContent).toBe('3')
 
-    expect(links[3]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?lat=${lat}&lon=${lon}&page=3`)
+    expect(links[3]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?bim=on&lat=${lat}&lon=${lon}&page=3`)
     expect(links[3]).toHaveAttribute('title', wording.PAGE(4))
     expect(links[3].textContent).toBe('4')
 
-    expect(links[4]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?lat=${lat}&lon=${lon}&page=4`)
+    expect(links[4]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?bim=on&lat=${lat}&lon=${lon}&page=4`)
     expect(links[4]).toHaveAttribute('title', wording.PAGE(5))
     expect(links[4].textContent).toBe('5')
 
