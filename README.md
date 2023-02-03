@@ -189,3 +189,13 @@ Justice Plurielle a la note de [A](https://securityheaders.com/?q=https%3A%2F%2F
 
 - React-leaflet provoque des erreurs étranges et est mal documenté
 - À part la gestion du Client Side Rendering, leaflet n'est pas très compliqué à intégrer
+
+### Composant Plan.tsx chargé dynamiquement dans ResultatsPlan.tsx (19/12/22)
+
+- Plan.tsx contient le code pour l'affichage de la cartographie avec leaflet, qui ne peut pas être rendu côté serveur en SSG ou SSR. On est on donc obligé de charger le composant dynamiquement pour qu'il soit rendu côté client ; pour cela on utilise `dynamic` de Next
+
+### Fonctionnement du mode sombre (01/23)
+
+- quand l'utilisateur active le mode sombre, on stocke une valeur `themeDark` dans le local storage pour conserver son choix
+- Idéalement, il faudrait lire cette valeur dans le local storage avant le premier rendu de la page pour appliquer directement le bon theme. Malheureusement, React ne permet pas de lancer une fonction avant le premier rendu de la page. Dans notre cas, cela provoque un "flash" au chargement de la page, puisque le theme light est utilisé par défaut au premier rendu avant même que l'on ait lu la valeur dans le local storage.
+- pour éviter ce flash, on met le body en display none par défaut avec `body:not(.themeDark, .themeLight) { display: none; }` (dans global.css) pour masquer le premier rendu et n'afficher la page que lorsqu'on a charger le bon theme
