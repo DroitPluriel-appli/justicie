@@ -3,7 +3,7 @@ import { ReactElement } from 'react'
 import { useDependencies } from '../configuration/useDependencies'
 import Title from './Title/Title'
 
-export default function MentionsLegales(): ReactElement {
+export default function PageMentionsLegales(): ReactElement {
   const { wording } = useDependencies()
 
   return (

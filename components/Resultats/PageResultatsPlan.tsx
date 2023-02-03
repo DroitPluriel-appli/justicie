@@ -7,11 +7,11 @@ import Title from '../Title/Title'
 import VotreAvis from '../VotreAvis/VotreAvis'
 import EnTete from './EnTete'
 
-export default function ResultatsPlan({ lieux, nombreDeResultat }: { lieux: Lieu[], nombreDeResultat: number }): ReactElement {
+export default function PageResultatsPlan({ lieux, nombreDeResultat }: { lieux: Lieu[], nombreDeResultat: number }): ReactElement {
   const { useRouter, wording, rayonDeRecherche } = useDependencies()
   const { query } = useRouter()
 
-  const Plan = dynamic(() => import('../../components/Resultats/Plan'), { ssr: false })
+  const Plan = dynamic(() => import('./Plan'), { ssr: false })
 
   return (
     <>

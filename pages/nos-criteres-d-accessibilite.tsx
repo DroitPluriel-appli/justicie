@@ -1,9 +1,9 @@
 import { ReactElement } from 'react'
 
-import NosCriteresDAccessibilite from '../components/NosCriteresDAccessibilite/NosCriteresDAccessibilite'
+import PageNosCriteresDAccessibilite from '../components/NosCriteresDAccessibilite/PageNosCriteresDAccessibilite'
 
 export default function Router(): ReactElement {
   return (
-    <NosCriteresDAccessibilite />
+    <PageNosCriteresDAccessibilite />
   )
 }

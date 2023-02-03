@@ -6,7 +6,7 @@ import Title from '../Title/Title'
 import CritereDAccessibilite from './CritereDAccessibilite'
 import styles from './NosCriteresDAccessibilite.module.css'
 
-export default function NosCriteresDAccessibilite(): ReactElement {
+export default function PageNosCriteresDAccessibilite(): ReactElement {
   const { criteres, wording } = useDependencies()
 
   return (

@@ -2,7 +2,7 @@ import { screen } from '@testing-library/react'
 import mockRouter from 'next-router-mock'
 
 import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
-import RechercherParHandicap from './RechercherParHandicap'
+import PageRechercherParHandicap from './PageRechercherParHandicap'
 
 describe('page de recherche par handicap', () => {
   const { criteres, paths, wording } = fakeFrontDependencies
@@ -17,7 +17,7 @@ describe('page de recherche par handicap', () => {
     }
 
     // WHEN
-    renderFakeComponent(<RechercherParHandicap />)
+    renderFakeComponent(<PageRechercherParHandicap />)
 
     // THEN
     expect(document.title).toBe(wording.TITLE_PAGE_RECHERCHER_PAR_HANDICAP)
@@ -31,7 +31,7 @@ describe('page de recherche par handicap', () => {
     }
 
     // WHEN
-    renderFakeComponent(<RechercherParHandicap />)
+    renderFakeComponent(<PageRechercherParHandicap />)
 
     // THEN
     const modifierLAdresse = screen.getByRole('button', { name: wording.MODIFIER_L_ADRESSE })
@@ -65,7 +65,7 @@ describe('page de recherche par handicap', () => {
     }
 
     // WHEN
-    renderFakeComponent(<RechercherParHandicap />)
+    renderFakeComponent(<PageRechercherParHandicap />)
 
     // THEN
     const pmr = screen.getByRole('checkbox', { name: criteres[0].title })

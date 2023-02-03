@@ -3,7 +3,7 @@ import mockRouter from 'next-router-mock'
 
 import { LieuBuilder } from '../../backend/entities/LieuBuilder'
 import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
-import Lieu from './Lieu'
+import PageLieu from './PageLieu'
 
 describe('page d’un lieu', () => {
   const { wording } = fakeFrontDependencies
@@ -15,7 +15,7 @@ describe('page d’un lieu', () => {
     const lieu = LieuBuilder.cree({ nom: 'La maison de justice de Paris' })
 
     // WHEN
-    renderFakeComponent(<Lieu lieu={lieu} />)
+    renderFakeComponent(<PageLieu lieu={lieu} />)
 
     // THEN
     expect(document.title).toBe(wording.TITLE_PAGE_LIEU(lieu.nom))
@@ -36,7 +36,7 @@ describe('page d’un lieu', () => {
     })
 
     // WHEN
-    renderFakeComponent(<Lieu lieu={lieu} />)
+    renderFakeComponent(<PageLieu lieu={lieu} />)
 
     // THEN
     const retourAuxResultats = screen.getByRole('button', { name: wording.RETOUR_AUX_RESULTATS })
@@ -73,7 +73,7 @@ describe('page d’un lieu', () => {
     })
 
     // WHEN
-    renderFakeComponent(<Lieu lieu={lieu} />)
+    renderFakeComponent(<PageLieu lieu={lieu} />)
 
     // THEN
     const titre = screen.getByRole('heading', { level: 2, name: wording.ACCESSIBILITE_DU_LIEU })
@@ -96,7 +96,7 @@ describe('page d’un lieu', () => {
     })
 
     // WHEN
-    renderFakeComponent(<Lieu lieu={lieu} />)
+    renderFakeComponent(<PageLieu lieu={lieu} />)
 
     // THEN
     const titre = screen.getByRole('heading', { level: 2, name: wording.HORAIRES_ET_JOURS_D_OUVERTURE })
@@ -112,7 +112,7 @@ describe('page d’un lieu', () => {
     const lieu = LieuBuilder.cree({ commentaire: 'En partie\nformé' })
 
     // WHEN
-    renderFakeComponent(<Lieu lieu={lieu} />)
+    renderFakeComponent(<PageLieu lieu={lieu} />)
 
     // THEN
     const titre = screen.getByRole('heading', { level: 2, name: wording.PLUS_D_INFORMATIONS })
@@ -130,7 +130,7 @@ describe('page d’un lieu', () => {
     })
 
     // WHEN
-    renderFakeComponent(<Lieu lieu={lieu} />)
+    renderFakeComponent(<PageLieu lieu={lieu} />)
 
     // THEN
     const titre = screen.getByRole('heading', { level: 2, name: wording.CONTACT_ET_SITE_INTERNET })
@@ -153,7 +153,7 @@ describe('page d’un lieu', () => {
     const lieu = LieuBuilder.cree()
 
     // WHEN
-    renderFakeComponent(<Lieu lieu={lieu} />)
+    renderFakeComponent(<PageLieu lieu={lieu} />)
 
     // THEN
     const retourHautDePage = screen.getByRole('link', { name: wording.RETOUR_EN_HAUT_DE_PAGE })
@@ -165,7 +165,7 @@ describe('page d’un lieu', () => {
     const lieu = LieuBuilder.cree()
 
     // WHEN
-    renderFakeComponent(<Lieu lieu={lieu} />)
+    renderFakeComponent(<PageLieu lieu={lieu} />)
 
     // THEN
     const links = screen.getByRole('link', { name: wording.DONNEZ_NOUS_VOTRE_AVIS + wording.NOUVELLE_FENETRE })

@@ -2,17 +2,17 @@ import { GetServerSidePropsContext, GetServerSidePropsResult } from 'next'
 import { ReactElement } from 'react'
 
 import { backDependencies } from '../../backend/backDependencies'
-import { Lieu as LieuEntity } from '../../backend/entities/Lieu'
-import Lieu from '../../components/Lieu/Lieu'
+import { Lieu } from '../../backend/entities/Lieu'
+import PageLieu from '../../components/Lieu/PageLieu'
 
-export default function PageLieu({ lieu }: { lieu: LieuEntity }): ReactElement {
+export default function Router({ lieu }: { lieu: Lieu }): ReactElement {
   return (
-    <Lieu lieu={lieu} />
+    <PageLieu lieu={lieu} />
   )
 }
 
 type ServerSidePropsResult = Readonly<{
-  lieu: LieuEntity
+  lieu: Lieu
 }>
 
 export async function getServerSideProps(context: GetServerSidePropsContext): Promise<GetServerSidePropsResult<ServerSidePropsResult>> {
@@ -36,5 +36,5 @@ export async function getServerSideProps(context: GetServerSidePropsContext): Pr
     return { notFound: true }
   }
 
-  return { props: { lieu: JSON.parse(JSON.stringify(lieux[0])) as LieuEntity } }
+  return { props: { lieu: JSON.parse(JSON.stringify(lieux[0])) as Lieu } }
 }

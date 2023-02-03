@@ -4,10 +4,10 @@ import { ReactElement } from 'react'
 import { useDependencies } from '../../configuration/useDependencies'
 import BackLink from '../BackLink/BackLink'
 import Title from '../Title/Title'
-import styles from './RenseignerUneAdresse.module.css'
-import { useRenseignerUneAdresse } from './useRenseignerUneAdresse'
+import styles from './PageRenseignerUneAdresse.module.css'
+import { usePageRenseignerUneAdresse } from './usePageRenseignerUneAdresse'
 
-export default function RenseignerUneAdresse(): ReactElement {
+export default function PageRenseignerUneAdresse(): ReactElement {
   const { paths, wording } = useDependencies()
   const {
     apiAdresseNeRepondPlus,
@@ -18,7 +18,7 @@ export default function RenseignerUneAdresse(): ReactElement {
     selectionneUneAdresse,
     suggestionDAdresse,
     vaAlEtape2,
-  } = useRenseignerUneAdresse()
+  } = usePageRenseignerUneAdresse()
 
   return (
     <div className={styles.main}>

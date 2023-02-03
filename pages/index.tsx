@@ -1,9 +1,9 @@
 import { ReactElement } from 'react'
 
-import Accueil from '../components/Accueil/Accueil'
+import PageAccueil from '../components/Accueil/PageAccueil'
 
 export default function Router(): ReactElement {
   return (
-    <Accueil />
+    <PageAccueil />
   )
 }

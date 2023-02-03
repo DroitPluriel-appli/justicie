@@ -2,7 +2,7 @@ import { fireEvent, screen } from '@testing-library/react'
 import mockRouter from 'next-router-mock'
 
 import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
-import RechercherUneAideJuridique from './RechercherUneAideJuridique'
+import PageRechercherUneAideJuridique from './PageRechercherUneAideJuridique'
 
 describe('page pour rechercher une aide juridique par géolocalisation ou par adresse', () => {
   const { paths, wording } = fakeFrontDependencies
@@ -12,7 +12,7 @@ describe('page pour rechercher une aide juridique par géolocalisation ou par ad
     mockedGrantedPermissions()
 
     // WHEN
-    renderFakeComponent(<RechercherUneAideJuridique />)
+    renderFakeComponent(<PageRechercherUneAideJuridique />)
 
     // THEN
     expect(document.title).toBe(wording.TITLE_PAGE_RECHERCHER_UNE_AIDE_JURIDIQUE)
@@ -23,7 +23,7 @@ describe('page pour rechercher une aide juridique par géolocalisation ou par ad
     mockedGrantedPermissions()
 
     // WHEN
-    renderFakeComponent(<RechercherUneAideJuridique />)
+    renderFakeComponent(<PageRechercherUneAideJuridique />)
 
     // THEN
     const retourAlAccueil = screen.getByRole('link', { name: wording.RETOUR_A_L_ACCUEIL })
@@ -47,7 +47,7 @@ describe('page pour rechercher une aide juridique par géolocalisation ou par ad
     mockedDeniedPermissions()
 
     // WHEN
-    renderFakeComponent(<RechercherUneAideJuridique />)
+    renderFakeComponent(<PageRechercherUneAideJuridique />)
 
     // THEN
     const geolocalisationDesactivée = await screen.findByText(wording.GEOLOCALISATION_DESACTIVEE, { selector: 'p' })
@@ -61,7 +61,7 @@ describe('page pour rechercher une aide juridique par géolocalisation ou par ad
     // GIVEN
     mockedGrantedPermissions()
     mockedSuccessedGeolocation(43.296482, 5.36978)
-    renderFakeComponent(<RechercherUneAideJuridique />)
+    renderFakeComponent(<PageRechercherUneAideJuridique />)
     const utiliserMaPostionActuelle = screen.getByRole('button', { name: wording.UTILISER_MA_POSITION_ACTUELLE })
 
     // WHEN
@@ -77,7 +77,7 @@ describe('page pour rechercher une aide juridique par géolocalisation ou par ad
     // GIVEN
     mockedGrantedPermissions()
     mockedErrorGeolocation()
-    renderFakeComponent(<RechercherUneAideJuridique />)
+    renderFakeComponent(<PageRechercherUneAideJuridique />)
     const utiliserMaPostionActuelle = screen.getByRole('button', { name: wording.UTILISER_MA_POSITION_ACTUELLE })
 
     // WHEN
@@ -92,7 +92,7 @@ describe('page pour rechercher une aide juridique par géolocalisation ou par ad
     // @ts-ignore
     navigator.permissions = undefined
     mockedErrorGeolocation()
-    renderFakeComponent(<RechercherUneAideJuridique />)
+    renderFakeComponent(<PageRechercherUneAideJuridique />)
     const utiliserMaPostionActuelle = screen.getByRole('button', { name: wording.UTILISER_MA_POSITION_ACTUELLE })
 
     // WHEN

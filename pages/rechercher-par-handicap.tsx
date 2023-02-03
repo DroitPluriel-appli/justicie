@@ -1,11 +1,11 @@
 import { GetServerSidePropsContext } from 'next'
 import { ReactElement } from 'react'
 
-import RechercherParHandicap from '../components/RechercherParHandicap/RechercherParHandicap'
+import PageRechercherParHandicap from '../components/RechercherParHandicap/PageRechercherParHandicap'
 
 export default function Router(): ReactElement {
   return (
-    <RechercherParHandicap />
+    <PageRechercherParHandicap />
   )
 }
 

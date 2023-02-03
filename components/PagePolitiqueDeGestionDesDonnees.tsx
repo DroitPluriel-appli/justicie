@@ -3,7 +3,7 @@ import { ReactElement } from 'react'
 import { useDependencies } from '../configuration/useDependencies'
 import Title from './Title/Title'
 
-export default function PolitiqueDeGestionDesDonnees(): ReactElement {
+export default function PagePolitiqueDeGestionDesDonnees(): ReactElement {
   const { wording } = useDependencies()
 
   return (

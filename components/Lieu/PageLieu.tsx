@@ -1,6 +1,6 @@
 import { ReactElement } from 'react'
 
-import { Lieu as LieuEntity } from '../../backend/entities/Lieu'
+import { Lieu } from '../../backend/entities/Lieu'
 import { useDependencies } from '../../configuration/useDependencies'
 import Accessibilites from '../Accessibilites/Accessibilites'
 import BackButton from '../BackButton/BackButton'
@@ -13,9 +13,9 @@ import SiteInternet from '../SiteInternet/SiteInternet'
 import Telephone from '../Telephone/Telephone'
 import Title from '../Title/Title'
 import VotreAvis from '../VotreAvis/VotreAvis'
-import styles from './Lieu.module.css'
+import styles from './PageLieu.module.css'
 
-export default function Lieu({ lieu }: { lieu: LieuEntity }): ReactElement {
+export default function PageLieu({ lieu }: { lieu: Lieu }): ReactElement {
   const { useRouter, wording } = useDependencies()
   const { query } = useRouter()
 

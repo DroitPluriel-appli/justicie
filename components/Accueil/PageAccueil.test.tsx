@@ -1,14 +1,14 @@
 import { screen, within } from '@testing-library/react'
 
 import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
-import Accueil from './Accueil'
+import PageAccueil from './PageAccueil'
 
 describe('page d’accueil', () => {
   const { paths, wording } = fakeFrontDependencies
 
   it('affiche le titre de l’onglet', () => {
     // WHEN
-    renderFakeComponent(<Accueil />)
+    renderFakeComponent(<PageAccueil />)
 
     // THEN
     expect(document.title).toBe(wording.TITLE_PAGE_ACCUEIL)
@@ -16,7 +16,7 @@ describe('page d’accueil', () => {
 
   it('affiche le contenu', () => {
     // WHEN
-    renderFakeComponent(<Accueil />)
+    renderFakeComponent(<PageAccueil />)
 
     // THEN
     const main = screen.getByRole('main')

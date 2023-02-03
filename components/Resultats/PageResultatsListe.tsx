@@ -7,9 +7,9 @@ import Pagination from '../Pagination/Pagination'
 import Title from '../Title/Title'
 import VotreAvis from '../VotreAvis/VotreAvis'
 import EnTete from './EnTete'
-import styles from './ResultatsListe.module.css'
+import styles from './PageResultatsListe.module.css'
 
-export default function ResultatsListe({ lieux, nombreDeResultat }: { lieux: Lieu[], nombreDeResultat: number }): ReactElement {
+export default function PageResultatsListe({ lieux, nombreDeResultat }: { lieux: Lieu[], nombreDeResultat: number }): ReactElement {
   const { nombreDeLieuxAffichesParPage, useRouter, wording } = useDependencies()
   const { query } = useRouter()
 

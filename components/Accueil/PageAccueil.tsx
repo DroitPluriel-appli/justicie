@@ -7,9 +7,9 @@ import ExternalLink from '../ExternalLink/ExternalLink'
 import RetourHautDePage from '../RetourHautDePage/RetourHautDePage'
 import Telephone from '../Telephone/Telephone'
 import Title from '../Title/Title'
-import styles from './Accueil.module.css'
+import styles from './PageAccueil.module.css'
 
-export default function Accueil(): ReactElement {
+export default function PageAccueil(): ReactElement {
   const { wording, paths } = useDependencies()
 
   return (

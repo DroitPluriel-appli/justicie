@@ -22,7 +22,7 @@ type State = Readonly<{
   libelleDesAdresses: AdressesJson
 }>
 
-export function useRenseignerUneAdresse() {
+export function usePageRenseignerUneAdresse() {
   const { paths, useRouter, wording } = useDependencies()
   const { push } = useRouter()
   const [state, setState] = useState<State>({

@@ -5,9 +5,9 @@ import { useDependencies } from '../../configuration/useDependencies'
 import BackButton from '../BackButton/BackButton'
 import Title from '../Title/Title'
 import CritereDAccessibilite from './CritereDAccessibilite'
-import styles from './RechercherParHandicap.module.css'
+import styles from './PageRechercherParHandicap.module.css'
 
-export default function RechercherParHandicap(): ReactElement {
+export default function PageRechercherParHandicap(): ReactElement {
   const { criteres, paths, useRouter, wording } = useDependencies()
   const { query } = useRouter()
 

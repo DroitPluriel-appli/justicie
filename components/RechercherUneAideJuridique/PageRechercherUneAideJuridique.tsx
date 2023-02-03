@@ -4,12 +4,12 @@ import { ReactElement } from 'react'
 import { useDependencies } from '../../configuration/useDependencies'
 import BackLink from '../BackLink/BackLink'
 import Title from '../Title/Title'
-import styles from './RechercherUneAideJuridique.module.css'
-import { useRechercherUneAideJuridique } from './useRechercherUneAideJuridique'
+import styles from './PageRechercherUneAideJuridique.module.css'
+import { usePageRechercherUneAideJuridique } from './usePageRechercherUneAideJuridique'
 
-export default function RechercherUneAideJuridique(): ReactElement {
+export default function PageRechercherUneAideJuridique(): ReactElement {
   const { paths, wording } = useDependencies()
-  const { buttonName, isDisabled, isGPSDenied, touch } = useRechercherUneAideJuridique()
+  const { buttonName, isDisabled, isGPSDenied, touch } = usePageRechercherUneAideJuridique()
 
   return (
     <div className={styles.main}>

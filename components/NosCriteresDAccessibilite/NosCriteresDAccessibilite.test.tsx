@@ -1,14 +1,14 @@
 import { screen, within } from '@testing-library/react'
 
 import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
-import NosCriteresDAccessibilite from './NosCriteresDAccessibilite'
+import PageNosCriteresDAccessibilite from './PageNosCriteresDAccessibilite'
 
 describe('page des criteres d’accessibilite', () => {
   const { wording } = fakeFrontDependencies
 
   it('affiche le titre de l’onglet', () => {
     // WHEN
-    renderFakeComponent(<NosCriteresDAccessibilite />)
+    renderFakeComponent(<PageNosCriteresDAccessibilite />)
 
     // THEN
     expect(document.title).toBe(wording.TITLE_PAGE_NOS_CRITERES_D_ACCESSIBILITE)
@@ -16,7 +16,7 @@ describe('page des criteres d’accessibilite', () => {
 
   it('affiche le contenu', () => {
     // WHEN
-    renderFakeComponent(<NosCriteresDAccessibilite />)
+    renderFakeComponent(<PageNosCriteresDAccessibilite />)
     const main = screen.getByRole('main')
     const articles = within(main).getAllByRole('article')
 

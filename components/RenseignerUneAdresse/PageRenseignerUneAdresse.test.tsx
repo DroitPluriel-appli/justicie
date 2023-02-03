@@ -2,15 +2,15 @@ import { fireEvent, screen, waitFor, within } from '@testing-library/react'
 import mockRouter from 'next-router-mock'
 
 import { fakeFrontDependencies, renderFakeComponent } from '../../configuration/testHelper'
-import RenseignerUneAdresse from './RenseignerUneAdresse'
-import { AdresseJson } from './useRenseignerUneAdresse'
+import PageRenseignerUneAdresse from './PageRenseignerUneAdresse'
+import { AdresseJson } from './usePageRenseignerUneAdresse'
 
 describe('page pour renseigner une adresse', () => {
   const { paths, wording } = fakeFrontDependencies
 
   it('affiche le titre de l’onglet', () => {
     // WHEN
-    renderFakeComponent(<RenseignerUneAdresse />)
+    renderFakeComponent(<PageRenseignerUneAdresse />)
 
     // THEN
     expect(document.title).toBe(wording.TITLE_PAGE_RENSEIGNER_UNE_ADRESSE)
@@ -18,7 +18,7 @@ describe('page pour renseigner une adresse', () => {
 
   it('affiche le formulaire', () => {
     // WHEN
-    renderFakeComponent(<RenseignerUneAdresse />)
+    renderFakeComponent(<PageRenseignerUneAdresse />)
 
     // THEN
     const retourAlAccueil = screen.getByRole('link', { name: wording.RETOUR_A_L_ACCUEIL })
@@ -42,7 +42,7 @@ describe('page pour renseigner une adresse', () => {
     // GIVEN
     const query = 'adresse inconnue'
     mockedFetch([])
-    renderFakeComponent(<RenseignerUneAdresse />)
+    renderFakeComponent(<PageRenseignerUneAdresse />)
     const formulaire = screen.getByRole('search')
     const renseignerUneAdresse = within(formulaire).getByPlaceholderText(wording.RENSEIGNER_UNE_ADRESSE)
     const adresseInconnue = { target: { value: query } }
@@ -83,7 +83,7 @@ describe('page pour renseigner une adresse', () => {
         properties: { label: '34 bis avenue de lopera' },
       },
     ])
-    renderFakeComponent(<RenseignerUneAdresse />)
+    renderFakeComponent(<PageRenseignerUneAdresse />)
     const formulaire = screen.getByRole('search')
     const renseignerUneAdresse = within(formulaire).getByPlaceholderText(wording.RENSEIGNER_UNE_ADRESSE)
     const adresse = { target: { value: '34 avenue de lopera' } }
@@ -100,7 +100,7 @@ describe('page pour renseigner une adresse', () => {
 
   it('n’affiche pas de résultats quand il y a moins de 4 caractères renseignés', () => {
     // GIVEN
-    renderFakeComponent(<RenseignerUneAdresse />)
+    renderFakeComponent(<PageRenseignerUneAdresse />)
     const formulaire = screen.getByRole('search')
     const renseignerUneAdresse = within(formulaire).getByPlaceholderText(wording.RENSEIGNER_UNE_ADRESSE)
     const adresse = { target: { value: '34' } }
@@ -127,7 +127,7 @@ describe('page pour renseigner une adresse', () => {
         properties: { label: '34 avenue de lopera' },
       },
     ])
-    renderFakeComponent(<RenseignerUneAdresse />)
+    renderFakeComponent(<PageRenseignerUneAdresse />)
     const formulaire = screen.getByRole('search')
     const renseignerUneAdresse = within(formulaire).getByPlaceholderText(wording.RENSEIGNER_UNE_ADRESSE)
     const adresse = { target: { value: '34 avenue de lopera' } }
@@ -160,7 +160,7 @@ describe('page pour renseigner une adresse', () => {
         properties: { label: '34 avenue de lopera' },
       },
     ])
-    renderFakeComponent(<RenseignerUneAdresse />)
+    renderFakeComponent(<PageRenseignerUneAdresse />)
     const formulaire = screen.getByRole('search')
     const renseignerUneAdresse = within(formulaire).getByPlaceholderText(wording.RENSEIGNER_UNE_ADRESSE)
     const adresse = { target: { value: '34 a' } }

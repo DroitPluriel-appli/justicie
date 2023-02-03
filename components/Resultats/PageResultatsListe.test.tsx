@@ -3,7 +3,7 @@ import mockRouter from 'next-router-mock'
 
 import { LieuBuilder } from '../../backend/entities/LieuBuilder'
 import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
-import ResultatsListe from './ResultatsListe'
+import PageResultatsListe from './PageResultatsListe'
 
 describe('page des résultats de recherche affichés en liste', () => {
   const { paths, wording } = fakeFrontDependencies
@@ -20,7 +20,7 @@ describe('page des résultats de recherche affichés en liste', () => {
 
     // WHEN
     renderFakeComponent(
-      <ResultatsListe
+      <PageResultatsListe
         lieux={[]}
         nombreDeResultat={0}
       />
@@ -40,7 +40,7 @@ describe('page des résultats de recherche affichés en liste', () => {
 
     // WHEN
     renderFakeComponent(
-      <ResultatsListe
+      <PageResultatsListe
         lieux={[]}
         nombreDeResultat={0}
       />
@@ -75,7 +75,7 @@ describe('page des résultats de recherche affichés en liste', () => {
 
     // WHEN
     renderFakeComponent(
-      <ResultatsListe
+      <PageResultatsListe
         lieux={[lieu]}
         nombreDeResultat={nombreDeResultat}
       />
@@ -95,7 +95,7 @@ describe('page des résultats de recherche affichés en liste', () => {
 
     // WHEN
     renderFakeComponent(
-      <ResultatsListe
+      <PageResultatsListe
         lieux={[]}
         nombreDeResultat={0}
       />
@@ -161,7 +161,7 @@ describe('page des résultats de recherche affichés en liste', () => {
 
     // WHEN
     renderFakeComponent(
-      <ResultatsListe
+      <PageResultatsListe
         lieux={[lieuA, lieuB]}
         nombreDeResultat={2}
       />
@@ -242,7 +242,7 @@ describe('page des résultats de recherche affichés en liste', () => {
 
     // WHEN
     renderFakeComponent(
-      <ResultatsListe
+      <PageResultatsListe
         lieux={[lieu]}
         nombreDeResultat={1}
       />
@@ -264,7 +264,7 @@ describe('page des résultats de recherche affichés en liste', () => {
 
     // WHEN
     renderFakeComponent(
-      <ResultatsListe
+      <PageResultatsListe
         lieux={[]}
         nombreDeResultat={nombreDeResultat}
       />
@@ -298,7 +298,7 @@ describe('page des résultats de recherche affichés en liste', () => {
 
     // WHEN
     renderFakeComponent(
-      <ResultatsListe
+      <PageResultatsListe
         lieux={[]}
         nombreDeResultat={nombreDeResultat}
       />
@@ -334,7 +334,7 @@ describe('page des résultats de recherche affichés en liste', () => {
 
     // WHEN
     renderFakeComponent(
-      <ResultatsListe
+      <PageResultatsListe
         lieux={[]}
         nombreDeResultat={nombreDeResultat}
       />
@@ -380,7 +380,7 @@ describe('page des résultats de recherche affichés en liste', () => {
 
     // WHEN
     renderFakeComponent(
-      <ResultatsListe
+      <PageResultatsListe
         lieux={[]}
         nombreDeResultat={nombreDeResultat}
       />
@@ -426,7 +426,7 @@ describe('page des résultats de recherche affichés en liste', () => {
 
     // WHEN
     renderFakeComponent(
-      <ResultatsListe
+      <PageResultatsListe
         lieux={[]}
         nombreDeResultat={nombreDeResultat}
       />
@@ -467,7 +467,7 @@ describe('page des résultats de recherche affichés en liste', () => {
 
     // WHEN
     renderFakeComponent(
-      <ResultatsListe
+      <PageResultatsListe
         lieux={[lieu]}
         nombreDeResultat={1}
       />
@@ -488,7 +488,7 @@ describe('page des résultats de recherche affichés en liste', () => {
 
     // WHEN
     renderFakeComponent(
-      <ResultatsListe
+      <PageResultatsListe
         lieux={[]}
         nombreDeResultat={0}
       />

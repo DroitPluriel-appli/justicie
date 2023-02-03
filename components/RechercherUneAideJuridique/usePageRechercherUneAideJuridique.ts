@@ -10,7 +10,7 @@ type State = Readonly<{
   longitude: number
 }>
 
-export function useRechercherUneAideJuridique() {
+export function usePageRechercherUneAideJuridique() {
   const { paths, useRouter, wording } = useDependencies()
   const [state, setState] = useState<State>({
     buttonName: wording.UTILISER_MA_POSITION_ACTUELLE,

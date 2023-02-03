@@ -5,8 +5,8 @@ import { expect } from 'vitest'
 
 import { LieuBuilder } from '../../backend/entities/LieuBuilder'
 import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
+import PageResultatsPlan from './PageResultatsPlan'
 import Plan from './Plan'
-import ResultatsPlan from './ResultatsPlan'
 
 describe('page des résultats de recherche affichés sur une carte', () => {
   const { paths, wording } = fakeFrontDependencies
@@ -74,7 +74,7 @@ describe('page des résultats de recherche affichés sur une carte', () => {
 
     // WHEN
     renderFakeComponent(
-      <ResultatsPlan
+      <PageResultatsPlan
         lieux={[]}
         nombreDeResultat={0}
       />
@@ -94,7 +94,7 @@ describe('page des résultats de recherche affichés sur une carte', () => {
 
     // WHEN
     renderFakeComponent(
-      <ResultatsPlan
+      <PageResultatsPlan
         lieux={[]}
         nombreDeResultat={0}
       />
@@ -129,7 +129,7 @@ describe('page des résultats de recherche affichés sur une carte', () => {
 
     // WHEN
     renderFakeComponent(
-      <ResultatsPlan
+      <PageResultatsPlan
         lieux={[lieu]}
         nombreDeResultat={nombreDeResultat}
       />
@@ -149,7 +149,7 @@ describe('page des résultats de recherche affichés sur une carte', () => {
 
     // WHEN
     renderFakeComponent(
-      <ResultatsPlan
+      <PageResultatsPlan
         lieux={[]}
         nombreDeResultat={0}
       />
@@ -329,7 +329,7 @@ describe('page des résultats de recherche affichés sur une carte', () => {
 
     // WHEN
     renderFakeComponent(
-      <ResultatsPlan
+      <PageResultatsPlan
         lieux={[lieu]}
         nombreDeResultat={1}
       />
@@ -350,7 +350,7 @@ describe('page des résultats de recherche affichés sur une carte', () => {
 
     // WHEN
     renderFakeComponent(
-      <ResultatsPlan
+      <PageResultatsPlan
         lieux={[]}
         nombreDeResultat={0}
       />
