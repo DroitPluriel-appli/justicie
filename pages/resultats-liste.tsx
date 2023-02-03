@@ -8,7 +8,7 @@ import ResultatsListe from '../components/Resultats/ResultatsListe'
 import { criteres } from '../configuration/criteres'
 import { WordingFr } from '../configuration/wording/WordingFr'
 
-export default function PageAdressesListe({ lieux, nombreDeResultat }: { lieux: Lieu[], nombreDeResultat: number }): ReactElement {
+export default function Router({ lieux, nombreDeResultat }: { lieux: Lieu[], nombreDeResultat: number }): ReactElement {
   return (
     <ResultatsListe
       lieux={lieux}

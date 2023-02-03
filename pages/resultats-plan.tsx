@@ -8,7 +8,7 @@ import ResultatsPlan from '../components/Resultats/ResultatsPlan'
 import { criteres } from '../configuration/criteres'
 import { WordingFr } from '../configuration/wording/WordingFr'
 
-export default function PageResultatsParPlan({ lieux, nombreDeResultat }: { lieux: Lieu[], nombreDeResultat: number }): ReactElement {
+export default function Router({ lieux, nombreDeResultat }: { lieux: Lieu[], nombreDeResultat: number }): ReactElement {
   return (
     <ResultatsPlan
       lieux={lieux}

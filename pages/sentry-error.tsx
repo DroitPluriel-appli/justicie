@@ -1,6 +1,6 @@
 import { ReactElement, useCallback } from 'react'
 
-export default function PageSentryError(): ReactElement {
+export default function Router(): ReactElement {
   const genererUneErreur = () => {
     throw new Error('Erreur pour tester que Sentry fonctionne')
   }
