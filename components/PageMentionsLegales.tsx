@@ -1,7 +1,7 @@
 import { ReactElement } from 'react'
 
 import { useDependencies } from '../configuration/useDependencies'
-import Title from './Title/Title'
+import Title from './common/Title/Title'
 
 export default function PageMentionsLegales(): ReactElement {
   const { wording } = useDependencies()

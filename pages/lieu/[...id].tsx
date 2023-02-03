@@ -3,7 +3,7 @@ import { ReactElement } from 'react'
 
 import { backDependencies } from '../../backend/backDependencies'
 import { Lieu } from '../../backend/entities/Lieu'
-import PageLieu from '../../components/Lieu/PageLieu'
+import PageLieu from '../../components/PageLieu/PageLieu'
 
 export default function Router({ lieu }: { lieu: Lieu }): ReactElement {
   return (

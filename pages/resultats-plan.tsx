@@ -4,7 +4,7 @@ import { ReactElement } from 'react'
 import { backDependencies } from '../backend/backDependencies'
 import { Critere } from '../backend/entities/Critere'
 import { Lieu } from '../backend/entities/Lieu'
-import PageResultatsPlan from '../components/Resultats/PageResultatsPlan'
+import PageResultatsPlan from '../components/PageResultats/PageResultatsPlan'
 import { criteres } from '../configuration/criteres'
 import { WordingFr } from '../configuration/wording/WordingFr'
 

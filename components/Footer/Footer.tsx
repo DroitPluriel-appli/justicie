@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { ReactElement } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
-import Logo from '../Logo/Logo'
+import Logo from '../common/Logo/Logo'
 import styles from './Footer.module.css'
 
 export default function Footer(): ReactElement {

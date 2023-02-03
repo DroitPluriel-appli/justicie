@@ -1,6 +1,6 @@
 import { ReactElement } from 'react'
 
-import PageAccueil from '../components/Accueil/PageAccueil'
+import PageAccueil from '../components/PageAccueil/PageAccueil'
 
 export default function Router(): ReactElement {
   return (
