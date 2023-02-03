@@ -78,7 +78,7 @@ describe('lieu loader', () => {
               pmr_assiste: true,
               visuel: true,
             },
-            distance: 19,
+            distance: 20,
             id: 5,
             latitude: 40.140000,
             longitude: 2.140000,
@@ -119,7 +119,7 @@ describe('lieu loader', () => {
             longitude: 2.150000,
           }),
           LieuBuilder.cree({ distance: 29, id: 7, latitude: 40.210000, longitude: 2.210000 }),
-          LieuBuilder.cree({ distance: 330, id: 3, latitude: 40.120000, longitude: -2.120000 }),
+          LieuBuilder.cree({ distance: 350, id: 3, latitude: 40.120000, longitude: -2.120000 }),
         ],
         nombreDeResultat: 7,
       })
@@ -133,7 +133,7 @@ describe('lieu loader', () => {
       const criteres = new Set<Critere>()
       const page = 0
       const nombreDeLieuxAffichesParPage = 10
-      const rayonDeRechercheLimite = 0.2
+      const rayonDeRechercheLimite = 22
 
       // WHEN
       const lieux = await postgreSQLLieuLoader.recupereDesLieux(latitude, longitude, criteres, page, nombreDeLieuxAffichesParPage, rayonDeRechercheLimite)
@@ -154,7 +154,7 @@ describe('lieu loader', () => {
               pmr_assiste: true,
               visuel: true,
             },
-            distance: 19,
+            distance: 20,
             id: 5,
             latitude: 40.140000,
             longitude: 2.140000,
@@ -205,7 +205,7 @@ describe('lieu loader', () => {
               pmr_assiste: true,
               visuel: true,
             },
-            distance: 19,
+            distance: 20,
             id: 5,
             latitude: 40.140000,
             longitude: 2.140000,
@@ -226,7 +226,7 @@ describe('lieu loader', () => {
             longitude: 2.150000,
           }),
           LieuBuilder.cree({ distance: 29, id: 7, latitude: 40.210000, longitude: 2.210000 }),
-          LieuBuilder.cree({ distance: 330, id: 3, latitude: 40.120000, longitude: -2.120000 }),
+          LieuBuilder.cree({ distance: 350, id: 3, latitude: 40.120000, longitude: -2.120000 }),
         ],
         nombreDeResultat: 7,
       })
@@ -255,7 +255,7 @@ describe('lieu loader', () => {
               pmr_assiste: true,
               visuel: true,
             },
-            distance: 19,
+            distance: 20,
             id: 5,
             latitude: 40.140000,
             longitude: 2.140000,

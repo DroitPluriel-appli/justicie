@@ -14,7 +14,7 @@ const createDependencies = (): BackDependencies => {
   return {
     lieuLoader: new PostgreSQLLieuLoader(orm),
     nombreDeLieuxAffichesParPage: 10,
-    rayonDeRecherche: 2.5,
+    rayonDeRecherche: 250,
   }
 }
 

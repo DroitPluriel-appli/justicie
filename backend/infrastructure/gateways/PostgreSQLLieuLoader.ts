@@ -6,8 +6,15 @@ import { Lieu } from '../../entities/Lieu'
 import { LieuLoader } from '../../entities/LieuLoader'
 
 export class PostgreSQLLieuLoader implements LieuLoader {
-  readonly multiplicateurLatitude = 111
-  readonly multiplicateurLongitude = 80
+  // Formule simplifiée pour calculer une distance en km à partir
+  // de coordonnées latidude/longitude :
+  // R * acos(sin(a) * sin(b) + cos(a) * cos(b) * cos(c - d))
+  // avec R = rayon de la Terre
+  // a = latitudePointA, b = latitudePointB
+  // c = longitudePointA, d = longitudePointB
+  // les latitudes et longitudes sont en radians, pas en degrés
+  // https://forums.futura-sciences.com/mathematiques-superieur/306536-calcul-de-distance-entre-2-points-dont-jai-coordonnees-geographiques-longitude-latitude.html
+  private readonly calculDistanceSQL = '6371 * ACOS(SIN(RADIANS(latitude)) * SIN(RADIANS($1)) + COS(RADIANS(latitude)) * COS(RADIANS($1)) * COS(RADIANS(longitude) - RADIANS($2)))'
 
   constructor(private readonly orm: Promise<DataSource>) { }
 
@@ -45,11 +52,9 @@ export class PostgreSQLLieuLoader implements LieuLoader {
 
     const query = await (await this.orm)
       .getRepository(LieuModel)
-      .query(`SELECT COUNT(*) FROM lieu WHERE (latitude BETWEEN $1 AND $2 AND longitude BETWEEN $3 AND $4) ${criteresSQL}`, [
-        latitude - rayonDeRecherche,
-        latitude + rayonDeRecherche,
-        longitude - rayonDeRecherche,
-        longitude + rayonDeRecherche,
+      .query(`SELECT COUNT(*) FROM lieu WHERE ${this.calculDistanceSQL} < ${rayonDeRecherche === Infinity ? "'+Infinity'" : rayonDeRecherche} ${criteresSQL}`, [
+        latitude,
+        longitude,
       ]) as { count: string }[]
 
     return Number(query[0].count)
@@ -67,15 +72,9 @@ export class PostgreSQLLieuLoader implements LieuLoader {
 
     return await (await this.orm)
       .getRepository(LieuModel)
-      .query(`SELECT *, code_postal AS "codePostal", domaine_de_droit AS "domaineDeDroit", e_mail AS "eMail", prise_de_rendez_vous AS "priseDeRendezVous", site_internet AS "siteInternet", SQRT(POW(ABS(latitude - $1) * $2, 2) + POW(ABS(longitude - $3) * $4, 2)) AS distance FROM lieu WHERE (latitude BETWEEN $5 AND $6 AND longitude BETWEEN $7 AND $8) ${criteresSQL} ORDER BY distance ASC LIMIT $9 OFFSET $10`, [
+      .query(`SELECT *, code_postal AS "codePostal", domaine_de_droit AS "domaineDeDroit", e_mail AS "eMail", prise_de_rendez_vous AS "priseDeRendezVous", site_internet AS "siteInternet", ${this.calculDistanceSQL} AS distance FROM lieu WHERE ${this.calculDistanceSQL} < ${rayonDeRecherche === Infinity ? "'+Infinity'" : rayonDeRecherche} ${criteresSQL} ORDER BY distance ASC LIMIT $3 OFFSET $4`, [
         latitude,
-        this.multiplicateurLatitude,
         longitude,
-        this.multiplicateurLongitude,
-        latitude - rayonDeRecherche,
-        latitude + rayonDeRecherche,
-        longitude - rayonDeRecherche,
-        longitude + rayonDeRecherche,
         nombreDeLieuxAffichesParPage,
         page * nombreDeLieuxAffichesParPage,
       ]) as LieuModel[]
@@ -120,13 +119,17 @@ export class PostgreSQLLieuLoader implements LieuLoader {
     })
   }
 
-  private ajouteLaDistance(lieuxModel: LieuModel[], latitude: number, longitude: number) {
+  private ajouteLaDistance(lieuxModel: LieuModel[], latitude: number, longitude: number): LieuModel[] {
+    const degreesToRadians = (degrees: number) => degrees * (Math.PI / 180)
     return lieuxModel.map((lieuModel) => {
       return {
         ...lieuModel,
-        distance: Math.sqrt(
-          Math.pow(Math.abs(lieuModel.latitude - latitude) * this.multiplicateurLatitude, 2) +
-          Math.pow(Math.abs(lieuModel.longitude - longitude) * this.multiplicateurLongitude, 2)
+        distance: 6371 * Math.acos(
+          Math.sin(degreesToRadians(lieuModel.latitude)) *
+          Math.sin(degreesToRadians(latitude)) +
+          Math.cos(degreesToRadians(lieuModel.latitude)) *
+          Math.cos(degreesToRadians(latitude)) *
+          Math.cos(degreesToRadians(lieuModel.longitude) - degreesToRadians(longitude))
         ),
       }
     })
