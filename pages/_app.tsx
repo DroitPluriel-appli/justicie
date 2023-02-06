@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { AppProps } from 'next/app'
 import Head from 'next/head'
-import Script from 'next/script'
 import { ReactElement, useEffect } from 'react'
 
 import { useTheme } from '../components/common/useTheme'
@@ -16,28 +15,6 @@ export default function App({ Component, pageProps }: AppProps): ReactElement {
   useEffect(() => {
     applyThemeFromLocalStorage()
   })
-
-  function googleTagManager(): ReactElement {
-    return (
-      <>
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-QVSWEV0X5D"
-          strategy="afterInteractive"
-        />
-        <Script
-          id="google-analytics"
-          strategy="afterInteractive"
-        >
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-QVSWEV0X5D');
-          `}
-        </Script>
-      </>
-    )
-  }
 
   return (
     <ContextProvider>
@@ -71,7 +48,6 @@ export default function App({ Component, pageProps }: AppProps): ReactElement {
       </Head>
       <Header />
       <main id="contenu">
-        {process.env.NODE_ENV === 'production' && googleTagManager()}
         <Component {...pageProps} />
       </main>
       <Footer />
