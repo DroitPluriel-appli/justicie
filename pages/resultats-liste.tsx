@@ -4,13 +4,13 @@ import { ReactElement } from 'react'
 import { backDependencies } from '../backend/backDependencies'
 import { Critere } from '../backend/entities/Critere'
 import { Lieu } from '../backend/entities/Lieu'
-import ResultatsListe from '../components/Resultats/ResultatsListe'
+import PageResultatsListe from '../components/PageResultats/PageResultatsListe'
 import { criteres } from '../configuration/criteres'
 import { WordingFr } from '../configuration/wording/WordingFr'
 
-export default function PageAdressesListe({ lieux, nombreDeResultat }: { lieux: Lieu[], nombreDeResultat: number }): ReactElement {
+export default function Router({ lieux, nombreDeResultat }: { lieux: Lieu[], nombreDeResultat: number }): ReactElement {
   return (
-    <ResultatsListe
+    <PageResultatsListe
       lieux={lieux}
       nombreDeResultat={nombreDeResultat}
     />

@@ -1,9 +1,9 @@
 import { ReactElement } from 'react'
 
-import RechercherUneAideJuridique from '../components/RechercherUneAideJuridique/RechercherUneAideJuridique'
+import PageRechercherUneAideJuridique from '../components/PageRechercherUneAideJuridique/PageRechercherUneAideJuridique'
 
-export default function PageRechercherUneAideJuridique(): ReactElement {
+export default function Router(): ReactElement {
   return (
-    <RechercherUneAideJuridique />
+    <PageRechercherUneAideJuridique />
   )
 }

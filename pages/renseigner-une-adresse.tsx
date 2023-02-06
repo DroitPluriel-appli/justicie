@@ -1,9 +1,9 @@
 import { ReactElement } from 'react'
 
-import RenseignerUneAdresse from '../components/RenseignerUneAdresse/RenseignerUneAdresse'
+import PageRenseignerUneAdresse from '../components/PageRenseignerUneAdresse/PageRenseignerUneAdresse'
 
-export default function PageRenseignerUneAdresse(): ReactElement {
+export default function Router(): ReactElement {
   return (
-    <RenseignerUneAdresse />
+    <PageRenseignerUneAdresse />
   )
 }

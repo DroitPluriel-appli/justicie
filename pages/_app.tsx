@@ -4,12 +4,11 @@ import Head from 'next/head'
 import Script from 'next/script'
 import { ReactElement, useEffect } from 'react'
 
+import { useTheme } from '../components/common/useTheme'
 import Footer from '../components/Footer/Footer'
 import Header from '../components/Header/Header'
-import LiensDEvitement from '../components/LiensDEvitement/LiensDEvitement'
 import { ContextProvider } from '../configuration/useDependencies'
 import '../configuration/globals.css'
-import { useTheme } from '../configuration/useTheme'
 
 export default function App({ Component, pageProps }: AppProps): ReactElement {
   const { applyThemeFromLocalStorage } = useTheme()
@@ -42,7 +41,6 @@ export default function App({ Component, pageProps }: AppProps): ReactElement {
 
   return (
     <ContextProvider>
-      <LiensDEvitement />
       <Head>
         <meta charSet="utf-8" />
         <meta

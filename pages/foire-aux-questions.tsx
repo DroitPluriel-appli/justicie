@@ -1,9 +1,9 @@
 import { ReactElement } from 'react'
 
-import FoireAuxQuestions from '../components/FoireAuxQuestions/FoireAuxQuestions'
+import PageFoireAuxQuestions from '../components/PageFoireAuxQuestions/PageFoireAuxQuestions'
 
-export default function PageFoireAuxQuestions(): ReactElement {
+export default function Router(): ReactElement {
   return (
-    <FoireAuxQuestions />
+    <PageFoireAuxQuestions />
   )
 }

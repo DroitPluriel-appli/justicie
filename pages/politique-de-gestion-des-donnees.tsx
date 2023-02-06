@@ -1,9 +1,9 @@
 import { ReactElement } from 'react'
 
-import PolitiqueDeGestionDesDonnees from '../components/PolitiqueDeGestionDesDonnees'
+import PagePolitiqueDeGestionDesDonnees from '../components/PagePolitiqueDeGestionDesDonnees'
 
-export default function PagePolitiqueDeGestionDesDonnees(): ReactElement {
+export default function Router(): ReactElement {
   return (
-    <PolitiqueDeGestionDesDonnees />
+    <PagePolitiqueDeGestionDesDonnees />
   )
 }
