@@ -25,13 +25,12 @@
 }
 
 .main h2 {
-  font-size: var(--l-font);
-  font-weight: normal;
+  font-weight: bold;
   margin-bottom: var(--m-margin);
 }
 
 h2.nom {
-  font-weight: bold;
+  font-size: var(--xl-font);
 }
 
 .adresse {

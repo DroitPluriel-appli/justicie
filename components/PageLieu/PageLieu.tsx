@@ -106,6 +106,6 @@ export default function PageLieu({ lieu }: { lieu: Lieu }): ReactElement {
       </section>
       <RetourHautDePage />
       <VotreAvis />
-    </article>
+    </article >
   )
 }
