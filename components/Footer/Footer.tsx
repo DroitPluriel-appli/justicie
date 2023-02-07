@@ -29,8 +29,8 @@ export default function Footer(): ReactElement {
               </Link>
             </li>
             <li>
-              <Link href={paths.POLITIQUE_DE_GESTION_DES_DONNEES}>
-                {wording.POLITIQUE_DE_GESTION_DES_DONNEES}
+              <Link href={paths.POLITIQUE_DE_CONFIDENTIALITE}>
+                {wording.POLITIQUE_DE_CONFIDENTIALITE}
               </Link>
             </li>
             <li>

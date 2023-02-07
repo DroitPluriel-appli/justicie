@@ -1,6 +1,6 @@
 import { ReactElement } from 'react'
 
-import PageMentionsLegales from '../components/PageMentionsLegales'
+import PageMentionsLegales from '../components/PageMentionsLegales/PageMentionsLegales'
 
 export default function Router(): ReactElement {
   return (

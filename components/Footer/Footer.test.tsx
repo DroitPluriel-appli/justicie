@@ -21,8 +21,8 @@ describe('pied de page', () => {
     expect(rechercherUneAideJuridique).toHaveAttribute('href', paths.RECHERCHER_UNE_AIDE_JURIDIQUE)
     const criteresDAccessibilite = within(liensJusticePlurielle[1]).getByRole('link', { name: wording.NOS_CRITERES_D_ACCESSIBILITE })
     expect(criteresDAccessibilite).toHaveAttribute('href', paths.NOS_CRITERES_D_ACCESSIBILITE)
-    const politiqueGestionDesDonnees = within(liensJusticePlurielle[2]).getByRole('link', { name: wording.POLITIQUE_DE_GESTION_DES_DONNEES })
-    expect(politiqueGestionDesDonnees).toHaveAttribute('href', paths.POLITIQUE_DE_GESTION_DES_DONNEES)
+    const politiqueGestionDesDonnees = within(liensJusticePlurielle[2]).getByRole('link', { name: wording.POLITIQUE_DE_CONFIDENTIALITE })
+    expect(politiqueGestionDesDonnees).toHaveAttribute('href', paths.POLITIQUE_DE_CONFIDENTIALITE)
     const foireAuxQuestions = within(liensJusticePlurielle[3]).getByRole('link', { name: wording.FOIRE_AUX_QUESTIONS })
     expect(foireAuxQuestions).toHaveAttribute('href', paths.FOIRE_AUX_QUESTIONS)
 
