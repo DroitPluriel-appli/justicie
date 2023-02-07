@@ -136,8 +136,8 @@ export class WordingFr implements Wording {
   readonly TITLE_PERSONNEL_FORME: string = 'Personnel formé'
   readonly DESCRIPTION_PERSONNEL_FORME: string = 'Les professionnels (accueil et aide juridique) sont sensibilisés aux situations de handicap et à l’accessibilité.'
 
-  // Politique de gestion des données
-  readonly TITLE_PAGE_POLITIQUE_DE_GESTION_DES_DONNEES: string = 'Politique de gestion des données' + this.SUFFIXE_TITLE
+  // Politique de confidentialité
+  readonly TITLE_PAGE_POLITIQUE_DE_CONFIDENTIALITE: string = 'Politique de confidentialité' + this.SUFFIXE_TITLE
 
   // Foire aux questions
   readonly TITLE_FOIRE_AUX_QUESTIONS: string = 'Foire aux questions' + this.SUFFIXE_TITLE
@@ -179,7 +179,7 @@ export class WordingFr implements Wording {
   readonly INFORMATIONS: string = 'Informations'
   readonly RECHERCHER_UNE_AIDE_JURIDIQUE: string = 'Rechercher une aide juridique'
   readonly NOS_CRITERES_D_ACCESSIBILITE: string = 'Nos critères d’accessibilité'
-  readonly POLITIQUE_DE_GESTION_DES_DONNEES: string = 'Politique de gestion des données'
+  readonly POLITIQUE_DE_CONFIDENTIALITE: string = 'Politique de confidentialité'
   readonly FOIRE_AUX_QUESTIONS: string = 'Foire aux questions'
   readonly MENTIONS_LEGALES: string = 'Mentions légales'
   readonly QUALITE_DE_SERVICE: string = 'Qualité du service'

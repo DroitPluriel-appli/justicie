@@ -125,7 +125,7 @@ export interface Wording {
   readonly DESCRIPTION_PERSONNEL_FORME: string
 
   // Politique de gestion des données
-  readonly TITLE_PAGE_POLITIQUE_DE_GESTION_DES_DONNEES: string
+  readonly TITLE_PAGE_POLITIQUE_DE_CONFIDENTIALITE: string
 
   // Foire aux questions
   readonly TITLE_FOIRE_AUX_QUESTIONS: string
@@ -157,7 +157,7 @@ export interface Wording {
   readonly INFORMATIONS: string
   readonly RECHERCHER_UNE_AIDE_JURIDIQUE: string
   readonly NOS_CRITERES_D_ACCESSIBILITE: string
-  readonly POLITIQUE_DE_GESTION_DES_DONNEES: string
+  readonly POLITIQUE_DE_CONFIDENTIALITE: string
   readonly FOIRE_AUX_QUESTIONS: string
   readonly MENTIONS_LEGALES: string
   readonly QUALITE_DE_SERVICE: string

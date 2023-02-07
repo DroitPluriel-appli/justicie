@@ -1,0 +1,8 @@
+.titre2 {
+  margin: var(--l-margin) 0;
+}
+
+.liste {
+  list-style: disc;
+  margin-left: var(--l-margin);
+}
