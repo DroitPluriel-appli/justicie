@@ -53,14 +53,16 @@ export default function PagePolitiqueDeConfidentialite(): ReactElement {
       </h4>
       <p>
         {'Lorsque l’utilisateur utilise le Site et fait une recherche de permanence juridique gratuite, Droit Pluriel collecte et traite les données suivantes :'}
-        <ul className={styles.liste}>
-          <li>
-            {'Localisation'}
-          </li>
-          <li>
-            {'Besoins en accessibilité exprimés'}
-          </li>
-        </ul>
+      </p>
+      <ul className={styles.liste}>
+        <li>
+          {'Localisation'}
+        </li>
+        <li>
+          {'Besoins en accessibilité exprimés'}
+        </li>
+      </ul>
+      <p>
         {'Les données sont collectées automatiquement du fait des actions de l’utilisateur sur le site (voir le paragraphe relatif aux cookies).'}
       </p>
       <h4>
@@ -74,18 +76,18 @@ export default function PagePolitiqueDeConfidentialite(): ReactElement {
       </h4>
       <p>
         {'Le traitement des données à caractère personnel est nécessaire à l’exécution des missions de l’association Droit Pluriel. Il est fondé sur l’article 6, paragraphe 1, points a) et f) du Règlement (UE) 2016/679 du Parlement européen et du Conseil du 27 avril 2016. Les finalités sont les suivantes :'}
-        <ul className={styles.liste}>
-          <li>
-            {'La mesure d’impact du Site (KPI) ;'}
-          </li>
-          <li>
-            {'Les actions de plaidoyer nécessaires au fonctionnement de l’association ;'}
-          </li>
-          <li>
-            {'La mise en œuvre de la recherche de permanences juridiques gratuites.'}
-          </li>
-        </ul>
       </p>
+      <ul className={styles.liste}>
+        <li>
+          {'La mesure d’impact du Site (KPI) ;'}
+        </li>
+        <li>
+          {'Les actions de plaidoyer nécessaires au fonctionnement de l’association ;'}
+        </li>
+        <li>
+          {'La mise en œuvre de la recherche de permanences juridiques gratuites.'}
+        </li>
+      </ul>
       <h4>
         {'1.6 DURÉE DE CONSERVATION DES DONNÉES'}
       </h4>
@@ -101,111 +103,125 @@ export default function PagePolitiqueDeConfidentialite(): ReactElement {
         {'Droit d’accès : toute personne peut solliciter le responsable du traitement si des données à caractère personnel la concernant font l’objet d’un traitement. Dans l’affirmative, la personne concernée peut obtenir une copie des données à caractère personnel faisant l’objet d’un traitement ainsi que les informations suivantes.'}
         <br />
         {'Finalités du traitement :'}
-        <ul className={styles.liste}>
-          <li>
-            {'Catégories de données à caractère personnel concernées ;'}
-          </li>
-          <li>
-            {'Destinataires ou catégories de destinataires des données ;'}
-          </li>
-          <li>
-            {'Lorsque cela est possible, la durée de conservation des données envisagée ou, lorsque ce n’est pas possible, les critères utilisés pour déterminer cette durée ;'}
-          </li>
-          <li>
-            {'Lorsque les données à caractère personnel ne sont pas collectées auprès de la personne concernée, toute information disponible quant à leur source ;'}
-          </li>
-          <li>
-            {'Le cas échéant, l’existence d’une prise de décision automatisée, y compris un profilage, et les informations utiles concernant la logique sous-jacente, ainsi que l’importance et les conséquences prévues de ce traitement pour la personne concernée.'}
-          </li>
-        </ul>
+      </p>
+      <ul className={styles.liste}>
+        <li>
+          {'Catégories de données à caractère personnel concernées ;'}
+        </li>
+        <li>
+          {'Destinataires ou catégories de destinataires des données ;'}
+        </li>
+        <li>
+          {'Lorsque cela est possible, la durée de conservation des données envisagée ou, lorsque ce n’est pas possible, les critères utilisés pour déterminer cette durée ;'}
+        </li>
+        <li>
+          {'Lorsque les données à caractère personnel ne sont pas collectées auprès de la personne concernée, toute information disponible quant à leur source ;'}
+        </li>
+        <li>
+          {'Le cas échéant, l’existence d’une prise de décision automatisée, y compris un profilage, et les informations utiles concernant la logique sous-jacente, ainsi que l’importance et les conséquences prévues de ce traitement pour la personne concernée.'}
+        </li>
+      </ul>
+      <p>
         {'Droit de rectification : toute personne dont les données personnelles font l’objet d’un traitement bénéficie du droit d’obtenir la rectification des données à caractère personnel les concernant qui sont inexactes et que ces données soient complétées si la finalité du traitement l’exige le cas échéant.'}
         <br />
         {'Droit à l’effacement : toute personne dont les données personnelles font l’objet d’un traitement a le droit d’obtenir du responsable du traitement l’effacement desdites données dans les cas suivants :'}
-        <ul className={styles.liste}>
-          <li>
-            {'Lorsque les données à caractère personnel ne sont plus nécessaires au regard des finalités pour lesquelles elles ont été collectées ou traitées d’une autre manière ;'}
-          </li>
-          <li>
-            {'Lorsque la personne concernée a retiré le consentement sur lequel était fondé le traitement et qu’il n’existe pas d’autre fondement juridique au traitement ;'}
-          </li>
-          <li>
-            {'Dans l’hypothèse où le traitement est fondé sur l’intérêt légitime du responsable du traitement, lorsque la personne concernée s’est opposée au traitement qu’il n’existe pas de motif légitime impérieux pour le traitement ;'}
-          </li>
-          <li>
-            {'Dans l’hypothèse où le traitement a pour finalité la prospection ou le profilage lié à une telle prospection, lorsque la personne concernée s’est opposée au traitement ;'}
-          </li>
-          <li>
-            {'Lorsque les données à caractère personnel ont fait l’objet d’un traitement illicite ;'}
-          </li>
-          <li>
-            {'Lorsque les données à caractère personnel doivent être effacées pour respecter une obligation légale qui est prévue par le droit de l’Union ou par le droit de l’État membre auquel le responsable du traitement est soumis.'}
-          </li>
-        </ul>
+      </p>
+      <ul className={styles.liste}>
+        <li>
+          {'Lorsque les données à caractère personnel ne sont plus nécessaires au regard des finalités pour lesquelles elles ont été collectées ou traitées d’une autre manière ;'}
+        </li>
+        <li>
+          {'Lorsque la personne concernée a retiré le consentement sur lequel était fondé le traitement et qu’il n’existe pas d’autre fondement juridique au traitement ;'}
+        </li>
+        <li>
+          {'Dans l’hypothèse où le traitement est fondé sur l’intérêt légitime du responsable du traitement, lorsque la personne concernée s’est opposée au traitement qu’il n’existe pas de motif légitime impérieux pour le traitement ;'}
+        </li>
+        <li>
+          {'Dans l’hypothèse où le traitement a pour finalité la prospection ou le profilage lié à une telle prospection, lorsque la personne concernée s’est opposée au traitement ;'}
+        </li>
+        <li>
+          {'Lorsque les données à caractère personnel ont fait l’objet d’un traitement illicite ;'}
+        </li>
+        <li>
+          {'Lorsque les données à caractère personnel doivent être effacées pour respecter une obligation légale qui est prévue par le droit de l’Union ou par le droit de l’État membre auquel le responsable du traitement est soumis.'}
+        </li>
+      </ul>
+      <p>
         {'Dans certains cas, le responsable du traitement pourra toutefois refuser d’effacer les données :'}
-        <ul className={styles.liste}>
-          <li>
-            {'Pour respecter une obligation légale qui requiert le traitement prévu par le droit de l’Union ou par le droit français ;'}
-          </li>
-          <li>
-            {'Lorsque le traitement a pour unique objet des fins statistiques ;'}
-          </li>
-          <li>
-            {'Lorsque le traitement est nécessaire à la constatation, à l’exercice ou à la défense de droits en justice.'}
-          </li>
-        </ul>
+      </p>
+      <ul className={styles.liste}>
+        <li>
+          {'Pour respecter une obligation légale qui requiert le traitement prévu par le droit de l’Union ou par le droit français ;'}
+        </li>
+        <li>
+          {'Lorsque le traitement a pour unique objet des fins statistiques ;'}
+        </li>
+        <li>
+          {'Lorsque le traitement est nécessaire à la constatation, à l’exercice ou à la défense de droits en justice.'}
+        </li>
+      </ul>
+      <p>
         {'Droit à la limitation : toute personne dont les données personnelles font l’objet d’un traitement peut demander au responsable du traitement la limitation du traitement dans les cas suivants :'}
-        <ul className={styles.liste}>
-          <li>
-            {'Lorsqu’elle conteste l’exactitude de ses données à caractère personnel, pendant une durée permettant au responsable du traitement de vérifier l’exactitude desdites données ;'}
-          </li>
-          <li>
-            {'Lorsque le traitement n’est pas conforme à la règlementation mais que le titulaire des données ne souhaite pas les effacer ;'}
-          </li>
-          <li>
-            {'Lorsque le responsable du traitement n’a plus besoin des données à caractère personnel aux fins du traitement mais que celles-ci sont encore nécessaires à l’utilisateur pour la constatation, l’exercice ou la défense de droits en justice ;'}
-          </li>
-          <li>
-            {'Lorsqu’elle s’est opposée au traitement, pendant la vérification portant sur le point de savoir si les motifs légitimes poursuivis par le responsable du traitement prévalent sur ceux de la personne concernée.'}
-          </li>
-        </ul>
+      </p>
+      <ul className={styles.liste}>
+        <li>
+          {'Lorsqu’elle conteste l’exactitude de ses données à caractère personnel, pendant une durée permettant au responsable du traitement de vérifier l’exactitude desdites données ;'}
+        </li>
+        <li>
+          {'Lorsque le traitement n’est pas conforme à la règlementation mais que le titulaire des données ne souhaite pas les effacer ;'}
+        </li>
+        <li>
+          {'Lorsque le responsable du traitement n’a plus besoin des données à caractère personnel aux fins du traitement mais que celles-ci sont encore nécessaires à l’utilisateur pour la constatation, l’exercice ou la défense de droits en justice ;'}
+        </li>
+        <li>
+          {'Lorsqu’elle s’est opposée au traitement, pendant la vérification portant sur le point de savoir si les motifs légitimes poursuivis par le responsable du traitement prévalent sur ceux de la personne concernée.'}
+        </li>
+      </ul>
+      <p>
         {'Lorsque le traitement a été limité, à l’exception de la conservation, les données ne peuvent être traitées que dans les cas suivants :'}
-        <ul className={styles.liste}>
-          <li>
-            {'Avec le consentement de la personne concernée ;'}
-          </li>
-          <li>
-            {'Pour la constatation, l’exercice ou la défense de droits en justice ;'}
-          </li>
-          <li>
-            {'Pour la protection des droits d’une autre personne physique ou morale, ou encore pour des motifs importants d’intérêt public de l’Union ou d’un État membre.'}
-          </li>
-        </ul>
+      </p>
+      <ul className={styles.liste}>
+        <li>
+          {'Avec le consentement de la personne concernée ;'}
+        </li>
+        <li>
+          {'Pour la constatation, l’exercice ou la défense de droits en justice ;'}
+        </li>
+        <li>
+          {'Pour la protection des droits d’une autre personne physique ou morale, ou encore pour des motifs importants d’intérêt public de l’Union ou d’un État membre.'}
+        </li>
+      </ul>
+      <p>
         {'Si la limitation devait ensuite être levée, le responsable du traitement en informerait au préalable la personne concernée.'}
         <br />
         {'Droit à la portabilité : toute personne dont les données personnelles font l’objet d’un traitement peut solliciter du responsable du traitement qu’il lui communique ces données ou les transmette à un autre responsable du traitement dans les cas suivants :'}
-        <ul className={styles.liste}>
-          <li>
-            {'Lorsque le traitement a été mis en place pour donner suite au consentement de la personne concernée ;'}
-          </li>
-          <li>
-            {'Lorsque le traitement est nécessaire à l’exécution d’un contrat auquel la personne concernée est partie ou à l’exécution de mesures précontractuelles prises à la demande de celle-ci ;'}
-          </li>
-          <li>
-            {'Lorsque le traitement est effectué à l’aide de procédés automatisés.'}
-          </li>
-        </ul>
+      </p>
+      <ul className={styles.liste}>
+        <li>
+          {'Lorsque le traitement a été mis en place pour donner suite au consentement de la personne concernée ;'}
+        </li>
+        <li>
+          {'Lorsque le traitement est nécessaire à l’exécution d’un contrat auquel la personne concernée est partie ou à l’exécution de mesures précontractuelles prises à la demande de celle-ci ;'}
+        </li>
+        <li>
+          {'Lorsque le traitement est effectué à l’aide de procédés automatisés.'}
+        </li>
+      </ul>
+      <p>
         {'Droit d’opposition : toute personne dont les données personnelles font l’objet d’un traitement dispose d’un droit d’opposition à ce traitement dans les conditions suivantes :'}
-        <ul className={styles.liste}>
-          <li>
-            {'Lorsque le traitement fondé sur la satisfaction des intérêts légitimes poursuivis par le responsable du traitement ou par un tiers, pour des raisons tenant à sa situation particulière et si le responsable du traitement ne démontre pas qu’il existe des motifs légitimes et impérieux pour le traitement prévalant sur les intérêts et les droits et libertés de la personne concernée, ou pour la constatation, l’exercice ou la défense de droits en justice ;'}
-          </li>
-          <li>
-            {'Lorsque le traitement est mis en œuvre à des fins de prospection ou de profilage lié à une telle prospection peut s’opposer à ce traitement, sans condition ;'}
-          </li>
-          <li>
-            {'Lorsque le traitement est mis en œuvre à des fins statistiques, pour des raisons tenant à sa situation particulière.'}
-          </li>
-        </ul>
+      </p>
+      <ul className={styles.liste}>
+        <li>
+          {'Lorsque le traitement fondé sur la satisfaction des intérêts légitimes poursuivis par le responsable du traitement ou par un tiers, pour des raisons tenant à sa situation particulière et si le responsable du traitement ne démontre pas qu’il existe des motifs légitimes et impérieux pour le traitement prévalant sur les intérêts et les droits et libertés de la personne concernée, ou pour la constatation, l’exercice ou la défense de droits en justice ;'}
+        </li>
+        <li>
+          {'Lorsque le traitement est mis en œuvre à des fins de prospection ou de profilage lié à une telle prospection peut s’opposer à ce traitement, sans condition ;'}
+        </li>
+        <li>
+          {'Lorsque le traitement est mis en œuvre à des fins statistiques, pour des raisons tenant à sa situation particulière.'}
+        </li>
+      </ul>
+      <p>
         {'Pour toute demande d’exercice de vos droits, vous pouvez vous adresser à '}
         <Email url="contact@droitpluriel.fr">
           {'contact@droitpluriel.fr'}
@@ -243,48 +259,50 @@ export default function PagePolitiqueDeConfidentialite(): ReactElement {
       </h4>
       <p>
         {'Les utilisateurs ont la possibilité d’accepter ou de refuser les cookies au cas par cas ou de les refuser une fois pour toutes en paramétrant leur navigateur. Pour savoir de quelle manière modifier vos préférences en matière de cookies, vous trouverez ci-dessous les liens vers l’aide nécessaire pour accéder au menu de votre navigateur prévu à cet effet :'}
-        <ul className={styles.liste}>
-          <li>
-            <ExternalLink
-              href="https://support.google.com/chrome/answer/95647?hl=fr"
-              title="Supprimer, autoriser et gérer les cookies dans Chrome"
-            >
-              {'Google Chrome'}
-            </ExternalLink>
-          </li>
-          <li>
-            <ExternalLink
-              href="https://support.mozilla.org/fr/kb/protection-renforcee-contre-pistage-firefox-ordinateur?redirectlocale=fr&redirectslug=activer-desactiver-cookies-preferences"
-              title="Protection renforcée contre le pistage dans Firefox pour ordinateur"
-            >
-              {'Mozilla Firefox'}
-            </ExternalLink>
-          </li>
-          <li>
-            <ExternalLink
-              href="https://support.apple.com/fr-fr/guide/safari/sfri11471/mac"
-              title="Effacer les cookies dans Safari sur Mac"
-            >
-              {'Safari'}
-            </ExternalLink>
-          </li>
-          <li>
-            <ExternalLink
-              href="https://help.vivaldi.com/services/account/registration-and-log-in-issues/"
-              title="Registration and login issues"
-            >
-              {'Vivaldi'}
-            </ExternalLink>
-          </li>
-          <li>
-            <ExternalLink
-              href="https://support.microsoft.com/fr-fr/windows/microsoft-edge-donn%C3%A9es-de-navigation-et-confidentialit%C3%A9-bb8174ba-9d73-dcf2-9b4a-c582b4e640dd"
-              title="Microsoft Edge, données de navigation et confidentialité"
-            >
-              {'Edge'}
-            </ExternalLink>
-          </li>
-        </ul>
+      </p>
+      <ul className={styles.liste}>
+        <li>
+          <ExternalLink
+            href="https://support.google.com/chrome/answer/95647?hl=fr"
+            title="Supprimer, autoriser et gérer les cookies dans Chrome"
+          >
+            {'Google Chrome'}
+          </ExternalLink>
+        </li>
+        <li>
+          <ExternalLink
+            href="https://support.mozilla.org/fr/kb/protection-renforcee-contre-pistage-firefox-ordinateur?redirectlocale=fr&redirectslug=activer-desactiver-cookies-preferences"
+            title="Protection renforcée contre le pistage dans Firefox pour ordinateur"
+          >
+            {'Mozilla Firefox'}
+          </ExternalLink>
+        </li>
+        <li>
+          <ExternalLink
+            href="https://support.apple.com/fr-fr/guide/safari/sfri11471/mac"
+            title="Effacer les cookies dans Safari sur Mac"
+          >
+            {'Safari'}
+          </ExternalLink>
+        </li>
+        <li>
+          <ExternalLink
+            href="https://help.vivaldi.com/services/account/registration-and-log-in-issues/"
+            title="Registration and login issues"
+          >
+            {'Vivaldi'}
+          </ExternalLink>
+        </li>
+        <li>
+          <ExternalLink
+            href="https://support.microsoft.com/fr-fr/windows/microsoft-edge-donn%C3%A9es-de-navigation-et-confidentialit%C3%A9-bb8174ba-9d73-dcf2-9b4a-c582b4e640dd"
+            title="Microsoft Edge, données de navigation et confidentialité"
+          >
+            {'Edge'}
+          </ExternalLink>
+        </li>
+      </ul>
+      <p>
         {'Pour de plus amples informations concernant les outils de maîtrise des cookies, vous pouvez consulter le site internet de la CNIL : '}
         <ExternalLink
           href="https://www.cnil.fr/fr/cookies-et-autres-traceurs/comment-se-proteger/maitriser-votre-navigateur"
