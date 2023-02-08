@@ -195,3 +195,9 @@ Justice Plurielle a la note de [A](https://securityheaders.com/?q=https%3A%2F%2F
 - Quand l'utilisateur active le mode sombre, on stocke une valeur `themeDark` dans le local storage pour conserver son choix
 - Idéalement, il faudrait lire cette valeur dans le local storage avant le premier rendu de la page pour appliquer directement le bon thème. Malheureusement, React ne permet pas de lancer une fonction avant le premier rendu de la page. Dans notre cas, cela provoque un "flash" au chargement de la page, puisque le thème light est utilisé par défaut au premier rendu avant même que l'on ait lu la valeur dans le local storage
 - Pour éviter ce flash, on cache le body par défaut dans global.css pour masquer le premier rendu et n'afficher la page que lorsqu'on a chargé le bon thème
+
+### [Tarte Au Citron](https://tarteaucitron.io/) pour le bandeau de cookies (06/02/23)
+
+- Facile à utiliser et à configurer avec Google Analytics
+- Gratuit
+- Communauté assez large, donc outil assez fiable
