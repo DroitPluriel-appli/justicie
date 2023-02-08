@@ -1,11 +1,25 @@
 import Document, { Head, Html, Main, NextScript } from 'next/document'
+import Script from 'next/script'
 import { ReactElement } from 'react'
 
 export default class MyDocument extends Document {
   override render(): ReactElement {
     return (
       <Html lang="fr">
-        <Head />
+        <Head>
+          {process.env.NODE_ENV === 'production' && (
+            <Script
+              src="/tarteaucitron.js"
+              strategy="beforeInteractive"
+            />
+          )}
+          {process.env.NODE_ENV === 'production' && (
+            <Script
+              src="/initTarteAuCitron.js"
+              strategy="beforeInteractive"
+            />
+          )}
+        </Head>
         <body>
           <Main />
           <NextScript />
