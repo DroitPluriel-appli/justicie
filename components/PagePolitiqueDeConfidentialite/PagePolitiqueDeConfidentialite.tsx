@@ -27,6 +27,16 @@ export default function PagePolitiqueDeConfidentialite(): ReactElement {
         </ExternalLink>
         {' » (ci-après le Site) a pour objet de présenter les permanences juridiques gratuites existant en France et leur accessibilité référencées par l’association Droit Pluriel (ci-après « Droit Pluriel »). Il est accessible 7 jours sur 7, 24 heures sur 24, sous réserve des interruptions nécessaires aux opérations techniques de maintenance, d’entretien et de mise à jour que Droit Pluriel jugerait utile d’effectuer. Lors de votre première connexion sur le site web de Droit Pluriel, vous êtes avertis par un bandeau en bas de votre écran que des informations relatives à votre navigation sont susceptibles d’être enregistrées dans des fichiers dénommés « cookies ». Notre politique d’utilisation des cookies vous permet de mieux comprendre les dispositions que nous mettons en œuvre en matière de navigation sur notre site web. Elle vous informe notamment sur l’ensemble des cookies présents sur notre site web. (ARTICLE 2).'}
       </p>
+      <p>
+        {'Ce site utilise le projet open source '}
+        <ExternalLink
+          href="https://tarteaucitron.io/fr/"
+          title="Site web de Tarte Au Citron"
+        >
+          {'Tarte Au Citron'}
+        </ExternalLink>
+        {' pour recueillir et appliquer les préférences de ses utilisateurs concernant l’utilisation des cookies.'}
+      </p>
       <h3>
         {'ARTICLE 1 – DONNÉES A CARACTÈRE PERSONNEL'}
       </h3>
