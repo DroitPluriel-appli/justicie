@@ -3,17 +3,16 @@ import Script from 'next/script'
 import { ReactElement } from 'react'
 
 export default class MyDocument extends Document {
-  override render(): ReactElement {
+  tarteAuCitron(): ReactElement {
     return (
-      <Html lang="fr">
-        <Head>
-          <Script
-            src="/tarteaucitron.js"
-            strategy="beforeInteractive"
-          />
-          <Script
-            dangerouslySetInnerHTML={{
-              __html: `
+      <>
+        <Script
+          src="/tarteaucitron.js"
+          strategy="beforeInteractive"
+        />
+        <Script
+          dangerouslySetInnerHTML={{
+            __html: `
             tarteaucitron.init({
               "privacyUrl": "", /* Privacy policy url */
                 "bodyPosition": "top", /* or top to bring it as first element for accessibility */
@@ -42,14 +41,21 @@ export default class MyDocument extends Document {
                 "mandatoryCta": false /* Show the disabled accept button when mandatory on */
               });
 
-            // tarteaucitron.user.gtagUa = 'G-QVSWEV0X5D';
-            tarteaucitron.user.gtagUa = 'G-XXXXXXXXX';
+            tarteaucitron.user.gtagUa = 'G-QVSWEV0X5D';
             (tarteaucitron.job = tarteaucitron.job || []).push('gtag');
           `,
-            }}
-            id="tarteaucitronScript"
-            strategy="afterInteractive"
-          />
+          }}
+          id="tarteaucitronScript"
+          strategy="afterInteractive"
+        />
+      </>
+    )
+  }
+  override render(): ReactElement {
+    return (
+      <Html lang="fr">
+        <Head>
+          {process.env.NODE_ENV === 'production' && this.tarteAuCitron()}
         </Head>
         <body>
           <Main />
