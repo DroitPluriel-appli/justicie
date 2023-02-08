@@ -6,12 +6,32 @@ import Header from './Header'
 describe('en-tête de page', () => {
   const { paths, wording } = fakeFrontDependencies
 
+  it('affiche des liens pour naviguer à travers la page', () => {
+    // WHEN
+    renderFakeComponent(<Header />)
+
+    // THEN
+    const navigation = screen.getByRole('navigation', { name: wording.ACCES_RAPIDE })
+    expect(navigation).toHaveAttribute('id', 'evitement')
+    expect(navigation).toHaveAttribute('aria-label', wording.ACCES_RAPIDE)
+
+    const list = within(navigation).getByRole('list')
+    const listItems = within(list).getAllByRole('listitem')
+    const allerAuContenu = within(listItems[0]).getByRole('link', { name: wording.EVITEMENT_ALLER_AU_CONTENU })
+    expect(allerAuContenu).toHaveAttribute('href', '#contenu')
+    const allerAuMenu = within(listItems[1]).getByRole('link', { name: wording.EVITEMENT_ALLER_AU_MENU })
+    expect(allerAuMenu).toHaveAttribute('href', '#menu')
+    const allerAuPiedDePage = within(listItems[2]).getByRole('link', { name: wording.EVITEMENT_ALLER_AU_PIDE_DE_PAGE })
+    expect(allerAuPiedDePage).toHaveAttribute('href', '#footer')
+  })
+
   it('affiche les liens du menu en version desktop', () => {
     // WHEN
     renderFakeComponent(<Header />)
 
     // THEN
     const header = screen.getByRole('banner')
+    expect(header).toHaveAttribute('id', 'menu')
     const navigationDesktop = within(header).getByLabelText(wording.NAVIGATION_DESKTOP, { selector: 'nav' })
     const items = within(navigationDesktop).getAllByRole('listitem')
 

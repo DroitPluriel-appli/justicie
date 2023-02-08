@@ -283,7 +283,7 @@ describe('page des résultats de recherche affichés en liste', () => {
     expect(links[0].textContent).toBe('2')
 
     expect(links[1]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?bim=on&lat=${lat}&lon=${lon}&page=1`)
-    expect(links[1].textContent).toBe(wording.DERNIERE_PAGE)
+    expect(within(links[1]).getByLabelText(wording.DERNIERE_PAGE)).toBeInTheDocument()
   })
 
   it('affiche la pagination à la page 2 quand il y a deux pages', () => {
@@ -314,7 +314,7 @@ describe('page des résultats de recherche affichés en liste', () => {
     expect(links).toHaveLength(2)
 
     expect(links[0]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?bim=on&lat=${lat}&lon=${lon}&page=0`)
-    expect(links[0].textContent).toBe(wording.PREMIERE_PAGE)
+    expect(within(links[0]).getByLabelText(wording.PREMIERE_PAGE)).toBeInTheDocument()
 
     expect(links[1]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?bim=on&lat=${lat}&lon=${lon}&page=0`)
     expect(links[1].textContent).toBe('1')
@@ -365,7 +365,7 @@ describe('page des résultats de recherche affichés en liste', () => {
     expect(links[3].textContent).toBe('5')
 
     expect(links[4]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?bim=on&lat=${lat}&lon=${lon}&page=5`)
-    expect(links[4].textContent).toBe(wording.DERNIERE_PAGE)
+    expect(within(links[4]).getByLabelText(wording.DERNIERE_PAGE)).toBeInTheDocument()
   })
 
   it('affiche la pagination à la page 4 quand il y a six pages', () => {
@@ -411,7 +411,7 @@ describe('page des résultats de recherche affichés en liste', () => {
     expect(links[4].textContent).toBe('6')
 
     expect(links[5]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?bim=on&lat=${lat}&lon=${lon}&page=5`)
-    expect(links[5].textContent).toBe(wording.DERNIERE_PAGE)
+    expect(within(links[5]).getByLabelText(wording.DERNIERE_PAGE)).toBeInTheDocument()
   })
 
   it('affiche la pagination à la page 6 quand il y a six pages', () => {

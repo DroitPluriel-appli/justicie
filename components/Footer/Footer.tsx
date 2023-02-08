@@ -10,7 +10,10 @@ export default function Footer(): ReactElement {
   const date = new Date()
 
   return (
-    <footer className={styles.footer}>
+    <footer
+      className={styles.footer}
+      id="footer"
+    >
       <div>
         <Logo />
         <section aria-label={wording.INFORMATIONS}>

@@ -6,6 +6,8 @@ export interface Wording {
   readonly RETOUR_EN_HAUT_DE_PAGE: string
   readonly ACCES_RAPIDE: string
   readonly EVITEMENT_ALLER_AU_CONTENU: string
+  readonly EVITEMENT_ALLER_AU_MENU: string
+  readonly EVITEMENT_ALLER_AU_PIDE_DE_PAGE: string
   readonly NOUVELLE_FENETRE: string
 
   // Accueil
@@ -64,7 +66,7 @@ export interface Wording {
   readonly PASSER: string
   readonly BESOIN_EN_ACCESSIBILITE: string
   readonly FACULTATIF: string
-  readonly SUIVANT: string
+  readonly AFFICHER_LES_RESULTATS: string
 
   // Résultats de la recherche en vue liste
   readonly TITLE_PAGE_ADRESSE_LISTE: string

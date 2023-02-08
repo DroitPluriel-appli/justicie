@@ -51,7 +51,7 @@ describe('page de recherche par handicap', () => {
     expect(latitude).toHaveAttribute('name', 'lat')
     const longitude = screen.getByDisplayValue(lon)
     expect(longitude).toHaveAttribute('name', 'lon')
-    const suivant = screen.getByRole('button', { name: wording.SUIVANT })
+    const suivant = screen.getByRole('button', { name: wording.AFFICHER_LES_RESULTATS })
     expect(suivant).toHaveAttribute('type', 'submit')
   })
 

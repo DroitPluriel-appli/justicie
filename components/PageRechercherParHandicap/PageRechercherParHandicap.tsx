@@ -55,7 +55,7 @@ export default function PageRechercherParHandicap(): ReactElement {
         />
         <div className={styles.submit}>
           <button type="submit">
-            {wording.SUIVANT}
+            {wording.AFFICHER_LES_RESULTATS}
           </button>
         </div>
       </form>

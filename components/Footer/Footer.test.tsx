@@ -12,6 +12,7 @@ describe('pied de page', () => {
 
     // THEN
     const footer = screen.getByRole('contentinfo')
+    expect(footer).toHaveAttribute('id', 'footer')
     const sections = within(footer).getAllByRole('region')
 
     const justicePlurielle = within(sections[0]).getByRole('banner')
