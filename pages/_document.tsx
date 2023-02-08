@@ -17,7 +17,7 @@ export default class MyDocument extends Document {
             tarteaucitron.init({
               "privacyUrl": "", /* Privacy policy url */
                 "bodyPosition": "top", /* or top to bring it as first element for accessibility */
-              "hashtag": "#tarteaucitronRoot", /* Open the panel with this hashtag */
+              "hashtag": "#tarteaucitron", /* Open the panel with this hashtag */
               "cookieName": "tarteaucitron", /* Cookie name */
               "orientation": "bottom", /* Banner position (top - bottom) */
                 "groupServices": false, /* Group services by category */
@@ -47,7 +47,7 @@ export default class MyDocument extends Document {
             (tarteaucitron.job = tarteaucitron.job || []).push('gtag');
           `,
             }}
-            id="tarteaucitron"
+            id="tarteaucitronScript"
             strategy="afterInteractive"
           />
         </Head>
