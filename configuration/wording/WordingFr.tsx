@@ -8,6 +8,8 @@ export class WordingFr implements Wording {
   readonly RETOUR_EN_HAUT_DE_PAGE: string = 'Retour en haut de page'
   readonly ACCES_RAPIDE: string = 'Accès rapide'
   readonly EVITEMENT_ALLER_AU_CONTENU: string = 'Aller au contenu'
+  readonly EVITEMENT_ALLER_AU_MENU: string = 'Aller au menu'
+  readonly EVITEMENT_ALLER_AU_PIDE_DE_PAGE: string = 'Aller au pied de page'
   readonly NOUVELLE_FENETRE: string = ' - Nouvelle fenêtre'
 
   // Accueil
@@ -66,7 +68,7 @@ export class WordingFr implements Wording {
   readonly PASSER: string = 'Passer'
   readonly BESOIN_EN_ACCESSIBILITE: string = 'Quels sont vos besoins en accessibilité ?'
   readonly FACULTATIF: string = '(facultatif)'
-  readonly SUIVANT: string = 'Suivant'
+  readonly AFFICHER_LES_RESULTATS: string = 'Afficher les résultats'
 
   // Résultats de la recherche en vue liste
   readonly TITLE_PAGE_ADRESSE_LISTE: string = 'Résultats de recherche en vue liste' + this.SUFFIXE_TITLE

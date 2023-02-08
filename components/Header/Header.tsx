@@ -14,7 +14,10 @@ export default function Header(): ReactElement {
   return (
     <>
       <LiensDEvitement />
-      <header className={styles.header}>
+      <header
+        className={styles.header}
+        id="menu"
+      >
         <MenuDesktop isMenuClose={isMenuClose} />
         <MenuMobile
           isMenuClose={isMenuClose}

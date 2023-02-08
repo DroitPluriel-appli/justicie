@@ -1,17 +1,15 @@
-.evitement a {
-  height: 1px;
-  left: -10000px;
-  overflow: hidden;
+.evitement {
+  left: -1000px;
+  padding: var(--m-margin) 0;
   position: absolute;
-  top: auto;
-  width: 1px;
 }
 
-.evitement a:focus {
-  display: inline-block;
-  height: auto;
-  padding: var(--m-to-xl-margin);
+.evitement:focus-within {
+  display: flex;
   position: static;
+}
+
+.evitement a {
+  margin: var(--m-margin);
   text-align: center;
-  width: auto;
 }
