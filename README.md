@@ -199,5 +199,6 @@ Justice Plurielle a la note de [A](https://securityheaders.com/?q=https%3A%2F%2F
 ### [Tarte Au Citron](https://tarteaucitron.io/) pour le bandeau de cookies (06/02/23)
 
 - Facile à utiliser et à configurer avec Google Analytics
+- Permet d'être 100% en règle avec le RGPD
 - Gratuit
 - Communauté assez large, donc outil assez fiable
