@@ -25,6 +25,7 @@
 }
 
 .main h2 {
+  font-size: var(--l-font);
   font-weight: bold;
   margin-bottom: var(--m-margin);
 }

@@ -10,12 +10,13 @@
   --gray: #ccc;
   --gray-dark: #3d3d3d;
   --shadow: rgb(189 189 189 / 25%);
-  --xl-font: 1.4rem;
-  --l-font: 1.125rem;
+  --xl-font: 1.5rem;
+  --l-font: 1.25rem;
   --m-font: 1rem;
   --s-font: 0.875rem;
   --xs-font: 0.75rem;
   --m-to-l-font: clamp(var(--m-font), 2vw + 0.25rem, var(--l-font));
+  --l-to-xl-font: clamp(var(--l-font), 2vw + 0.25rem, var(--xl-font));
   --s-to-m-font: clamp(var(--s-font), 2vw + 0.1rem, var(--m-font));
   --xs-to-s-font: clamp(var(--xs-font), 2vw, var(--s-font));
   --xxl-margin: 2.5rem;
@@ -69,7 +70,7 @@ main {
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: var(--xl-font);
 }
 
 ul {
