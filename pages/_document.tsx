@@ -7,13 +7,13 @@ export default class MyDocument extends Document {
     return (
       <Html lang="fr">
         <Head>
-          {process.env.NODE_ENV === 'production' && (
+          {process.env.NODE_ENV === 'development' && (
             <Script
               src="/tarteaucitron.js"
               strategy="beforeInteractive"
             />
           )}
-          {process.env.NODE_ENV === 'production' && (
+          {process.env.NODE_ENV === 'development' && (
             <Script
               src="/initTarteAuCitron.js"
               strategy="beforeInteractive"
