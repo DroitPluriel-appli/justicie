@@ -16,7 +16,7 @@ export default class MyDocument extends Document {
           {process.env.NODE_ENV === 'production' && (
             <Script
               src="/initTarteAuCitron.js"
-              strategy="beforeInteractive"
+              strategy="afterInteractive"
             />
           )}
         </Head>

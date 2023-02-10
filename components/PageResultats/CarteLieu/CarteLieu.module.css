@@ -51,8 +51,9 @@
 
 .main .carteLieu__criteres {
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   grid-area: criteresAccessibilite;
+  row-gap: var(--s-margin);
 }
 
 .main .carteLieu__criteres img {
