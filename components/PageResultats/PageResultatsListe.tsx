@@ -1,17 +1,26 @@
-import { ReactElement } from 'react'
+import { ReactElement, useEffect } from 'react'
 
+import { Critere } from '../../backend/entities/Critere'
 import { Lieu } from '../../backend/entities/Lieu'
 import { useDependencies } from '../../configuration/useDependencies'
 import Pagination from '../common/Pagination/Pagination'
 import Title from '../common/Title/Title'
+import { useGoogleTags } from '../common/useGoogleTags'
 import VotreAvis from '../common/VotreAvis/VotreAvis'
 import CarteLieu from './CarteLieu/CarteLieu'
 import EnTete from './EnTete/EnTete'
 import styles from './PageResultatsListe.module.css'
 
-export default function PageResultatsListe({ lieux, nombreDeResultat }: { lieux: Lieu[], nombreDeResultat: number }): ReactElement {
+export default function PageResultatsListe({ lieux, nombreDeResultat, accessibilites }:
+  { lieux: Lieu[], nombreDeResultat: number, accessibilites: Critere[] }): ReactElement {
   const { nombreDeLieuxAffichesParPage, useRouter, wording } = useDependencies()
   const { query } = useRouter()
+  const { tagResultatsDeRecherche } = useGoogleTags()
+
+  useEffect(() => {
+    tagResultatsDeRecherche(true, nombreDeResultat, accessibilites)
+    console.log('useEffect')
+  })
 
   return (
     <>

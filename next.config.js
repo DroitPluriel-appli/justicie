@@ -77,7 +77,8 @@ const moduleExports = {
     unoptimized: true,
   },
   poweredByHeader: false,
-  reactStrictMode: true,
+  // reactStrictMode: true,
+  reactStrictMode: false,
 }
 
 if (process.env.NODE_ENV === 'development') {

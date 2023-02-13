@@ -1,11 +1,10 @@
 import Link from 'next/link'
-import { ReactElement, useEffect } from 'react'
+import { ReactElement } from 'react'
 
 import { useDependencies } from '../../../configuration/useDependencies'
 import BackLink from '../../common/BackLink/BackLink'
 import Email from '../../common/Email/Email'
 import Telephone from '../../common/Telephone/Telephone'
-import { useGoogleTags } from '../../common/useGoogleTags'
 import styles from './EnTete.module.css'
 import { useEnTete } from './useEnTete'
 
@@ -16,7 +15,6 @@ type EnTeteProps = Readonly<{
 
 export default function EnTete({ nombreDeResultat, rayonDeRecherche }: EnTeteProps): ReactElement {
   const { paths, wording } = useDependencies()
-  const { tagAucunResultatDeRecherche } = useGoogleTags()
   const {
     besoinsAccessibilite,
     buildUrlWithQueryParams,
@@ -24,12 +22,6 @@ export default function EnTete({ nombreDeResultat, rayonDeRecherche }: EnTetePro
   } = useEnTete()
   const listeStyle = isListe ? styles.current : ''
   const planStyle = isListe ? '' : styles.current
-
-  useEffect(() => {
-    if (nombreDeResultat === 0) {
-      tagAucunResultatDeRecherche()
-    }
-  }, [])
 
   return (
     <>

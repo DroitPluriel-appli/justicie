@@ -8,9 +8,11 @@ import PageResultatsPlan from '../components/PageResultats/PageResultatsPlan'
 import { criteres } from '../configuration/criteres'
 import { WordingFr } from '../configuration/wording/WordingFr'
 
-export default function Router({ lieux, nombreDeResultat }: { lieux: Lieu[], nombreDeResultat: number }): ReactElement {
+export default function Router({ lieux, nombreDeResultat, accessibilites }:
+  { lieux: Lieu[], nombreDeResultat: number, accessibilites: Critere[] }): ReactElement {
   return (
     <PageResultatsPlan
+      accessibilites={accessibilites}
       lieux={lieux}
       nombreDeResultat={nombreDeResultat}
     />
@@ -20,6 +22,7 @@ export default function Router({ lieux, nombreDeResultat }: { lieux: Lieu[], nom
 type ServerSidePropsResult = Readonly<{
   lieux: Lieu[]
   nombreDeResultat: number
+  accessibilites: Critere[]
 }>
 
 export async function getServerSideProps(context: GetServerSidePropsContext): Promise<GetServerSidePropsResult<ServerSidePropsResult>> {
@@ -46,5 +49,5 @@ export async function getServerSideProps(context: GetServerSidePropsContext): Pr
     rayonDeRecherche
   )
 
-  return { props: { lieux: JSON.parse(JSON.stringify(lieux)) as Lieu[], nombreDeResultat } }
+  return { props: { accessibilites, lieux: JSON.parse(JSON.stringify(lieux)) as Lieu[], nombreDeResultat } }
 }
