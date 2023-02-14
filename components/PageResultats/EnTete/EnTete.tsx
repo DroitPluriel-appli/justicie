@@ -4,24 +4,21 @@ import { ReactElement } from 'react'
 import { useDependencies } from '../../../configuration/useDependencies'
 import BackLink from '../../common/BackLink/BackLink'
 import Email from '../../common/Email/Email'
+import { besoinsAccessibilite, buildUrlWithQueryParams, isListe } from '../../common/query'
 import Telephone from '../../common/Telephone/Telephone'
 import styles from './EnTete.module.css'
-import { useEnTete } from './useEnTete'
 
 type EnTeteProps = Readonly<{
   nombreDeResultat: number
   rayonDeRecherche?: number
 }>
 
-export default function EnTete({ nombreDeResultat, rayonDeRecherche }: EnTeteProps): ReactElement {
-  const { paths, wording } = useDependencies()
-  const {
-    besoinsAccessibilite,
-    buildUrlWithQueryParams,
-    isListe,
-  } = useEnTete()
-  const listeStyle = isListe ? styles.current : ''
-  const planStyle = isListe ? '' : styles.current
+export default function EnTete({ nombreDeResultat, rayonDeRecherche = Infinity }: EnTeteProps): ReactElement {
+  const { paths, useRouter, wording } = useDependencies()
+  const { pathname, query } = useRouter()
+
+  const listeStyle = isListe(pathname, paths) ? styles.current : ''
+  const planStyle = isListe(pathname, paths) ? '' : styles.current
 
   return (
     <>
@@ -35,7 +32,7 @@ export default function EnTete({ nombreDeResultat, rayonDeRecherche }: EnTetePro
         <ul className={styles.nav}>
           <li className={styles.liste + ' ' + listeStyle}>
             <Link
-              href={buildUrlWithQueryParams(paths.RESULTATS_LISTE)}
+              href={buildUrlWithQueryParams(query, paths.RESULTATS_LISTE)}
               title={wording.AFFICHEZ_RESULTATS_EN_LISTE}
             >
               {wording.LISTE}
@@ -43,7 +40,7 @@ export default function EnTete({ nombreDeResultat, rayonDeRecherche }: EnTetePro
           </li>
           <li className={styles.plan + ' ' + planStyle}>
             <Link
-              href={buildUrlWithQueryParams(paths.RESULTATS_PLAN)}
+              href={buildUrlWithQueryParams(query, paths.RESULTATS_PLAN)}
               title={wording.AFFICHEZ_RESULTATS_EN_PLAN}
             >
               {wording.PLAN}
@@ -54,12 +51,12 @@ export default function EnTete({ nombreDeResultat, rayonDeRecherche }: EnTetePro
       <ul className={styles.besoins}>
         <li>
           <Link
-            href={buildUrlWithQueryParams(paths.RECHERCHER_PAR_HANDICAP)}
+            href={buildUrlWithQueryParams(query, paths.RECHERCHER_PAR_HANDICAP)}
             title={wording.MODIFIER_VOTRE_BESOIN_D_ACCESSIBILITE}
           >
             {wording.BESOINS_D_ACCESSIBILITE}
             <span>
-              {besoinsAccessibilite}
+              {besoinsAccessibilite(query)}
             </span>
           </Link>
         </li>

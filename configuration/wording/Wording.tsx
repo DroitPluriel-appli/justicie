@@ -7,7 +7,7 @@ export interface Wording {
   readonly ACCES_RAPIDE: string
   readonly EVITEMENT_ALLER_AU_CONTENU: string
   readonly EVITEMENT_ALLER_AU_MENU: string
-  readonly EVITEMENT_ALLER_AU_PIDE_DE_PAGE: string
+  readonly EVITEMENT_ALLER_AU_PIED_DE_PAGE: string
   readonly NOUVELLE_FENETRE: string
 
   // Accueil
@@ -76,8 +76,8 @@ export interface Wording {
   readonly AFFICHEZ_RESULTATS_EN_PLAN: string
   readonly BESOINS_D_ACCESSIBILITE: string
   readonly MODIFIER_VOTRE_BESOIN_D_ACCESSIBILITE: string
-  readonly LIEUX_CORRESPONDENT_A_VOTRE_RECHERCHE: (nombre: number, rayonDeRecherche?: number) => string
-  readonly AUCUN_LIEU_NE_CORRESPOND_A_VOTRE_RECHERCHE: (rayonDeRecherche?: number) => string
+  readonly LIEUX_CORRESPONDENT_A_VOTRE_RECHERCHE: (nombre: number, rayonDeRecherche: number) => string
+  readonly AUCUN_LIEU_NE_CORRESPOND_A_VOTRE_RECHERCHE: (rayonDeRecherche: number) => string
   readonly CONTACTER_LA_PERMANENCE: string
   readonly CONTACTER_CDAD: string
   readonly EMAIL_DROIT_PLURIEL_ZERO_RESULTAT: string
@@ -129,6 +129,9 @@ export interface Wording {
   // Politique de gestion des données
   readonly TITLE_PAGE_POLITIQUE_DE_CONFIDENTIALITE: string
 
+  // Nos partenaires
+  readonly TITLE_PAGE_NOS_PARTENAIRES: string
+
   // Foire aux questions
   readonly TITLE_FOIRE_AUX_QUESTIONS: string
   readonly QUESTION_JE_NE_TROUVE_AUCUN_LIEU: string
@@ -160,6 +163,7 @@ export interface Wording {
   readonly RECHERCHER_UNE_AIDE_JURIDIQUE: string
   readonly NOS_CRITERES_D_ACCESSIBILITE: string
   readonly POLITIQUE_DE_CONFIDENTIALITE: string
+  readonly NOS_PARTENAIRES: string
   readonly FOIRE_AUX_QUESTIONS: string
   readonly MENTIONS_LEGALES: string
   readonly QUALITE_DE_SERVICE: string

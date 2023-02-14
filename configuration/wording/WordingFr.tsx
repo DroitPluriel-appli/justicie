@@ -9,7 +9,7 @@ export class WordingFr implements Wording {
   readonly ACCES_RAPIDE: string = 'Accès rapide'
   readonly EVITEMENT_ALLER_AU_CONTENU: string = 'Aller au contenu'
   readonly EVITEMENT_ALLER_AU_MENU: string = 'Aller au menu'
-  readonly EVITEMENT_ALLER_AU_PIDE_DE_PAGE: string = 'Aller au pied de page'
+  readonly EVITEMENT_ALLER_AU_PIED_DE_PAGE: string = 'Aller au pied de page'
   readonly NOUVELLE_FENETRE: string = ' - Nouvelle fenêtre'
 
   // Accueil
@@ -78,15 +78,15 @@ export class WordingFr implements Wording {
   readonly AFFICHEZ_RESULTATS_EN_PLAN: string = 'Affichez les résultats sur une carte'
   readonly BESOINS_D_ACCESSIBILITE: string = 'Besoins d’accessibilité '
   readonly MODIFIER_VOTRE_BESOIN_D_ACCESSIBILITE: string = 'Modifier votre besoin d’accessibilité'
-  readonly LIEUX_CORRESPONDENT_A_VOTRE_RECHERCHE: (nombre: number, rayonDeRecherche?: number) => string =
-    (nombre: number, rayonDeRecherche?: number): string => {
-      const insertRayon = rayonDeRecherche ? ` dans un rayon de ${rayonDeRecherche} kilomètres` : ''
+  readonly LIEUX_CORRESPONDENT_A_VOTRE_RECHERCHE: (nombre: number, rayonDeRecherche: number) => string =
+    (nombre: number, rayonDeRecherche: number): string => {
+      const insertRayon = rayonDeRecherche !== Infinity ? ` dans un rayon de ${rayonDeRecherche} kilomètres` : ''
       return nombre > 1 ?
         `${nombre} lieux correspondent à votre recherche${insertRayon}` :
         `${nombre} lieu correspond à votre recherche${insertRayon}`
     }
-  readonly AUCUN_LIEU_NE_CORRESPOND_A_VOTRE_RECHERCHE: (rayonDeRecherche?: number) => string = (rayonDeRecherche?: number): string => {
-    return rayonDeRecherche ?
+  readonly AUCUN_LIEU_NE_CORRESPOND_A_VOTRE_RECHERCHE: (rayonDeRecherche: number) => string = (rayonDeRecherche: number): string => {
+    return rayonDeRecherche !== Infinity ?
       `Aucun lieu ne correspond à votre recherche dans un rayon de ${rayonDeRecherche} kilomètres.` :
       'Aucun lieu ne correspond à votre recherche.'
   }
@@ -141,6 +141,9 @@ export class WordingFr implements Wording {
   // Politique de confidentialité
   readonly TITLE_PAGE_POLITIQUE_DE_CONFIDENTIALITE: string = 'Politique de confidentialité' + this.SUFFIXE_TITLE
 
+  // Nos partenaires
+  readonly TITLE_PAGE_NOS_PARTENAIRES: string = 'Nos partenaires' + this.SUFFIXE_TITLE
+
   // Foire aux questions
   readonly TITLE_FOIRE_AUX_QUESTIONS: string = 'Foire aux questions' + this.SUFFIXE_TITLE
   readonly QUESTION_JE_NE_TROUVE_AUCUN_LIEU: string = 'Je ne trouve aucun lieu correspondant à ma recherche, comment faire ?'
@@ -182,6 +185,7 @@ export class WordingFr implements Wording {
   readonly RECHERCHER_UNE_AIDE_JURIDIQUE: string = 'Rechercher une aide juridique'
   readonly NOS_CRITERES_D_ACCESSIBILITE: string = 'Nos critères d’accessibilité'
   readonly POLITIQUE_DE_CONFIDENTIALITE: string = 'Politique de confidentialité'
+  readonly NOS_PARTENAIRES: string = 'Nos partenaires'
   readonly FOIRE_AUX_QUESTIONS: string = 'Foire aux questions'
   readonly MENTIONS_LEGALES: string = 'Mentions légales'
   readonly QUALITE_DE_SERVICE: string = 'Qualité du service'

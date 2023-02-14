@@ -11,8 +11,7 @@ import EnTete from './EnTete/EnTete'
 
 export default function PageResultatsPlan({ lieux, nombreDeResultat, criteresDAccessibiliteSelectionnes }:
   { lieux: Lieu[], nombreDeResultat: number, criteresDAccessibiliteSelectionnes: Critere[] }): ReactElement {
-  const { useRouter, wording, rayonDeRecherche } = useDependencies()
-  const { query } = useRouter()
+  const { wording, rayonDeRecherche } = useDependencies()
 
   useEffect(() => {
     tagResultatsDeRecherche('plan', nombreDeResultat, criteresDAccessibiliteSelectionnes)
@@ -34,11 +33,7 @@ export default function PageResultatsPlan({ lieux, nombreDeResultat, criteresDAc
       {
         nombreDeResultat > 0 && (
           <>
-            <Plan
-              latitude={Number(query.lat)}
-              lieux={lieux}
-              longitude={Number(query.lon)}
-            />
+            <Plan lieux={lieux} />
             <VotreAvis />
           </>
         )

@@ -2,15 +2,16 @@ import Link from 'next/link'
 import { ReactElement } from 'react'
 
 import { useDependencies } from '../../../configuration/useDependencies'
-import { usePagination } from './usePagination'
+import { pagination, urlDePagination } from './pagination'
 
 type PageProps = Readonly<{
   nombreDeResultat: number
 }>
 
 export default function Page({ nombreDeResultat }: PageProps): ReactElement {
-  const { wording } = useDependencies()
-  const { pageCourante, pages, url } = usePagination(nombreDeResultat)
+  const { nombreDeLieuxAffichesParPage, paths, useRouter, wording } = useDependencies()
+  const { query } = useRouter()
+  const { pageCourante, pages } = pagination(nombreDeResultat, nombreDeLieuxAffichesParPage, query)
 
   return (
     <>
@@ -29,7 +30,7 @@ export default function Page({ nombreDeResultat }: PageProps): ReactElement {
             return (
               <li key={page}>
                 <Link
-                  href={url(page - 1)}
+                  href={urlDePagination(page - 1, paths, query)}
                   title={wording.PAGE(page)}
                 >
                   {page}

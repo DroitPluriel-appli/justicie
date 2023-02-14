@@ -4,7 +4,7 @@
   font-size: var(--s-to-m-font);
   font-weight: bold;
   justify-content: right;
-  margin: var(--m-to-xl-margin) auto var(--m-to-xl-margin) auto;
+  margin: var(--m-to-xl-margin) 0 0;
   max-width: 38em;
   text-align: right;
 }

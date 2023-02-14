@@ -35,8 +35,8 @@ export default function MenuDesktop({ isMenuClose }: MenuDesktopPros): ReactElem
           </Link>
         </li>
         <li>
-          <Link href={paths.POLITIQUE_DE_CONFIDENTIALITE}>
-            {wording.POLITIQUE_DE_CONFIDENTIALITE}
+          <Link href={paths.FOIRE_AUX_QUESTIONS}>
+            {wording.FOIRE_AUX_QUESTIONS}
           </Link>
         </li>
         <li className={styles.rechercher}>

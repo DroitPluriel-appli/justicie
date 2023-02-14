@@ -2,11 +2,13 @@ import Link from 'next/link'
 import { ReactElement } from 'react'
 
 import { useDependencies } from '../../../configuration/useDependencies'
-import { usePagination } from './usePagination'
+import { pagination, urlDePagination } from './pagination'
 
 export default function PremierePage(): ReactElement {
-  const { wording } = useDependencies()
-  const { pageCourante, url } = usePagination()
+  const { nombreDeLieuxAffichesParPage, paths, useRouter, wording } = useDependencies()
+  const { query } = useRouter()
+  const nombreDeResultat = 0
+  const { pageCourante } = pagination(nombreDeResultat, nombreDeLieuxAffichesParPage, query)
 
   const isPremierePage = pageCourante === 0
 
@@ -20,7 +22,7 @@ export default function PremierePage(): ReactElement {
       <path d="M2.9873 6.07329L7.85293 10.5899L6.47773 11.8637L0.147159 6L6.47773 0.136306L7.85293 1.41008L2.9873 5.92671L2.90834 6L2.9873 6.07329Z" />
     </svg>
   ) : (
-    <Link href={url(0)}>
+    <Link href={urlDePagination(0, paths, query)}>
       <svg
         aria-label={wording.PREMIERE_PAGE}
         height="12"

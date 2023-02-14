@@ -55,16 +55,16 @@ export function usePageRenseignerUneAdresse() {
     }
   }
 
-  const effaceLAdresseAuTouch = useCallback(() => {
+  const effaceLAdresseAuTouch = () => {
     // @ts-ignore
     document.querySelector('input').value = ''
     setState((state) => ({
       ...state,
       isDisabled: true,
     }))
-  }, [])
+  }
 
-  const selectionneUneAdresse = useCallback((adresse: string) => {
+  const selectionneUneAdresse = (adresse: string) => {
     if (adresse !== undefined) {
       setState((state) => ({
         ...state,
@@ -72,7 +72,7 @@ export function usePageRenseignerUneAdresse() {
         isDisabled: false,
       }))
     }
-  }, [])
+  }
 
   const debounce = (func: (query: string, populateResults: (labelDesAdresses: string[]) => void) => Promise<void>, delay: number) => {
     let timeoutId: NodeJS.Timeout
@@ -86,7 +86,7 @@ export function usePageRenseignerUneAdresse() {
     }
   }
 
-  const vaAlEtape2 = useCallback((event: FormEvent<HTMLFormElement>) => {
+  const vaAlEtape2 = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     async function goToRechercherParHandicap(coordonneesGeospatiales: AdresseJson) {
       await push(`${paths.RECHERCHER_PAR_HANDICAP}?lat=${coordonneesGeospatiales.geometry.coordinates[1]}&lon=${coordonneesGeospatiales.geometry.coordinates[0]}`)
@@ -94,20 +94,20 @@ export function usePageRenseignerUneAdresse() {
 
     const coordonneesGeospatiales = state.libelleDesAdresses.features.find((adresse): boolean => state.adresseSelectionnee === adresse.properties.label)
     void goToRechercherParHandicap(coordonneesGeospatiales as AdresseJson)
-  }, [state.adresseSelectionnee, paths.RECHERCHER_PAR_HANDICAP, push, state.libelleDesAdresses.features])
+  }
 
-  const noticeDesResultats = useCallback((): string => wording.NOTICE_DES_RESULTATS, [wording.NOTICE_DES_RESULTATS])
+  const noticeDesResultats = (): string => wording.NOTICE_DES_RESULTATS
 
-  const apiAdresseNeRepondPlus = useCallback((): string => wording.API_ADRESSE_NE_REPOND_PLUS, [wording.API_ADRESSE_NE_REPOND_PLUS])
+  const apiAdresseNeRepondPlus = (): string => wording.API_ADRESSE_NE_REPOND_PLUS
 
   return {
-    apiAdresseNeRepondPlus,
-    effaceLAdresseAuTouch,
+    apiAdresseNeRepondPlus: useCallback(apiAdresseNeRepondPlus, [wording.API_ADRESSE_NE_REPOND_PLUS]),
+    effaceLAdresseAuTouch: useCallback(effaceLAdresseAuTouch, []),
     isDisabled: state.isDisabled,
     isEmpty: state.isEmpty,
-    noticeDesResultats,
-    selectionneUneAdresse,
+    noticeDesResultats: useCallback(noticeDesResultats, [wording.NOTICE_DES_RESULTATS]),
+    selectionneUneAdresse: useCallback(selectionneUneAdresse, []),
     suggestionDAdresse: debounce(suggestionDAdresse, 500),
-    vaAlEtape2,
+    vaAlEtape2: useCallback(vaAlEtape2, [state.adresseSelectionnee, paths.RECHERCHER_PAR_HANDICAP, push, state.libelleDesAdresses.features]),
   }
 }
