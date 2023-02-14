@@ -3,14 +3,13 @@ tarteaucitron.init({
   "bodyPosition": "top",
   "hashtag": "#tarteaucitron",
   "cookieName": "tarteaucitron",
-  "orientation": "bottom",
+  "orientation": "top",
   "groupServices": false,
   "serviceDefaultState": "wait",
   "showAlertSmall": false,
   "cookieslist": false,
   "closePopup": false,
-  "showIcon": true,
-  "iconSrc": "/consent-icon.svg",
+  "showIcon": false,
   "iconPosition": "BottomRight",
   "adblocker": false,
   "DenyAllCta": true,
@@ -25,5 +24,6 @@ tarteaucitron.init({
   "mandatory": false,
   "mandatoryCta": false
 });
-tarteaucitron.user.gtagUa = 'G-QVSWEV0X5D';
+// tarteaucitron.user.gtagUa = 'G-QVSWEV0X5D';
+tarteaucitron.user.gtagUa = 'G-XXXXXXXXXX';
 (tarteaucitron.job = tarteaucitron.job || []).push('gtag');

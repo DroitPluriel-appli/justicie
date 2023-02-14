@@ -186,5 +186,6 @@ export class WordingFr implements Wording {
   readonly MENTIONS_LEGALES: string = 'Mentions légales'
   readonly QUALITE_DE_SERVICE: string = 'Qualité du service'
   readonly ACCESSIBILITE: string = 'Accessibilité : partiellement conforme'
+  readonly GERER_LES_COOKIES: string = 'Gérer les cookies'
   readonly COPYRIGHT: (annee: number) => string = (annee: number): string => `© Droit Pluriel ${annee} - `
 }
