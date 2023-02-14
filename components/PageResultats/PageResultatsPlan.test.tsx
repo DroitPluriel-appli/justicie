@@ -3,6 +3,7 @@ import L from 'leaflet'
 import mockRouter from 'next-router-mock'
 import { expect } from 'vitest'
 
+import { Critere } from '../../backend/entities/Critere'
 import { LieuBuilder } from '../../backend/entities/LieuBuilder'
 import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
 import PageResultatsPlan from './PageResultatsPlan'
@@ -75,6 +76,7 @@ describe('page des résultats de recherche affichés sur une carte', () => {
     // WHEN
     renderFakeComponent(
       <PageResultatsPlan
+        accessibilites={[]}
         lieux={[]}
         nombreDeResultat={0}
       />
@@ -95,6 +97,7 @@ describe('page des résultats de recherche affichés sur une carte', () => {
     // WHEN
     renderFakeComponent(
       <PageResultatsPlan
+        accessibilites={[]}
         lieux={[]}
         nombreDeResultat={0}
       />
@@ -130,6 +133,7 @@ describe('page des résultats de recherche affichés sur une carte', () => {
     // WHEN
     renderFakeComponent(
       <PageResultatsPlan
+        accessibilites={[]}
         lieux={[lieu]}
         nombreDeResultat={nombreDeResultat}
       />
@@ -150,6 +154,7 @@ describe('page des résultats de recherche affichés sur une carte', () => {
     // WHEN
     renderFakeComponent(
       <PageResultatsPlan
+        accessibilites={[]}
         lieux={[]}
         nombreDeResultat={0}
       />
@@ -330,6 +335,7 @@ describe('page des résultats de recherche affichés sur une carte', () => {
     // WHEN
     renderFakeComponent(
       <PageResultatsPlan
+        accessibilites={[]}
         lieux={[lieu]}
         nombreDeResultat={1}
       />
@@ -351,6 +357,7 @@ describe('page des résultats de recherche affichés sur une carte', () => {
     // WHEN
     renderFakeComponent(
       <PageResultatsPlan
+        accessibilites={[]}
         lieux={[]}
         nombreDeResultat={0}
       />
@@ -359,5 +366,36 @@ describe('page des résultats de recherche affichés sur une carte', () => {
     // THEN
     const links = screen.queryByRole('link', { name: wording.DONNEZ_NOUS_VOTRE_AVIS + wording.NOUVELLE_FENETRE })
     expect(links).not.toBeInTheDocument()
+  })
+
+  it('envoie le type d’affichage des résultats, le nombre de résultats et les critères d’accessibilité sélectionnés à Google Analytics', () => {
+    // GIVEN
+    mockRouter.query = {
+      lat,
+      lon,
+    }
+    const criteresDAccessibilitesSelectionnes: Critere[] = ['pmr', 'visuel']
+    const nombreDeResultats = 0
+    // @ts-ignore
+    window.dataLayer = { push: jest.fn() }
+
+    // WHEN
+    renderFakeComponent(
+      <PageResultatsPlan
+        accessibilites={criteresDAccessibilitesSelectionnes}
+        lieux={[]}
+        nombreDeResultat={nombreDeResultats}
+      />
+    )
+
+    // THEN
+    // @ts-ignore
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    expect(window.dataLayer.push).toHaveBeenNthCalledWith(1, expect.objectContaining({
+      criteresDAccessibiliteSelectionnes: criteresDAccessibilitesSelectionnes,
+      event: 'resultatsDeRecherche',
+      nombreDeResultats: nombreDeResultats,
+      typeDAffichage: 'plan',
+    }))
   })
 })
