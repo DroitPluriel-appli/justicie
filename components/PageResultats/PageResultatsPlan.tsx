@@ -9,13 +9,13 @@ import Title from '../common/Title/Title'
 import VotreAvis from '../common/VotreAvis/VotreAvis'
 import EnTete from './EnTete/EnTete'
 
-export default function PageResultatsPlan({ lieux, nombreDeResultat, accessibilites }:
-  { lieux: Lieu[], nombreDeResultat: number, accessibilites: Critere[] }): ReactElement {
+export default function PageResultatsPlan({ lieux, nombreDeResultat, criteresDAccessibiliteSelectionnes }:
+  { lieux: Lieu[], nombreDeResultat: number, criteresDAccessibiliteSelectionnes: Critere[] }): ReactElement {
   const { useRouter, wording, rayonDeRecherche } = useDependencies()
   const { query } = useRouter()
 
   useEffect(() => {
-    tagResultatsDeRecherche(false, nombreDeResultat, accessibilites)
+    tagResultatsDeRecherche('plan', nombreDeResultat, criteresDAccessibiliteSelectionnes)
   })
 
   // Le composant Plan contient le code pour l'affichage de la cartographie avec Leaflet, qui ne peut pas être rendu côté serveur en SSG ou SSR.

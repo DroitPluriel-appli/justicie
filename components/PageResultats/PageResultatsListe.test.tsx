@@ -12,6 +12,11 @@ describe('page des résultats de recherche affichés en liste', () => {
   const lon = '2.31016'
   const bim = 'on'
 
+  beforeAll(() => {
+    // @ts-ignore
+    window.dataLayer = { push: jest.fn() }
+  })
+
   it('affiche le titre de l’onglet', () => {
     // GIVEN
     mockRouter.query = {
@@ -22,7 +27,7 @@ describe('page des résultats de recherche affichés en liste', () => {
     // WHEN
     renderFakeComponent(
       <PageResultatsListe
-        accessibilites={[]}
+        criteresDAccessibiliteSelectionnes={[]}
         lieux={[]}
         nombreDeResultat={0}
       />
@@ -43,7 +48,7 @@ describe('page des résultats de recherche affichés en liste', () => {
     // WHEN
     renderFakeComponent(
       <PageResultatsListe
-        accessibilites={[]}
+        criteresDAccessibiliteSelectionnes={[]}
         lieux={[]}
         nombreDeResultat={0}
       />
@@ -79,7 +84,7 @@ describe('page des résultats de recherche affichés en liste', () => {
     // WHEN
     renderFakeComponent(
       <PageResultatsListe
-        accessibilites={[]}
+        criteresDAccessibiliteSelectionnes={[]}
         lieux={[lieu]}
         nombreDeResultat={nombreDeResultat}
       />
@@ -100,7 +105,7 @@ describe('page des résultats de recherche affichés en liste', () => {
     // WHEN
     renderFakeComponent(
       <PageResultatsListe
-        accessibilites={[]}
+        criteresDAccessibiliteSelectionnes={[]}
         lieux={[]}
         nombreDeResultat={0}
       />
@@ -167,7 +172,7 @@ describe('page des résultats de recherche affichés en liste', () => {
     // WHEN
     renderFakeComponent(
       <PageResultatsListe
-        accessibilites={[]}
+        criteresDAccessibiliteSelectionnes={[]}
         lieux={[lieuA, lieuB]}
         nombreDeResultat={2}
       />
@@ -249,7 +254,7 @@ describe('page des résultats de recherche affichés en liste', () => {
     // WHEN
     renderFakeComponent(
       <PageResultatsListe
-        accessibilites={[]}
+        criteresDAccessibiliteSelectionnes={[]}
         lieux={[lieu]}
         nombreDeResultat={1}
       />
@@ -272,7 +277,7 @@ describe('page des résultats de recherche affichés en liste', () => {
     // WHEN
     renderFakeComponent(
       <PageResultatsListe
-        accessibilites={[]}
+        criteresDAccessibiliteSelectionnes={[]}
         lieux={[]}
         nombreDeResultat={nombreDeResultat}
       />
@@ -307,7 +312,7 @@ describe('page des résultats de recherche affichés en liste', () => {
     // WHEN
     renderFakeComponent(
       <PageResultatsListe
-        accessibilites={[]}
+        criteresDAccessibiliteSelectionnes={[]}
         lieux={[]}
         nombreDeResultat={nombreDeResultat}
       />
@@ -344,7 +349,7 @@ describe('page des résultats de recherche affichés en liste', () => {
     // WHEN
     renderFakeComponent(
       <PageResultatsListe
-        accessibilites={[]}
+        criteresDAccessibiliteSelectionnes={[]}
         lieux={[]}
         nombreDeResultat={nombreDeResultat}
       />
@@ -391,7 +396,7 @@ describe('page des résultats de recherche affichés en liste', () => {
     // WHEN
     renderFakeComponent(
       <PageResultatsListe
-        accessibilites={[]}
+        criteresDAccessibiliteSelectionnes={[]}
         lieux={[]}
         nombreDeResultat={nombreDeResultat}
       />
@@ -438,7 +443,7 @@ describe('page des résultats de recherche affichés en liste', () => {
     // WHEN
     renderFakeComponent(
       <PageResultatsListe
-        accessibilites={[]}
+        criteresDAccessibiliteSelectionnes={[]}
         lieux={[]}
         nombreDeResultat={nombreDeResultat}
       />
@@ -480,7 +485,7 @@ describe('page des résultats de recherche affichés en liste', () => {
     // WHEN
     renderFakeComponent(
       <PageResultatsListe
-        accessibilites={[]}
+        criteresDAccessibiliteSelectionnes={[]}
         lieux={[lieu]}
         nombreDeResultat={1}
       />
@@ -502,7 +507,7 @@ describe('page des résultats de recherche affichés en liste', () => {
     // WHEN
     renderFakeComponent(
       <PageResultatsListe
-        accessibilites={[]}
+        criteresDAccessibiliteSelectionnes={[]}
         lieux={[]}
         nombreDeResultat={0}
       />
@@ -519,7 +524,7 @@ describe('page des résultats de recherche affichés en liste', () => {
       lat,
       lon,
     }
-    const criteresDAccessibilitesSelectionnes: Critere[] = ['pmr', 'visuel']
+    const criteresDAccessibiliteSelectionnes: Critere[] = ['pmr', 'visuel']
     const nombreDeResultats = 0
     // @ts-ignore
     window.dataLayer = { push: jest.fn() }
@@ -527,7 +532,7 @@ describe('page des résultats de recherche affichés en liste', () => {
     // WHEN
     renderFakeComponent(
       <PageResultatsListe
-        accessibilites={criteresDAccessibilitesSelectionnes}
+        criteresDAccessibiliteSelectionnes={criteresDAccessibiliteSelectionnes}
         lieux={[]}
         nombreDeResultat={nombreDeResultats}
       />
@@ -535,9 +540,9 @@ describe('page des résultats de recherche affichés en liste', () => {
 
     // THEN
     // @ts-ignore
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/unbound-method
     expect(window.dataLayer.push).toHaveBeenNthCalledWith(1, expect.objectContaining({
-      criteresDAccessibiliteSelectionnes: criteresDAccessibilitesSelectionnes,
+      criteresDAccessibiliteSelectionnes,
       event: 'resultatsDeRecherche',
       nombreDeResultats: nombreDeResultats,
       typeDAffichage: 'liste',

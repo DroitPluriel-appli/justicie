@@ -11,13 +11,13 @@ import CarteLieu from './CarteLieu/CarteLieu'
 import EnTete from './EnTete/EnTete'
 import styles from './PageResultatsListe.module.css'
 
-export default function PageResultatsListe({ lieux, nombreDeResultat, accessibilites }:
-  { lieux: Lieu[], nombreDeResultat: number, accessibilites: Critere[] }): ReactElement {
+export default function PageResultatsListe({ lieux, nombreDeResultat, criteresDAccessibiliteSelectionnes }:
+  { lieux: Lieu[], nombreDeResultat: number, criteresDAccessibiliteSelectionnes: Critere[] }): ReactElement {
   const { nombreDeLieuxAffichesParPage, useRouter, wording } = useDependencies()
   const { query } = useRouter()
 
   useEffect(() => {
-    tagResultatsDeRecherche(true, nombreDeResultat, accessibilites)
+    tagResultatsDeRecherche('liste', nombreDeResultat, criteresDAccessibiliteSelectionnes)
   })
 
   return (

@@ -17,6 +17,9 @@ describe('page des résultats de recherche affichés sur une carte', () => {
     // car jsdom ne sait pas gérer la création de svg induite par la création du cercle par leaflet
     // eslint-disable-next-line jest/prefer-spy-on
     L.Circle.prototype.addTo = jest.fn()
+
+    // @ts-ignore
+    window.dataLayer = { push: jest.fn() }
   })
 
   const lieuA = LieuBuilder.cree({
@@ -76,7 +79,7 @@ describe('page des résultats de recherche affichés sur une carte', () => {
     // WHEN
     renderFakeComponent(
       <PageResultatsPlan
-        accessibilites={[]}
+        criteresDAccessibiliteSelectionnes={[]}
         lieux={[]}
         nombreDeResultat={0}
       />
@@ -97,7 +100,7 @@ describe('page des résultats de recherche affichés sur une carte', () => {
     // WHEN
     renderFakeComponent(
       <PageResultatsPlan
-        accessibilites={[]}
+        criteresDAccessibiliteSelectionnes={[]}
         lieux={[]}
         nombreDeResultat={0}
       />
@@ -133,7 +136,7 @@ describe('page des résultats de recherche affichés sur une carte', () => {
     // WHEN
     renderFakeComponent(
       <PageResultatsPlan
-        accessibilites={[]}
+        criteresDAccessibiliteSelectionnes={[]}
         lieux={[lieu]}
         nombreDeResultat={nombreDeResultat}
       />
@@ -154,7 +157,7 @@ describe('page des résultats de recherche affichés sur une carte', () => {
     // WHEN
     renderFakeComponent(
       <PageResultatsPlan
-        accessibilites={[]}
+        criteresDAccessibiliteSelectionnes={[]}
         lieux={[]}
         nombreDeResultat={0}
       />
@@ -335,7 +338,7 @@ describe('page des résultats de recherche affichés sur une carte', () => {
     // WHEN
     renderFakeComponent(
       <PageResultatsPlan
-        accessibilites={[]}
+        criteresDAccessibiliteSelectionnes={[]}
         lieux={[lieu]}
         nombreDeResultat={1}
       />
@@ -357,7 +360,7 @@ describe('page des résultats de recherche affichés sur une carte', () => {
     // WHEN
     renderFakeComponent(
       <PageResultatsPlan
-        accessibilites={[]}
+        criteresDAccessibiliteSelectionnes={[]}
         lieux={[]}
         nombreDeResultat={0}
       />
@@ -374,15 +377,13 @@ describe('page des résultats de recherche affichés sur une carte', () => {
       lat,
       lon,
     }
-    const criteresDAccessibilitesSelectionnes: Critere[] = ['pmr', 'visuel']
+    const criteresDAccessibiliteSelectionnes: Critere[] = ['pmr', 'visuel']
     const nombreDeResultats = 0
-    // @ts-ignore
-    window.dataLayer = { push: jest.fn() }
 
     // WHEN
     renderFakeComponent(
       <PageResultatsPlan
-        accessibilites={criteresDAccessibilitesSelectionnes}
+        criteresDAccessibiliteSelectionnes={criteresDAccessibiliteSelectionnes}
         lieux={[]}
         nombreDeResultat={nombreDeResultats}
       />
@@ -390,9 +391,9 @@ describe('page des résultats de recherche affichés sur une carte', () => {
 
     // THEN
     // @ts-ignore
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/unbound-method, jest/unbound-method
     expect(window.dataLayer.push).toHaveBeenNthCalledWith(1, expect.objectContaining({
-      criteresDAccessibiliteSelectionnes: criteresDAccessibilitesSelectionnes,
+      criteresDAccessibiliteSelectionnes: criteresDAccessibiliteSelectionnes,
       event: 'resultatsDeRecherche',
       nombreDeResultats: nombreDeResultats,
       typeDAffichage: 'plan',
