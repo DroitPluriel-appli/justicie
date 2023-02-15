@@ -1,7 +1,6 @@
 import { fireEvent, screen, within } from '@testing-library/react'
 import L from 'leaflet'
 import mockRouter from 'next-router-mock'
-import { expect } from 'vitest'
 
 import { Critere } from '../../backend/entities/Critere'
 import { LieuBuilder } from '../../backend/entities/LieuBuilder'
@@ -65,8 +64,6 @@ describe('page des résultats de recherche affichés sur une carte', () => {
   const lat = '48.844928'
   const lon = '2.31016'
   const moteurTotal = 'on'
-  const latitude = 40.0
-  const longitude = 50.0
   const rayonDeRecherche = 250
 
   it('affiche le titre de l’onglet', () => {
@@ -187,15 +184,15 @@ describe('page des résultats de recherche affichés sur une carte', () => {
 
   it('affiche un marker bleu à la position choisie', () => {
     // GIVEN
+    mockRouter.query = {
+      lat,
+      lon,
+    }
     const lieu = LieuBuilder.cree()
 
     // WHEN
     renderFakeComponent(
-      <Plan
-        latitude={latitude}
-        lieux={[lieu]}
-        longitude={longitude}
-      />
+      <Plan lieux={[lieu]} />
     )
 
     // THEN
@@ -207,15 +204,15 @@ describe('page des résultats de recherche affichés sur une carte', () => {
 
   it('affiche plusieurs markers de lieux', () => {
     // GIVEN
+    mockRouter.query = {
+      lat,
+      lon,
+    }
     const lieux = [lieuA, lieuB, lieuC]
 
     // WHEN
     renderFakeComponent(
-      <Plan
-        latitude={latitude}
-        lieux={lieux}
-        longitude={longitude}
-      />
+      <Plan lieux={lieux} />
     )
 
     // THEN
@@ -233,15 +230,15 @@ describe('page des résultats de recherche affichés sur une carte', () => {
 
   it('change le marker lieu en rouge et + grand au clic et le reset si clic ailleurs', () => {
     // GIVEN
+    mockRouter.query = {
+      lat,
+      lon,
+    }
     const lieux = [lieuA, lieuB]
 
     // WHEN
     renderFakeComponent(
-      <Plan
-        latitude={latitude}
-        lieux={lieux}
-        longitude={longitude}
-      />
+      <Plan lieux={lieux} />
     )
 
     const main = screen.getByRole('main')
@@ -282,13 +279,15 @@ describe('page des résultats de recherche affichés sur une carte', () => {
   })
 
   it('affiche la carte du lieu dans la popup au clic sur un marker', () => {
+    // GIVEN
+    mockRouter.query = {
+      lat,
+      lon,
+    }
+
     // WHEN
     renderFakeComponent(
-      <Plan
-        latitude={latitude}
-        lieux={[lieuA]}
-        longitude={longitude}
-      />
+      <Plan lieux={[lieuA]} />
     )
     const main = screen.getByRole('main')
     const markerLieuA = within(main).getByTitle(lieuA.nom)
@@ -315,12 +314,12 @@ describe('page des résultats de recherche affichés sur une carte', () => {
     expect(champsCarteLieuA[2]).toHaveAttribute('href', 'tel:' + lieuA.telephone.replaceAll(' ', ''))
     expect(champsCarteLieuA[2].textContent).toBe(lieuA.telephone)
     expect(champsCarteLieuA[4]).toHaveAttribute('title', wording.KILOMETRES)
-    expect(champsCarteLieuA[6]).toHaveAttribute('href', `${paths.LIEU}/1?lat=40&lon=50`)
+    expect(champsCarteLieuA[6]).toHaveAttribute('href', `${paths.LIEU}/1?lat=${lat}&lon=${lon}`)
     expect(champsCarteLieuA[6].textContent).toBe(wording.PLUS_D_INFORMATIONS)
 
     const googleMapUrlLieuA = new URL('https://www.google.com/maps/dir/')
     googleMapUrlLieuA.searchParams.append('api', '1')
-    googleMapUrlLieuA.searchParams.append('origin', `${latitude},${longitude}`)
+    googleMapUrlLieuA.searchParams.append('origin', `${lat},${lon}`)
     googleMapUrlLieuA.searchParams.append('destination', 'LieuA+12+rue+du+Lieu+1000+Bourg+En+Bresse')
 
     expect(champsCarteLieuA[5]).toHaveAttribute('href', googleMapUrlLieuA.toString())

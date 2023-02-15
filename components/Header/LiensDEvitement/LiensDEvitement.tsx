@@ -24,7 +24,7 @@ export default function LiensDEvitement(): ReactElement {
         </li>
         <li>
           <a href="#footer">
-            {wording.EVITEMENT_ALLER_AU_PIDE_DE_PAGE}
+            {wording.EVITEMENT_ALLER_AU_PIED_DE_PAGE}
           </a>
         </li>
       </ul>

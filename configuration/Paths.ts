@@ -8,6 +8,7 @@ export class Paths {
   readonly NOS_CRITERES_D_ACCESSIBILITE: string = '/nos-criteres-d-accessibilite'
   readonly POLITIQUE_DE_CONFIDENTIALITE: string = '/politique-de-confidentialite'
   readonly FOIRE_AUX_QUESTIONS: string = '/foire-aux-questions'
+  readonly NOS_PARTENAIRES: string = '/nos-partenaires'
   readonly MENTIONS_LEGALES: string = '/mentions-legales'
   readonly LIEU: string = '/lieu'
 }

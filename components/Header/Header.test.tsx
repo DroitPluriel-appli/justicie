@@ -21,7 +21,7 @@ describe('en-tête de page', () => {
     expect(allerAuContenu).toHaveAttribute('href', '#contenu')
     const allerAuMenu = within(listItems[1]).getByRole('link', { name: wording.EVITEMENT_ALLER_AU_MENU })
     expect(allerAuMenu).toHaveAttribute('href', '#menu')
-    const allerAuPiedDePage = within(listItems[2]).getByRole('link', { name: wording.EVITEMENT_ALLER_AU_PIDE_DE_PAGE })
+    const allerAuPiedDePage = within(listItems[2]).getByRole('link', { name: wording.EVITEMENT_ALLER_AU_PIED_DE_PAGE })
     expect(allerAuPiedDePage).toHaveAttribute('href', '#footer')
   })
 
@@ -46,8 +46,8 @@ describe('en-tête de page', () => {
     const nosCriteresDAccessibilite = within(items[2]).getByRole('link', { name: wording.NOS_CRITERES_D_ACCESSIBILITE })
     expect(nosCriteresDAccessibilite).toHaveAttribute('href', paths.NOS_CRITERES_D_ACCESSIBILITE)
 
-    const politiqueDeGestionDesDonnees = within(items[3]).getByRole('link', { name: wording.POLITIQUE_DE_CONFIDENTIALITE })
-    expect(politiqueDeGestionDesDonnees).toHaveAttribute('href', paths.POLITIQUE_DE_CONFIDENTIALITE)
+    const foireAuxQuestions = within(items[3]).getByRole('link', { name: wording.FOIRE_AUX_QUESTIONS })
+    expect(foireAuxQuestions).toHaveAttribute('href', paths.FOIRE_AUX_QUESTIONS)
 
     const rechercherLieuDeDroit = within(items[4]).getByRole('link', { name: wording.RECHERCHER_UNE_AIDE_JURIDIQUE })
     expect(rechercherLieuDeDroit).toHaveAttribute('href', paths.RECHERCHER_UNE_AIDE_JURIDIQUE)
@@ -73,7 +73,7 @@ describe('en-tête de page', () => {
     expect(menu).toBeInTheDocument()
   })
 
-  it('affiche le menu mobile quand on appuie sur le burger menu avec le clic', () => {
+  it('affiche le menu mobile quand on appuie sur le burger menu', () => {
     // GIVEN
     renderFakeComponent(<Header />)
     const burgerMenu = screen.getByRole('button', { name: wording.MENU })
@@ -90,9 +90,21 @@ describe('en-tête de page', () => {
     expect(title).toBeInTheDocument()
     const fermer = within(items[0]).getByRole('button', { name: wording.FERMER })
     expect(fermer).toBeInTheDocument()
+
+    const accueil = within(items[1]).getByRole('link')
+    expect(accueil).toHaveAttribute('href', paths.ACCUEIL)
+
+    const rechercherLieuDeDroit = within(items[2]).getByRole('link', { name: wording.RECHERCHER_UNE_AIDE_JURIDIQUE })
+    expect(rechercherLieuDeDroit).toHaveAttribute('href', paths.RECHERCHER_UNE_AIDE_JURIDIQUE)
+
+    const nosCriteresDAccessibilite = within(items[3]).getByRole('link', { name: wording.NOS_CRITERES_D_ACCESSIBILITE })
+    expect(nosCriteresDAccessibilite).toHaveAttribute('href', paths.NOS_CRITERES_D_ACCESSIBILITE)
+
+    const foireAuxQuestions = within(items[4]).getByRole('link', { name: wording.FOIRE_AUX_QUESTIONS })
+    expect(foireAuxQuestions).toHaveAttribute('href', paths.FOIRE_AUX_QUESTIONS)
   })
 
-  it('affiche le menu mobile quand on appuie sur le burger menu puis le ferme avec le clic', () => {
+  it('affiche le menu mobile quand on appuie sur le burger menu puis le ferme', () => {
     // GIVEN
     renderFakeComponent(<Header />)
     const burgerMenu = screen.getByRole('button', { name: wording.MENU })

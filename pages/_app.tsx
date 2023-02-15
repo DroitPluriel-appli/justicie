@@ -3,15 +3,13 @@ import { AppProps } from 'next/app'
 import Head from 'next/head'
 import { ReactElement, useEffect } from 'react'
 
-import { useTheme } from '../components/common/useTheme'
+import { applyThemeFromLocalStorage } from '../components/common/theme'
 import Footer from '../components/Footer/Footer'
 import Header from '../components/Header/Header'
 import { ContextProvider } from '../configuration/useDependencies'
 import '../configuration/globals.css'
 
 export default function App({ Component, pageProps }: AppProps): ReactElement {
-  const { applyThemeFromLocalStorage } = useTheme()
-
   useEffect(() => {
     applyThemeFromLocalStorage()
   })

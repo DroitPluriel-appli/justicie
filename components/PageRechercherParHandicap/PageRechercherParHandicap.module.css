@@ -41,6 +41,6 @@
   background-color: var(--button-color);
   border-radius: 2rem;
   font-weight: bold;
-  margin: var(--m-margin) 0;
+  margin: var(--m-margin) 0 0;
   padding: var(--m-margin);
 }

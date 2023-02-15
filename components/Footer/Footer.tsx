@@ -32,6 +32,11 @@ export default function Footer(): ReactElement {
               </Link>
             </li>
             <li>
+              <Link href={paths.NOS_PARTENAIRES}>
+                {wording.NOS_PARTENAIRES}
+              </Link>
+            </li>
+            <li>
               <Link href={paths.POLITIQUE_DE_CONFIDENTIALITE}>
                 {wording.POLITIQUE_DE_CONFIDENTIALITE}
               </Link>

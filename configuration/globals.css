@@ -145,3 +145,7 @@ pre {
   transform: rotate(1.75turn);
   z-index: 9999;
 }
+
+.partenaire {
+  margin: var(--l-margin) 0;
+}

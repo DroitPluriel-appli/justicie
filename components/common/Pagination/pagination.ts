@@ -1,9 +1,13 @@
-import { useDependencies } from '../../../configuration/useDependencies'
+import { ParsedUrlQuery } from 'querystring'
 
-export function usePagination(nombreDeResultat = 0) {
-  const { nombreDeLieuxAffichesParPage, paths, useRouter } = useDependencies()
-  const { query } = useRouter()
+import { Paths } from '../../../configuration/Paths'
+import { buildUrlWithQueryParams } from '../query'
 
+export const urlDePagination = (index: number, paths: Paths, query: ParsedUrlQuery): string => {
+  return `${buildUrlWithQueryParams(query, paths.RESULTATS_LISTE)}&page=${index}`
+}
+
+export function pagination(nombreDeResultat: number, nombreDeLieuxAffichesParPage: number, query: ParsedUrlQuery) {
   const nombreDePage = Math.trunc(nombreDeResultat / nombreDeLieuxAffichesParPage + (nombreDeResultat % nombreDeLieuxAffichesParPage > 0 ? 1 : 0))
   const pageCourante = query.page === undefined ? 0 : Number(query.page)
 
@@ -35,16 +39,9 @@ export function usePagination(nombreDeResultat = 0) {
       }
     })
 
-  const url = (index: number): string => {
-    const url = `${paths.RESULTATS_LISTE}?${Object.entries(query).join('&').replace(/,/g, '=')}`.replace(/&page=\d*/, '')
-
-    return `${url}&page=${index}`
-  }
-
   return {
     nombreDePage,
     pageCourante,
     pages,
-    url,
   }
 }

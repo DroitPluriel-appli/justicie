@@ -1,13 +1,18 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
-export default function useBoutonModeSombre(actionOnClick: VoidFunction) {
+import { isDarkThemeInLocalStorage, toggleDarkTheme } from '../../common/theme'
+
+export function useBoutonModeSombre() {
   const [isEnabled, setIsEnabled] = useState<boolean>(false)
-  const toggleIsEnabled = useCallback(() => {
-    isEnabled ?
-      setIsEnabled(false) :
-      setIsEnabled(true)
-    actionOnClick()
-  }, [actionOnClick, isEnabled])
 
-  return { isEnabled, setIsEnabled, toggleIsEnabled }
+  const toggleIsEnabled = () => {
+    setIsEnabled(!isEnabled)
+    toggleDarkTheme()
+  }
+
+  useEffect(() => {
+    setIsEnabled(isDarkThemeInLocalStorage())
+  }, [setIsEnabled])
+
+  return { isEnabled, setIsEnabled, toggleIsEnabled: useCallback(toggleIsEnabled, [isEnabled]) }
 }

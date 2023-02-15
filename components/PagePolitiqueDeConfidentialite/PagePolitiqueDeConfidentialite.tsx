@@ -15,7 +15,7 @@ export default function PagePolitiqueDeConfidentialite(): ReactElement {
         {wording.TITLE_PAGE_POLITIQUE_DE_CONFIDENTIALITE}
       </Title>
       <h2 className={styles.titre2}>
-        {'Politique de confidentialité'}
+        {wording.POLITIQUE_DE_CONFIDENTIALITE}
       </h2>
       <p>
         {'Le site « '}
