@@ -9,6 +9,8 @@ describe('pied de page', () => {
 
   beforeAll(() => {
     window.tarteaucitron = { userInterface: { openPanel: jest.fn() } }
+    // @ts-ignore
+    process.env.NODE_ENV = 'production'
   })
 
   it('affiche les liens', () => {
@@ -46,15 +48,16 @@ describe('pied de page', () => {
   })
 
   it('ouvre le panneau de gestion des cookies', () => {
-    // WHEN
+    // GIVEN
     renderFakeComponent(<Footer />)
-
-    // THEN
     const footer = screen.getByRole('contentinfo')
     const sections = within(footer).getAllByRole('region')
     const gestionDesCookies = within(sections[1]).getByRole('button')
 
+    // WHEN
     fireEvent.click(gestionDesCookies)
+
+    // THEN
     expect(window.tarteaucitron.userInterface.openPanel).toHaveBeenCalledOnce()
   })
 })

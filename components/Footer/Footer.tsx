@@ -51,14 +51,16 @@ export default function Footer(): ReactElement {
             <li>
               {wording.ACCESSIBILITE}
             </li>
-            <li>
-              <button
-                onClick={ouvrirGestionDesCookies}
-                type="button"
-              >
-                {wording.GERER_LES_COOKIES}
-              </button>
-            </li>
+            {process.env.NODE_ENV === 'production' && (
+              <li>
+                <button
+                  onClick={ouvrirGestionDesCookies}
+                  type="button"
+                >
+                  {wording.GERER_LES_COOKIES}
+                </button>
+              </li>
+            )}
           </ul>
         </section>
       </div>
