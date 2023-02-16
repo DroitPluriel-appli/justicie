@@ -1,8 +1,8 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { ReactElement } from 'react'
 
 import { useDependencies } from '../../../configuration/useDependencies'
-import Logo from '../../common/Logo/Logo'
 import styles from '../Header.module.css'
 
 type MenuDesktopPros = Readonly<{
@@ -21,12 +21,17 @@ export default function MenuDesktop({ isMenuClose }: MenuDesktopPros): ReactElem
       <ul>
         <li>
           <Link href={paths.ACCUEIL}>
-            <Logo />
+            <Image
+              alt={wording.ACCUEIL}
+              height="64"
+              src="/logo-justicie.png"
+              width="64"
+            />
           </Link>
         </li>
         <li>
           <h1 className={styles.title}>
-            {wording.JUSTICE_PLURIELLE}
+            {wording.JUSTICIE}
           </h1>
         </li>
         <li>

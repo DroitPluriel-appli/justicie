@@ -3,14 +3,14 @@ version: '3'
 services:
   postgres:
     image: postgres:13.9-alpine # Conserver la même version avec le fichier de la CI
-    container_name: justice_plurielle_db
+    container_name: justicie_db
     ports:
       - target: 5432
         published: 5432
     environment:
-      POSTGRES_DB: justice_plurielle
-      POSTGRES_USER: justice_plurielle
-      POSTGRES_PASSWORD: justice_plurielle
+      POSTGRES_DB: justicie
+      POSTGRES_USER: justicie
+      POSTGRES_PASSWORD: justicie
     volumes:
       - type: volume
         source: postgres_data
@@ -19,14 +19,14 @@ services:
 
   postgres-test:
     image: postgres:13.9-alpine # Conserver la même version avec le fichier de la CI
-    container_name: justice_plurielle_db_test
+    container_name: justicie_db_test
     ports:
       - target: 5432
         published: 5433
     environment:
-      POSTGRES_DB: justice_plurielle
-      POSTGRES_USER: justice_plurielle
-      POSTGRES_PASSWORD: justice_plurielle
+      POSTGRES_DB: justicie
+      POSTGRES_USER: justicie
+      POSTGRES_PASSWORD: justicie
     volumes:
       - type: volume
         source: postgres_data_test

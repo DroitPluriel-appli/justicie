@@ -4,11 +4,11 @@ import { ReactElement } from 'react'
 import { useDependencies } from '../../configuration/useDependencies'
 import ExternalLink from '../common/ExternalLink/ExternalLink'
 import Title from '../common/Title/Title'
+import LogoAgirSsd from './logo-agir-ssd.jpg'
 import LogoCNCAH from './logo-cncah.png'
 import LogoFPA from './logo-fpa.png'
 import LogoFFT from './LogoFFT'
 import LogoOcto from './LogoOcto'
-import LogoSeineSaintDenis from './LogoSeineSaintDenis'
 import LogoShareIt from './LogoShareIt'
 import LogoWavestone from './LogoWavestone'
 import styles from './PageNosPartenaires.module.css'
@@ -49,7 +49,7 @@ export default function PageNosPartenaires(): ReactElement {
           <LogoShareIt />
         </ExternalLink>
         <br />
-        {'Share it a été initié avec Ashoka pour permettre aux entrepreneur.e.s sociaux de bénéficier des bienfaits du numérique. Depuis 2018, nous accompagnons gratuitement les associations en développant avec elles des solutions digitales au service de leur impact grâce à des équipes tech dédiées et de qualité. L’accompagnement de Share it auprès des associations est possible grâce au mécénat de compétences. Dans le cadre de ce projet, des équipes de Wavestone et d’Octo ont collaboré pour développer Justice Plurielle.'}
+        {'Share it a été initié avec Ashoka pour permettre aux entrepreneur.e.s sociaux de bénéficier des bienfaits du numérique. Depuis 2018, nous accompagnons gratuitement les associations en développant avec elles des solutions digitales au service de leur impact grâce à des équipes tech dédiées et de qualité. L’accompagnement de Share it auprès des associations est possible grâce au mécénat de compétences. Dans le cadre de ce projet, des équipes de Wavestone et d’Octo ont collaboré pour développer Justicie.'}
       </p>
       <p>
         <ExternalLink
@@ -79,7 +79,12 @@ export default function PageNosPartenaires(): ReactElement {
           href="https://seinesaintdenis.fr/"
           title="Seine-Saint-Denis"
         >
-          <LogoSeineSaintDenis />
+          <Image
+            alt="Seine-Saint-Denis"
+            height="191"
+            src={LogoAgirSsd}
+            width="191"
+          />
         </ExternalLink>
         <br />
         {'La Seine-Saint-Denis est un département français situé au nord-est de l’agglomération parisienne, appartenant à la petite couronne de la région Île-de-France. Le conseil départemental du 93 est partenaire de l’association Droit Pluriel. Il soutient ce projet d’application recensant l’accessibilité des permanences juridiques gratuites dans le département 93.'}

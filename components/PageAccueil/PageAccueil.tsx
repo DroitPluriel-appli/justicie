@@ -95,7 +95,7 @@ export default function PageAccueil(): ReactElement {
         <br />
         {wording.PAR_TELEPHONE}
         <Telephone
-          nomDuLieu={wording.JUSTICE_PLURIELLE}
+          nomDuLieu={wording.JUSTICIE}
           url={wording.TELEPHONE_DROIT_PLURIEL}
         >
           {wording.TELEPHONE_DROIT_PLURIEL}

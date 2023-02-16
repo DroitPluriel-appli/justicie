@@ -32,10 +32,6 @@
   text-align: center;
 }
 
-:is(.desktop, .mobile) svg {
-  fill: var(--logo-color);
-}
-
 .header button svg {
   fill: var(--black);
 }
@@ -44,7 +40,7 @@
   margin-right: var(--m-margin);
 }
 
-.header li:first-child svg {
+.header li:first-child img {
   width: 4rem;
 }
 

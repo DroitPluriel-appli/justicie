@@ -1,8 +1,8 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { ReactElement } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
-import Logo from '../common/Logo/Logo'
 import styles from './Footer.module.css'
 import { ouvrirGestionDesCookies } from './ouvrirGestionDesCookies'
 
@@ -15,7 +15,12 @@ export default function Footer(): ReactElement {
       id="footer"
     >
       <div>
-        <Logo />
+        <Image
+          alt=""
+          height="64"
+          src="/logo-justicie.png"
+          width="64"
+        />
         <section aria-label={wording.INFORMATIONS}>
           <header>
             {wording.INFORMATIONS}

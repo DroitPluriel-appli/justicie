@@ -1,4 +1,4 @@
-# Justice plurielle
+# Justicie
 
 ## Stack
 
@@ -126,7 +126,7 @@ Un cron tourne à 1 heure du matin du mardi au samedi pour récupérer les donn�
 
 ## Sécurité
 
-Justice Plurielle a la note de [A](https://securityheaders.com/?q=https%3A%2F%2Fjustice-plurielle.osc-fr1.scalingo.io%2F).
+Justicie a la note de [A](https://securityheaders.com/?q=https%3A%2F%2Fjusticie.fr%2F).
 
 ## Architectural Decision Records (ADR)
 

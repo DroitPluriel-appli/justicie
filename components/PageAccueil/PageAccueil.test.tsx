@@ -56,7 +56,7 @@ describe('page d’accueil', () => {
     expect(lienMail).toHaveAttribute('href', 'mailto:' + wording.EMAIL_DROIT_PLURIEL)
     expect(lienMail.textContent).toBe(wording.EMAIL_DROIT_PLURIEL)
 
-    const lienTelephone = within(coordonneesDroitPluriel).getByRole('link', { name: wording.APPELER_LE_NUMERO(wording.JUSTICE_PLURIELLE, wording.TELEPHONE_DROIT_PLURIEL) })
+    const lienTelephone = within(coordonneesDroitPluriel).getByRole('link', { name: wording.APPELER_LE_NUMERO(wording.JUSTICIE, wording.TELEPHONE_DROIT_PLURIEL) })
     expect(lienTelephone).toHaveAttribute('href', 'tel:' + wording.TELEPHONE_DROIT_PLURIEL.replaceAll(' ', ''))
     expect(lienTelephone.textContent).toBe(wording.TELEPHONE_DROIT_PLURIEL)
     const titleNosActualites = within(main).getByRole('heading', { level: 2, name: wording.TITLE_SUIVEZ_NOS_ACTUALITES })
