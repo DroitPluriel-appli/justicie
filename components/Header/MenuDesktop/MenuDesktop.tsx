@@ -35,6 +35,11 @@ export default function MenuDesktop({ isMenuClose }: MenuDesktopPros): ReactElem
           </Link>
         </li>
         <li>
+          <Link href={paths.NOS_PARTENAIRES}>
+            {wording.NOS_PARTENAIRES}
+          </Link>
+        </li>
+        <li>
           <Link href={paths.FOIRE_AUX_QUESTIONS}>
             {wording.FOIRE_AUX_QUESTIONS}
           </Link>

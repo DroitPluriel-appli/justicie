@@ -24,7 +24,7 @@ export class WordingFr implements Wording {
   readonly DECOUVRIR_NOS_CRITERES: string = 'Découvrir nos critères d’accessiblité'
   readonly TITLE_A_PROPOS_DE_DROIT_PLURIEL: string = 'À propos de Justice Plurielle'
   readonly DROIT_PLURIEL_EST_UNE_ASSOCIATION: string = 'Justice Plurielle est un service gratuit d’orientation vers les lieux d’accès au droit, à l’initiative de Droit Pluriel, association qui défend une justice accessible à tous et toutes, et notamment aux personnes en situation de handicap.'
-  readonly RETROUVEZ_PLUS_D_INFOS: string = 'Retrouvez plus d’information sur notre site internet : '
+  readonly RETROUVEZ_PLUS_D_INFOS: string = 'Retrouvez plus d’informations sur notre site internet : '
   readonly TITLE_NOUS_CONTACTER: string = 'Nous contacter'
   readonly SITE_DROIT_PLURIEL: string = 'https://droitpluriel.fr'
   readonly TITRE_LIEN_SITE_DROIT_PLURIEL: string = 'droitpluriel.fr'

@@ -4,7 +4,6 @@ export default function LogoWavestone(): ReactElement {
   return (
     <svg
       aria-hidden
-      className="partenaire"
       viewBox="0 0 200 80"
       width="300"
     >

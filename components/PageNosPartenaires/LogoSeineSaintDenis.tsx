@@ -4,7 +4,6 @@ export default function LogoSeineSaintDenis(): ReactElement {
   return (
     <svg
       aria-hidden
-      className="partenaire"
       viewBox="0 0 600 181"
       width="300"
     >

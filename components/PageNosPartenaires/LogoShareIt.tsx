@@ -4,7 +4,6 @@ export default function LogoShareIt(): ReactElement {
   return (
     <svg
       aria-hidden
-      className="partenaire"
       viewBox="0 0 153 36"
       width="300"
     >

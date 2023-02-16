@@ -46,10 +46,13 @@ describe('en-tête de page', () => {
     const nosCriteresDAccessibilite = within(items[2]).getByRole('link', { name: wording.NOS_CRITERES_D_ACCESSIBILITE })
     expect(nosCriteresDAccessibilite).toHaveAttribute('href', paths.NOS_CRITERES_D_ACCESSIBILITE)
 
-    const foireAuxQuestions = within(items[3]).getByRole('link', { name: wording.FOIRE_AUX_QUESTIONS })
+    const nosPartenaires = within(items[3]).getByRole('link', { name: wording.NOS_PARTENAIRES })
+    expect(nosPartenaires).toHaveAttribute('href', paths.NOS_PARTENAIRES)
+
+    const foireAuxQuestions = within(items[4]).getByRole('link', { name: wording.FOIRE_AUX_QUESTIONS })
     expect(foireAuxQuestions).toHaveAttribute('href', paths.FOIRE_AUX_QUESTIONS)
 
-    const rechercherLieuDeDroit = within(items[4]).getByRole('link', { name: wording.RECHERCHER_UNE_AIDE_JURIDIQUE })
+    const rechercherLieuDeDroit = within(items[5]).getByRole('link', { name: wording.RECHERCHER_UNE_AIDE_JURIDIQUE })
     expect(rechercherLieuDeDroit).toHaveAttribute('href', paths.RECHERCHER_UNE_AIDE_JURIDIQUE)
   })
 
@@ -100,7 +103,10 @@ describe('en-tête de page', () => {
     const nosCriteresDAccessibilite = within(items[3]).getByRole('link', { name: wording.NOS_CRITERES_D_ACCESSIBILITE })
     expect(nosCriteresDAccessibilite).toHaveAttribute('href', paths.NOS_CRITERES_D_ACCESSIBILITE)
 
-    const foireAuxQuestions = within(items[4]).getByRole('link', { name: wording.FOIRE_AUX_QUESTIONS })
+    const nosPartenaires = within(items[4]).getByRole('link', { name: wording.NOS_PARTENAIRES })
+    expect(nosPartenaires).toHaveAttribute('href', paths.NOS_PARTENAIRES)
+
+    const foireAuxQuestions = within(items[5]).getByRole('link', { name: wording.FOIRE_AUX_QUESTIONS })
     expect(foireAuxQuestions).toHaveAttribute('href', paths.FOIRE_AUX_QUESTIONS)
   })
 

@@ -4,7 +4,6 @@ export default function LogoOcto(): ReactElement {
   return (
     <svg
       aria-hidden
-      className="partenaire"
       viewBox="0 0 475 330"
       width="300"
     >
