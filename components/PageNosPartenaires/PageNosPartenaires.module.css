@@ -1,3 +1,9 @@
 .titre2 {
   margin: var(--l-margin) 0;
 }
+
+.media {
+  display: block;
+  margin: var(--l-margin) 0;
+  text-align: center;
+}

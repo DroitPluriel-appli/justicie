@@ -4,7 +4,6 @@ export default function LogoFFT(): ReactElement {
   return (
     <svg
       aria-hidden
-      className="partenaire"
       viewBox="0 0 469 181"
       width="300"
     >
