@@ -20,10 +20,10 @@ export default function PagePolitiqueDeConfidentialite(): ReactElement {
       <p>
         {'Le site « '}
         <ExternalLink
-          href="https://justice-plurielle.osc-fr1.scalingo.io/"
-          title="Justice Plurielle"
+          href="https://wwww.justicie.fr/"
+          title="Justicie"
         >
-          {'Justice Plurielle'}
+          {'Justicie'}
         </ExternalLink>
         {' » (ci-après le Site) a pour objet de présenter les permanences juridiques gratuites existant en France et leur accessibilité référencées par l’association Droit Pluriel (ci-après « Droit Pluriel »). Il est accessible 7 jours sur 7, 24 heures sur 24, sous réserve des interruptions nécessaires aux opérations techniques de maintenance, d’entretien et de mise à jour que Droit Pluriel jugerait utiles d’effectuer. Lors de votre première connexion sur le site web de Droit Pluriel, vous êtes avertis par un bandeau en bas de votre écran que des informations relatives à votre navigation sont susceptibles d’être enregistrées dans des fichiers dénommés « cookies ». Notre politique d’utilisation des cookies vous permet de mieux comprendre les dispositions que nous mettons en œuvre en matière de navigation sur notre site web. Elle vous informe notamment sur l’ensemble des cookies présents sur notre site web. (ARTICLE 2).'}
       </p>
@@ -233,8 +233,8 @@ export default function PagePolitiqueDeConfidentialite(): ReactElement {
       </ul>
       <p>
         {'Pour toute demande d’exercice de vos droits, vous pouvez vous adresser à '}
-        <Email url="contact@droitpluriel.fr">
-          {'contact@droitpluriel.fr'}
+        <Email url="justicie@droitpluriel.fr">
+          {'justicie@droitpluriel.fr'}
         </Email>
         {'.'}
       </p>

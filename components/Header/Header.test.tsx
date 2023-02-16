@@ -37,10 +37,10 @@ describe('en-tête de page', () => {
 
     const accueil = within(items[0]).getByRole('link')
     expect(accueil).toHaveAttribute('href', paths.ACCUEIL)
-    const logo = within(accueil).getByLabelText(wording.ACCUEIL)
+    const logo = within(accueil).getByAltText(wording.ACCUEIL)
     expect(logo).toBeInTheDocument()
 
-    const title = within(items[1]).getByRole('heading', { level: 1, name: wording.JUSTICE_PLURIELLE })
+    const title = within(items[1]).getByRole('heading', { level: 1, name: wording.JUSTICIE })
     expect(title).toBeInTheDocument()
 
     const nosCriteresDAccessibilite = within(items[2]).getByRole('link', { name: wording.NOS_CRITERES_D_ACCESSIBILITE })
@@ -66,10 +66,12 @@ describe('en-tête de page', () => {
 
     const items = within(navigationMobile).getAllByRole('listitem')
 
-    const accueil = within(items[0]).getByRole('link', { name: wording.ACCUEIL })
+    const accueil = within(items[0]).getByRole('link')
     expect(accueil).toHaveAttribute('href', paths.ACCUEIL)
+    const logo = within(accueil).getByAltText(wording.ACCUEIL)
+    expect(logo).toBeInTheDocument()
 
-    const title = within(items[1]).getByRole('heading', { level: 1, name: wording.JUSTICE_PLURIELLE })
+    const title = within(items[1]).getByRole('heading', { level: 1, name: wording.JUSTICIE })
     expect(title).toBeInTheDocument()
 
     const menu = within(items[2]).getByText(wording.MENU)
@@ -125,7 +127,7 @@ describe('en-tête de page', () => {
     const navigationMobile = within(header).getByLabelText(wording.NAVIGATION_MOBILE, { selector: 'nav' })
     const items = within(navigationMobile).getAllByRole('listitem')
 
-    const title = within(items[1]).getByRole('heading', { level: 1, name: wording.JUSTICE_PLURIELLE })
+    const title = within(items[1]).getByRole('heading', { level: 1, name: wording.JUSTICIE })
     expect(title).toBeInTheDocument()
   })
 })

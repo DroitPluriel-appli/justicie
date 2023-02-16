@@ -1,8 +1,8 @@
 import { Wording } from './Wording'
 
 export class WordingFr implements Wording {
-  readonly JUSTICE_PLURIELLE: string = 'Justice Plurielle'
-  readonly SUFFIXE_TITLE: string = ' - ' + this.JUSTICE_PLURIELLE
+  readonly JUSTICIE: string = 'Justicie'
+  readonly SUFFIXE_TITLE: string = ' - ' + this.JUSTICIE
 
   // Navigation pages
   readonly RETOUR_EN_HAUT_DE_PAGE: string = 'Retour en haut de page'
@@ -22,14 +22,14 @@ export class WordingFr implements Wording {
   readonly VOUS_AVEZ_RECU_UNE_DECISION: string = 'Vous avez reçu une décision de justice et vous voulez savoir comment faire (faire appel, faire respecter cette décision...).'
   readonly RECHERCHER_UNE_AIDE_JURIDIQUE_GRATUITE_ET_ACCESSIBLE: string = 'Rechercher une aide juridique gratuite et accessible'
   readonly DECOUVRIR_NOS_CRITERES: string = 'Découvrir nos critères d’accessiblité'
-  readonly TITLE_A_PROPOS_DE_DROIT_PLURIEL: string = 'À propos de Justice Plurielle'
-  readonly DROIT_PLURIEL_EST_UNE_ASSOCIATION: string = 'Justice Plurielle est un service gratuit d’orientation vers les lieux d’accès au droit, à l’initiative de Droit Pluriel, association qui défend une justice accessible à tous et toutes, et notamment aux personnes en situation de handicap.'
+  readonly TITLE_A_PROPOS_DE_DROIT_PLURIEL: string = 'À propos de Justicie'
+  readonly DROIT_PLURIEL_EST_UNE_ASSOCIATION: string = 'Justicie est un service gratuit d’orientation vers les lieux d’accès au droit, à l’initiative de Droit Pluriel, association qui défend une justice accessible à tous et toutes, et notamment aux personnes en situation de handicap.'
   readonly RETROUVEZ_PLUS_D_INFOS: string = 'Retrouvez plus d’informations sur notre site internet : '
   readonly TITLE_NOUS_CONTACTER: string = 'Nous contacter'
   readonly SITE_DROIT_PLURIEL: string = 'https://droitpluriel.fr'
   readonly TITRE_LIEN_SITE_DROIT_PLURIEL: string = 'droitpluriel.fr'
   readonly PAR_EMAIL: string = 'Par e-mail : '
-  readonly EMAIL_DROIT_PLURIEL: string = 'contact@droitpluriel.fr'
+  readonly EMAIL_DROIT_PLURIEL: string = 'justicie@droitpluriel.fr'
   readonly PAR_TELEPHONE: string = 'Par téléphone : '
   readonly TELEPHONE_DROIT_PLURIEL: string = '01 84 80 46 14'
   readonly TITLE_SUIVEZ_NOS_ACTUALITES: string = 'Suivez nos actualités'

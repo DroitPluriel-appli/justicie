@@ -1,5 +1,5 @@
 export interface Wording {
-  readonly JUSTICE_PLURIELLE: string
+  readonly JUSTICIE: string
   readonly SUFFIXE_TITLE: string
 
   // Navigation pages

@@ -21,10 +21,10 @@ jobs:
       postgres:
         image: postgres:13.9-alpine # Conserver la même version avec le fichier docker-compose.yaml
         env:
-          POSTGRES_DB: justice_plurielle
-          POSTGRES_PASSWORD: justice_plurielle
+          POSTGRES_DB: justicie
+          POSTGRES_PASSWORD: justicie
           POSTGRES_PORT: 5432
-          POSTGRES_USER: justice_plurielle
+          POSTGRES_USER: justicie
         ports:
           - 5433:5432
         options: >-

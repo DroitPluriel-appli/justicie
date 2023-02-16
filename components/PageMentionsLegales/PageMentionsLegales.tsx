@@ -49,8 +49,8 @@ export default function PageMentionsLegales(): ReactElement {
         </Telephone>
         <br />
         {'E-mail : '}
-        <Email url="contact@droitpluriel.fr">
-          {'contact@droitpluriel.fr'}
+        <Email url="justicie@droitpluriel.fr">
+          {'justicie@droitpluriel.fr'}
         </Email>
         <br />
         {'Site web : '}
@@ -66,8 +66,8 @@ export default function PageMentionsLegales(): ReactElement {
       </h3>
       <p>
         {'Nous vous offrons la possibilité de communiquer avec nous. Vous pouvez vous adresser à '}
-        <Email url="contact@droitpluriel.fr">
-          {'contact@droitpluriel.fr'}
+        <Email url="justicie@droitpluriel.fr">
+          {'justicie@droitpluriel.fr'}
         </Email>
         {' pour toute demande, en indiquant l’objet de votre demande et vos coordonnées.'}
       </p>
@@ -91,10 +91,10 @@ export default function PageMentionsLegales(): ReactElement {
       <p>
         {'Le site '}
         <ExternalLink
-          href="https://justice-plurielle.osc-fr1.scalingo.io/"
-          title="Justice Plurielle"
+          href="https://www.justicie.fr/"
+          title="Justicie"
         >
-          {'Justice Plurielle'}
+          {'Justicie'}
         </ExternalLink>
         {' respecte la vie privée de l’internaute et se conforme strictement aux lois en vigueur sur la protection de la vie privée et des libertés individuelles. Aucune information personnelle n’est collectée à votre insu. Aucune information personnelle n’est cédée à des tiers. Les courriels, les adresses électroniques ou autres informations nominatives dont ce site est destinataire ne font l’objet d’aucune exploitation et ne sont conservés que pour la durée nécessaire à leur traitement. Vous pouvez vous référer à notre Politique de confidentialité pour plus d’informations.'}
       </p>
@@ -104,10 +104,10 @@ export default function PageMentionsLegales(): ReactElement {
       <p>
         {'Ce site ('}
         <ExternalLink
-          href="https://justice-plurielle.osc-fr1.scalingo.io/"
-          title="Justice Plurielle"
+          href="https://www.justicie.fr/"
+          title="Justicie"
         >
-          {'Justice Plurielle'}
+          {'Justicie'}
         </ExternalLink>
         {') est proposé en différents langages web (HTML, JavaScript, CSS, etc…) pour un meilleur confort d’utilisation et un graphisme plus agréable, nous vous recommandons de recourir à des navigateurs modernes comme Firefox, Google Chrome, etc…  Droit Pluriel met en œuvre tous les moyens dont elle dispose, pour assurer une information fiable et une mise à jour fiable de ses sites internet. Toutefois, des erreurs ou omissions peuvent survenir. L’internaute devra donc s’assurer de l’exactitude des informations auprès de Droit Pluriel, et signaler toutes modifications du site qu’il jugerait utile. Droit Pluriel n’est en aucun cas responsable de l’utilisation faite de ces informations, et de tout préjudice direct ou indirect pouvant en découler.'}
       </p>
@@ -130,17 +130,17 @@ export default function PageMentionsLegales(): ReactElement {
         </ExternalLink>
         {'. Droit Pluriel s’efforce de fournir sur le site '}
         <ExternalLink
-          href="https://justice-plurielle.osc-fr1.scalingo.io/"
-          title="Justice Plurielle"
+          href="https://www.justicie.fr/"
+          title="Justicie"
         >
-          {'Justice Plurielle'}
+          {'Justicie'}
         </ExternalLink>
         {' des informations aussi précises que possible. Les renseignements figurant sur le site '}
         <ExternalLink
-          href="https://justice-plurielle.osc-fr1.scalingo.io/"
-          title="Justice Plurielle"
+          href="https://www.justicie.fr/"
+          title="Justicie"
         >
-          {'Justice Plurielle'}
+          {'Justicie'}
         </ExternalLink>
         {' ne sont pas exhaustifs et les photos non contractuelles. Ils sont donnés sous réserve de modifications ayant été apportées depuis leur mise en ligne. Par ailleurs, toutes les informations indiquées sur le site '}
         {' sont données à titre indicatif, et sont susceptibles de changer ou d’évoluer sans préavis.'}
@@ -150,8 +150,8 @@ export default function PageMentionsLegales(): ReactElement {
       </h3>
       <p>
         {'Les informations contenues sur ce site sont aussi précises que possible et le site remis à jour à différentes périodes de l’année, mais peuvent toutefois contenir des inexactitudes ou des omissions. Si vous constatez une lacune, erreur ou ce qui parait être un dysfonctionnement, merci de bien vouloir le signaler par e-mail, à l’adresse '}
-        <Email url="contact@droitpluriel.fr">
-          {'contact@droitpluriel.fr'}
+        <Email url="justicie@droitpluriel.fr">
+          {'justicie@droitpluriel.fr'}
         </Email>
         {', en décrivant le problème de la manière la plus précise possible (page posant problème, type d’ordinateur et de navigateur utilisé…).  Tout contenu téléchargé se fait aux risques et périls de l’utilisateur et sous sa seule responsabilité. En conséquence, Droit Pluriel ne saurait être tenue responsable d’un quelconque dommage subi par l’appareil de l’utilisateur ou d’une quelconque perte de données consécutives au téléchargement. De plus, l’utilisateur du site s’engage à accéder au site en utilisant un matériel récent, ne contenant pas de virus et avec un navigateur de dernière génération mis-à-jour. Les liens hypertextes mis en place dans le cadre du présent site internet en direction d’autres ressources présentes sur le réseau Internet ne sauraient engager la responsabilité de Droit Pluriel.'}
       </p>
@@ -161,10 +161,10 @@ export default function PageMentionsLegales(): ReactElement {
       <p>
         {'Tout le contenu présent sur le site '}
         <ExternalLink
-          href="https://justice-plurielle.osc-fr1.scalingo.io/"
-          title="Justice Plurielle"
+          href="https://www.justicie.fr/"
+          title="Justicie"
         >
-          {'Justice Plurielle'}
+          {'Justicie'}
         </ExternalLink>
         {' incluant, de façon non limitative, les graphismes, images, textes, vidéos, animations, sons, logos, gifs et icônes ainsi que leur mise en forme sont la propriété exclusive de l’association à l’exception des marques, logos ou contenus appartenant à d’autres associations, sociétés, partenaires ou auteurs. Toute reproduction, distribution, modification, adaptation, retransmission ou publication, même partielle, de ces différents éléments est strictement interdite sans l’accord exprès par écrit de Droit Pluriel. Cette représentation ou reproduction, par quelque procédé que ce soit, constitue une contrefaçon sanctionnée par les articles L.335-2 et suivants du Code de la propriété intellectuelle. Le non-respect de cette interdiction constitue une contrefaçon pouvant engager la responsabilité civile et pénale du contrefacteur. En outre, les propriétaires des contenus copiés pourraient intenter une action en justice à votre encontre.'}
       </p>
@@ -174,10 +174,10 @@ export default function PageMentionsLegales(): ReactElement {
       <p>
         {'Les présentes conditions du site '}
         <ExternalLink
-          href="https://justice-plurielle.osc-fr1.scalingo.io/"
-          title="Justice Plurielle"
+          href="https://www.justicie.fr/"
+          title="Justicie"
         >
-          {'Justice Plurielle'}
+          {'Justicie'}
         </ExternalLink>
         {' sont régies par les lois françaises et toutes contestations ou litiges qui pourraient naître de l’interprétation ou de l’exécution de celles-ci seront de la compétence exclusive des tribunaux dont dépend le siège social de l’association. La langue de référence, pour le règlement de contentieux éventuels, est le français.'}
       </p>

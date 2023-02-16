@@ -8,7 +8,7 @@
 }
 
 @media (max-width: 36em) {
-  .footer svg {
+  .footer img {
     display: none;
   }
 }
@@ -56,9 +56,8 @@
     justify-content: center;
   }
 
-  .footer svg {
+  .footer img {
     fill: var(--logo-color);
-    width: 6rem;
   }
 
   .footer section {
