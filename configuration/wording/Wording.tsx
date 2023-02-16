@@ -168,5 +168,6 @@ export interface Wording {
   readonly MENTIONS_LEGALES: string
   readonly QUALITE_DE_SERVICE: string
   readonly ACCESSIBILITE: string
+  readonly GERER_LES_COOKIES: string
   readonly COPYRIGHT: (annee: number) => string
 }

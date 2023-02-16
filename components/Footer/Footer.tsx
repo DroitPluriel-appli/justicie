@@ -4,11 +4,11 @@ import { ReactElement } from 'react'
 import { useDependencies } from '../../configuration/useDependencies'
 import Logo from '../common/Logo/Logo'
 import styles from './Footer.module.css'
+import { ouvrirGestionDesCookies } from './ouvrirGestionDesCookies'
 
 export default function Footer(): ReactElement {
   const { paths, wording } = useDependencies()
   const date = new Date()
-
   return (
     <footer
       className={styles.footer}
@@ -56,6 +56,16 @@ export default function Footer(): ReactElement {
             <li>
               {wording.ACCESSIBILITE}
             </li>
+            {process.env.NODE_ENV === 'production' && (
+              <li>
+                <button
+                  onClick={ouvrirGestionDesCookies}
+                  type="button"
+                >
+                  {wording.GERER_LES_COOKIES}
+                </button>
+              </li>
+            )}
           </ul>
         </section>
       </div>

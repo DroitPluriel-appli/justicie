@@ -526,8 +526,6 @@ describe('page des résultats de recherche affichés en liste', () => {
     }
     const criteresDAccessibiliteSelectionnes: Critere[] = ['pmr', 'visuel']
     const nombreDeResultats = 0
-    // @ts-ignore
-    window.dataLayer = { push: jest.fn() }
 
     // WHEN
     renderFakeComponent(

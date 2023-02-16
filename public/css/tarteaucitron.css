@@ -1,3 +1,11 @@
+button:is(
+.tarteaucitronAllow:not([aria-pressed="true"]),
+.tarteaucitronDeny:not([aria-pressed="true"])
+) {
+  color: var(--white) !important;
+  opacity: 1 !important;
+}
+
 div#tarteaucitronMainLineOffset,.tarteaucitronBorder {border:0!important;}
 
 #tarteaucitronServices {

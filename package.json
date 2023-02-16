@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@googleapis/sheets": "^4.0.1",
-    "@sentry/nextjs": "^7.21.1",
+    "@sentry/nextjs": "^7.37.2",
     "accessible-autocomplete": "^2.0.4",
     "dotenv-defaults": "^5.0.2",
     "leaflet": "^1.9.3",

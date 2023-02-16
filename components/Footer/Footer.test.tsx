@@ -1,10 +1,17 @@
-import { screen, within } from '@testing-library/react'
+import { fireEvent, screen, within } from '@testing-library/react'
+import { expect } from 'vitest'
 
 import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
 import Footer from './Footer'
 
 describe('pied de page', () => {
   const { paths, wording } = fakeFrontDependencies
+
+  beforeAll(() => {
+    window.tarteaucitron = { userInterface: { openPanel: jest.fn() } }
+    // @ts-ignore
+    process.env.NODE_ENV = 'production'
+  })
 
   it('affiche les liens', () => {
     // WHEN
@@ -37,5 +44,22 @@ describe('pied de page', () => {
     const copyright = within(footer).getByText(textMatch(wording.COPYRIGHT(date.getFullYear()) + wording.MENTIONS_LEGALES), { selector: 'p' })
     const mentionsLegales = within(copyright).getByRole('link', { name: wording.MENTIONS_LEGALES })
     expect(mentionsLegales).toHaveAttribute('href', paths.MENTIONS_LEGALES)
+
+    const gestionDesCookies = within(sections[1]).getByRole('button')
+    expect(gestionDesCookies.textContent).toBe(wording.GERER_LES_COOKIES)
+  })
+
+  it('ouvre le panneau de gestion des cookies', () => {
+    // GIVEN
+    renderFakeComponent(<Footer />)
+    const footer = screen.getByRole('contentinfo')
+    const sections = within(footer).getAllByRole('region')
+    const gestionDesCookies = within(sections[1]).getByRole('button')
+
+    // WHEN
+    fireEvent.click(gestionDesCookies)
+
+    // THEN
+    expect(window.tarteaucitron.userInterface.openPanel).toHaveBeenCalledOnce()
   })
 })
