@@ -76,7 +76,7 @@ export default function PageLieu({ lieu }: { lieu: Lieu }): ReactElement {
           {wording.PLUS_D_INFORMATIONS}
         </h2>
         <Preformate>
-          {lieu.commentaire}
+          {lieu.commentaire !== '' ? lieu.commentaire : wording.PAS_D_INFORMATIONS_SUPPLEMENTAIRES}
         </Preformate>
       </section>
       <section>
@@ -84,12 +84,18 @@ export default function PageLieu({ lieu }: { lieu: Lieu }): ReactElement {
           {wording.CONTACT_ET_SITE_INTERNET}
         </h2>
         <address className={styles.contact}>
-          <Email
-            hasPicto
-            url={lieu.eMail}
-          >
-            {lieu.eMail}
-          </Email>
+          {lieu.eMail !== '' ? (
+            <Email
+              hasPicto
+              url={lieu.eMail}
+            >
+              {lieu.eMail}
+            </Email>
+          ) : (
+            <span>
+              {wording.PAS_D_E_MAIL}
+            </span>
+          )}
           <br />
           <Telephone
             hasPicto
@@ -99,9 +105,15 @@ export default function PageLieu({ lieu }: { lieu: Lieu }): ReactElement {
             {lieu.telephone}
           </Telephone>
           <br />
-          <SiteInternet url={lieu.siteInternet}>
-            {wording.CONSULTER_LE_SITE_INTERNET}
-          </SiteInternet>
+          {lieu.siteInternet !== '' ? (
+            <SiteInternet url={lieu.siteInternet}>
+              {wording.CONSULTER_LE_SITE_INTERNET}
+            </SiteInternet>
+          ) : (
+            <span>
+              {wording.PAS_DE_SITE_INTERNET}
+            </span>
+          )}
         </address>
       </section>
       <RetourHautDePage />

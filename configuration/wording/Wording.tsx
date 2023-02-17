@@ -108,6 +108,9 @@ export interface Wording {
   readonly KILOMETRES: string
   readonly APPELER_LE_NUMERO: (nom: string, numero: string) => string
   readonly ENVOYER_UN_EMAIL_A: string
+  readonly PAS_D_INFORMATIONS_SUPPLEMENTAIRES: string
+  readonly PAS_D_E_MAIL: string
+  readonly PAS_DE_SITE_INTERNET: string
 
   // Nos critères d'accessibilité
   readonly TITLE_PAGE_NOS_CRITERES_D_ACCESSIBILITE: string

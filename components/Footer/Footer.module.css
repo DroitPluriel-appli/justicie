@@ -45,6 +45,10 @@
   color: var(--white);
 }
 
+.cookies:hover {
+  text-decoration: underline;
+}
+
 @media (min-width: 36em) {
   .footer {
     padding-top: var(--xl-margin);

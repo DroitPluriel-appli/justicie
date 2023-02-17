@@ -3,7 +3,7 @@ tarteaucitron.init({
   "bodyPosition": "top",
   "hashtag": "#tarteaucitron",
   "cookieName": "tarteaucitron",
-  "orientation": "top",
+  "orientation": "bottom",
   "groupServices": false,
   "serviceDefaultState": "wait",
   "showAlertSmall": false,

@@ -64,6 +64,7 @@ export default function Footer(): ReactElement {
             {process.env.NODE_ENV === 'production' && (
               <li>
                 <button
+                  className={styles.cookies}
                   onClick={ouvrirGestionDesCookies}
                   type="button"
                 >
