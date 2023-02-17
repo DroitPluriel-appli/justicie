@@ -21,9 +21,9 @@ export default function PageNosPartenaires(): ReactElement {
       <Title>
         {wording.TITLE_PAGE_NOS_PARTENAIRES}
       </Title>
-      <h2 className={styles.titre2}>
+      <h1 className="titre1">
         {wording.NOS_PARTENAIRES}
-      </h2>
+      </h1>
       <p>
         <ExternalLink
           className={styles.media}

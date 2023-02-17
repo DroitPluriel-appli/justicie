@@ -4,6 +4,7 @@
 
 .article header h1 {
   font-size: var(--m-to-l-font);
+  margin-bottom: var(--m-margin);
   text-align: left;
 }
 

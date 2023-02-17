@@ -1,3 +1,5 @@
-.titre {
+.title {
+  font-size: var(--l-font);
+  margin-bottom: var(--m-margin);
   margin-top: var(--xxl-margin);
 }

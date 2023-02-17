@@ -53,6 +53,7 @@ main,
 ul,
 ol,
 p,
+h1,
 h2 {
   margin: 0;
   padding: 0;
@@ -67,10 +68,6 @@ main {
   color: var(--black);
   flex-grow: 3;
   padding: 0 var(--m-margin);
-}
-
-h2 {
-  font-size: var(--xl-font);
 }
 
 ul {
@@ -145,4 +142,24 @@ pre {
   top: 50%;
   transform: rotate(1.75turn);
   z-index: 9999;
+}
+
+.titre1 {
+  font-size: var(--xl-font);
+  margin-bottom: var(--xxl-margin);
+}
+
+.titre1 span {
+  display: block;
+  font-size: var(--m-font);
+}
+
+.titre2 {
+  font-size: var(--l-font);
+  margin: var(--l-margin) 0;
+}
+
+.titre3 {
+  font-size: var(--m-font);
+  margin: var(--l-margin) 0;
 }

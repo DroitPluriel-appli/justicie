@@ -20,8 +20,12 @@ describe('page d’accueil', () => {
 
     // THEN
     const main = screen.getByRole('main')
-    const title = within(main).getByRole('heading', { level: 2, name: wording.VOUS_AVEZ_UN_PROBLEME_DE_DROIT })
-    expect(title).toBeInTheDocument()
+
+    const justicie = within(main).getByRole('heading', { level: 1, name: wording.JUSTICIE })
+    expect(justicie).toBeInTheDocument()
+
+    const problemeDeDroit = within(main).getByRole('heading', { level: 2, name: wording.VOUS_AVEZ_UN_PROBLEME_DE_DROIT })
+    expect(problemeDeDroit).toBeInTheDocument()
     const trouvezUnConseil = within(main).getByText(wording.TROUVEZ_UN_CONSEIL_JURIDIQUE, { selector: 'p' })
     expect(trouvezUnConseil).toBeInTheDocument()
 
@@ -34,8 +38,8 @@ describe('page d’accueil', () => {
     const decouvrirNosCriteres = within(main).getByRole('link', { name: wording.DECOUVRIR_NOS_CRITERES })
     expect(decouvrirNosCriteres).toHaveAttribute('href', paths.NOS_CRITERES_D_ACCESSIBILITE)
 
-    const titleAPropos = within(main).getByRole('heading', { level: 2, name: wording.TITLE_A_PROPOS_DE_DROIT_PLURIEL })
-    expect(titleAPropos).toBeInTheDocument()
+    const aPropos = within(main).getByRole('heading', { level: 2, name: wording.TITLE_A_PROPOS_DE_DROIT_PLURIEL })
+    expect(aPropos).toBeInTheDocument()
     const droitPlurielEstUneAssociation = within(main).getByText(wording.DROIT_PLURIEL_EST_UNE_ASSOCIATION, { selector: 'p' })
     expect(droitPlurielEstUneAssociation).toBeInTheDocument()
 
@@ -45,8 +49,8 @@ describe('page d’accueil', () => {
     expect(lienSiteDroitPluriel).toHaveAttribute('target', '_blank')
     expect(lienSiteDroitPluriel).toHaveAttribute('rel', 'external noopener noreferrer')
 
-    const titleNousContacter = within(main).getByRole('heading', { level: 2, name: wording.TITLE_NOUS_CONTACTER })
-    expect(titleNousContacter).toBeInTheDocument()
+    const nousContacter = within(main).getByRole('heading', { level: 2, name: wording.TITLE_NOUS_CONTACTER })
+    expect(nousContacter).toBeInTheDocument()
 
     const coordonneesDroitPluriel = within(main).getByText(
       textMatch(`${wording.PAR_EMAIL}${wording.EMAIL_DROIT_PLURIEL}${wording.PAR_TELEPHONE}${wording.TELEPHONE_DROIT_PLURIEL}`), { selector: 'address' }
@@ -59,8 +63,8 @@ describe('page d’accueil', () => {
     const lienTelephone = within(coordonneesDroitPluriel).getByRole('link', { name: wording.APPELER_LE_NUMERO(wording.JUSTICIE, wording.TELEPHONE_DROIT_PLURIEL) })
     expect(lienTelephone).toHaveAttribute('href', 'tel:' + wording.TELEPHONE_DROIT_PLURIEL.replaceAll(' ', ''))
     expect(lienTelephone.textContent).toBe(wording.TELEPHONE_DROIT_PLURIEL)
-    const titleNosActualites = within(main).getByRole('heading', { level: 2, name: wording.TITLE_SUIVEZ_NOS_ACTUALITES })
-    expect(titleNosActualites).toBeInTheDocument()
+    const nosActualites = within(main).getByRole('heading', { level: 2, name: wording.TITLE_SUIVEZ_NOS_ACTUALITES })
+    expect(nosActualites).toBeInTheDocument()
 
     const lienFacebook = within(main).getByRole('link', { name: wording.TITRE_LIEN_FACEBOOK + wording.NOUVELLE_FENETRE })
     expect(lienFacebook).toHaveAttribute('href', wording.LIEN_FACEBOOK)

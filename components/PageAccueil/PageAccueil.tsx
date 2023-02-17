@@ -17,7 +17,10 @@ export default function PageAccueil(): ReactElement {
       <Title>
         {wording.TITLE_PAGE_ACCUEIL}
       </Title>
-      <h2 className={styles.title}>
+      <h1 className={styles.hidden}>
+        {wording.JUSTICIE}
+      </h1>
+      <h2 className="titre1">
         {wording.VOUS_AVEZ_UN_PROBLEME_DE_DROIT}
       </h2>
       <p>
@@ -68,7 +71,7 @@ export default function PageAccueil(): ReactElement {
         {wording.DECOUVRIR_NOS_CRITERES}
       </Link>
       <div className={styles.aPropos}>
-        <h2 className={styles.title}>
+        <h2 className="titre1">
           {wording.TITLE_A_PROPOS_DE_DROIT_PLURIEL}
         </h2>
         <p>
@@ -84,7 +87,7 @@ export default function PageAccueil(): ReactElement {
           </ExternalLink>
         </p>
       </div>
-      <h2 className={styles.title}>
+      <h2 className="titre1">
         {wording.TITLE_NOUS_CONTACTER}
       </h2>
       <address className={styles.adresse}>
@@ -101,7 +104,7 @@ export default function PageAccueil(): ReactElement {
           {wording.TELEPHONE_DROIT_PLURIEL}
         </Telephone>
       </address>
-      <h2 className={styles.title}>
+      <h2 className="titre1">
         {wording.TITLE_SUIVEZ_NOS_ACTUALITES}
       </h2>
       <div className={styles.reseauxSociaux}>

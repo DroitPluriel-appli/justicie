@@ -30,10 +30,8 @@ export default function MenuMobile({ isMenuClose, touch }: MenuMobilePros): Reac
             />
           </Link>
         </li>
-        <li>
-          <h1 className={styles.title}>
-            {wording.JUSTICIE}
-          </h1>
+        <li className={styles.title}>
+          {wording.JUSTICIE}
         </li>
         <li className={styles.menu}>
           <button

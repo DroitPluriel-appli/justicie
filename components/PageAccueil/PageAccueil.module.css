@@ -1,5 +1,6 @@
-.title {
-  margin-bottom: var(--s-to-xl-margin);
+.hidden {
+  line-height: 0;
+  visibility: hidden;
 }
 
 .description {

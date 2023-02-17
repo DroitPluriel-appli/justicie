@@ -46,6 +46,7 @@
 
 .title {
   font-size: var(--xl-font);
+  font-weight: bold;
 }
 
 .menu {

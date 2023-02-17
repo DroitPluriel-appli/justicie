@@ -28,9 +28,9 @@ export default function PageLieu({ lieu }: { lieu: Lieu }): ReactElement {
         {wording.RETOUR_AUX_RESULTATS}
       </BackButton>
       <section>
-        <h2 className={styles.nom}>
+        <h1 className="titre1">
           {lieu.nom}
-        </h2>
+        </h1>
         <address className={styles.adresse}>
           <Distance>
             {lieu.distance}

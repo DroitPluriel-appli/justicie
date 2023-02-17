@@ -24,12 +24,12 @@ export default function PageRechercherParHandicap(): ReactElement {
           {wording.PASSER}
         </Link>
       </div>
-      <h2 className={styles.title}>
+      <h1 className="titre1">
         {wording.BESOIN_EN_ACCESSIBILITE}
-        <div>
+        <span>
           {wording.FACULTATIF}
-        </div>
-      </h2>
+        </span>
+      </h1>
       <form action={paths.RESULTATS_LISTE}>
         {
           criteres.map((critere) => (

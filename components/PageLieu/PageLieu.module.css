@@ -30,10 +30,6 @@
   margin-bottom: var(--m-margin);
 }
 
-h2.nom {
-  font-size: var(--xl-font);
-}
-
 .adresse {
   align-items: center;
   display: flex;
