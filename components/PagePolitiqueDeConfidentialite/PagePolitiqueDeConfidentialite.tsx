@@ -14,9 +14,9 @@ export default function PagePolitiqueDeConfidentialite(): ReactElement {
       <Title>
         {wording.TITLE_PAGE_POLITIQUE_DE_CONFIDENTIALITE}
       </Title>
-      <h2 className={styles.titre2}>
+      <h1 className="titre1">
         {wording.POLITIQUE_DE_CONFIDENTIALITE}
-      </h2>
+      </h1>
       <p>
         {'Le site « '}
         <ExternalLink
@@ -37,12 +37,12 @@ export default function PagePolitiqueDeConfidentialite(): ReactElement {
         </ExternalLink>
         {' pour recueillir et appliquer les préférences de ses utilisateurs concernant l’utilisation des cookies.'}
       </p>
-      <h3>
+      <h2 className="titre2">
         {'ARTICLE 1 – DONNÉES A CARACTÈRE PERSONNEL'}
-      </h3>
-      <h4>
+      </h2>
+      <h3 className="titre3">
         {'1. DÉFINITIONS'}
-      </h4>
+      </h3>
       <p>
         {'Donnée à caractère personnel : constitue une donnée à caractère personnel toute information relative à une personne physique identifiée ou qui peut être identifiée, directement ou indirectement, par référence à un numéro d’identification ou à un ou plusieurs éléments qui lui sont propres.'}
         <br />
@@ -50,17 +50,17 @@ export default function PagePolitiqueDeConfidentialite(): ReactElement {
         <br />
         {'Cookie : un cookie est une information déposée sur le disque dur d’un internaute par le serveur du site qu’il visite. Il contient plusieurs données : le nom du serveur qui l’a déposé, un identifiant sous forme de numéro unique, éventuellement une date d’expiration. Ces informations sont parfois stockées sur l’ordinateur dans un simple fichier texte auquel un serveur accède pour lire et enregistrer des informations.'}
       </p>
-      <h4>
+      <h3 className="titre3">
         {'1.2 RESPONSABLE DU TRAITEMENT'}
-      </h4>
+      </h3>
       <p>
         {'Le responsable du traitement des données personnelles visées aux présentes est l’association Droit Pluriel, dont le siège social est situé au 47 avenue Pasteur, 93100 Montreuil représentée par Madame Anne-Sarah KERTUDO .'}
         <br />
         {'Numéro de SIRET : 82092976800019.'}
       </p>
-      <h4>
+      <h3 className="titre3">
         {'1.3 DONNÉES COLLECTÉES SUR LE SITE'}
-      </h4>
+      </h3>
       <p>
         {'Lorsque l’utilisateur utilise le Site et fait une recherche de permanence juridique gratuite, Droit Pluriel collecte et traite les données suivantes :'}
       </p>
@@ -75,15 +75,15 @@ export default function PagePolitiqueDeConfidentialite(): ReactElement {
       <p>
         {'Les données sont collectées automatiquement du fait des actions de l’utilisateur sur le site (voir le paragraphe relatif aux cookies).'}
       </p>
-      <h4>
+      <h3 className="titre3">
         {'1.4 DESTINATAIRES DES DONNÉES'}
-      </h4>
+      </h3>
       <p>
         {'Droit Pluriel s’engage à ne pas céder ni louer les données recueillies. La divulgation à des tiers des données à caractère personnel fournies ne pourra intervenir que dans les cas suivants : sur autorisation du titulaire des données, sur demande des autorités légalement compétentes, sur réquisition judiciaire, ou dans le cadre d’un contentieux judiciaire.'}
       </p>
-      <h4>
+      <h3 className="titre3">
         {'1.5 FINALITÉS – FONDEMENT JURIDIQUE DU TRAITEMENT'}
-      </h4>
+      </h3>
       <p>
         {'Le traitement des données à caractère personnel est nécessaire à l’exécution des missions de l’association Droit Pluriel. Il est fondé sur l’article 6, paragraphe 1, points a) et f) du Règlement (UE) 2016/679 du Parlement européen et du Conseil du 27 avril 2016. Les finalités sont les suivantes :'}
       </p>
@@ -98,15 +98,15 @@ export default function PagePolitiqueDeConfidentialite(): ReactElement {
           {'La mise en œuvre de la recherche de permanences juridiques gratuites.'}
         </li>
       </ul>
-      <h4>
+      <h3 className="titre3">
         {'1.6 DURÉE DE CONSERVATION DES DONNÉES'}
-      </h4>
+      </h3>
       <p>
         {'Les données relatives à la localisation et aux besoins en termes d’accessibilité sont conservées pendant deux ans. A l’issue de ces délais, sauf à recueillir votre consentement pour une durée plus longue, elles seront archivées pendant la durée légale de prescription avant destruction définitive.'}
       </p>
-      <h4>
+      <h3 className="titre3">
         {'1.7 DROITS DES TITULAIRES DES DONNÉES PERSONNELLES'}
-      </h4>
+      </h3>
       <p>
         {'Les personnes dont les données à caractère personnel sont collectées bénéficient d’un droit d’accès aux données à caractère personnel les concernant, la rectification ou l’effacement de celles-ci, une limitation du traitement, la portabilité des données ainsi que du droit de s’opposer au traitement. L’utilisateur est toutefois informé que les données à caractère personnel collectée sont nécessaires à l’exécution de la relation avec Droit Pluriel de sorte qu’en cas d’usage de son droit d’effacement desdites données, d’opposition ou de limitation des traitements, il pourra être mis un terme à la relation. Ces droits peuvent être exercés en utilisant les modèles proposés par la CNIL. Toute demande d’exercice de droits doit être accompagnée de la photocopie d’un justificatif d’identité signé (carte nationale d’identité délivrée par l’État français ou carte d’identité de l’Union Européenne ou passeport, carte de résident délivrée par l’État français, carte de séjour délivrée par l’État français ou livret de circulation délivré par l’État français). Droit Pluriel répond à la personne ayant fait l’usage d’un des droits susvisés dans un délai d’un mois à compter de la réception de la demande. Ce délai peut néanmoins être prolongé de deux mois, compte tenu de la complexité et du nombre de demandes. Dans cette hypothèse, Droit Pluriel informera la personne concernée de cette prolongation dans le délai d’un mois à compter de la réception de la demande. Lorsque la personne concernée formule sa demande sous une forme électronique, les informations sont fournies par voie électronique lorsque cela est possible et à moins qu’elle ne demande qu’il en soit autrement. En cas de refus du responsable du traitement de donner suite à la demande d’information formulée par la personne concernée, ce dernier précise les motifs de ce refus. La personne concernée a la possibilité d’introduire une réclamation auprès de la Commission Nationale de l’Informatique et des Libertés ou de l’autorité de contrôle de l’État membre de l’Union européenne dans lequel elle réside et de former un recours juridictionnel.'}
         <br />
@@ -238,35 +238,35 @@ export default function PagePolitiqueDeConfidentialite(): ReactElement {
         </Email>
         {'.'}
       </p>
-      <h4>
+      <h3 className="titre3">
         {'1.8 LIEU DE CONSERVATION DES DONNÉES'}
-      </h4>
+      </h3>
       <p>
         {'Les serveurs d’hébergement sur lesquels Droit Pluriel traite et stocke la base de données est exclusivement située au sein de l’Union Européenne, en France.'}
       </p>
-      <h4>
+      <h3 className="titre3">
         {'1.9 RÉCLAMATION AUPRÈS D’UNE AUTORITÉ DE CONTRÔLE'}
-      </h4>
+      </h3>
       <p>
         {'Toute personne dont les données à caractère personnel font l’objet d’un traitement peut introduire une réclamation relative au traitement des données la concernant auprès de la CNIL ou de l’autorité de contrôle de l’État membre de l’Union européenne dans lequel elle réside.'}
       </p>
-      <h3>
+      <h2 className="titre2">
         {'ARTICLE 2 – COOKIES'}
-      </h3>
+      </h2>
       <p>
         {'Le site utilise des cookies qui ont pour finalité de faciliter la navigation sur le site.'}
       </p>
-      <h4>
+      <h3 className="titre3">
         {'2.1 TYPES DE COOKIES UTILISÉS'}
-      </h4>
+      </h3>
       <p>
         {'Les cookies nécessaires à la navigation sur le site : ces cookies sont strictement nécessaires au fonctionnement du site. Leur suppression peut entrainer des difficultés de navigation.'}
         <br />
         {'Les cookies fonctionnels : ces cookies permettent de personnaliser l’expérience utilisateur. Les seuls cookies déployés sur le présent site internet sont ceux qui sont nécessaires à son fonctionnement. Aucune donnée personnelle n’est collectée.'}
       </p>
-      <h4>
+      <h3 className="titre3">
         {'2.2 GESTION DES COOKIES'}
-      </h4>
+      </h3>
       <p>
         {'Les utilisateurs ont la possibilité d’accepter ou de refuser les cookies au cas par cas ou de les refuser une fois pour toutes en paramétrant leur navigateur. Pour savoir de quelle manière modifier vos préférences en matière de cookies, vous trouverez ci-dessous les liens vers l’aide nécessaire pour accéder au menu de votre navigateur prévu à cet effet :'}
       </p>
@@ -322,21 +322,21 @@ export default function PagePolitiqueDeConfidentialite(): ReactElement {
         </ExternalLink>
         {'.'}
       </p>
-      <h4>
+      <h3 className="titre3">
         {'2.3 DURÉE DE VIE DES COOKIES'}
-      </h4>
+      </h3>
       <p>
         {'Les cookies sont déposés sur le terminal de l’utilisateur pour une durée maximum de 13 mois à compter de la manifestation du consentement de l’utilisateur. Passé ce délai, le consentement sera à nouveau recueilli.'}
       </p>
-      <h4>
+      <h3 className="titre3">
         {'ARTICLE 3 – RESPONSABILITÉ'}
-      </h4>
+      </h3>
       <p>
         {'L’association Droit Pluriel ne saurait garantir à l’utilisateur le secret de la correspondance des courriers électroniques ou de tout autre mode de communication utilisant le support du réseau Internet et pouvant être captés par un tiers, du fait du mode de circulation des données sur ce réseau. De plus, il appartient à chaque utilisateur de prendre toutes les mesures appropriées de façon à protéger ses propres données et/ou logiciels de la contamination d’éventuels virus circulant sur internet. L’association Droit Pluriel ne saurait être responsable des conséquences, directes ou indirectes, pouvant découler de vos erreurs de saisie de coordonnées ou de toute autre information incomplète ou erronée transmise par vos soins via le présent site.'}
       </p>
-      <h4>
+      <h3 className="titre3">
         {'ARTICLE 4 - CONTENU EMBARQUÉ DEPUIS D’AUTRE SITES'}
-      </h4>
+      </h3>
       <p>
         {'Les pages de ce site peuvent inclure des contenus intégrés (par exemple des images, liens…). Le contenu intégré depuis d’autres sites se comporte de la même manière que si le visiteur se rendait sur cet autre site. Ces sites web pourraient collecter des données sur vous, utiliser des cookies, embarquer des outils de suivis tiers, suivre vos interactions avec ces contenus embarqués si vous disposez d’un compte connecté sur leur site web.'}
       </p>

@@ -10,9 +10,9 @@ type QuestionProps = Readonly<{
 export default function Question({ children, titre }: QuestionProps): ReactElement {
   return (
     <div>
-      <h3 className={styles.titre}>
+      <h2 className={styles.title}>
         {titre}
-      </h3>
+      </h2>
       {children}
     </div >
   )

@@ -12,16 +12,6 @@
   margin-bottom: var(--xxl-margin);
 }
 
-.title {
-  font-size: var(--xl-font);
-  font-weight: normal;
-  margin-bottom: var(--xxl-margin);
-}
-
-.title div {
-  font-size: var(--m-font);
-}
-
 .button {
   border-radius: 5rem;
   box-sizing: border-box;

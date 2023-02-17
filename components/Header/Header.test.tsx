@@ -40,7 +40,7 @@ describe('en-tête de page', () => {
     const logo = within(accueil).getByAltText(wording.ACCUEIL)
     expect(logo).toBeInTheDocument()
 
-    const title = within(items[1]).getByRole('heading', { level: 1, name: wording.JUSTICIE })
+    const title = within(items[1]).getByText(wording.JUSTICIE)
     expect(title).toBeInTheDocument()
 
     const nosCriteresDAccessibilite = within(items[2]).getByRole('link', { name: wording.NOS_CRITERES_D_ACCESSIBILITE })
@@ -71,7 +71,7 @@ describe('en-tête de page', () => {
     const logo = within(accueil).getByAltText(wording.ACCUEIL)
     expect(logo).toBeInTheDocument()
 
-    const title = within(items[1]).getByRole('heading', { level: 1, name: wording.JUSTICIE })
+    const title = within(items[1]).getByText(wording.JUSTICIE)
     expect(title).toBeInTheDocument()
 
     const menu = within(items[2]).getByText(wording.MENU)
@@ -127,7 +127,7 @@ describe('en-tête de page', () => {
     const navigationMobile = within(header).getByLabelText(wording.NAVIGATION_MOBILE, { selector: 'nav' })
     const items = within(navigationMobile).getAllByRole('listitem')
 
-    const title = within(items[1]).getByRole('heading', { level: 1, name: wording.JUSTICIE })
+    const title = within(items[1]).getByText(wording.JUSTICIE)
     expect(title).toBeInTheDocument()
   })
 })

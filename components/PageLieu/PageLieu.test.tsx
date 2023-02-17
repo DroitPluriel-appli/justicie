@@ -41,7 +41,7 @@ describe('page d’un lieu', () => {
     // THEN
     const retourAuxResultats = screen.getByRole('button', { name: wording.RETOUR_AUX_RESULTATS })
     expect(retourAuxResultats).toBeInTheDocument()
-    const nom = screen.getByRole('heading', { level: 2, name: lieu.nom })
+    const nom = screen.getByRole('heading', { level: 1, name: lieu.nom })
     expect(nom).toBeInTheDocument()
     const distance = screen.getByText(textMatch(`${lieu.distance} km`), { selector: 'p' })
     expect(distance).toBeInTheDocument()

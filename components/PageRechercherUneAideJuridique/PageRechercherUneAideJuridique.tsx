@@ -22,12 +22,12 @@ export default function PageRechercherUneAideJuridique(): ReactElement {
       >
         {wording.RETOUR_A_L_ACCUEIL}
       </BackLink>
-      <h2 className={styles.title}>
+      <h1 className="titre1">
         {wording.OU_RECHERCHEZ_VOUS}
-        <div>
+        <span>
           {wording.OBLIGATOIRE}
-        </div>
-      </h2>
+        </span>
+      </h1>
       {
         isGPSDenied ? (
           <p>

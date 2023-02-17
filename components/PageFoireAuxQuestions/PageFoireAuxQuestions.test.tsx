@@ -14,13 +14,23 @@ describe('page "Foire aux questions"', () => {
     expect(document.title).toBe(wording.TITLE_FOIRE_AUX_QUESTIONS)
   })
 
+  it('affiche le titre', () => {
+    // WHEN
+    renderFakeComponent(<PageFoireAuxQuestions />)
+
+    // THEN
+    const main = screen.getByRole('main')
+    const titre = within(main).getByRole('heading', { level: 1, name: wording.FOIRE_AUX_QUESTIONS })
+    expect(titre).toBeInTheDocument()
+  })
+
   it('affiche la question et la réponse permettant de savoir quoi faire si aucun lieu ne correspond à ma recherche', () => {
     // WHEN
     renderFakeComponent(<PageFoireAuxQuestions />)
 
     // THEN
     const main = screen.getByRole('main')
-    const question = within(main).getByRole('heading', { level: 3, name: wording.QUESTION_JE_NE_TROUVE_AUCUN_LIEU })
+    const question = within(main).getByRole('heading', { level: 2, name: wording.QUESTION_JE_NE_TROUVE_AUCUN_LIEU })
     expect(question).toBeInTheDocument()
 
     const paragraphe2 = wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[1] +
@@ -48,7 +58,7 @@ describe('page "Foire aux questions"', () => {
 
     // THEN
     const main = screen.getByRole('main')
-    const question = within(main).getByRole('heading', { level: 3, name: wording.QUESTION_EST_CE_QUE_AIDE_GRATUITE })
+    const question = within(main).getByRole('heading', { level: 2, name: wording.QUESTION_EST_CE_QUE_AIDE_GRATUITE })
     expect(question).toBeInTheDocument()
     const reponse = within(main).getByText(wording.REPONSE_EST_CE_QUE_AIDE_GRATUITE, { selector: 'p' })
     expect(reponse).toBeInTheDocument()
@@ -60,7 +70,7 @@ describe('page "Foire aux questions"', () => {
 
     // THEN
     const main = screen.getByRole('main')
-    const question = within(main).getByRole('heading', { level: 3, name: wording.QUESTION_QUI_VA_ME_RECEVOIR })
+    const question = within(main).getByRole('heading', { level: 2, name: wording.QUESTION_QUI_VA_ME_RECEVOIR })
     expect(question).toBeInTheDocument()
     const reponse = within(main).getByText(wording.REPONSE_QUI_VA_ME_RECEVOIR, { selector: 'p' })
     expect(reponse).toBeInTheDocument()
@@ -72,7 +82,7 @@ describe('page "Foire aux questions"', () => {
 
     // THEN
     const main = screen.getByRole('main')
-    const question = within(main).getByRole('heading', { level: 3, name: wording.QUESTION_EST_CE_QUE_L_AVOCAT })
+    const question = within(main).getByRole('heading', { level: 2, name: wording.QUESTION_EST_CE_QUE_L_AVOCAT })
     expect(question).toBeInTheDocument()
     const reponse = within(main).getByText(textMatch(wording.REPONSE_EST_CE_QUE_L_AVOCAT), { selector: 'p' })
     expect(reponse).toBeInTheDocument()
@@ -84,7 +94,7 @@ describe('page "Foire aux questions"', () => {
 
     // THEN
     const main = screen.getByRole('main')
-    const question = within(main).getByRole('heading', { level: 3, name: wording.QUESTION_JE_SUIS_ALLEE_SUR_PLACE })
+    const question = within(main).getByRole('heading', { level: 2, name: wording.QUESTION_JE_SUIS_ALLEE_SUR_PLACE })
     expect(question).toBeInTheDocument()
     const reponse = within(main).getByText(textMatch(wording.REPONSE_JE_SUIS_ALLEE_SUR_PLACE + wording.EMAIL_DROIT_PLURIEL + '.'), { selector: 'p' })
     expect(reponse).toBeInTheDocument()
@@ -99,7 +109,7 @@ describe('page "Foire aux questions"', () => {
 
     // THEN
     const main = screen.getByRole('main')
-    const question = within(main).getByRole('heading', { level: 3, name: wording.QUESTION_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT })
+    const question = within(main).getByRole('heading', { level: 2, name: wording.QUESTION_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT })
     expect(question).toBeInTheDocument()
     const reponse = within(main).getByText(textMatch(wording.REPONSE_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT + wording.EMAIL_DROIT_PLURIEL + '.'), { selector: 'p' })
     expect(reponse).toBeInTheDocument()

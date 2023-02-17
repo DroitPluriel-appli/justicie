@@ -23,16 +23,6 @@
   justify-content: space-between;
 }
 
-.title {
-  font-size: var(--xl-font);
-  font-weight: normal;
-  margin-bottom: var(--xxl-margin);
-}
-
-.title div {
-  font-size: var(--m-font);
-}
-
 .submit {
   text-align: right;
 }

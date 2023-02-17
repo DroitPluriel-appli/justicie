@@ -15,9 +15,9 @@ export default function PageFoireAuxQuestions(): ReactElement {
       <Title>
         {wording.TITLE_FOIRE_AUX_QUESTIONS}
       </Title>
-      <h2>
+      <h1>
         {wording.FOIRE_AUX_QUESTIONS}
-      </h2>
+      </h1>
       <Question titre={wording.QUESTION_JE_NE_TROUVE_AUCUN_LIEU}>
         <p>
           {wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[0]}

@@ -39,7 +39,7 @@ describe('page de recherche par handicap', () => {
     const passer = screen.getByRole('link', { name: wording.PASSER })
     expect(passer).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?lat=${lat}&lon=${lon}`)
 
-    const title = screen.getByRole('heading', { level: 2, name: textMatch(wording.BESOIN_EN_ACCESSIBILITE + wording.FACULTATIF) })
+    const title = screen.getByRole('heading', { level: 1, name: textMatch(wording.BESOIN_EN_ACCESSIBILITE + wording.FACULTATIF) })
     expect(title).toBeInTheDocument()
     criteres.forEach((critere) => {
       const checkbox = screen.getByRole('checkbox', { name: critere.title })

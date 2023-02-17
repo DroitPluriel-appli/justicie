@@ -29,8 +29,8 @@ describe('page pour rechercher une aide juridique par géolocalisation ou par ad
     const retourAlAccueil = screen.getByRole('link', { name: wording.RETOUR_A_L_ACCUEIL })
     expect(retourAlAccueil).toHaveAttribute('href', paths.ACCUEIL)
 
-    const title = screen.getByRole('heading', { level: 2, name: textMatch(wording.OU_RECHERCHEZ_VOUS + wording.OBLIGATOIRE) })
-    expect(title).toBeInTheDocument()
+    const titre = screen.getByRole('heading', { level: 1, name: textMatch(wording.OU_RECHERCHEZ_VOUS + wording.OBLIGATOIRE) })
+    expect(titre).toBeInTheDocument()
 
     const utiliserMaPostionActuelle = screen.getByRole('button', { name: wording.UTILISER_MA_POSITION_ACTUELLE })
     expect(utiliserMaPostionActuelle).toBeInTheDocument()

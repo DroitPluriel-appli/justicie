@@ -29,10 +29,8 @@ export default function MenuDesktop({ isMenuClose }: MenuDesktopPros): ReactElem
             />
           </Link>
         </li>
-        <li>
-          <h1 className={styles.title}>
-            {wording.JUSTICIE}
-          </h1>
+        <li className={styles.title}>
+          {wording.JUSTICIE}
         </li>
         <li>
           <Link href={paths.NOS_CRITERES_D_ACCESSIBILITE}>
