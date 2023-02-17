@@ -107,7 +107,7 @@ describe('page d’un lieu', () => {
     expect(horaire).toBeInTheDocument()
   })
 
-  it('affiche sa permanence', () => {
+  it('affiche plus d’informations', () => {
     // GIVEN
     const lieu = LieuBuilder.cree({ commentaire: 'En partie\nformé' })
 
@@ -118,6 +118,18 @@ describe('page d’un lieu', () => {
     const titre = screen.getByRole('heading', { level: 2, name: wording.PLUS_D_INFORMATIONS })
     expect(titre).toBeInTheDocument()
     const commentaire = screen.getByText(textMatch(lieu.commentaire), { selector: 'pre' })
+    expect(commentaire).toBeInTheDocument()
+  })
+
+  it('indique à l’utilisateur quand il n’y a pas d’informations', () => {
+    // GIVEN
+    const lieu = LieuBuilder.cree({ commentaire: '' })
+
+    // WHEN
+    renderFakeComponent(<PageLieu lieu={lieu} />)
+
+    // THEN
+    const commentaire = screen.getByText(wording.PAS_D_INFORMATIONS_SUPPLEMENTAIRES, { selector: 'pre' })
     expect(commentaire).toBeInTheDocument()
   })
 
@@ -146,6 +158,30 @@ describe('page d’un lieu', () => {
     expect(siteInternet).toHaveAttribute('target', '_blank')
     expect(siteInternet).toHaveAttribute('rel', 'external noopener noreferrer')
     expect(siteInternet.textContent).toBe(wording.CONSULTER_LE_SITE_INTERNET)
+  })
+
+  it('indique à l’utilisateur quand il n’y a pas d’e-mail', () => {
+    // GIVEN
+    const lieu = LieuBuilder.cree({ eMail: '' })
+
+    // WHEN
+    renderFakeComponent(<PageLieu lieu={lieu} />)
+
+    // THEN
+    const eMail = screen.getByText(wording.PAS_D_E_MAIL)
+    expect(eMail).toBeInTheDocument()
+  })
+
+  it('indique à l’utilisateur quand il n’y a pas de site internet', () => {
+    // GIVEN
+    const lieu = LieuBuilder.cree({ siteInternet: '' })
+
+    // WHEN
+    renderFakeComponent(<PageLieu lieu={lieu} />)
+
+    // THEN
+    const siteInternet = screen.getByText(wording.PAS_DE_SITE_INTERNET)
+    expect(siteInternet).toBeInTheDocument()
   })
 
   it('affiche l’ancre pour revenir en haut de page', () => {

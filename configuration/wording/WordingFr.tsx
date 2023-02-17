@@ -120,6 +120,9 @@ export class WordingFr implements Wording {
   readonly KILOMETRES: string = 'kilomètres'
   readonly APPELER_LE_NUMERO: (nom: string, numero: string) => string = (nom: string, numero: string): string => `Appeler ${nom} au ${numero}`
   readonly ENVOYER_UN_EMAIL_A: string = 'Envoyer un e-mail à '
+  readonly PAS_D_INFORMATIONS_SUPPLEMENTAIRES: string = 'Pas d’informations supplémentaires.'
+  readonly PAS_D_E_MAIL: string = 'Pas d’e-mail.'
+  readonly PAS_DE_SITE_INTERNET: string = 'Pas de site internet.'
 
   // Nos critères d’accessibilité
   readonly TITLE_PAGE_NOS_CRITERES_D_ACCESSIBILITE: string = 'Nos critères d’accessibilité' + this.SUFFIXE_TITLE
