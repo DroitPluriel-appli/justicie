@@ -1,16 +1,14 @@
 import dynamic from 'next/dynamic'
 import { ReactElement, useEffect } from 'react'
 
-import { Critere } from '../../backend/entities/Critere'
-import { Lieu } from '../../backend/entities/Lieu'
 import { useDependencies } from '../../configuration/useDependencies'
+import { ResultatsPlanProps } from '../../pages/resultats-plan'
 import { tagResultatsDeRecherche } from '../common/googleAnalyticsTags'
 import Title from '../common/Title/Title'
 import VotreAvis from '../common/VotreAvis/VotreAvis'
 import EnTete from './EnTete/EnTete'
 
-export default function PageResultatsPlan({ lieux, nombreDeResultat, criteresDAccessibiliteSelectionnes }:
-  { lieux: Lieu[], nombreDeResultat: number, criteresDAccessibiliteSelectionnes: Critere[] }): ReactElement {
+export default function PageResultatsPlan({ lieux, nombreDeResultat, criteresDAccessibiliteSelectionnes }: ResultatsPlanProps): ReactElement {
   const { wording, rayonDeRecherche } = useDependencies()
 
   useEffect(() => {

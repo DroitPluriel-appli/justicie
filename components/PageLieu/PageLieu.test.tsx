@@ -10,6 +10,13 @@ describe('page d’un lieu', () => {
   const lat = '48.844928'
   const lon = '2.31016'
 
+  beforeEach(() => {
+    mockRouter.query = {
+      lat,
+      lon,
+    }
+  })
+
   it('affiche le titre de l’onglet', () => {
     // GIVEN
     const lieu = LieuBuilder.cree({ nom: 'La maison de justice de Paris' })
@@ -23,10 +30,6 @@ describe('page d’un lieu', () => {
 
   it('affiche sa description', () => {
     // GIVEN
-    mockRouter.query = {
-      lat,
-      lon,
-    }
     const lieu = LieuBuilder.cree({
       adresse: '34 cours de Verdun',
       codePostal: '1000',

@@ -11,7 +11,7 @@ import Plan from './Plan/Plan'
 describe('page des résultats de recherche affichés sur une carte', () => {
   const { paths, wording } = fakeFrontDependencies
 
-  beforeAll(() => {
+  beforeEach(() => {
     // spyOn continue d'appeller la fonction initiale, or ici elle provoque une erreur
     // car jsdom ne sait pas gérer la création de svg induite par la création du cercle par leaflet
     // eslint-disable-next-line jest/prefer-spy-on
@@ -19,6 +19,11 @@ describe('page des résultats de recherche affichés sur une carte', () => {
 
     // @ts-ignore
     window.dataLayer = { push: jest.fn() }
+
+    mockRouter.query = {
+      lat,
+      lon,
+    }
   })
 
   const lieuA = LieuBuilder.cree({
@@ -67,12 +72,6 @@ describe('page des résultats de recherche affichés sur une carte', () => {
   const rayonDeRecherche = 250
 
   it('affiche le titre de l’onglet', () => {
-    // GIVEN
-    mockRouter.query = {
-      lat,
-      lon,
-    }
-
     // WHEN
     renderFakeComponent(
       <PageResultatsPlan
@@ -123,10 +122,6 @@ describe('page des résultats de recherche affichés sur une carte', () => {
 
   it('affiche une phrase du nombre de lieu trouvé', () => {
     // GIVEN
-    mockRouter.query = {
-      lat,
-      lon,
-    }
     const nombreDeResultat = 1
     const lieu = LieuBuilder.cree()
 
@@ -145,12 +140,6 @@ describe('page des résultats de recherche affichés sur une carte', () => {
   })
 
   it('affiche une phrase quand aucun lieu n’a été trouvé', () => {
-    // GIVEN
-    mockRouter.query = {
-      lat,
-      lon,
-    }
-
     // WHEN
     renderFakeComponent(
       <PageResultatsPlan
@@ -184,16 +173,10 @@ describe('page des résultats de recherche affichés sur une carte', () => {
 
   it('affiche un marker bleu à la position choisie', () => {
     // GIVEN
-    mockRouter.query = {
-      lat,
-      lon,
-    }
     const lieu = LieuBuilder.cree()
 
     // WHEN
-    renderFakeComponent(
-      <Plan lieux={[lieu]} />
-    )
+    renderFakeComponent(<Plan lieux={[lieu]} />)
 
     // THEN
     const main = screen.getByRole('main')
@@ -204,16 +187,10 @@ describe('page des résultats de recherche affichés sur une carte', () => {
 
   it('affiche plusieurs markers de lieux', () => {
     // GIVEN
-    mockRouter.query = {
-      lat,
-      lon,
-    }
     const lieux = [lieuA, lieuB, lieuC]
 
     // WHEN
-    renderFakeComponent(
-      <Plan lieux={lieux} />
-    )
+    renderFakeComponent(<Plan lieux={lieux} />)
 
     // THEN
     const main = screen.getByRole('main')
@@ -230,16 +207,10 @@ describe('page des résultats de recherche affichés sur une carte', () => {
 
   it('change le marker lieu en rouge et + grand au clic et le reset si clic ailleurs', () => {
     // GIVEN
-    mockRouter.query = {
-      lat,
-      lon,
-    }
     const lieux = [lieuA, lieuB]
 
     // WHEN
-    renderFakeComponent(
-      <Plan lieux={lieux} />
-    )
+    renderFakeComponent(<Plan lieux={lieux} />)
 
     const main = screen.getByRole('main')
     const markerLieuA = within(main).getByTitle(lieuA.nom)
@@ -279,16 +250,8 @@ describe('page des résultats de recherche affichés sur une carte', () => {
   })
 
   it('affiche la carte du lieu dans la popup au clic sur un marker', () => {
-    // GIVEN
-    mockRouter.query = {
-      lat,
-      lon,
-    }
-
     // WHEN
-    renderFakeComponent(
-      <Plan lieux={[lieuA]} />
-    )
+    renderFakeComponent(<Plan lieux={[lieuA]} />)
     const main = screen.getByRole('main')
     const markerLieuA = within(main).getByTitle(lieuA.nom)
     fireEvent.click(markerLieuA)
@@ -328,10 +291,6 @@ describe('page des résultats de recherche affichés sur une carte', () => {
 
   it('affiche le lien pour donner son avis quand il y a des résultats', () => {
     // GIVEN
-    mockRouter.query = {
-      lat,
-      lon,
-    }
     const lieu = LieuBuilder.cree()
 
     // WHEN
@@ -350,12 +309,6 @@ describe('page des résultats de recherche affichés sur une carte', () => {
   })
 
   it('n’affiche le lien pour donner son avis quand il n’y a pas de résultat', () => {
-    // GIVEN
-    mockRouter.query = {
-      lat,
-      lon,
-    }
-
     // WHEN
     renderFakeComponent(
       <PageResultatsPlan
@@ -372,10 +325,6 @@ describe('page des résultats de recherche affichés sur une carte', () => {
 
   it('envoie le type d’affichage des résultats, le nombre de résultats et les critères d’accessibilité sélectionnés à Google Analytics', () => {
     // GIVEN
-    mockRouter.query = {
-      lat,
-      lon,
-    }
     const criteresDAccessibiliteSelectionnes: Critere[] = ['pmr', 'visuel']
     const nombreDeResultats = 0
 

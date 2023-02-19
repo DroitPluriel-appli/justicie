@@ -9,13 +9,14 @@ describe('page de recherche par handicap', () => {
   const lat = '48.844928'
   const lon = '2.31016'
 
-  it('affiche le titre de l’onglet', () => {
-    // GIVEN
+  beforeEach(() => {
     mockRouter.query = {
       lat,
       lon,
     }
+  })
 
+  it('affiche le titre de l’onglet', () => {
     // WHEN
     renderFakeComponent(<PageRechercherParHandicap />)
 
@@ -24,12 +25,6 @@ describe('page de recherche par handicap', () => {
   })
 
   it('affiche les liens de navigation, le titre et le formulaire', () => {
-    // GIVEN
-    mockRouter.query = {
-      lat,
-      lon,
-    }
-
     // WHEN
     renderFakeComponent(<PageRechercherParHandicap />)
 

@@ -6,10 +6,7 @@ export default defineConfig({
   test: {
     clearMocks: true,
     coverage: {
-      include: [
-        'backend/**/*.ts',
-        'components/**/*.ts?(x)',
-      ],
+      exclude: ['database/**/*.ts'],
       provider: 'istanbul',
     },
     environment: 'jsdom',

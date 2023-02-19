@@ -6,12 +6,9 @@ import Footer from './Footer'
 
 describe('pied de page', () => {
   const { paths, wording } = fakeFrontDependencies
-
-  beforeAll(() => {
-    window.tarteaucitron = { userInterface: { openPanel: jest.fn() } }
-    // @ts-ignore
-    process.env.NODE_ENV = 'production'
-  })
+  window.tarteaucitron = { userInterface: { openPanel: jest.fn() } }
+  // @ts-ignore
+  process.env.NODE_ENV = 'production'
 
   it('affiche les liens', () => {
     // WHEN

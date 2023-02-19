@@ -1,10 +1,10 @@
-import L, { Circle, Map } from 'leaflet'
+import L from 'leaflet'
 import { createRoot } from 'react-dom/client'
 
 import { Lieu } from '../../../backend/entities/Lieu'
 import CarteLieu from '../CarteLieu/CarteLieu'
 
-export const setMarkerPosition = (viewCenter: L.LatLngExpression, title: string): L.Marker => {
+const setMarkerPosition = (viewCenter: L.LatLngExpression, title: string): L.Marker => {
   const markerPositionSize = 25
   const iconMarkerPosition = L.icon({
     iconAnchor: [markerPositionSize / 2, markerPositionSize / 2],
@@ -12,10 +12,10 @@ export const setMarkerPosition = (viewCenter: L.LatLngExpression, title: string)
     iconUrl: 'marker-position.svg',
   })
 
-  return L.marker(viewCenter, { icon: iconMarkerPosition, title: title })
+  return L.marker(viewCenter, { icon: iconMarkerPosition, title })
 }
 
-export const setMarkersLieux = (lieux: Lieu[], latitude: number, longitude: number): L.Marker[] => {
+const setMarkersLieux = (lieux: Lieu[], latitude: number, longitude: number): L.Marker[] => {
   const markerLieuSizeDefault = 24
   const iconMarkerLieuDefault = L.icon({
     iconAnchor: [markerLieuSizeDefault / 2, markerLieuSizeDefault],
@@ -63,7 +63,7 @@ export const setMarkersLieux = (lieux: Lieu[], latitude: number, longitude: numb
   return markersLieux
 }
 
-export const setCircleRayonDeRecherche = (rayonDeRecherche: number, viewCenter: L.LatLngTuple): Circle => {
+const setCircleRayonDeRecherche = (rayonDeRecherche: number, viewCenter: L.LatLngTuple): L.Circle => {
   const conversionKilometresEnMetres = (kilometres: number): number => 1000 * kilometres
 
   return L.circle(
@@ -76,16 +76,13 @@ export const setCircleRayonDeRecherche = (rayonDeRecherche: number, viewCenter: 
   )
 }
 
-export const initPlan = (lieux: Lieu[], latitude: number, longitude: number, rayonDeRecherche: number, titreMarkerPosition: string): Map => {
-  const credits = '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+export const initPlan = (lieux: Lieu[], latitude: number, longitude: number, rayonDeRecherche: number, titreMarkerPosition: string): L.Map => {
+  const attribution = '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
   const defaultZoom = 15
   const maxZoom = 19
   const tileLayerUrl = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
   const viewCenter: L.LatLngTuple = [latitude, longitude]
-  const mapLayer = L.tileLayer(tileLayerUrl, {
-    attribution: credits,
-    maxZoom: maxZoom,
-  })
+  const mapLayer = L.tileLayer(tileLayerUrl, { attribution, maxZoom })
 
   const map = L.map('map')
     .setView(viewCenter, defaultZoom)
