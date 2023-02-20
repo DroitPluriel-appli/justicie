@@ -8,24 +8,23 @@ import PageResultatsListe from '../components/PageResultats/PageResultatsListe'
 import { criteres } from '../configuration/criteres'
 import { WordingFr } from '../configuration/wording/WordingFr'
 
-export default function Router({ lieux, nombreDeResultat, accessibilites }:
-  { lieux: Lieu[], nombreDeResultat: number, accessibilites: Critere[] }): ReactElement {
+export type ResultatsListeProps = Readonly<{
+  criteresDAccessibiliteSelectionnes: Critere[]
+  lieux: Lieu[]
+  nombreDeResultat: number
+}>
+
+export default function Router({ criteresDAccessibiliteSelectionnes, lieux, nombreDeResultat }: ResultatsListeProps): ReactElement {
   return (
     <PageResultatsListe
-      criteresDAccessibiliteSelectionnes={accessibilites}
+      criteresDAccessibiliteSelectionnes={criteresDAccessibiliteSelectionnes}
       lieux={lieux}
       nombreDeResultat={nombreDeResultat}
     />
   )
 }
 
-type ServerSidePropsResult = Readonly<{
-  lieux: Lieu[]
-  nombreDeResultat: number
-  criteresDAccessibiliteSelectionnes: Critere[]
-}>
-
-export async function getServerSideProps(context: GetServerSidePropsContext): Promise<GetServerSidePropsResult<ServerSidePropsResult>> {
+export async function getServerSideProps(context: GetServerSidePropsContext): Promise<GetServerSidePropsResult<ResultatsListeProps>> {
   if (!Number(context.query.lat) || !Number(context.query.lon)) {
     return { notFound: true }
   }

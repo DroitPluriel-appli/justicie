@@ -9,9 +9,7 @@ const customJestConfig: Config.InitialOptions = {
   collectCoverageFrom: [
     'backend/**/*.ts',
     'components/**/*.ts?(x)',
-    '!backend/*.ts',
-    '!components/*.tsx',
-    '!components/Stepper/*.tsx',
+    'configuration/**/*.ts?(x)',
   ],
   fakeTimers: { now: 1664703388050 }, // 2022-01-01T23:00:00.135Z
   maxWorkers: 4,
