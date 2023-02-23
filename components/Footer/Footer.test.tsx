@@ -1,5 +1,4 @@
 import { fireEvent, screen, within } from '@testing-library/react'
-import { expect } from 'vitest'
 
 import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
 import Footer from './Footer'
@@ -57,6 +56,6 @@ describe('pied de page', () => {
     fireEvent.click(gestionDesCookies)
 
     // THEN
-    expect(window.tarteaucitron.userInterface.openPanel).toHaveBeenCalledOnce()
+    expect(window.tarteaucitron.userInterface.openPanel).toHaveBeenCalledTimes(1)
   })
 })

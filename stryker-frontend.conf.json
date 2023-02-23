@@ -1,21 +1,29 @@
 {
   "$schema": "./node_modules/@stryker-mutator/core/schema/stryker-schema.json",
+  "buildCommand": "npm run transpile",
   "checkers": ["typescript"],
-  "commandRunner": { "command": "yarn test" },
-  "coverageAnalysis": "perTest",
+  "disableTypeChecks": true,
   "htmlReporter": { "fileName": "reports/mutation/mutation-frontend.html" },
   "ignorePatterns": [".github", ".lighthouseci", ".next", ".vscode", ".yarn", "coverage", "lighthouse-ci-reports", "out", "pages", "public"],
+  "ignoreStatic": false,
   "jest": {
+    "config": {
+      "moduleFileExtensions": [
+        "ts",
+        "tsx",
+        "js",
+        "jsx"
+      ],
+      "testMatch": [
+        "<rootDir>/components/**/*(*.)@(test).jsx"
+      ]
+    },
     "configFile": "jest-for-mutation-testing.json"
   },
   "mutate": [
     "components/**/*.ts?(x)",
     "!components/**/*.test.tsx"
   ],
-  "packageManager": "yarn",
-  "reporters": [
-    "html"
-  ],
-  "testRunner": "jest",
-  "tsconfigFile": "tsconfig.json"
+  "packageManager": "npm",
+  "testRunner": "jest"
 }
