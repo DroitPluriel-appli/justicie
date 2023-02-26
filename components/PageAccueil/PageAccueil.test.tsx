@@ -19,40 +19,38 @@ describe('page d’accueil', () => {
     renderFakeComponent(<PageAccueil />)
 
     // THEN
-    const main = screen.getByRole('main')
-
-    const justicie = within(main).getByRole('heading', { level: 1, name: wording.JUSTICIE })
+    const justicie = screen.getByRole('heading', { level: 1, name: wording.JUSTICIE })
     expect(justicie).toBeInTheDocument()
 
-    const problemeDeDroit = within(main).getByRole('heading', { level: 2, name: wording.VOUS_AVEZ_UN_PROBLEME_DE_DROIT })
+    const problemeDeDroit = screen.getByRole('heading', { level: 2, name: wording.VOUS_AVEZ_UN_PROBLEME_DE_DROIT })
     expect(problemeDeDroit).toBeInTheDocument()
-    const trouvezUnConseil = within(main).getByText(wording.TROUVEZ_UN_CONSEIL_JURIDIQUE, { selector: 'p' })
+    const trouvezUnConseil = screen.getByText(wording.TROUVEZ_UN_CONSEIL_JURIDIQUE, { selector: 'p' })
     expect(trouvezUnConseil).toBeInTheDocument()
 
-    const description = within(main).getByText(textMatch(wording.VOUS_AVEZ_UNE_QUESTION_SUR_VOS_DROITS + wording.VOUS_ETES_VICTIME + wording.VOUS_VOULEZ_FAIRE_UNE_ACTION_EN_JUSTICE + wording.VOUS_AVEZ_RECU_UNE_DECISION), { selector: 'p' })
+    const description = screen.getByText(textMatch(wording.VOUS_AVEZ_UNE_QUESTION_SUR_VOS_DROITS + wording.VOUS_ETES_VICTIME + wording.VOUS_VOULEZ_FAIRE_UNE_ACTION_EN_JUSTICE + wording.VOUS_AVEZ_RECU_UNE_DECISION), { selector: 'p' })
     expect(description).toBeInTheDocument()
 
-    const rechercherUneAide = within(main).getByRole('link', { name: wording.RECHERCHER_UNE_AIDE_JURIDIQUE_GRATUITE_ET_ACCESSIBLE })
+    const rechercherUneAide = screen.getByRole('link', { name: wording.RECHERCHER_UNE_AIDE_JURIDIQUE_GRATUITE_ET_ACCESSIBLE })
     expect(rechercherUneAide).toHaveAttribute('href', paths.RECHERCHER_UNE_AIDE_JURIDIQUE)
 
-    const decouvrirNosCriteres = within(main).getByRole('link', { name: wording.DECOUVRIR_NOS_CRITERES })
+    const decouvrirNosCriteres = screen.getByRole('link', { name: wording.DECOUVRIR_NOS_CRITERES })
     expect(decouvrirNosCriteres).toHaveAttribute('href', paths.NOS_CRITERES_D_ACCESSIBILITE)
 
-    const aPropos = within(main).getByRole('heading', { level: 2, name: wording.TITLE_A_PROPOS_DE_DROIT_PLURIEL })
+    const aPropos = screen.getByRole('heading', { level: 2, name: wording.TITLE_A_PROPOS_DE_DROIT_PLURIEL })
     expect(aPropos).toBeInTheDocument()
-    const droitPlurielEstUneAssociation = within(main).getByText(wording.DROIT_PLURIEL_EST_UNE_ASSOCIATION, { selector: 'p' })
+    const droitPlurielEstUneAssociation = screen.getByText(wording.DROIT_PLURIEL_EST_UNE_ASSOCIATION, { selector: 'p' })
     expect(droitPlurielEstUneAssociation).toBeInTheDocument()
 
-    const retrouvezSurNotreSite = within(main).getByText(textMatch(wording.RETROUVEZ_PLUS_D_INFOS + wording.SITE_DROIT_PLURIEL), { selector: 'p' })
+    const retrouvezSurNotreSite = screen.getByText(textMatch(wording.RETROUVEZ_PLUS_D_INFOS + wording.SITE_DROIT_PLURIEL), { selector: 'p' })
     const lienSiteDroitPluriel = within(retrouvezSurNotreSite).getByRole('link', { name: wording.TITRE_LIEN_SITE_DROIT_PLURIEL + wording.NOUVELLE_FENETRE })
     expect(lienSiteDroitPluriel).toHaveAttribute('href', wording.SITE_DROIT_PLURIEL)
     expect(lienSiteDroitPluriel).toHaveAttribute('target', '_blank')
     expect(lienSiteDroitPluriel).toHaveAttribute('rel', 'external noopener noreferrer')
 
-    const nousContacter = within(main).getByRole('heading', { level: 2, name: wording.TITLE_NOUS_CONTACTER })
+    const nousContacter = screen.getByRole('heading', { level: 2, name: wording.TITLE_NOUS_CONTACTER })
     expect(nousContacter).toBeInTheDocument()
 
-    const coordonneesDroitPluriel = within(main).getByText(
+    const coordonneesDroitPluriel = screen.getByText(
       textMatch(`${wording.PAR_EMAIL}${wording.EMAIL_DROIT_PLURIEL}${wording.PAR_TELEPHONE}${wording.TELEPHONE_DROIT_PLURIEL}`), { selector: 'address' }
     )
 
@@ -63,30 +61,30 @@ describe('page d’accueil', () => {
     const lienTelephone = within(coordonneesDroitPluriel).getByRole('link', { name: wording.APPELER_LE_NUMERO(wording.JUSTICIE, wording.TELEPHONE_DROIT_PLURIEL) })
     expect(lienTelephone).toHaveAttribute('href', 'tel:' + wording.TELEPHONE_DROIT_PLURIEL.replaceAll(' ', ''))
     expect(lienTelephone.textContent).toBe(wording.TELEPHONE_DROIT_PLURIEL)
-    const nosActualites = within(main).getByRole('heading', { level: 2, name: wording.TITLE_SUIVEZ_NOS_ACTUALITES })
+    const nosActualites = screen.getByRole('heading', { level: 2, name: wording.TITLE_SUIVEZ_NOS_ACTUALITES })
     expect(nosActualites).toBeInTheDocument()
 
-    const lienFacebook = within(main).getByRole('link', { name: wording.TITRE_LIEN_FACEBOOK + wording.NOUVELLE_FENETRE })
+    const lienFacebook = screen.getByRole('link', { name: wording.TITRE_LIEN_FACEBOOK + wording.NOUVELLE_FENETRE })
     expect(lienFacebook).toHaveAttribute('href', wording.LIEN_FACEBOOK)
     expect(lienFacebook).toHaveAttribute('target', '_blank')
     expect(lienFacebook).toHaveAttribute('rel', 'external noopener noreferrer')
 
-    const lienTwitter = within(main).getByRole('link', { name: wording.TITRE_LIEN_TWITTER + wording.NOUVELLE_FENETRE })
+    const lienTwitter = screen.getByRole('link', { name: wording.TITRE_LIEN_TWITTER + wording.NOUVELLE_FENETRE })
     expect(lienTwitter).toHaveAttribute('href', wording.LIEN_TWITTER)
     expect(lienTwitter).toHaveAttribute('target', '_blank')
     expect(lienTwitter).toHaveAttribute('rel', 'external noopener noreferrer')
 
-    const lienYoutube = within(main).getByRole('link', { name: wording.TITRE_LIEN_YOUTUBE + wording.NOUVELLE_FENETRE })
+    const lienYoutube = screen.getByRole('link', { name: wording.TITRE_LIEN_YOUTUBE + wording.NOUVELLE_FENETRE })
     expect(lienYoutube).toHaveAttribute('href', wording.LIEN_YOUTUBE)
     expect(lienYoutube).toHaveAttribute('target', '_blank')
     expect(lienYoutube).toHaveAttribute('rel', 'external noopener noreferrer')
 
-    const lienLinkedIn = within(main).getByRole('link', { name: wording.TITRE_LIEN_LINKEDIN + wording.NOUVELLE_FENETRE })
+    const lienLinkedIn = screen.getByRole('link', { name: wording.TITRE_LIEN_LINKEDIN + wording.NOUVELLE_FENETRE })
     expect(lienLinkedIn).toHaveAttribute('href', wording.LIEN_LINKEDIN)
     expect(lienLinkedIn).toHaveAttribute('target', '_blank')
     expect(lienLinkedIn).toHaveAttribute('rel', 'external noopener noreferrer')
 
-    const lienInstagram = within(main).getByRole('link', { name: wording.TITRE_LIEN_INSTAGRAM + wording.NOUVELLE_FENETRE })
+    const lienInstagram = screen.getByRole('link', { name: wording.TITRE_LIEN_INSTAGRAM + wording.NOUVELLE_FENETRE })
     expect(lienInstagram).toHaveAttribute('href', wording.LIEN_INSTAGRAM)
     expect(lienInstagram).toHaveAttribute('target', '_blank')
     expect(lienInstagram).toHaveAttribute('rel', 'external noopener noreferrer')

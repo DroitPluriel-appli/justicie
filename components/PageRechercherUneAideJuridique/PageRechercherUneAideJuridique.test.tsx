@@ -62,10 +62,9 @@ describe('page pour rechercher une aide juridique par géolocalisation ou par ad
     mockedGrantedPermissions()
     mockedSuccessedGeolocation(43.296482, 5.36978)
     renderFakeComponent(<PageRechercherUneAideJuridique />)
-    const utiliserMaPostionActuelle = screen.getByRole('button', { name: wording.UTILISER_MA_POSITION_ACTUELLE })
 
     // WHEN
-    fireEvent.click(utiliserMaPostionActuelle)
+    utiliserMaPostionActuelle(wording.UTILISER_MA_POSITION_ACTUELLE)
 
     // THEN
     const utiliserMaPostionActuelleGrisee = await screen.findByRole('button', { name: wording.CHARGEMENT })
@@ -78,13 +77,12 @@ describe('page pour rechercher une aide juridique par géolocalisation ou par ad
     mockedGrantedPermissions()
     mockedErrorGeolocation()
     renderFakeComponent(<PageRechercherUneAideJuridique />)
-    const utiliserMaPostionActuelle = screen.getByRole('button', { name: wording.UTILISER_MA_POSITION_ACTUELLE })
 
     // WHEN
-    fireEvent.click(utiliserMaPostionActuelle)
+    const positionActuelle = utiliserMaPostionActuelle(wording.UTILISER_MA_POSITION_ACTUELLE)
 
     // THEN
-    expect(utiliserMaPostionActuelle).toBeEnabled()
+    expect(positionActuelle).toBeEnabled()
   })
 
   it('ne va pas à l’étape 2 quand c’est un vieu navigateur qui ne connait pas l’API navigator.permissions', () => {
@@ -93,15 +91,14 @@ describe('page pour rechercher une aide juridique par géolocalisation ou par ad
     navigator.permissions = undefined
     mockedErrorGeolocation()
     renderFakeComponent(<PageRechercherUneAideJuridique />)
-    const utiliserMaPostionActuelle = screen.getByRole('button', { name: wording.UTILISER_MA_POSITION_ACTUELLE })
 
     // WHEN
-    fireEvent.click(utiliserMaPostionActuelle)
+    const positionActuelle = utiliserMaPostionActuelle(wording.UTILISER_MA_POSITION_ACTUELLE)
 
     // THEN
     const geolocalisationDesactivée = screen.getByText(wording.GEOLOCALISATION_DESACTIVEE, { selector: 'p' })
     expect(geolocalisationDesactivée).toBeInTheDocument()
-    expect(utiliserMaPostionActuelle).toBeEnabled()
+    expect(positionActuelle).toBeEnabled()
   })
 })
 
@@ -144,4 +141,12 @@ function mockedErrorGeolocation() {
       message: 'string',
     }),
   }
+}
+
+function utiliserMaPostionActuelle(label: string) {
+  const utiliserMaPostionActuelle = screen.getByRole('button', { name: label })
+
+  fireEvent.click(utiliserMaPostionActuelle)
+
+  return utiliserMaPostionActuelle
 }

@@ -11,21 +11,6 @@ import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../con
 describe('page des résultats de recherche affichés sur une carte', () => {
   const { paths, wording } = fakeFrontDependencies
 
-  beforeEach(() => {
-    // spyOn continue d'appeller la fonction initiale, or ici elle provoque une erreur
-    // car jsdom ne sait pas gérer la création de svg induite par la création du cercle par leaflet
-    // eslint-disable-next-line jest/prefer-spy-on
-    L.Circle.prototype.addTo = jest.fn()
-
-    // @ts-ignore
-    window.dataLayer = { push: jest.fn() }
-
-    mockRouter.query = {
-      lat,
-      lon,
-    }
-  })
-
   const lieuA = LieuBuilder.cree({
     adresse: '12 rue du Lieu',
     criteres: {
@@ -70,6 +55,21 @@ describe('page des résultats de recherche affichés sur une carte', () => {
   const lon = '2.31016'
   const moteurTotal = 'on'
   const rayonDeRecherche = 250
+
+  beforeEach(() => {
+    // spyOn continue d'appeller la fonction initiale, or ici elle provoque une erreur
+    // car jsdom ne sait pas gérer la création de svg induite par la création du cercle par leaflet
+    // eslint-disable-next-line jest/prefer-spy-on
+    L.Circle.prototype.addTo = jest.fn()
+
+    // @ts-ignore
+    window.dataLayer = { push: jest.fn() }
+
+    mockRouter.query = {
+      lat,
+      lon,
+    }
+  })
 
   it('affiche le titre de l’onglet', () => {
     // WHEN
@@ -179,8 +179,7 @@ describe('page des résultats de recherche affichés sur une carte', () => {
     renderFakeComponent(<Plan lieux={[lieu]} />)
 
     // THEN
-    const main = screen.getByRole('main')
-    const positionMarker = within(main).getByTitle(wording.TITRE_MARKER_POSITION)
+    const positionMarker = screen.getByTitle(wording.TITRE_MARKER_POSITION)
 
     expect(positionMarker).toBeInTheDocument()
   })
@@ -193,9 +192,8 @@ describe('page des résultats de recherche affichés sur une carte', () => {
     renderFakeComponent(<Plan lieux={lieux} />)
 
     // THEN
-    const main = screen.getByRole('main')
     lieux.forEach((lieu) => {
-      const markerLieu = within(main).getByTitle(lieu.nom)
+      const markerLieu = screen.getByTitle(lieu.nom)
       expect(markerLieu.tagName).toBe('IMG')
       expect(markerLieu).toHaveAttribute('src', 'marker-lieu.svg')
       expect(markerLieu).toHaveStyle({
@@ -208,13 +206,11 @@ describe('page des résultats de recherche affichés sur une carte', () => {
   it('change le marker lieu en rouge et + grand au clic et le reset si clic ailleurs', () => {
     // GIVEN
     const lieux = [lieuA, lieuB]
+    renderFakeComponent(<Plan lieux={lieux} />)
+    const markerLieuA = screen.getByTitle(lieuA.nom)
+    const markerLieuB = screen.getByTitle(lieuB.nom)
 
     // WHEN
-    renderFakeComponent(<Plan lieux={lieux} />)
-
-    const main = screen.getByRole('main')
-    const markerLieuA = within(main).getByTitle(lieuA.nom)
-    const markerLieuB = within(main).getByTitle(lieuB.nom)
     fireEvent.click(markerLieuA)
 
     // THEN
@@ -250,27 +246,27 @@ describe('page des résultats de recherche affichés sur une carte', () => {
   })
 
   it('affiche la carte du lieu dans la popup au clic sur un marker', () => {
-    // WHEN
+    // GIVEN
     renderFakeComponent(<Plan lieux={[lieuA]} />)
-    const main = screen.getByRole('main')
-    const markerLieuA = within(main).getByTitle(lieuA.nom)
-    fireEvent.click(markerLieuA)
+
+    // WHEN
+    afficherLaCarteDuLieu(lieuA.nom)
 
     // THEN
     const champsCarteLieuA = [
-      within(main).getByText(lieuA.nom),
-      within(main).getByText(textMatch(lieuA.adresse + lieuA.codePostal + ' ' + lieuA.ville)),
-      within(main).getByRole('link', { name: wording.APPELER_LE_NUMERO(lieuA.nom, lieuA.telephone) }),
-      within(main).getByText(textMatch(`${lieuA.distance} km`), { selector: 'p' }),
-      within(main).getByText('km', { selector: 'abbr' }),
-      within(main).getByRole('link', { name: wording.LANCER_L_ITINERAIRE_SUR_GOOGLE_MAPS(lieuA.nom) + wording.NOUVELLE_FENETRE }),
-      within(main).getByRole('link', { name: wording.PLUS_D_INFORMATIONS_SUR(lieuA.nom) }),
-      within(main).getByTitle(wording.TITLE_HANDICAP_MOTEUR_TOTAL),
-      within(main).getByTitle(wording.TITLE_HANDICAP_MOTEUR_AVEC_ASSISTANCE),
-      within(main).getByTitle(wording.TITLE_HANDICAP_VISUEL),
-      within(main).getByTitle(wording.TITLE_LANGUE_DES_SIGNES_FRANCAISE),
-      within(main).getByTitle(wording.TITLE_BOUCLE_A_INDUCTION),
-      within(main).getByTitle(wording.TITLE_PERSONNEL_FORME),
+      screen.getByText(lieuA.nom),
+      screen.getByText(textMatch(lieuA.adresse + lieuA.codePostal + ' ' + lieuA.ville)),
+      screen.getByRole('link', { name: wording.APPELER_LE_NUMERO(lieuA.nom, lieuA.telephone) }),
+      screen.getByText(textMatch(`${lieuA.distance} km`), { selector: 'p' }),
+      screen.getByText('km', { selector: 'abbr' }),
+      screen.getByRole('link', { name: wording.LANCER_L_ITINERAIRE_SUR_GOOGLE_MAPS(lieuA.nom) + wording.NOUVELLE_FENETRE }),
+      screen.getByRole('link', { name: wording.PLUS_D_INFORMATIONS_SUR(lieuA.nom) }),
+      screen.getByTitle(wording.TITLE_HANDICAP_MOTEUR_TOTAL),
+      screen.getByTitle(wording.TITLE_HANDICAP_MOTEUR_AVEC_ASSISTANCE),
+      screen.getByTitle(wording.TITLE_HANDICAP_VISUEL),
+      screen.getByTitle(wording.TITLE_LANGUE_DES_SIGNES_FRANCAISE),
+      screen.getByTitle(wording.TITLE_BOUCLE_A_INDUCTION),
+      screen.getByTitle(wording.TITLE_PERSONNEL_FORME),
     ]
     champsCarteLieuA.forEach((champ) => expect(champ).toBeVisible())
 
@@ -348,3 +344,9 @@ describe('page des résultats de recherche affichés sur une carte', () => {
     }))
   })
 })
+
+function afficherLaCarteDuLieu(nom: string) {
+  const markerLieu = screen.getByTitle(nom)
+
+  fireEvent.click(markerLieu)
+}

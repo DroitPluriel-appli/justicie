@@ -164,8 +164,7 @@ describe('page des résultats de recherche affichés en liste', () => {
     )
 
     // THEN
-    const main = screen.getByRole('main')
-    const lists = within(main).getAllByRole('list')
+    const lists = screen.getAllByRole('list')
     const cartesLieux = within(lists[2]).getAllByRole('article')
 
     const champsCarteLieuA = [

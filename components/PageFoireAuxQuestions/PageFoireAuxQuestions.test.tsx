@@ -19,8 +19,7 @@ describe('page "Foire aux questions"', () => {
     renderFakeComponent(<PageFoireAuxQuestions />)
 
     // THEN
-    const main = screen.getByRole('main')
-    const titre = within(main).getByRole('heading', { level: 1, name: wording.FOIRE_AUX_QUESTIONS })
+    const titre = screen.getByRole('heading', { level: 1, name: wording.FOIRE_AUX_QUESTIONS })
     expect(titre).toBeInTheDocument()
   })
 
@@ -29,8 +28,7 @@ describe('page "Foire aux questions"', () => {
     renderFakeComponent(<PageFoireAuxQuestions />)
 
     // THEN
-    const main = screen.getByRole('main')
-    const question = within(main).getByRole('heading', { level: 2, name: wording.QUESTION_JE_NE_TROUVE_AUCUN_LIEU })
+    const question = screen.getByRole('heading', { level: 2, name: wording.QUESTION_JE_NE_TROUVE_AUCUN_LIEU })
     expect(question).toBeInTheDocument()
 
     const paragraphe2 = wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[1] +
@@ -39,16 +37,16 @@ describe('page "Foire aux questions"', () => {
       wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[5] +
       wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[6] + '.'
     const reponse = [
-      within(main).getByText(textMatch(wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[0]), { selector: 'p' }),
-      within(main).getByText(textMatch(paragraphe2), { selector: 'p' }),
-      within(main).getByText(textMatch(wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[7] + wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[8]), { selector: 'p' }),
+      screen.getByText(textMatch(wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[0]), { selector: 'p' }),
+      screen.getByText(textMatch(paragraphe2), { selector: 'p' }),
+      screen.getByText(textMatch(wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[7] + wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[8]), { selector: 'p' }),
     ]
     reponse.forEach((paragraph) => expect(paragraph).toBeInTheDocument())
 
-    const lienTelephone = within(main).getByRole('link', { name: wording.APPELER_LE_NUMERO(wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[3], wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[4]) })
+    const lienTelephone = screen.getByRole('link', { name: wording.APPELER_LE_NUMERO(wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[3], wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[4]) })
     expect(lienTelephone).toHaveAttribute('href', 'tel:' + wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[4].replaceAll(' ', ''))
 
-    const lienMail = within(main).getByRole('link', { name: wording.ENVOYER_UN_EMAIL_A + wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[6] })
+    const lienMail = screen.getByRole('link', { name: wording.ENVOYER_UN_EMAIL_A + wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[6] })
     expect(lienMail).toHaveAttribute('href', 'mailto:' + wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[6].replaceAll(' ', ''))
   })
 
@@ -57,10 +55,9 @@ describe('page "Foire aux questions"', () => {
     renderFakeComponent(<PageFoireAuxQuestions />)
 
     // THEN
-    const main = screen.getByRole('main')
-    const question = within(main).getByRole('heading', { level: 2, name: wording.QUESTION_EST_CE_QUE_AIDE_GRATUITE })
+    const question = screen.getByRole('heading', { level: 2, name: wording.QUESTION_EST_CE_QUE_AIDE_GRATUITE })
     expect(question).toBeInTheDocument()
-    const reponse = within(main).getByText(wording.REPONSE_EST_CE_QUE_AIDE_GRATUITE, { selector: 'p' })
+    const reponse = screen.getByText(wording.REPONSE_EST_CE_QUE_AIDE_GRATUITE, { selector: 'p' })
     expect(reponse).toBeInTheDocument()
   })
 
@@ -69,10 +66,9 @@ describe('page "Foire aux questions"', () => {
     renderFakeComponent(<PageFoireAuxQuestions />)
 
     // THEN
-    const main = screen.getByRole('main')
-    const question = within(main).getByRole('heading', { level: 2, name: wording.QUESTION_QUI_VA_ME_RECEVOIR })
+    const question = screen.getByRole('heading', { level: 2, name: wording.QUESTION_QUI_VA_ME_RECEVOIR })
     expect(question).toBeInTheDocument()
-    const reponse = within(main).getByText(wording.REPONSE_QUI_VA_ME_RECEVOIR, { selector: 'p' })
+    const reponse = screen.getByText(wording.REPONSE_QUI_VA_ME_RECEVOIR, { selector: 'p' })
     expect(reponse).toBeInTheDocument()
   })
 
@@ -81,10 +77,9 @@ describe('page "Foire aux questions"', () => {
     renderFakeComponent(<PageFoireAuxQuestions />)
 
     // THEN
-    const main = screen.getByRole('main')
-    const question = within(main).getByRole('heading', { level: 2, name: wording.QUESTION_EST_CE_QUE_L_AVOCAT })
+    const question = screen.getByRole('heading', { level: 2, name: wording.QUESTION_EST_CE_QUE_L_AVOCAT })
     expect(question).toBeInTheDocument()
-    const reponse = within(main).getByText(textMatch(wording.REPONSE_EST_CE_QUE_L_AVOCAT), { selector: 'p' })
+    const reponse = screen.getByText(textMatch(wording.REPONSE_EST_CE_QUE_L_AVOCAT), { selector: 'p' })
     expect(reponse).toBeInTheDocument()
   })
 
@@ -93,10 +88,9 @@ describe('page "Foire aux questions"', () => {
     renderFakeComponent(<PageFoireAuxQuestions />)
 
     // THEN
-    const main = screen.getByRole('main')
-    const question = within(main).getByRole('heading', { level: 2, name: wording.QUESTION_JE_SUIS_ALLEE_SUR_PLACE })
+    const question = screen.getByRole('heading', { level: 2, name: wording.QUESTION_JE_SUIS_ALLEE_SUR_PLACE })
     expect(question).toBeInTheDocument()
-    const reponse = within(main).getByText(textMatch(wording.REPONSE_JE_SUIS_ALLEE_SUR_PLACE + wording.EMAIL_DROIT_PLURIEL + '.'), { selector: 'p' })
+    const reponse = screen.getByText(textMatch(wording.REPONSE_JE_SUIS_ALLEE_SUR_PLACE + wording.EMAIL_DROIT_PLURIEL + '.'), { selector: 'p' })
     expect(reponse).toBeInTheDocument()
 
     const lienMail = within(reponse).getByRole('link', { name: wording.ENVOYER_UN_EMAIL_A + wording.EMAIL_DROIT_PLURIEL })
@@ -108,10 +102,9 @@ describe('page "Foire aux questions"', () => {
     renderFakeComponent(<PageFoireAuxQuestions />)
 
     // THEN
-    const main = screen.getByRole('main')
-    const question = within(main).getByRole('heading', { level: 2, name: wording.QUESTION_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT })
+    const question = screen.getByRole('heading', { level: 2, name: wording.QUESTION_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT })
     expect(question).toBeInTheDocument()
-    const reponse = within(main).getByText(textMatch(wording.REPONSE_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT + wording.EMAIL_DROIT_PLURIEL + '.'), { selector: 'p' })
+    const reponse = screen.getByText(textMatch(wording.REPONSE_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT + wording.EMAIL_DROIT_PLURIEL + '.'), { selector: 'p' })
     expect(reponse).toBeInTheDocument()
 
     const lienMail = within(reponse).getByRole('link', { name: wording.ENVOYER_UN_EMAIL_A + wording.EMAIL_DROIT_PLURIEL })
