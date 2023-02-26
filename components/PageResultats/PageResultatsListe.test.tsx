@@ -301,7 +301,7 @@ describe('page des résultats de recherche affichés en liste', () => {
 
     // THEN
     const modifierAccessibilite = screen.getByRole('link', { name: wording.MODIFIER_VOTRE_BESOIN_D_ACCESSIBILITE })
-    expect(modifierAccessibilite).toHaveAttribute('href', `${paths.RECHERCHER_PAR_HANDICAP}?bim=${bim}&lat=${lat}&lon=${lon}`)
+    expect(modifierAccessibilite).toHaveAttribute('href', `${paths.RECHERCHER_PAR_HANDICAP}?bim=${bim}&lat=${lat}&lon=${lon}&page=1`)
     expect(modifierAccessibilite.textContent).toBe(wording.BESOINS_D_ACCESSIBILITE + '1')
 
     const navigation = screen.getByRole('navigation', { name: wording.PAGINATION })

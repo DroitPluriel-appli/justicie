@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { ReactElement } from 'react'
 
-import { pagination, urlDePagination } from './pagination'
+import { pagination } from './pagination'
 import { useDependencies } from '../../../configuration/useDependencies'
 
 type PageProps = Readonly<{
@@ -30,7 +30,13 @@ export default function Page({ nombreDeResultat }: PageProps): ReactElement {
             return (
               <li key={page}>
                 <Link
-                  href={urlDePagination(page - 1, paths, query)}
+                  href={{
+                    pathname: paths.RESULTATS_LISTE,
+                    query: {
+                      ...query,
+                      page: page - 1,
+                    },
+                  }}
                   title={wording.PAGE(page)}
                 >
                   {page}

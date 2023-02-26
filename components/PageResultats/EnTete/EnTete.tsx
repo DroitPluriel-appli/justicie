@@ -5,7 +5,7 @@ import styles from './EnTete.module.css'
 import { useDependencies } from '../../../configuration/useDependencies'
 import BackLink from '../../common/BackLink/BackLink'
 import Email from '../../common/Email/Email'
-import { besoinsAccessibilite, buildUrlWithQueryParams, isListe } from '../../common/query'
+import { besoinsAccessibilite, isListe } from '../../common/query'
 import Telephone from '../../common/Telephone/Telephone'
 
 type EnTeteProps = Readonly<{
@@ -32,7 +32,10 @@ export default function EnTete({ nombreDeResultat, rayonDeRecherche = Infinity }
         <ul className={styles.nav}>
           <li className={styles.liste + ' ' + listeStyle}>
             <Link
-              href={buildUrlWithQueryParams(query, paths.RESULTATS_LISTE)}
+              href={{
+                pathname: paths.RESULTATS_LISTE,
+                query,
+              }}
               title={wording.AFFICHEZ_RESULTATS_EN_LISTE}
             >
               {wording.LISTE}
@@ -40,7 +43,10 @@ export default function EnTete({ nombreDeResultat, rayonDeRecherche = Infinity }
           </li>
           <li className={styles.plan + ' ' + planStyle}>
             <Link
-              href={buildUrlWithQueryParams(query, paths.RESULTATS_PLAN)}
+              href={{
+                pathname: paths.RESULTATS_PLAN,
+                query,
+              }}
               title={wording.AFFICHEZ_RESULTATS_EN_PLAN}
             >
               {wording.PLAN}
@@ -51,7 +57,10 @@ export default function EnTete({ nombreDeResultat, rayonDeRecherche = Infinity }
       <ul className={styles.besoins}>
         <li>
           <Link
-            href={buildUrlWithQueryParams(query, paths.RECHERCHER_PAR_HANDICAP)}
+            href={{
+              pathname: paths.RECHERCHER_PAR_HANDICAP,
+              query,
+            }}
             title={wording.MODIFIER_VOTRE_BESOIN_D_ACCESSIBILITE}
           >
             {wording.BESOINS_D_ACCESSIBILITE}
