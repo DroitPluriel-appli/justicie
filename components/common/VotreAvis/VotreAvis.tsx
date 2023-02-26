@@ -1,8 +1,8 @@
 import { ReactElement } from 'react'
 
+import styles from './VotreAvis.module.css'
 import { useDependencies } from '../../../configuration/useDependencies'
 import ExternalLink from '../ExternalLink/ExternalLink'
-import styles from './VotreAvis.module.css'
 
 export default function VotreAvis(): ReactElement {
   const { wording } = useDependencies()

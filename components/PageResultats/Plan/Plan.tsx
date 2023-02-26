@@ -1,10 +1,10 @@
 import 'leaflet/dist/leaflet.css'
 import { ReactElement, useEffect } from 'react'
 
-import { Lieu } from '../../../backend/entities/Lieu'
-import { useDependencies } from '../../../configuration/useDependencies'
 import { initPlan } from './leaflet'
 import styles from './Plan.module.css'
+import { Lieu } from '../../../backend/entities/Lieu'
+import { useDependencies } from '../../../configuration/useDependencies'
 
 type PlanProps = Readonly<{
   lieux: Lieu[]

@@ -1,10 +1,10 @@
 import { screen, within } from '@testing-library/react'
 import mockRouter from 'next-router-mock'
 
+import PageResultatsListe from './PageResultatsListe'
 import { Critere } from '../../backend/entities/Critere'
 import { LieuBuilder } from '../../backend/entities/LieuBuilder'
 import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
-import PageResultatsListe from './PageResultatsListe'
 
 describe('page des résultats de recherche affichés en liste', () => {
   const { paths, wording } = fakeFrontDependencies

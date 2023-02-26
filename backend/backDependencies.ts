@@ -1,6 +1,6 @@
-import dataSource from '../database/dataSource'
 import { LieuLoader } from './entities/LieuLoader'
 import { PostgreSQLLieuLoader } from './infrastructure/gateways/PostgreSQLLieuLoader'
+import dataSource from '../database/dataSource'
 
 type BackDependencies = Readonly<{
   lieuLoader: LieuLoader

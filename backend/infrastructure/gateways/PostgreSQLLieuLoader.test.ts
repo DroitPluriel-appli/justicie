@@ -1,11 +1,11 @@
 import { DataSource } from 'typeorm'
 
+import { PostgreSQLLieuLoader } from './PostgreSQLLieuLoader'
 import dataSource from '../../../database/dataSource'
 import { LieuModel } from '../../../database/models/LieuModel'
 import { LieuModelBuilder } from '../../../database/models/LieuModelBuilder'
 import { Critere } from '../../entities/Critere'
 import { LieuBuilder } from '../../entities/LieuBuilder'
-import { PostgreSQLLieuLoader } from './PostgreSQLLieuLoader'
 
 describe('lieu loader', () => {
   const orm = dataSource.initialize()

@@ -1,7 +1,7 @@
 import { ReactElement } from 'react'
 
-import { useDependencies } from '../../../configuration/useDependencies'
 import styles from './Email.module.css'
+import { useDependencies } from '../../../configuration/useDependencies'
 
 type EmailProps = Readonly<{
   children: string

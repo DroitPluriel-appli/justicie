@@ -1,7 +1,7 @@
 import { screen, within } from '@testing-library/react'
 
-import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
 import PageNosCriteresDAccessibilite from './PageNosCriteresDAccessibilite'
+import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
 
 describe('page des criteres d’accessibilite', () => {
   const { wording } = fakeFrontDependencies

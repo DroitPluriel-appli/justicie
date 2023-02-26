@@ -1,13 +1,13 @@
 import Link from 'next/link'
 import { ReactElement } from 'react'
 
+import styles from './PageAccueil.module.css'
 import { useDependencies } from '../../configuration/useDependencies'
 import Email from '../common/Email/Email'
 import ExternalLink from '../common/ExternalLink/ExternalLink'
 import RetourHautDePage from '../common/RetourHautDePage/RetourHautDePage'
 import Telephone from '../common/Telephone/Telephone'
 import Title from '../common/Title/Title'
-import styles from './PageAccueil.module.css'
 
 export default function PageAccueil(): ReactElement {
   const { wording, paths } = useDependencies()

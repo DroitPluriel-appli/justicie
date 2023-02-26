@@ -1,11 +1,11 @@
 import { ReactElement } from 'react'
 
+import styles from './PageFoireAuxQuestions.module.css'
+import Question from './Question/Question'
 import { useDependencies } from '../../configuration/useDependencies'
 import Email from '../common/Email/Email'
 import Telephone from '../common/Telephone/Telephone'
 import Title from '../common/Title/Title'
-import styles from './PageFoireAuxQuestions.module.css'
-import Question from './Question/Question'
 
 export default function PageFoireAuxQuestions(): ReactElement {
   const { wording } = useDependencies()

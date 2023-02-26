@@ -1,7 +1,7 @@
 import { screen, within } from '@testing-library/react'
 
-import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
 import PageAccueil from './PageAccueil'
+import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
 
 describe('page d’accueil', () => {
   const { paths, wording } = fakeFrontDependencies

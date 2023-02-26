@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import { ReactElement } from 'react'
 
-import { useDependencies } from '../../../configuration/useDependencies'
 import styles from './CritereDAccessibilite.module.css'
+import { useDependencies } from '../../../configuration/useDependencies'
 
 type CritereDAccessibiliteProps = Readonly<{
   description: string

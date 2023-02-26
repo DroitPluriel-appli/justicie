@@ -1,14 +1,14 @@
 import { ReactElement, useEffect } from 'react'
 
+import CarteLieu from './CarteLieu/CarteLieu'
+import EnTete from './EnTete/EnTete'
+import styles from './PageResultatsListe.module.css'
 import { useDependencies } from '../../configuration/useDependencies'
 import { ResultatsListeProps } from '../../pages/resultats-liste'
 import { tagResultatsDeRecherche } from '../common/googleAnalyticsTags'
 import Pagination from '../common/Pagination/Pagination'
 import Title from '../common/Title/Title'
 import VotreAvis from '../common/VotreAvis/VotreAvis'
-import CarteLieu from './CarteLieu/CarteLieu'
-import EnTete from './EnTete/EnTete'
-import styles from './PageResultatsListe.module.css'
 
 export default function PageResultatsListe({ criteresDAccessibiliteSelectionnes, lieux, nombreDeResultat }: ResultatsListeProps): ReactElement {
   const { nombreDeLieuxAffichesParPage, useRouter, wording } = useDependencies()

@@ -2,9 +2,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ReactElement } from 'react'
 
-import { useDependencies } from '../../configuration/useDependencies'
 import styles from './Footer.module.css'
 import { ouvrirGestionDesCookies } from './ouvrirGestionDesCookies'
+import { useDependencies } from '../../configuration/useDependencies'
 
 export default function Footer(): ReactElement {
   const { paths, wording } = useDependencies()

@@ -1,9 +1,9 @@
 import { screen } from '@testing-library/react'
 import mockRouter from 'next-router-mock'
 
+import PageLieu from './PageLieu'
 import { LieuBuilder } from '../../backend/entities/LieuBuilder'
 import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
-import PageLieu from './PageLieu'
 
 describe('page d’un lieu', () => {
   const { wording } = fakeFrontDependencies

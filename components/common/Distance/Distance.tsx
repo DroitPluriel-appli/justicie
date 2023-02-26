@@ -1,7 +1,7 @@
 import { ReactElement, ReactNode } from 'react'
 
-import { useDependencies } from '../../../configuration/useDependencies'
 import styles from './Distance.module.css'
+import { useDependencies } from '../../../configuration/useDependencies'
 
 type DistanceProps = Readonly<{
   children: ReactNode

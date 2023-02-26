@@ -1,11 +1,11 @@
 import Link from 'next/link'
 import { ReactElement } from 'react'
 
+import CritereDAccessibilite from './CritereDAccessibilite/CritereDAccessibilite'
+import styles from './PageRechercherParHandicap.module.css'
 import { useDependencies } from '../../configuration/useDependencies'
 import BackButton from '../common/BackButton/BackButton'
 import Title from '../common/Title/Title'
-import CritereDAccessibilite from './CritereDAccessibilite/CritereDAccessibilite'
-import styles from './PageRechercherParHandicap.module.css'
 
 export default function PageRechercherParHandicap(): ReactElement {
   const { criteres, paths, useRouter, wording } = useDependencies()

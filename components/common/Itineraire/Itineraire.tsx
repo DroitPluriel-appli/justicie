@@ -1,8 +1,8 @@
 import { ReactElement } from 'react'
 
+import styles from './Itineraire.module.css'
 import { useDependencies } from '../../../configuration/useDependencies'
 import ExternalLink from '../ExternalLink/ExternalLink'
-import styles from './Itineraire.module.css'
 
 type ItineraireProps = Readonly<{
   adresse: string

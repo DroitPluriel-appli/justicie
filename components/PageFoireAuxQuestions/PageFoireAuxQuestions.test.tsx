@@ -1,7 +1,7 @@
 import { screen, within } from '@testing-library/react'
 
-import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
 import PageFoireAuxQuestions from './PageFoireAuxQuestions'
+import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
 
 describe('page "Foire aux questions"', () => {
   const { wording } = fakeFrontDependencies

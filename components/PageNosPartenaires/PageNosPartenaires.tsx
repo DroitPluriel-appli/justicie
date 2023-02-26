@@ -1,9 +1,6 @@
 import Image from 'next/image'
 import { ReactElement } from 'react'
 
-import { useDependencies } from '../../configuration/useDependencies'
-import ExternalLink from '../common/ExternalLink/ExternalLink'
-import Title from '../common/Title/Title'
 import LogoAgirSsd from './logo-agir-ssd.jpg'
 import LogoCNCAH from './logo-cncah.png'
 import LogoFPA from './logo-fpa.png'
@@ -12,6 +9,9 @@ import LogoOcto from './LogoOcto'
 import LogoShareIt from './LogoShareIt'
 import LogoWavestone from './LogoWavestone'
 import styles from './PageNosPartenaires.module.css'
+import { useDependencies } from '../../configuration/useDependencies'
+import ExternalLink from '../common/ExternalLink/ExternalLink'
+import Title from '../common/Title/Title'
 
 export default function PageNosPartenaires(): ReactElement {
   const { wording } = useDependencies()

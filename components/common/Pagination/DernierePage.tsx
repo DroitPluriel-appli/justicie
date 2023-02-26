@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import { ReactElement } from 'react'
 
-import { useDependencies } from '../../../configuration/useDependencies'
 import { pagination, urlDePagination } from './pagination'
+import { useDependencies } from '../../../configuration/useDependencies'
 
 type DernierePageProps = Readonly<{
   nombreDeResultat: number

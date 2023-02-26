@@ -1,7 +1,7 @@
 import { ReactElement } from 'react'
 
-import { useDependencies } from '../../../configuration/useDependencies'
 import styles from './RetourHautDePage.module.css'
+import { useDependencies } from '../../../configuration/useDependencies'
 
 export default function RetourHautDePage(): ReactElement {
   const { wording } = useDependencies()

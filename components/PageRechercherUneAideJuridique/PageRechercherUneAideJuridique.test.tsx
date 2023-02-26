@@ -1,8 +1,8 @@
 import { fireEvent, screen } from '@testing-library/react'
 import mockRouter from 'next-router-mock'
 
-import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
 import PageRechercherUneAideJuridique from './PageRechercherUneAideJuridique'
+import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
 
 describe('page pour rechercher une aide juridique par géolocalisation ou par adresse', () => {
   const { paths, wording } = fakeFrontDependencies
