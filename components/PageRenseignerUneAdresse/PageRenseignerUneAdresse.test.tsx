@@ -1,9 +1,9 @@
 import { fireEvent, screen, waitFor, within } from '@testing-library/react'
 import mockRouter from 'next-router-mock'
 
-import { fakeFrontDependencies, renderFakeComponent } from '../../configuration/testHelper'
 import PageRenseignerUneAdresse from './PageRenseignerUneAdresse'
 import { AdresseJson } from './usePageRenseignerUneAdresse'
+import { fakeFrontDependencies, renderFakeComponent } from '../../configuration/testHelper'
 
 describe('page pour renseigner une adresse', () => {
   const { paths, wording } = fakeFrontDependencies

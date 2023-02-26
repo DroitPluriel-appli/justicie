@@ -1,8 +1,8 @@
 import { screen } from '@testing-library/react'
 import mockRouter from 'next-router-mock'
 
-import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
 import PageRechercherParHandicap from './PageRechercherParHandicap'
+import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
 
 describe('page de recherche par handicap', () => {
   const { criteres, paths, wording } = fakeFrontDependencies

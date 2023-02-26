@@ -1,11 +1,11 @@
 import Link from 'next/link'
 import { ReactElement } from 'react'
 
+import styles from './PageRechercherUneAideJuridique.module.css'
+import { usePageRechercherUneAideJuridique } from './usePageRechercherUneAideJuridique'
 import { useDependencies } from '../../configuration/useDependencies'
 import BackLink from '../common/BackLink/BackLink'
 import Title from '../common/Title/Title'
-import styles from './PageRechercherUneAideJuridique.module.css'
-import { usePageRechercherUneAideJuridique } from './usePageRechercherUneAideJuridique'
 
 export default function PageRechercherUneAideJuridique(): ReactElement {
   const { paths, wording } = useDependencies()

@@ -26,12 +26,8 @@
   "ignorePatterns": [
     "public",
     "jest.config.ts",
-    "jest.setup.ts",
     "lighthouserc.js",
-    "next.config.js",
-    "sentry.client.config.js",
-    "sentry.server.config.js",
-    "svgMock.tsx"
+    "next.config.js"
   ],
   "parser": "@typescript-eslint/parser",
   "plugins": ["unused-imports"],

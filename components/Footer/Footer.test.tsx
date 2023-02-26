@@ -1,7 +1,7 @@
 import { fireEvent, screen, within } from '@testing-library/react'
 
-import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
 import Footer from './Footer'
+import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
 
 describe('pied de page', () => {
   const { paths, wording } = fakeFrontDependencies

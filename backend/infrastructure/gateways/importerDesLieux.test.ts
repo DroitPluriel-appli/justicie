@@ -1,9 +1,9 @@
 import { DataSource, Repository } from 'typeorm'
 
+import { importeDesLieux } from './importerDesLieux'
 import dataSource from '../../../database/dataSource'
 import { LieuModel } from '../../../database/models/LieuModel'
 import { LieuModelBuilder } from '../../../database/models/LieuModelBuilder'
-import { importeDesLieux } from './importerDesLieux'
 
 describe('importer des lieux', () => {
   let orm: Promise<DataSource>

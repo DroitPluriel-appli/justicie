@@ -1,9 +1,9 @@
 import { ReactElement } from 'react'
 
+import CritereDAccessibilite from './CritereDAccessibilite/CritereDAccessibilite'
 import { useDependencies } from '../../configuration/useDependencies'
 import RetourHautDePage from '../common/RetourHautDePage/RetourHautDePage'
 import Title from '../common/Title/Title'
-import CritereDAccessibilite from './CritereDAccessibilite/CritereDAccessibilite'
 
 export default function PageNosCriteresDAccessibilite(): ReactElement {
   const { criteres, wording } = useDependencies()

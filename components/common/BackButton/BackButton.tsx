@@ -1,7 +1,7 @@
 import { ReactElement, ReactNode, useCallback } from 'react'
 
-import { useDependencies } from '../../../configuration/useDependencies'
 import styles from './BackButton.module.css'
+import { useDependencies } from '../../../configuration/useDependencies'
 
 type BackButtonProps = Readonly<{
   children: ReactNode

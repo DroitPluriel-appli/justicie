@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react'
 
-import { fakeFrontDependencies, renderFakeComponent } from '../../../configuration/testHelper'
 import RetourHautDePage from './RetourHautDePage'
+import { fakeFrontDependencies, renderFakeComponent } from '../../../configuration/testHelper'
 
 describe('retour en haut de page', () => {
   const { wording } = fakeFrontDependencies

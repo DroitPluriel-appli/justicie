@@ -1,7 +1,7 @@
 import { ReactElement } from 'react'
 
-import ExternalLink from '../ExternalLink/ExternalLink'
 import styles from './SiteInternet.module.css'
+import ExternalLink from '../ExternalLink/ExternalLink'
 
 type SiteInternetProps = Readonly<{
   children: string

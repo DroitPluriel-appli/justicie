@@ -1,12 +1,12 @@
 import Link from 'next/link'
 import { ReactElement } from 'react'
 
+import styles from './EnTete.module.css'
 import { useDependencies } from '../../../configuration/useDependencies'
 import BackLink from '../../common/BackLink/BackLink'
 import Email from '../../common/Email/Email'
 import { besoinsAccessibilite, buildUrlWithQueryParams, isListe } from '../../common/query'
 import Telephone from '../../common/Telephone/Telephone'
-import styles from './EnTete.module.css'
 
 type EnTeteProps = Readonly<{
   nombreDeResultat: number

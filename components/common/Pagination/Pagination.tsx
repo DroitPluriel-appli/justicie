@@ -1,10 +1,10 @@
 import { ReactElement } from 'react'
 
-import { useDependencies } from '../../../configuration/useDependencies'
 import DernierePage from './DernierePage'
 import Page from './Page'
 import styles from './Pagination.module.css'
 import PremierePage from './PremierePage'
+import { useDependencies } from '../../../configuration/useDependencies'
 
 type PaginationProps = Readonly<{
   nombreDeResultat: number

@@ -2,11 +2,11 @@ import { fireEvent, screen, within } from '@testing-library/react'
 import L from 'leaflet'
 import mockRouter from 'next-router-mock'
 
+import PageResultatsPlan from './PageResultatsPlan'
+import Plan from './Plan/Plan'
 import { Critere } from '../../backend/entities/Critere'
 import { LieuBuilder } from '../../backend/entities/LieuBuilder'
 import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
-import PageResultatsPlan from './PageResultatsPlan'
-import Plan from './Plan/Plan'
 
 describe('page des résultats de recherche affichés sur une carte', () => {
   const { paths, wording } = fakeFrontDependencies

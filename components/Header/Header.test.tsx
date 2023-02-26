@@ -1,7 +1,7 @@
 import { fireEvent, screen, within } from '@testing-library/react'
 
-import { fakeFrontDependencies, renderFakeComponent } from '../../configuration/testHelper'
 import Header from './Header'
+import { fakeFrontDependencies, renderFakeComponent } from '../../configuration/testHelper'
 
 describe('en-tête de page', () => {
   const { paths, wording } = fakeFrontDependencies

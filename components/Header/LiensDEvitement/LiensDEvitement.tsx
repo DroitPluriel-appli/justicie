@@ -1,7 +1,7 @@
 import { ReactElement } from 'react'
 
-import { useDependencies } from '../../../configuration/useDependencies'
 import styles from './LiensDEvitement.module.css'
+import { useDependencies } from '../../../configuration/useDependencies'
 
 export default function LiensDEvitement(): ReactElement {
   const { wording } = useDependencies()

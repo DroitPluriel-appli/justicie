@@ -1,5 +1,6 @@
 import { ReactElement } from 'react'
 
+import styles from './PageLieu.module.css'
 import { Lieu } from '../../backend/entities/Lieu'
 import { useDependencies } from '../../configuration/useDependencies'
 import BackButton from '../common/BackButton/BackButton'
@@ -13,7 +14,6 @@ import SiteInternet from '../common/SiteInternet/SiteInternet'
 import Telephone from '../common/Telephone/Telephone'
 import Title from '../common/Title/Title'
 import VotreAvis from '../common/VotreAvis/VotreAvis'
-import styles from './PageLieu.module.css'
 
 export default function PageLieu({ lieu }: { lieu: Lieu }): ReactElement {
   const { useRouter, wording } = useDependencies()

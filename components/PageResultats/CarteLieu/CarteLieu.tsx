@@ -1,5 +1,6 @@
 import { ReactElement } from 'react'
 
+import styles from './CarteLieu.module.css'
 import { Lieu } from '../../../backend/entities/Lieu'
 import { useDependencies } from '../../../configuration/useDependencies'
 import CriteresDAccessibilites from '../../common/CriteresDAccessibilites/CriteresDAccessibilites'
@@ -7,7 +8,6 @@ import Distance from '../../common/Distance/Distance'
 import Itineraire from '../../common/Itineraire/Itineraire'
 import PlusDInformations from '../../common/PlusDInformations/PlusDInformations'
 import Telephone from '../../common/Telephone/Telephone'
-import styles from './CarteLieu.module.css'
 
 type CarteLieuProps = Readonly<{
   latitude: number

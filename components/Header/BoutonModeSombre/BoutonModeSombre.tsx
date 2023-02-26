@@ -1,8 +1,8 @@
 import { ReactElement } from 'react'
 
-import { useDependencies } from '../../../configuration/useDependencies'
 import styles from './BoutonModeSombre.module.css'
 import { useBoutonModeSombre } from './useBoutonModeSombre'
+import { useDependencies } from '../../../configuration/useDependencies'
 
 export function BoutonModeSombre(): ReactElement {
   const { wording } = useDependencies()

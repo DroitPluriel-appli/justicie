@@ -1,12 +1,12 @@
 import dynamic from 'next/dynamic'
 import { ReactElement, useEffect } from 'react'
 
+import EnTete from './EnTete/EnTete'
 import { useDependencies } from '../../configuration/useDependencies'
 import { ResultatsPlanProps } from '../../pages/resultats-plan'
 import { tagResultatsDeRecherche } from '../common/googleAnalyticsTags'
 import Title from '../common/Title/Title'
 import VotreAvis from '../common/VotreAvis/VotreAvis'
-import EnTete from './EnTete/EnTete'
 
 export default function PageResultatsPlan({ lieux, nombreDeResultat, criteresDAccessibiliteSelectionnes }: ResultatsPlanProps): ReactElement {
   const { wording, rayonDeRecherche } = useDependencies()

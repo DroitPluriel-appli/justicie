@@ -1,10 +1,10 @@
 import { ReactElement } from 'react'
 
+import styles from './PagePolitiqueDeConfidentialite.module.css'
 import { useDependencies } from '../../configuration/useDependencies'
 import Email from '../common/Email/Email'
 import ExternalLink from '../common/ExternalLink/ExternalLink'
 import Title from '../common/Title/Title'
-import styles from './PagePolitiqueDeConfidentialite.module.css'
 
 export default function PagePolitiqueDeConfidentialite(): ReactElement {
   const { wording } = useDependencies()

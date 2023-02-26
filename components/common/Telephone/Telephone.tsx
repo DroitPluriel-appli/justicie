@@ -1,7 +1,7 @@
 import { ReactElement } from 'react'
 
-import { useDependencies } from '../../../configuration/useDependencies'
 import styles from './Telephone.module.css'
+import { useDependencies } from '../../../configuration/useDependencies'
 
 type TelephoneProps = Readonly<{
   children: string

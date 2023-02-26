@@ -1,7 +1,7 @@
 import { fireEvent, screen } from '@testing-library/react'
 
-import { fakeFrontDependencies, renderFakeComponent } from '../../../configuration/testHelper'
 import { BoutonModeSombre } from './BoutonModeSombre'
+import { fakeFrontDependencies, renderFakeComponent } from '../../../configuration/testHelper'
 
 describe('bouton mode sombre', () => {
   const { wording } = fakeFrontDependencies
