@@ -20,7 +20,14 @@ export default function PageRechercherParHandicap(): ReactElement {
         <BackButton>
           {wording.MODIFIER_L_ADRESSE}
         </BackButton>
-        <Link href={`${paths.RESULTATS_LISTE}?lat=${String(query.lat)}&lon=${String(query.lon)}`}>
+        <Link href={{
+          pathname: paths.RESULTATS_LISTE,
+          query: {
+            lat: query.lat,
+            lon: query.lon,
+          },
+        }}
+        >
           {wording.PASSER}
         </Link>
       </div>

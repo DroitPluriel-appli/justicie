@@ -1,12 +1,5 @@
 import { ParsedUrlQuery } from 'querystring'
 
-import { Paths } from '../../../configuration/Paths'
-import { buildUrlWithQueryParams } from '../query'
-
-export const urlDePagination = (index: number, paths: Paths, query: ParsedUrlQuery): string => {
-  return `${buildUrlWithQueryParams(query, paths.RESULTATS_LISTE)}&page=${index}`
-}
-
 export function pagination(nombreDeResultat: number, nombreDeLieuxAffichesParPage: number, query: ParsedUrlQuery) {
   const nombreDePage = Math.trunc(nombreDeResultat / nombreDeLieuxAffichesParPage + (nombreDeResultat % nombreDeLieuxAffichesParPage > 0 ? 1 : 0))
   const pageCourante = query.page === undefined ? 0 : Number(query.page)

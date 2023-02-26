@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { ReactElement } from 'react'
 
-import { pagination, urlDePagination } from './pagination'
+import { pagination } from './pagination'
 import { useDependencies } from '../../../configuration/useDependencies'
 
 export default function PremierePage(): ReactElement {
@@ -22,7 +22,14 @@ export default function PremierePage(): ReactElement {
       <path d="M2.9873 6.07329L7.85293 10.5899L6.47773 11.8637L0.147159 6L6.47773 0.136306L7.85293 1.41008L2.9873 5.92671L2.90834 6L2.9873 6.07329Z" />
     </svg>
   ) : (
-    <Link href={urlDePagination(0, paths, query)}>
+    <Link href={{
+      pathname: paths.RESULTATS_LISTE,
+      query: {
+        ...query,
+        page: 0,
+      },
+    }}
+    >
       <svg
         aria-label={wording.PREMIERE_PAGE}
         height="12"
