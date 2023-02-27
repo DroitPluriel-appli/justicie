@@ -81,10 +81,9 @@ describe('en-tête de page', () => {
   it('affiche le menu mobile quand on appuie sur le burger menu', () => {
     // GIVEN
     renderFakeComponent(<Header />)
-    const burgerMenu = screen.getByRole('button', { name: wording.MENU })
 
     // WHEN
-    fireEvent.click(burgerMenu)
+    ouvrirLeBurgerMenu(wording.MENU)
 
     // THEN
     const header = screen.getByRole('banner')
@@ -115,12 +114,10 @@ describe('en-tête de page', () => {
   it('affiche le menu mobile quand on appuie sur le burger menu puis le ferme', () => {
     // GIVEN
     renderFakeComponent(<Header />)
-    const burgerMenu = screen.getByRole('button', { name: wording.MENU })
-    fireEvent.click(burgerMenu)
-    const fermer = screen.getByRole('button', { name: wording.FERMER })
+    ouvrirLeBurgerMenu(wording.MENU)
 
     // WHEN
-    fireEvent.click(fermer)
+    fermerLeBurgerMenu(wording.FERMER)
 
     // THEN
     const header = screen.getByRole('banner')
@@ -131,3 +128,15 @@ describe('en-tête de page', () => {
     expect(title).toBeInTheDocument()
   })
 })
+
+function ouvrirLeBurgerMenu(label: string) {
+  cliquer(label)
+}
+
+function fermerLeBurgerMenu(label: string) {
+  cliquer(label)
+}
+
+function cliquer(label: string) {
+  fireEvent.click(screen.getByRole('button', { name: label }))
+}

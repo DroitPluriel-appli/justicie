@@ -17,11 +17,10 @@ describe('page des criteres d’accessibilite', () => {
   it('affiche le contenu', () => {
     // WHEN
     renderFakeComponent(<PageNosCriteresDAccessibilite />)
-    const main = screen.getByRole('main')
-    const articles = within(main).getAllByRole('article')
+    const articles = screen.getAllByRole('article')
 
     // THEN
-    const titre = within(main).getByRole('heading', { level: 1, name: wording.NOS_CRITERES_D_ACCESSIBILITE })
+    const titre = screen.getByRole('heading', { level: 1, name: wording.NOS_CRITERES_D_ACCESSIBILITE })
     expect(titre).toBeInTheDocument()
 
     const headerHandicapMoteurTotal = within(articles[0]).getByRole('banner')

@@ -5,9 +5,12 @@ import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../con
 
 describe('pied de page', () => {
   const { paths, wording } = fakeFrontDependencies
-  window.tarteaucitron = { userInterface: { openPanel: jest.fn() } }
-  // @ts-ignore
-  process.env.NODE_ENV = 'production'
+
+  beforeEach(() => {
+    window.tarteaucitron = { userInterface: { openPanel: jest.fn() } }
+    // @ts-ignore
+    process.env.NODE_ENV = 'production'
+  })
 
   it('affiche les liens', () => {
     // WHEN
@@ -48,14 +51,18 @@ describe('pied de page', () => {
   it('ouvre le panneau de gestion des cookies', () => {
     // GIVEN
     renderFakeComponent(<Footer />)
-    const footer = screen.getByRole('contentinfo')
-    const sections = within(footer).getAllByRole('region')
-    const gestionDesCookies = within(sections[1]).getByRole('button')
 
     // WHEN
-    fireEvent.click(gestionDesCookies)
+    ouvrirLePanneauDeGestionDesCookies()
 
     // THEN
     expect(window.tarteaucitron.userInterface.openPanel).toHaveBeenCalledTimes(1)
   })
 })
+
+function ouvrirLePanneauDeGestionDesCookies() {
+  const footer = screen.getByRole('contentinfo')
+  const sections = within(footer).getAllByRole('region')
+  const gestionDesCookies = within(sections[1]).getByRole('button')
+  fireEvent.click(gestionDesCookies)
+}

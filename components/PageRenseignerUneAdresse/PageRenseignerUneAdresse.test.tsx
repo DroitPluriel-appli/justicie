@@ -43,14 +43,11 @@ describe('page pour renseigner une adresse', () => {
     const query = 'adresse inconnue'
     mockedFetch([])
     renderFakeComponent(<PageRenseignerUneAdresse />)
-    const formulaire = screen.getByRole('search')
-    const renseignerUneAdresse = within(formulaire).getByPlaceholderText(wording.RENSEIGNER_UNE_ADRESSE)
-    const adresseInconnue = { target: { value: query } }
-    fireEvent.change(renseignerUneAdresse, adresseInconnue)
-    const validerLAdresse = within(formulaire).getByRole('button', { name: wording.VALIDER_L_ADRESSE })
+    const form = formulaire()
+    form.entrerUneAdresse(query, wording.RENSEIGNER_UNE_ADRESSE)
 
     // WHEN
-    fireEvent.click(validerLAdresse)
+    const valider = form.validerLAdresse(wording.VALIDER_L_ADRESSE)
 
     // THEN
     await waitFor(() => {
@@ -58,7 +55,7 @@ describe('page pour renseigner une adresse', () => {
       url.searchParams.append('q', query)
       expect(global.fetch).toHaveBeenNthCalledWith(1, url)
     })
-    expect(validerLAdresse).toBeDisabled()
+    expect(valider).toBeDisabled()
   })
 
   it('affiche des résultats quand il y a au moins 4 caractères renseignés avec une latence de 500 ms', async () => {
@@ -84,12 +81,10 @@ describe('page pour renseigner une adresse', () => {
       },
     ])
     renderFakeComponent(<PageRenseignerUneAdresse />)
-    const formulaire = screen.getByRole('search')
-    const renseignerUneAdresse = within(formulaire).getByPlaceholderText(wording.RENSEIGNER_UNE_ADRESSE)
-    const adresse = { target: { value: '34 avenue de lopera' } }
+    const form = formulaire()
 
     // WHEN
-    fireEvent.change(renseignerUneAdresse, adresse)
+    form.entrerUneAdresse('34 avenue de lopera', wording.RENSEIGNER_UNE_ADRESSE)
 
     // THEN
     const list = await screen.findByRole('listbox')
@@ -101,12 +96,10 @@ describe('page pour renseigner une adresse', () => {
   it('n’affiche pas de résultats quand il y a moins de 4 caractères renseignés', () => {
     // GIVEN
     renderFakeComponent(<PageRenseignerUneAdresse />)
-    const formulaire = screen.getByRole('search')
-    const renseignerUneAdresse = within(formulaire).getByPlaceholderText(wording.RENSEIGNER_UNE_ADRESSE)
-    const adresse = { target: { value: '34' } }
+    const form = formulaire()
 
     // WHEN
-    fireEvent.change(renseignerUneAdresse, adresse)
+    form.entrerUneAdresse('34', wording.RENSEIGNER_UNE_ADRESSE)
 
     // THEN
     const list = screen.getByRole('listbox')
@@ -128,22 +121,17 @@ describe('page pour renseigner une adresse', () => {
       },
     ])
     renderFakeComponent(<PageRenseignerUneAdresse />)
-    const formulaire = screen.getByRole('search')
-    const renseignerUneAdresse = within(formulaire).getByPlaceholderText(wording.RENSEIGNER_UNE_ADRESSE)
-    const adresse = { target: { value: '34 avenue de lopera' } }
-    fireEvent.change(renseignerUneAdresse, adresse)
-    const list = screen.getByRole('listbox')
-    const resultats = await within(list).findAllByRole('option')
-    fireEvent.click(resultats[0])
-    const effacerLAdresse = screen.getByRole('button', { name: wording.EFFACER_L_ADRESSE })
+    const form = formulaire()
+    form.entrerUneAdresse('34 avenue de lopera', wording.RENSEIGNER_UNE_ADRESSE)
+    await form.selectionnerUneAdresse()
 
     // WHEN
-    fireEvent.click(effacerLAdresse)
+    form.effacerLAdresse(wording.EFFACER_L_ADRESSE)
 
     // THEN
     // const adresseEffacee = within(formulaire).getByPlaceholderText(wording.RENSEIGNER_UNE_ADRESSE)
     // expect(adresseEffacee).toHaveValue('')
-    const validerLAdresse = within(formulaire).getByRole('button', { name: wording.VALIDER_L_ADRESSE })
+    const validerLAdresse = within(form.formulaire).getByRole('button', { name: wording.VALIDER_L_ADRESSE })
     expect(validerLAdresse).toBeDisabled()
   })
 
@@ -161,17 +149,12 @@ describe('page pour renseigner une adresse', () => {
       },
     ])
     renderFakeComponent(<PageRenseignerUneAdresse />)
-    const formulaire = screen.getByRole('search')
-    const renseignerUneAdresse = within(formulaire).getByPlaceholderText(wording.RENSEIGNER_UNE_ADRESSE)
-    const adresse = { target: { value: '34 a' } }
-    fireEvent.change(renseignerUneAdresse, adresse)
-    const list = screen.getByRole('listbox')
-    const resultats = await within(list).findAllByRole('option')
-    fireEvent.click(resultats[0])
-    const validerLAdresse = within(formulaire).getByRole('button', { name: wording.VALIDER_L_ADRESSE })
+    const form = formulaire()
+    form.entrerUneAdresse('34 avenue de lopera', wording.RENSEIGNER_UNE_ADRESSE)
+    await form.selectionnerUneAdresse()
 
     // WHEN
-    fireEvent.click(validerLAdresse)
+    form.validerLAdresse(wording.VALIDER_L_ADRESSE)
 
     // THEN
     await waitFor(() => {
@@ -183,4 +166,30 @@ describe('page pour renseigner une adresse', () => {
 function mockedFetch(adresses: AdresseJson[]) {
   // @ts-ignore
   jest.spyOn(global, 'fetch').mockResolvedValue({ json: () => Promise.resolve({ features: adresses }) })
+}
+
+function formulaire() {
+  const formulaire = screen.getByRole('search')
+
+  return {
+    effacerLAdresse: (label: string) => {
+      fireEvent.click(within(formulaire).getByRole('button', { name: label }))
+    },
+    entrerUneAdresse: (value: string, label: string) => {
+      const renseignerUneAdresse = within(formulaire).getByPlaceholderText(label)
+      const adresse = { target: { value } }
+      fireEvent.change(renseignerUneAdresse, adresse)
+    },
+    formulaire,
+    selectionnerUneAdresse: async () => {
+      const list = within(formulaire).getByRole('listbox')
+      const resultats = await within(list).findAllByRole('option')
+      fireEvent.click(resultats[0])
+    },
+    validerLAdresse: (label: string) => {
+      const valider = within(formulaire).getByRole('button', { name: label })
+      fireEvent.click(valider)
+      return valider
+    },
+  }
 }

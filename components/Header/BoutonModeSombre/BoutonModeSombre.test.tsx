@@ -8,23 +8,34 @@ describe('bouton mode sombre', () => {
 
   it('toggle le mode sombre au clic sur le bouton mode Sombre', () => {
     // GIVEN
-    renderFakeComponent(<BoutonModeSombre />)
-    const boutonModeSombre = screen.getByRole('button', { name: wording.MODE_SOMBRE })
     const setItem = jest.spyOn(Storage.prototype, 'setItem')
     const removeItem = jest.spyOn(Storage.prototype, 'removeItem')
+    renderFakeComponent(<BoutonModeSombre />)
 
     // WHEN
-    fireEvent.click(boutonModeSombre)
+    afficheLeThemeSombre(wording.MODE_SOMBRE)
 
     // THEN
     expect(document.body).toHaveClass('themeDark')
     expect(setItem).toHaveBeenCalledWith('themeDark', 'true')
 
     // WHEN
-    fireEvent.click(boutonModeSombre)
+    afficheLeThemeClair(wording.MODE_SOMBRE)
 
     // THEN
     expect(document.body).toHaveClass('themeLight')
     expect(removeItem).toHaveBeenCalledWith('themeDark')
   })
 })
+
+function afficheLeThemeSombre(label: string) {
+  afficheUnTheme(label)
+}
+
+function afficheLeThemeClair(label: string) {
+  afficheUnTheme(label)
+}
+
+function afficheUnTheme(label: string) {
+  fireEvent.click(screen.getByRole('button', { name: label }))
+}
