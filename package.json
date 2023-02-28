@@ -20,7 +20,7 @@
     "psql:test": "docker-compose up -d postgres && docker exec -it justicie_db_test psql -U justicie justicie",
     "start": "next start",
     "start:db": "docker-compose down && docker-compose up -d && bash -c \"while ! docker-compose logs | grep -q 'listening on IPv4 address'; do echo 'Waiting for database'; sleep 0.5; done\"; yarn migration:up",
-    "test": "NODE_ENV=test yarn migration:up && vitest --run",
+    "test": "NODE_ENV=test pnpm run migration:up && vitest --run",
     "test:coverage": "yarn test --coverage",
     "test:mutation:frontend": "npx stryker run stryker-frontend.conf.json",
     "test:mutation:backend": "npx stryker run stryker-backend.conf.json",

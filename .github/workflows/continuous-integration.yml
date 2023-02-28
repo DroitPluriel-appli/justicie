@@ -7,12 +7,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7
       - uses: actions/setup-node@v3
         with:
-          cache: yarn
+          cache: pnpm
           node-version-file: package.json
       - name: Install packages
-        run: yarn --immutable
+        run: pnpm install
 
   tests:
     needs: install
@@ -34,65 +37,65 @@ jobs:
           --health-retries 5
     steps:
       - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7
       - uses: actions/setup-node@v3
         with:
-          cache: yarn
+          cache: pnpm
           node-version-file: package.json
       - name: Install packages
-        run: yarn --immutable
+        run: pnpm install
       - name: Run the tests
-        run: yarn test
-
-  package-dedupe:
-    needs: install
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          cache: yarn
-          node-version-file: package.json
-      - name: Check for duplicate dependencies (fix with "yarn dedupe")
-        run: yarn dedupe --check
+        run: pnpm run test
 
   type-checker:
     needs: install
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7
       - uses: actions/setup-node@v3
         with:
-          cache: yarn
+          cache: pnpm
           node-version-file: package.json
       - name: Install packages
-        run: yarn --immutable
+        run: pnpm install
       - name: Run the type checker
-        run: yarn typecheck
+        run: pnpm run typecheck
 
   typescript-linter:
     needs: install
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7
       - uses: actions/setup-node@v3
         with:
-          cache: yarn
+          cache: pnpm
           node-version-file: package.json
       - name: Install packages
-        run: yarn --immutable
+        run: pnpm install
       - name: Run the TypeScript linter
-        run: yarn lint:typescript
+        run: pnpm run lint:typescript
 
   css-linter:
     needs: install
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7
       - uses: actions/setup-node@v3
         with:
-          cache: yarn
+          cache: pnpm
           node-version-file: package.json
       - name: Install packages
-        run: yarn --immutable
+        run: pnpm install
       - name: Run the CSS linter
-        run: yarn lint:css
+        run: pnpm run lint:css
