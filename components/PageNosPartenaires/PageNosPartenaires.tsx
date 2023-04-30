@@ -2,10 +2,11 @@ import Image from 'next/image'
 import { ReactElement } from 'react'
 
 import LogoAgirSsd from './logo-agir-ssd.jpg'
-import LogoCNCAH from './logo-cncah.png'
+import LogoCCAH from './logo-ccah.png'
 import LogoFPA from './logo-fpa.png'
 import LogoFFT from './LogoFFT'
 import LogoOcto from './LogoOcto'
+import LogosCcah from './logos-ccah.png'
 import LogoShareIt from './LogoShareIt'
 import LogoWavestone from './LogoWavestone'
 import styles from './PageNosPartenaires.module.css'
@@ -33,7 +34,13 @@ export default function PageNosPartenaires(): ReactElement {
           <Image
             alt="Comité national Coordination Action Handicap"
             height="103"
-            src={LogoCNCAH}
+            src={LogoCCAH}
+            width="370"
+          />
+          <Image
+            alt=""
+            height="103"
+            src={LogosCcah}
             width="370"
           />
         </ExternalLink>

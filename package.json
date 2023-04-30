@@ -87,7 +87,7 @@
     "vitest": "^0.29.1"
   },
   "engines": {
-    "node": "18.12.1"
+    "node": "18.15.0"
   },
-  "packageManager": "yarn@3.3.0"
+  "packageManager": "yarn@3.5.0"
 }
