@@ -17,14 +17,15 @@ const customJestConfig: Config.InitialOptions = {
     'ts',
     'tsx',
     'js',
+    'jsx'
   ],
   resetMocks: true,
   restoreMocks: true,
   setupFilesAfterEnv: ['./jest.setup.ts'],
   testEnvironment: 'jest-environment-jsdom',
   testMatch: [
-    '<rootDir>/backend/**/*(*.)@(test).ts',
-    '<rootDir>/components/**/*(*.)@(test).tsx',
+    '<rootDir>/backend/**/*(*.)@(test).{ts,js}',
+    '<rootDir>/components/**/*(*.)@(test).{tsx,jsx}',
   ],
 }
 

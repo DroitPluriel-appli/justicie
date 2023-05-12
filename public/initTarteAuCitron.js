@@ -24,5 +24,5 @@ tarteaucitron.init({
   "mandatory": false,
   "mandatoryCta": false
 });
-tarteaucitron.user.gtagUa = 'G-QVSWEV0X5D';
-(tarteaucitron.job = tarteaucitron.job || []).push('gtag');
+tarteaucitron.user.multiplegoogletagmanagerId = ['G-QVSWEV0X5D', 'GTM-MDQ2ZKB'];
+(tarteaucitron.job = tarteaucitron.job || []).push('multiplegoogletagmanager');
