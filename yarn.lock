@@ -1705,10 +1705,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jridgewell/resolve-uri@npm:3.1.0, @jridgewell/resolve-uri@npm:^3.0.3":
+"@jridgewell/resolve-uri@npm:3.1.0":
   version: 3.1.0
   resolution: "@jridgewell/resolve-uri@npm:3.1.0"
   checksum: b5ceaaf9a110fcb2780d1d8f8d4a0bfd216702f31c988d8042e5f8fbe353c55d9b0f55a1733afdc64806f8e79c485d2464680ac48a0d9fcadb9548ee6b81d267
+  languageName: node
+  linkType: hard
+
+"@jridgewell/resolve-uri@npm:^3.0.3":
+  version: 3.1.1
+  resolution: "@jridgewell/resolve-uri@npm:3.1.1"
+  checksum: f5b441fe7900eab4f9155b3b93f9800a916257f4e8563afbcd3b5a5337b55e52bd8ae6735453b1b745457d9f6cdb16d74cd6220bbdd98cf153239e13f6cbb653
   languageName: node
   linkType: hard
 
@@ -2387,90 +2394,92 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@swc/core-darwin-arm64@npm:1.3.18":
-  version: 1.3.18
-  resolution: "@swc/core-darwin-arm64@npm:1.3.18"
+"@swc/core-darwin-arm64@npm:1.3.69":
+  version: 1.3.69
+  resolution: "@swc/core-darwin-arm64@npm:1.3.69"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@swc/core-darwin-x64@npm:1.3.18":
-  version: 1.3.18
-  resolution: "@swc/core-darwin-x64@npm:1.3.18"
+"@swc/core-darwin-x64@npm:1.3.69":
+  version: 1.3.69
+  resolution: "@swc/core-darwin-x64@npm:1.3.69"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@swc/core-linux-arm-gnueabihf@npm:1.3.18":
-  version: 1.3.18
-  resolution: "@swc/core-linux-arm-gnueabihf@npm:1.3.18"
+"@swc/core-linux-arm-gnueabihf@npm:1.3.69":
+  version: 1.3.69
+  resolution: "@swc/core-linux-arm-gnueabihf@npm:1.3.69"
   conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
 
-"@swc/core-linux-arm64-gnu@npm:1.3.18":
-  version: 1.3.18
-  resolution: "@swc/core-linux-arm64-gnu@npm:1.3.18"
+"@swc/core-linux-arm64-gnu@npm:1.3.69":
+  version: 1.3.69
+  resolution: "@swc/core-linux-arm64-gnu@npm:1.3.69"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@swc/core-linux-arm64-musl@npm:1.3.18":
-  version: 1.3.18
-  resolution: "@swc/core-linux-arm64-musl@npm:1.3.18"
+"@swc/core-linux-arm64-musl@npm:1.3.69":
+  version: 1.3.69
+  resolution: "@swc/core-linux-arm64-musl@npm:1.3.69"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
-"@swc/core-linux-x64-gnu@npm:1.3.18":
-  version: 1.3.18
-  resolution: "@swc/core-linux-x64-gnu@npm:1.3.18"
+"@swc/core-linux-x64-gnu@npm:1.3.69":
+  version: 1.3.69
+  resolution: "@swc/core-linux-x64-gnu@npm:1.3.69"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@swc/core-linux-x64-musl@npm:1.3.18":
-  version: 1.3.18
-  resolution: "@swc/core-linux-x64-musl@npm:1.3.18"
+"@swc/core-linux-x64-musl@npm:1.3.69":
+  version: 1.3.69
+  resolution: "@swc/core-linux-x64-musl@npm:1.3.69"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
 
-"@swc/core-win32-arm64-msvc@npm:1.3.18":
-  version: 1.3.18
-  resolution: "@swc/core-win32-arm64-msvc@npm:1.3.18"
+"@swc/core-win32-arm64-msvc@npm:1.3.69":
+  version: 1.3.69
+  resolution: "@swc/core-win32-arm64-msvc@npm:1.3.69"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"@swc/core-win32-ia32-msvc@npm:1.3.18":
-  version: 1.3.18
-  resolution: "@swc/core-win32-ia32-msvc@npm:1.3.18"
+"@swc/core-win32-ia32-msvc@npm:1.3.69":
+  version: 1.3.69
+  resolution: "@swc/core-win32-ia32-msvc@npm:1.3.69"
   conditions: os=win32 & cpu=ia32
   languageName: node
   linkType: hard
 
-"@swc/core-win32-x64-msvc@npm:1.3.18":
-  version: 1.3.18
-  resolution: "@swc/core-win32-x64-msvc@npm:1.3.18"
+"@swc/core-win32-x64-msvc@npm:1.3.69":
+  version: 1.3.69
+  resolution: "@swc/core-win32-x64-msvc@npm:1.3.69"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
-"@swc/core@npm:^1.3.18":
-  version: 1.3.18
-  resolution: "@swc/core@npm:1.3.18"
+"@swc/core@npm:^1.3.69":
+  version: 1.3.69
+  resolution: "@swc/core@npm:1.3.69"
   dependencies:
-    "@swc/core-darwin-arm64": 1.3.18
-    "@swc/core-darwin-x64": 1.3.18
-    "@swc/core-linux-arm-gnueabihf": 1.3.18
-    "@swc/core-linux-arm64-gnu": 1.3.18
-    "@swc/core-linux-arm64-musl": 1.3.18
-    "@swc/core-linux-x64-gnu": 1.3.18
-    "@swc/core-linux-x64-musl": 1.3.18
-    "@swc/core-win32-arm64-msvc": 1.3.18
-    "@swc/core-win32-ia32-msvc": 1.3.18
-    "@swc/core-win32-x64-msvc": 1.3.18
+    "@swc/core-darwin-arm64": 1.3.69
+    "@swc/core-darwin-x64": 1.3.69
+    "@swc/core-linux-arm-gnueabihf": 1.3.69
+    "@swc/core-linux-arm64-gnu": 1.3.69
+    "@swc/core-linux-arm64-musl": 1.3.69
+    "@swc/core-linux-x64-gnu": 1.3.69
+    "@swc/core-linux-x64-musl": 1.3.69
+    "@swc/core-win32-arm64-msvc": 1.3.69
+    "@swc/core-win32-ia32-msvc": 1.3.69
+    "@swc/core-win32-x64-msvc": 1.3.69
+  peerDependencies:
+    "@swc/helpers": ^0.5.0
   dependenciesMeta:
     "@swc/core-darwin-arm64":
       optional: true
@@ -2492,9 +2501,10 @@ __metadata:
       optional: true
     "@swc/core-win32-x64-msvc":
       optional: true
-  bin:
-    swcx: run_swcx.js
-  checksum: 5b9bef826366bf691b9ba8b91c17df1fc725d979b45840d3dcfcc8c224753a161fb07132bcf3d9c666e70d680c928d9379a9bfbe968b43f2c47c7e13ca9cf008
+  peerDependenciesMeta:
+    "@swc/helpers":
+      optional: true
+  checksum: 764b5c489030b1cf34ea412d7b7e0680996101d667387c646b44d89e630605f52d48d3ca6c0e63811b0ae675018602dbb132e149c01c9154291ecf180787bd86
   languageName: node
   linkType: hard
 
@@ -2578,9 +2588,9 @@ __metadata:
   linkType: hard
 
 "@tsconfig/node16@npm:^1.0.2":
-  version: 1.0.3
-  resolution: "@tsconfig/node16@npm:1.0.3"
-  checksum: 3a8b657dd047495b7ad23437d6afd20297ce90380ff0bdee93fc7d39a900dbd8d9e26e53ff6b465e7967ce2adf0b218782590ce9013285121e6a5928fbd6819f
+  version: 1.0.4
+  resolution: "@tsconfig/node16@npm:1.0.4"
+  checksum: 202319785901f942a6e1e476b872d421baec20cf09f4b266a1854060efbf78cde16a4d256e8bc949d31e6cd9a90f1e8ef8fb06af96a65e98338a2b6b0de0a0ff
   languageName: node
   linkType: hard
 
@@ -7601,7 +7611,7 @@ __metadata:
     "@stryker-mutator/core": ^7.1.1
     "@stryker-mutator/typescript-checker": ^7.1.1
     "@stryker-mutator/vitest-runner": ^7.1.1
-    "@swc/core": ^1.3.18
+    "@swc/core": ^1.3.69
     "@testing-library/react": ^14.0.0
     "@types/dotenv-defaults": ^2.0.1
     "@types/leaflet": ^1.9.0
@@ -7641,7 +7651,7 @@ __metadata:
     ts-node: ^10.9.1
     ts-prune: ^0.10.3
     typeorm: ^0.3.16
-    typescript: ^4.9.5
+    typescript: 4.9.5
     vitest: ^0.33.0
     vitest-dom: ^0.1.0
   languageName: unknown
@@ -11773,7 +11783,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^4.9.5":
+"typescript@npm:4.9.5":
   version: 4.9.5
   resolution: "typescript@npm:4.9.5"
   bin:
@@ -11783,7 +11793,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@^4.9.5#~builtin<compat/typescript>":
+"typescript@patch:typescript@4.9.5#~builtin<compat/typescript>":
   version: 4.9.5
   resolution: "typescript@patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=23ec76"
   bin:
