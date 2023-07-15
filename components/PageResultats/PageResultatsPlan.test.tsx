@@ -279,7 +279,7 @@ describe('page des résultats de recherche affichés sur une carte', () => {
     const googleMapUrlLieuA = new URL('https://www.google.com/maps/dir/')
     googleMapUrlLieuA.searchParams.append('api', '1')
     googleMapUrlLieuA.searchParams.append('origin', `${lat},${lon}`)
-    googleMapUrlLieuA.searchParams.append('destination', 'LieuA+12+rue+du+Lieu+1000+Bourg+En+Bresse')
+    googleMapUrlLieuA.searchParams.append('destination', '12+rue+du+Lieu+1000+Bourg+En+Bresse')
 
     expect(champsCarteLieuA[5]).toHaveAttribute('href', googleMapUrlLieuA.toString())
     expect(champsCarteLieuA[5].textContent).toBe(wording.LANCER_L_ITINERAIRE)

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "amibroken": "yarn dedupe --check && yarn lint:css && yarn typecheck && yarn lint:typescript && yarn test",
     "bash:production": "scalingo -a justicie run bash",
     "build": "next build",
     "deadcode": "ts-prune --ignore 'pages'",

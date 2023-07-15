@@ -193,7 +193,7 @@ describe('page des résultats de recherche affichés en liste', () => {
     const googleMapUrlLieuA = new URL('https://www.google.com/maps/dir/')
     googleMapUrlLieuA.searchParams.append('api', '1')
     googleMapUrlLieuA.searchParams.append('origin', `${lat},${lon}`)
-    googleMapUrlLieuA.searchParams.append('destination', 'LieuA+12+rue+du+Lieu+1000+Bourg+En+Bresse')
+    googleMapUrlLieuA.searchParams.append('destination', '12+rue+du+Lieu+1000+Bourg+En+Bresse')
 
     expect(champsCarteLieuA[5]).toHaveAttribute('href', googleMapUrlLieuA.toString())
     expect(champsCarteLieuA[5].textContent).toBe(wording.LANCER_L_ITINERAIRE)
@@ -221,7 +221,7 @@ describe('page des résultats de recherche affichés en liste', () => {
     const googleMapUrlLieuB = new URL('https://www.google.com/maps/dir/')
     googleMapUrlLieuB.searchParams.append('api', '1')
     googleMapUrlLieuB.searchParams.append('origin', `${lat},${lon}`)
-    googleMapUrlLieuB.searchParams.append('destination', 'Lieu+B+34+cours+de+Verdun+1000+Bourg+En+Bresse')
+    googleMapUrlLieuB.searchParams.append('destination', '34+cours+de+Verdun+1000+Bourg+En+Bresse')
 
     expect(champsCarteLieuB[5]).toHaveAttribute('href', googleMapUrlLieuB.toString())
     expect(champsCarteLieuB[5].textContent).toBe(wording.LANCER_L_ITINERAIRE)

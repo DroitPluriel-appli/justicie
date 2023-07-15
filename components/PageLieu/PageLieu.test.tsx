@@ -56,7 +56,7 @@ describe('page d’un lieu', () => {
     const googleMapUrlLieu = new URL('https://www.google.com/maps/dir/')
     googleMapUrlLieu.searchParams.append('api', '1')
     googleMapUrlLieu.searchParams.append('origin', `${lat},${lon}`)
-    googleMapUrlLieu.searchParams.append('destination', 'La+maison+de+justice+de+Paris+34+cours+de+Verdun+1000+Bourg+En+Bresse')
+    googleMapUrlLieu.searchParams.append('destination', '34+cours+de+Verdun+1000+Bourg+En+Bresse')
     expect(itineraire).toHaveAttribute('href', googleMapUrlLieu.toString())
     expect(itineraire.textContent).toBe(wording.LANCER_L_ITINERAIRE)
   })
