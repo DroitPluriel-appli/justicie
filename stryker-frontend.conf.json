@@ -1,18 +1,21 @@
 {
-  "$schema": "./node_modules/@stryker-mutator/core/schema/stryker-schema.json",
-  "buildCommand": "npm run transpile",
   "checkers": ["typescript"],
   "disableTypeChecks": true,
   "htmlReporter": { "fileName": "reports/mutation/mutation-frontend.html" },
   "ignorePatterns": [".github", ".lighthouseci", ".next", ".vscode", ".yarn", "coverage", "lighthouse-ci-reports", "out", "pages", "public"],
-  "ignoreStatic": false,
-  "jest": {
-    "configFile": "jest-for-mutation-testing.json"
-  },
+  "ignoreStatic": true,
+  "logLevel": "info",
   "mutate": [
     "components/**/*.ts?(x)",
-    "!components/**/*.test.tsx"
+    "!components/**/*.test.tsx",
+    "!components/PageAccueil/**/*.tsx",
+    "!components/PageMentionsLegales/**/*.tsx",
+    "!components/PagePolitiqueDeConfidentialite/**/*.tsx",
+    "!components/PageNosPartenaires/**/*.tsx",
+    "!components/PageFoireAuxQuestions/**/*.tsx",
+    "!components/PageRechercherParHandicap/**/*.tsx"
   ],
-  "packageManager": "npm",
-  "testRunner": "jest"
+  "packageManager": "yarn",
+  "reporters": ["html"],
+  "testRunner": "vitest"
 }

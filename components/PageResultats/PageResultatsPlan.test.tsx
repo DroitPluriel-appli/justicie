@@ -59,11 +59,11 @@ describe('page des résultats de recherche affichés sur une carte', () => {
   beforeEach(() => {
     // spyOn continue d'appeller la fonction initiale, or ici elle provoque une erreur
     // car jsdom ne sait pas gérer la création de svg induite par la création du cercle par leaflet
-    // eslint-disable-next-line jest/prefer-spy-on
-    L.Circle.prototype.addTo = jest.fn()
+    // eslint-disable-next-line vitest/prefer-spy-on
+    L.Circle.prototype.addTo = vi.fn()
 
     // @ts-ignore
-    window.dataLayer = { push: jest.fn() }
+    window.dataLayer = { push: vi.fn() }
 
     mockRouter.query = {
       lat,
@@ -335,7 +335,7 @@ describe('page des résultats de recherche affichés sur une carte', () => {
 
     // THEN
     // @ts-ignore
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/unbound-method, jest/unbound-method
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(window.dataLayer.push).toHaveBeenNthCalledWith(1, expect.objectContaining({
       criteresDAccessibiliteSelectionnes: criteresDAccessibiliteSelectionnes,
       event: 'resultatsDeRecherche',

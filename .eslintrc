@@ -15,8 +15,7 @@
   "env": {
     "browser": true,
     "es2021": true,
-    "node": true,
-    "jest": true
+    "node": true
   },
   "settings": {
     "react": {
@@ -25,7 +24,7 @@
   },
   "ignorePatterns": [
     "public",
-    "jest.config.ts",
+    "vitest.config.ts",
     "lighthouserc.js",
     "next.config.js"
   ],
@@ -81,6 +80,7 @@
     "semi": ["error", "never"],
     "sort-keys": ["error"],
     "space-before-blocks": "error",
+    "space-infix-ops": "error",
     "yoda": "error",
     "import/newline-after-import": "error",
     "import/no-extraneous-dependencies": "error",
@@ -108,16 +108,15 @@
     {
       "files": ["**/*.test.ts?(x)"],
       "extends": [
-        "plugin:jest/all",
-        "plugin:jest-formatting/strict"
+        "plugin:vitest/all"
       ],
       "rules": {
-        "jest-formatting/padding-around-all": "off",
-        "jest/max-expects": "off",
-        "jest/no-conditional-expect": "off",
-        "jest/no-hooks": "off",
-        "jest/require-hook": "off",
-        "jest/prefer-expect-assertions": "off"
+        "@typescript-eslint/unbound-method": "off",
+        "vitest/max-expects": "off",
+        "vitest/no-conditional-expect": "off",
+        "vitest/no-hooks": "off",
+        "vitest/require-hook": "off",
+        "vitest/prefer-expect-assertions": "off"
       }
     },
     {

@@ -28,11 +28,11 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "es6"
+    "target": "es6",
+    "types": ["vitest/globals"]
   },
   "include": [
     "next.config.js",
-    "jest.config.ts",
     "sentry.client.config.ts",
     "sentry.server.config.ts",
     "**/*.ts",

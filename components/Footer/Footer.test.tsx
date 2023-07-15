@@ -7,7 +7,7 @@ describe('pied de page', () => {
   const { paths, wording } = fakeFrontDependencies
 
   beforeEach(() => {
-    window.tarteaucitron = { userInterface: { openPanel: jest.fn() } }
+    window.tarteaucitron = { userInterface: { openPanel: vi.fn() } }
     // @ts-ignore
     process.env.NODE_ENV = 'production'
   })

@@ -8,8 +8,8 @@ describe('bouton mode sombre', () => {
 
   it('toggle le mode sombre au clic sur le bouton mode Sombre', () => {
     // GIVEN
-    const setItem = jest.spyOn(Storage.prototype, 'setItem')
-    const removeItem = jest.spyOn(Storage.prototype, 'removeItem')
+    const setItem = vi.spyOn(Storage.prototype, 'setItem')
+    const removeItem = vi.spyOn(Storage.prototype, 'removeItem')
     renderFakeComponent(<BoutonModeSombre />)
 
     // WHEN

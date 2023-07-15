@@ -53,4 +53,3 @@ public/sw.js.map
 public/workbox-*
 .env.local
 .lighthouseci
-jest-for-mutation-testing.json

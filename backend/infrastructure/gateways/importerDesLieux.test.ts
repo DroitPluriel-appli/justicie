@@ -45,8 +45,8 @@ describe('importer des lieux', () => {
 
   it('importe les lieux', async () => {
     // GIVEN
-    const spreadsheets = { values: { get: jest.fn(() => ({ data: { values: [lieuSpreadsheets] } })) } }
-    const sheets = jest.fn(() => ({ spreadsheets }))
+    const spreadsheets = { values: { get: vi.fn(() => ({ data: { values: [lieuSpreadsheets] } })) } }
+    const sheets = vi.fn(() => ({ spreadsheets }))
 
     // WHEN
     // @ts-ignore
@@ -67,8 +67,8 @@ describe('importer des lieux', () => {
   it('importe un lieu qui n’a pas de commentaire', async () => {
     // GIVEN
     const lieuSansCommentaire = lieuSpreadsheets.slice(0, -1)
-    const spreadsheets = { values: { get: jest.fn(() => ({ data: { values: [lieuSansCommentaire] } })) } }
-    const sheets = jest.fn(() => ({ spreadsheets }))
+    const spreadsheets = { values: { get: vi.fn(() => ({ data: { values: [lieuSansCommentaire] } })) } }
+    const sheets = vi.fn(() => ({ spreadsheets }))
 
     // WHEN
     // @ts-ignore
@@ -83,8 +83,8 @@ describe('importer des lieux', () => {
     // GIVEN
     const lieuAvantMaj = LieuModel.cree({ nom: 'un lieu qui devrait avoir disparu' })
     await lieuRepository.insert([lieuAvantMaj])
-    const spreadsheets = { values: { get: jest.fn(() => ({ data: { values: [lieuSpreadsheets] } })) } }
-    const sheets = jest.fn(() => ({ spreadsheets }))
+    const spreadsheets = { values: { get: vi.fn(() => ({ data: { values: [lieuSpreadsheets] } })) } }
+    const sheets = vi.fn(() => ({ spreadsheets }))
 
     // WHEN
     // @ts-ignore

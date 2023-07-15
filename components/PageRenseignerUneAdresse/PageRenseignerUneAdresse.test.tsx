@@ -165,7 +165,7 @@ describe('page pour renseigner une adresse', () => {
 
 function mockedFetch(adresses: AdresseJson[]) {
   // @ts-ignore
-  jest.spyOn(global, 'fetch').mockResolvedValue({ json: () => Promise.resolve({ features: adresses }) })
+  vi.spyOn(global, 'fetch').mockResolvedValue({ json: () => Promise.resolve({ features: adresses }) })
 }
 
 function formulaire() {

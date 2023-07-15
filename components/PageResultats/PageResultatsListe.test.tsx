@@ -14,7 +14,7 @@ describe('page des résultats de recherche affichés en liste', () => {
 
   beforeEach(() => {
     // @ts-ignore
-    window.dataLayer = { push: jest.fn() }
+    window.dataLayer = { push: vi.fn() }
 
     mockRouter.query = {
       lat,
