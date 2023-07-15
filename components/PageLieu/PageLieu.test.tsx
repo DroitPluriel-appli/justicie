@@ -43,15 +43,15 @@ describe('page d’un lieu', () => {
 
     // THEN
     const retourAuxResultats = screen.getByRole('button', { name: wording.RETOUR_AUX_RESULTATS })
-    expect(retourAuxResultats).toBeInTheDocument()
+    expect(retourAuxResultats).toBeVisible()
     const nom = screen.getByRole('heading', { level: 1, name: lieu.nom })
-    expect(nom).toBeInTheDocument()
+    expect(nom).toBeVisible()
     const distance = screen.getByText(textMatch(`${lieu.distance} km`), { selector: 'p' })
-    expect(distance).toBeInTheDocument()
+    expect(distance).toBeVisible()
     const kilometre = screen.getByText('km', { selector: 'abbr' })
     expect(kilometre).toHaveAttribute('title', wording.KILOMETRES)
     const adresse = screen.getByText(textMatch(lieu.adresse + lieu.codePostal + ' ' + lieu.ville), { selector: 'p' })
-    expect(adresse).toBeInTheDocument()
+    expect(adresse).toBeVisible()
     const itineraire = screen.getByRole('link', { name: `${wording.LANCER_L_ITINERAIRE_SUR_GOOGLE_MAPS(lieu.nom)}${wording.NOUVELLE_FENETRE}` })
     const googleMapUrlLieu = new URL('https://www.google.com/maps/dir/')
     googleMapUrlLieu.searchParams.append('api', '1')
@@ -80,15 +80,15 @@ describe('page d’un lieu', () => {
 
     // THEN
     const titre = screen.getByRole('heading', { level: 2, name: wording.ACCESSIBILITE_DU_LIEU })
-    expect(titre).toBeInTheDocument()
+    expect(titre).toBeVisible()
     const pmr = screen.getByAltText(wording.TITLE_HANDICAP_MOTEUR_TOTAL)
-    expect(pmr).toBeInTheDocument()
+    expect(pmr).toBeVisible()
     const calme = screen.getByAltText(wording.TITLE_ENVIRONNEMENT_CALME)
-    expect(calme).toBeInTheDocument()
+    expect(calme).toBeVisible()
     const pmrAssiste = screen.getByAltText(wording.TITLE_HANDICAP_MOTEUR_AVEC_ASSISTANCE)
-    expect(pmrAssiste).toBeInTheDocument()
+    expect(pmrAssiste).toBeVisible()
     const visuel = screen.getByAltText(wording.TITLE_HANDICAP_VISUEL)
-    expect(visuel).toBeInTheDocument()
+    expect(visuel).toBeVisible()
   })
 
   it('affiche ses horaires et jours d’ouverture', () => {
@@ -103,11 +103,11 @@ describe('page d’un lieu', () => {
 
     // THEN
     const titre = screen.getByRole('heading', { level: 2, name: wording.HORAIRES_ET_JOURS_D_OUVERTURE })
-    expect(titre).toBeInTheDocument()
+    expect(titre).toBeVisible()
     const priseDeRendezVous = screen.getByText(textMatch(lieu.priseDeRendezVous), { selector: 'pre' })
-    expect(priseDeRendezVous).toBeInTheDocument()
+    expect(priseDeRendezVous).toBeVisible()
     const horaire = screen.getByText(textMatch(lieu.horaire), { selector: 'pre' })
-    expect(horaire).toBeInTheDocument()
+    expect(horaire).toBeVisible()
   })
 
   it('affiche plus d’informations', () => {
@@ -119,9 +119,9 @@ describe('page d’un lieu', () => {
 
     // THEN
     const titre = screen.getByRole('heading', { level: 2, name: wording.PLUS_D_INFORMATIONS })
-    expect(titre).toBeInTheDocument()
+    expect(titre).toBeVisible()
     const commentaire = screen.getByText(textMatch(lieu.commentaire), { selector: 'pre' })
-    expect(commentaire).toBeInTheDocument()
+    expect(commentaire).toBeVisible()
   })
 
   it('indique à l’utilisateur quand il n’y a pas d’informations', () => {
@@ -133,7 +133,7 @@ describe('page d’un lieu', () => {
 
     // THEN
     const commentaire = screen.getByText(wording.PAS_D_INFORMATIONS_SUPPLEMENTAIRES, { selector: 'pre' })
-    expect(commentaire).toBeInTheDocument()
+    expect(commentaire).toBeVisible()
   })
 
   it('affiche son contact et site internet', () => {
@@ -149,7 +149,7 @@ describe('page d’un lieu', () => {
 
     // THEN
     const titre = screen.getByRole('heading', { level: 2, name: wording.CONTACT_ET_SITE_INTERNET })
-    expect(titre).toBeInTheDocument()
+    expect(titre).toBeVisible()
     const eMail = screen.getByRole('link', { name: wording.ENVOYER_UN_EMAIL_A + lieu.eMail })
     expect(eMail).toHaveAttribute('href', `mailto:${lieu.eMail}`)
     expect(eMail.textContent).toBe(lieu.eMail)
@@ -172,7 +172,7 @@ describe('page d’un lieu', () => {
 
     // THEN
     const eMail = screen.getByText(wording.PAS_D_E_MAIL)
-    expect(eMail).toBeInTheDocument()
+    expect(eMail).toBeVisible()
   })
 
   it('indique à l’utilisateur quand il n’y a pas de site internet', () => {
@@ -184,7 +184,7 @@ describe('page d’un lieu', () => {
 
     // THEN
     const siteInternet = screen.getByText(wording.PAS_DE_SITE_INTERNET)
-    expect(siteInternet).toBeInTheDocument()
+    expect(siteInternet).toBeVisible()
   })
 
   it('affiche l’ancre pour revenir en haut de page', () => {

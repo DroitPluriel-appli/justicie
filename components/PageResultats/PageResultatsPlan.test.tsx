@@ -136,7 +136,7 @@ describe('page des résultats de recherche affichés sur une carte', () => {
 
     // THEN
     const titre = screen.getByText(wording.LIEUX_CORRESPONDENT_A_VOTRE_RECHERCHE(nombreDeResultat, rayonDeRecherche), { selector: 'p' })
-    expect(titre).toBeInTheDocument()
+    expect(titre).toBeVisible()
   })
 
   it('affiche une phrase quand aucun lieu n’a été trouvé', () => {
@@ -151,9 +151,9 @@ describe('page des résultats de recherche affichés sur une carte', () => {
 
     // THEN
     const aucunLieu = screen.getByText(wording.AUCUN_LIEU_NE_CORRESPOND_A_VOTRE_RECHERCHE(rayonDeRecherche), { selector: 'p' })
-    expect(aucunLieu).toBeInTheDocument()
+    expect(aucunLieu).toBeVisible()
     const permanence = screen.getByText(textMatch(wording.CONTACTER_LA_PERMANENCE), { selector: 'p' })
-    expect(permanence).toBeInTheDocument()
+    expect(permanence).toBeVisible()
 
     const coordonneesDroitPluriel = screen.getByText(
       textMatch(`${wording.EMAIL_DROIT_PLURIEL_ZERO_RESULTAT}${wording.TELEPHONE_DROIT_PLURIEL_ZERO_RESULTAT}`), { selector: 'address' }
@@ -168,7 +168,7 @@ describe('page des résultats de recherche affichés sur une carte', () => {
     expect(telephone.textContent).toBe(wording.TELEPHONE_DROIT_PLURIEL_ZERO_RESULTAT)
 
     const contacterCDAD = screen.getByText(wording.CONTACTER_CDAD, { selector: 'p' })
-    expect(contacterCDAD).toBeInTheDocument()
+    expect(contacterCDAD).toBeVisible()
   })
 
   it('affiche un marker bleu à la position choisie', () => {
@@ -181,7 +181,7 @@ describe('page des résultats de recherche affichés sur une carte', () => {
     // THEN
     const positionMarker = screen.getByTitle(wording.TITRE_MARKER_POSITION)
 
-    expect(positionMarker).toBeInTheDocument()
+    expect(positionMarker).toBeVisible()
   })
 
   it('affiche plusieurs markers de lieux', () => {

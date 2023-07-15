@@ -87,7 +87,7 @@ describe('page des résultats de recherche affichés en liste', () => {
 
     // THEN
     const titre = screen.getByText(wording.LIEUX_CORRESPONDENT_A_VOTRE_RECHERCHE(nombreDeResultat, Infinity), { selector: 'p' })
-    expect(titre).toBeInTheDocument()
+    expect(titre).toBeVisible()
   })
 
   it('affiche une phrase quand aucun lieu n’a été trouvé', () => {
@@ -102,9 +102,9 @@ describe('page des résultats de recherche affichés en liste', () => {
 
     // THEN
     const aucunLieu = screen.getByText(wording.AUCUN_LIEU_NE_CORRESPOND_A_VOTRE_RECHERCHE(Infinity), { selector: 'p' })
-    expect(aucunLieu).toBeInTheDocument()
+    expect(aucunLieu).toBeVisible()
     const permanence = screen.getByText(textMatch(wording.CONTACTER_LA_PERMANENCE), { selector: 'p' })
-    expect(permanence).toBeInTheDocument()
+    expect(permanence).toBeVisible()
 
     const coordonneesDroitPluriel = screen.getByText(
       textMatch(`${wording.EMAIL_DROIT_PLURIEL_ZERO_RESULTAT}${wording.TELEPHONE_DROIT_PLURIEL_ZERO_RESULTAT}`), { selector: 'address' }
@@ -119,7 +119,7 @@ describe('page des résultats de recherche affichés en liste', () => {
     expect(telephone.textContent).toBe(wording.TELEPHONE_DROIT_PLURIEL_ZERO_RESULTAT)
 
     const contacterCDAD = screen.getByText(wording.CONTACTER_CDAD, { selector: 'p' })
-    expect(contacterCDAD).toBeInTheDocument()
+    expect(contacterCDAD).toBeVisible()
   })
 
   it('affiche les cartes des lieux', () => {
@@ -182,7 +182,7 @@ describe('page des résultats de recherche affichés en liste', () => {
       within(cartesLieux[0]).getByTitle(wording.TITLE_BOUCLE_A_INDUCTION),
       within(cartesLieux[0]).getByTitle(wording.TITLE_PERSONNEL_FORME),
     ]
-    champsCarteLieuA.forEach((champ) => expect(champ).toBeInTheDocument())
+    champsCarteLieuA.forEach((champ) => expect(champ).toBeVisible())
 
     expect(champsCarteLieuA[2]).toHaveAttribute('href', 'tel:' + lieuA.telephone.replaceAll(' ', ''))
     expect(champsCarteLieuA[2].textContent).toBe(lieuA.telephone)
@@ -210,7 +210,7 @@ describe('page des résultats de recherche affichés en liste', () => {
       within(cartesLieux[1]).getByTitle(wording.TITLE_HANDICAP_MOTEUR_AVEC_ASSISTANCE),
       within(cartesLieux[1]).getByTitle(wording.TITLE_HANDICAP_MOTEUR_TOTAL),
     ]
-    champsCarteLieuB.forEach((champ) => expect(champ).toBeInTheDocument())
+    champsCarteLieuB.forEach((champ) => expect(champ).toBeVisible())
 
     expect(champsCarteLieuB[2]).toHaveAttribute('href', 'tel:' + lieuB.telephone.replaceAll(' ', ''))
     expect(champsCarteLieuB[2].textContent).toBe(lieuA.telephone)
@@ -276,7 +276,7 @@ describe('page des résultats de recherche affichés en liste', () => {
     expect(links[0].textContent).toBe('2')
 
     expect(links[1]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?bim=${bim}&lat=${lat}&lon=${lon}&page=1`)
-    expect(within(links[1]).getByLabelText(wording.DERNIERE_PAGE)).toBeInTheDocument()
+    expect(within(links[1]).getByLabelText(wording.DERNIERE_PAGE)).toBeVisible()
   })
 
   it('affiche la pagination à la page 2 quand il y a deux pages', () => {
@@ -308,7 +308,7 @@ describe('page des résultats de recherche affichés en liste', () => {
     expect(links).toHaveLength(2)
 
     expect(links[0]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?bim=${bim}&lat=${lat}&lon=${lon}&page=0`)
-    expect(within(links[0]).getByLabelText(wording.PREMIERE_PAGE)).toBeInTheDocument()
+    expect(within(links[0]).getByLabelText(wording.PREMIERE_PAGE)).toBeVisible()
 
     expect(links[1]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?bim=${bim}&lat=${lat}&lon=${lon}&page=0`)
     expect(links[1].textContent).toBe('1')
@@ -360,7 +360,7 @@ describe('page des résultats de recherche affichés en liste', () => {
     expect(links[3].textContent).toBe('5')
 
     expect(links[4]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?bim=${bim}&lat=${lat}&lon=${lon}&page=5`)
-    expect(within(links[4]).getByLabelText(wording.DERNIERE_PAGE)).toBeInTheDocument()
+    expect(within(links[4]).getByLabelText(wording.DERNIERE_PAGE)).toBeVisible()
   })
 
   it('affiche la pagination à la page 4 quand il y a six pages', () => {
@@ -407,7 +407,7 @@ describe('page des résultats de recherche affichés en liste', () => {
     expect(links[4].textContent).toBe('6')
 
     expect(links[5]).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?bim=${bim}&lat=${lat}&lon=${lon}&page=5`)
-    expect(within(links[5]).getByLabelText(wording.DERNIERE_PAGE)).toBeInTheDocument()
+    expect(within(links[5]).getByLabelText(wording.DERNIERE_PAGE)).toBeVisible()
   })
 
   it('affiche la pagination à la page 6 quand il y a six pages', () => {

@@ -38,10 +38,10 @@ describe('en-tête de page', () => {
     const accueil = within(items[0]).getByRole('link')
     expect(accueil).toHaveAttribute('href', paths.ACCUEIL)
     const logo = within(accueil).getByAltText(wording.ACCUEIL)
-    expect(logo).toBeInTheDocument()
+    expect(logo).toBeVisible()
 
     const title = within(items[1]).getByText(wording.JUSTICIE)
-    expect(title).toBeInTheDocument()
+    expect(title).toBeVisible()
 
     const nosCriteresDAccessibilite = within(items[2]).getByRole('link', { name: wording.NOS_CRITERES_D_ACCESSIBILITE })
     expect(nosCriteresDAccessibilite).toHaveAttribute('href', paths.NOS_CRITERES_D_ACCESSIBILITE)
@@ -69,13 +69,13 @@ describe('en-tête de page', () => {
     const accueil = within(items[0]).getByRole('link')
     expect(accueil).toHaveAttribute('href', paths.ACCUEIL)
     const logo = within(accueil).getByAltText(wording.ACCUEIL)
-    expect(logo).toBeInTheDocument()
+    expect(logo).toBeVisible()
 
     const title = within(items[1]).getByText(wording.JUSTICIE)
-    expect(title).toBeInTheDocument()
+    expect(title).toBeVisible()
 
     const menu = within(items[2]).getByText(wording.MENU)
-    expect(menu).toBeInTheDocument()
+    expect(menu).toBeVisible()
   })
 
   it('affiche le menu mobile quand on appuie sur le burger menu', () => {
@@ -91,9 +91,9 @@ describe('en-tête de page', () => {
     const items = within(navigation).getAllByRole('listitem')
 
     const title = within(items[0]).getByText(wording.MENU)
-    expect(title).toBeInTheDocument()
+    expect(title).toBeVisible()
     const fermer = within(items[0]).getByRole('button', { name: wording.FERMER })
-    expect(fermer).toBeInTheDocument()
+    expect(fermer).toBeVisible()
 
     const accueil = within(items[1]).getByRole('link')
     expect(accueil).toHaveAttribute('href', paths.ACCUEIL)
@@ -125,7 +125,7 @@ describe('en-tête de page', () => {
     const items = within(navigationMobile).getAllByRole('listitem')
 
     const title = within(items[1]).getByText(wording.JUSTICIE)
-    expect(title).toBeInTheDocument()
+    expect(title).toBeVisible()
   })
 })
 

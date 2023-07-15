@@ -20,7 +20,7 @@ describe('page "Foire aux questions"', () => {
 
     // THEN
     const titre = screen.getByRole('heading', { level: 1, name: wording.FOIRE_AUX_QUESTIONS })
-    expect(titre).toBeInTheDocument()
+    expect(titre).toBeVisible()
   })
 
   it('affiche la question et la réponse permettant de savoir quoi faire si aucun lieu ne correspond à ma recherche', () => {
@@ -29,7 +29,7 @@ describe('page "Foire aux questions"', () => {
 
     // THEN
     const question = screen.getByRole('heading', { level: 2, name: wording.QUESTION_JE_NE_TROUVE_AUCUN_LIEU })
-    expect(question).toBeInTheDocument()
+    expect(question).toBeVisible()
 
     const paragraphe2 = wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[1] +
       wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[2] +
@@ -41,7 +41,7 @@ describe('page "Foire aux questions"', () => {
       screen.getByText(textMatch(paragraphe2), { selector: 'p' }),
       screen.getByText(textMatch(wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[7] + wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[8]), { selector: 'p' }),
     ]
-    reponse.forEach((paragraph) => expect(paragraph).toBeInTheDocument())
+    reponse.forEach((paragraph) => expect(paragraph).toBeVisible())
 
     const lienTelephone = screen.getByRole('link', { name: wording.APPELER_LE_NUMERO(wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[3], wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[4]) })
     expect(lienTelephone).toHaveAttribute('href', 'tel:' + wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[4].replaceAll(' ', ''))
@@ -56,9 +56,9 @@ describe('page "Foire aux questions"', () => {
 
     // THEN
     const question = screen.getByRole('heading', { level: 2, name: wording.QUESTION_EST_CE_QUE_AIDE_GRATUITE })
-    expect(question).toBeInTheDocument()
+    expect(question).toBeVisible()
     const reponse = screen.getByText(wording.REPONSE_EST_CE_QUE_AIDE_GRATUITE, { selector: 'p' })
-    expect(reponse).toBeInTheDocument()
+    expect(reponse).toBeVisible()
   })
 
   it('affiche la question et la réponse permettant de savoir qui va me recevoir dans les lieux référencés', () => {
@@ -67,9 +67,9 @@ describe('page "Foire aux questions"', () => {
 
     // THEN
     const question = screen.getByRole('heading', { level: 2, name: wording.QUESTION_QUI_VA_ME_RECEVOIR })
-    expect(question).toBeInTheDocument()
+    expect(question).toBeVisible()
     const reponse = screen.getByText(wording.REPONSE_QUI_VA_ME_RECEVOIR, { selector: 'p' })
-    expect(reponse).toBeInTheDocument()
+    expect(reponse).toBeVisible()
   })
 
   it("affiche la question et la réponse permettant de savoir si l'avocat qui me reçoit pourra me défendre pendant toute la procédure", () => {
@@ -78,9 +78,9 @@ describe('page "Foire aux questions"', () => {
 
     // THEN
     const question = screen.getByRole('heading', { level: 2, name: wording.QUESTION_EST_CE_QUE_L_AVOCAT })
-    expect(question).toBeInTheDocument()
+    expect(question).toBeVisible()
     const reponse = screen.getByText(textMatch(wording.REPONSE_EST_CE_QUE_L_AVOCAT), { selector: 'p' })
-    expect(reponse).toBeInTheDocument()
+    expect(reponse).toBeVisible()
   })
 
   it("affiche la question et la réponse permettant de savoir que faire si je suis allée sur place et que l'accéssibilité n´est pas celle annoncée", () => {
@@ -89,9 +89,9 @@ describe('page "Foire aux questions"', () => {
 
     // THEN
     const question = screen.getByRole('heading', { level: 2, name: wording.QUESTION_JE_SUIS_ALLEE_SUR_PLACE })
-    expect(question).toBeInTheDocument()
+    expect(question).toBeVisible()
     const reponse = screen.getByText(textMatch(wording.REPONSE_JE_SUIS_ALLEE_SUR_PLACE + wording.EMAIL_DROIT_PLURIEL + '.'), { selector: 'p' })
-    expect(reponse).toBeInTheDocument()
+    expect(reponse).toBeVisible()
 
     const lienMail = within(reponse).getByRole('link', { name: wording.ENVOYER_UN_EMAIL_A + wording.EMAIL_DROIT_PLURIEL })
     expect(lienMail).toHaveAttribute('href', 'mailto:' + wording.EMAIL_DROIT_PLURIEL)
@@ -103,9 +103,9 @@ describe('page "Foire aux questions"', () => {
 
     // THEN
     const question = screen.getByRole('heading', { level: 2, name: wording.QUESTION_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT })
-    expect(question).toBeInTheDocument()
+    expect(question).toBeVisible()
     const reponse = screen.getByText(textMatch(wording.REPONSE_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT + wording.EMAIL_DROIT_PLURIEL + '.'), { selector: 'p' })
-    expect(reponse).toBeInTheDocument()
+    expect(reponse).toBeVisible()
 
     const lienMail = within(reponse).getByRole('link', { name: wording.ENVOYER_UN_EMAIL_A + wording.EMAIL_DROIT_PLURIEL })
     expect(lienMail).toHaveAttribute('href', 'mailto:' + wording.EMAIL_DROIT_PLURIEL)

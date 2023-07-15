@@ -30,17 +30,17 @@ describe('page de recherche par handicap', () => {
 
     // THEN
     const modifierLAdresse = screen.getByRole('button', { name: wording.MODIFIER_L_ADRESSE })
-    expect(modifierLAdresse).toBeInTheDocument()
+    expect(modifierLAdresse).toBeVisible()
     const passer = screen.getByRole('link', { name: wording.PASSER })
     expect(passer).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?lat=${lat}&lon=${lon}`)
 
     const title = screen.getByRole('heading', { level: 1, name: textMatch(wording.BESOIN_EN_ACCESSIBILITE + wording.FACULTATIF) })
-    expect(title).toBeInTheDocument()
+    expect(title).toBeVisible()
     criteres.forEach((critere) => {
       const checkbox = screen.getByRole('checkbox', { name: critere.title })
       expect(checkbox).toHaveAttribute('name', critere.name)
       const description = screen.getByText(textMatch(critere.description), { selector: 'p' })
-      expect(description).toBeInTheDocument()
+      expect(description).toBeVisible()
     })
     const latitude = screen.getByDisplayValue(lat)
     expect(latitude).toHaveAttribute('name', 'lat')

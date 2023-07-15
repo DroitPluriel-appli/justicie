@@ -30,13 +30,13 @@ describe('page pour rechercher une aide juridique par géolocalisation ou par ad
     expect(retourAlAccueil).toHaveAttribute('href', paths.ACCUEIL)
 
     const titre = screen.getByRole('heading', { level: 1, name: textMatch(wording.OU_RECHERCHEZ_VOUS + wording.OBLIGATOIRE) })
-    expect(titre).toBeInTheDocument()
+    expect(titre).toBeVisible()
 
     const utiliserMaPostionActuelle = screen.getByRole('button', { name: wording.UTILISER_MA_POSITION_ACTUELLE })
-    expect(utiliserMaPostionActuelle).toBeInTheDocument()
+    expect(utiliserMaPostionActuelle).toBeVisible()
 
     const ou = screen.getByText(wording.OU)
-    expect(ou).toBeInTheDocument()
+    expect(ou).toBeVisible()
 
     const renseignerUneAdresse = screen.getByRole('link', { name: wording.RENSEIGNER_UNE_ADRESSE })
     expect(renseignerUneAdresse).toHaveAttribute('href', paths.RENSEIGNER_UNE_ADRESSE)
@@ -51,7 +51,7 @@ describe('page pour rechercher une aide juridique par géolocalisation ou par ad
 
     // THEN
     const geolocalisationDesactivée = await screen.findByText(wording.GEOLOCALISATION_DESACTIVEE, { selector: 'p' })
-    expect(geolocalisationDesactivée).toBeInTheDocument()
+    expect(geolocalisationDesactivée).toBeVisible()
 
     const utiliserMaPostionActuelleGrisee = screen.getByRole('button', { name: wording.UTILISER_MA_POSITION_ACTUELLE })
     expect(utiliserMaPostionActuelleGrisee).toBeDisabled()
@@ -97,7 +97,7 @@ describe('page pour rechercher une aide juridique par géolocalisation ou par ad
 
     // THEN
     const geolocalisationDesactivée = screen.getByText(wording.GEOLOCALISATION_DESACTIVEE, { selector: 'p' })
-    expect(geolocalisationDesactivée).toBeInTheDocument()
+    expect(geolocalisationDesactivée).toBeVisible()
     expect(positionActuelle).toBeEnabled()
   })
 })

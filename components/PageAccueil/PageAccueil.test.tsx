@@ -20,15 +20,15 @@ describe('page d’accueil', () => {
 
     // THEN
     const justicie = screen.getByRole('heading', { level: 1, name: wording.JUSTICIE })
-    expect(justicie).toBeInTheDocument()
+    expect(justicie).toBeVisible()
 
     const problemeDeDroit = screen.getByRole('heading', { level: 2, name: wording.VOUS_AVEZ_UN_PROBLEME_DE_DROIT })
-    expect(problemeDeDroit).toBeInTheDocument()
+    expect(problemeDeDroit).toBeVisible()
     const trouvezUnConseil = screen.getByText(wording.TROUVEZ_UN_CONSEIL_JURIDIQUE, { selector: 'p' })
-    expect(trouvezUnConseil).toBeInTheDocument()
+    expect(trouvezUnConseil).toBeVisible()
 
     const description = screen.getByText(textMatch(wording.VOUS_AVEZ_UNE_QUESTION_SUR_VOS_DROITS + wording.VOUS_ETES_VICTIME + wording.VOUS_VOULEZ_FAIRE_UNE_ACTION_EN_JUSTICE + wording.VOUS_AVEZ_RECU_UNE_DECISION), { selector: 'p' })
-    expect(description).toBeInTheDocument()
+    expect(description).toBeVisible()
 
     const rechercherUneAide = screen.getByRole('link', { name: wording.RECHERCHER_UNE_AIDE_JURIDIQUE_GRATUITE_ET_ACCESSIBLE })
     expect(rechercherUneAide).toHaveAttribute('href', paths.RECHERCHER_UNE_AIDE_JURIDIQUE)
@@ -37,9 +37,9 @@ describe('page d’accueil', () => {
     expect(decouvrirNosCriteres).toHaveAttribute('href', paths.NOS_CRITERES_D_ACCESSIBILITE)
 
     const aPropos = screen.getByRole('heading', { level: 2, name: wording.TITLE_A_PROPOS_DE_DROIT_PLURIEL })
-    expect(aPropos).toBeInTheDocument()
+    expect(aPropos).toBeVisible()
     const droitPlurielEstUneAssociation = screen.getByText(wording.DROIT_PLURIEL_EST_UNE_ASSOCIATION, { selector: 'p' })
-    expect(droitPlurielEstUneAssociation).toBeInTheDocument()
+    expect(droitPlurielEstUneAssociation).toBeVisible()
 
     const retrouvezSurNotreSite = screen.getByText(textMatch(wording.RETROUVEZ_PLUS_D_INFOS + wording.SITE_DROIT_PLURIEL), { selector: 'p' })
     const lienSiteDroitPluriel = within(retrouvezSurNotreSite).getByRole('link', { name: wording.TITRE_LIEN_SITE_DROIT_PLURIEL + wording.NOUVELLE_FENETRE })
@@ -48,7 +48,7 @@ describe('page d’accueil', () => {
     expect(lienSiteDroitPluriel).toHaveAttribute('rel', 'external noopener noreferrer')
 
     const nousContacter = screen.getByRole('heading', { level: 2, name: wording.TITLE_NOUS_CONTACTER })
-    expect(nousContacter).toBeInTheDocument()
+    expect(nousContacter).toBeVisible()
 
     const coordonneesDroitPluriel = screen.getByText(
       textMatch(`${wording.PAR_EMAIL}${wording.EMAIL_DROIT_PLURIEL}${wording.PAR_TELEPHONE}${wording.TELEPHONE_DROIT_PLURIEL}`), { selector: 'address' }
@@ -62,7 +62,7 @@ describe('page d’accueil', () => {
     expect(lienTelephone).toHaveAttribute('href', 'tel:' + wording.TELEPHONE_DROIT_PLURIEL.replaceAll(' ', ''))
     expect(lienTelephone.textContent).toBe(wording.TELEPHONE_DROIT_PLURIEL)
     const nosActualites = screen.getByRole('heading', { level: 2, name: wording.TITLE_SUIVEZ_NOS_ACTUALITES })
-    expect(nosActualites).toBeInTheDocument()
+    expect(nosActualites).toBeVisible()
 
     const lienFacebook = screen.getByRole('link', { name: wording.TITRE_LIEN_FACEBOOK + wording.NOUVELLE_FENETRE })
     expect(lienFacebook).toHaveAttribute('href', wording.LIEN_FACEBOOK)
