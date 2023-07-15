@@ -88,11 +88,11 @@ export class PostgreSQLLieuLoader implements LieuLoader {
 
   private transformeEnLieu(lieuxModel: LieuModel[]): Lieu[] {
     return lieuxModel.map((lieuModel): Lieu => {
-      return new Lieu(
-        lieuModel.adresse,
-        lieuModel.codePostal,
-        lieuModel.commentaire,
-        {
+      return Lieu.cree({
+        adresse: lieuModel.adresse,
+        codePostal: lieuModel.codePostal,
+        commentaire: lieuModel.commentaire,
+        criteres: {
           bim: lieuModel.bim,
           calme: lieuModel.calme,
           forme: lieuModel.forme,
@@ -101,26 +101,27 @@ export class PostgreSQLLieuLoader implements LieuLoader {
           pmr_assiste: lieuModel.pmr_assiste,
           visuel: lieuModel.visuel,
         },
-        lieuModel.departement,
-        Number(lieuModel.distance),
-        lieuModel.domaineDeDroit,
-        lieuModel.eMail,
-        lieuModel.horaire,
-        lieuModel.id,
-        lieuModel.latitude,
-        lieuModel.longitude,
-        lieuModel.nom,
-        lieuModel.priseDeRendezVous,
-        lieuModel.region,
-        lieuModel.siteInternet,
-        lieuModel.telephone,
-        lieuModel.ville
-      )
+        departement: lieuModel.departement,
+        distance: Number(lieuModel.distance),
+        domaineDeDroit: lieuModel.domaineDeDroit,
+        eMail: lieuModel.eMail,
+        horaire: lieuModel.horaire,
+        id: lieuModel.id,
+        latitude: lieuModel.latitude,
+        longitude: lieuModel.longitude,
+        nom: lieuModel.nom,
+        priseDeRendezVous: lieuModel.priseDeRendezVous,
+        region: lieuModel.region,
+        siteInternet: lieuModel.siteInternet,
+        telephone: lieuModel.telephone,
+        ville: lieuModel.ville,
+      })
     })
   }
 
   private ajouteLaDistance(lieuxModel: LieuModel[], latitude: number, longitude: number): LieuModel[] {
     const degreesToRadians = (degrees: number) => degrees * (Math.PI / 180)
+
     return lieuxModel.map((lieuModel) => {
       return {
         ...lieuModel,

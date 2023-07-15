@@ -3,7 +3,7 @@ import mockRouter from 'next-router-mock'
 
 import PageResultatsListe from './PageResultatsListe'
 import { Critere } from '../../backend/entities/Critere'
-import { LieuBuilder } from '../../backend/entities/LieuBuilder'
+import { Lieu } from '../../backend/entities/Lieu'
 import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
 
 describe('page des résultats de recherche affichés en liste', () => {
@@ -74,7 +74,7 @@ describe('page des résultats de recherche affichés en liste', () => {
   it('affiche une phrase du nombre de lieu trouvé', () => {
     // GIVEN
     const nombreDeResultat = 1
-    const lieu = LieuBuilder.cree()
+    const lieu = Lieu.cree()
 
     // WHEN
     renderFakeComponent(
@@ -124,7 +124,7 @@ describe('page des résultats de recherche affichés en liste', () => {
 
   it('affiche les cartes des lieux', () => {
     // GIVEN
-    const lieuA = LieuBuilder.cree({
+    const lieuA = Lieu.cree({
       adresse: '12 rue du Lieu',
       criteres: {
         bim: true,
@@ -140,7 +140,7 @@ describe('page des résultats de recherche affichés en liste', () => {
       longitude: 51.50,
       nom: 'LieuA',
     })
-    const lieuB = LieuBuilder.cree({
+    const lieuB = Lieu.cree({
       criteres: {
         bim: true,
         calme: false,
@@ -229,7 +229,7 @@ describe('page des résultats de recherche affichés en liste', () => {
 
   it('n’affiche pas la pagination quand il y a qu’une seule page', () => {
     // GIVEN
-    const lieu = LieuBuilder.cree()
+    const lieu = Lieu.cree()
 
     // WHEN
     renderFakeComponent(
@@ -456,7 +456,7 @@ describe('page des résultats de recherche affichés en liste', () => {
 
   it('affiche le lien pour donner son avis quand il y a des résultats', () => {
     // GIVEN
-    const lieu = LieuBuilder.cree()
+    const lieu = Lieu.cree()
 
     // WHEN
     renderFakeComponent(

@@ -3,7 +3,6 @@ import { DataSource, Repository } from 'typeorm'
 import { importeDesLieux } from './importerDesLieux'
 import dataSource from '../../../database/dataSource'
 import { LieuModel } from '../../../database/models/LieuModel'
-import { LieuModelBuilder } from '../../../database/models/LieuModelBuilder'
 
 describe('importer des lieux', () => {
   let orm: Promise<DataSource>
@@ -62,7 +61,7 @@ describe('importer des lieux', () => {
     })
 
     const lieuxModel = await lieuRepository.find()
-    expect(lieuxModel).toStrictEqual([LieuModelBuilder.cree()])
+    expect(lieuxModel).toStrictEqual([LieuModel.cree()])
   })
 
   it('importe un lieu qui n’a pas de commentaire', async () => {
@@ -77,12 +76,12 @@ describe('importer des lieux', () => {
 
     // THEN
     const lieuxModel = await lieuRepository.find()
-    expect(lieuxModel).toStrictEqual([LieuModelBuilder.cree({ commentaire: '' })])
+    expect(lieuxModel).toStrictEqual([LieuModel.cree({ commentaire: '' })])
   })
 
   it('la table lieu est toujours remise à zéro et sa clé primaire est réinitialisée avant chaque sauvegarde', async () => {
     // GIVEN
-    const lieuAvantMaj = LieuModelBuilder.cree({ nom: 'un lieu qui devrait avoir disparu' })
+    const lieuAvantMaj = LieuModel.cree({ nom: 'un lieu qui devrait avoir disparu' })
     await lieuRepository.insert([lieuAvantMaj])
     const spreadsheets = { values: { get: jest.fn(() => ({ data: { values: [lieuSpreadsheets] } })) } }
     const sheets = jest.fn(() => ({ spreadsheets }))
@@ -93,6 +92,6 @@ describe('importer des lieux', () => {
 
     // THEN
     const lieuxModel = await lieuRepository.find()
-    expect(lieuxModel).toStrictEqual([LieuModelBuilder.cree({ nom: 'Maison de Justice et du Droit de Bourg en Bresse' })])
+    expect(lieuxModel).toStrictEqual([LieuModel.cree({ nom: 'Maison de Justice et du Droit de Bourg en Bresse' })])
   })
 })

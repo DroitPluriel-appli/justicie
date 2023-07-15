@@ -41,7 +41,7 @@ async function sauvegardeLesLieux(orm: Promise<DataSource>, lieux: LieuModel[]):
 function transformeEnLieuxModel(lieuxBruts: string[][]): LieuModel[] {
   const stringToBoolean = (str: string): boolean => str === 'oui' ? true : false
 
-  return lieuxBruts.map((lieu): LieuModel => {
+  return lieuxBruts.map((lieu: string[]): LieuModel => {
     const lieuModel = new LieuModel()
     lieuModel.adresse = lieu[1]
     lieuModel.bim = stringToBoolean(lieu[18])

@@ -2,7 +2,7 @@ import { screen } from '@testing-library/react'
 import mockRouter from 'next-router-mock'
 
 import PageLieu from './PageLieu'
-import { LieuBuilder } from '../../backend/entities/LieuBuilder'
+import { Lieu } from '../../backend/entities/Lieu'
 import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
 
 describe('page d’un lieu', () => {
@@ -19,7 +19,7 @@ describe('page d’un lieu', () => {
 
   it('affiche le titre de l’onglet', () => {
     // GIVEN
-    const lieu = LieuBuilder.cree({ nom: 'La maison de justice de Paris' })
+    const lieu = Lieu.cree({ nom: 'La maison de justice de Paris' })
 
     // WHEN
     renderFakeComponent(<PageLieu lieu={lieu} />)
@@ -30,7 +30,7 @@ describe('page d’un lieu', () => {
 
   it('affiche sa description', () => {
     // GIVEN
-    const lieu = LieuBuilder.cree({
+    const lieu = Lieu.cree({
       adresse: '34 cours de Verdun',
       codePostal: '1000',
       distance: 2,
@@ -63,7 +63,7 @@ describe('page d’un lieu', () => {
 
   it('affiche son accessibilité', () => {
     // GIVEN
-    const lieu = LieuBuilder.cree({
+    const lieu = Lieu.cree({
       criteres: {
         bim: false,
         calme: true,
@@ -93,7 +93,7 @@ describe('page d’un lieu', () => {
 
   it('affiche ses horaires et jours d’ouverture', () => {
     // GIVEN
-    const lieu = LieuBuilder.cree({
+    const lieu = Lieu.cree({
       horaire: 'Lundi 9h00 à 12h00 et de 13h30 à 17h00\nMardi 9h00 à 12h00 et de 13h30 à 17h00\nMercredi 9h00 à 12h00 et de 13h30 à 17h00\nJeudi 9h00 à 12h00 et de 13h30 à 17h00\nVendredi 9h00 à 12h00 et de 13h30 à 17h00',
       priseDeRendezVous: 'OUI\nou pas',
     })
@@ -112,7 +112,7 @@ describe('page d’un lieu', () => {
 
   it('affiche plus d’informations', () => {
     // GIVEN
-    const lieu = LieuBuilder.cree({ commentaire: 'En partie\nformé' })
+    const lieu = Lieu.cree({ commentaire: 'En partie\nformé' })
 
     // WHEN
     renderFakeComponent(<PageLieu lieu={lieu} />)
@@ -126,7 +126,7 @@ describe('page d’un lieu', () => {
 
   it('indique à l’utilisateur quand il n’y a pas d’informations', () => {
     // GIVEN
-    const lieu = LieuBuilder.cree({ commentaire: '' })
+    const lieu = Lieu.cree({ commentaire: '' })
 
     // WHEN
     renderFakeComponent(<PageLieu lieu={lieu} />)
@@ -138,7 +138,7 @@ describe('page d’un lieu', () => {
 
   it('affiche son contact et site internet', () => {
     // GIVEN
-    const lieu = LieuBuilder.cree({
+    const lieu = Lieu.cree({
       eMail: 'mjd.bourg-en-bresse@example.com',
       siteInternet: 'https://www.ain.gouv.fr/',
       telephone: '06 01 02 03 04',
@@ -165,7 +165,7 @@ describe('page d’un lieu', () => {
 
   it('indique à l’utilisateur quand il n’y a pas d’e-mail', () => {
     // GIVEN
-    const lieu = LieuBuilder.cree({ eMail: '' })
+    const lieu = Lieu.cree({ eMail: '' })
 
     // WHEN
     renderFakeComponent(<PageLieu lieu={lieu} />)
@@ -177,7 +177,7 @@ describe('page d’un lieu', () => {
 
   it('indique à l’utilisateur quand il n’y a pas de site internet', () => {
     // GIVEN
-    const lieu = LieuBuilder.cree({ siteInternet: '' })
+    const lieu = Lieu.cree({ siteInternet: '' })
 
     // WHEN
     renderFakeComponent(<PageLieu lieu={lieu} />)
@@ -189,7 +189,7 @@ describe('page d’un lieu', () => {
 
   it('affiche l’ancre pour revenir en haut de page', () => {
     // GIVEN
-    const lieu = LieuBuilder.cree()
+    const lieu = Lieu.cree()
 
     // WHEN
     renderFakeComponent(<PageLieu lieu={lieu} />)
@@ -201,7 +201,7 @@ describe('page d’un lieu', () => {
 
   it('affiche le lien pour donner son avis', () => {
     // GIVEN
-    const lieu = LieuBuilder.cree()
+    const lieu = Lieu.cree()
 
     // WHEN
     renderFakeComponent(<PageLieu lieu={lieu} />)
