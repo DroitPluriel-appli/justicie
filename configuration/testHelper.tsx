@@ -7,7 +7,6 @@ import { Context } from './useDependencies'
 
 export const renderFakeComponent = (component: ReactElement): RenderResult => {
   return render(
-    // @ts-ignore
     <Context.Provider value={fakeFrontDependencies}>
       <main>
         {component}

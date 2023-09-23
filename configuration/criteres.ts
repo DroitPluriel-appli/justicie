@@ -1,5 +1,5 @@
-import { Critere } from '../backend/entities/Critere'
 import { Wording } from './wording/Wording'
+import { Critere } from '../backend/entities/Critere'
 
 export type CritereFront = Readonly<{
   description: string

@@ -1,6 +1,5 @@
 import { ReactElement } from 'react'
 import { vi } from 'vitest'
-// eslint-disable-next-line import/no-extraneous-dependencies
 import 'vitest-dom/extend-expect'
 
 // Cela permet de pouvoir tester ce qu'il y a dans <head>.

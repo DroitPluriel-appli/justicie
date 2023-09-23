@@ -24,7 +24,6 @@
   },
   "ignorePatterns": [
     "public",
-    "vitest.config.ts",
     "lighthouserc.js",
     "next.config.js"
   ],
@@ -83,6 +82,7 @@
     "space-infix-ops": "error",
     "yoda": "error",
     "import/newline-after-import": "error",
+    "import/no-anonymous-default-export": "off",
     "import/no-extraneous-dependencies": "error",
     "import/no-mutable-exports": "error",
     "import/order": [

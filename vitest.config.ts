@@ -8,6 +8,7 @@ export default defineConfig({
     coverage: {
       exclude: ['database/**/*.ts'],
       provider: 'istanbul',
+      skipFull: true,
     },
     environment: 'jsdom',
     globals: true,
