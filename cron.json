@@ -1,7 +1,7 @@
 {
   "jobs": [
     {
-      "command": "0 1 * * 2-6 /app/maj_lieux.sh",
+      "command": "0 1 * * 2-6 node build/backend/infrastructure/controllers/importerDesLieuxCron.js",
       "size": "S"
     }
   ]

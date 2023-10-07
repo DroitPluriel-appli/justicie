@@ -1,13 +1,11 @@
 {
   "compilerOptions": {
     "allowJs": false,
-    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "lib": [
       "dom",
-      "dom.iterable",
       "esnext"
     ],
     "forceConsistentCasingInFileNames": true,
@@ -32,9 +30,6 @@
     "types": ["vitest/globals"]
   },
   "include": [
-    "next.config.js",
-    "sentry.client.config.ts",
-    "sentry.server.config.ts",
     "**/*.ts",
     "**/*.tsx"
   ],

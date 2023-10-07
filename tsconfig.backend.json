@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "outDir": "build",
+    "target": "ESNext",
+    "types": []
+  },
+  "include": ["backend"],
+  "exclude": ["**/*test.ts"]
+}

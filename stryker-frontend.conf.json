@@ -2,7 +2,7 @@
   "checkers": ["typescript"],
   "disableTypeChecks": true,
   "htmlReporter": { "fileName": "reports/mutation/mutation-frontend.html" },
-  "ignorePatterns": [".github", ".lighthouseci", ".next", ".vscode", ".yarn", "coverage", "lighthouse-ci-reports", "out", "pages", "public"],
+  "ignorePatterns": ["**/.!(env.test)*", "build", "coverage", "lighthouse-ci-reports", "pages", "public", "reports"],
   "ignoreStatic": true,
   "logLevel": "info",
   "mutate": [
