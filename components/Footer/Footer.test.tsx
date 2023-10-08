@@ -8,8 +8,7 @@ describe('pied de page', () => {
 
   beforeEach(() => {
     window.tarteaucitron = { userInterface: { openPanel: vi.fn() } }
-    // @ts-ignore
-    process.env.NODE_ENV = 'production'
+    vi.stubEnv('NODE_ENV', 'production')
   })
 
   it('affiche les liens', () => {

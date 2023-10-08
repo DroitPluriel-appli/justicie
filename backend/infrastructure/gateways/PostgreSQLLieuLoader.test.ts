@@ -5,16 +5,19 @@ import dataSource from '../../../database/dataSource'
 import { LieuModel } from '../../../database/models/LieuModel'
 import { Critere } from '../../entities/Critere'
 import { Lieu } from '../../entities/Lieu'
+import { LieuLoader } from '../../entities/LieuLoader'
 
 describe('lieu loader', () => {
-  const orm = dataSource.initialize()
-  const postgreSQLLieuLoader = new PostgreSQLLieuLoader(orm)
+  let orm: Promise<DataSource>
+  let postgreSQLLieuLoader: LieuLoader
+
+  beforeEach(() => {
+    orm = dataSource.initialize()
+    postgreSQLLieuLoader = new PostgreSQLLieuLoader(orm)
+  })
 
   afterEach(async () => {
     await (await orm).createQueryBuilder().delete().from(LieuModel).execute()
-  })
-
-  afterAll(async () => {
     await (await orm).destroy()
   })
 
