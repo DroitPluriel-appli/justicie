@@ -70,7 +70,7 @@
   margin-bottom: var(--l-to-xxl-margin);
 }
 
-@media (min-width: 36em) {
+@media (width >= 36em) {
   .criteres {
     margin-left: var(--m-margin);
   }

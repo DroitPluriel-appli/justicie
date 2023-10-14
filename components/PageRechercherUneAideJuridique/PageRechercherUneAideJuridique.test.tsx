@@ -135,8 +135,8 @@ function mockedErrorGeolocation() {
   navigator.geolocation = {
     getCurrentPosition: (_: PositionCallback, error: PositionErrorCallback) => error({
       PERMISSION_DENIED: 1,
-      POSITION_UNAVAILABLE: 0,
-      TIMEOUT: 0,
+      POSITION_UNAVAILABLE: 2,
+      TIMEOUT: 3,
       code: 1,
       message: 'string',
     }),

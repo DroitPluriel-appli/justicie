@@ -15,7 +15,7 @@ import Telephone from '../common/Telephone/Telephone'
 import Title from '../common/Title/Title'
 import VotreAvis from '../common/VotreAvis/VotreAvis'
 
-export default function PageLieu({ lieu }: { lieu: Lieu }): ReactElement {
+export default function PageLieu({ lieu }: { readonly lieu: Lieu }): ReactElement {
   const { useRouter, wording } = useDependencies()
   const { query } = useRouter()
 

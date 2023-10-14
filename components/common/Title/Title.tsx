@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { ReactElement } from 'react'
 
-export default function Title({ children }: { children: string }): ReactElement {
+export default function Title({ children }: { readonly children: string }): ReactElement {
   return (
     <Head>
       <title>

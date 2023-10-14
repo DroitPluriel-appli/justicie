@@ -5,7 +5,7 @@ import { backDependencies } from '../../backend/backDependencies'
 import { Lieu } from '../../backend/entities/Lieu'
 import PageLieu from '../../components/PageLieu/PageLieu'
 
-export default function Router({ lieu }: { lieu: Lieu }): ReactElement {
+export default function Router({ lieu }: { readonly lieu: Lieu }): ReactElement {
   return (
     <PageLieu lieu={lieu} />
   )

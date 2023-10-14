@@ -87,7 +87,7 @@ p {
   font-size: var(--s-to-m-font);
 }
 
-@media (min-width: 36em) {
+@media (width >= 36em) {
   main {
     margin: 0 auto;
     width: 38rem;

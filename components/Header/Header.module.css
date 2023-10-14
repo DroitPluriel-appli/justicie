@@ -91,7 +91,7 @@
   text-align: center;
 }
 
-@media (min-width: 36em) {
+@media (width >= 36em) {
   .desktop {
     display: unset;
   }
@@ -133,7 +133,7 @@
   }
 }
 
-@media (min-width: 36rem) and (max-width: 74rem) {
+@media (width >= 36rem) and (width <= 74rem) {
   .header {
     margin-bottom: calc(2 * var(--xxl-margin) + 1.5rem);
   }

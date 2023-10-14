@@ -7,7 +7,7 @@
   margin-top: var(--xl-margin);
 }
 
-@media (max-width: 36em) {
+@media (width <= 36em) {
   .footer img {
     display: none;
   }
@@ -49,7 +49,7 @@
   text-decoration: underline;
 }
 
-@media (min-width: 36em) {
+@media (width >= 36em) {
   .footer {
     padding-top: var(--xl-margin);
   }
