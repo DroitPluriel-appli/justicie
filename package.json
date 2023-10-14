@@ -29,19 +29,19 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@googleapis/sheets": "^4.0.1",
+    "@googleapis/sheets": "^5.0.5",
     "@sentry/nextjs": "^7.37.2",
     "accessible-autocomplete": "^2.0.4",
     "dotenv-defaults": "^5.0.2",
-    "leaflet": "^1.9.3",
+    "leaflet": "^1.9.4",
     "next": "^13.2.1",
     "next-pwa": "^5.6.0",
-    "pg": "^8.9.0",
+    "pg": "^8.11.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-leaflet": "^4.2.0",
-    "sharp": "^0.31.3",
-    "typeorm": "^0.3.16"
+    "react-leaflet": "^4.2.1",
+    "sharp": "^0.32.6",
+    "typeorm": "^0.3.17"
   },
   "devDependencies": {
     "@lhci/cli": "^0.10.0",
