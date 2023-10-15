@@ -62,8 +62,7 @@ describe('page des résultats de recherche affichés sur une carte', () => {
     // eslint-disable-next-line vitest/prefer-spy-on
     L.Circle.prototype.addTo = vi.fn()
 
-    // @ts-ignore
-    window.dataLayer = { push: vi.fn() }
+    vi.stubGlobal('dataLayer', { push: vi.fn() })
 
     mockRouter.query = {
       lat,

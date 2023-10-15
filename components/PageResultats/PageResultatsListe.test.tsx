@@ -13,8 +13,7 @@ describe('page des résultats de recherche affichés en liste', () => {
   const bim = 'on'
 
   beforeEach(() => {
-    // @ts-ignore
-    window.dataLayer = { push: vi.fn() }
+    vi.stubGlobal('dataLayer', { push: vi.fn() })
 
     mockRouter.query = {
       lat,

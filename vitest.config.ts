@@ -17,5 +17,6 @@ export default defineConfig({
     sequence: { shuffle: true },
     setupFiles: ['vitest.setup.ts'],
     unstubEnvs: true,
+    unstubGlobals: true,
   },
 })

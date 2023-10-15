@@ -7,7 +7,7 @@ describe('pied de page', () => {
   const { paths, wording } = fakeFrontDependencies
 
   beforeEach(() => {
-    window.tarteaucitron = { userInterface: { openPanel: vi.fn() } }
+    vi.stubGlobal('tarteaucitron', { userInterface: { openPanel: vi.fn() } })
     vi.stubEnv('NODE_ENV', 'production')
   })
 
