@@ -46,7 +46,7 @@ export default function PageRenseignerUneAdresse(): ReactElement {
           <Autocomplete
             className={styles.autocomplete}
             id="autocomplete"
-            minLength="4"
+            minLength="3"
             onConfirm={selectionneUneAdresse}
             placeholder={wording.RENSEIGNER_UNE_ADRESSE}
             showNoOptionsFound={isEmpty}
