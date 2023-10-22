@@ -164,8 +164,7 @@ describe('page pour renseigner une adresse', () => {
 })
 
 function mockedFetch(adresses: AdresseJson[]) {
-  // @ts-ignore
-  vi.spyOn(global, 'fetch').mockResolvedValue({ json: () => Promise.resolve({ features: adresses }) })
+  vi.stubGlobal('fetch', vi.fn(() => ({ json: () => Promise.resolve({ features: adresses }) })))
 }
 
 function formulaire() {
