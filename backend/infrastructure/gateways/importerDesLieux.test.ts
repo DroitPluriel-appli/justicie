@@ -36,10 +36,10 @@ describe('importer des lieux', () => {
   beforeEach(async () => {
     orm = dataSource.initialize()
     lieuRepository = (await orm).getRepository(LieuModel)
+    await (await orm).createQueryBuilder().delete().from(LieuModel).execute()
   })
 
   afterEach(async () => {
-    await (await orm).createQueryBuilder().delete().from(LieuModel).execute()
     await (await orm).destroy()
   })
 

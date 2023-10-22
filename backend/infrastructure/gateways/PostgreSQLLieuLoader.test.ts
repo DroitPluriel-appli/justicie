@@ -7,30 +7,25 @@ import { Critere } from '../../entities/Critere'
 import { Lieu } from '../../entities/Lieu'
 import { LieuLoader } from '../../entities/LieuLoader'
 
-describe('lieu loader', () => {
-  let orm: Promise<DataSource>
-  let postgreSQLLieuLoader: LieuLoader
+describe('lieu loader', async () => {
+  const orm: Promise<DataSource> = dataSource.initialize()
+  const lieuLoader: LieuLoader = new PostgreSQLLieuLoader(orm)
+  await (await orm).createQueryBuilder().delete().from(LieuModel).execute()
+  await creeSeptLieux(orm)
 
-  beforeEach(() => {
-    orm = dataSource.initialize()
-    postgreSQLLieuLoader = new PostgreSQLLieuLoader(orm)
-  })
-
-  afterEach(async () => {
-    await (await orm).createQueryBuilder().delete().from(LieuModel).execute()
+  afterAll(async () => {
     await (await orm).destroy()
   })
 
   describe('récupérer un lieu', () => {
     it('récupère un lieu existant', async () => {
       // GIVEN
-      await creeSeptLieux(orm)
       const latitude = 40.000000
       const longitude = 2.000000
       const idExistant = 1
 
       // WHEN
-      const lieu = await postgreSQLLieuLoader.recupereUnLieu(idExistant, latitude, longitude)
+      const lieu = await lieuLoader.recupereUnLieu(idExistant, latitude, longitude)
 
       // THEN
       expect(lieu).toStrictEqual([Lieu.cree({ distance: 14, id: 1, latitude: 40.100000, longitude: 2.100000 })])
@@ -38,13 +33,12 @@ describe('lieu loader', () => {
 
     it('récupère un lieu inexistant', async () => {
       // GIVEN
-      await creeSeptLieux(orm)
       const latitude = 0.000000
       const longitude = 0.000000
       const idInexistant = 10
 
       // WHEN
-      const lieu = await postgreSQLLieuLoader.recupereUnLieu(idInexistant, latitude, longitude)
+      const lieu = await lieuLoader.recupereUnLieu(idInexistant, latitude, longitude)
 
       // THEN
       expect(lieu).toStrictEqual([])
@@ -54,7 +48,6 @@ describe('lieu loader', () => {
   describe('récupérer des lieux', () => {
     it('affiche la première page', async () => {
       // GIVEN
-      await creeSeptLieux(orm)
       const latitude = 40.000000
       const longitude = 2.000000
       const criteres = new Set<Critere>()
@@ -62,7 +55,7 @@ describe('lieu loader', () => {
       const nombreDeLieuxAffichesParPage = 4
 
       // WHEN
-      const lieux = await postgreSQLLieuLoader.recupereDesLieux(latitude, longitude, criteres, page, nombreDeLieuxAffichesParPage)
+      const lieux = await lieuLoader.recupereDesLieux(latitude, longitude, criteres, page, nombreDeLieuxAffichesParPage)
 
       // THEN
       expect(lieux).toStrictEqual({
@@ -92,7 +85,6 @@ describe('lieu loader', () => {
 
     it('affiche la seconde page', async () => {
       // GIVEN
-      await creeSeptLieux(orm)
       const latitude = 40.000000
       const longitude = 2.000000
       const criteres = new Set<Critere>()
@@ -100,7 +92,7 @@ describe('lieu loader', () => {
       const nombreDeLieuxAffichesParPage = 4
 
       // WHEN
-      const lieux = await postgreSQLLieuLoader.recupereDesLieux(latitude, longitude, criteres, page, nombreDeLieuxAffichesParPage)
+      const lieux = await lieuLoader.recupereDesLieux(latitude, longitude, criteres, page, nombreDeLieuxAffichesParPage)
 
       // THEN
       expect(lieux).toStrictEqual({
@@ -129,7 +121,6 @@ describe('lieu loader', () => {
 
     it('affiche les lieux dans un rayon de recherche', async () => {
       // GIVEN
-      await creeSeptLieux(orm)
       const latitude = 40.000000
       const longitude = 2.000000
       const criteres = new Set<Critere>()
@@ -138,7 +129,7 @@ describe('lieu loader', () => {
       const rayonDeRechercheLimite = 22
 
       // WHEN
-      const lieux = await postgreSQLLieuLoader.recupereDesLieux(latitude, longitude, criteres, page, nombreDeLieuxAffichesParPage, rayonDeRechercheLimite)
+      const lieux = await lieuLoader.recupereDesLieux(latitude, longitude, criteres, page, nombreDeLieuxAffichesParPage, rayonDeRechercheLimite)
 
       // THEN
       expect(lieux).toStrictEqual({
@@ -183,13 +174,12 @@ describe('lieu loader', () => {
 
     it('affiche les lieux les plus près de l’adresse demandée', async () => {
       // GIVEN
-      await creeSeptLieux(orm)
       const latitude = 40.000000
       const longitude = 2.000000
       const criteres = new Set<Critere>()
 
       // WHEN
-      const lieux = await postgreSQLLieuLoader.recupereDesLieux(latitude, longitude, criteres)
+      const lieux = await lieuLoader.recupereDesLieux(latitude, longitude, criteres)
 
       // THEN
       expect(lieux).toStrictEqual({
@@ -236,13 +226,12 @@ describe('lieu loader', () => {
 
     it('affiche les lieux selon différents besoins d’accessibilités', async () => {
       // GIVEN
-      await creeSeptLieux(orm)
       const latitude = 40.000000
       const longitude = 2.000000
       const criteres = new Set<Critere>(['calme', 'pmr'])
 
       // WHEN
-      const lieux = await postgreSQLLieuLoader.recupereDesLieux(latitude, longitude, criteres)
+      const lieux = await lieuLoader.recupereDesLieux(latitude, longitude, criteres)
 
       // THEN
       expect(lieux).toStrictEqual({
@@ -284,13 +273,12 @@ describe('lieu loader', () => {
 
     it('ne retourne aucun lieux si aucun lieu ne correspond à la recherche', async () => {
       // GIVEN
-      await creeSeptLieux(orm)
       const latitude = 0.000000
       const longitude = 0.000000
       const criteres = new Set<Critere>(['calme', 'pmr', 'bim'])
 
       // WHEN
-      const lieux = await postgreSQLLieuLoader.recupereDesLieux(latitude, longitude, criteres)
+      const lieux = await lieuLoader.recupereDesLieux(latitude, longitude, criteres)
 
       // THEN
       expect(lieux).toStrictEqual({
