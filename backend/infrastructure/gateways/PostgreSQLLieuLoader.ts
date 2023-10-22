@@ -19,9 +19,7 @@ export class PostgreSQLLieuLoader implements LieuLoader {
   constructor(private readonly orm: Promise<DataSource>) { }
 
   async recupereUnLieu(id: number, latitude: number, longitude: number): Promise<Lieu[]> {
-    const lieuxModel = await (await this.orm)
-      .getRepository(LieuModel)
-      .findBy({ id })
+    const lieuxModel = await (await this.orm).manager.findBy(LieuModel, { id })
 
     return this.transformeEnLieu(this.ajouteLaDistance(lieuxModel, latitude, longitude))
   }
@@ -50,12 +48,11 @@ export class PostgreSQLLieuLoader implements LieuLoader {
   ): Promise<number> {
     const criteresSQL = this.getCriteres(criteres)
 
-    const query = await (await this.orm)
-      .getRepository(LieuModel)
-      .query(`SELECT COUNT(*) FROM lieu WHERE ${this.calculDistanceSQL} < ${rayonDeRecherche === Infinity ? "'+Infinity'" : rayonDeRecherche} ${criteresSQL}`, [
+    const query = await (await this.orm).manager
+      .query<ReadonlyArray<{ count: string }>>(`SELECT COUNT(*) FROM lieu WHERE ${this.calculDistanceSQL} < ${rayonDeRecherche === Infinity ? "'+Infinity'" : rayonDeRecherche} ${criteresSQL}`, [
         latitude,
         longitude,
-      ]) as { count: string }[]
+      ])
 
     return Number(query[0].count)
   }
@@ -70,14 +67,13 @@ export class PostgreSQLLieuLoader implements LieuLoader {
   ): Promise<LieuModel[]> {
     const criteresSQL = this.getCriteres(criteres)
 
-    return await (await this.orm)
-      .getRepository(LieuModel)
-      .query(`SELECT *, code_postal AS "codePostal", domaine_de_droit AS "domaineDeDroit", e_mail AS "eMail", prise_de_rendez_vous AS "priseDeRendezVous", site_internet AS "siteInternet", ${this.calculDistanceSQL} AS distance FROM lieu WHERE ${this.calculDistanceSQL} < ${rayonDeRecherche === Infinity ? "'+Infinity'" : rayonDeRecherche} ${criteresSQL} ORDER BY distance ASC LIMIT $3 OFFSET $4`, [
+    return await (await this.orm).manager
+      .query<LieuModel[]>(`SELECT *, code_postal AS "codePostal", domaine_de_droit AS "domaineDeDroit", e_mail AS "eMail", prise_de_rendez_vous AS "priseDeRendezVous", site_internet AS "siteInternet", ${this.calculDistanceSQL} AS distance FROM lieu WHERE ${this.calculDistanceSQL} < ${rayonDeRecherche === Infinity ? "'+Infinity'" : rayonDeRecherche} ${criteresSQL} ORDER BY distance ASC LIMIT $3 OFFSET $4`, [
         latitude,
         longitude,
         nombreDeLieuxAffichesParPage,
         page * nombreDeLieuxAffichesParPage,
-      ]) as LieuModel[]
+      ])
   }
 
   private getCriteres(criteres: Set<Critere>): string {

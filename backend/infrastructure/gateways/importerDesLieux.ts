@@ -1,5 +1,5 @@
 import { sheets_v4 } from '@googleapis/sheets'
-import { DataSource, EntityManager } from 'typeorm'
+import { DataSource } from 'typeorm'
 
 import { LieuModel } from '../../../database/models/LieuModel'
 
@@ -25,17 +25,9 @@ async function recupereLesLieuxDeSpreadsheet(sheets: (options: sheets_v4.Options
 }
 
 async function sauvegardeLesLieux(orm: Promise<DataSource>, lieux: LieuModel[]): Promise<void> {
-  await (await orm).transaction(async (transactionalEntityManager: EntityManager): Promise<void> => {
-    await transactionalEntityManager
-      .getRepository(LieuModel)
-      .clear()
-    await transactionalEntityManager
-      .getRepository(LieuModel)
-      .query('ALTER SEQUENCE lieu_id_seq RESTART WITH 1')
-    await transactionalEntityManager
-      .getRepository(LieuModel)
-      .save(lieux)
-  })
+  await (await orm).manager.clear(LieuModel)
+  await (await orm).manager.query('ALTER SEQUENCE lieu_id_seq RESTART WITH 1')
+  await (await orm).manager.save(lieux, { transaction: process.env.NODE_ENV === 'test' ? false : true })
 }
 
 function transformeEnLieuxModel(lieuxBruts: string[][]): LieuModel[] {

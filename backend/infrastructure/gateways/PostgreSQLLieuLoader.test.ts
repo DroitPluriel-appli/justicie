@@ -7,11 +7,18 @@ import { Critere } from '../../entities/Critere'
 import { Lieu } from '../../entities/Lieu'
 import { LieuLoader } from '../../entities/LieuLoader'
 
-describe('lieu loader', async () => {
+describe('lieu loader', () => {
   const orm: Promise<DataSource> = dataSource.initialize()
   const lieuLoader: LieuLoader = new PostgreSQLLieuLoader(orm)
-  await (await orm).createQueryBuilder().delete().from(LieuModel).execute()
-  await creeSeptLieux(orm)
+
+  beforeEach(async () => {
+    await (await orm).query('START TRANSACTION')
+    await creeSeptLieux(orm)
+  })
+
+  afterEach(async () => {
+    await (await orm).query('ROLLBACK TRANSACTION')
+  })
 
   afterAll(async () => {
     await (await orm).destroy()
@@ -22,20 +29,20 @@ describe('lieu loader', async () => {
       // GIVEN
       const latitude = 40.000000
       const longitude = 2.000000
-      const idExistant = 1
+      const idExistant = 10
 
       // WHEN
       const lieu = await lieuLoader.recupereUnLieu(idExistant, latitude, longitude)
 
       // THEN
-      expect(lieu).toStrictEqual([Lieu.cree({ distance: 14, id: 1, latitude: 40.100000, longitude: 2.100000 })])
+      expect(lieu).toStrictEqual([Lieu.cree({ distance: 14, id: 10, latitude: 40.100000, longitude: 2.100000 })])
     })
 
     it('récupère un lieu inexistant', async () => {
       // GIVEN
       const latitude = 0.000000
       const longitude = 0.000000
-      const idInexistant = 10
+      const idInexistant = 666
 
       // WHEN
       const lieu = await lieuLoader.recupereUnLieu(idInexistant, latitude, longitude)
@@ -60,9 +67,9 @@ describe('lieu loader', async () => {
       // THEN
       expect(lieux).toStrictEqual({
         lieux: [
-          Lieu.cree({ distance: 14, id: 1, latitude: 40.100000, longitude: 2.100000 }),
-          Lieu.cree({ distance: 15, id: 2, latitude: 40.110000, longitude: 2.110000 }),
-          Lieu.cree({ distance: 18, id: 4, latitude: 40.130000, longitude: 2.130000 }),
+          Lieu.cree({ distance: 14, id: 10, latitude: 40.100000, longitude: 2.100000 }),
+          Lieu.cree({ distance: 15, id: 20, latitude: 40.110000, longitude: 2.110000 }),
+          Lieu.cree({ distance: 18, id: 40, latitude: 40.130000, longitude: 2.130000 }),
           Lieu.cree({
             criteres: {
               bim: false,
@@ -74,7 +81,7 @@ describe('lieu loader', async () => {
               visuel: true,
             },
             distance: 20,
-            id: 5,
+            id: 50,
             latitude: 40.140000,
             longitude: 2.140000,
           }),
@@ -108,12 +115,12 @@ describe('lieu loader', async () => {
               visuel: true,
             },
             distance: 21,
-            id: 6,
+            id: 60,
             latitude: 40.150000,
             longitude: 2.150000,
           }),
-          Lieu.cree({ distance: 29, id: 7, latitude: 40.210000, longitude: 2.210000 }),
-          Lieu.cree({ distance: 350, id: 3, latitude: 40.120000, longitude: -2.120000 }),
+          Lieu.cree({ distance: 29, id: 70, latitude: 40.210000, longitude: 2.210000 }),
+          Lieu.cree({ distance: 350, id: 30, latitude: 40.120000, longitude: -2.120000 }),
         ],
         nombreDeResultat: 7,
       })
@@ -134,9 +141,9 @@ describe('lieu loader', async () => {
       // THEN
       expect(lieux).toStrictEqual({
         lieux: [
-          Lieu.cree({ distance: 14, id: 1, latitude: 40.100000, longitude: 2.100000 }),
-          Lieu.cree({ distance: 15, id: 2, latitude: 40.110000, longitude: 2.110000 }),
-          Lieu.cree({ distance: 18, id: 4, latitude: 40.130000, longitude: 2.130000 }),
+          Lieu.cree({ distance: 14, id: 10, latitude: 40.100000, longitude: 2.100000 }),
+          Lieu.cree({ distance: 15, id: 20, latitude: 40.110000, longitude: 2.110000 }),
+          Lieu.cree({ distance: 18, id: 40, latitude: 40.130000, longitude: 2.130000 }),
           Lieu.cree({
             criteres: {
               bim: false,
@@ -148,7 +155,7 @@ describe('lieu loader', async () => {
               visuel: true,
             },
             distance: 20,
-            id: 5,
+            id: 50,
             latitude: 40.140000,
             longitude: 2.140000,
           }),
@@ -163,7 +170,7 @@ describe('lieu loader', async () => {
               visuel: true,
             },
             distance: 21,
-            id: 6,
+            id: 60,
             latitude: 40.150000,
             longitude: 2.150000,
           }),
@@ -184,9 +191,9 @@ describe('lieu loader', async () => {
       // THEN
       expect(lieux).toStrictEqual({
         lieux: [
-          Lieu.cree({ distance: 14, id: 1, latitude: 40.100000, longitude: 2.100000 }),
-          Lieu.cree({ distance: 15, id: 2, latitude: 40.110000, longitude: 2.110000 }),
-          Lieu.cree({ distance: 18, id: 4, latitude: 40.130000, longitude: 2.130000 }),
+          Lieu.cree({ distance: 14, id: 10, latitude: 40.100000, longitude: 2.100000 }),
+          Lieu.cree({ distance: 15, id: 20, latitude: 40.110000, longitude: 2.110000 }),
+          Lieu.cree({ distance: 18, id: 40, latitude: 40.130000, longitude: 2.130000 }),
           Lieu.cree({
             criteres: {
               bim: false,
@@ -198,7 +205,7 @@ describe('lieu loader', async () => {
               visuel: true,
             },
             distance: 20,
-            id: 5,
+            id: 50,
             latitude: 40.140000,
             longitude: 2.140000,
           }),
@@ -213,12 +220,12 @@ describe('lieu loader', async () => {
               visuel: true,
             },
             distance: 21,
-            id: 6,
+            id: 60,
             latitude: 40.150000,
             longitude: 2.150000,
           }),
-          Lieu.cree({ distance: 29, id: 7, latitude: 40.210000, longitude: 2.210000 }),
-          Lieu.cree({ distance: 350, id: 3, latitude: 40.120000, longitude: -2.120000 }),
+          Lieu.cree({ distance: 29, id: 70, latitude: 40.210000, longitude: 2.210000 }),
+          Lieu.cree({ distance: 350, id: 30, latitude: 40.120000, longitude: -2.120000 }),
         ],
         nombreDeResultat: 7,
       })
@@ -247,7 +254,7 @@ describe('lieu loader', async () => {
               visuel: true,
             },
             distance: 20,
-            id: 5,
+            id: 50,
             latitude: 40.140000,
             longitude: 2.140000,
           }),
@@ -262,7 +269,7 @@ describe('lieu loader', async () => {
               visuel: true,
             },
             distance: 21,
-            id: 6,
+            id: 60,
             latitude: 40.150000,
             longitude: 2.150000,
           }),
@@ -290,15 +297,13 @@ describe('lieu loader', async () => {
 })
 
 async function creeSeptLieux(orm: Promise<DataSource>) {
-  await (await orm)
-    .getRepository(LieuModel)
-    .insert([
-      LieuModel.cree({ calme: true, id: 6, latitude: 40.150000, longitude: 2.150000, pmr: true }),
-      LieuModel.cree({ id: 1, latitude: 40.100000, longitude: 2.100000 }),
-      LieuModel.cree({ id: 2, latitude: 40.110000, longitude: 2.110000 }),
-      LieuModel.cree({ id: 3, latitude: 40.120000, longitude: -2.120000 }),
-      LieuModel.cree({ id: 4, latitude: 40.130000, longitude: 2.130000 }),
-      LieuModel.cree({ calme: true, id: 5, latitude: 40.140000, longitude: 2.140000, pmr: true }),
-      LieuModel.cree({ id: 7, latitude: 40.210000, longitude: 2.210000 }),
-    ])
+  await (await orm).manager.save([
+    LieuModel.cree({ calme: true, id: 60, latitude: 40.150000, longitude: 2.150000, pmr: true }),
+    LieuModel.cree({ id: 10, latitude: 40.100000, longitude: 2.100000 }),
+    LieuModel.cree({ id: 20, latitude: 40.110000, longitude: 2.110000 }),
+    LieuModel.cree({ id: 30, latitude: 40.120000, longitude: -2.120000 }),
+    LieuModel.cree({ id: 40, latitude: 40.130000, longitude: 2.130000 }),
+    LieuModel.cree({ calme: true, id: 50, latitude: 40.140000, longitude: 2.140000, pmr: true }),
+    LieuModel.cree({ id: 70, latitude: 40.210000, longitude: 2.210000 }),
+  ], { transaction: false })
 }

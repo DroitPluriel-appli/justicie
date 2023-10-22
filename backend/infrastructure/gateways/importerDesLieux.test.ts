@@ -1,12 +1,10 @@
-import { DataSource, Repository } from 'typeorm'
+import { DataSource } from 'typeorm'
 
 import { importeDesLieux } from './importerDesLieux'
 import dataSource from '../../../database/dataSource'
 import { LieuModel } from '../../../database/models/LieuModel'
 
 describe('importer des lieux', () => {
-  let orm: Promise<DataSource>
-  let lieuRepository: Repository<LieuModel>
   const lieuSpreadsheets = [
     'Maison de Justice et du Droit de Bourg en Bresse',
     '34 cours de Verdun',
@@ -32,14 +30,17 @@ describe('importer des lieux', () => {
     'non',
     'En partie\nformé',
   ]
+  const orm: Promise<DataSource> = dataSource.initialize()
 
   beforeEach(async () => {
-    orm = dataSource.initialize()
-    lieuRepository = (await orm).getRepository(LieuModel)
-    await (await orm).createQueryBuilder().delete().from(LieuModel).execute()
+    await (await orm).query('START TRANSACTION')
   })
 
   afterEach(async () => {
+    await (await orm).query('ROLLBACK TRANSACTION')
+  })
+
+  afterAll(async () => {
     await (await orm).destroy()
   })
 
@@ -60,7 +61,7 @@ describe('importer des lieux', () => {
       spreadsheetId: process.env.SPREADSHEET_ID,
     })
 
-    const lieuxModel = await lieuRepository.find()
+    const lieuxModel = await (await orm).manager.find(LieuModel)
     expect(lieuxModel).toStrictEqual([LieuModel.cree()])
   })
 
@@ -75,14 +76,14 @@ describe('importer des lieux', () => {
     await importeDesLieux(orm, sheets)
 
     // THEN
-    const lieuxModel = await lieuRepository.find()
+    const lieuxModel = await (await orm).manager.find(LieuModel)
     expect(lieuxModel).toStrictEqual([LieuModel.cree({ commentaire: '' })])
   })
 
   it('la table lieu est toujours remise à zéro et sa clé primaire est réinitialisée avant chaque sauvegarde', async () => {
     // GIVEN
     const lieuAvantMaj = LieuModel.cree({ nom: 'un lieu qui devrait avoir disparu' })
-    await lieuRepository.insert([lieuAvantMaj])
+    await (await orm).manager.save([lieuAvantMaj], { transaction: false })
     const spreadsheets = { values: { get: vi.fn(() => ({ data: { values: [lieuSpreadsheets] } })) } }
     const sheets = vi.fn(() => ({ spreadsheets }))
 
@@ -91,7 +92,7 @@ describe('importer des lieux', () => {
     await importeDesLieux(orm, sheets)
 
     // THEN
-    const lieuxModel = await lieuRepository.find()
+    const lieuxModel = await (await orm).manager.find(LieuModel)
     expect(lieuxModel).toStrictEqual([LieuModel.cree({ nom: 'Maison de Justice et du Droit de Bourg en Bresse' })])
   })
 })
