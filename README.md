@@ -128,6 +128,12 @@ Un cron tourne à 1 heure du matin du mardi au samedi pour récupérer les donn�
 
 Justicie a la note de [A](https://securityheaders.com/?q=https%3A%2F%2Fjusticie.fr%2F).
 
+## Mise à jour de tarteaucitron
+
+- Changer la `version` dans `tarteaucitron.js` à la date du jour pour que la nouvelle version soit prise en compte par les navigateurs ;
+- Rechercher les variables CSS dans l'ancien `tarteaucitron.css` pour les remettre dans le nouveau pour améliorer le contrast ;
+- Vérifier en dark et light mode l'affichage.
+
 ## Architectural Decision Records (ADR)
 
 ### Open source (14/11/22)

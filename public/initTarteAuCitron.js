@@ -20,7 +20,7 @@ tarteaucitron.init({
   "moreInfoLink": true,
   "useExternalCss": false,
   "useExternalJs": false,
-  "readmoreLink": "ReadmoreLink",
+  "readmoreLink": "politique-de-confidentialite",
   "mandatory": false,
   "mandatoryCta": false
 });
