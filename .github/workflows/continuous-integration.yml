@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:13.11-alpine # Conserver la même version avec le fichier docker-compose.yaml
+        image: postgres:14.8-alpine # Conserver la même version avec le fichier docker-compose.yaml
         env:
           POSTGRES_DB: justicie
           POSTGRES_PASSWORD: justicie

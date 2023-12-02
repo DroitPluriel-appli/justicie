@@ -2,7 +2,7 @@ version: '3'
 
 services:
   postgres:
-    image: postgres:13.11-alpine # Conserver la même version avec le fichier de la CI
+    image: postgres:14.8-alpine # Conserver la même version avec le fichier de la CI
     container_name: justicie_db
     ports:
       - target: 5432
@@ -15,10 +15,10 @@ services:
       - type: volume
         source: postgres_data
         target: /var/lib/postgresql/data
-    command: ["postgres", "-c", "log_statement=all", "-c", "max_connections=10"]
+    command: ["postgres", "-c", "log_statement=all", "-c", "max_connections=30"]
 
   postgres-test:
-    image: postgres:13.11-alpine # Conserver la même version avec le fichier de la CI
+    image: postgres:14.8-alpine # Conserver la même version avec le fichier de la CI
     container_name: justicie_db_test
     ports:
       - target: 5432
@@ -31,7 +31,7 @@ services:
       - type: volume
         source: postgres_data_test
         target: /var/lib/postgresql/data
-    command: ["postgres", "-c", "log_statement=all", "-c", "max_connections=10"]
+    command: ["postgres", "-c", "log_statement=all", "-c", "max_connections=30"]
 
 volumes:
   postgres_data:
