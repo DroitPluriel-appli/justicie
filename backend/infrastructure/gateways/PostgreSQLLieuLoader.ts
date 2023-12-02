@@ -16,7 +16,7 @@ export class PostgreSQLLieuLoader implements LieuLoader {
   // https://forums.futura-sciences.com/mathematiques-superieur/306536-calcul-de-distance-entre-2-points-dont-jai-coordonnees-geographiques-longitude-latitude.html
   private readonly calculDistanceSQL = '6371 * ACOS(SIN(RADIANS(latitude)) * SIN(RADIANS($1)) + COS(RADIANS(latitude)) * COS(RADIANS($1)) * COS(RADIANS(longitude) - RADIANS($2)))'
 
-  constructor(private readonly orm: Promise<DataSource>) { }
+  constructor(private readonly orm: Promise<DataSource>) {}
 
   async recupereUnLieu(id: number, latitude: number, longitude: number): Promise<Lieu[]> {
     const lieuxModel = await (await this.orm).manager.findBy(LieuModel, { id })
@@ -98,7 +98,7 @@ export class PostgreSQLLieuLoader implements LieuLoader {
           visuel: lieuModel.visuel,
         },
         departement: lieuModel.departement,
-        distance: Number(lieuModel.distance),
+        distance: lieuModel.distance,
         domaineDeDroit: lieuModel.domaineDeDroit,
         eMail: lieuModel.eMail,
         horaire: lieuModel.horaire,
@@ -116,9 +116,9 @@ export class PostgreSQLLieuLoader implements LieuLoader {
   }
 
   private ajouteLaDistance(lieuxModel: LieuModel[], latitude: number, longitude: number): LieuModel[] {
-    const degreesToRadians = (degrees: number) => degrees * (Math.PI / 180)
+    const degreesToRadians = (degrees: number): number => degrees * (Math.PI / 180)
 
-    return lieuxModel.map((lieuModel) => {
+    return lieuxModel.map((lieuModel: LieuModel): LieuModel => {
       return {
         ...lieuModel,
         distance: 6371 * Math.acos(

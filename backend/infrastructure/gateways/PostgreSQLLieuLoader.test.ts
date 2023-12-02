@@ -24,8 +24,8 @@ describe('lieu loader', () => {
     await (await orm).destroy()
   })
 
-  describe('récupérer un lieu', () => {
-    it('récupère un lieu existant', async () => {
+  describe('quand on demande un lieu', () => {
+    it('existant alors on le retourne', async () => {
       // GIVEN
       const latitude = 40.000000
       const longitude = 2.000000
@@ -38,7 +38,7 @@ describe('lieu loader', () => {
       expect(lieu).toStrictEqual([Lieu.cree({ distance: 14, id: 10, latitude: 40.100000, longitude: 2.100000 })])
     })
 
-    it('récupère un lieu inexistant', async () => {
+    it('inexistant alors on ne retourne rien', async () => {
       // GIVEN
       const latitude = 0.000000
       const longitude = 0.000000
@@ -52,8 +52,8 @@ describe('lieu loader', () => {
     })
   })
 
-  describe('récupérer des lieux', () => {
-    it('affiche la première page', async () => {
+  describe('quand on demande des lieux selon une latitude et une longitude', () => {
+    it('alors on les retourne sur la première page avec le nombre total de lieux', async () => {
       // GIVEN
       const latitude = 40.000000
       const longitude = 2.000000
@@ -90,7 +90,7 @@ describe('lieu loader', () => {
       })
     })
 
-    it('affiche la seconde page', async () => {
+    it('alors on les retourne sur la seconde page', async () => {
       // GIVEN
       const latitude = 40.000000
       const longitude = 2.000000
@@ -126,7 +126,59 @@ describe('lieu loader', () => {
       })
     })
 
-    it('affiche les lieux dans un rayon de recherche', async () => {
+    it('alors on les retourne triés du plus près au plus loin des coordonnées demandées', async () => {
+      // GIVEN
+      const latitude = 40.000000
+      const longitude = 2.000000
+      const criteres = new Set<Critere>()
+
+      // WHEN
+      const lieux = await lieuLoader.recupereDesLieux(latitude, longitude, criteres)
+
+      // THEN
+      expect(lieux).toStrictEqual({
+        lieux: [
+          Lieu.cree({ distance: 14, id: 10, latitude: 40.100000, longitude: 2.100000 }),
+          Lieu.cree({ distance: 15, id: 20, latitude: 40.110000, longitude: 2.110000 }),
+          Lieu.cree({ distance: 18, id: 40, latitude: 40.130000, longitude: 2.130000 }),
+          Lieu.cree({
+            criteres: {
+              bim: false,
+              calme: true,
+              forme: false,
+              lsf: false,
+              pmr: true,
+              pmr_assiste: true,
+              visuel: true,
+            },
+            distance: 20,
+            id: 50,
+            latitude: 40.140000,
+            longitude: 2.140000,
+          }),
+          Lieu.cree({
+            criteres: {
+              bim: false,
+              calme: true,
+              forme: false,
+              lsf: false,
+              pmr: true,
+              pmr_assiste: true,
+              visuel: true,
+            },
+            distance: 21,
+            id: 60,
+            latitude: 40.150000,
+            longitude: 2.150000,
+          }),
+          Lieu.cree({ distance: 29, id: 70, latitude: 40.210000, longitude: 2.210000 }),
+          Lieu.cree({ distance: 350, id: 30, latitude: 40.120000, longitude: -2.120000 }),
+        ],
+        nombreDeResultat: 7,
+      })
+    })
+
+    it('et avec un rayon de recherche alors on ne retourne que les lieux dans ce rayon', async () => {
       // GIVEN
       const latitude = 40.000000
       const longitude = 2.000000
@@ -179,59 +231,7 @@ describe('lieu loader', () => {
       })
     })
 
-    it('affiche les lieux les plus près de l’adresse demandée', async () => {
-      // GIVEN
-      const latitude = 40.000000
-      const longitude = 2.000000
-      const criteres = new Set<Critere>()
-
-      // WHEN
-      const lieux = await lieuLoader.recupereDesLieux(latitude, longitude, criteres)
-
-      // THEN
-      expect(lieux).toStrictEqual({
-        lieux: [
-          Lieu.cree({ distance: 14, id: 10, latitude: 40.100000, longitude: 2.100000 }),
-          Lieu.cree({ distance: 15, id: 20, latitude: 40.110000, longitude: 2.110000 }),
-          Lieu.cree({ distance: 18, id: 40, latitude: 40.130000, longitude: 2.130000 }),
-          Lieu.cree({
-            criteres: {
-              bim: false,
-              calme: true,
-              forme: false,
-              lsf: false,
-              pmr: true,
-              pmr_assiste: true,
-              visuel: true,
-            },
-            distance: 20,
-            id: 50,
-            latitude: 40.140000,
-            longitude: 2.140000,
-          }),
-          Lieu.cree({
-            criteres: {
-              bim: false,
-              calme: true,
-              forme: false,
-              lsf: false,
-              pmr: true,
-              pmr_assiste: true,
-              visuel: true,
-            },
-            distance: 21,
-            id: 60,
-            latitude: 40.150000,
-            longitude: 2.150000,
-          }),
-          Lieu.cree({ distance: 29, id: 70, latitude: 40.210000, longitude: 2.210000 }),
-          Lieu.cree({ distance: 350, id: 30, latitude: 40.120000, longitude: -2.120000 }),
-        ],
-        nombreDeResultat: 7,
-      })
-    })
-
-    it('affiche les lieux selon différents besoins d’accessibilités', async () => {
+    it('et avec différents besoins d’accessibilités alors on ne retourne que les lieux avec ces critères', async () => {
       // GIVEN
       const latitude = 40.000000
       const longitude = 2.000000
@@ -278,7 +278,7 @@ describe('lieu loader', () => {
       })
     })
 
-    it('ne retourne aucun lieux si aucun lieu ne correspond à la recherche', async () => {
+    it('mais qu’aucun lieu ne correspond à la recherche alors on ne retourne rien', async () => {
       // GIVEN
       const latitude = 0.000000
       const longitude = 0.000000

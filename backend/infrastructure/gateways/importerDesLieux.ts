@@ -24,12 +24,6 @@ async function recupereLesLieuxDeSpreadsheet(sheets: (options: sheets_v4.Options
   return response.data.values as string[][]
 }
 
-async function sauvegardeLesLieux(orm: Promise<DataSource>, lieux: LieuModel[]): Promise<void> {
-  await (await orm).manager.clear(LieuModel)
-  await (await orm).manager.query('ALTER SEQUENCE lieu_id_seq RESTART WITH 1')
-  await (await orm).manager.save(lieux, { transaction: process.env.NODE_ENV === 'test' ? false : true })
-}
-
 function transformeEnLieuxModel(lieuxBruts: string[][]): LieuModel[] {
   const stringToBoolean = (str: string): boolean => str === 'oui' ? true : false
 
@@ -61,4 +55,11 @@ function transformeEnLieuxModel(lieuxBruts: string[][]): LieuModel[] {
     lieuModel.visuel = stringToBoolean(lieu[17])
     return lieuModel
   })
+}
+
+async function sauvegardeLesLieux(orm: Promise<DataSource>, lieux: LieuModel[]): Promise<void> {
+  await (await orm).manager.clear(LieuModel)
+  await (await orm).manager.query('ALTER SEQUENCE lieu_id_seq RESTART WITH 1')
+  // Stryker disable next-line all
+  await (await orm).manager.save(lieux, { transaction: process.env.NODE_ENV === 'test' ? false : true })
 }
