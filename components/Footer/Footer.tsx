@@ -7,8 +7,8 @@ import { ouvrirGestionDesCookies } from './ouvrirGestionDesCookies'
 import { useDependencies } from '../../configuration/useDependencies'
 
 export default function Footer(): ReactElement {
-  const { paths, wording } = useDependencies()
-  const date = new Date()
+  const { date, paths, wording } = useDependencies()
+
   return (
     <footer
       className={styles.footer}
