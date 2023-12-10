@@ -11,7 +11,6 @@ export default defineConfig({
     },
     environment: 'jsdom',
     globals: true,
-    restoreMocks: true,
     sequence: { shuffle: true },
     setupFiles: ['vitest.setup.ts'],
     unstubEnvs: true,

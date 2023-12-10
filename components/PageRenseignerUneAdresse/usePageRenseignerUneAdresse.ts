@@ -2,6 +2,7 @@ import { FormEvent, useCallback, useState } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
 
+
 export type AdresseJson = Readonly<{
   geometry: {
     coordinates: number[]
@@ -24,7 +25,7 @@ type State = Readonly<{
 
 export function usePageRenseignerUneAdresse() {
   const { paths, useRouter, wording } = useDependencies()
-  const { push } = useRouter()
+  const router = useRouter()
   const [state, setState] = useState<State>({
     adresseSelectionnee: '',
     isDisabled: true,
@@ -88,12 +89,11 @@ export function usePageRenseignerUneAdresse() {
 
   const vaAlEtape2 = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    async function goToRechercherParHandicap(coordonneesGeospatiales: AdresseJson) {
-      await push(`${paths.RECHERCHER_PAR_HANDICAP}?lat=${coordonneesGeospatiales.geometry.coordinates[1]}&lon=${coordonneesGeospatiales.geometry.coordinates[0]}`)
-    }
 
-    const coordonneesGeospatiales = state.libelleDesAdresses.features.find((adresse): boolean => state.adresseSelectionnee === adresse.properties.label)
-    void goToRechercherParHandicap(coordonneesGeospatiales as AdresseJson)
+    const coordonneesGeospatiales = state.libelleDesAdresses.features
+      .find((adresse): boolean => state.adresseSelectionnee === adresse.properties.label)
+
+    router.push(`${paths.RECHERCHER_PAR_HANDICAP}?lat=${(coordonneesGeospatiales as AdresseJson).geometry.coordinates[1]}&lon=${(coordonneesGeospatiales as AdresseJson).geometry.coordinates[0]}`)
   }
 
   const noticeDesResultats = (): string => wording.NOTICE_DES_RESULTATS
@@ -108,6 +108,6 @@ export function usePageRenseignerUneAdresse() {
     noticeDesResultats: useCallback(noticeDesResultats, [wording.NOTICE_DES_RESULTATS]),
     selectionneUneAdresse: useCallback(selectionneUneAdresse, []),
     suggestionDAdresse: debounce(suggestionDAdresse, 500),
-    vaAlEtape2: useCallback(vaAlEtape2, [state.adresseSelectionnee, paths.RECHERCHER_PAR_HANDICAP, push, state.libelleDesAdresses.features]),
+    vaAlEtape2: useCallback(vaAlEtape2, [state.adresseSelectionnee, paths.RECHERCHER_PAR_HANDICAP, router, state.libelleDesAdresses.features]),
   }
 }

@@ -11,11 +11,11 @@ type PlanProps = Readonly<{
 }>
 
 export default function Plan({ lieux }: PlanProps): ReactElement {
-  const { rayonDeRecherche, useRouter, wording } = useDependencies()
-  const { query } = useRouter()
+  const { rayonDeRecherche, useSearchParams, wording } = useDependencies()
+  const searchParams = useSearchParams()
 
   useEffect(() => {
-    const map = initPlan(lieux, Number(query.lat), Number(query.lon), rayonDeRecherche, wording.TITRE_MARKER_POSITION)
+    const map = initPlan(lieux, Number(searchParams.get('lat')), Number(searchParams.get('lon')), rayonDeRecherche, wording.TITRE_MARKER_POSITION)
 
     // Si la carte n'est pas supprimée quand le composant update,
     // cela peut provoquer des bugs liés à leaflet, notamment

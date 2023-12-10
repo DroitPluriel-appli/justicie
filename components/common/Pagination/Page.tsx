@@ -3,15 +3,18 @@ import { ReactElement } from 'react'
 
 import { pagination } from './pagination'
 import { useDependencies } from '../../../configuration/useDependencies'
+import { transformerIteratorEnObject } from '../query'
 
 type PageProps = Readonly<{
   nombreDeResultat: number
 }>
 
 export default function Page({ nombreDeResultat }: PageProps): ReactElement {
-  const { nombreDeLieuxAffichesParPage, paths, useRouter, wording } = useDependencies()
-  const { query } = useRouter()
-  const { pageCourante, pages } = pagination(nombreDeResultat, nombreDeLieuxAffichesParPage, query)
+  const { nombreDeLieuxAffichesParPage, paths, useSearchParams, wording } = useDependencies()
+  const searchParams = useSearchParams()
+
+  const { pageCourante, pages } = pagination(nombreDeResultat, nombreDeLieuxAffichesParPage, searchParams.get('page'))
+  const params = transformerIteratorEnObject(searchParams.entries())
 
   return (
     <>
@@ -33,7 +36,7 @@ export default function Page({ nombreDeResultat }: PageProps): ReactElement {
                   href={{
                     pathname: paths.RESULTATS_LISTE,
                     query: {
-                      ...query,
+                      ...params,
                       page: page - 1,
                     },
                   }}

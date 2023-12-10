@@ -6,14 +6,6 @@ import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../con
 describe('page des criteres d’accessibilite', () => {
   const { wording } = fakeFrontDependencies
 
-  it('affiche le titre de l’onglet', () => {
-    // WHEN
-    renderFakeComponent(<PageNosCriteresDAccessibilite />)
-
-    // THEN
-    expect(document.title).toBe(wording.TITLE_PAGE_NOS_CRITERES_D_ACCESSIBILITE)
-  })
-
   it('affiche le contenu', () => {
     // WHEN
     renderFakeComponent(<PageNosCriteresDAccessibilite />)

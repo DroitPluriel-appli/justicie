@@ -1,19 +1,17 @@
+'use client'
+
 import { ReactElement } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
 import Email from '../common/Email/Email'
 import ExternalLink from '../common/ExternalLink/ExternalLink'
 import Telephone from '../common/Telephone/Telephone'
-import Title from '../common/Title/Title'
 
 export default function PageMentionsLegales(): ReactElement {
   const { wording } = useDependencies()
 
   return (
     <>
-      <Title>
-        {wording.TITLE_PAGE_MENTIONS_LEGALES}
-      </Title>
       <h1 className="titre1">
         {wording.MENTIONS_LEGALES}
       </h1>

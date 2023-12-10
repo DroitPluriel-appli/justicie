@@ -148,7 +148,7 @@ export class WordingFr implements Wording {
   readonly TITLE_PAGE_NOS_PARTENAIRES: string = 'Nos partenaires' + this.SUFFIXE_TITLE
 
   // Foire aux questions
-  readonly TITLE_FOIRE_AUX_QUESTIONS: string = 'Foire aux questions' + this.SUFFIXE_TITLE
+  readonly TITLE_PAGE_FOIRE_AUX_QUESTIONS: string = 'Foire aux questions' + this.SUFFIXE_TITLE
   readonly QUESTION_JE_NE_TROUVE_AUCUN_LIEU: string = 'Je ne trouve aucun lieu correspondant à ma recherche, comment faire ?'
   readonly REPONSE_JE_NE_TROUVE_AUCUN_LIEU: string[] = [
     'Aucun lieu ne correspond à votre recherche.',

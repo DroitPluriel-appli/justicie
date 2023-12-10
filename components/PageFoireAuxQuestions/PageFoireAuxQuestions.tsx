@@ -1,3 +1,5 @@
+'use client'
+
 import { ReactElement } from 'react'
 
 import styles from './PageFoireAuxQuestions.module.css'
@@ -5,16 +7,12 @@ import Question from './Question/Question'
 import { useDependencies } from '../../configuration/useDependencies'
 import Email from '../common/Email/Email'
 import Telephone from '../common/Telephone/Telephone'
-import Title from '../common/Title/Title'
 
 export default function PageFoireAuxQuestions(): ReactElement {
   const { wording } = useDependencies()
 
   return (
     <div className={styles.main}>
-      <Title>
-        {wording.TITLE_FOIRE_AUX_QUESTIONS}
-      </Title>
       <h1>
         {wording.FOIRE_AUX_QUESTIONS}
       </h1>

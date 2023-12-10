@@ -1,35 +1,20 @@
 import { screen } from '@testing-library/react'
-import mockRouter from 'next-router-mock'
 
 import PageLieu from './PageLieu'
 import { Lieu } from '../../backend/entities/Lieu'
-import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
+import { fakeFrontDependencies, fakeRouter, renderFakeComponent, textMatch } from '../../configuration/testHelper'
 
 describe('page d’un lieu', () => {
   const { wording } = fakeFrontDependencies
   const lat = '48.844928'
   const lon = '2.31016'
 
-  beforeEach(() => {
-    mockRouter.query = {
-      lat,
-      lon,
-    }
-  })
-
-  it('affiche le titre de l’onglet', () => {
-    // GIVEN
-    const lieu = Lieu.cree({ nom: 'La maison de justice de Paris' })
-
-    // WHEN
-    renderFakeComponent(<PageLieu lieu={lieu} />)
-
-    // THEN
-    expect(document.title).toBe(wording.TITLE_PAGE_LIEU(lieu.nom))
-  })
-
   it('affiche sa description', () => {
     // GIVEN
+    const searchParams = [
+      { name: 'lat', value: lat },
+      { name: 'lon', value: lon },
+    ]
     const lieu = Lieu.cree({
       adresse: '34 cours de Verdun',
       codePostal: '1000',
@@ -39,7 +24,7 @@ describe('page d’un lieu', () => {
     })
 
     // WHEN
-    renderFakeComponent(<PageLieu lieu={lieu} />)
+    renderFakeComponent(<PageLieu lieu={lieu} />, fakeRouter(searchParams))
 
     // THEN
     const retourAuxResultats = screen.getByRole('button', { name: wording.RETOUR_AUX_RESULTATS })
@@ -53,11 +38,7 @@ describe('page d’un lieu', () => {
     const adresse = screen.getByText(textMatch(lieu.adresse + lieu.codePostal + ' ' + lieu.ville), { selector: 'p' })
     expect(adresse).toBeVisible()
     const itineraire = screen.getByRole('link', { name: `${wording.LANCER_L_ITINERAIRE_SUR_GOOGLE_MAPS(lieu.nom)}${wording.NOUVELLE_FENETRE}` })
-    const googleMapUrlLieu = new URL('https://www.google.com/maps/dir/')
-    googleMapUrlLieu.searchParams.append('api', '1')
-    googleMapUrlLieu.searchParams.append('origin', `${lat},${lon}`)
-    googleMapUrlLieu.searchParams.append('destination', '34+cours+de+Verdun+1000+Bourg+En+Bresse')
-    expect(itineraire).toHaveAttribute('href', googleMapUrlLieu.toString())
+    expect(itineraire).toHaveAttribute('href', 'https://www.google.com/maps/dir/?api=1&origin=48.844928%2C2.31016&destination=34%2Bcours%2Bde%2BVerdun%2B1000%2BBourg%2BEn%2BBresse')
     expect(itineraire.textContent).toBe(wording.LANCER_L_ITINERAIRE)
   })
 

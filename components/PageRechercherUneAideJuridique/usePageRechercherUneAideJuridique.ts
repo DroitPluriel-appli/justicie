@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 
 import { useDependencies } from '../../configuration/useDependencies'
 
+
 type State = Readonly<{
   buttonName: string
   isDisabled: boolean
@@ -19,22 +20,18 @@ export function usePageRechercherUneAideJuridique() {
     latitude: 0,
     longitude: 0,
   })
-  const { push } = useRouter()
+  const router = useRouter()
 
   const touch = () => {
     hasGeoloc()
   }
 
   useEffect(() => {
-    async function goToRechercherParHandicap() {
-      await push(`${paths.RECHERCHER_PAR_HANDICAP}?lat=${state.latitude}&lon=${state.longitude}`)
-    }
-
     if (state.latitude !== 0 && state.longitude !== 0) {
-      void goToRechercherParHandicap()
+      router.push(`${paths.RECHERCHER_PAR_HANDICAP}?lat=${state.latitude}&lon=${state.longitude}`)
     }
 
-  }, [push, paths.RECHERCHER_PAR_HANDICAP, state])
+  }, [router, paths.RECHERCHER_PAR_HANDICAP, state])
 
   useEffect(() => {
     async function isGPSDenied() {

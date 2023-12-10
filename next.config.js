@@ -73,6 +73,9 @@ const moduleExports = {
       ]
       : []
   },
+  experimental: {
+    serverComponentsExternalPackages: ['typeorm'],
+  },
   images: {
     unoptimized: true,
   },

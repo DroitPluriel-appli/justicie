@@ -5,7 +5,7 @@ import styles from './EnTete.module.css'
 import { useDependencies } from '../../../configuration/useDependencies'
 import BackLink from '../../common/BackLink/BackLink'
 import Email from '../../common/Email/Email'
-import { besoinsAccessibilite, isListe } from '../../common/query'
+import { besoinsAccessibilite, isListe, transformerIteratorEnObject } from '../../common/query'
 import Telephone from '../../common/Telephone/Telephone'
 
 type EnTeteProps = Readonly<{
@@ -14,11 +14,13 @@ type EnTeteProps = Readonly<{
 }>
 
 export default function EnTete({ nombreDeResultat, rayonDeRecherche = Infinity }: EnTeteProps): ReactElement {
-  const { paths, useRouter, wording } = useDependencies()
-  const { pathname, query } = useRouter()
+  const { paths, usePathname, useSearchParams, wording } = useDependencies()
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
 
   const listeStyle = isListe(pathname, paths) ? styles.current : ''
   const planStyle = isListe(pathname, paths) ? '' : styles.current
+  const params = transformerIteratorEnObject(searchParams.entries())
 
   return (
     <>
@@ -34,7 +36,7 @@ export default function EnTete({ nombreDeResultat, rayonDeRecherche = Infinity }
             <Link
               href={{
                 pathname: paths.RESULTATS_LISTE,
-                query,
+                query: searchParams.toString(),
               }}
               title={wording.AFFICHEZ_RESULTATS_EN_LISTE}
             >
@@ -45,7 +47,7 @@ export default function EnTete({ nombreDeResultat, rayonDeRecherche = Infinity }
             <Link
               href={{
                 pathname: paths.RESULTATS_PLAN,
-                query,
+                query: searchParams.toString(),
               }}
               title={wording.AFFICHEZ_RESULTATS_EN_PLAN}
             >
@@ -59,13 +61,13 @@ export default function EnTete({ nombreDeResultat, rayonDeRecherche = Infinity }
           <Link
             href={{
               pathname: paths.RECHERCHER_PAR_HANDICAP,
-              query,
+              query: searchParams.toString(),
             }}
             title={wording.MODIFIER_VOTRE_BESOIN_D_ACCESSIBILITE}
           >
             {wording.BESOINS_D_ACCESSIBILITE}
             <span>
-              {besoinsAccessibilite(query)}
+              {besoinsAccessibilite(params)}
             </span>
           </Link>
         </li>

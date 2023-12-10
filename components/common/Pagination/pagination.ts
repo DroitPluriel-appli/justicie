@@ -1,8 +1,7 @@
-import { ParsedUrlQuery } from 'querystring'
 
-export function pagination(nombreDeResultat: number, nombreDeLieuxAffichesParPage: number, query: ParsedUrlQuery) {
+export function pagination(nombreDeResultat: number, nombreDeLieuxAffichesParPage: number, page: string | null) {
   const nombreDePage = Math.trunc(nombreDeResultat / nombreDeLieuxAffichesParPage + (nombreDeResultat % nombreDeLieuxAffichesParPage > 0 ? 1 : 0))
-  const pageCourante = query.page === undefined ? 0 : Number(query.page)
+  const pageCourante = page === null ? 0 : Number(page)
 
   const pages = new Array(nombreDePage)
     .fill('')

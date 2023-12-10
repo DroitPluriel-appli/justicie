@@ -3,6 +3,7 @@ import { ReactElement } from 'react'
 
 import { useDependencies } from '../../../configuration/useDependencies'
 
+
 type PlusDInformationsProps = Readonly<{
   children: string
   id: number

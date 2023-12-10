@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import { ReactElement } from 'react'
 
@@ -7,16 +9,12 @@ import Email from '../common/Email/Email'
 import ExternalLink from '../common/ExternalLink/ExternalLink'
 import RetourHautDePage from '../common/RetourHautDePage/RetourHautDePage'
 import Telephone from '../common/Telephone/Telephone'
-import Title from '../common/Title/Title'
 
 export default function PageAccueil(): ReactElement {
-  const { wording, paths } = useDependencies()
+  const { paths, wording } = useDependencies()
 
   return (
     <>
-      <Title>
-        {wording.TITLE_PAGE_ACCUEIL}
-      </Title>
       <h1 className={styles.hidden}>
         {wording.JUSTICIE}
       </h1>

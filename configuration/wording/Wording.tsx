@@ -136,7 +136,7 @@ export interface Wording {
   readonly TITLE_PAGE_NOS_PARTENAIRES: string
 
   // Foire aux questions
-  readonly TITLE_FOIRE_AUX_QUESTIONS: string
+  readonly TITLE_PAGE_FOIRE_AUX_QUESTIONS: string
   readonly QUESTION_JE_NE_TROUVE_AUCUN_LIEU: string
   readonly REPONSE_JE_NE_TROUVE_AUCUN_LIEU: string[]
   readonly QUESTION_EST_CE_QUE_AIDE_GRATUITE: string

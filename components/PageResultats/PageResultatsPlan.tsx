@@ -1,15 +1,23 @@
+'use client'
+
 import dynamic from 'next/dynamic'
 import { ReactElement, useEffect } from 'react'
 
 import EnTete from './EnTete/EnTete'
+import { Critere } from '../../backend/entities/Critere'
+import { Lieu } from '../../backend/entities/Lieu'
 import { useDependencies } from '../../configuration/useDependencies'
-import { ResultatsPlanProps } from '../../pages/resultats-plan'
 import { tagResultatsDeRecherche } from '../common/googleAnalyticsTags'
-import Title from '../common/Title/Title'
 import VotreAvis from '../common/VotreAvis/VotreAvis'
 
+type ResultatsPlanProps = Readonly<{
+  criteresDAccessibiliteSelectionnes: Critere[]
+  lieux: Lieu[]
+  nombreDeResultat: number
+}>
+
 export default function PageResultatsPlan({ lieux, nombreDeResultat, criteresDAccessibiliteSelectionnes }: ResultatsPlanProps): ReactElement {
-  const { wording, rayonDeRecherche } = useDependencies()
+  const { rayonDeRecherche } = useDependencies()
 
   useEffect(() => {
     tagResultatsDeRecherche('plan', nombreDeResultat, criteresDAccessibiliteSelectionnes)
@@ -21,9 +29,6 @@ export default function PageResultatsPlan({ lieux, nombreDeResultat, criteresDAc
 
   return (
     <>
-      <Title>
-        {wording.TITLE_PAGE_RESULTATS_PAR_PLAN}
-      </Title>
       <EnTete
         nombreDeResultat={nombreDeResultat}
         rayonDeRecherche={rayonDeRecherche}

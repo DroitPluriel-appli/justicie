@@ -1,10 +1,9 @@
 import { screen, within } from '@testing-library/react'
-import mockRouter from 'next-router-mock'
 
 import PageResultatsListe from './PageResultatsListe'
 import { Critere } from '../../backend/entities/Critere'
 import { Lieu } from '../../backend/entities/Lieu'
-import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
+import { fakeFrontDependencies, fakeRouter, renderFakeComponent, textMatch } from '../../configuration/testHelper'
 
 describe('page des résultats de recherche affichés en liste', () => {
   const { paths, wording } = fakeFrontDependencies
@@ -14,34 +13,15 @@ describe('page des résultats de recherche affichés en liste', () => {
 
   beforeEach(() => {
     vi.stubGlobal('dataLayer', { push: vi.fn() })
-
-    mockRouter.query = {
-      lat,
-      lon,
-    }
-  })
-
-  it('affiche le titre de l’onglet', () => {
-    // WHEN
-    renderFakeComponent(
-      <PageResultatsListe
-        criteresDAccessibiliteSelectionnes={[]}
-        lieux={[]}
-        nombreDeResultat={0}
-      />
-    )
-
-    // THEN
-    expect(document.title).toBe(wording.TITLE_PAGE_ADRESSE_LISTE)
   })
 
   it('affiche les liens de navigation et le filtre', () => {
     // GIVEN
-    mockRouter.query = {
-      bim,
-      lat,
-      lon,
-    }
+    const searchParams = [
+      { name: 'bim', value: bim },
+      { name: 'lat', value: lat },
+      { name: 'lon', value: lon },
+    ]
 
     // WHEN
     renderFakeComponent(
@@ -49,7 +29,8 @@ describe('page des résultats de recherche affichés en liste', () => {
         criteresDAccessibiliteSelectionnes={[]}
         lieux={[]}
         nombreDeResultat={0}
-      />
+      />,
+      fakeRouter(searchParams)
     )
 
     // THEN
@@ -152,6 +133,10 @@ describe('page des résultats de recherche affichés en liste', () => {
       id: 2,
       nom: 'Lieu B',
     })
+    const searchParams = [
+      { name: 'lat', value: lat },
+      { name: 'lon', value: lon },
+    ]
 
     // WHEN
     renderFakeComponent(
@@ -159,7 +144,8 @@ describe('page des résultats de recherche affichés en liste', () => {
         criteresDAccessibiliteSelectionnes={[]}
         lieux={[lieuA, lieuB]}
         nombreDeResultat={2}
-      />
+      />,
+      fakeRouter(searchParams)
     )
 
     // THEN
@@ -188,13 +174,7 @@ describe('page des résultats de recherche affichés en liste', () => {
     expect(champsCarteLieuA[4]).toHaveAttribute('title', wording.KILOMETRES)
     expect(champsCarteLieuA[6]).toHaveAttribute('href', `${paths.LIEU}/1?lat=48.844928&lon=2.31016`)
     expect(champsCarteLieuA[6].textContent).toBe(wording.PLUS_D_INFORMATIONS)
-
-    const googleMapUrlLieuA = new URL('https://www.google.com/maps/dir/')
-    googleMapUrlLieuA.searchParams.append('api', '1')
-    googleMapUrlLieuA.searchParams.append('origin', `${lat},${lon}`)
-    googleMapUrlLieuA.searchParams.append('destination', '12+rue+du+Lieu+1000+Bourg+En+Bresse')
-
-    expect(champsCarteLieuA[5]).toHaveAttribute('href', googleMapUrlLieuA.toString())
+    expect(champsCarteLieuA[5]).toHaveAttribute('href', 'https://www.google.com/maps/dir/?api=1&origin=48.844928%2C2.31016&destination=12%2Brue%2Bdu%2BLieu%2B1000%2BBourg%2BEn%2BBresse')
     expect(champsCarteLieuA[5].textContent).toBe(wording.LANCER_L_ITINERAIRE)
 
     const champsCarteLieuB = [
@@ -216,13 +196,7 @@ describe('page des résultats de recherche affichés en liste', () => {
     expect(champsCarteLieuB[4]).toHaveAttribute('title', wording.KILOMETRES)
     expect(champsCarteLieuB[6]).toHaveAttribute('href', `${paths.LIEU}/2?lat=48.844928&lon=2.31016`)
     expect(champsCarteLieuB[6].textContent).toBe(wording.PLUS_D_INFORMATIONS)
-
-    const googleMapUrlLieuB = new URL('https://www.google.com/maps/dir/')
-    googleMapUrlLieuB.searchParams.append('api', '1')
-    googleMapUrlLieuB.searchParams.append('origin', `${lat},${lon}`)
-    googleMapUrlLieuB.searchParams.append('destination', '34+cours+de+Verdun+1000+Bourg+En+Bresse')
-
-    expect(champsCarteLieuB[5]).toHaveAttribute('href', googleMapUrlLieuB.toString())
+    expect(champsCarteLieuB[5]).toHaveAttribute('href', 'https://www.google.com/maps/dir/?api=1&origin=48.844928%2C2.31016&destination=34%2Bcours%2Bde%2BVerdun%2B1000%2BBourg%2BEn%2BBresse')
     expect(champsCarteLieuB[5].textContent).toBe(wording.LANCER_L_ITINERAIRE)
   })
 
@@ -246,11 +220,11 @@ describe('page des résultats de recherche affichés en liste', () => {
 
   it('affiche la pagination à la page 1 quand il y a deux pages', () => {
     // GIVEN
-    mockRouter.query = {
-      bim,
-      lat,
-      lon,
-    }
+    const searchParams = [
+      { name: 'bim', value: bim },
+      { name: 'lat', value: lat },
+      { name: 'lon', value: lon },
+    ]
     const nombreDeResultat = 11
 
     // WHEN
@@ -259,7 +233,8 @@ describe('page des résultats de recherche affichés en liste', () => {
         criteresDAccessibiliteSelectionnes={[]}
         lieux={[]}
         nombreDeResultat={nombreDeResultat}
-      />
+      />,
+      fakeRouter(searchParams)
     )
 
     // THEN
@@ -280,12 +255,12 @@ describe('page des résultats de recherche affichés en liste', () => {
 
   it('affiche la pagination à la page 2 quand il y a deux pages', () => {
     // GIVEN
-    mockRouter.query = {
-      bim,
-      lat,
-      lon,
-      page: '1',
-    }
+    const searchParams = [
+      { name: 'bim', value: bim },
+      { name: 'lat', value: lat },
+      { name: 'lon', value: lon },
+      { name: 'page', value: '1' },
+    ]
     const nombreDeResultat = 19
 
     // WHEN
@@ -294,7 +269,8 @@ describe('page des résultats de recherche affichés en liste', () => {
         criteresDAccessibiliteSelectionnes={[]}
         lieux={[]}
         nombreDeResultat={nombreDeResultat}
-      />
+      />,
+      fakeRouter(searchParams)
     )
 
     // THEN
@@ -318,11 +294,11 @@ describe('page des résultats de recherche affichés en liste', () => {
 
   it('affiche la pagination à la page 1 quand il y a six pages', () => {
     // GIVEN
-    mockRouter.query = {
-      bim,
-      lat,
-      lon,
-    }
+    const searchParams = [
+      { name: 'bim', value: bim },
+      { name: 'lat', value: lat },
+      { name: 'lon', value: lon },
+    ]
     const nombreDeResultat = 56
 
     // WHEN
@@ -331,7 +307,8 @@ describe('page des résultats de recherche affichés en liste', () => {
         criteresDAccessibiliteSelectionnes={[]}
         lieux={[]}
         nombreDeResultat={nombreDeResultat}
-      />
+      />,
+      fakeRouter(searchParams)
     )
 
     // THEN
@@ -364,12 +341,12 @@ describe('page des résultats de recherche affichés en liste', () => {
 
   it('affiche la pagination à la page 4 quand il y a six pages', () => {
     // GIVEN
-    mockRouter.query = {
-      bim,
-      lat,
-      lon,
-      page: '3',
-    }
+    const searchParams = [
+      { name: 'bim', value: bim },
+      { name: 'lat', value: lat },
+      { name: 'lon', value: lon },
+      { name: 'page', value: '3' },
+    ]
     const nombreDeResultat = 56
 
     // WHEN
@@ -378,7 +355,8 @@ describe('page des résultats de recherche affichés en liste', () => {
         criteresDAccessibiliteSelectionnes={[]}
         lieux={[]}
         nombreDeResultat={nombreDeResultat}
-      />
+      />,
+      fakeRouter(searchParams)
     )
 
     // THEN
@@ -411,12 +389,12 @@ describe('page des résultats de recherche affichés en liste', () => {
 
   it('affiche la pagination à la page 6 quand il y a six pages', () => {
     // GIVEN
-    mockRouter.query = {
-      bim,
-      lat,
-      lon,
-      page: '5',
-    }
+    const searchParams = [
+      { name: 'bim', value: bim },
+      { name: 'lat', value: lat },
+      { name: 'lon', value: lon },
+      { name: 'page', value: '5' },
+    ]
     const nombreDeResultat = 56
 
     // WHEN
@@ -425,7 +403,8 @@ describe('page des résultats de recherche affichés en liste', () => {
         criteresDAccessibiliteSelectionnes={[]}
         lieux={[]}
         nombreDeResultat={nombreDeResultat}
-      />
+      />,
+      fakeRouter(searchParams)
     )
 
     // THEN

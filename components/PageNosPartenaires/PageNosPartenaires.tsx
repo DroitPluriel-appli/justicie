@@ -1,3 +1,5 @@
+'use client'
+
 import Image from 'next/image'
 import { ReactElement } from 'react'
 
@@ -12,16 +14,12 @@ import LogoWavestone from './LogoWavestone'
 import styles from './PageNosPartenaires.module.css'
 import { useDependencies } from '../../configuration/useDependencies'
 import ExternalLink from '../common/ExternalLink/ExternalLink'
-import Title from '../common/Title/Title'
 
 export default function PageNosPartenaires(): ReactElement {
   const { wording } = useDependencies()
 
   return (
     <>
-      <Title>
-        {wording.TITLE_PAGE_NOS_PARTENAIRES}
-      </Title>
       <h1 className="titre1">
         {wording.NOS_PARTENAIRES}
       </h1>

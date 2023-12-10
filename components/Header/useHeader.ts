@@ -1,4 +1,6 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
+
+import { applyThemeFromLocalStorage } from '../common/theme'
 
 type HeaderState = Readonly<{
   classMenu: 'burgerMenuClose' | 'burgerMenuOpen'
@@ -19,6 +21,10 @@ export function useHeader() {
       isMenuClose: !state.isMenuClose,
     })
   }
+
+  useEffect(() => {
+    applyThemeFromLocalStorage()
+  })
 
   return {
     classMenu: state.classMenu,

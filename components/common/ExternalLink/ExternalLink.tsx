@@ -2,6 +2,7 @@ import { ReactElement, ReactNode } from 'react'
 
 import { useDependencies } from '../../../configuration/useDependencies'
 
+
 type ExternalLinkProps = Readonly<{
   children: ReactNode
   className?: string

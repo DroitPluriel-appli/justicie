@@ -3,14 +3,16 @@ import { ReactElement } from 'react'
 
 import { pagination } from './pagination'
 import { useDependencies } from '../../../configuration/useDependencies'
+import { transformerIteratorEnObject } from '../query'
 
 export default function PremierePage(): ReactElement {
-  const { nombreDeLieuxAffichesParPage, paths, useRouter, wording } = useDependencies()
-  const { query } = useRouter()
-  const nombreDeResultat = 0
-  const { pageCourante } = pagination(nombreDeResultat, nombreDeLieuxAffichesParPage, query)
+  const { nombreDeLieuxAffichesParPage, paths, useSearchParams, wording } = useDependencies()
+  const searchParams = useSearchParams()
 
+  const nombreDeResultat = 0
+  const { pageCourante } = pagination(nombreDeResultat, nombreDeLieuxAffichesParPage, searchParams.get('page'))
   const isPremierePage = pageCourante === 0
+  const params = transformerIteratorEnObject(searchParams.entries())
 
   return isPremierePage ? (
     <svg
@@ -25,7 +27,7 @@ export default function PremierePage(): ReactElement {
     <Link href={{
       pathname: paths.RESULTATS_LISTE,
       query: {
-        ...query,
+        ...params,
         page: 0,
       },
     }}

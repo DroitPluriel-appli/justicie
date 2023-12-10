@@ -7806,7 +7806,6 @@ __metadata:
     leaflet: "npm:^1.9.4"
     next: "npm:^13.5.0"
     next-pwa: "npm:^5.6.0"
-    next-router-mock: "npm:^0.9.10"
     pg: "npm:^8.11.3"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
@@ -8754,16 +8753,6 @@ __metadata:
   peerDependencies:
     next: ">=9.0.0"
   checksum: a42b395e3f0e06dcfa3b3ef6f199572820f82fd6a0eb50fecabce63e9679409f4eb838fdef03501fefb067b6dc2dcad50164f89b3787ee9f31b7ff3eb57a9134
-  languageName: node
-  linkType: hard
-
-"next-router-mock@npm:^0.9.10":
-  version: 0.9.10
-  resolution: "next-router-mock@npm:0.9.10"
-  peerDependencies:
-    next: ">=10.0.0"
-    react: ">=17.0.0"
-  checksum: 5cef6e317dd35b6d63c61f9a77cd9222280361127317446c28038eb449e726f6bcadc7c94b4437534161b9087c5ba6aa8f88a04c18126fb2762d6617e34bfb0a
   languageName: node
   linkType: hard
 

@@ -1,8 +1,8 @@
 .github
 .yarn
+app
 backend
 components
 configuration
 database
-pages
 yarn.lock

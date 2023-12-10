@@ -1,3 +1,5 @@
+'use client'
+
 import Autocomplete from 'accessible-autocomplete/react'
 import { ReactElement } from 'react'
 
@@ -5,7 +7,6 @@ import styles from './PageRenseignerUneAdresse.module.css'
 import { usePageRenseignerUneAdresse } from './usePageRenseignerUneAdresse'
 import { useDependencies } from '../../configuration/useDependencies'
 import BackLink from '../common/BackLink/BackLink'
-import Title from '../common/Title/Title'
 
 export default function PageRenseignerUneAdresse(): ReactElement {
   const { paths, wording } = useDependencies()
@@ -22,9 +23,6 @@ export default function PageRenseignerUneAdresse(): ReactElement {
 
   return (
     <div className={styles.main}>
-      <Title>
-        {wording.TITLE_PAGE_RENSEIGNER_UNE_ADRESSE}
-      </Title>
       <BackLink
         className="white"
         url={paths.ACCUEIL}
