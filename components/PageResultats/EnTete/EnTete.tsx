@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { ReactElement } from 'react'
 
 import styles from './EnTete.module.css'
+import { frontDependencies } from '../../../configuration/frontDependencies'
 import { useDependencies } from '../../../configuration/useDependencies'
 import BackLink from '../../common/BackLink/BackLink'
 import Email from '../../common/Email/Email'
@@ -14,7 +15,8 @@ type EnTeteProps = Readonly<{
 }>
 
 export default function EnTete({ nombreDeResultat, rayonDeRecherche = Infinity }: EnTeteProps): ReactElement {
-  const { paths, usePathname, useSearchParams, wording } = useDependencies()
+  const { usePathname, useSearchParams } = useDependencies()
+  const { paths, wording } = frontDependencies
   const pathname = usePathname()
   const searchParams = useSearchParams()
 

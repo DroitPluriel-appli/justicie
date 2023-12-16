@@ -5,11 +5,11 @@ import { ReactElement } from 'react'
 
 import styles from './PageRechercherUneAideJuridique.module.css'
 import { usePageRechercherUneAideJuridique } from './usePageRechercherUneAideJuridique'
-import { useDependencies } from '../../configuration/useDependencies'
+import { frontDependencies } from '../../configuration/frontDependencies'
 import BackLink from '../common/BackLink/BackLink'
 
 export default function PageRechercherUneAideJuridique(): ReactElement {
-  const { paths, wording } = useDependencies()
+  const { paths, wording } = frontDependencies
   const { buttonName, isDisabled, isGPSDenied, touch } = usePageRechercherUneAideJuridique()
 
   return (

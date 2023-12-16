@@ -1,5 +1,3 @@
-'use client'
-
 import Image from 'next/image'
 import { ReactElement } from 'react'
 
@@ -12,16 +10,14 @@ import LogosCcah from './logos-ccah.png'
 import LogoShareIt from './LogoShareIt'
 import LogoWavestone from './LogoWavestone'
 import styles from './PageNosPartenaires.module.css'
-import { useDependencies } from '../../configuration/useDependencies'
+import { frontDependencies } from '../../configuration/frontDependencies'
 import ExternalLink from '../common/ExternalLink/ExternalLink'
 
 export default function PageNosPartenaires(): ReactElement {
-  const { wording } = useDependencies()
-
   return (
     <>
       <h1 className="titre1">
-        {wording.NOS_PARTENAIRES}
+        {frontDependencies.wording.NOS_PARTENAIRES}
       </h1>
       <p>
         <ExternalLink

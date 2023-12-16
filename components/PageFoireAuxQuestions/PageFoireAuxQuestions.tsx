@@ -1,15 +1,13 @@
-'use client'
-
 import { ReactElement } from 'react'
 
 import styles from './PageFoireAuxQuestions.module.css'
 import Question from './Question/Question'
-import { useDependencies } from '../../configuration/useDependencies'
+import { frontDependencies } from '../../configuration/frontDependencies'
 import Email from '../common/Email/Email'
 import Telephone from '../common/Telephone/Telephone'
 
 export default function PageFoireAuxQuestions(): ReactElement {
-  const { wording } = useDependencies()
+  const { wording } = frontDependencies
 
   return (
     <div className={styles.main}>

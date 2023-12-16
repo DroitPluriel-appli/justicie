@@ -13,10 +13,8 @@ type PageProps = Readonly<{
 }>
 
 export async function generateMetadata({ params, searchParams }: PageProps): Promise<Metadata> {
-  const { wording } = frontDependencies
-
   return {
-    title: wording.TITLE_PAGE_LIEU((await recupereUnLieu(params, searchParams)).nom),
+    title: frontDependencies.wording.TITLE_PAGE_LIEU((await recupereUnLieu(params, searchParams)).nom),
   }
 }
 

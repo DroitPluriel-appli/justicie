@@ -10,9 +10,8 @@ import { criteres } from '../../configuration/criteres'
 import { frontDependencies } from '../../configuration/frontDependencies'
 import { WordingFr } from '../../configuration/wording/WordingFr'
 
-const { wording } = frontDependencies
 export const metadata: Metadata = {
-  title: wording.TITLE_PAGE_ADRESSE_LISTE,
+  title: frontDependencies.wording.TITLE_PAGE_ADRESSE_LISTE,
 }
 
 type PageProps = Readonly<{

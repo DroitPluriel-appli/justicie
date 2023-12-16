@@ -1,17 +1,15 @@
-'use client'
-
 import Link from 'next/link'
 import { ReactElement } from 'react'
 
 import styles from './PageAccueil.module.css'
-import { useDependencies } from '../../configuration/useDependencies'
+import { frontDependencies } from '../../configuration/frontDependencies'
 import Email from '../common/Email/Email'
 import ExternalLink from '../common/ExternalLink/ExternalLink'
 import RetourHautDePage from '../common/RetourHautDePage/RetourHautDePage'
 import Telephone from '../common/Telephone/Telephone'
 
 export default function PageAccueil(): ReactElement {
-  const { paths, wording } = useDependencies()
+  const { paths, wording } = frontDependencies
 
   return (
     <>

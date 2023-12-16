@@ -2,19 +2,17 @@ import Image from 'next/image'
 import { ReactElement } from 'react'
 
 import { Lieu } from '../../../backend/entities/Lieu'
-import { useDependencies } from '../../../configuration/useDependencies'
+import { frontDependencies } from '../../../configuration/frontDependencies'
 
 type AccessibilitesProps = Readonly<{
   lieu: Lieu
 }>
 
 export default function CriteresDAccessibilites({ lieu }: AccessibilitesProps): ReactElement {
-  const { criteres } = useDependencies()
-
   return (
     <>
       {
-        criteres
+        frontDependencies.criteres
           .filter((critere): boolean => lieu.criteres[critere.name])
           .map((critere) => (
             <Image

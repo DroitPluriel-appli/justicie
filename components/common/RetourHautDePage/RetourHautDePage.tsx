@@ -1,17 +1,15 @@
 import { ReactElement } from 'react'
 
 import styles from './RetourHautDePage.module.css'
-import { useDependencies } from '../../../configuration/useDependencies'
+import { frontDependencies } from '../../../configuration/frontDependencies'
 
 export default function RetourHautDePage(): ReactElement {
-  const { wording } = useDependencies()
-
   return (
     <a
       className={styles.retour}
       href="#evitement"
     >
-      {wording.RETOUR_EN_HAUT_DE_PAGE}
+      {frontDependencies.wording.RETOUR_EN_HAUT_DE_PAGE}
       <svg
         aria-hidden
         height="16"

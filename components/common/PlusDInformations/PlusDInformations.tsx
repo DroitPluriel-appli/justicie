@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { ReactElement } from 'react'
 
-import { useDependencies } from '../../../configuration/useDependencies'
+import { frontDependencies } from '../../../configuration/frontDependencies'
 
 
 type PlusDInformationsProps = Readonly<{
@@ -13,13 +13,11 @@ type PlusDInformationsProps = Readonly<{
 }>
 
 export default function PlusDInformations({ children, id, latitude, longitude, nomDuLieu }: PlusDInformationsProps): ReactElement {
-  const { paths, wording } = useDependencies()
-
   return (
     <Link
       className="carteLieu__buttons"
-      href={`${paths.LIEU}/${id}?lat=${latitude}&lon=${longitude}`}
-      title={wording.PLUS_D_INFORMATIONS_SUR(nomDuLieu)}
+      href={`${frontDependencies.paths.LIEU}/${id}?lat=${latitude}&lon=${longitude}`}
+      title={frontDependencies.wording.PLUS_D_INFORMATIONS_SUR(nomDuLieu)}
     >
       {children}
     </Link>

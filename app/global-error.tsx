@@ -4,19 +4,21 @@ import * as Sentry from '@sentry/nextjs'
 import { ReactElement, useEffect } from 'react'
 
 type ErrorProps = Readonly<{
-  error: Error & { digest?: string }
+  error: Error
 }>
 
-export default function Error({ error }: ErrorProps): ReactElement {
+export default function GlobalError({ error }: ErrorProps): ReactElement {
   useEffect(() => {
     Sentry.captureException(error)
   }, [error])
 
   return (
-    <div>
-      <h1>
-        {'Something went wrong!'}
-      </h1>
-    </div>
+    <html lang="fr">
+      <body>
+        <h1>
+          {'Something went wrong!'}
+        </h1>
+      </body>
+    </html>
   )
 }

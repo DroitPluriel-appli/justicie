@@ -5,11 +5,11 @@ import { ReactElement } from 'react'
 
 import styles from './PageRenseignerUneAdresse.module.css'
 import { usePageRenseignerUneAdresse } from './usePageRenseignerUneAdresse'
-import { useDependencies } from '../../configuration/useDependencies'
+import { frontDependencies } from '../../configuration/frontDependencies'
 import BackLink from '../common/BackLink/BackLink'
 
 export default function PageRenseignerUneAdresse(): ReactElement {
-  const { paths, wording } = useDependencies()
+  const { paths, wording } = frontDependencies
   const {
     apiAdresseNeRepondPlus,
     effaceLAdresseAuTouch,

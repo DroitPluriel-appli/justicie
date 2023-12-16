@@ -6,10 +6,10 @@ import { ReactElement } from 'react'
 
 import styles from './Footer.module.css'
 import { ouvrirGestionDesCookies } from './ouvrirGestionDesCookies'
-import { useDependencies } from '../../configuration/useDependencies'
+import { frontDependencies } from '../../configuration/frontDependencies'
 
 export default function Footer(): ReactElement {
-  const { date, paths, wording } = useDependencies()
+  const { date, paths, wording } = frontDependencies
 
   return (
     <footer

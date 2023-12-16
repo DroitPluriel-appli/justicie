@@ -7,6 +7,7 @@ import EnTete from './EnTete/EnTete'
 import styles from './PageResultatsListe.module.css'
 import { Critere } from '../../backend/entities/Critere'
 import { Lieu } from '../../backend/entities/Lieu'
+import { frontDependencies } from '../../configuration/frontDependencies'
 import { useDependencies } from '../../configuration/useDependencies'
 import { tagResultatsDeRecherche } from '../common/googleAnalyticsTags'
 import Pagination from '../common/Pagination/Pagination'
@@ -19,7 +20,7 @@ type ResultatsListeProps = Readonly<{
 }>
 
 export default function PageResultatsListe({ criteresDAccessibiliteSelectionnes, lieux, nombreDeResultat }: ResultatsListeProps): ReactElement {
-  const { nombreDeLieuxAffichesParPage, useSearchParams } = useDependencies()
+  const { useSearchParams } = useDependencies()
   const searchParams = useSearchParams()
 
   useEffect(() => {
@@ -51,7 +52,7 @@ export default function PageResultatsListe({ criteresDAccessibiliteSelectionnes,
         )
       }
       {
-        nombreDeResultat > nombreDeLieuxAffichesParPage && (
+        nombreDeResultat > frontDependencies.nombreDeLieuxAffichesParPage && (
           <Pagination
             nombreDeResultat={nombreDeResultat}
           />

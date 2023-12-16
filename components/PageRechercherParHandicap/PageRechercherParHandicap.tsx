@@ -5,11 +5,13 @@ import { ReactElement } from 'react'
 
 import CritereDAccessibilite from './CritereDAccessibilite/CritereDAccessibilite'
 import styles from './PageRechercherParHandicap.module.css'
+import { frontDependencies } from '../../configuration/frontDependencies'
 import { useDependencies } from '../../configuration/useDependencies'
 import BackButton from '../common/BackButton/BackButton'
 
 export default function PageRechercherParHandicap(): ReactElement {
-  const { criteres, paths, useSearchParams, wording } = useDependencies()
+  const { useSearchParams } = useDependencies()
+  const { criteres, paths, wording } = frontDependencies
   const searchParams = useSearchParams()
 
   return (

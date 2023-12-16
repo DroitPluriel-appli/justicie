@@ -36,16 +36,16 @@ export default function Layout({ children }: PropsWithChildren): ReactElement {
           name="theme-color"
         />
         {process.env.NODE_ENV === 'production' && (
-          <Script
-            src="/tarteaucitron.js"
-            strategy="beforeInteractive"
-          />
-        )}
-        {process.env.NODE_ENV === 'production' && (
-          <Script
-            src="/initTarteAuCitron.js"
-            strategy="afterInteractive"
-          />
+          <>
+            <Script
+              src="/tarteaucitron.js"
+              strategy="beforeInteractive"
+            />
+            <Script
+              src="/initTarteAuCitron.js"
+              strategy="beforeInteractive"
+            />
+          </>
         )}
       </head>
       <body>

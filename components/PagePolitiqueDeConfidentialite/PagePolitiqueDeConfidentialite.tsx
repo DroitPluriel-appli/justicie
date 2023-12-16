@@ -1,19 +1,15 @@
-'use client'
-
 import { ReactElement } from 'react'
 
 import styles from './PagePolitiqueDeConfidentialite.module.css'
-import { useDependencies } from '../../configuration/useDependencies'
+import { frontDependencies } from '../../configuration/frontDependencies'
 import Email from '../common/Email/Email'
 import ExternalLink from '../common/ExternalLink/ExternalLink'
 
 export default function PagePolitiqueDeConfidentialite(): ReactElement {
-  const { wording } = useDependencies()
-
   return (
     <>
       <h1 className="titre1">
-        {wording.POLITIQUE_DE_CONFIDENTIALITE}
+        {frontDependencies.wording.POLITIQUE_DE_CONFIDENTIALITE}
       </h1>
       <p>
         {'Le site « '}

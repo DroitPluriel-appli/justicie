@@ -5,9 +5,8 @@ import { ReactElement } from 'react'
 import PageRechercherParHandicap from '../../components/PageRechercherParHandicap/PageRechercherParHandicap'
 import { frontDependencies } from '../../configuration/frontDependencies'
 
-const { wording } = frontDependencies
 export const metadata: Metadata = {
-  title: wording.TITLE_PAGE_RECHERCHER_PAR_HANDICAP,
+  title: frontDependencies.wording.TITLE_PAGE_RECHERCHER_PAR_HANDICAP,
 }
 
 type PageProps = Readonly<{

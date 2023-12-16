@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { ReactElement } from 'react'
 
 import { pagination } from './pagination'
+import { frontDependencies } from '../../../configuration/frontDependencies'
 import { useDependencies } from '../../../configuration/useDependencies'
 import { transformerIteratorEnObject } from '../query'
 
@@ -10,10 +11,10 @@ type DernierePageProps = Readonly<{
 }>
 
 export default function DernierePage({ nombreDeResultat }: DernierePageProps): ReactElement {
-  const { nombreDeLieuxAffichesParPage, paths, useSearchParams, wording } = useDependencies()
+  const { useSearchParams } = useDependencies()
   const searchParams = useSearchParams()
 
-  const { nombreDePage, pageCourante } = pagination(nombreDeResultat, nombreDeLieuxAffichesParPage, searchParams.get('page'))
+  const { nombreDePage, pageCourante } = pagination(nombreDeResultat, frontDependencies.nombreDeLieuxAffichesParPage, searchParams.get('page'))
   const dernierePage = nombreDePage - 1
   const isDernierePage = dernierePage === pageCourante
   const params = transformerIteratorEnObject(searchParams.entries())
@@ -29,7 +30,7 @@ export default function DernierePage({ nombreDeResultat }: DernierePageProps): R
     </svg>
   ) : (
     <Link href={{
-      pathname: paths.RESULTATS_LISTE,
+      pathname: frontDependencies.paths.RESULTATS_LISTE,
       query: {
         ...params,
         page: dernierePage,
@@ -37,7 +38,7 @@ export default function DernierePage({ nombreDeResultat }: DernierePageProps): R
     }}
     >
       <svg
-        aria-label={wording.DERNIERE_PAGE}
+        aria-label={frontDependencies.wording.DERNIERE_PAGE}
         height="12"
         role="img"
         viewBox="0 0 8 12"

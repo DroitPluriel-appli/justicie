@@ -1,12 +1,6 @@
 'use client'
 
-import { Metadata } from 'next'
 import { ReactElement, useCallback } from 'react'
-
-
-export const metadata: Metadata = {
-  title: 'Sentry',
-}
 
 export default function Page(): ReactElement {
   const genererUneErreur = () => {

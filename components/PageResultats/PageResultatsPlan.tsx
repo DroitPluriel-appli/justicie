@@ -6,7 +6,7 @@ import { ReactElement, useEffect } from 'react'
 import EnTete from './EnTete/EnTete'
 import { Critere } from '../../backend/entities/Critere'
 import { Lieu } from '../../backend/entities/Lieu'
-import { useDependencies } from '../../configuration/useDependencies'
+import { frontDependencies } from '../../configuration/frontDependencies'
 import { tagResultatsDeRecherche } from '../common/googleAnalyticsTags'
 import VotreAvis from '../common/VotreAvis/VotreAvis'
 
@@ -17,8 +17,6 @@ type ResultatsPlanProps = Readonly<{
 }>
 
 export default function PageResultatsPlan({ lieux, nombreDeResultat, criteresDAccessibiliteSelectionnes }: ResultatsPlanProps): ReactElement {
-  const { rayonDeRecherche } = useDependencies()
-
   useEffect(() => {
     tagResultatsDeRecherche('plan', nombreDeResultat, criteresDAccessibiliteSelectionnes)
   })
@@ -31,7 +29,7 @@ export default function PageResultatsPlan({ lieux, nombreDeResultat, criteresDAc
     <>
       <EnTete
         nombreDeResultat={nombreDeResultat}
-        rayonDeRecherche={rayonDeRecherche}
+        rayonDeRecherche={frontDependencies.rayonDeRecherche}
       />
       {
         nombreDeResultat > 0 && (

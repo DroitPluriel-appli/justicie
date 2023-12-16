@@ -4,6 +4,7 @@ import { ReactElement } from 'react'
 
 import styles from './PageLieu.module.css'
 import { Lieu } from '../../backend/entities/Lieu'
+import { frontDependencies } from '../../configuration/frontDependencies'
 import { useDependencies } from '../../configuration/useDependencies'
 import BackButton from '../common/BackButton/BackButton'
 import CriteresDAccessibilites from '../common/CriteresDAccessibilites/CriteresDAccessibilites'
@@ -17,7 +18,8 @@ import Telephone from '../common/Telephone/Telephone'
 import VotreAvis from '../common/VotreAvis/VotreAvis'
 
 export default function PageLieu({ lieu }: { readonly lieu: Lieu }): ReactElement {
-  const { useSearchParams, wording } = useDependencies()
+  const { useSearchParams } = useDependencies()
+  const { wording } = frontDependencies
   const searchParams = useSearchParams()
 
   return (

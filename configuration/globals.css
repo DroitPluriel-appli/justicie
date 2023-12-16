@@ -59,7 +59,7 @@ h2 {
   padding: 0;
 }
 
-/* Neeeded to avoid flash on first render with dark mode */
+/* Needed to avoid flash on first render with dark mode */
 body:not(.themeDark, .themeLight) {
   display: none;
 }

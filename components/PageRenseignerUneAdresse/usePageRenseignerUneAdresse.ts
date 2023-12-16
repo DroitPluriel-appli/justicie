@@ -1,7 +1,7 @@
 import { FormEvent, useCallback, useState } from 'react'
 
+import { frontDependencies } from '../../configuration/frontDependencies'
 import { useDependencies } from '../../configuration/useDependencies'
-
 
 export type AdresseJson = Readonly<{
   geometry: {
@@ -24,7 +24,8 @@ type State = Readonly<{
 }>
 
 export function usePageRenseignerUneAdresse() {
-  const { paths, useRouter, wording } = useDependencies()
+  const { useRouter } = useDependencies()
+  const { paths, wording } = frontDependencies
   const router = useRouter()
   const [state, setState] = useState<State>({
     adresseSelectionnee: '',

@@ -2,20 +2,12 @@ const { withSentryConfig } = require('@sentry/nextjs')
 
 const securityHeaders = [
   /**
-   * Strict-Transport-Security, see: https://scotthelme.co.uk/hsts-the-missing-link-in-tls/
-   * This header enforces the use of HTTPS.
-   **/
-  {
-    key: 'Strict-Transport-Security',
-    value: 'max-age=31536000; includeSubDomains',
-  },
-  /**
    * Content-Security-Policy, see: https://scotthelme.co.uk/content-security-policy-an-introduction/
    * This header define approved sources for content on the site that the browser can load.
    **/
   {
     key: 'Content-Security-Policy',
-    value: "default-src https: 'unsafe-inline'; script-src https: 'unsafe-eval'; img-src https: data:; font-src 'self' data:;",
+    value: "default-src https: 'self'; script-src https: 'unsafe-eval' 'unsafe-inline'; style-src https: 'unsafe-inline';",
   },
   /**
    * Permissions-Policy, see: https://scotthelme.co.uk/goodbye-feature-policy-and-hello-permissions-policy/
