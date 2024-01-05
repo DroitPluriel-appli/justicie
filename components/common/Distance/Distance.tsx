@@ -1,15 +1,13 @@
 import { ReactElement, ReactNode } from 'react'
 
 import styles from './Distance.module.css'
-import { useDependencies } from '../../../configuration/useDependencies'
+import { frontDependencies } from '../../../configuration/frontDependencies'
 
 type DistanceProps = Readonly<{
   children: ReactNode
 }>
 
 export default function Distance({ children }: DistanceProps): ReactElement {
-  const { wording } = useDependencies()
-
   return (
     <p className={styles.distance}>
       <svg
@@ -24,7 +22,7 @@ export default function Distance({ children }: DistanceProps): ReactElement {
       </svg>
       {children}
       {' '}
-      <abbr title={wording.KILOMETRES}>
+      <abbr title={frontDependencies.wording.KILOMETRES}>
         {'km'}
       </abbr>
     </p>

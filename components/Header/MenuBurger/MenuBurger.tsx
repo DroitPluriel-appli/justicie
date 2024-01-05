@@ -1,6 +1,6 @@
 import { ReactElement } from 'react'
 
-import { useDependencies } from '../../../configuration/useDependencies'
+import { frontDependencies } from '../../../configuration/frontDependencies'
 import { BoutonModeSombre } from '../BoutonModeSombre/BoutonModeSombre'
 import styles from '../Header.module.css'
 
@@ -11,7 +11,7 @@ type MenuBurgerPros = Readonly<{
 }>
 
 export default function MenuBurger({ classMenu, isMenuClose, touch }: MenuBurgerPros): ReactElement {
-  const { paths, wording } = useDependencies()
+  const { paths, wording } = frontDependencies
 
   return (
     <div

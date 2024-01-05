@@ -10,20 +10,14 @@ import LogosCcah from './logos-ccah.png'
 import LogoShareIt from './LogoShareIt'
 import LogoWavestone from './LogoWavestone'
 import styles from './PageNosPartenaires.module.css'
-import { useDependencies } from '../../configuration/useDependencies'
+import { frontDependencies } from '../../configuration/frontDependencies'
 import ExternalLink from '../common/ExternalLink/ExternalLink'
-import Title from '../common/Title/Title'
 
 export default function PageNosPartenaires(): ReactElement {
-  const { wording } = useDependencies()
-
   return (
     <>
-      <Title>
-        {wording.TITLE_PAGE_NOS_PARTENAIRES}
-      </Title>
       <h1 className="titre1">
-        {wording.NOS_PARTENAIRES}
+        {frontDependencies.wording.NOS_PARTENAIRES}
       </h1>
       <p>
         <ExternalLink

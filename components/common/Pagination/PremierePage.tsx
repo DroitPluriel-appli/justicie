@@ -2,15 +2,18 @@ import Link from 'next/link'
 import { ReactElement } from 'react'
 
 import { pagination } from './pagination'
+import { frontDependencies } from '../../../configuration/frontDependencies'
 import { useDependencies } from '../../../configuration/useDependencies'
+import { transformerIteratorEnObject } from '../query'
 
 export default function PremierePage(): ReactElement {
-  const { nombreDeLieuxAffichesParPage, paths, useRouter, wording } = useDependencies()
-  const { query } = useRouter()
-  const nombreDeResultat = 0
-  const { pageCourante } = pagination(nombreDeResultat, nombreDeLieuxAffichesParPage, query)
+  const { useSearchParams } = useDependencies()
+  const searchParams = useSearchParams()
 
+  const nombreDeResultat = 0
+  const { pageCourante } = pagination(nombreDeResultat, frontDependencies.nombreDeLieuxAffichesParPage, searchParams.get('page'))
   const isPremierePage = pageCourante === 0
+  const params = transformerIteratorEnObject(searchParams.entries())
 
   return isPremierePage ? (
     <svg
@@ -23,15 +26,15 @@ export default function PremierePage(): ReactElement {
     </svg>
   ) : (
     <Link href={{
-      pathname: paths.RESULTATS_LISTE,
+      pathname: frontDependencies.paths.RESULTATS_LISTE,
       query: {
-        ...query,
+        ...params,
         page: 0,
       },
     }}
     >
       <svg
-        aria-label={wording.PREMIERE_PAGE}
+        aria-label={frontDependencies.wording.PREMIERE_PAGE}
         height="12"
         role="img"
         viewBox="0 0 8 12"

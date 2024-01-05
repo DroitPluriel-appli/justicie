@@ -2,10 +2,9 @@ import { ReactElement } from 'react'
 
 import styles from './BoutonModeSombre.module.css'
 import { useBoutonModeSombre } from './useBoutonModeSombre'
-import { useDependencies } from '../../../configuration/useDependencies'
+import { frontDependencies } from '../../../configuration/frontDependencies'
 
 export function BoutonModeSombre(): ReactElement {
-  const { wording } = useDependencies()
   const { isEnabled, toggleIsEnabled } = useBoutonModeSombre()
 
   return (
@@ -35,7 +34,7 @@ export function BoutonModeSombre(): ReactElement {
           r="9"
         />
       </svg>
-      {wording.MODE_SOMBRE}
+      {frontDependencies.wording.MODE_SOMBRE}
     </button>
   )
 }

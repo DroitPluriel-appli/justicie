@@ -1,21 +1,21 @@
+'use client'
+
 import Link from 'next/link'
 import { ReactElement } from 'react'
 
 import CritereDAccessibilite from './CritereDAccessibilite/CritereDAccessibilite'
 import styles from './PageRechercherParHandicap.module.css'
+import { frontDependencies } from '../../configuration/frontDependencies'
 import { useDependencies } from '../../configuration/useDependencies'
 import BackButton from '../common/BackButton/BackButton'
-import Title from '../common/Title/Title'
 
 export default function PageRechercherParHandicap(): ReactElement {
-  const { criteres, paths, useRouter, wording } = useDependencies()
-  const { query } = useRouter()
+  const { useSearchParams } = useDependencies()
+  const { criteres, paths, wording } = frontDependencies
+  const searchParams = useSearchParams()
 
   return (
     <div className={styles.main}>
-      <Title>
-        {wording.TITLE_PAGE_RECHERCHER_PAR_HANDICAP}
-      </Title>
       <div className={styles.links}>
         <BackButton>
           {wording.MODIFIER_L_ADRESSE}
@@ -23,8 +23,8 @@ export default function PageRechercherParHandicap(): ReactElement {
         <Link href={{
           pathname: paths.RESULTATS_LISTE,
           query: {
-            lat: query.lat,
-            lon: query.lon,
+            lat: searchParams.get('lat'),
+            lon: searchParams.get('lon'),
           },
         }}
         >
@@ -53,12 +53,12 @@ export default function PageRechercherParHandicap(): ReactElement {
         <input
           name="lat"
           type="hidden"
-          value={query.lat}
+          value={String(searchParams.get('lat'))}
         />
         <input
           name="lon"
           type="hidden"
-          value={query.lon}
+          value={String(searchParams.get('lon'))}
         />
         <div className={styles.submit}>
           <button type="submit">

@@ -1,12 +1,11 @@
 import { fireEvent, screen, within } from '@testing-library/react'
 import L from 'leaflet'
-import mockRouter from 'next-router-mock'
 
 import PageResultatsPlan from './PageResultatsPlan'
 import Plan from './Plan/Plan'
 import { Critere } from '../../backend/entities/Critere'
 import { Lieu } from '../../backend/entities/Lieu'
-import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
+import { fakeFrontDependencies, fakeRouter, renderFakeComponent, textMatch } from '../../configuration/testHelper'
 
 describe('page des résultats de recherche affichés sur une carte', () => {
   const { paths, wording } = fakeFrontDependencies
@@ -63,34 +62,15 @@ describe('page des résultats de recherche affichés sur une carte', () => {
     L.Circle.prototype.addTo = vi.fn()
 
     vi.stubGlobal('dataLayer', { push: vi.fn() })
-
-    mockRouter.query = {
-      lat,
-      lon,
-    }
-  })
-
-  it('affiche le titre de l’onglet', () => {
-    // WHEN
-    renderFakeComponent(
-      <PageResultatsPlan
-        criteresDAccessibiliteSelectionnes={[]}
-        lieux={[]}
-        nombreDeResultat={0}
-      />
-    )
-
-    // THEN
-    expect(document.title).toBe(wording.TITLE_PAGE_RESULTATS_PAR_PLAN)
   })
 
   it('affiche les liens de navigation et le filtre', () => {
     // GIVEN
-    mockRouter.query = {
-      lat,
-      lon,
-      'moteur-total': moteurTotal,
-    }
+    const searchParams = [
+      { name: 'moteur-total', value: moteurTotal },
+      { name: 'lat', value: lat },
+      { name: 'lon', value: lon },
+    ]
 
     // WHEN
     renderFakeComponent(
@@ -98,7 +78,8 @@ describe('page des résultats de recherche affichés sur une carte', () => {
         criteresDAccessibiliteSelectionnes={[]}
         lieux={[]}
         nombreDeResultat={0}
-      />
+      />,
+      fakeRouter(searchParams)
     )
 
     // THEN
@@ -108,14 +89,14 @@ describe('page des résultats de recherche affichés sur une carte', () => {
     const navigation = screen.getByRole('navigation')
     const itemsDeNavigation = within(navigation).getAllByRole('listitem')
     const vueListe = within(itemsDeNavigation[0]).getByRole('link', { name: wording.AFFICHEZ_RESULTATS_EN_LISTE })
-    expect(vueListe).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?lat=${lat}&lon=${lon}&moteur-total=${moteurTotal}`)
+    expect(vueListe).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?moteur-total=${moteurTotal}&lat=${lat}&lon=${lon}`)
     expect(vueListe.textContent).toBe(wording.LISTE)
     const vuePlan = within(itemsDeNavigation[1]).getByRole('link', { name: wording.AFFICHEZ_RESULTATS_EN_PLAN })
-    expect(vuePlan).toHaveAttribute('href', `${paths.RESULTATS_PLAN}?lat=${lat}&lon=${lon}&moteur-total=${moteurTotal}`)
+    expect(vuePlan).toHaveAttribute('href', `${paths.RESULTATS_PLAN}?moteur-total=${moteurTotal}&lat=${lat}&lon=${lon}`)
     expect(vuePlan.textContent).toBe(wording.PLAN)
 
     const modifierAccessibilite = screen.getByRole('link', { name: wording.MODIFIER_VOTRE_BESOIN_D_ACCESSIBILITE })
-    expect(modifierAccessibilite).toHaveAttribute('href', `${paths.RECHERCHER_PAR_HANDICAP}?lat=${lat}&lon=${lon}&moteur-total=${moteurTotal}`)
+    expect(modifierAccessibilite).toHaveAttribute('href', `${paths.RECHERCHER_PAR_HANDICAP}?moteur-total=${moteurTotal}&lat=${lat}&lon=${lon}`)
     expect(modifierAccessibilite.textContent).toBe(wording.BESOINS_D_ACCESSIBILITE + '1')
   })
 
@@ -246,7 +227,11 @@ describe('page des résultats de recherche affichés sur une carte', () => {
 
   it('affiche la carte du lieu dans la popup au clic sur un marker', () => {
     // GIVEN
-    renderFakeComponent(<Plan lieux={[lieuA]} />)
+    const searchParams = [
+      { name: 'lat', value: lat },
+      { name: 'lon', value: lon },
+    ]
+    renderFakeComponent(<Plan lieux={[lieuA]} />, fakeRouter(searchParams))
 
     // WHEN
     afficherLaCarteDuLieu(lieuA.nom)
@@ -274,13 +259,7 @@ describe('page des résultats de recherche affichés sur une carte', () => {
     expect(champsCarteLieuA[4]).toHaveAttribute('title', wording.KILOMETRES)
     expect(champsCarteLieuA[6]).toHaveAttribute('href', `${paths.LIEU}/1?lat=${lat}&lon=${lon}`)
     expect(champsCarteLieuA[6].textContent).toBe(wording.PLUS_D_INFORMATIONS)
-
-    const googleMapUrlLieuA = new URL('https://www.google.com/maps/dir/')
-    googleMapUrlLieuA.searchParams.append('api', '1')
-    googleMapUrlLieuA.searchParams.append('origin', `${lat},${lon}`)
-    googleMapUrlLieuA.searchParams.append('destination', '12+rue+du+Lieu+1000+Bourg+En+Bresse')
-
-    expect(champsCarteLieuA[5]).toHaveAttribute('href', googleMapUrlLieuA.toString())
+    expect(champsCarteLieuA[5]).toHaveAttribute('href', 'https://www.google.com/maps/dir/?api=1&origin=48.844928%2C2.31016&destination=12%2Brue%2Bdu%2BLieu%2B1000%2BBourg%2BEn%2BBresse')
     expect(champsCarteLieuA[5].textContent).toBe(wording.LANCER_L_ITINERAIRE)
   })
 

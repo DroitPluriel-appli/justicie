@@ -1,22 +1,14 @@
-/* eslint-disable react/jsx-props-no-spreading */
-import { AppProps } from 'next/app'
-import Head from 'next/head'
-import { ReactElement, useEffect } from 'react'
+import Script from 'next/script'
+import { PropsWithChildren, ReactElement } from 'react'
 
-import { applyThemeFromLocalStorage } from '../components/common/theme'
 import Footer from '../components/Footer/Footer'
 import Header from '../components/Header/Header'
-import { ContextProvider } from '../configuration/useDependencies'
 import '../configuration/globals.css'
 
-export default function App({ Component, pageProps }: AppProps): ReactElement {
-  useEffect(() => {
-    applyThemeFromLocalStorage()
-  })
-
+export default function Layout({ children }: PropsWithChildren): ReactElement {
   return (
-    <ContextProvider>
-      <Head>
+    <html lang="fr">
+      <head>
         <meta charSet="utf-8" />
         <meta
           content="width=device-width,initial-scale=1"
@@ -43,12 +35,26 @@ export default function App({ Component, pageProps }: AppProps): ReactElement {
           content="#ffffff"
           name="theme-color"
         />
-      </Head>
-      <Header />
-      <main id="contenu">
-        <Component {...pageProps} />
-      </main>
-      <Footer />
-    </ContextProvider>
+        {process.env.NODE_ENV === 'production' && (
+          <>
+            <Script
+              src="/tarteaucitron.js"
+              strategy="beforeInteractive"
+            />
+            <Script
+              src="/initTarteAuCitron.js"
+              strategy="beforeInteractive"
+            />
+          </>
+        )}
+      </head>
+      <body>
+        <Header />
+        <main id="contenu">
+          {children}
+        </main>
+        <Footer />
+      </body>
+    </html>
   )
 }

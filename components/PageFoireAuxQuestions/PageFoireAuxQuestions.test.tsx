@@ -6,14 +6,6 @@ import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../con
 describe('page "Foire aux questions"', () => {
   const { wording } = fakeFrontDependencies
 
-  it('affiche le titre de l’onglet', () => {
-    // WHEN
-    renderFakeComponent(<PageFoireAuxQuestions />)
-
-    // THEN
-    expect(document.title).toBe(wording.TITLE_FOIRE_AUX_QUESTIONS)
-  })
-
   it('affiche le titre', () => {
     // WHEN
     renderFakeComponent(<PageFoireAuxQuestions />)

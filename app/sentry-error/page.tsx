@@ -1,6 +1,8 @@
+'use client'
+
 import { ReactElement, useCallback } from 'react'
 
-export default function Router(): ReactElement {
+export default function Page(): ReactElement {
   const genererUneErreur = () => {
     throw new Error('Erreur pour tester que Sentry fonctionne')
   }

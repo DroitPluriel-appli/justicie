@@ -1,18 +1,27 @@
+'use client'
+
 import { ReactElement, useEffect } from 'react'
 
 import CarteLieu from './CarteLieu/CarteLieu'
 import EnTete from './EnTete/EnTete'
 import styles from './PageResultatsListe.module.css'
+import { Critere } from '../../backend/entities/Critere'
+import { Lieu } from '../../backend/entities/Lieu'
+import { frontDependencies } from '../../configuration/frontDependencies'
 import { useDependencies } from '../../configuration/useDependencies'
-import { ResultatsListeProps } from '../../pages/resultats-liste'
 import { tagResultatsDeRecherche } from '../common/googleAnalyticsTags'
 import Pagination from '../common/Pagination/Pagination'
-import Title from '../common/Title/Title'
 import VotreAvis from '../common/VotreAvis/VotreAvis'
 
+type ResultatsListeProps = Readonly<{
+  criteresDAccessibiliteSelectionnes: Critere[]
+  lieux: Lieu[]
+  nombreDeResultat: number
+}>
+
 export default function PageResultatsListe({ criteresDAccessibiliteSelectionnes, lieux, nombreDeResultat }: ResultatsListeProps): ReactElement {
-  const { nombreDeLieuxAffichesParPage, useRouter, wording } = useDependencies()
-  const { query } = useRouter()
+  const { useSearchParams } = useDependencies()
+  const searchParams = useSearchParams()
 
   useEffect(() => {
     tagResultatsDeRecherche('liste', nombreDeResultat, criteresDAccessibiliteSelectionnes)
@@ -20,9 +29,6 @@ export default function PageResultatsListe({ criteresDAccessibiliteSelectionnes,
 
   return (
     <>
-      <Title>
-        {wording.TITLE_PAGE_ADRESSE_LISTE}
-      </Title>
       <EnTete
         nombreDeResultat={nombreDeResultat}
       />
@@ -34,9 +40,9 @@ export default function PageResultatsListe({ criteresDAccessibiliteSelectionnes,
                 return (
                   <li key={lieu.id}>
                     <CarteLieu
-                      latitude={Number(query.lat)}
+                      latitude={Number(searchParams.get('lat'))}
                       lieu={lieu}
-                      longitude={Number(query.lon)}
+                      longitude={Number(searchParams.get('lon'))}
                     />
                   </li>
                 )
@@ -46,7 +52,7 @@ export default function PageResultatsListe({ criteresDAccessibiliteSelectionnes,
         )
       }
       {
-        nombreDeResultat > nombreDeLieuxAffichesParPage && (
+        nombreDeResultat > frontDependencies.nombreDeLieuxAffichesParPage && (
           <Pagination
             nombreDeResultat={nombreDeResultat}
           />

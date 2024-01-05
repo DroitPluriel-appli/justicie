@@ -1,21 +1,19 @@
+'use client'
+
 import Link from 'next/link'
 import { ReactElement } from 'react'
 
 import styles from './PageRechercherUneAideJuridique.module.css'
 import { usePageRechercherUneAideJuridique } from './usePageRechercherUneAideJuridique'
-import { useDependencies } from '../../configuration/useDependencies'
+import { frontDependencies } from '../../configuration/frontDependencies'
 import BackLink from '../common/BackLink/BackLink'
-import Title from '../common/Title/Title'
 
 export default function PageRechercherUneAideJuridique(): ReactElement {
-  const { paths, wording } = useDependencies()
+  const { paths, wording } = frontDependencies
   const { buttonName, isDisabled, isGPSDenied, touch } = usePageRechercherUneAideJuridique()
 
   return (
     <div className={styles.main}>
-      <Title>
-        {wording.TITLE_PAGE_RECHERCHER_UNE_AIDE_JURIDIQUE}
-      </Title>
       <BackLink
         className="white"
         url={paths.ACCUEIL}

@@ -1,7 +1,7 @@
 import { ReactElement } from 'react'
 
 import styles from './Itineraire.module.css'
-import { useDependencies } from '../../../configuration/useDependencies'
+import { frontDependencies } from '../../../configuration/frontDependencies'
 import ExternalLink from '../ExternalLink/ExternalLink'
 
 type ItineraireProps = Readonly<{
@@ -16,8 +16,6 @@ type ItineraireProps = Readonly<{
 }>
 
 export default function Itineraire({ adresse, children, codePostal, hasPicto = false, latitude, longitude, nom, ville }: ItineraireProps): ReactElement {
-  const { wording } = useDependencies()
-
   const url = new URL('https://www.google.com/maps/dir/')
   url.searchParams.append('api', '1')
   url.searchParams.append('origin', `${latitude},${longitude}`)
@@ -27,7 +25,7 @@ export default function Itineraire({ adresse, children, codePostal, hasPicto = f
     <ExternalLink
       className={`${styles.itineraire} carteLieu__buttons`}
       href={url.toString()}
-      title={wording.LANCER_L_ITINERAIRE_SUR_GOOGLE_MAPS(nom)}
+      title={frontDependencies.wording.LANCER_L_ITINERAIRE_SUR_GOOGLE_MAPS(nom)}
     >
       {
         hasPicto ? (

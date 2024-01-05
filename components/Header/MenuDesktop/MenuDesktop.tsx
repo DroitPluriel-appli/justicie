@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ReactElement } from 'react'
 
-import { useDependencies } from '../../../configuration/useDependencies'
+import { frontDependencies } from '../../../configuration/frontDependencies'
 import styles from '../Header.module.css'
 
 type MenuDesktopPros = Readonly<{
@@ -10,7 +10,7 @@ type MenuDesktopPros = Readonly<{
 }>
 
 export default function MenuDesktop({ isMenuClose }: MenuDesktopPros): ReactElement {
-  const { paths, wording } = useDependencies()
+  const { paths, wording } = frontDependencies
 
   return (
     <nav

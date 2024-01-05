@@ -9,11 +9,11 @@ type BackButtonProps = Readonly<{
 
 export default function BackButton({ children }: BackButtonProps): ReactElement {
   const { useRouter } = useDependencies()
-  const { back } = useRouter()
+  const router = useRouter()
 
   const retourEnArriere = useCallback(() => {
-    back()
-  }, [back])
+    router.back()
+  }, [router])
 
   return (
     <button

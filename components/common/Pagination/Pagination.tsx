@@ -4,17 +4,15 @@ import DernierePage from './DernierePage'
 import Page from './Page'
 import styles from './Pagination.module.css'
 import PremierePage from './PremierePage'
-import { useDependencies } from '../../../configuration/useDependencies'
+import { frontDependencies } from '../../../configuration/frontDependencies'
 
 type PaginationProps = Readonly<{
   nombreDeResultat: number
 }>
 
 export default function Pagination({ nombreDeResultat }: PaginationProps): ReactElement {
-  const { wording } = useDependencies()
-
   return (
-    <nav aria-label={wording.PAGINATION}>
+    <nav aria-label={frontDependencies.wording.PAGINATION}>
       <ol className={styles.pagination}>
         <li>
           <PremierePage />

@@ -1,32 +1,22 @@
 import { screen } from '@testing-library/react'
-import mockRouter from 'next-router-mock'
 
 import PageRechercherParHandicap from './PageRechercherParHandicap'
-import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
+import { fakeFrontDependencies, fakeRouter, renderFakeComponent, textMatch } from '../../configuration/testHelper'
 
 describe('page de recherche par handicap', () => {
   const { criteres, paths, wording } = fakeFrontDependencies
   const lat = '48.844928'
   const lon = '2.31016'
 
-  beforeEach(() => {
-    mockRouter.query = {
-      lat,
-      lon,
-    }
-  })
-
-  it('affiche le titre de l’onglet', () => {
-    // WHEN
-    renderFakeComponent(<PageRechercherParHandicap />)
-
-    // THEN
-    expect(document.title).toBe(wording.TITLE_PAGE_RECHERCHER_PAR_HANDICAP)
-  })
-
   it('affiche les liens de navigation, le titre et le formulaire', () => {
+    // GIVEN
+    const searchParams = [
+      { name: 'lat', value: lat },
+      { name: 'lon', value: lon },
+    ]
+
     // WHEN
-    renderFakeComponent(<PageRechercherParHandicap />)
+    renderFakeComponent(<PageRechercherParHandicap />, fakeRouter(searchParams))
 
     // THEN
     const modifierLAdresse = screen.getByRole('button', { name: wording.MODIFIER_L_ADRESSE })
@@ -52,15 +42,15 @@ describe('page de recherche par handicap', () => {
 
   it('coche par défaut des besoins si on vient des résultats', () => {
     // GIVEN
-    mockRouter.query = {
-      lat,
-      lon,
-      pmr: 'on',
-      visuel: 'on',
-    }
+    const searchParams = [
+      { name: 'pmr', value: 'on' },
+      { name: 'visuel', value: 'on' },
+      { name: 'lat', value: lat },
+      { name: 'lon', value: lon },
+    ]
 
     // WHEN
-    renderFakeComponent(<PageRechercherParHandicap />)
+    renderFakeComponent(<PageRechercherParHandicap />, fakeRouter(searchParams))
 
     // THEN
     const pmr = screen.getByRole('checkbox', { name: criteres[0].title })

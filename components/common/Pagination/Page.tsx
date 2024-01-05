@@ -2,16 +2,20 @@ import Link from 'next/link'
 import { ReactElement } from 'react'
 
 import { pagination } from './pagination'
+import { frontDependencies } from '../../../configuration/frontDependencies'
 import { useDependencies } from '../../../configuration/useDependencies'
+import { transformerIteratorEnObject } from '../query'
 
 type PageProps = Readonly<{
   nombreDeResultat: number
 }>
 
 export default function Page({ nombreDeResultat }: PageProps): ReactElement {
-  const { nombreDeLieuxAffichesParPage, paths, useRouter, wording } = useDependencies()
-  const { query } = useRouter()
-  const { pageCourante, pages } = pagination(nombreDeResultat, nombreDeLieuxAffichesParPage, query)
+  const { useSearchParams } = useDependencies()
+  const searchParams = useSearchParams()
+
+  const { pageCourante, pages } = pagination(nombreDeResultat, frontDependencies.nombreDeLieuxAffichesParPage, searchParams.get('page'))
+  const params = transformerIteratorEnObject(searchParams.entries())
 
   return (
     <>
@@ -31,13 +35,13 @@ export default function Page({ nombreDeResultat }: PageProps): ReactElement {
               <li key={page}>
                 <Link
                   href={{
-                    pathname: paths.RESULTATS_LISTE,
+                    pathname: frontDependencies.paths.RESULTATS_LISTE,
                     query: {
-                      ...query,
+                      ...params,
                       page: page - 1,
                     },
                   }}
-                  title={wording.PAGE(page)}
+                  title={frontDependencies.wording.PAGE(page)}
                 >
                   {page}
                 </Link>

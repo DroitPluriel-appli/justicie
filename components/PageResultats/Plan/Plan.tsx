@@ -4,6 +4,7 @@ import { ReactElement, useEffect } from 'react'
 import { initPlan } from './leaflet'
 import styles from './Plan.module.css'
 import { Lieu } from '../../../backend/entities/Lieu'
+import { frontDependencies } from '../../../configuration/frontDependencies'
 import { useDependencies } from '../../../configuration/useDependencies'
 
 type PlanProps = Readonly<{
@@ -11,11 +12,11 @@ type PlanProps = Readonly<{
 }>
 
 export default function Plan({ lieux }: PlanProps): ReactElement {
-  const { rayonDeRecherche, useRouter, wording } = useDependencies()
-  const { query } = useRouter()
+  const { useSearchParams } = useDependencies()
+  const searchParams = useSearchParams()
 
   useEffect(() => {
-    const map = initPlan(lieux, Number(query.lat), Number(query.lon), rayonDeRecherche, wording.TITRE_MARKER_POSITION)
+    const map = initPlan(lieux, Number(searchParams.get('lat')), Number(searchParams.get('lon')), frontDependencies.rayonDeRecherche, frontDependencies.wording.TITRE_MARKER_POSITION)
 
     // Si la carte n'est pas supprimée quand le composant update,
     // cela peut provoquer des bugs liés à leaflet, notamment

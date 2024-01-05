@@ -1,21 +1,15 @@
 import { ReactElement } from 'react'
 
-import { useDependencies } from '../../configuration/useDependencies'
+import { frontDependencies } from '../../configuration/frontDependencies'
 import Email from '../common/Email/Email'
 import ExternalLink from '../common/ExternalLink/ExternalLink'
 import Telephone from '../common/Telephone/Telephone'
-import Title from '../common/Title/Title'
 
 export default function PageMentionsLegales(): ReactElement {
-  const { wording } = useDependencies()
-
   return (
     <>
-      <Title>
-        {wording.TITLE_PAGE_MENTIONS_LEGALES}
-      </Title>
       <h1 className="titre1">
-        {wording.MENTIONS_LEGALES}
+        {frontDependencies.wording.MENTIONS_LEGALES}
       </h1>
       <p>
         {'Merci de lire avec attention les différentes modalités d’utilisation du présent site avant d’y parcourir ses pages. En vous connectant sur ce site, vous acceptez sans réserve les présentes modalités. Aussi, conformément à l’article n°6 de la Loi n°2004-575 du 21 Juin 2004 pour la confiance dans l’économie numérique, les responsables du présent site internet '}

@@ -13,15 +13,15 @@ type CritereDAccessibiliteProps = Readonly<{
 }>
 
 export default function CritereDAccessibilite({ description, id, imgSrc, name, title }: CritereDAccessibiliteProps): ReactElement {
-  const { useRouter } = useDependencies()
-  const { query } = useRouter()
+  const { useSearchParams } = useDependencies()
+  const searchParams = useSearchParams()
 
   return (
     <div className={styles.article}>
       <div>
         <input
           className={styles.checkbox}
-          defaultChecked={query[name] !== undefined ? true : false}
+          defaultChecked={searchParams.get(name) !== null ? true : false}
           id={id}
           name={name}
           type="checkbox"

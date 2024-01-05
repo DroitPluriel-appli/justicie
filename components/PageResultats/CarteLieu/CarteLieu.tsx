@@ -2,7 +2,7 @@ import { ReactElement } from 'react'
 
 import styles from './CarteLieu.module.css'
 import { Lieu } from '../../../backend/entities/Lieu'
-import { useDependencies } from '../../../configuration/useDependencies'
+import { frontDependencies } from '../../../configuration/frontDependencies'
 import CriteresDAccessibilites from '../../common/CriteresDAccessibilites/CriteresDAccessibilites'
 import Distance from '../../common/Distance/Distance'
 import Itineraire from '../../common/Itineraire/Itineraire'
@@ -16,8 +16,6 @@ type CarteLieuProps = Readonly<{
 }>
 
 export default function CarteLieu({ latitude, lieu, longitude }: CarteLieuProps): ReactElement {
-  const { wording } = useDependencies()
-
   return (
     <article className={styles.main}>
       <div className={styles.title}>
@@ -52,7 +50,7 @@ export default function CarteLieu({ latitude, lieu, longitude }: CarteLieuProps)
         nom={lieu.nom}
         ville={lieu.ville}
       >
-        {wording.LANCER_L_ITINERAIRE}
+        {frontDependencies.wording.LANCER_L_ITINERAIRE}
       </Itineraire>
       <PlusDInformations
         id={lieu.id}
@@ -60,7 +58,7 @@ export default function CarteLieu({ latitude, lieu, longitude }: CarteLieuProps)
         longitude={longitude}
         nomDuLieu={lieu.nom}
       >
-        {wording.PLUS_D_INFORMATIONS}
+        {frontDependencies.wording.PLUS_D_INFORMATIONS}
       </PlusDInformations>
     </article>
   )
