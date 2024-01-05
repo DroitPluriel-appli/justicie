@@ -5,7 +5,8 @@ export default defineConfig({
   plugins: [react()],
   test: {
     coverage: {
-      exclude: ['database/**/*.ts'],
+      exclude: ['backend/backDependencies.ts', 'backend/infrastructure/controllers/importerDesLieuxCron.ts'],
+      include: ['backend/**/*', 'components/**/*', 'configuration/**/*'],
       provider: 'istanbul',
       skipFull: true,
     },

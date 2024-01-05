@@ -35,11 +35,13 @@ describe('page "Foire aux questions"', () => {
     ]
     reponse.forEach((paragraph) => expect(paragraph).toBeVisible())
 
-    const lienTelephone = screen.getByRole('link', { name: wording.APPELER_LE_NUMERO(wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[3], wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[4]) })
+    const lienTelephone = screen.getByRole('link', { name: wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[4] })
     expect(lienTelephone).toHaveAttribute('href', 'tel:' + wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[4].replaceAll(' ', ''))
+    expect(lienTelephone).toHaveAttribute('title', wording.APPELER_LE_NUMERO(wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[3], wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[4]))
 
-    const lienMail = screen.getByRole('link', { name: wording.ENVOYER_UN_EMAIL_A + wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[6] })
+    const lienMail = screen.getByRole('link', { name: wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[6] })
     expect(lienMail).toHaveAttribute('href', 'mailto:' + wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[6].replaceAll(' ', ''))
+    expect(lienMail).toHaveAttribute('title', wording.ENVOYER_UN_EMAIL_A + wording.REPONSE_JE_NE_TROUVE_AUCUN_LIEU[6])
   })
 
   it("affiche la question et la réponse permettant de savoir si l'aide juridique est gratuite", () => {
@@ -85,8 +87,9 @@ describe('page "Foire aux questions"', () => {
     const reponse = screen.getByText(textMatch(wording.REPONSE_JE_SUIS_ALLEE_SUR_PLACE + wording.EMAIL_DROIT_PLURIEL + '.'), { selector: 'p' })
     expect(reponse).toBeVisible()
 
-    const lienMail = within(reponse).getByRole('link', { name: wording.ENVOYER_UN_EMAIL_A + wording.EMAIL_DROIT_PLURIEL })
+    const lienMail = within(reponse).getByRole('link', { name: wording.EMAIL_DROIT_PLURIEL })
     expect(lienMail).toHaveAttribute('href', 'mailto:' + wording.EMAIL_DROIT_PLURIEL)
+    expect(lienMail).toHaveAttribute('title', wording.ENVOYER_UN_EMAIL_A + wording.EMAIL_DROIT_PLURIEL)
   })
 
   it('affiche question et la réponse permettant de savoir si tous les lieux apparaissent', () => {
@@ -99,7 +102,8 @@ describe('page "Foire aux questions"', () => {
     const reponse = screen.getByText(textMatch(wording.REPONSE_EST_CE_QUE_TOUS_LES_LIEUX_APPARAISSENT + wording.EMAIL_DROIT_PLURIEL + '.'), { selector: 'p' })
     expect(reponse).toBeVisible()
 
-    const lienMail = within(reponse).getByRole('link', { name: wording.ENVOYER_UN_EMAIL_A + wording.EMAIL_DROIT_PLURIEL })
+    const lienMail = within(reponse).getByRole('link', { name: wording.EMAIL_DROIT_PLURIEL })
     expect(lienMail).toHaveAttribute('href', 'mailto:' + wording.EMAIL_DROIT_PLURIEL)
+    expect(lienMail).toHaveAttribute('title', wording.ENVOYER_UN_EMAIL_A + wording.EMAIL_DROIT_PLURIEL)
   })
 })

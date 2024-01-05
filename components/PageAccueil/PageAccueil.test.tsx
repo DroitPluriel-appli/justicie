@@ -34,10 +34,11 @@ describe('page d’accueil', () => {
     expect(droitPlurielEstUneAssociation).toBeVisible()
 
     const retrouvezSurNotreSite = screen.getByText(textMatch(wording.RETROUVEZ_PLUS_D_INFOS + wording.SITE_DROIT_PLURIEL), { selector: 'p' })
-    const lienSiteDroitPluriel = within(retrouvezSurNotreSite).getByRole('link', { name: wording.TITRE_LIEN_SITE_DROIT_PLURIEL + wording.NOUVELLE_FENETRE })
+    const lienSiteDroitPluriel = within(retrouvezSurNotreSite).getByRole('link', { name: wording.SITE_DROIT_PLURIEL })
     expect(lienSiteDroitPluriel).toHaveAttribute('href', wording.SITE_DROIT_PLURIEL)
     expect(lienSiteDroitPluriel).toHaveAttribute('target', '_blank')
     expect(lienSiteDroitPluriel).toHaveAttribute('rel', 'external noopener noreferrer')
+    expect(lienSiteDroitPluriel).toHaveAttribute('title', wording.TITRE_LIEN_SITE_DROIT_PLURIEL + wording.NOUVELLE_FENETRE)
 
     const nousContacter = screen.getByRole('heading', { level: 2, name: wording.TITLE_NOUS_CONTACTER })
     expect(nousContacter).toBeVisible()
@@ -46,13 +47,13 @@ describe('page d’accueil', () => {
       textMatch(`${wording.PAR_EMAIL}${wording.EMAIL_DROIT_PLURIEL}${wording.PAR_TELEPHONE}${wording.TELEPHONE_DROIT_PLURIEL}`), { selector: 'address' }
     )
 
-    const lienMail = within(coordonneesDroitPluriel).getByRole('link', { name: wording.ENVOYER_UN_EMAIL_A + wording.EMAIL_DROIT_PLURIEL })
+    const lienMail = within(coordonneesDroitPluriel).getByRole('link', { name: wording.EMAIL_DROIT_PLURIEL })
     expect(lienMail).toHaveAttribute('href', 'mailto:' + wording.EMAIL_DROIT_PLURIEL)
-    expect(lienMail.textContent).toBe(wording.EMAIL_DROIT_PLURIEL)
+    expect(lienMail).toHaveAttribute('title', wording.ENVOYER_UN_EMAIL_A + wording.EMAIL_DROIT_PLURIEL)
 
-    const lienTelephone = within(coordonneesDroitPluriel).getByRole('link', { name: wording.APPELER_LE_NUMERO(wording.JUSTICIE, wording.TELEPHONE_DROIT_PLURIEL) })
+    const lienTelephone = within(coordonneesDroitPluriel).getByRole('link', { name: wording.TELEPHONE_DROIT_PLURIEL })
     expect(lienTelephone).toHaveAttribute('href', 'tel:' + wording.TELEPHONE_DROIT_PLURIEL.replaceAll(' ', ''))
-    expect(lienTelephone.textContent).toBe(wording.TELEPHONE_DROIT_PLURIEL)
+    expect(lienTelephone).toHaveAttribute('title', wording.APPELER_LE_NUMERO(wording.JUSTICIE, wording.TELEPHONE_DROIT_PLURIEL))
     const nosActualites = screen.getByRole('heading', { level: 2, name: wording.TITLE_SUIVEZ_NOS_ACTUALITES })
     expect(nosActualites).toBeVisible()
 

@@ -88,16 +88,16 @@ describe('page des résultats de recherche affichés sur une carte', () => {
 
     const navigation = screen.getByRole('navigation')
     const itemsDeNavigation = within(navigation).getAllByRole('listitem')
-    const vueListe = within(itemsDeNavigation[0]).getByRole('link', { name: wording.AFFICHEZ_RESULTATS_EN_LISTE })
+    const vueListe = within(itemsDeNavigation[0]).getByRole('link', { name: wording.LISTE })
     expect(vueListe).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?moteur-total=${moteurTotal}&lat=${lat}&lon=${lon}`)
-    expect(vueListe.textContent).toBe(wording.LISTE)
-    const vuePlan = within(itemsDeNavigation[1]).getByRole('link', { name: wording.AFFICHEZ_RESULTATS_EN_PLAN })
+    expect(vueListe).toHaveAttribute('title', wording.AFFICHEZ_RESULTATS_EN_LISTE)
+    const vuePlan = within(itemsDeNavigation[1]).getByRole('link', { name: wording.PLAN })
     expect(vuePlan).toHaveAttribute('href', `${paths.RESULTATS_PLAN}?moteur-total=${moteurTotal}&lat=${lat}&lon=${lon}`)
-    expect(vuePlan.textContent).toBe(wording.PLAN)
+    expect(vuePlan).toHaveAttribute('title', wording.AFFICHEZ_RESULTATS_EN_PLAN)
 
-    const modifierAccessibilite = screen.getByRole('link', { name: wording.MODIFIER_VOTRE_BESOIN_D_ACCESSIBILITE })
+    const modifierAccessibilite = screen.getByRole('link', { name: wording.BESOINS_D_ACCESSIBILITE + '1' })
     expect(modifierAccessibilite).toHaveAttribute('href', `${paths.RECHERCHER_PAR_HANDICAP}?moteur-total=${moteurTotal}&lat=${lat}&lon=${lon}`)
-    expect(modifierAccessibilite.textContent).toBe(wording.BESOINS_D_ACCESSIBILITE + '1')
+    expect(modifierAccessibilite).toHaveAttribute('title', wording.MODIFIER_VOTRE_BESOIN_D_ACCESSIBILITE)
   })
 
   it('affiche une phrase du nombre de lieu trouvé', () => {
@@ -139,13 +139,13 @@ describe('page des résultats de recherche affichés sur une carte', () => {
       textMatch(`${wording.EMAIL_DROIT_PLURIEL_ZERO_RESULTAT}${wording.TELEPHONE_DROIT_PLURIEL_ZERO_RESULTAT}`), { selector: 'address' }
     )
 
-    const eMail = within(coordonneesDroitPluriel).getByRole('link', { name: wording.ENVOYER_UN_EMAIL_A + wording.EMAIL_DROIT_PLURIEL_ZERO_RESULTAT })
+    const eMail = within(coordonneesDroitPluriel).getByRole('link', { name: wording.EMAIL_DROIT_PLURIEL_ZERO_RESULTAT })
     expect(eMail).toHaveAttribute('href', 'mailto:' + wording.EMAIL_DROIT_PLURIEL_ZERO_RESULTAT)
-    expect(eMail.textContent).toBe(wording.EMAIL_DROIT_PLURIEL_ZERO_RESULTAT)
+    expect(eMail).toHaveAttribute('title', wording.ENVOYER_UN_EMAIL_A + wording.EMAIL_DROIT_PLURIEL_ZERO_RESULTAT)
 
-    const telephone = within(coordonneesDroitPluriel).getByRole('link', { name: wording.APPELER_LE_NUMERO(wording.PERMANENCE_JURIDIQUE, wording.TELEPHONE_DROIT_PLURIEL_ZERO_RESULTAT) })
+    const telephone = within(coordonneesDroitPluriel).getByRole('link', { name: wording.TELEPHONE_DROIT_PLURIEL_ZERO_RESULTAT })
     expect(telephone).toHaveAttribute('href', 'tel:' + wording.TELEPHONE_DROIT_PLURIEL_ZERO_RESULTAT.replaceAll(' ', ''))
-    expect(telephone.textContent).toBe(wording.TELEPHONE_DROIT_PLURIEL_ZERO_RESULTAT)
+    expect(telephone).toHaveAttribute('title', wording.APPELER_LE_NUMERO(wording.PERMANENCE_JURIDIQUE, wording.TELEPHONE_DROIT_PLURIEL_ZERO_RESULTAT))
 
     const contacterCDAD = screen.getByText(wording.CONTACTER_CDAD, { selector: 'p' })
     expect(contacterCDAD).toBeVisible()
@@ -240,11 +240,11 @@ describe('page des résultats de recherche affichés sur une carte', () => {
     const champsCarteLieuA = [
       screen.getByText(lieuA.nom),
       screen.getByText(textMatch(lieuA.adresse + lieuA.codePostal + ' ' + lieuA.ville)),
-      screen.getByRole('link', { name: wording.APPELER_LE_NUMERO(lieuA.nom, lieuA.telephone) }),
+      screen.getByRole('link', { name: lieuA.telephone }),
       screen.getByText(textMatch(`${lieuA.distance} km`), { selector: 'p' }),
       screen.getByText('km', { selector: 'abbr' }),
-      screen.getByRole('link', { name: wording.LANCER_L_ITINERAIRE_SUR_GOOGLE_MAPS(lieuA.nom) + wording.NOUVELLE_FENETRE }),
-      screen.getByRole('link', { name: wording.PLUS_D_INFORMATIONS_SUR(lieuA.nom) }),
+      screen.getByRole('link', { name: wording.LANCER_L_ITINERAIRE }),
+      screen.getByRole('link', { name: wording.PLUS_D_INFORMATIONS }),
       screen.getByTitle(wording.TITLE_HANDICAP_MOTEUR_TOTAL),
       screen.getByTitle(wording.TITLE_HANDICAP_MOTEUR_AVEC_ASSISTANCE),
       screen.getByTitle(wording.TITLE_HANDICAP_VISUEL),
@@ -255,12 +255,12 @@ describe('page des résultats de recherche affichés sur une carte', () => {
     champsCarteLieuA.forEach((champ) => expect(champ).toBeVisible())
 
     expect(champsCarteLieuA[2]).toHaveAttribute('href', 'tel:' + lieuA.telephone.replaceAll(' ', ''))
-    expect(champsCarteLieuA[2].textContent).toBe(lieuA.telephone)
+    expect(champsCarteLieuA[2]).toHaveAttribute('title', wording.APPELER_LE_NUMERO(lieuA.nom, lieuA.telephone))
     expect(champsCarteLieuA[4]).toHaveAttribute('title', wording.KILOMETRES)
     expect(champsCarteLieuA[6]).toHaveAttribute('href', `${paths.LIEU}/1?lat=${lat}&lon=${lon}`)
-    expect(champsCarteLieuA[6].textContent).toBe(wording.PLUS_D_INFORMATIONS)
+    expect(champsCarteLieuA[6]).toHaveAttribute('title', wording.PLUS_D_INFORMATIONS_SUR(lieuA.nom))
     expect(champsCarteLieuA[5]).toHaveAttribute('href', 'https://www.google.com/maps/dir/?api=1&origin=48.844928%2C2.31016&destination=12%2Brue%2Bdu%2BLieu%2B1000%2BBourg%2BEn%2BBresse')
-    expect(champsCarteLieuA[5].textContent).toBe(wording.LANCER_L_ITINERAIRE)
+    expect(champsCarteLieuA[5]).toHaveAttribute('title', wording.LANCER_L_ITINERAIRE_SUR_GOOGLE_MAPS(lieuA.nom) + wording.NOUVELLE_FENETRE)
   })
 
   it('affiche le lien pour donner son avis quand il y a des résultats', () => {
@@ -277,9 +277,9 @@ describe('page des résultats de recherche affichés sur une carte', () => {
     )
 
     // THEN
-    const links = screen.getByRole('link', { name: wording.DONNEZ_NOUS_VOTRE_AVIS + wording.NOUVELLE_FENETRE })
-    expect(links).toHaveAttribute('href', 'https://docs.google.com/forms/d/1sA-EWWn5LNXc2G3WWDIEcFhl5RBZYsMMbGWN2FHnndE/viewform')
-    expect(links.textContent).toBe(wording.VOTRE_AVIS)
+    const link = screen.getByRole('link', { name: wording.VOTRE_AVIS })
+    expect(link).toHaveAttribute('href', 'https://docs.google.com/forms/d/1sA-EWWn5LNXc2G3WWDIEcFhl5RBZYsMMbGWN2FHnndE/viewform')
+    expect(link).toHaveAttribute('title', wording.DONNEZ_NOUS_VOTRE_AVIS + wording.NOUVELLE_FENETRE)
   })
 
   it('n’affiche le lien pour donner son avis quand il n’y a pas de résultat', () => {
@@ -293,8 +293,8 @@ describe('page des résultats de recherche affichés sur une carte', () => {
     )
 
     // THEN
-    const links = screen.queryByRole('link', { name: wording.DONNEZ_NOUS_VOTRE_AVIS + wording.NOUVELLE_FENETRE })
-    expect(links).not.toBeInTheDocument()
+    const link = screen.queryByRole('link', { name: wording.DONNEZ_NOUS_VOTRE_AVIS + wording.NOUVELLE_FENETRE })
+    expect(link).not.toBeInTheDocument()
   })
 
   it('envoie le type d’affichage des résultats, le nombre de résultats et les critères d’accessibilité sélectionnés à Google Analytics', () => {

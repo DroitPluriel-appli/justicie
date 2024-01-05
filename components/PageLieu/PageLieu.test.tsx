@@ -37,9 +37,9 @@ describe('page d’un lieu', () => {
     expect(kilometre).toHaveAttribute('title', wording.KILOMETRES)
     const adresse = screen.getByText(textMatch(lieu.adresse + lieu.codePostal + ' ' + lieu.ville), { selector: 'p' })
     expect(adresse).toBeVisible()
-    const itineraire = screen.getByRole('link', { name: `${wording.LANCER_L_ITINERAIRE_SUR_GOOGLE_MAPS(lieu.nom)}${wording.NOUVELLE_FENETRE}` })
+    const itineraire = screen.getByRole('link', { name: wording.LANCER_L_ITINERAIRE })
     expect(itineraire).toHaveAttribute('href', 'https://www.google.com/maps/dir/?api=1&origin=48.844928%2C2.31016&destination=34%2Bcours%2Bde%2BVerdun%2B1000%2BBourg%2BEn%2BBresse')
-    expect(itineraire.textContent).toBe(wording.LANCER_L_ITINERAIRE)
+    expect(itineraire).toHaveAttribute('title', `${wording.LANCER_L_ITINERAIRE_SUR_GOOGLE_MAPS(lieu.nom)}${wording.NOUVELLE_FENETRE}`)
   })
 
   it('affiche son accessibilité', () => {
@@ -131,17 +131,17 @@ describe('page d’un lieu', () => {
     // THEN
     const titre = screen.getByRole('heading', { level: 2, name: wording.CONTACT_ET_SITE_INTERNET })
     expect(titre).toBeVisible()
-    const eMail = screen.getByRole('link', { name: wording.ENVOYER_UN_EMAIL_A + lieu.eMail })
+    const eMail = screen.getByRole('link', { name: lieu.eMail })
     expect(eMail).toHaveAttribute('href', `mailto:${lieu.eMail}`)
-    expect(eMail.textContent).toBe(lieu.eMail)
-    const telephone = screen.getByRole('link', { name: wording.APPELER_LE_NUMERO(lieu.nom, lieu.telephone) })
+    expect(eMail).toHaveAttribute('title', wording.ENVOYER_UN_EMAIL_A + lieu.eMail)
+    const telephone = screen.getByRole('link', { name: lieu.telephone })
     expect(telephone).toHaveAttribute('href', `tel:${lieu.telephone.replaceAll(' ', '')}`)
-    expect(telephone.textContent).toBe(lieu.telephone)
-    const siteInternet = screen.getByRole('link', { name: wording.CONSULTER_LE_SITE_INTERNET + wording.NOUVELLE_FENETRE })
+    expect(telephone).toHaveAttribute('title', wording.APPELER_LE_NUMERO(lieu.nom, lieu.telephone))
+    const siteInternet = screen.getByRole('link', { name: wording.CONSULTER_LE_SITE_INTERNET })
     expect(siteInternet).toHaveAttribute('href', lieu.siteInternet)
     expect(siteInternet).toHaveAttribute('target', '_blank')
     expect(siteInternet).toHaveAttribute('rel', 'external noopener noreferrer')
-    expect(siteInternet.textContent).toBe(wording.CONSULTER_LE_SITE_INTERNET)
+    expect(siteInternet).toHaveAttribute('title', wording.CONSULTER_LE_SITE_INTERNET + wording.NOUVELLE_FENETRE)
   })
 
   it('indique à l’utilisateur quand il n’y a pas d’e-mail', () => {
@@ -188,8 +188,8 @@ describe('page d’un lieu', () => {
     renderFakeComponent(<PageLieu lieu={lieu} />)
 
     // THEN
-    const links = screen.getByRole('link', { name: wording.DONNEZ_NOUS_VOTRE_AVIS + wording.NOUVELLE_FENETRE })
+    const links = screen.getByRole('link', { name: wording.VOTRE_AVIS })
     expect(links).toHaveAttribute('href', 'https://docs.google.com/forms/d/1sA-EWWn5LNXc2G3WWDIEcFhl5RBZYsMMbGWN2FHnndE/viewform')
-    expect(links.textContent).toBe(wording.VOTRE_AVIS)
+    expect(links).toHaveAttribute('title', wording.DONNEZ_NOUS_VOTRE_AVIS + wording.NOUVELLE_FENETRE)
   })
 })
