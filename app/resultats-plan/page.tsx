@@ -8,7 +8,7 @@ import { Lieu } from '../../backend/entities/Lieu'
 import PageResultatsPlan from '../../components/PageResultats/PageResultatsPlan'
 import { criteres } from '../../configuration/criteres'
 import { frontDependencies } from '../../configuration/frontDependencies'
-import { WordingFr } from '../../configuration/wording/WordingFr'
+import { WordingFr } from '../../configuration/WordingFr'
 
 export const metadata: Metadata = {
   title: frontDependencies.wording.TITLE_PAGE_RESULTATS_PAR_PLAN,

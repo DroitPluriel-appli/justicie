@@ -3,8 +3,7 @@ import { ReadonlyURLSearchParams, usePathname, useRouter, useSearchParams } from
 
 import { CritereFront, criteres } from './criteres'
 import { Paths } from './Paths'
-import { Wording } from './wording/Wording'
-import { WordingFr } from './wording/WordingFr'
+import { WordingFr } from './WordingFr'
 
 export type FrontDependencies = Readonly<{
   criteres: CritereFront[]
@@ -15,7 +14,7 @@ export type FrontDependencies = Readonly<{
   usePathname: () => string
   useRouter: () => AppRouterInstance
   useSearchParams: () => ReadonlyURLSearchParams
-  wording: Wording
+  wording: WordingFr
 }>
 
 export const frontDependencies: FrontDependencies = {

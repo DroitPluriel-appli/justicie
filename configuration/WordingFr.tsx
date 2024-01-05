@@ -1,6 +1,4 @@
-import { Wording } from './Wording'
-
-export class WordingFr implements Wording {
+export class WordingFr {
   readonly JUSTICIE: string = 'Justicie'
   readonly SUFFIXE_TITLE: string = ' - ' + this.JUSTICIE
 
