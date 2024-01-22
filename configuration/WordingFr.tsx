@@ -121,6 +121,7 @@ export class WordingFr {
   readonly PAS_D_INFORMATIONS_SUPPLEMENTAIRES: string = 'Pas d’informations supplémentaires.'
   readonly PAS_D_E_MAIL: string = 'Pas d’e-mail.'
   readonly PAS_DE_SITE_INTERNET: string = 'Pas de site internet.'
+  readonly PAS_DE_TELEPHONE: string = 'Pas de numéro de téléphone.'
 
   // Nos critères d’accessibilité
   readonly TITLE_PAGE_NOS_CRITERES_D_ACCESSIBILITE: string = 'Nos critères d’accessibilité' + this.SUFFIXE_TITLE

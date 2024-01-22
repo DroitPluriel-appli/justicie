@@ -97,13 +97,19 @@ export default function PageLieu({ lieu }: { readonly lieu: Lieu }): ReactElemen
             </span>
           )}
           <br />
-          <Telephone
-            hasPicto
-            nomDuLieu={lieu.nom}
-            url={lieu.telephone}
-          >
-            {lieu.telephone}
-          </Telephone>
+          {lieu.telephone !== '' ? (
+            <Telephone
+              hasPicto
+              nomDuLieu={lieu.nom}
+              url={lieu.telephone}
+            >
+              {lieu.telephone}
+            </Telephone>
+          ) : (
+            <span>
+              {wording.PAS_DE_TELEPHONE}
+            </span>
+          )}
           <br />
           {lieu.siteInternet !== '' ? (
             <SiteInternet url={lieu.siteInternet}>
