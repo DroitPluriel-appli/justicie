@@ -50,7 +50,7 @@ export class Lieu {
       champsSurcharges?.priseDeRendezVous || 'OUI\nmais pas le dimanche',
       champsSurcharges?.region || 'Auvergne-Rhône-Alpes',
       champsSurcharges?.siteInternet !== undefined ? champsSurcharges.siteInternet : 'https://www.ain.gouv.fr/',
-      champsSurcharges?.telephone || '04 74 14 01 40',
+      champsSurcharges?.telephone !== undefined ? champsSurcharges.telephone : '04 74 14 01 40',
       champsSurcharges?.ville || 'Bourg En Bresse'
     )
   }

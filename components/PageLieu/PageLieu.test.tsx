@@ -168,6 +168,18 @@ describe('page d’un lieu', () => {
     expect(siteInternet).toBeVisible()
   })
 
+  it('indique à l’utilisateur quand il n’y a pas de numéro de téléphone', () => {
+    // GIVEN
+    const lieu = Lieu.cree({ telephone: '' })
+
+    // WHEN
+    renderFakeComponent(<PageLieu lieu={lieu} />)
+
+    // THEN
+    const siteInternet = screen.getByText(wording.PAS_DE_TELEPHONE)
+    expect(siteInternet).toBeVisible()
+  })
+
   it('affiche l’ancre pour revenir en haut de page', () => {
     // GIVEN
     const lieu = Lieu.cree()
