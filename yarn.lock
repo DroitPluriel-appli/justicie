@@ -3438,7 +3438,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"acorn-jsx@npm:^5.3.2":
+"acorn-jsx@npm:^5.2.0, acorn-jsx@npm:^5.3.2":
   version: 5.3.2
   resolution: "acorn-jsx@npm:5.3.2"
   peerDependencies:
@@ -3451,6 +3451,15 @@ __metadata:
   version: 8.3.1
   resolution: "acorn-walk@npm:8.3.1"
   checksum: 64187f1377afcba01ec6a57950e3f6a31fff50e429cdb9c9ab2c24343375e711f0d552e5fce5b6ecf21f754566e7526b6d79e4da80bd83c7ad15644d285b2ad5
+  languageName: node
+  linkType: hard
+
+"acorn@npm:^7.1.1":
+  version: 7.4.1
+  resolution: "acorn@npm:7.4.1"
+  bin:
+    acorn: bin/acorn
+  checksum: 8be2a40714756d713dfb62544128adce3b7102c6eb94bc312af196c2cc4af76e5b93079bd66b05e9ca31b35a9b0ce12171d16bc55f366cafdb794fdab9d753ec
   languageName: node
   linkType: hard
 
@@ -5792,6 +5801,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-plugin-sort-keys-fix@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "eslint-plugin-sort-keys-fix@npm:1.1.2"
+  dependencies:
+    espree: "npm:^6.1.2"
+    esutils: "npm:^2.0.2"
+    natural-compare: "npm:^1.4.0"
+    requireindex: "npm:~1.2.0"
+  checksum: fc250fd3e8b0a3bd2ef3e0717cc92b10e24a6c342af0f7f0780275af11e1e289d8c165d2252bb77fc6452b252477f7e9661b7fc286451e2d480e2ebbbda2eb3a
+  languageName: node
+  linkType: hard
+
 "eslint-plugin-testing-library@npm:^6.1.0":
   version: 6.2.0
   resolution: "eslint-plugin-testing-library@npm:6.2.0"
@@ -5862,6 +5883,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-visitor-keys@npm:^1.1.0":
+  version: 1.3.0
+  resolution: "eslint-visitor-keys@npm:1.3.0"
+  checksum: 595ab230e0fcb52f86ba0986a9a473b9fcae120f3729b43f1157f88f27f8addb1e545c4e3d444185f2980e281ca15be5ada6f65b4599eec227cf30e41233b762
+  languageName: node
+  linkType: hard
+
 "eslint-visitor-keys@npm:^3.3.0, eslint-visitor-keys@npm:^3.4.1, eslint-visitor-keys@npm:^3.4.3":
   version: 3.4.3
   resolution: "eslint-visitor-keys@npm:3.4.3"
@@ -5914,6 +5942,17 @@ __metadata:
   bin:
     eslint: bin/eslint.js
   checksum: ef6193c6e4cef20774b985a5cc2fd4bf6d3c4decd423117cbc4a0196617861745db291217ad3c537bc3a160650cca965bc818f55e1f3e446af1fcb293f9940a5
+  languageName: node
+  linkType: hard
+
+"espree@npm:^6.1.2":
+  version: 6.2.1
+  resolution: "espree@npm:6.2.1"
+  dependencies:
+    acorn: "npm:^7.1.1"
+    acorn-jsx: "npm:^5.2.0"
+    eslint-visitor-keys: "npm:^1.1.0"
+  checksum: e8b1edc0f8c6cdb1ef7c40e633ff1f1ea1585c46aa75c16f5525a3ca7f1a518197ad5fd40cedee31936ff4e1b5a396d585e6742e1f8a4c7dc2a17b3ed1d64c88
   languageName: node
   linkType: hard
 
@@ -8033,6 +8072,7 @@ __metadata:
     eslint: "npm:^8.55.0"
     eslint-config-next: "npm:^14.0.4"
     eslint-plugin-deprecation: "npm:^2.0.0"
+    eslint-plugin-sort-keys-fix: "npm:^1.1.2"
     eslint-plugin-testing-library: "npm:^6.1.0"
     eslint-plugin-unused-imports: "npm:^3.0.0"
     eslint-plugin-vitest: "npm:^0.3.20"
@@ -10399,6 +10439,13 @@ __metadata:
   version: 2.0.1
   resolution: "require-package-name@npm:2.0.1"
   checksum: 3332d4eec10a730627ca20f37a8a7d57badd9e8953f238472aa457b0084907f86ca5b2af94694a0c8bb2e1101bdb3ed6ddc964d2044b040fe076a9bf5b19755f
+  languageName: node
+  linkType: hard
+
+"requireindex@npm:~1.2.0":
+  version: 1.2.0
+  resolution: "requireindex@npm:1.2.0"
+  checksum: 266d1cb31f6cbc4b6cf2e898f5bbc45581f7919bcf61bba5c45d0adb69b722b9ff5a13727be3350cde4520d7cd37f39df45d58a29854baaa4552cd6b05ae4a1a
   languageName: node
   linkType: hard
 

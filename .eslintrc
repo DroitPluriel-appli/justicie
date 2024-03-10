@@ -28,7 +28,7 @@
     "next.config.js"
   ],
   "parser": "@typescript-eslint/parser",
-  "plugins": ["unused-imports"],
+  "plugins": ["sort-keys-fix", "unused-imports"],
   "rules": {
     "array-bracket-newline": "error",
     "array-bracket-spacing": "error",
@@ -77,7 +77,6 @@
     "quote-props": ["error", "as-needed"],
     "quotes": ["error", "single", { "avoidEscape": true }],
     "semi": ["error", "never"],
-    "sort-keys": "error",
     "space-before-blocks": "error",
     "space-infix-ops": "error",
     "yoda": "error",
@@ -101,6 +100,7 @@
     "react/jsx-max-depth": "off",
     "react/jsx-newline": "off",
     "react/react-in-jsx-scope": "off",
+    "sort-keys-fix/sort-keys-fix": "error",
     "@typescript-eslint/ban-ts-comment": "off",
     "unused-imports/no-unused-imports": "error"
   },
