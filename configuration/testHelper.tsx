@@ -31,7 +31,7 @@ export const fakeFrontDependencies: FrontDependencies = {
   ...frontDependencies,
 }
 
-export const fakeHookDependencies: HookDependencies = {
+const fakeHookDependencies: HookDependencies = {
   ...hookDependencies,
   ...fakeNavigation(),
 }
