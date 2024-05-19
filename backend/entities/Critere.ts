@@ -1,1 +1,1 @@
-export type Critere = 'bim' | 'calme' | 'forme' | 'lsf' | 'pmr' | 'pmr_assiste' | 'visuel'
+export type Critere = 'bim' | 'calme' | 'forme' | 'lsf' | 'pmr_assiste' | 'pmr' | 'visuel'

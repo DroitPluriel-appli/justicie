@@ -4,7 +4,7 @@ import { PropsWithChildren, ReactElement } from 'react'
 import styles from './BackLink.module.css'
 
 type BackLinkProps = PropsWithChildren<Readonly<{
-  className: 'white' | 'blue'
+  className: 'blue' | 'white'
   url: string
 }>>
 

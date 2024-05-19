@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 }
 
 type PageProps = Readonly<{
-  searchParams: Readonly<{ [key: string]: string | string[] | undefined }>
+  searchParams: Readonly<Record<string, ReadonlyArray<string> | string | undefined>>
 }>
 
 export default async function Page({ searchParams }: PageProps): Promise<ReactElement> {
@@ -45,7 +45,7 @@ export default async function Page({ searchParams }: PageProps): Promise<ReactEl
   return (
     <PageResultatsPlan
       criteresDAccessibiliteSelectionnes={criteresDAccessibiliteSelectionnes}
-      lieux={JSON.parse(JSON.stringify(lieux)) as Lieu[]}
+      lieux={JSON.parse(JSON.stringify(lieux)) as ReadonlyArray<Lieu>}
       nombreDeResultat={nombreDeResultat}
     />
   )

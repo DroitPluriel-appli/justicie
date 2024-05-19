@@ -1,6 +1,6 @@
 'use client'
 
-import { ReactElement, useCallback } from 'react'
+import { ReactElement } from 'react'
 
 export default function Page(): ReactElement {
   const genererUneErreur = () => {
@@ -9,7 +9,7 @@ export default function Page(): ReactElement {
 
   return (
     <button
-      onClick={useCallback(genererUneErreur, [])}
+      onClick={genererUneErreur}
       type="button"
     >
       {'Lancer l’erreur'}

@@ -160,8 +160,8 @@ describe('page pour renseigner une adresse', () => {
   // })
 })
 
-function mockedFetch(adresses: AdresseJson[]) {
-  vi.stubGlobal('fetch', vi.fn(() => ({ json: () => Promise.resolve({ features: adresses }) })))
+function mockedFetch(adresses: ReadonlyArray<AdresseJson>) {
+  vi.stubGlobal('fetch', vi.fn(() => ({ json: async () => Promise.resolve({ features: adresses }) })))
 }
 
 function formulaire() {

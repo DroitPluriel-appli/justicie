@@ -14,11 +14,10 @@ export default function MenuBurger({ classMenu, isMenuClose, touch }: MenuBurger
   const { paths, wording } = frontDependencies
 
   return (
-    <div
+    <dialog
       aria-labelledby="menu-title"
-      aria-modal={!isMenuClose}
       id="menu-mobile-container"
-      role="dialog"
+      open={!isMenuClose}
     >
       <nav
         aria-hidden={isMenuClose}
@@ -121,6 +120,6 @@ export default function MenuBurger({ classMenu, isMenuClose, touch }: MenuBurger
           </li>
         </ul>
       </nav>
-    </div>
+    </dialog>
   )
 }

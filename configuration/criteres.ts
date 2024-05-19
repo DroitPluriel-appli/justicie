@@ -8,7 +8,7 @@ export type CritereFront = Readonly<{
   title: string
 }>
 
-export const criteres = (wording: WordingFr): CritereFront[] => [
+export const criteres = (wording: WordingFr): ReadonlyArray<CritereFront> => [
   {
     description: wording.DESCRIPTION_HANDICAP_MOTEUR_TOTAL,
     imgSrc: '/pictos_criteres_accessibilite/handicap_moteur_total.png',

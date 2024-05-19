@@ -21,7 +21,7 @@ export default function CritereDAccessibilite({ description, id, imgSrc, name, t
       <div>
         <input
           className={styles.checkbox}
-          defaultChecked={searchParams.get(name) !== null ? true : false}
+          defaultChecked={searchParams.get(name) !== null}
           id={id}
           name={name}
           type="checkbox"

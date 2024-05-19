@@ -44,7 +44,7 @@ export default function PageLieu({ lieu }: { readonly lieu: Lieu }): ReactElemen
           <Itineraire
             adresse={lieu.adresse}
             codePostal={lieu.codePostal}
-            hasPicto
+            hasPicto={true}
             latitude={Number(searchParams.get('lat'))}
             longitude={Number(searchParams.get('lon'))}
             nom={lieu.nom}
@@ -86,7 +86,7 @@ export default function PageLieu({ lieu }: { readonly lieu: Lieu }): ReactElemen
         <address className={styles.contact}>
           {lieu.eMail !== '' ? (
             <Email
-              hasPicto
+              hasPicto={true}
               url={lieu.eMail}
             >
               {lieu.eMail}
@@ -99,7 +99,7 @@ export default function PageLieu({ lieu }: { readonly lieu: Lieu }): ReactElemen
           <br />
           {lieu.telephone !== '' ? (
             <Telephone
-              hasPicto
+              hasPicto={true}
               nomDuLieu={lieu.nom}
               url={lieu.telephone}
             >

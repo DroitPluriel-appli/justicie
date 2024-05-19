@@ -23,7 +23,7 @@ export default function CarteLieu({ latitude, lieu, longitude }: CarteLieuProps)
       </div>
       <address className={styles.adresse}>
         <Telephone
-          hasPicto
+          hasPicto={true}
           nomDuLieu={lieu.nom}
           url={lieu.telephone}
         >

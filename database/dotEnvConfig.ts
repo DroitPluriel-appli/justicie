@@ -1,6 +1,6 @@
 import dotenv from 'dotenv-defaults'
 
-export const dotEnvConfig = () => {
+export const dotEnvConfig = (): void => {
   if (process.env.NODE_ENV === 'test') {
     dotenv.config({
       defaults: './.env',

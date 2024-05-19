@@ -1,3 +1,3 @@
-export const ouvrirGestionDesCookies = () => {
+export const ouvrirGestionDesCookies = (): void => {
   window.tarteaucitron.userInterface.openPanel()
 }

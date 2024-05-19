@@ -14,8 +14,8 @@ import Pagination from '../common/Pagination/Pagination'
 import VotreAvis from '../common/VotreAvis/VotreAvis'
 
 type ResultatsListeProps = Readonly<{
-  criteresDAccessibiliteSelectionnes: Critere[]
-  lieux: Lieu[]
+  criteresDAccessibiliteSelectionnes: ReadonlyArray<Critere>
+  lieux: ReadonlyArray<Lieu>
   nombreDeResultat: number
 }>
 

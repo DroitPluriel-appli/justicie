@@ -51,7 +51,7 @@ describe('importer des lieux', () => {
       const sheets = vi.fn(() => ({ spreadsheets }))
 
       // WHEN
-      // @ts-ignore
+      // @ts-expect-error
       await importeDesLieux(orm, sheets)
 
       // THEN
@@ -69,7 +69,7 @@ describe('importer des lieux', () => {
       const sheets = () => ({ spreadsheets })
 
       // WHEN
-      // @ts-ignore
+      // @ts-expect-error
       await importeDesLieux(orm, sheets)
 
       // THEN
@@ -84,7 +84,7 @@ describe('importer des lieux', () => {
       const sheets = () => ({ spreadsheets })
 
       // WHEN
-      // @ts-ignore
+      // @ts-expect-error
       await importeDesLieux(orm, sheets)
 
       // THEN
@@ -102,7 +102,7 @@ describe('importer des lieux', () => {
       const sheets = () => ({ spreadsheets })
 
       // WHEN
-      // @ts-ignore
+      // @ts-expect-error
       await importeDesLieux(orm, sheets)
 
       // THEN

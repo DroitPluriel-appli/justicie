@@ -8,7 +8,7 @@ import { frontDependencies } from '../../../configuration/frontDependencies'
 import { useDependencies } from '../../../configuration/useDependencies'
 
 type PlanProps = Readonly<{
-  lieux: Lieu[]
+  lieux: ReadonlyArray<Lieu>
 }>
 
 export default function Plan({ lieux }: PlanProps): ReactElement {

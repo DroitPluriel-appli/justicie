@@ -8,8 +8,8 @@ import PageLieu from '../../../components/PageLieu/PageLieu'
 import { frontDependencies } from '../../../configuration/frontDependencies'
 
 type PageProps = Readonly<{
-  params: Readonly<{ id: string[] }>
-  searchParams: Readonly<{ [key: string]: string | string[] | undefined }>
+  params: Readonly<{ id: ReadonlyArray<string> }>
+  searchParams: Readonly<Record<string, ReadonlyArray<string> | string | undefined>>
 }>
 
 export async function generateMetadata({ params, searchParams }: PageProps): Promise<Metadata> {

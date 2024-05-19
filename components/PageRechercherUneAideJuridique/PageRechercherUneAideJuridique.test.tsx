@@ -80,7 +80,7 @@ describe('page pour rechercher une aide juridique par géolocalisation ou par ad
 
   it('ne va pas à l’étape 2 quand c’est un vieu navigateur qui ne connait pas l’API navigator.permissions', () => {
     // GIVEN
-    // @ts-ignore
+    // @ts-expect-error
     navigator.permissions = undefined
     mockedErrorGeolocation()
     renderFakeComponent(<PageRechercherUneAideJuridique />)
@@ -96,17 +96,17 @@ describe('page pour rechercher une aide juridique par géolocalisation ou par ad
 })
 
 function mockedGrantedPermissions() {
-  // @ts-ignore
+  // @ts-expect-error
   navigator.permissions = { query: () => ({ state: 'granted' }) }
 }
 
 function mockedDeniedPermissions() {
-  // @ts-ignore
+  // @ts-expect-error
   navigator.permissions = { query: () => ({ state: 'denied' }) }
 }
 
 // function mockedSuccessedGeolocation(latitude: number, longitude: number) {
-//   // @ts-ignore
+//   // @ts-expect-error
 //   navigator.geolocation = {
 //     getCurrentPosition: (success: PositionCallback) => success({
 //       coords: {
@@ -124,15 +124,17 @@ function mockedDeniedPermissions() {
 // }
 
 function mockedErrorGeolocation() {
-  // @ts-ignore
+  // @ts-expect-error
   navigator.geolocation = {
-    getCurrentPosition: (_: PositionCallback, error: PositionErrorCallback) => error({
-      PERMISSION_DENIED: 1,
-      POSITION_UNAVAILABLE: 2,
-      TIMEOUT: 3,
-      code: 1,
-      message: 'string',
-    }),
+    getCurrentPosition: (_: PositionCallback, error: PositionErrorCallback) => {
+      error({
+        PERMISSION_DENIED: 1,
+        POSITION_UNAVAILABLE: 2,
+        TIMEOUT: 3,
+        code: 1,
+        message: 'string',
+      })
+    },
   }
 }
 

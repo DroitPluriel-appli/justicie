@@ -15,7 +15,7 @@ const setMarkerPosition = (viewCenter: L.LatLngExpression, title: string): L.Mar
   return L.marker(viewCenter, { icon: iconMarkerPosition, title })
 }
 
-const setMarkersLieux = (lieux: Lieu[], latitude: number, longitude: number): L.Marker[] => {
+const setMarkersLieux = (lieux: ReadonlyArray<Lieu>, latitude: number, longitude: number): Array<L.Marker> => {
   const markerLieuSizeDefault = 24
   const iconMarkerLieuDefault = L.icon({
     iconAnchor: [markerLieuSizeDefault / 2, markerLieuSizeDefault],
@@ -76,7 +76,7 @@ const setCircleRayonDeRecherche = (rayonDeRecherche: number, viewCenter: L.LatLn
   )
 }
 
-export const initPlan = (lieux: Lieu[], latitude: number, longitude: number, rayonDeRecherche: number, titreMarkerPosition: string): L.Map => {
+export const initPlan = (lieux: ReadonlyArray<Lieu>, latitude: number, longitude: number, rayonDeRecherche: number, titreMarkerPosition: string): L.Map => {
   const attribution = '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
   const defaultZoom = 15
   const maxZoom = 19

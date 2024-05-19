@@ -2,7 +2,7 @@ export { }
 
 declare global {
   interface Window {
-    dataLayer: Record<string, string | Critere[] | number>[];
+    dataLayer: Array<Record<string, ReadonlyArray<Critere> | number | string>>;
     tarteaucitron: {
       userInterface: {
         openPanel: () => void

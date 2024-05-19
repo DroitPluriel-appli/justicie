@@ -1,4 +1,4 @@
-import { PropsWithChildren, ReactElement, useCallback } from 'react'
+import { PropsWithChildren, ReactElement } from 'react'
 
 import styles from './BackButton.module.css'
 import { useDependencies } from '../../../configuration/useDependencies'
@@ -7,9 +7,9 @@ export default function BackButton({ children }: PropsWithChildren): ReactElemen
   const { useRouter } = useDependencies()
   const router = useRouter()
 
-  const retourEnArriere = useCallback(() => {
+  const retourEnArriere = () => {
     router.back()
-  }, [router])
+  }
 
   return (
     <button

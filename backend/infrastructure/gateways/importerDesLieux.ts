@@ -11,7 +11,7 @@ export async function importeDesLieux(orm: Promise<DataSource>, sheets: (options
   await sauvegardeLesLieux(orm, lieuxModel)
 }
 
-async function recupereLesLieuxDeSpreadsheet(sheets: (options: sheets_v4.Options) => sheets_v4.Sheets): Promise<string[][]> {
+async function recupereLesLieuxDeSpreadsheet(sheets: (options: sheets_v4.Options) => sheets_v4.Sheets): Promise<ReadonlyArray<ReadonlyArray<string>>> {
   const options: sheets_v4.Options = { auth: process.env.SPREADSHEET_AUTH, version: 'v4' }
 
   const request: sheets_v4.Params$Resource$Spreadsheets$Values$Get = {
@@ -21,13 +21,13 @@ async function recupereLesLieuxDeSpreadsheet(sheets: (options: sheets_v4.Options
   }
   const response = await sheets(options).spreadsheets.values.get(request)
 
-  return response.data.values as string[][]
+  return response.data.values as ReadonlyArray<ReadonlyArray<string>>
 }
 
-function transformeEnLieuxModel(lieuxBruts: string[][]): LieuModel[] {
-  const stringToBoolean = (str: string): boolean => str === 'oui' ? true : false
+function transformeEnLieuxModel(lieuxBruts: ReadonlyArray<ReadonlyArray<string>>): ReadonlyArray<LieuModel> {
+  const stringToBoolean = (str: string): boolean => str === 'oui'
 
-  return lieuxBruts.map((lieu: string[]): LieuModel => {
+  return lieuxBruts.map((lieu: ReadonlyArray<string>): LieuModel => {
     const lieuModel = new LieuModel()
     lieuModel.adresse = lieu[1]
     lieuModel.bim = stringToBoolean(lieu[18])
@@ -35,7 +35,7 @@ function transformeEnLieuxModel(lieuxBruts: string[][]): LieuModel[] {
     lieuModel.codePostal = lieu[2]
     // Si la colonne commentaire sur la spreadsheets est vide ET que la colonne d'après aussi
     // alors l'API ne me renvoit pas une chaine vide...
-    lieuModel.commentaire = lieu[22] === undefined ? '' : lieu[22]
+    lieuModel.commentaire = lieu[22] ?? ''
     lieuModel.departement = lieu[13]
     lieuModel.domaineDeDroit = lieu[7]
     lieuModel.eMail = lieu[10]
@@ -57,9 +57,9 @@ function transformeEnLieuxModel(lieuxBruts: string[][]): LieuModel[] {
   })
 }
 
-async function sauvegardeLesLieux(orm: Promise<DataSource>, lieux: LieuModel[]): Promise<void> {
+async function sauvegardeLesLieux(orm: Promise<DataSource>, lieux: ReadonlyArray<LieuModel>): Promise<void> {
   await (await orm).manager.clear(LieuModel)
   await (await orm).manager.query('ALTER SEQUENCE lieu_id_seq RESTART WITH 1')
   // Stryker disable next-line all
-  await (await orm).manager.save(lieux, { transaction: process.env.NODE_ENV === 'test' ? false : true })
+  await (await orm).manager.save(lieux, { transaction: process.env.NODE_ENV !== 'test' })
 }

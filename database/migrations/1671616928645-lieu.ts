@@ -1,7 +1,7 @@
+/* eslint-disable @typescript-eslint/class-methods-use-this */
 import { MigrationInterface, QueryRunner } from 'typeorm'
 
 export class Lieu1671616928645 implements MigrationInterface {
-
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(`
       CREATE TABLE lieu (

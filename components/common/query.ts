@@ -6,8 +6,8 @@ export const besoinsAccessibilite = (query: ParsedUrlQuery): number => Object.en
 
 export const isListe = (pathname: string, paths: Paths): boolean => pathname.includes(paths.RESULTATS_LISTE)
 
-export const transformerIteratorEnObject = (iterator: IterableIterator<[string, string]>) => {
-  const params: { [key: string]: string } = {}
+export const transformerIteratorEnObject = (iterator: IterableIterator<[string, string]>): Record<string, string> => {
+  const params: Record<string, string> = {}
 
   for (const [key, value] of iterator) {
     params[key] = value

@@ -85,14 +85,14 @@ export default function EnTete({ nombreDeResultat, rayonDeRecherche = Infinity }
             </p>
             <address className={styles.adresse}>
               <Email
-                hasPicto
+                hasPicto={true}
                 url={wording.EMAIL_DROIT_PLURIEL_ZERO_RESULTAT}
               >
                 {wording.EMAIL_DROIT_PLURIEL_ZERO_RESULTAT}
               </Email>
               <br />
               <Telephone
-                hasPicto
+                hasPicto={true}
                 nomDuLieu={wording.PERMANENCE_JURIDIQUE}
                 url={wording.TELEPHONE_DROIT_PLURIEL_ZERO_RESULTAT}
               >

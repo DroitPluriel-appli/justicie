@@ -14,14 +14,22 @@ export class PostgreSQLLieuLoader implements LieuLoader {
   // c = longitudePointA, d = longitudePointB
   // les latitudes et longitudes sont en radians, pas en degrés
   // https://forums.futura-sciences.com/mathematiques-superieur/306536-calcul-de-distance-entre-2-points-dont-jai-coordonnees-geographiques-longitude-latitude.html
-  private readonly calculDistanceSQL = '6371 * ACOS(SIN(RADIANS(latitude)) * SIN(RADIANS($1)) + COS(RADIANS(latitude)) * COS(RADIANS($1)) * COS(RADIANS(longitude) - RADIANS($2)))'
+  private readonly calculDistanceSQL: string
+  private readonly orm: Promise<DataSource>
+  private lieuxModel: Array<LieuModel>
 
-  constructor(private readonly orm: Promise<DataSource>) {}
+  constructor(orm: Promise<DataSource>) {
+    this.calculDistanceSQL = '6371 * ACOS(SIN(RADIANS(latitude)) * SIN(RADIANS($1)) + COS(RADIANS(latitude)) * COS(RADIANS($1)) * COS(RADIANS(longitude) - RADIANS($2)))'
+    this.orm = orm
+    this.lieuxModel = []
+  }
 
-  async recupereUnLieu(id: number, latitude: number, longitude: number): Promise<Lieu[]> {
-    const lieuxModel = await (await this.orm).manager.findBy(LieuModel, { id })
+  async recupereUnLieu(id: number, latitude: number, longitude: number): Promise<ReadonlyArray<Lieu>> {
+    this.lieuxModel = await (await this.orm).manager.findBy(LieuModel, { id })
 
-    return this.transformeEnLieu(this.ajouteLaDistance(lieuxModel, latitude, longitude))
+    this.ajouteLaDistance(latitude, longitude)
+
+    return this.transformeEnLieu()
   }
 
   async recupereDesLieux(
@@ -31,11 +39,11 @@ export class PostgreSQLLieuLoader implements LieuLoader {
     page = 0,
     nombreDeLieuxAffichesParPage = 10,
     rayonDeRecherche = Infinity
-  ): Promise<{ lieux: Lieu[], nombreDeResultat: number }> {
-    const lieuxModel = await this.getLieux(latitude, longitude, rayonDeRecherche, page, nombreDeLieuxAffichesParPage, criteres)
+  ): Promise<{ lieux: ReadonlyArray<Lieu>, nombreDeResultat: number }> {
+    this.lieuxModel = await this.getLieux(latitude, longitude, rayonDeRecherche, page, nombreDeLieuxAffichesParPage, criteres)
 
     return {
-      lieux: this.transformeEnLieu(lieuxModel),
+      lieux: this.transformeEnLieu(),
       nombreDeResultat: await this.getNombreDeResultat(latitude, longitude, rayonDeRecherche, criteres),
     }
   }
@@ -64,11 +72,11 @@ export class PostgreSQLLieuLoader implements LieuLoader {
     page: number,
     nombreDeLieuxAffichesParPage: number,
     criteres: Set<Critere>
-  ): Promise<LieuModel[]> {
+  ): Promise<Array<LieuModel>> {
     const criteresSQL = this.getCriteres(criteres)
 
-    return await (await this.orm).manager
-      .query<LieuModel[]>(`SELECT *, code_postal AS "codePostal", domaine_de_droit AS "domaineDeDroit", e_mail AS "eMail", prise_de_rendez_vous AS "priseDeRendezVous", site_internet AS "siteInternet", ${this.calculDistanceSQL} AS distance FROM lieu WHERE ${this.calculDistanceSQL} < ${rayonDeRecherche === Infinity ? "'+Infinity'" : rayonDeRecherche} ${criteresSQL} ORDER BY distance ASC LIMIT $3 OFFSET $4`, [
+    return (await this.orm).manager
+      .query<Array<LieuModel>>(`SELECT *, code_postal AS "codePostal", domaine_de_droit AS "domaineDeDroit", e_mail AS "eMail", prise_de_rendez_vous AS "priseDeRendezVous", site_internet AS "siteInternet", ${this.calculDistanceSQL} AS distance FROM lieu WHERE ${this.calculDistanceSQL} < ${rayonDeRecherche === Infinity ? "'+Infinity'" : rayonDeRecherche} ${criteresSQL} ORDER BY distance ASC LIMIT $3 OFFSET $4`, [
         latitude,
         longitude,
         nombreDeLieuxAffichesParPage,
@@ -76,14 +84,15 @@ export class PostgreSQLLieuLoader implements LieuLoader {
       ])
   }
 
+  // eslint-disable-next-line @typescript-eslint/class-methods-use-this
   private getCriteres(criteres: Set<Critere>): string {
     return [...criteres]
       .map((critere: string): string => ` AND ${critere} = true`)
       .join('')
   }
 
-  private transformeEnLieu(lieuxModel: LieuModel[]): Lieu[] {
-    return lieuxModel.map((lieuModel): Lieu => {
+  private transformeEnLieu(): Array<Lieu> {
+    return this.lieuxModel.map((lieuModel): Lieu => {
       return Lieu.cree({
         adresse: lieuModel.adresse,
         codePostal: lieuModel.codePostal,
@@ -115,10 +124,10 @@ export class PostgreSQLLieuLoader implements LieuLoader {
     })
   }
 
-  private ajouteLaDistance(lieuxModel: LieuModel[], latitude: number, longitude: number): LieuModel[] {
+  private ajouteLaDistance(latitude: number, longitude: number) {
     const degreesToRadians = (degrees: number): number => degrees * (Math.PI / 180)
 
-    return lieuxModel.map((lieuModel: LieuModel): LieuModel => {
+    this.lieuxModel = this.lieuxModel.map((lieuModel: LieuModel): LieuModel => {
       return {
         ...lieuModel,
         distance: 6371 * Math.acos(

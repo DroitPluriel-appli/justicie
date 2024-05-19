@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { frontDependencies } from '../../configuration/frontDependencies'
 import { useDependencies } from '../../configuration/useDependencies'
@@ -11,7 +11,14 @@ type State = Readonly<{
   longitude: number
 }>
 
-export function usePageRechercherUneAideJuridique() {
+type UsePageRechercherUneAideJuridique = Readonly<{
+  buttonName: string
+  isDisabled: boolean
+  isGPSDenied: boolean
+  touch: () => void
+}>
+
+export function usePageRechercherUneAideJuridique(): UsePageRechercherUneAideJuridique {
   const { useRouter } = useDependencies()
   const { paths, wording } = frontDependencies
   const [state, setState] = useState<State>({
@@ -36,6 +43,7 @@ export function usePageRechercherUneAideJuridique() {
 
   useEffect(() => {
     async function isGPSDenied() {
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, @typescript-eslint/strict-boolean-expressions
       if (navigator.permissions) {
         const result = await navigator.permissions.query({ name: 'geolocation' })
 
@@ -52,7 +60,8 @@ export function usePageRechercherUneAideJuridique() {
     void isGPSDenied()
   }, [])
 
-  const hasGeoloc = useCallback(() => {
+  const hasGeoloc = () => {
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, @typescript-eslint/strict-boolean-expressions
     if (navigator.geolocation) {
       setState((state): State => ({
         ...state,
@@ -68,6 +77,7 @@ export function usePageRechercherUneAideJuridique() {
           }))
         },
         () => {
+          // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
           if (navigator.permissions === undefined) {
             setState((state): State => ({
               ...state,
@@ -84,12 +94,12 @@ export function usePageRechercherUneAideJuridique() {
         }
       )
     }
-  }, [wording.CHARGEMENT, wording.UTILISER_MA_POSITION_ACTUELLE])
+  }
 
   return {
     buttonName: state.buttonName,
     isDisabled: state.isDisabled,
     isGPSDenied: state.isGPSDenied,
-    touch: useCallback(touch, [hasGeoloc]),
+    touch,
   }
 }

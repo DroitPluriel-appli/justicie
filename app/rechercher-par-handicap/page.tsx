@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 }
 
 type PageProps = Readonly<{
-  searchParams: Readonly<{ [key: string]: string | string[] | undefined }>
+  searchParams: Readonly<Record<string, ReadonlyArray<string> | string | undefined>>
 }>
 
 export default function Page({ searchParams }: PageProps): ReactElement {

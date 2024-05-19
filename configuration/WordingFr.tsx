@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/class-methods-use-this */
+/* eslint-disable @typescript-eslint/member-ordering */
 export class WordingFr {
   readonly JUSTICIE: string = 'Justicie'
   readonly SUFFIXE_TITLE: string = ' - ' + this.JUSTICIE
@@ -149,7 +151,7 @@ export class WordingFr {
   // Foire aux questions
   readonly TITLE_PAGE_FOIRE_AUX_QUESTIONS: string = 'Foire aux questions' + this.SUFFIXE_TITLE
   readonly QUESTION_JE_NE_TROUVE_AUCUN_LIEU: string = 'Je ne trouve aucun lieu correspondant à ma recherche, comment faire ?'
-  readonly REPONSE_JE_NE_TROUVE_AUCUN_LIEU: string[] = [
+  readonly REPONSE_JE_NE_TROUVE_AUCUN_LIEU: Array<string> = [
     'Aucun lieu ne correspond à votre recherche.',
     'Vous êtes en situation de handicap ?',
     'Contactez la permanence juridique « Agir Handicap » : ',

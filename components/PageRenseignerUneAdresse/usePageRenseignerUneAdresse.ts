@@ -1,11 +1,11 @@
-import { FormEvent, useCallback, useState } from 'react'
+import { FormEvent, useState } from 'react'
 
 import { frontDependencies } from '../../configuration/frontDependencies'
 import { useDependencies } from '../../configuration/useDependencies'
 
 export type AdresseJson = Readonly<{
   geometry: {
-    coordinates: number[]
+    coordinates: ReadonlyArray<number>
   }
   properties: {
     label: string
@@ -13,7 +13,7 @@ export type AdresseJson = Readonly<{
 }>
 
 type AdressesJson = Readonly<{
-  features: AdresseJson[]
+  features: ReadonlyArray<AdresseJson>
 }>
 
 type State = Readonly<{
@@ -23,7 +23,18 @@ type State = Readonly<{
   libelleDesAdresses: AdressesJson
 }>
 
-export function usePageRenseignerUneAdresse() {
+type UsePageRenseignerUneAdresse = Readonly<{
+  apiAdresseNeRepondPlus: () => string
+  effaceLAdresseAuTouch: () => void
+  isDisabled: boolean
+  isEmpty: boolean
+  noticeDesResultats: () => string
+  selectionneUneAdresse: (adresse: string) => void
+  suggestionDAdresse: (query: string, populateResults: (labelDesAdresses: ReadonlyArray<string>) => void) => void
+  vaAlEtape2: (event: FormEvent<HTMLFormElement>) => void
+}>
+
+export function usePageRenseignerUneAdresse(): UsePageRenseignerUneAdresse {
   const { useRouter } = useDependencies()
   const { paths, wording } = frontDependencies
   const router = useRouter()
@@ -34,7 +45,7 @@ export function usePageRenseignerUneAdresse() {
     libelleDesAdresses: { features: [] },
   })
 
-  const suggestionDAdresse = async (query: string, populateResults: (labelDesAdresses: string[]) => void): Promise<void> => {
+  const suggestionDAdresse = async (query: string, populateResults: (labelDesAdresses: ReadonlyArray<string>) => void): Promise<void> => {
     try {
       const apiAdresse = new URL('https://api-adresse.data.gouv.fr/search/')
       apiAdresse.searchParams.append('q', query)
@@ -58,7 +69,7 @@ export function usePageRenseignerUneAdresse() {
   }
 
   const effaceLAdresseAuTouch = () => {
-    // @ts-ignore
+    // @ts-expect-error
     document.querySelector('input').value = ''
     setState((state) => ({
       ...state,
@@ -67,6 +78,7 @@ export function usePageRenseignerUneAdresse() {
   }
 
   const selectionneUneAdresse = (adresse: string) => {
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (adresse !== undefined) {
       setState((state) => ({
         ...state,
@@ -76,15 +88,16 @@ export function usePageRenseignerUneAdresse() {
     }
   }
 
-  const debounce = (func: (query: string, populateResults: (labelDesAdresses: string[]) => void) => Promise<void>, delay: number) => {
-    let timeoutId: NodeJS.Timeout
+  const debounce = (func: (query: string, populateResults: (labelDesAdresses: ReadonlyArray<string>) => void) => Promise<void>, delay: number) => {
+    let timeoutId = 0
 
-    return (...args: [query: string, populateResults: (labelDesAdresses: string[]) => void]) => {
+    return (...args: [query: string, populateResults: (labelDesAdresses: ReadonlyArray<string>) => void]) => {
       clearTimeout(timeoutId)
       timeoutId = setTimeout(() => {
-        // @ts-ignore
+        // @ts-expect-error
+        // eslint-disable-next-line @typescript-eslint/no-invalid-this
         void func.apply(this, args)
-      }, delay)
+      }, delay, [])
     }
   }
 
@@ -94,7 +107,8 @@ export function usePageRenseignerUneAdresse() {
     const coordonneesGeospatiales = state.libelleDesAdresses.features
       .find((adresse): boolean => state.adresseSelectionnee === adresse.properties.label)
 
-    router.push(`${paths.RECHERCHER_PAR_HANDICAP}?lat=${(coordonneesGeospatiales as AdresseJson).geometry.coordinates[1]}&lon=${(coordonneesGeospatiales as AdresseJson).geometry.coordinates[0]}`)
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    router.push(`${paths.RECHERCHER_PAR_HANDICAP}?lat=${(coordonneesGeospatiales!).geometry.coordinates[1]}&lon=${(coordonneesGeospatiales!).geometry.coordinates[0]}`)
   }
 
   const noticeDesResultats = (): string => wording.NOTICE_DES_RESULTATS
@@ -102,13 +116,13 @@ export function usePageRenseignerUneAdresse() {
   const apiAdresseNeRepondPlus = (): string => wording.API_ADRESSE_NE_REPOND_PLUS
 
   return {
-    apiAdresseNeRepondPlus: useCallback(apiAdresseNeRepondPlus, [wording.API_ADRESSE_NE_REPOND_PLUS]),
-    effaceLAdresseAuTouch: useCallback(effaceLAdresseAuTouch, []),
+    apiAdresseNeRepondPlus,
+    effaceLAdresseAuTouch,
     isDisabled: state.isDisabled,
     isEmpty: state.isEmpty,
-    noticeDesResultats: useCallback(noticeDesResultats, [wording.NOTICE_DES_RESULTATS]),
-    selectionneUneAdresse: useCallback(selectionneUneAdresse, []),
+    noticeDesResultats,
+    selectionneUneAdresse,
     suggestionDAdresse: debounce(suggestionDAdresse, 500),
-    vaAlEtape2: useCallback(vaAlEtape2, [state.adresseSelectionnee, paths.RECHERCHER_PAR_HANDICAP, router, state.libelleDesAdresses.features]),
+    vaAlEtape2,
   }
 }

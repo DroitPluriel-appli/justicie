@@ -11,8 +11,8 @@ import { tagResultatsDeRecherche } from '../common/googleAnalyticsTags'
 import VotreAvis from '../common/VotreAvis/VotreAvis'
 
 type ResultatsPlanProps = Readonly<{
-  criteresDAccessibiliteSelectionnes: Critere[]
-  lieux: Lieu[]
+  criteresDAccessibiliteSelectionnes: ReadonlyArray<Critere>
+  lieux: ReadonlyArray<Lieu>
   nombreDeResultat: number
 }>
 
@@ -23,7 +23,7 @@ export default function PageResultatsPlan({ lieux, nombreDeResultat, criteresDAc
 
   // Le composant Plan contient le code pour l'affichage de la cartographie avec Leaflet, qui ne peut pas être rendu côté serveur en SSG ou SSR.
   // On est donc obligé de charger le composant dynamiquement pour qu'il soit rendu côté client ; pour cela on utilise `dynamic` de Next
-  const Plan = dynamic(() => import('./Plan/Plan'), { ssr: false })
+  const Plan = dynamic(async () => import('./Plan/Plan'), { ssr: false })
 
   return (
     <>

@@ -1,5 +1,5 @@
 import { render, RenderResult } from '@testing-library/react'
-import { AppRouterInstance, NavigateOptions } from 'next/dist/shared/lib/app-router-context.shared-runtime'
+import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime'
 import { ReadonlyURLSearchParams } from 'next/navigation'
 import { ReactElement } from 'react'
 
@@ -36,7 +36,7 @@ const fakeHookDependencies: HookDependencies = {
   ...fakeNavigation(),
 }
 
-export const textMatcher = (wording: string) => (_: string, element: Element | null): boolean => {
+export const textMatcher = (wording: string): (_: string, element: Element | null) => boolean => (_: string, element: Element | null): boolean => {
   return element?.textContent === wording
 }
 
@@ -47,14 +47,18 @@ export function fakeNavigation(
     { name: 'page', value: '0' },
   ],
   pathname = 'fake-pathname'
-) {
+): { usePathname: () => string; useRouter: () => AppRouterInstance; useSearchParams: () => ReadonlyURLSearchParams } {
   return {
     usePathname: (): string => pathname,
 
     useRouter: (): AppRouterInstance => ({
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      push: (_href: string, _options?: NavigateOptions) => {},
-    }) as AppRouterInstance,
+      back: vi.fn(),
+      forward: vi.fn(),
+      prefetch: vi.fn(),
+      push: vi.fn(),
+      refresh: vi.fn(),
+      replace: vi.fn(),
+    }),
 
     useSearchParams: (): ReadonlyURLSearchParams => ({
       entries: function* generateStringPairs(): IterableIterator<[string, string]> {

@@ -3,7 +3,7 @@ import { Paths } from './Paths'
 import { WordingFr } from './WordingFr'
 
 export type FrontDependencies = Readonly<{
-  criteres: CritereFront[]
+  criteres: ReadonlyArray<CritereFront>
   date: Date,
   nombreDeLieuxAffichesParPage: number
   paths: Paths

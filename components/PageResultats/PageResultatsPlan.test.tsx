@@ -299,7 +299,7 @@ describe('page des résultats de recherche affichés sur une carte', () => {
 
   it('envoie le type d’affichage des résultats, le nombre de résultats et les critères d’accessibilité sélectionnés à Google Analytics', () => {
     // GIVEN
-    const criteresDAccessibiliteSelectionnes: Critere[] = ['pmr', 'visuel']
+    const criteresDAccessibiliteSelectionnes: ReadonlyArray<Critere> = ['pmr', 'visuel']
     const nombreDeResultats = 0
 
     // WHEN
@@ -312,10 +312,8 @@ describe('page des résultats de recherche affichés sur une carte', () => {
     )
 
     // THEN
-    // @ts-ignore
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(window.dataLayer.push).toHaveBeenNthCalledWith(1, expect.objectContaining({
-      criteresDAccessibiliteSelectionnes: criteresDAccessibiliteSelectionnes,
+      criteresDAccessibiliteSelectionnes,
       event: 'resultatsDeRecherche',
       nombreDeResultats: nombreDeResultats,
       typeDAffichage: 'plan',
