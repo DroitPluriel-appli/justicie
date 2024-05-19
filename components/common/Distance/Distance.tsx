@@ -1,13 +1,9 @@
-import { ReactElement, ReactNode } from 'react'
+import { PropsWithChildren, ReactElement } from 'react'
 
 import styles from './Distance.module.css'
 import { frontDependencies } from '../../../configuration/frontDependencies'
 
-type DistanceProps = Readonly<{
-  children: ReactNode
-}>
-
-export default function Distance({ children }: DistanceProps): ReactElement {
+export default function Distance({ children }: PropsWithChildren): ReactElement {
   return (
     <p className={styles.distance}>
       <svg

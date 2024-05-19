@@ -1,11 +1,10 @@
-import { ReactElement, ReactNode } from 'react'
+import { PropsWithChildren, ReactElement } from 'react'
 
 import styles from './Question.module.css'
 
-type QuestionProps = Readonly<{
-  children: ReactNode
+type QuestionProps = PropsWithChildren<Readonly<{
   titre: string
-}>
+}>>
 
 export default function Question({ children, titre }: QuestionProps): ReactElement {
   return (

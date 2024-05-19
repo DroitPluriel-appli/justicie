@@ -1,13 +1,12 @@
-import { ReactElement, ReactNode } from 'react'
+import { PropsWithChildren, ReactElement } from 'react'
 
 import { frontDependencies } from '../../../configuration/frontDependencies'
 
-type ExternalLinkProps = Readonly<{
-  children: ReactNode
+type ExternalLinkProps = PropsWithChildren<Readonly<{
   className?: string
   href: string
   title: string
-}>
+}>>
 
 export default function ExternalLink({ children, className = '', href, title }: ExternalLinkProps): ReactElement {
   return (

@@ -1,10 +1,6 @@
-import { ReactElement, ReactNode } from 'react'
+import { PropsWithChildren, ReactElement } from 'react'
 
-type PreformateProps = Readonly<{
-  children: ReactNode
-}>
-
-export default function Preformate({ children }: PreformateProps): ReactElement | null {
+export default function Preformate({ children }: PropsWithChildren): ReactElement | null {
   if (children === '') return null
 
   return (

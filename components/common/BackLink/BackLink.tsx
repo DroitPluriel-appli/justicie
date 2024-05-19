@@ -1,13 +1,12 @@
 import Link from 'next/link'
-import { ReactElement, ReactNode } from 'react'
+import { PropsWithChildren, ReactElement } from 'react'
 
 import styles from './BackLink.module.css'
 
-type BackLinkProps = Readonly<{
-  children: ReactNode
+type BackLinkProps = PropsWithChildren<Readonly<{
   className: 'white' | 'blue'
   url: string
-}>
+}>>
 
 export default function BackLink({ children, className, url }: BackLinkProps): ReactElement {
   return (

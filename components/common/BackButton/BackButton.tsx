@@ -1,13 +1,9 @@
-import { ReactElement, ReactNode, useCallback } from 'react'
+import { PropsWithChildren, ReactElement, useCallback } from 'react'
 
 import styles from './BackButton.module.css'
 import { useDependencies } from '../../../configuration/useDependencies'
 
-type BackButtonProps = Readonly<{
-  children: ReactNode
-}>
-
-export default function BackButton({ children }: BackButtonProps): ReactElement {
+export default function BackButton({ children }: PropsWithChildren): ReactElement {
   const { useRouter } = useDependencies()
   const router = useRouter()
 
