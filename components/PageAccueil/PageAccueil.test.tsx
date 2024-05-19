@@ -1,7 +1,7 @@
 import { screen, within } from '@testing-library/react'
 
 import PageAccueil from './PageAccueil'
-import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
+import { fakeFrontDependencies, renderFakeComponent, textMatcher } from '../../configuration/testHelper'
 
 describe('page d’accueil', () => {
   const { paths, wording } = fakeFrontDependencies
@@ -19,7 +19,7 @@ describe('page d’accueil', () => {
     const trouvezUnConseil = screen.getByText(wording.TROUVEZ_UN_CONSEIL_JURIDIQUE, { selector: 'p' })
     expect(trouvezUnConseil).toBeVisible()
 
-    const description = screen.getByText(textMatch(wording.VOUS_AVEZ_UNE_QUESTION_SUR_VOS_DROITS + wording.VOUS_ETES_VICTIME + wording.VOUS_VOULEZ_FAIRE_UNE_ACTION_EN_JUSTICE + wording.VOUS_AVEZ_RECU_UNE_DECISION), { selector: 'p' })
+    const description = screen.getByText(textMatcher(wording.VOUS_AVEZ_UNE_QUESTION_SUR_VOS_DROITS + wording.VOUS_ETES_VICTIME + wording.VOUS_VOULEZ_FAIRE_UNE_ACTION_EN_JUSTICE + wording.VOUS_AVEZ_RECU_UNE_DECISION), { selector: 'p' })
     expect(description).toBeVisible()
 
     const rechercherUneAide = screen.getByRole('link', { name: wording.RECHERCHER_UNE_AIDE_JURIDIQUE_GRATUITE_ET_ACCESSIBLE })
@@ -33,7 +33,7 @@ describe('page d’accueil', () => {
     const droitPlurielEstUneAssociation = screen.getByText(wording.DROIT_PLURIEL_EST_UNE_ASSOCIATION, { selector: 'p' })
     expect(droitPlurielEstUneAssociation).toBeVisible()
 
-    const retrouvezSurNotreSite = screen.getByText(textMatch(wording.RETROUVEZ_PLUS_D_INFOS + wording.SITE_DROIT_PLURIEL), { selector: 'p' })
+    const retrouvezSurNotreSite = screen.getByText(textMatcher(wording.RETROUVEZ_PLUS_D_INFOS + wording.SITE_DROIT_PLURIEL), { selector: 'p' })
     const lienSiteDroitPluriel = within(retrouvezSurNotreSite).getByRole('link', { name: wording.SITE_DROIT_PLURIEL })
     expect(lienSiteDroitPluriel).toHaveAttribute('href', wording.SITE_DROIT_PLURIEL)
     expect(lienSiteDroitPluriel).toHaveAttribute('target', '_blank')
@@ -44,7 +44,7 @@ describe('page d’accueil', () => {
     expect(nousContacter).toBeVisible()
 
     const coordonneesDroitPluriel = screen.getByText(
-      textMatch(`${wording.PAR_EMAIL}${wording.EMAIL_DROIT_PLURIEL}${wording.PAR_TELEPHONE}${wording.TELEPHONE_DROIT_PLURIEL}`), { selector: 'address' }
+      textMatcher(`${wording.PAR_EMAIL}${wording.EMAIL_DROIT_PLURIEL}${wording.PAR_TELEPHONE}${wording.TELEPHONE_DROIT_PLURIEL}`), { selector: 'address' }
     )
 
     const lienMail = within(coordonneesDroitPluriel).getByRole('link', { name: wording.EMAIL_DROIT_PLURIEL })

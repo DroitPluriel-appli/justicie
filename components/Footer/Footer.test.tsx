@@ -1,7 +1,7 @@
 import { fireEvent, screen, within } from '@testing-library/react'
 
 import Footer from './Footer'
-import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
+import { fakeFrontDependencies, renderFakeComponent, textMatcher } from '../../configuration/testHelper'
 
 describe('pied de page', () => {
   const { date, paths, wording } = fakeFrontDependencies
@@ -38,7 +38,7 @@ describe('pied de page', () => {
     expect(qualiteDeService.textContent).toBe(wording.QUALITE_DE_SERVICE)
     const liensQualiteDeService = within(sections[1]).getAllByRole('listitem')
     expect(liensQualiteDeService[0].textContent).toBe(wording.ACCESSIBILITE)
-    const copyright = within(footer).getByText(textMatch(wording.COPYRIGHT(date.getFullYear()) + wording.MENTIONS_LEGALES), { selector: 'p' })
+    const copyright = within(footer).getByText(textMatcher(wording.COPYRIGHT(date.getFullYear()) + wording.MENTIONS_LEGALES), { selector: 'p' })
     const mentionsLegales = within(copyright).getByRole('link', { name: wording.MENTIONS_LEGALES })
     expect(mentionsLegales).toHaveAttribute('href', paths.MENTIONS_LEGALES)
 

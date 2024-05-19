@@ -4,33 +4,43 @@ import { ReadonlyURLSearchParams } from 'next/navigation'
 import { ReactElement } from 'react'
 
 import { FrontDependencies, frontDependencies } from './frontDependencies'
-import { Context } from './useDependencies'
+import { HookDependencies, hookDependencies } from './hookDependencies'
+import { FrontContext, HookContext } from './useDependencies'
 
-export const renderFakeComponent = (component: ReactElement, partialFakeFrontDependencies?: Partial<FrontDependencies>): RenderResult => {
-  const contextValue = {
+export const renderFakeComponent = (component: ReactElement, partialFakeHookDependencies: Partial<HookDependencies> = {}): RenderResult => {
+  const frontContextValue = {
     ...fakeFrontDependencies,
-    ...partialFakeFrontDependencies,
+  }
+  const hookContextValue = {
+    ...fakeHookDependencies,
+    ...partialFakeHookDependencies,
   }
 
   return render(
-    <Context.Provider value={contextValue}>
-      <main>
-        {component}
-      </main>
-    </Context.Provider>
+    <FrontContext.Provider value={frontContextValue}>
+      <HookContext.Provider value={hookContextValue}>
+        <main>
+          {component}
+        </main>
+      </HookContext.Provider>
+    </FrontContext.Provider>
   )
 }
 
 export const fakeFrontDependencies: FrontDependencies = {
   ...frontDependencies,
-  ...fakeRouter(),
 }
 
-export const textMatch = (wording: string) => (_: string, element?: Element | null): boolean => {
+export const fakeHookDependencies: HookDependencies = {
+  ...hookDependencies,
+  ...fakeNavigation(),
+}
+
+export const textMatcher = (wording: string) => (_: string, element: Element | null): boolean => {
   return element?.textContent === wording
 }
 
-export function fakeRouter(
+export function fakeNavigation(
   searchParams = [
     { name: 'lat', value: '22' },
     { name: 'lon', value: '99' },

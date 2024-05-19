@@ -2,7 +2,7 @@ import { screen } from '@testing-library/react'
 
 import PageLieu from './PageLieu'
 import { Lieu } from '../../backend/entities/Lieu'
-import { fakeFrontDependencies, fakeRouter, renderFakeComponent, textMatch } from '../../configuration/testHelper'
+import { fakeFrontDependencies, fakeNavigation, renderFakeComponent, textMatcher } from '../../configuration/testHelper'
 
 describe('page d’un lieu', () => {
   const { wording } = fakeFrontDependencies
@@ -24,18 +24,18 @@ describe('page d’un lieu', () => {
     })
 
     // WHEN
-    renderFakeComponent(<PageLieu lieu={lieu} />, fakeRouter(searchParams))
+    renderFakeComponent(<PageLieu lieu={lieu} />, fakeNavigation(searchParams))
 
     // THEN
     const retourAuxResultats = screen.getByRole('button', { name: wording.RETOUR_AUX_RESULTATS })
     expect(retourAuxResultats).toBeVisible()
     const nom = screen.getByRole('heading', { level: 1, name: lieu.nom })
     expect(nom).toBeVisible()
-    const distance = screen.getByText(textMatch(`${lieu.distance} km`), { selector: 'p' })
+    const distance = screen.getByText(textMatcher(`${lieu.distance} km`), { selector: 'p' })
     expect(distance).toBeVisible()
     const kilometre = screen.getByText('km', { selector: 'abbr' })
     expect(kilometre).toHaveAttribute('title', wording.KILOMETRES)
-    const adresse = screen.getByText(textMatch(lieu.adresse + lieu.codePostal + ' ' + lieu.ville), { selector: 'p' })
+    const adresse = screen.getByText(textMatcher(lieu.adresse + lieu.codePostal + ' ' + lieu.ville), { selector: 'p' })
     expect(adresse).toBeVisible()
     const itineraire = screen.getByRole('link', { name: wording.LANCER_L_ITINERAIRE })
     expect(itineraire).toHaveAttribute('href', 'https://www.google.com/maps/dir/?api=1&origin=48.844928%2C2.31016&destination=34%2Bcours%2Bde%2BVerdun%2B1000%2BBourg%2BEn%2BBresse')
@@ -85,9 +85,9 @@ describe('page d’un lieu', () => {
     // THEN
     const titre = screen.getByRole('heading', { level: 2, name: wording.HORAIRES_ET_JOURS_D_OUVERTURE })
     expect(titre).toBeVisible()
-    const priseDeRendezVous = screen.getByText(textMatch(lieu.priseDeRendezVous), { selector: 'pre' })
+    const priseDeRendezVous = screen.getByText(textMatcher(lieu.priseDeRendezVous), { selector: 'pre' })
     expect(priseDeRendezVous).toBeVisible()
-    const horaire = screen.getByText(textMatch(lieu.horaire), { selector: 'pre' })
+    const horaire = screen.getByText(textMatcher(lieu.horaire), { selector: 'pre' })
     expect(horaire).toBeVisible()
   })
 
@@ -101,7 +101,7 @@ describe('page d’un lieu', () => {
     // THEN
     const titre = screen.getByRole('heading', { level: 2, name: wording.PLUS_D_INFORMATIONS })
     expect(titre).toBeVisible()
-    const commentaire = screen.getByText(textMatch(lieu.commentaire), { selector: 'pre' })
+    const commentaire = screen.getByText(textMatcher(lieu.commentaire), { selector: 'pre' })
     expect(commentaire).toBeVisible()
   })
 

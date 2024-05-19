@@ -1,4 +1,3 @@
-
 export function pagination(nombreDeResultat: number, nombreDeLieuxAffichesParPage: number, page: string | null) {
   const nombreDePage = Math.trunc(nombreDeResultat / nombreDeLieuxAffichesParPage + (nombreDeResultat % nombreDeLieuxAffichesParPage > 0 ? 1 : 0))
   const pageCourante = page === null ? 0 : Number(page)

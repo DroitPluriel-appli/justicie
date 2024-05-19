@@ -1,7 +1,7 @@
 import { fireEvent, screen } from '@testing-library/react'
 
 import PageRechercherUneAideJuridique from './PageRechercherUneAideJuridique'
-import { fakeFrontDependencies, renderFakeComponent, textMatch } from '../../configuration/testHelper'
+import { fakeFrontDependencies, renderFakeComponent, textMatcher } from '../../configuration/testHelper'
 
 describe('page pour rechercher une aide juridique par géolocalisation ou par adresse', () => {
   const { paths, wording } = fakeFrontDependencies
@@ -17,7 +17,7 @@ describe('page pour rechercher une aide juridique par géolocalisation ou par ad
     const retourAlAccueil = screen.getByRole('link', { name: wording.RETOUR_A_L_ACCUEIL })
     expect(retourAlAccueil).toHaveAttribute('href', paths.ACCUEIL)
 
-    const titre = screen.getByRole('heading', { level: 1, name: textMatch(wording.OU_RECHERCHEZ_VOUS + wording.OBLIGATOIRE) })
+    const titre = screen.getByRole('heading', { level: 1, name: textMatcher(wording.OU_RECHERCHEZ_VOUS + wording.OBLIGATOIRE) })
     expect(titre).toBeVisible()
 
     const utiliserMaPostionActuelle = screen.getByRole('button', { name: wording.UTILISER_MA_POSITION_ACTUELLE })

@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react'
 
 import PageRechercherParHandicap from './PageRechercherParHandicap'
-import { fakeFrontDependencies, fakeRouter, renderFakeComponent, textMatch } from '../../configuration/testHelper'
+import { fakeFrontDependencies, fakeNavigation, renderFakeComponent, textMatcher } from '../../configuration/testHelper'
 
 describe('page de recherche par handicap', () => {
   const { criteres, paths, wording } = fakeFrontDependencies
@@ -16,7 +16,7 @@ describe('page de recherche par handicap', () => {
     ]
 
     // WHEN
-    renderFakeComponent(<PageRechercherParHandicap />, fakeRouter(searchParams))
+    renderFakeComponent(<PageRechercherParHandicap />, fakeNavigation(searchParams))
 
     // THEN
     const modifierLAdresse = screen.getByRole('button', { name: wording.MODIFIER_L_ADRESSE })
@@ -24,12 +24,12 @@ describe('page de recherche par handicap', () => {
     const passer = screen.getByRole('link', { name: wording.PASSER })
     expect(passer).toHaveAttribute('href', `${paths.RESULTATS_LISTE}?lat=${lat}&lon=${lon}`)
 
-    const title = screen.getByRole('heading', { level: 1, name: textMatch(wording.BESOIN_EN_ACCESSIBILITE + wording.FACULTATIF) })
+    const title = screen.getByRole('heading', { level: 1, name: textMatcher(wording.BESOIN_EN_ACCESSIBILITE + wording.FACULTATIF) })
     expect(title).toBeVisible()
     criteres.forEach((critere) => {
       const checkbox = screen.getByRole('checkbox', { name: critere.title })
       expect(checkbox).toHaveAttribute('name', critere.name)
-      const description = screen.getByText(textMatch(critere.description), { selector: 'p' })
+      const description = screen.getByText(textMatcher(critere.description), { selector: 'p' })
       expect(description).toBeVisible()
     })
     const latitude = screen.getByDisplayValue(lat)
@@ -50,7 +50,7 @@ describe('page de recherche par handicap', () => {
     ]
 
     // WHEN
-    renderFakeComponent(<PageRechercherParHandicap />, fakeRouter(searchParams))
+    renderFakeComponent(<PageRechercherParHandicap />, fakeNavigation(searchParams))
 
     // THEN
     const pmr = screen.getByRole('checkbox', { name: criteres[0].title })

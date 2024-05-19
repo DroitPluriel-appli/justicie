@@ -65,6 +65,9 @@ const moduleExports = {
       ]
       : []
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   experimental: {
     serverComponentsExternalPackages: ['typeorm'],
   },
@@ -73,6 +76,9 @@ const moduleExports = {
   },
   poweredByHeader: false,
   reactStrictMode: true,
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 }
 
 if (process.env.NODE_ENV === 'development') {

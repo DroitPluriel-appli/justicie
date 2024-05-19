@@ -5,7 +5,7 @@ import PageResultatsPlan from './PageResultatsPlan'
 import Plan from './Plan/Plan'
 import { Critere } from '../../backend/entities/Critere'
 import { Lieu } from '../../backend/entities/Lieu'
-import { fakeFrontDependencies, fakeRouter, renderFakeComponent, textMatch } from '../../configuration/testHelper'
+import { fakeFrontDependencies, fakeNavigation, renderFakeComponent, textMatcher } from '../../configuration/testHelper'
 
 describe('page des résultats de recherche affichés sur une carte', () => {
   const { paths, wording } = fakeFrontDependencies
@@ -79,7 +79,7 @@ describe('page des résultats de recherche affichés sur une carte', () => {
         lieux={[]}
         nombreDeResultat={0}
       />,
-      fakeRouter(searchParams)
+      fakeNavigation(searchParams)
     )
 
     // THEN
@@ -132,11 +132,11 @@ describe('page des résultats de recherche affichés sur une carte', () => {
     // THEN
     const aucunLieu = screen.getByText(wording.AUCUN_LIEU_NE_CORRESPOND_A_VOTRE_RECHERCHE(rayonDeRecherche), { selector: 'p' })
     expect(aucunLieu).toBeVisible()
-    const permanence = screen.getByText(textMatch(wording.CONTACTER_LA_PERMANENCE), { selector: 'p' })
+    const permanence = screen.getByText(textMatcher(wording.CONTACTER_LA_PERMANENCE), { selector: 'p' })
     expect(permanence).toBeVisible()
 
     const coordonneesDroitPluriel = screen.getByText(
-      textMatch(`${wording.EMAIL_DROIT_PLURIEL_ZERO_RESULTAT}${wording.TELEPHONE_DROIT_PLURIEL_ZERO_RESULTAT}`), { selector: 'address' }
+      textMatcher(`${wording.EMAIL_DROIT_PLURIEL_ZERO_RESULTAT}${wording.TELEPHONE_DROIT_PLURIEL_ZERO_RESULTAT}`), { selector: 'address' }
     )
 
     const eMail = within(coordonneesDroitPluriel).getByRole('link', { name: wording.EMAIL_DROIT_PLURIEL_ZERO_RESULTAT })
@@ -231,7 +231,7 @@ describe('page des résultats de recherche affichés sur une carte', () => {
       { name: 'lat', value: lat },
       { name: 'lon', value: lon },
     ]
-    renderFakeComponent(<Plan lieux={[lieuA]} />, fakeRouter(searchParams))
+    renderFakeComponent(<Plan lieux={[lieuA]} />, fakeNavigation(searchParams))
 
     // WHEN
     afficherLaCarteDuLieu(lieuA.nom)
@@ -239,9 +239,9 @@ describe('page des résultats de recherche affichés sur une carte', () => {
     // THEN
     const champsCarteLieuA = [
       screen.getByText(lieuA.nom),
-      screen.getByText(textMatch(lieuA.adresse + lieuA.codePostal + ' ' + lieuA.ville)),
+      screen.getByText(textMatcher(lieuA.adresse + lieuA.codePostal + ' ' + lieuA.ville)),
       screen.getByRole('link', { name: lieuA.telephone }),
-      screen.getByText(textMatch(`${lieuA.distance} km`), { selector: 'p' }),
+      screen.getByText(textMatcher(`${lieuA.distance} km`), { selector: 'p' }),
       screen.getByText('km', { selector: 'abbr' }),
       screen.getByRole('link', { name: wording.LANCER_L_ITINERAIRE }),
       screen.getByRole('link', { name: wording.PLUS_D_INFORMATIONS }),
