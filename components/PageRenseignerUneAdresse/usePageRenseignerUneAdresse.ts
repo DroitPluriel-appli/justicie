@@ -69,8 +69,6 @@ export function usePageRenseignerUneAdresse(): UsePageRenseignerUneAdresse {
   }
 
   const effaceLAdresseAuTouch = () => {
-    // @ts-expect-error
-    document.querySelector('input').value = ''
     setState((state) => ({
       ...state,
       isDisabled: true,

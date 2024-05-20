@@ -1,0 +1,13 @@
+services:
+  postgres:
+    image: postgres:14.11-alpine # Conserver la même version avec le fichier de la CI
+    environment:
+      POSTGRES_DB: justicie
+      POSTGRES_USER: justicie
+      POSTGRES_PASSWORD: justicie
+    command: ["postgres", "-c", "log_statement=all", "-c", "max_connections=30"]
+    healthcheck:
+      test: pg_isready -U justicie
+      interval: 10s
+      timeout: 5s
+      retries: 5
