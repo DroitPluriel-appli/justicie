@@ -1,3 +1,4 @@
+import { metrics } from '@sentry/nextjs'
 import { useEffect, useState } from 'react'
 
 import { applyThemeFromLocalStorage } from '../common/theme'
@@ -26,6 +27,7 @@ export function useHeader(): UseHeader {
       classMenu: state.classMenu === burgerMenuClose ? burgerMenuOpen : burgerMenuClose,
       isMenuClose: !state.isMenuClose,
     })
+    metrics.increment('burger_menu')
   }
 
   useEffect(() => {

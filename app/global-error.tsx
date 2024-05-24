@@ -1,6 +1,6 @@
 'use client'
 
-import * as Sentry from '@sentry/nextjs'
+import { captureException } from '@sentry/nextjs'
 import { ReactElement, useEffect } from 'react'
 
 type ErrorProps = Readonly<{
@@ -9,7 +9,7 @@ type ErrorProps = Readonly<{
 
 export default function GlobalError({ error }: ErrorProps): ReactElement {
   useEffect(() => {
-    Sentry.captureException(error)
+    captureException(error)
   }, [error])
 
   return (
