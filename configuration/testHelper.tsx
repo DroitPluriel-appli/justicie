@@ -40,6 +40,17 @@ export const textMatcher = (wording: string): (_: string, element: Element | nul
   return element?.textContent === wording
 }
 
+export const spyNextNavigation = {
+  useRouter: {
+    back: vi.fn(),
+    forward: vi.fn(),
+    prefetch: vi.fn(),
+    push: vi.fn(),
+    refresh: vi.fn(),
+    replace: vi.fn(),
+  },
+}
+
 export function fakeNavigation(
   searchParams = [
     { name: 'lat', value: '22' },
@@ -51,14 +62,7 @@ export function fakeNavigation(
   return {
     usePathname: (): string => pathname,
 
-    useRouter: (): AppRouterInstance => ({
-      back: vi.fn(),
-      forward: vi.fn(),
-      prefetch: vi.fn(),
-      push: vi.fn(),
-      refresh: vi.fn(),
-      replace: vi.fn(),
-    }),
+    useRouter: (): AppRouterInstance => spyNextNavigation.useRouter,
 
     useSearchParams: (): ReadonlyURLSearchParams => ({
       entries: function* generateStringPairs(): IterableIterator<[string, string]> {

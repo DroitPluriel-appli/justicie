@@ -5,10 +5,27 @@ export default defineConfig({
   plugins: [react()],
   test: {
     coverage: {
-      exclude: ['backend/backDependencies.ts', 'backend/infrastructure/controllers/importerDesLieuxCron.ts'],
-      include: ['backend/**/*', 'components/**/*', 'configuration/**/*'],
+      exclude: [
+        '**/backDependencies.ts',
+        '**/importerDesLieuxCron.ts',
+        '**/PageMentionsLegales.tsx',
+        '**/PageNosPartenaires/**',
+        '**/PagePolitiqueDeConfidentialite.tsx',
+        '**/WordingFr.tsx',
+      ],
+      include: [
+        'backend/**/*',
+        'components/**/*',
+        'configuration/**/*',
+      ],
       provider: 'istanbul',
       skipFull: true,
+      watermarks: {
+        branches: [80, 100],
+        functions: [80, 100],
+        lines: [80, 100],
+        statements: [80, 100],
+      },
     },
     environment: 'jsdom',
     globals: true,

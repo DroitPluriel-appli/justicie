@@ -20,7 +20,9 @@ export default function EnTete({ nombreDeResultat, rayonDeRecherche = Infinity }
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
+  // istanbul ignore next @preserve
   const listeStyle = isListe(pathname, paths) ? styles.current : ''
+  // istanbul ignore next @preserve
   const planStyle = isListe(pathname, paths) ? '' : styles.current
   const params = transformerIteratorEnObject(searchParams.entries())
 

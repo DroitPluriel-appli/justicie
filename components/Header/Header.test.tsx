@@ -127,6 +127,28 @@ describe('en-tête de page', () => {
     const title = within(items[1]).getByText(wording.JUSTICIE)
     expect(title).toBeVisible()
   })
+
+  it('étant donné que j’avait déjà enregistrer le thème sombre, quand j’affiche la page alors le thème sombre est actif', () => {
+    // GIVEN
+    vi.spyOn(Storage.prototype, 'getItem').mockReturnValue('themeDark')
+
+    // WHEN
+    renderFakeComponent(<Header />)
+
+    // THEN
+    expect(document.body).toHaveClass('themeDark')
+  })
+
+  it('étant donné que j’avait déjà enregistrer le thème clair, quand j’affiche la page alors le thème clair est actif', () => {
+    // GIVEN
+    vi.spyOn(Storage.prototype, 'getItem').mockReturnValue(null)
+
+    // WHEN
+    renderFakeComponent(<Header />)
+
+    // THEN
+    expect(document.body).toHaveClass('themeLight')
+  })
 })
 
 function ouvrirLeBurgerMenu(label: string) {
