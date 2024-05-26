@@ -5,7 +5,7 @@ import styles from './BackLink.module.css'
 
 type BackLinkProps = PropsWithChildren<Readonly<{
   className: 'blue' | 'white'
-  url: string
+  url: __next_route_internal_types__.RouteImpl<string>
 }>>
 
 export default function BackLink({ children, className, url }: BackLinkProps): ReactElement {

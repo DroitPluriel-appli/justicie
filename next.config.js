@@ -70,6 +70,7 @@ const moduleExports = {
   },
   experimental: {
     serverComponentsExternalPackages: ['typeorm'],
+    typedRoutes: true,
   },
   images: {
     unoptimized: true,

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "amibroken": "yarn dedupe --check && yarn lint:css && yarn typecheck && yarn lint:typescript && yarn test",
+    "amibroken": "yarn dedupe --check && yarn lint:css && yarn typecheck && yarn lint:typescript && yarn test:coverage",
     "bash:production": "scalingo -a justicie run bash",
     "build": "next build && yarn build-backend",
     "build-backend": "tsc --project tsconfig.backend.json",
