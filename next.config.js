@@ -53,7 +53,7 @@ const securityHeaders = [
 ]
 
 /** @type {import('next').NextConfig} */
-const moduleExports = {
+const nextConfig = {
   devIndicators: { buildActivityPosition: 'bottom-right' },
   async headers() {
     return process.env.NODE_ENV !== 'development'
@@ -83,17 +83,18 @@ const moduleExports = {
 }
 
 if (process.env.NODE_ENV === 'development') {
-  module.exports = moduleExports
+  module.exports = nextConfig
 } else {
   const withPwa = require('next-pwa')({
     dest: 'public',
   })
 
-  /** @type {import('@sentry/nextjs').SentryWebpackPluginOptions} */
-  const sentryWebpackPluginOptions = {
+  const SentryBuildOptions = {
+    disableLogger: true,
+    hideSourceMaps: true,
     silent: true,
+    widenClientFileUpload: true,
   }
 
-  const moduleExportsWithSentry = Object.assign(moduleExports, { sentry: { hideSourceMaps: true } })
-  module.exports = withSentryConfig(withPwa(moduleExportsWithSentry), sentryWebpackPluginOptions)
+  module.exports = withSentryConfig(withPwa(nextConfig), SentryBuildOptions)
 }
