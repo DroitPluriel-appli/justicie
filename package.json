@@ -13,7 +13,7 @@
     "dev-https": "next dev --experimental-https",
     "lighthouse": "lhci autorun",
     "lint:css": "stylelint '(components|configuration)/**/*.css'",
-    "lint:typescript": "eslint . --ext .tsx,.ts --max-warnings=0",
+    "lint:typescript": "eslint . --ext .tsx,.ts --max-warnings=0 --cache --cache-location node_modules/.cache/eslint",
     "maj_lieux": "ts-node -T backend/infrastructure/controllers/importerDesLieuxCron.ts",
     "migration:up": "npx typeorm-ts-node-commonjs migration:run -d ./database/dataSource.ts",
     "migration:down": "npx typeorm-ts-node-commonjs migration:revert -d ./database/dataSource.ts",
